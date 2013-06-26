@@ -1,1 +1,1 @@
-test
+此目录下有一个软件的Solution。分Service、Server、Client以及其他辅助工程。
