@@ -1,1 +1,13 @@
 src/DataService/*.suo
+src/DataService/01_Service/Helpmate.DataService.Beijing/bin
+src/DataService/01_Service/Helpmate.DataService.Beijing/obj
+src/DataService/01_Service/Helpmate.DataService.Canada/bin
+src/DataService/01_Service/Helpmate.DataService.Canada/obj
+src/DataService/02_Logic/Helpmate.DataService.Logic/bin
+src/DataService/02_Logic/Helpmate.DataService.Logic/obj
+src/DataService/03_DataAccess/Helpmate.DataService.IDataAccess/bin
+src/DataService/03_DataAccess/Helpmate.DataService.IDataAccess/obj
+src/DataService/03_DataAccess/Helpmate.DataService.SqlDataAccess/bin
+src/DataService/03_DataAccess/Helpmate.DataService.SqlDataAccess/obj
+src/DataService/04_Utility/Helpmate.DataService.Utility/bin
+src/DataService/04_Utility/Helpmate.DataService.Utility/obj
