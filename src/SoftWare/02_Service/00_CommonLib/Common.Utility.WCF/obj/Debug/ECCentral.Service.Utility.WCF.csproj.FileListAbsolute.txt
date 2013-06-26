@@ -1,0 +1,14 @@
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\ECCentral.Service.Utility.WCF.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\ECCentral.Service.Utility.WCF.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\ECCentral.Service.Utility.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\PostSharp.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\DictSeg.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\org.in2bits.MyXls.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\FTAlgorithm.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\ECCentral.Service.Utility.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\org.in2bits.MyXls.xml
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\en-US\ECCentral.Service.Utility.resources.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\bin\Debug\zh-TW\ECCentral.Service.Utility.resources.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\obj\Debug\ResolveAssemblyReference.cache
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\obj\Debug\ECCentral.Service.Utility.WCF.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\BackManager\03_Service\Utility.WCF\obj\Debug\ECCentral.Service.Utility.WCF.pdb

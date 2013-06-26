@@ -1,0 +1,10 @@
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity.Enum\bin\Debug\Reception.BizEntity.Enum.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity.Enum\bin\Debug\Reception.BizEntity.Enum.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity.Enum\obj\Debug\ResolveAssemblyReference.cache
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity.Enum\obj\Debug\Reception.BizEntity.Enum.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity.Enum\obj\Debug\Reception.BizEntity.Enum.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity.Enum\bin\Debug\Reception.BizEntity.Enum.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity.Enum\bin\Debug\Reception.BizEntity.Enum.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity.Enum\obj\Debug\ResolveAssemblyReference.cache
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity.Enum\obj\Debug\Reception.BizEntity.Enum.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity.Enum\obj\Debug\Reception.BizEntity.Enum.pdb

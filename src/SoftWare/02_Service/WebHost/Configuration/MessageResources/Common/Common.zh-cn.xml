@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MessageResource>
+  <MessageList>
+
+    <Message name="Error_UserInfoAccountLengthTooLarge">对不起，账号的字符不能超过20位!</Message>
+    <Message name="Error_UserInfoAccountExists">对不起，账号[{0}]已经存在了，不能重复使用！</Message>
+
+  </MessageList>
+</MessageResource>
