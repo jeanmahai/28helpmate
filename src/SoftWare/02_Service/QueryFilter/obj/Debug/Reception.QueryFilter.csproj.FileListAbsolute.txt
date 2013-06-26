@@ -1,0 +1,10 @@
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\QueryFilter\bin\Debug\Reception.QueryFilter.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\QueryFilter\bin\Debug\Reception.QueryFilter.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\QueryFilter\obj\Debug\ResolveAssemblyReference.cache
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\QueryFilter\obj\Debug\Reception.QueryFilter.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\QueryFilter\obj\Debug\Reception.QueryFilter.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\QueryFilter\bin\Debug\Reception.QueryFilter.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\QueryFilter\bin\Debug\Reception.QueryFilter.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\QueryFilter\obj\Debug\ResolveAssemblyReference.cache
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\QueryFilter\obj\Debug\Reception.QueryFilter.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\QueryFilter\obj\Debug\Reception.QueryFilter.pdb

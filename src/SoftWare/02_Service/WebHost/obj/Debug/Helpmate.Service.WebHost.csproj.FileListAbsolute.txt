@@ -1,0 +1,5 @@
+E:\GitHub\28helpmate\src\SoftWare\02_Service\WebHost\bin\Helpmate.Service.WebHost.dll
+E:\GitHub\28helpmate\src\SoftWare\02_Service\WebHost\bin\Helpmate.Service.WebHost.pdb
+E:\GitHub\28helpmate\src\SoftWare\02_Service\WebHost\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\28helpmate\src\SoftWare\02_Service\WebHost\obj\Debug\Helpmate.Service.WebHost.dll
+E:\GitHub\28helpmate\src\SoftWare\02_Service\WebHost\obj\Debug\Helpmate.Service.WebHost.pdb

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8967EBCA-8F6F-45C4-ACF7-02120539B6F2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Helpmate.BizProcess</RootNamespace>
+    <AssemblyName>Helpmate.BizProcess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00_CommonLib\Common.Utility\Common.Utility.csproj">
+      <Project>{72E39F75-9206-4980-B215-5D183CF079CD}</Project>
+      <Name>Common.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BizEntity.Enum\Helpmate.BizEntity.Enum.csproj">
+      <Project>{8F0A8E2B-E3C3-4C76-AB81-19BF3CD85C57}</Project>
+      <Name>Helpmate.BizEntity.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BizEntity\Helpmate.BizEntity.csproj">
+      <Project>{02C9A8D4-26A8-4246-B1DD-46B4EFAFDE3C}</Project>
+      <Name>Helpmate.BizEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpmate.IDataAccess\Helpmate.IDataAccess.csproj">
+      <Project>{9287AE34-4A69-4B74-ABA1-262489EE1EAC}</Project>
+      <Name>Helpmate.IDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpmate.SqlIDataAccess\Helpmate.SqlIDataAccess.csproj">
+      <Project>{94BBE2A2-C220-4EB3-88B4-ADBE9020E908}</Project>
+      <Name>Helpmate.SqlIDataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

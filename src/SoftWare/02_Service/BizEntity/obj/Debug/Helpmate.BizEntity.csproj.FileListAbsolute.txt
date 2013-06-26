@@ -1,0 +1,7 @@
+E:\GitHub\28helpmate\src\SoftWare\02_Service\BizEntity\bin\Debug\Helpmate.BizEntity.dll
+E:\GitHub\28helpmate\src\SoftWare\02_Service\BizEntity\bin\Debug\Helpmate.BizEntity.pdb
+E:\GitHub\28helpmate\src\SoftWare\02_Service\BizEntity\bin\Debug\Helpmate.BizEntity.Enum.dll
+E:\GitHub\28helpmate\src\SoftWare\02_Service\BizEntity\bin\Debug\Helpmate.BizEntity.Enum.pdb
+E:\GitHub\28helpmate\src\SoftWare\02_Service\BizEntity\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\28helpmate\src\SoftWare\02_Service\BizEntity\obj\Debug\Helpmate.BizEntity.dll
+E:\GitHub\28helpmate\src\SoftWare\02_Service\BizEntity\obj\Debug\Helpmate.BizEntity.pdb

@@ -1,0 +1,12 @@
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity\bin\Debug\Reception.BizEntity.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity\bin\Debug\Reception.BizEntity.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity\obj\Debug\ResolveAssemblyReference.cache
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity\obj\Debug\Reception.BizEntity.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\Reception.Website\BizEntity\obj\Debug\Reception.BizEntity.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity\bin\Debug\Reception.BizEntity.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity\bin\Debug\Reception.BizEntity.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity\obj\Debug\ResolveAssemblyReference.cache
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity\obj\Debug\Reception.BizEntity.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity\obj\Debug\Reception.BizEntity.pdb
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity\bin\Debug\Reception.BizEntity.Enum.dll
+E:\BAHOOL PROJECTS\BAHOOLTELEVISION\01_Code\WebSite\01_Reception\BizEntity\bin\Debug\Reception.BizEntity.Enum.pdb
