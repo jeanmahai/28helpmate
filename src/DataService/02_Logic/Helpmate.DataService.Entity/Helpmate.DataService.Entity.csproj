@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AD7932F9-27B7-4801-9B11-AA39840045FE}</ProjectGuid>
+    <ProjectGuid>{16712E09-B571-4423-9361-D29A5FAFE850}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Helpmate.DataService.SqlDataAccess</RootNamespace>
-    <AssemblyName>Helpmate.DataService.SqlDataAccess</AssemblyName>
+    <RootNamespace>Helpmate.DataService.Entity</RootNamespace>
+    <AssemblyName>Helpmate.DataService.Entity</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectResultEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SourceDataEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
