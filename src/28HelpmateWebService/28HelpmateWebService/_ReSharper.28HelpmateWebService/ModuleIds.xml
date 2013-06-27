@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="69541CC6-39AD-47D2-80CC-38A4E9EBD624" ModuleId="10_Business" />
+  <Module PersistentId="0C453E46-A6F4-4331-A11D-A37B91E7C001" ModuleId="20_DataAccess" />
+  <Module PersistentId="D45BF8FB-C58B-4279-B3EE-29861E8F0DEF" ModuleId="30_Model" />
+</Modules>
