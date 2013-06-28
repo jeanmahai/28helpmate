@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00_WebService", "00_WebService\00_WebService.csproj", "{0060423A-D13A-4A2A-A242-ECF6C744BB3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "00_WebService\WebService.csproj", "{0060423A-D13A-4A2A-A242-ECF6C744BB3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_Business", "10_Business\10_Business.csproj", "{69541CC6-39AD-47D2-80CC-38A4E9EBD624}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "10_Business\Business.csproj", "{69541CC6-39AD-47D2-80CC-38A4E9EBD624}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20_DataAccess", "20_DataAccess\20_DataAccess.csproj", "{0C453E46-A6F4-4331-A11D-A37B91E7C001}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "20_DataAccess\DataAccess.csproj", "{0C453E46-A6F4-4331-A11D-A37B91E7C001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "30_Model", "30_Model\30_Model.csproj", "{D45BF8FB-C58B-4279-B3EE-29861E8F0DEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "30_Model\Model.csproj", "{D45BF8FB-C58B-4279-B3EE-29861E8F0DEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

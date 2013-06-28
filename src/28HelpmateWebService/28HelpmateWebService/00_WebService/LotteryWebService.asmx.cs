@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Services;
+﻿using System.Web.Services;
+using Model.ResponseModel;
+using System;
 
-namespace _00_WebService
+namespace WebService
 {
     /// <summary>
     /// LotteryWebService 的摘要说明
@@ -21,6 +19,26 @@ namespace _00_WebService
         public string HelloWorld()
         {
             return "Hello World";
+        }
+        [WebMethod]
+        public LotteryByTwentyPeriodRM QueryNextLotteryWithSameNumber(int number)
+        {
+            return null;
+        }
+        [WebMethod]
+        public LotteryByTwentyPeriodRM QueryLotteryByHourStep(DateTime time)
+        {
+            return null;
+        }
+        [WebMethod]
+        public LotteryByTwentyPeriodRM QueryLotteryByDay(DateTime time)
+        {
+            return null;
+        }
+        [WebMethod]
+        public LotteryByTwentyPeriodRM QueryLotteryByTwenty()
+        {
+            return null;
         }
     }
 }
