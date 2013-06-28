@@ -1,13 +1,6 @@
-00_WebService/bin
-00_WebService/obj
 
-10_Business/bin
-10_Business/obj
+*/bin/
+*/obj/
 
-20_DataAccess/bin
-20_DataAccess/obj
-
-30_Model/bin
-30_Model/obj
-
-_ReSharper.28HelpmateWebService
+_ReSharper.28HelpmateWebService/
+*.suo
