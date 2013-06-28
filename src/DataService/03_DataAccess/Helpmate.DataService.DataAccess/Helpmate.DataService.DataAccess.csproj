@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{51339345-1D16-4388-AFBA-CE4E8B1EF027}</ProjectGuid>
+    <ProjectGuid>{0EF7B8FC-0E08-4569-B301-2BE72ABBDEC7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Helpmate.DataService.IDataAccess</RootNamespace>
-    <AssemblyName>Helpmate.DataService.IDataAccess</AssemblyName>
+    <RootNamespace>Helpmate.DataService.DataAccess</RootNamespace>
+    <AssemblyName>Helpmate.DataService.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SourceDataDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\02_Logic\Helpmate.DataService.Entity\Helpmate.DataService.Entity.csproj">
+      <Project>{16712E09-B571-4423-9361-D29A5FAFE850}</Project>
+      <Name>Helpmate.DataService.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\04_Utility\Helpmate.DataService.Utility\Helpmate.DataService.Utility.csproj">
+      <Project>{78994498-2835-4C8D-91FF-1C4C4322AA95}</Project>
+      <Name>Helpmate.DataService.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

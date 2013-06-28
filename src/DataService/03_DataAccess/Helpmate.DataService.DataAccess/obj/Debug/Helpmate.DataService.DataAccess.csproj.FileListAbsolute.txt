@@ -1,0 +1,9 @@
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\bin\Debug\Helpmate.DataService.DataAccess.dll
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\bin\Debug\Helpmate.DataService.DataAccess.pdb
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\bin\Debug\Helpmate.DataService.Entity.dll
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\bin\Debug\Helpmate.DataService.Utility.dll
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\bin\Debug\Helpmate.DataService.Entity.pdb
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\bin\Debug\Helpmate.DataService.Utility.pdb
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\obj\Debug\Helpmate.DataService.DataAccess.dll
+D:\PersonalWork\28helpmate\src\DataService\03_DataAccess\Helpmate.DataService.DataAccess\obj\Debug\Helpmate.DataService.DataAccess.pdb

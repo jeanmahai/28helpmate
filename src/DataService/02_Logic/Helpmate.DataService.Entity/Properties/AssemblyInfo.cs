@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Helpmate.DataService.SqlDataAccess")]
+[assembly: AssemblyTitle("Helpmate.DataService.Entity")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Helpmate.DataService.SqlDataAccess")]
+[assembly: AssemblyProduct("Helpmate.DataService.Entity")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("55b83325-1b1d-40a9-b209-4cc105d74e59")]
+[assembly: Guid("8af28752-a1f8-4503-a206-d861736a8cd7")]
 
 // 程序集的版本信息由下面四个值组成:
 //
