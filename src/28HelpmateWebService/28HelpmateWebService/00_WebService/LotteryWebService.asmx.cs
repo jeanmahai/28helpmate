@@ -1,4 +1,5 @@
 ﻿using System.Web.Services;
+using Business;
 using Model.ResponseModel;
 using System;
 
@@ -14,31 +15,29 @@ namespace WebService
     // [System.Web.Script.Services.ScriptService]
     public class LotteryWebService:System.Web.Services.WebService
     {
-
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-        [WebMethod]
-        public LotteryByTwentyPeriodRM QueryNextLotteryWithSameNumber(int number)
+        public ResultRM QueryNextLotteryWithSameNumber(int number)
         {
             return null;
         }
         [WebMethod]
-        public LotteryByTwentyPeriodRM QueryLotteryByHourStep(DateTime time)
+        public ResultRM QueryLotteryByHourStep(DateTime time)
         {
             return null;
         }
         [WebMethod]
-        public LotteryByTwentyPeriodRM QueryLotteryByDay(DateTime time)
+        public ResultRM QueryLotteryByDay(DateTime time)
         {
             return null;
         }
         [WebMethod]
-        public LotteryByTwentyPeriodRM QueryLotteryByTwenty()
+        public ResultRM QueryLotteryByTwenty()
         {
-            return null;
+            return new ResultRM()
+                   {
+                       Success = true,
+                       Data = LotteryDAL.QueryLotteryByTwenty()
+                   };
         }
     }
 }

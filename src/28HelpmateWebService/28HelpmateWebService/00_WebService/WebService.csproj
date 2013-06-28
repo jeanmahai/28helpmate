@@ -33,7 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\40_References\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MyTree.Utility">
+      <HintPath>..\40_References\MyTree.Utility.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -51,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="LotteryWebService.asmx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -61,6 +68,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="LotteryWebService.asmx.cs">
       <DependentUpon>LotteryWebService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -68,9 +78,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\30_Model\30_Model.csproj">
+    <ProjectReference Include="..\10_Business\Business.csproj">
+      <Project>{69541CC6-39AD-47D2-80CC-38A4E9EBD624}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\30_Model\Model.csproj">
       <Project>{D45BF8FB-C58B-4279-B3EE-29861E8F0DEF}</Project>
-      <Name>30_Model</Name>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
