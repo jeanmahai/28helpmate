@@ -90,7 +90,7 @@ namespace Helpmate.DataService.Logic
 
             if (hour >= 0 && hour < 9)
             {
-                dtRetTime = DateTime.Parse(string.Format("{0} 23:55:00", dtNow.AddDays(1).ToShortDateString()));
+                dtRetTime = DateTime.Parse(string.Format("{0} 23:55:00", dtNow.ToShortDateString()));
             }
             else
             {

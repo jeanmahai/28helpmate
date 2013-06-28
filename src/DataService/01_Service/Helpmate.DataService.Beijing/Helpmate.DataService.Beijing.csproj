@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,8 +53,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SvcMain.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\02_Logic\Helpmate.DataService.Entity\Helpmate.DataService.Entity.csproj">
+      <Project>{16712E09-B571-4423-9361-D29A5FAFE850}</Project>
+      <Name>Helpmate.DataService.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\02_Logic\Helpmate.DataService.Logic\Helpmate.DataService.Logic.csproj">
       <Project>{597E4230-30DE-4C6E-B3F1-EFFE9C1AC893}</Project>
       <Name>Helpmate.DataService.Logic</Name>
@@ -62,6 +68,9 @@
       <Project>{78994498-2835-4C8D-91FF-1C4C4322AA95}</Project>
       <Name>Helpmate.DataService.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SvcConfig.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

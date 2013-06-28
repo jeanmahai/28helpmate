@@ -1,0 +1,226 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Diagnostics;
+
+using Helpmate.DataService.Utility;
+using Helpmate.DataService.Logic;
+using Helpmate.DataService.Entity;
+
+namespace Helpmate.DataService.Beijing
+{
+    public static class SvcMain
+    {
+        public static volatile bool running;
+        static Thread trdDataSvc;
+        static Thread failDataSvc;
+
+        /// <summary>
+        /// 启动线程
+        /// </summary>
+        public static void Run()
+        {
+            int num = 3;
+            while (num > 0)
+            {
+                try
+                {
+                    // 北京28数据服务计算
+                    trdDataSvc = new Thread(new ThreadStart(GameSvc));
+                    trdDataSvc.Start();
+                    trdDataSvc.IsBackground = true;
+
+                    // 失败计算服务
+                    failDataSvc = new Thread(new ThreadStart(FailComputeSvc));
+                    failDataSvc.Start();
+                    failDataSvc.IsBackground = true;
+
+                    num = 0;
+                    WriteLog.WriteEventLog("数据服务已启动。", EventLogEntryType.Information);
+                }
+                catch (Exception ex)
+                {
+                    num--;
+                    WriteLog.WriteEventLog(string.Format("数据服务启动失败。", ex.Message), EventLogEntryType.Error);
+                }
+            }
+        }
+
+        #region 线程计算
+
+        /// <summary>
+        /// 计算休眠时间（线程阻塞）
+        /// </summary>
+        /// <returns></returns>
+        private static int GetSleepTimes()
+        {
+            DateTime dtNow = DateTime.Now;
+            int minutes = 0, seconds = 0;
+
+            if (dtNow.Hour == 23 && dtNow.Minute >= 55)
+            {
+                return (int)(DateTime.Parse(dtNow.AddDays(1).ToShortDateString() + " 09:05:15") - DateTime.Now).TotalSeconds * 1000;
+            }
+            else if (dtNow.Hour >= 0 && dtNow.Hour < 9)
+            {
+                return (int)(DateTime.Parse(dtNow.ToShortDateString() + " 09:05:15") - DateTime.Now).TotalSeconds * 1000;
+            }
+            else
+            {
+                minutes = 5 - dtNow.Minute % 5;
+                seconds = 15 - dtNow.Second;
+                dtNow = dtNow.AddMinutes(minutes).AddSeconds(seconds);
+                return (int)(dtNow - DateTime.Now).TotalSeconds * 1000;
+            }
+        }
+
+        /// <summary>
+        /// 北京28数据服务计算
+        /// </summary>
+        private static void GameSvc()
+        {
+            int waitSec = GetSleepTimes();
+            if (waitSec > 0)
+            {
+                Thread.Sleep(waitSec);
+            }
+            else
+            {
+                //等待Server配置启动
+                Thread.Sleep(10000);
+            }
+
+            while (running)
+            {
+                AsyncWays_Game();
+                CollectResultEntity nowPeriod = Arithmetic.Instance().GetNextPeriodNum(Source.Beijing);
+                if (nowPeriod.PeriodNum <= 0)
+                {
+                    WriteLog.Write("读取当前需要开奖的期号失败。");
+                }
+                else if ((nowPeriod.RetTime - DateTime.Now).TotalMinutes > -1)
+                {
+                    //如果当前采集的期开奖时间大于当前时间，则需要等待下一期开奖时间开奖
+                    //否则继续开奖
+                    Thread.Sleep(GetSleepTimes());
+                }
+            }
+        }
+
+        /// <summary>
+        /// 失败计算服务
+        /// </summary>
+        private static void FailComputeSvc()
+        {
+            int tmpMin = 0;
+            int tmpSec = 0;
+            DateTime dtNow = DateTime.Now;
+            if (dtNow.Minute % 2 != 0 || dtNow.Second != 0 || (dtNow.Minute % 2 == 0 && dtNow.Second != 0))
+            {
+                tmpMin = 2 - dtNow.Minute % 2;
+                tmpSec = 25 - dtNow.Second;
+                Thread.Sleep(tmpMin * 60000 + tmpSec * 1000);
+            }
+            else
+            {
+                //等待Server配置启动
+                Thread.Sleep(10000);
+            }
+
+            while (running)
+            {
+                AsyncWays_FailSvc();
+                DateTime dtNow1 = DateTime.Now;
+                if (dtNow1.Hour >= 9 && dtNow1.Hour <= 23)
+                {
+                    tmpMin = 2 - dtNow1.Minute % 2;
+                    tmpSec = 25 - dtNow1.Second;
+                    Thread.Sleep(tmpMin * 60000 + tmpSec * 1000);
+                }
+                else
+                {
+                    tmpMin = 20 - dtNow1.Minute % 20;
+                    tmpSec = 25 - dtNow1.Second;
+                    Thread.Sleep(tmpMin * 60000 + tmpSec * 1000);
+                }
+            }
+        }
+
+        #endregion
+
+        #region 异步执行操作
+
+        #region 北京28 异步操作
+
+        private static void AsyncWays_Game()
+        {
+            //实例化委托并初赋值 
+            DelegateName dn = new DelegateName(AsyncCompute_Game);
+            //实例化回调方法 
+            AsyncCallback acb = new AsyncCallback(CallBackMethod);
+            //异步开始 
+            //如果参数acb 换成 null 则表示没有回调方法 
+            //最后一个参数 dn 的地方，可以换成任意对象，该对象可以被回调方法从参数中获取出来，写成 null 也可以。参数 dn 相当于该线程的 ID，如果有多个异步线程，可以都是 null，但是绝对不能一样，不能是同一个 object，否则异常 
+            IAsyncResult iar = dn.BeginInvoke(acb, dn);
+        }
+        private static void AsyncCompute_Game()
+        {
+            CollectResultEntity nowPeriod = Arithmetic.Instance().GetNextPeriodNum(Source.Beijing);
+            if (nowPeriod.PeriodNum > 0)
+            {
+                //采集、计算并写入DB持久化
+                bool result = Arithmetic.Instance().CollectAndCalculate(Source.Beijing, nowPeriod.PeriodNum, nowPeriod.RetTime, DBOperateType.Insert);
+                if (!result)
+                    Arithmetic.Instance().FailInsertData(Source.Beijing, nowPeriod.PeriodNum, nowPeriod.RetTime);
+            }
+            else
+            {
+                WriteLog.Write("读取当前需要开奖的期号失败。");
+            }
+        }
+
+        #endregion
+
+        #region 北京28间隔计算失败数据 异步操作
+
+        private static void AsyncWays_FailSvc()
+        {
+            //实例化委托并初赋值 
+            DelegateName dn = new DelegateName(AsyncCompute_FailSvc);
+            //实例化回调方法 
+            AsyncCallback acb = new AsyncCallback(CallBackMethod);
+            //异步开始 
+            //如果参数acb 换成 null 则表示没有回调方法 
+            //最后一个参数 dn 的地方，可以换成任意对象，该对象可以被回调方法从参数中获取出来，写成 null 也可以。参数 dn 相当于该线程的 ID，如果有多个异步线程，可以都是 null，但是绝对不能一样，不能是同一个 object，否则异常 
+            IAsyncResult iar = dn.BeginInvoke(acb, dn);
+        }
+        private static void AsyncCompute_FailSvc()
+        {
+            List<CollectResultEntity> periodList = Arithmetic.Instance().GetFailPeriodList(Source.Beijing);
+            if (periodList != null && periodList.Count > 0)
+            {
+                foreach (CollectResultEntity period in periodList)
+                {
+                    bool result = Arithmetic.Instance().CollectAndCalculate(Source.Beijing, period.PeriodNum, period.RetTime, DBOperateType.Update);
+                    if (!result)
+                        WriteLog.Write(string.Format("间隔计算失败的期再次失败，期号：{0}。", period.PeriodNum));
+                }
+            }
+        }
+
+        #endregion
+
+        //定义与方法同签名的委托 
+        private delegate void DelegateName();
+        private static void CallBackMethod(IAsyncResult ar)
+        {
+            //从异步状态 ar.AsyncState 中，获取委托对象 
+            DelegateName dn = (DelegateName)ar.AsyncState;
+            dn.EndInvoke(ar);
+        }
+
+        #endregion
+    }
+}

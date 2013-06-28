@@ -43,8 +43,9 @@ namespace Helpmate.DataService.DataAccess
                 {
                     result.PeriodNum = long.Parse(dt.Rows[0]["PeriodNum"].ToString()) + 1;
                     result.RetTime = DateTime.Parse(dt.Rows[0]["RetTime"].ToString());
+                    //到23:55当天开奖就结束了，下一期在第二天9:05
                     if (result.RetTime.Hour == 23 && result.RetTime.Minute == 55)
-                        result.RetTime = DateTime.Parse(string.Format("{0} 9:00", result.RetTime.ToShortDateString())).AddDays(1);
+                        result.RetTime = DateTime.Parse(string.Format("{0} 9:05", result.RetTime.ToShortDateString())).AddDays(1);
                     else
                         result.RetTime = result.RetTime.AddMinutes(5);
                 }
@@ -82,8 +83,9 @@ namespace Helpmate.DataService.DataAccess
                 {
                     result.PeriodNum = long.Parse(dt.Rows[0]["PeriodNum"].ToString()) + 1;
                     result.RetTime = DateTime.Parse(dt.Rows[0]["RetTime"].ToString());
+                    //到23:55当天开奖就结束了，下一期在第二天9:05
                     if (result.RetTime.Hour == 23 && result.RetTime.Minute == 55)
-                        result.RetTime = DateTime.Parse(string.Format("{0} 9:00", result.RetTime.ToShortDateString())).AddDays(1);
+                        result.RetTime = DateTime.Parse(string.Format("{0} 9:05", result.RetTime.ToShortDateString())).AddDays(1);
                     else
                         result.RetTime = result.RetTime.AddMinutes(5);
                 }
@@ -95,6 +97,81 @@ namespace Helpmate.DataService.DataAccess
             catch (Exception ex)
             {
                 WriteLog.Write(string.Format("GetCanadanNextPeriodNum读取SQL Server数据库期号失败，sql：{0}，错误信息：{1}", sql, ex.ToString()));
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 读取北京失败期列表
+        /// </summary>
+        /// <returns></returns>
+        public List<CollectResultEntity> GetBeijingFailPeriodList()
+        {
+            List<CollectResultEntity> result = null;
+
+            DateTime dtNow = DateTime.Now;
+            string sql = @"SELECT [PeriodNum],[RetTime] FROM [Helpmate].[dbo].[SourceData_28_Beijing] WHERE [Status] = -1";
+            DBHelper db = new DBHelper();
+            try
+            {
+                DataTable dt = db.ExeSqlDataAdapter(CommandType.Text, sql);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    result = new List<CollectResultEntity>();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        CollectResultEntity item = new CollectResultEntity();
+                        item.PeriodNum = long.Parse(row["PeriodNum"].ToString());
+                        item.RetTime = DateTime.Parse(row["RetTime"].ToString());
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog.Write(string.Format("GetBeijingFailPeriodList读取SQL Server数据库失败期列表失败，sql：{0}，错误信息：{1}", sql, ex.ToString()));
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// 读取加拿大失败期列表
+        /// </summary>
+        /// <returns></returns>
+        public List<CollectResultEntity> GetCanadanFailPeriodList()
+        {
+            List<CollectResultEntity> result = null;
+
+            DateTime dtNow = DateTime.Now;
+            string sql = @"SELECT [PeriodNum],[RetTime] FROM [Helpmate].[dbo].[SourceData_28_Canadan] WHERE [Status] = -1";
+            DBHelper db = new DBHelper();
+            try
+            {
+                DataTable dt = db.ExeSqlDataAdapter(CommandType.Text, sql);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    result = new List<CollectResultEntity>();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        CollectResultEntity item = new CollectResultEntity();
+                        item.PeriodNum = long.Parse(row["PeriodNum"].ToString());
+                        item.RetTime = DateTime.Parse(row["RetTime"].ToString());
+                        result.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog.Write(string.Format("GetCanadanFailPeriodList读取SQL Server数据库失败期列表失败，sql：{0}，错误信息：{1}", sql, ex.ToString()));
             }
             finally
             {

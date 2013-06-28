@@ -5,6 +5,8 @@ using System.Text;
 
 using Helpmate.DataService.Entity;
 using Helpmate.DataService.DataAccess;
+using System.Threading;
+using Helpmate.DataService.Utility;
 
 namespace Helpmate.DataService.Logic
 {
@@ -17,8 +19,8 @@ namespace Helpmate.DataService.Logic
 
         private Arithmetic()
         { }
-        public Arithmetic _Instance;
-        public Arithmetic Instance()
+        private static Arithmetic _Instance;
+        public static Arithmetic Instance()
         {
             if (_Instance == null)
                 _Instance = new Arithmetic();
@@ -39,42 +41,74 @@ namespace Helpmate.DataService.Logic
         {
             bool result = true;
 
-            //[[采集数据
-            ICollectData collectData = CreateCollectData(source);
-            if (collectData == null)
-                return false;
-            CollectResultEntity collectResult = collectData.Collect(periodNum);
-            if (collectResult == null || collectResult.Group == null || collectResult.Group.Length != 20)
-                return false;
-            collectResult.PeriodNum = periodNum;
-            collectResult.RetTime = retTime;
-            //]]
+            string errorMessage = "{0}，方法：CollectAndCalculate，期号：" + periodNum.ToString();
 
-            //[[计算数据
-            //28数据
-            List<SourceDataEntity> sourceDataList28 = Calculate28Data(collectResult);
-            //16数据
-            //List<SourceDataEntity> sourceDataList16 = Calculate16Data(collectResult);
-            //]]
-
-            //[[DB持久化
-            //28数据
-            if (sourceDataList28 == null || sourceDataList28.Count == 0)
-                return false;
-            if (dbOperateType == DBOperateType.Insert)
-                result = Insert28Data(source, sourceDataList28);
-            switch (dbOperateType)
+            try
             {
-                case DBOperateType.Insert:
+                //[[采集数据
+                ICollectData collectData = CreateCollectData(source);
+                if (collectData == null)
+                {
+                    WriteLog.Write(string.Format(errorMessage, "创建采集实现类失败"));
+                    return false;
+                }
+                int tryTimes = 3;
+                CollectResultEntity collectResult = null;
+                while (tryTimes > 0)
+                {
+                    collectResult = collectData.Collect(periodNum);
+                    if (collectResult == null || collectResult.Group == null || collectResult.Group.Length != 20)
+                    {
+                        result = false;
+                        tryTimes--;
+                        //如果采集失败，则间隔5秒重试，重试2次
+                        Thread.Sleep(5 * 1000);
+                    }
+                    tryTimes = 0;
+                }
+                if (!result)
+                {
+                    WriteLog.Write(string.Format(errorMessage, "采集数据失败"));
+                    return result;
+                }
+                collectResult.PeriodNum = periodNum;
+                collectResult.RetTime = retTime;
+                //]]
+
+                //[[计算数据
+                //28数据
+                List<SourceDataEntity> sourceDataList28 = Calculate28Data(collectResult);
+                //16数据
+                //List<SourceDataEntity> sourceDataList16 = Calculate16Data(collectResult);
+                if (sourceDataList28 == null || sourceDataList28.Count == 0)
+                {
+                    WriteLog.Write(string.Format(errorMessage, "计算数据失败"));
+                    return false;
+                }
+                //]]
+
+                //[[DB持久化
+                //28数据
+                if (dbOperateType == DBOperateType.Insert)
                     result = Insert28Data(source, sourceDataList28);
-                    break;
-                case DBOperateType.Update:
-                    result = Update28Data(source, sourceDataList28);
-                    break;
+                switch (dbOperateType)
+                {
+                    case DBOperateType.Insert:
+                        result = Insert28Data(source, sourceDataList28);
+                        break;
+                    case DBOperateType.Update:
+                        result = Update28Data(source, sourceDataList28);
+                        break;
+                }
+                //16数据
+                //result = Insert16Data(source, sourceDataList16);
+                //]]
             }
-            //16数据
-            //result = Insert16Data(source, sourceDataList16);
-            //]]
+            catch (Exception ex)
+            {
+                WriteLog.Write(string.Format(errorMessage, "异常，异常信息：" + ex.ToString()));
+            }
+
             return result;
         }
         /// <summary>
@@ -108,6 +142,23 @@ namespace Helpmate.DataService.Logic
             }
 
             return result;
+        }
+        /// <summary>
+        /// 读取失败的期
+        /// </summary>
+        /// <param name="source">采集计算源</param>
+        /// <returns></returns>
+        public List<CollectResultEntity> GetFailPeriodList(Source source)
+        {
+            switch (source)
+            {
+                case Source.Beijing:
+                    return SourceDataDA.Instance().GetBeijingFailPeriodList();
+                case Source.Canadan:
+                    return SourceDataDA.Instance().GetCanadanFailPeriodList();
+                default:
+                    return null;
+            }
         }
         /// <summary>
         /// 失败时写入失败的数据
