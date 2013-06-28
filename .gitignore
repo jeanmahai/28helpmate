@@ -12,3 +12,5 @@ src/DataService/03_DataAccess/Helpmate.DataService.SqlDataAccess/obj
 src/DataService/04_Utility/Helpmate.DataService.Utility/bin
 src/DataService/04_Utility/Helpmate.DataService.Utility/obj
 
+doc/~*.doc
+
