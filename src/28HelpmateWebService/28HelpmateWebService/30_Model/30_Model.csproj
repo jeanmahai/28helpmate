@@ -8,8 +8,8 @@
     <ProjectGuid>{D45BF8FB-C58B-4279-B3EE-29861E8F0DEF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_30_Model</RootNamespace>
-    <AssemblyName>30_Model</AssemblyName>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,13 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\LotteryDM.cs" />
+    <Compile Include="Enum\BigSmall.cs" />
+    <Compile Include="Enum\CenterSideEnum.cs" />
+    <Compile Include="Enum\OddEvenEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseModel\LotteryByTwentyPeriodRM.cs" />
+    <Compile Include="ResponseModel\LotteryRM.cs" />
+    <Compile Include="ResponseModel\ResultRM.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataModel\" />
-    <Folder Include="Enum\" />
-    <Folder Include="ResponseModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
