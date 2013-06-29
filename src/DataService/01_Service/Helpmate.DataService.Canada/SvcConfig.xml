@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <config>
-  <ServiceName>28伴侣北京数据服务</ServiceName>
-  <ServiceDesciption>28伴侣北京数据服务进程，采集北京快乐8数据，如果该进程被关闭，则28伴侣北京数据服务的某些功能将无法正常运行。</ServiceDesciption>
+  <ServiceName>28伴侣加拿大数据服务</ServiceName>
+  <ServiceDesciption>28伴侣加拿大数据服务进程，采集加拿大快乐8数据，如果该进程被关闭，则28伴侣加拿大数据服务的某些功能将无法正常运行。</ServiceDesciption>
   <SqlServices>Data Source = .;User ID = sa; Password = sa!@#;Initial Catalog=Helpmate;Max Pool Size=500;</SqlServices>
   <PeriodNumUrl>http://www.bjfcdt.gov.cn/Happy8/V1/ImageAward.aspx?periodnum={0}</PeriodNumUrl>
   <GetNewPeriodNumUrl>http://www.bjfcdt.gov.cn/LtrAPI/happy8/v1/getAwardNumber.aspx</GetNewPeriodNumUrl>

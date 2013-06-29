@@ -31,10 +31,10 @@ namespace Helpmate.DataService.Beijing
             serviceInstaller.StartType = ServiceStartMode.Automatic;
 
             // ServiceName must equal those on ServiceBase derived classes.            
-            serviceInstaller.ServiceName = GetConfig.GetXMLValue("ServiceName");
+            serviceInstaller.ServiceName = GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName");
 
-            serviceInstaller.DisplayName = GetConfig.GetXMLValue("ServiceName");
-            serviceInstaller.Description = GetConfig.GetXMLValue("ServiceDesciption");
+            serviceInstaller.DisplayName = GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName");
+            serviceInstaller.Description = GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceDesciption");
 
             // Add installers to collection. Order is not important.
             Installers.Add(serviceInstaller);
@@ -44,7 +44,7 @@ namespace Helpmate.DataService.Beijing
 
         void MyProjectInstaller_AfterInstall(object sender, InstallEventArgs e)
         {
-            if (ServiceIsExist(GetConfig.GetXMLValue("ServiceName")))
+            if (ServiceIsExist(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName")))
                 StartService(new string[] { });
         }
 
@@ -56,7 +56,7 @@ namespace Helpmate.DataService.Beijing
             TransactedInstaller instutil = new TransactedInstaller();
             AssemblyInstaller assemblyInstaller = new AssemblyInstaller(serviceFileName, cmdline);
 
-            Console.WriteLine(GetConfig.GetXMLValue("ServiceName"));
+            Console.WriteLine(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName"));
 
             instutil.Installers.Add(assemblyInstaller);
             instutil.Install(new System.Collections.Hashtable());
@@ -72,7 +72,7 @@ namespace Helpmate.DataService.Beijing
             TransactedInstaller instutil = new TransactedInstaller();
             AssemblyInstaller assemblyInstaller = new AssemblyInstaller(serviceFileName, cmdline);
 
-            Console.WriteLine("开始卸载" + GetConfig.GetXMLValue("ServiceName") + "。");
+            Console.WriteLine("开始卸载" + GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName") + "。");
 
             instutil.Installers.Add(assemblyInstaller);
             instutil.Uninstall(null);
@@ -82,9 +82,9 @@ namespace Helpmate.DataService.Beijing
 
         public static void StartService(string[] args)
         {
-            if (ServiceIsExist(GetConfig.GetXMLValue("ServiceName")))
+            if (ServiceIsExist(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName")))
             {
-                ServiceController sc = new ServiceController(GetConfig.GetXMLValue("ServiceName"));
+                ServiceController sc = new ServiceController(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName"));
                 if (sc.Status == ServiceControllerStatus.Stopped)
                 {
                     Console.WriteLine("开始服务……");
@@ -112,9 +112,9 @@ namespace Helpmate.DataService.Beijing
 
         public static void StopService()
         {
-            if (ServiceIsExist(GetConfig.GetXMLValue("ServiceName")))
+            if (ServiceIsExist(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName")))
             {
-                ServiceController sc = new ServiceController(GetConfig.GetXMLValue("ServiceName"));
+                ServiceController sc = new ServiceController(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName"));
                 if (sc.Status != ServiceControllerStatus.Stopped && sc.Status != ServiceControllerStatus.StopPending)
                 {
                     Console.WriteLine("停止服务……");
@@ -164,7 +164,7 @@ namespace Helpmate.DataService.Beijing
 
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(Program.ExceptionLogger);
 
-            EventLog.WriteEntry(GetConfig.GetXMLValue("ServiceName"), "服务接收到开始指令。", EventLogEntryType.Information);
+            EventLog.WriteEntry(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName"), "服务接收到开始指令。", EventLogEntryType.Information);
 
             SvcMain.running = true;
             mainThread = new Thread(new ThreadStart(SvcMain.Run));
@@ -185,7 +185,7 @@ namespace Helpmate.DataService.Beijing
                 }
             }
 
-            EventLog.WriteEntry(GetConfig.GetXMLValue("ServiceName"), "服务接收到终止指令，已终止。", EventLogEntryType.Information);
+            EventLog.WriteEntry(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName"), "服务接收到终止指令，已终止。", EventLogEntryType.Information);
         }
     }
 }

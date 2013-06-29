@@ -19,13 +19,21 @@ namespace Helpmate.DataService.Utility
         /// <returns></returns>
         public static string GetHttpData(string url)
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-            StreamReader sr = new StreamReader(res.GetResponseStream(), Encoding.GetEncoding(936));
-            string result = sr.ReadToEnd();
-            sr.Close();
-            res.Close();
-            return result;
+            try
+            {
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+                StreamReader sr = new StreamReader(res.GetResponseStream(), Encoding.GetEncoding(936));
+                string result = sr.ReadToEnd();
+                sr.Close();
+                res.Close();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                WriteLog.Write(ex.ToString());
+                return "";
+            }
         }
     }
 }

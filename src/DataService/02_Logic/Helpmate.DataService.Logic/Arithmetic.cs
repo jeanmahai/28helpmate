@@ -64,7 +64,10 @@ namespace Helpmate.DataService.Logic
                         //如果采集失败，则间隔5秒重试，重试2次
                         Thread.Sleep(5 * 1000);
                     }
-                    tryTimes = 0;
+                    else
+                    {
+                        tryTimes = 0;
+                    }
                 }
                 if (!result)
                 {
@@ -89,8 +92,6 @@ namespace Helpmate.DataService.Logic
 
                 //[[DB持久化
                 //28数据
-                if (dbOperateType == DBOperateType.Insert)
-                    result = Insert28Data(source, sourceDataList28);
                 switch (dbOperateType)
                 {
                     case DBOperateType.Insert:

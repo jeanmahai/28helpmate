@@ -17,12 +17,12 @@ namespace Helpmate.DataService.Beijing
             object o = e.ExceptionObject;
             if (e.IsTerminating)
             {
-                EventLog.WriteEntry(GetConfig.GetXMLValue("ServiceName"), "致命错误！未处理的异常：" + o.ToString(), EventLogEntryType.Error);
+                EventLog.WriteEntry(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName"), "致命错误！未处理的异常：" + o.ToString(), EventLogEntryType.Error);
 
             }
             else
             {
-                EventLog.WriteEntry(GetConfig.GetXMLValue("ServiceName"), "错误！未处理的异常：" + o.ToString(), EventLogEntryType.Warning);
+                EventLog.WriteEntry(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName"), "错误！未处理的异常：" + o.ToString(), EventLogEntryType.Warning);
             }
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Helpmate.DataService.Beijing
                         CollectionSvcInstaller.UnInstallService();
                         break;
                     default:
-                        Console.WriteLine(GetConfig.GetXMLValue("ServiceName") + "-后台服务程序。");
+                        Console.WriteLine(GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName") + "-后台服务程序。");
                         string tmpHelpMsg = "参数 <start/stop/run/install/uninstall/help> ";
                         tmpHelpMsg += "\n start     参数将启动28伴侣数据服务。";
                         tmpHelpMsg += "\n stop      参数将停止28伴侣数据服务。";

@@ -14,7 +14,7 @@ namespace Helpmate.DataService.Utility
     {
         private SqlConnection conn;
         private SqlCommand cmd;
-        private static readonly string ConnectionString = GetConfig.GetXMLValue("SqlServices");
+        private static readonly string ConnectionString = GetConfig.GetXMLValue(ConfigSource.NA, "SqlServices");
 
         public DBHelper()
         {

@@ -81,30 +81,27 @@ namespace Helpmate.DataService.Beijing
         /// </summary>
         private static void GameSvc()
         {
-            int waitSec = GetSleepTimes();
-            if (waitSec > 0)
-            {
-                Thread.Sleep(waitSec);
-            }
-            else
-            {
-                //等待Server配置启动
-                Thread.Sleep(10000);
-            }
+            //等待Server配置启动
+            Thread.Sleep(10000);
 
             while (running)
             {
-                AsyncWays_Game();
                 CollectResultEntity nowPeriod = Arithmetic.Instance().GetNextPeriodNum(Source.Beijing);
                 if (nowPeriod.PeriodNum <= 0)
                 {
                     WriteLog.Write("读取当前需要开奖的期号失败。");
+                    Thread.Sleep(GetSleepTimes() + 30000);
                 }
-                else if ((nowPeriod.RetTime - DateTime.Now).TotalMinutes > -1)
+                else if ((int)(nowPeriod.RetTime - DateTime.Now).TotalSeconds <= -15)
                 {
-                    //如果当前采集的期开奖时间大于当前时间，则需要等待下一期开奖时间开奖
+                    ComputeGame();
+                }
+                else
+                {
+                    //如果当前采集的期开奖时间大于当前时间-15秒(每次在整分15秒开奖），则需要等待下一期开奖时间开奖
                     //否则继续开奖
                     Thread.Sleep(GetSleepTimes());
+                    ComputeGame();
                 }
             }
         }
@@ -150,23 +147,14 @@ namespace Helpmate.DataService.Beijing
 
         #endregion
 
-        #region 异步执行操作
+        #region 北京28
 
-        #region 北京28 异步操作
+        private static void ComputeGame()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
 
-        private static void AsyncWays_Game()
-        {
-            //实例化委托并初赋值 
-            DelegateName dn = new DelegateName(AsyncCompute_Game);
-            //实例化回调方法 
-            AsyncCallback acb = new AsyncCallback(CallBackMethod);
-            //异步开始 
-            //如果参数acb 换成 null 则表示没有回调方法 
-            //最后一个参数 dn 的地方，可以换成任意对象，该对象可以被回调方法从参数中获取出来，写成 null 也可以。参数 dn 相当于该线程的 ID，如果有多个异步线程，可以都是 null，但是绝对不能一样，不能是同一个 object，否则异常 
-            IAsyncResult iar = dn.BeginInvoke(acb, dn);
-        }
-        private static void AsyncCompute_Game()
-        {
+            WriteLog.Write("开始采集时间");
             CollectResultEntity nowPeriod = Arithmetic.Instance().GetNextPeriodNum(Source.Beijing);
             if (nowPeriod.PeriodNum > 0)
             {
@@ -179,6 +167,7 @@ namespace Helpmate.DataService.Beijing
             {
                 WriteLog.Write("读取当前需要开奖的期号失败。");
             }
+            WriteLog.Write(sw.Elapsed.TotalSeconds.ToString());
         }
 
         #endregion
@@ -209,8 +198,6 @@ namespace Helpmate.DataService.Beijing
                 }
             }
         }
-
-        #endregion
 
         //定义与方法同签名的委托 
         private delegate void DelegateName();

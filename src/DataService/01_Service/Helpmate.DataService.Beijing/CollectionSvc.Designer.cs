@@ -1,4 +1,5 @@
-﻿namespace Helpmate.DataService.Beijing
+﻿using Helpmate.DataService.Utility;
+namespace Helpmate.DataService.Beijing
 {
     partial class CollectionSvc
     {
@@ -29,7 +30,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            this.ServiceName = "Service1";
+            this.ServiceName = GetConfig.GetXMLValue(ConfigSource.Beijing, "ServiceName");
         }
 
         #endregion

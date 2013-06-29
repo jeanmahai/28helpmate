@@ -194,7 +194,7 @@ namespace Helpmate.DataService.DataAccess
             string sql = string.Empty;
             string sqlFormat = @"INSERT INTO [Helpmate].[dbo].[SourceData_28_Beijing]
 ([PeriodNum],[RetTime],[SiteSysNo],[RetOddNum],[RetNum],[RetMidNum],[CollectRet],[CollectTime],[Status])
-VALUES({0},{1},{2},{3},{4},{5},{6},{7});";
+VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
             foreach (SourceDataEntity item in dataList)
             {
                 sql += string.Format(sqlFormat, item.PeriodNum, item.RetTime, item.SiteSysNo, item.RetOddNum,
@@ -230,7 +230,7 @@ VALUES({0},{1},{2},{3},{4},{5},{6},{7});";
             string sql = string.Empty;
             string sqlFormat = @"INSERT INTO [Helpmate].[dbo].[SourceData_28_Canada]
 ([PeriodNum],[RetTime],[SiteSysNo],[RetOddNum],[RetNum],[RetMidNum],[CollectRet],[CollectTime],[Status])
-VALUES({0},{1},{2},{3},{4},{5},{6},{7});";
+VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
             foreach (SourceDataEntity item in dataList)
             {
                 sql += string.Format(sqlFormat, item.PeriodNum, item.RetTime, item.SiteSysNo, item.RetOddNum,
@@ -266,7 +266,7 @@ VALUES({0},{1},{2},{3},{4},{5},{6},{7});";
             DateTime dtNow = DateTime.Now;
             string sql = string.Empty;
             string sqlFormat = @"UPDATE [Helpmate].[dbo].[SourceData_28_Beijing] SET [RetOddNum] = {0},
-[RetNum] = {1}, [RetMidNum] = {2}, [CollectRet] = {3}, [CollectTime] = {4},
+[RetNum] = {1}, [RetMidNum] = '{2}', [CollectRet] = '{3}', [CollectTime] = '{4}',
 [Status] = 1 WHERE [PeriodNum] = {5} AND [SiteSysNo] = {6};";
             foreach (SourceDataEntity item in dataList)
             {
@@ -302,7 +302,7 @@ VALUES({0},{1},{2},{3},{4},{5},{6},{7});";
             DateTime dtNow = DateTime.Now;
             string sql = string.Empty;
             string sqlFormat = @"UPDATE [Helpmate].[dbo].[SourceData_28_Canada] SET [RetOddNum] = {0},
-[RetNum] = {1}, [RetMidNum] = {2}, [CollectRet] = {3}, [CollectTime] = {4},
+[RetNum] = {1}, [RetMidNum] = '{2}', [CollectRet] = '{3}', [CollectTime] = '{4}',
 [Status] = 1 WHERE [PeriodNum] = {5} AND [SiteSysNo] = {6};";
             foreach (SourceDataEntity item in dataList)
             {
