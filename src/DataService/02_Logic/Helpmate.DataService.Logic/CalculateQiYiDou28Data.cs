@@ -35,7 +35,44 @@ namespace Helpmate.DataService.Logic
         /// <returns></returns>
         public SourceDataEntity Calculate(CollectResultEntity collectResult)
         {
-            throw new NotImplementedException();
+            SourceDataEntity result = new SourceDataEntity();
+
+            result.PeriodNum = collectResult.PeriodNum;
+            result.RetTime = collectResult.RetTime;
+            result.SiteSysNo = (int)Site.QiYiDou;
+            result.CollectRet = collectResult.Result;
+            result.Status = 1;
+
+            #region retMidNum
+            int retMidNum1 = 0;
+            int retMidNum2 = 0;
+            int retMidNum3 = 0;
+            //取1-6位数字之和
+            for (int i = 0; i < 6; i++)
+                retMidNum1 += collectResult.Group[i];
+            //取7-12位数字之和
+            for (int i = 6; i < 12; i++)
+                retMidNum2 += collectResult.Group[i];
+            //取13-18位数字之和
+            for (int i = 12; i < 18; i++)
+                retMidNum3 += collectResult.Group[i];
+            #endregion
+
+            #region RetNum
+            int retNum = retMidNum1 % 10;
+            retNum += retMidNum2 % 10;
+            retNum += retMidNum3 % 10;
+            #endregion
+
+            #region RetOddNum
+            int retOddNum = (retMidNum1 % 10) * 100 + (retMidNum2 % 10) * 10 + (retMidNum3 % 10);
+            #endregion
+
+            result.RetOddNum = retOddNum;
+            result.RetNum = retNum;
+            result.RetMidNum = string.Format("{0}|{1}|{2}", retMidNum1, retMidNum2, retMidNum3);
+
+            return result;
         }
 
         #endregion

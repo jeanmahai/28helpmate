@@ -1,0 +1,13 @@
+安装命令：
+InstallUtil C:\HelpmateSvc\Beijing\HelpmateBeijingSvc.exe
+
+卸载命令：
+InstallUtil /u C:\HelpmateSvc\Beijing\HelpmateBeijingSvc.exe
+
+北京数据采集服务:
+在C:\Windows\Microsoft.NET\Framework\v4.0.30319\目录下放置配置文件SvcConfigBeijing.xml。
+在C:\HelpmateSvc\Beijing\目录下放置配置文件SvcConfig.xml和SvcConfigBeijing.xml。
+
+加拿大数据采集服务:
+在C:\Windows\Microsoft.NET\Framework\v4.0.30319\目录下放置配置文件SvcConfigCanadan.xml。
+在C:\HelpmateSvc\Canadan\目录下放置配置文件SvcConfig.xml和SvcConfigCanadan.xml。

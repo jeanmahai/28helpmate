@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="DBHelper.cs" />
     <Compile Include="Encode.cs" />
+    <Compile Include="Enum.cs" />
     <Compile Include="GetConfig.cs" />
+    <Compile Include="GetNowTime.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WriteLog.cs" />
