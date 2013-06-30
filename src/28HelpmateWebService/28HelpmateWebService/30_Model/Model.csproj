@@ -31,15 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Application.Framework.Common">
-      <HintPath>..\40_References\Application.Framework.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Application.Framework.Configuration">
-      <HintPath>..\40_References\Application.Framework.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Application.Framework.Data">
-      <HintPath>..\40_References\Application.Framework.Data.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,16 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModel\LotteryDM.cs" />
     <Compile Include="Enum\BigSmall.cs" />
     <Compile Include="Enum\CenterSideEnum.cs" />
     <Compile Include="Enum\OddEvenEnum.cs" />
+    <Compile Include="Model\Lottery.cs" />
+    <Compile Include="Model\LotteryType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseModel\LotteryByTwentyPeriodRM.cs" />
-    <Compile Include="ResponseModel\LotteryRM.cs" />
+    <Compile Include="ResponseModel\LotteryFilter.cs" />
+    <Compile Include="ResponseModel\PageList.cs" />
     <Compile Include="ResponseModel\ResultRM.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\LotteryType.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\Lottery.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

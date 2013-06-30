@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Model.Enum;
+using Model.Model;
 
 namespace Model.ResponseModel
 {
     [Serializable]
     public class LotteryByTwentyPeriodRM
     {
-        public List<LotteryRM> Lotteries { get; set; }
+        private readonly string BIG = "大";
+        private readonly string SMALL = "小";
+        private readonly string ODD = "单";
+        private readonly string EVEN = "双";
+        private readonly string CENTER = "中";
+        private readonly string SIDE = "边";
+
+        public List<Lottery> Lotteries { get; set; }
+
         public List<int> NotAppearNumber { get; set; }
+        
         private decimal Total
         {
             get { return Convert.ToDecimal(Lotteries.Count); }
@@ -21,7 +31,7 @@ namespace Model.ResponseModel
             {
                 if (Total == 0) return 0;
                 var bigTotal = (from a in Lotteries
-                                where a.BigSmall == BigSmallEnum.Big
+                                where a.type.BigOrSmall == BIG
                                 select a).Count();
                 return bigTotal / Total;
             }
@@ -32,8 +42,8 @@ namespace Model.ResponseModel
             {
                 if (Total == 0) return 0;
                 var smallTotal = (from a in Lotteries
-                                where a.BigSmall == BigSmallEnum.Small
-                                select a).Count();
+                                  where a.type.BigOrSmall == SMALL
+                                  select a).Count();
                 return smallTotal / Total;
             }
         }
@@ -43,8 +53,8 @@ namespace Model.ResponseModel
             {
                 if (Total == 0) return 0;
                 var centerTotal = (from a in Lotteries
-                                  where a.CenterSide == CenterSideEnum.Center
-                                  select a).Count();
+                                   where a.type.MiddleOrSide == CENTER
+                                   select a).Count();
                 return centerTotal / Total;
             }
         }
@@ -54,8 +64,8 @@ namespace Model.ResponseModel
             {
                 if (Total == 0) return 0;
                 var sideTotal = (from a in Lotteries
-                                   where a.CenterSide == CenterSideEnum.Side
-                                   select a).Count();
+                                 where a.type.MiddleOrSide == SIDE
+                                 select a).Count();
                 return sideTotal / Total;
             }
         }
@@ -65,8 +75,8 @@ namespace Model.ResponseModel
             {
                 if (Total == 0) return 0;
                 var oddTotal = (from a in Lotteries
-                                   where a.OddEven == OddEvenEnum.Odd
-                                   select a).Count();
+                                where a.type.OddOrDual == ODD
+                                select a).Count();
                 return oddTotal / Total;
             }
         }
@@ -76,8 +86,8 @@ namespace Model.ResponseModel
             {
                 if (Total == 0) return 0;
                 var evenTotal = (from a in Lotteries
-                                where a.OddEven == OddEvenEnum.Even
-                                select a).Count();
+                                 where a.type.OddOrDual == EVEN
+                                 select a).Count();
                 return evenTotal / Total;
             }
         }

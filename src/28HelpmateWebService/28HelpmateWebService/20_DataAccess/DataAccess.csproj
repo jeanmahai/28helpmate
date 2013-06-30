@@ -53,14 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Configurations\Database.config" />
-    <None Include="Configurations\Data\sql.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Configurations\DbCommandFiles.config" />
-    <None Include="Configurations\enterprise.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\30_Model\Model.csproj">
       <Project>{D45BF8FB-C58B-4279-B3EE-29861E8F0DEF}</Project>
       <Name>Model</Name>
