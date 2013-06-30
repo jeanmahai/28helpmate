@@ -33,7 +33,6 @@ namespace Helpmate.DataService.DataAccess
         {
             CollectResultEntity result = new CollectResultEntity();
 
-            DateTime dtNow = DateTime.Now;
             string sql = @"SELECT TOP 1 [PeriodNum],[RetTime] FROM [Helpmate].[dbo].[SourceData_28_Beijing] ORDER BY [PeriodNum] DESC";
             DBHelper db = new DBHelper();
             try
@@ -73,7 +72,6 @@ namespace Helpmate.DataService.DataAccess
         {
             CollectResultEntity result = new CollectResultEntity();
 
-            DateTime dtNow = DateTime.Now;
             string sql = @"SELECT TOP 1 [PeriodNum] FROM [Helpmate].[dbo].[SourceData_28_Canadan] ORDER BY [PeriodNum] DESC";
             DBHelper db = new DBHelper();
             try
@@ -114,7 +112,6 @@ namespace Helpmate.DataService.DataAccess
         {
             List<CollectResultEntity> result = null;
 
-            DateTime dtNow = DateTime.Now;
             string sql = @"SELECT [PeriodNum],[RetTime] FROM [Helpmate].[dbo].[SourceData_28_Beijing] WHERE [Status] = -1";
             DBHelper db = new DBHelper();
             try
@@ -151,7 +148,6 @@ namespace Helpmate.DataService.DataAccess
         {
             List<CollectResultEntity> result = null;
 
-            DateTime dtNow = DateTime.Now;
             string sql = @"SELECT [PeriodNum],[RetTime] FROM [Helpmate].[dbo].[SourceData_28_Canadan] WHERE [Status] = -1";
             DBHelper db = new DBHelper();
             try
@@ -190,7 +186,7 @@ namespace Helpmate.DataService.DataAccess
         {
             bool result = false;
 
-            DateTime dtNow = DateTime.Now;
+            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Beijing);
             string sql = string.Empty;
             string sqlFormat = @"INSERT INTO [Helpmate].[dbo].[SourceData_28_Beijing]
 ([PeriodNum],[RetTime],[SiteSysNo],[RetOddNum],[RetNum],[RetMidNum],[CollectRet],[CollectTime],[Status])
@@ -226,7 +222,7 @@ VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
         {
             bool result = false;
 
-            DateTime dtNow = DateTime.Now;
+            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Canadan);
             string sql = string.Empty;
             string sqlFormat = @"INSERT INTO [Helpmate].[dbo].[SourceData_28_Canada]
 ([PeriodNum],[RetTime],[SiteSysNo],[RetOddNum],[RetNum],[RetMidNum],[CollectRet],[CollectTime],[Status])
@@ -263,7 +259,7 @@ VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
         {
             bool result = false;
 
-            DateTime dtNow = DateTime.Now;
+            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Beijing);
             string sql = string.Empty;
             string sqlFormat = @"UPDATE [Helpmate].[dbo].[SourceData_28_Beijing] SET [RetOddNum] = {0},
 [RetNum] = {1}, [RetMidNum] = '{2}', [CollectRet] = '{3}', [CollectTime] = '{4}',
@@ -299,7 +295,7 @@ VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
         {
             bool result = false;
 
-            DateTime dtNow = DateTime.Now;
+            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Canadan);
             string sql = string.Empty;
             string sqlFormat = @"UPDATE [Helpmate].[dbo].[SourceData_28_Canada] SET [RetOddNum] = {0},
 [RetNum] = {1}, [RetMidNum] = '{2}', [CollectRet] = '{3}', [CollectTime] = '{4}',

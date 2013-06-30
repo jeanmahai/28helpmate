@@ -1,0 +1,5 @@
+D:\PersonalWork\28helpmate\src\DataService\02_Logic\Helpmate.DataService.Entity\bin\Release\Helpmate.DataService.Entity.dll
+D:\PersonalWork\28helpmate\src\DataService\02_Logic\Helpmate.DataService.Entity\bin\Release\Helpmate.DataService.Entity.pdb
+D:\PersonalWork\28helpmate\src\DataService\02_Logic\Helpmate.DataService.Entity\obj\Release\ResolveAssemblyReference.cache
+D:\PersonalWork\28helpmate\src\DataService\02_Logic\Helpmate.DataService.Entity\obj\Release\Helpmate.DataService.Entity.dll
+D:\PersonalWork\28helpmate\src\DataService\02_Logic\Helpmate.DataService.Entity\obj\Release\Helpmate.DataService.Entity.pdb

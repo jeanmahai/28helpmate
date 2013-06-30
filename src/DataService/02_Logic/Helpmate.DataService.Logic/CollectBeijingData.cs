@@ -91,6 +91,12 @@ namespace Helpmate.DataService.Logic
                 try
                 {
                     string str = HttpHelper.GetHttpData(GetConfig.GetXMLValue(ConfigSource.Beijing, "GetNewPeriodNumUrl"));
+                    if (string.IsNullOrEmpty(str))
+                    {
+                        tryTimes--;
+                        Thread.Sleep(10000);
+                        continue;
+                    }
                     int startIndex = str.IndexOf("<span class=\"flow_font\">") + 24;
                     int endIndex = 0;
                     str = str.Substring(startIndex, str.Length - startIndex);
@@ -100,8 +106,8 @@ namespace Helpmate.DataService.Logic
                     long.TryParse(str, out periondNum);
                     result.PeriodNum = periondNum;
 
-                    DateTime dtRetTime = DateTime.Now;
-                    DateTime dtNow = DateTime.Now;
+                    DateTime dtRetTime = (new GetNowTime()).NowTime(ConfigSource.Beijing);
+                    DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Beijing);
                     int hour = dtNow.Hour;
 
                     if (hour >= 0 && hour < 9)
