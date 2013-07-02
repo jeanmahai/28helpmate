@@ -20,19 +20,19 @@ namespace WebService
     public class LotteryWebService:System.Web.Services.WebService
     {
         public TokenHeader Token;
-        private static LotteryDAL m_Dal;
+        private static LotteryForBeiJingDAL _mForBeiJingDal;
         private readonly string ERROR_VALIDATE_TOKEN = "TOKEN验证失败";
         private readonly string MESSAGE_SUCCESS = "执行成功";
 
-        private LotteryDAL Dal
+        private LotteryForBeiJingDAL ForBeiJingDal
         {
             get
             {
-                if (m_Dal == null)
+                if (_mForBeiJingDal == null)
                 {
-                    m_Dal = new LotteryDAL();
+                    _mForBeiJingDal = new LotteryForBeiJingDAL();
                 }
-                return m_Dal;
+                return _mForBeiJingDal;
             }
         }
 
@@ -43,10 +43,10 @@ namespace WebService
             var result = new ResultRM<LotteryByTwentyPeriodRM>();
             if (Token.ValidateToken())
             {
-                var userSite = Dal.QueryUserSite(siteName);
+                var userSite = ForBeiJingDal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = Dal.QueryNextLotteryWithSameNumber(number,userSite.SysNo);
+                    result.Data = ForBeiJingDal.QueryNextLotteryWithSameNumber(number,userSite.SysNo);
                 }
                 else
                 {
@@ -69,10 +69,10 @@ namespace WebService
             var result = new ResultRM<LotteryByTwentyPeriodRM>();
             if (Token.ValidateToken())
             {
-                var userSite = Dal.QueryUserSite(siteName);
+                var userSite = ForBeiJingDal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = Dal.QueryLotteryByHourStep(time,userSite.SysNo);
+                    result.Data = ForBeiJingDal.QueryLotteryByHourStep(time,userSite.SysNo);
                 }
                 else
                 {
@@ -96,10 +96,10 @@ namespace WebService
             var result = new ResultRM<LotteryByTwentyPeriodRM>();
             if (Token.ValidateToken())
             {
-                var userSite = Dal.QueryUserSite(siteName);
+                var userSite = ForBeiJingDal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = Dal.QueryLotteryByDay(time,userSite.SysNo);
+                    result.Data = ForBeiJingDal.QueryLotteryByDay(time,userSite.SysNo);
                 }
                 else
                 {
@@ -123,10 +123,10 @@ namespace WebService
             var result = new ResultRM<LotteryByTwentyPeriodRM>();
             if (Token.ValidateToken())
             {
-                var userSite = Dal.QueryUserSite(siteName);
+                var userSite = ForBeiJingDal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = Dal.QueryTop20(userSite.SysNo);
+                    result.Data = ForBeiJingDal.QueryTop20(userSite.SysNo);
                 }else
                 {
                     result.Data=new LotteryByTwentyPeriodRM();
@@ -148,7 +148,7 @@ namespace WebService
             var result = new ResultRM<PageList<Lottery>>();
             if (Token.ValidateToken())
             {
-                result.Data = Dal.Query(filter);
+                result.Data = ForBeiJingDal.Query(filter);
                 result.Success = true;
                 result.Message = MESSAGE_SUCCESS;
             }

@@ -11,7 +11,7 @@ namespace UnitTest
     public class WebServiceUT
     {
         private static LotteryWebServiceSoapClient m_client = new LotteryWebServiceSoapClient();
-        private static LotteryDAL m_Dal = new LotteryDAL();
+        private static LotteryForBeiJingDAL _mForBeiJingDal = new LotteryForBeiJingDAL();
         private const string SITE_NAME = "龙虎";
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace UnitTest
         [TestMethod]
         public void Query20BySameNoTest()
         {
-            var data = m_Dal.Query20BySameNo(17,QueryUserSiteSysNo());
+            var data = _mForBeiJingDal.Query20BySameNo(17,QueryUserSiteSysNo());
             foreach (var a in data)
             {
                 Console.WriteLine("期号{0}",a.PeriodNum);
@@ -77,14 +77,14 @@ namespace UnitTest
         [TestMethod]
         public void QueryNextLotteryWithSameNumberTest()
         {
-            var data = m_Dal.QueryNextLotteryWithSameNumber(17,QueryUserSiteSysNo());
+            var data = _mForBeiJingDal.QueryNextLotteryWithSameNumber(17,QueryUserSiteSysNo());
             Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
                 data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryLotteryByDayTest()
         {
-            var data = m_Dal.QueryLotteryByDay(DateTime.Parse("2013-06-30 11:30:00.000"),
+            var data = _mForBeiJingDal.QueryLotteryByDay(DateTime.Parse("2013-06-30 11:30:00.000"),
                 QueryUserSiteSysNo());
             Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
                 data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
@@ -92,7 +92,7 @@ namespace UnitTest
         [TestMethod]
         public void QueryLotteryByHourStepTest()
         {
-            var data = m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-06-30 11:30:00.000")
+            var data = _mForBeiJingDal.QueryLotteryByHourStep(DateTime.Parse("2013-06-30 11:30:00.000")
                 ,QueryUserSiteSysNo());
             Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
                 data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
@@ -100,14 +100,14 @@ namespace UnitTest
         [TestMethod]
         public void QueryUserSiteTest()
         {
-            var data = m_Dal.QueryUserSite("龙虎");
+            var data = _mForBeiJingDal.QueryUserSite("龙虎");
             Console.WriteLine(string.Format("{0},{1}",
                 data.SysNo,data.SiteName));
             //return data.SysNo;
         }
         public int QueryUserSiteSysNo()
         {
-            var data = m_Dal.QueryUserSite("龙虎");
+            var data = _mForBeiJingDal.QueryUserSite("龙虎");
             Console.WriteLine(string.Format("{0},{1}",
                 data.SysNo,data.SiteName));
             return data.SysNo;
@@ -119,7 +119,7 @@ namespace UnitTest
             filter.PageIndex = 1;
             filter.PageSize = 10;
 
-            var data = m_Dal.Query(filter);
+            var data = _mForBeiJingDal.Query(filter);
             Console.WriteLine(string.Format("total:{0}",data.Total));
             foreach (var item in data.List)
             {
