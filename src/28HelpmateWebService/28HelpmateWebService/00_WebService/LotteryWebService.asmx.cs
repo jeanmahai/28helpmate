@@ -38,13 +38,21 @@ namespace WebService
 
         [WebMethod(Description = "查询最近20期号码相同的下一期的开奖结果")]
         [SoapHeader("Token")]
-        public ResultRM<LotteryByTwentyPeriodRM> QueryNextLotteryWithSameNumber(int number)
+        public ResultRM<LotteryByTwentyPeriodRM> QueryNextLotteryWithSameNumber(int number,string siteName)
         {
             var result = new ResultRM<LotteryByTwentyPeriodRM>();
             if (Token.ValidateToken())
             {
-                result.Data = Dal.QueryNextLotteryWithSameNumber(number);
-                result.Success = true;
+                var userSite = Dal.QueryUserSite(siteName);
+                if (userSite != null)
+                {
+                    result.Data = Dal.QueryNextLotteryWithSameNumber(number,userSite.SysNo);
+                }
+                else
+                {
+                    result.Data = new LotteryByTwentyPeriodRM();
+                }
+
                 result.Message = MESSAGE_SUCCESS;
             }
             else
@@ -56,12 +64,21 @@ namespace WebService
         }
         [WebMethod(Description = "查询同一时间点的近20小时的数据")]
         [SoapHeader("Token")]
-        public ResultRM<LotteryByTwentyPeriodRM> QueryLotteryByHourStep(DateTime time)
+        public ResultRM<LotteryByTwentyPeriodRM> QueryLotteryByHourStep(DateTime time,string siteName)
         {
             var result = new ResultRM<LotteryByTwentyPeriodRM>();
             if (Token.ValidateToken())
             {
-                result.Data = Dal.QueryLotteryByHourStep(time);
+                var userSite = Dal.QueryUserSite(siteName);
+                if (userSite != null)
+                {
+                    result.Data = Dal.QueryLotteryByHourStep(time,userSite.SysNo);
+                }
+                else
+                {
+                    result.Data = new LotteryByTwentyPeriodRM();
+                }
+
                 result.Success = true;
                 result.Message = MESSAGE_SUCCESS;
             }
@@ -73,12 +90,22 @@ namespace WebService
             return result;
         }
         [WebMethod(Description = "查询同一时间点的近20天的数据")]
-        public ResultRM<LotteryByTwentyPeriodRM> QueryLotteryByDay(DateTime time)
+        [SoapHeader("Token")]
+        public ResultRM<LotteryByTwentyPeriodRM> QueryLotteryByDay(DateTime time,string siteName)
         {
             var result = new ResultRM<LotteryByTwentyPeriodRM>();
             if (Token.ValidateToken())
             {
-                result.Data = Dal.QueryLotteryByDay(time);
+                var userSite = Dal.QueryUserSite(siteName);
+                if (userSite != null)
+                {
+                    result.Data = Dal.QueryLotteryByDay(time,userSite.SysNo);
+                }
+                else
+                {
+                    result.Data = new LotteryByTwentyPeriodRM();
+                }
+
                 result.Success = true;
                 result.Message = MESSAGE_SUCCESS;
             }
@@ -91,12 +118,19 @@ namespace WebService
         }
         [WebMethod(Description = "查询最近20期的结果")]
         [SoapHeader("Token")]
-        public ResultRM<LotteryByTwentyPeriodRM> QueryLotteryByTwenty()
+        public ResultRM<LotteryByTwentyPeriodRM> QueryLotteryByTwenty(string siteName)
         {
             var result = new ResultRM<LotteryByTwentyPeriodRM>();
-            if(Token.ValidateToken())
+            if (Token.ValidateToken())
             {
-                result.Data = Dal.QueryTop20();
+                var userSite = Dal.QueryUserSite(siteName);
+                if (userSite != null)
+                {
+                    result.Data = Dal.QueryTop20(userSite.SysNo);
+                }else
+                {
+                    result.Data=new LotteryByTwentyPeriodRM();
+                }
                 result.Success = true;
                 result.Message = MESSAGE_SUCCESS;
             }
@@ -134,7 +168,7 @@ namespace WebService
         [WebMethod(Description = "注册")]
         public void Register()
         {
-            
+
         }
         [WebMethod(Description = "注册并登录,注册成功后返回一个token")]
         public string RegisterAndLogin()

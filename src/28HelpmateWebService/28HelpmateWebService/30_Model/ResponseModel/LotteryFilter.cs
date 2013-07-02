@@ -12,5 +12,6 @@ namespace Model.ResponseModel
         public int PageSize { get; set; }
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }
+        public string SiteName { get; set; }
     }
 }

@@ -59,7 +59,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Service References\LotteryWebService\LotteryWebService.wsdl" />
-    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRM.datasource">
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfLottery.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
