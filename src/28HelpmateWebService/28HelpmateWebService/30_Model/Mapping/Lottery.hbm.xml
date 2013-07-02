@@ -3,7 +3,8 @@
                    assembly="Model"
                    namespace="Model">
   <class name="Model.Model.Lottery,Model" 
-         table="[SourceData_28_Beijing]">
+         table="[SourceData_28_Beijing]"
+          where="Status=1">
     <id name="PeriodNum" column="PeriodNum" type="Int32" >
       <generator class="assigned"/>
     </id>
@@ -15,5 +16,6 @@
     <property name="CollectRet" column="CollectRet" type="String"  />
     <property name="CollectTime" column="CollectTime" type="DateTime"  />
     <property name="Status" column="Status" type="Int32"/>
+    
   </class>
 </hibernate-mapping>

@@ -118,6 +118,28 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="QueryCurrentLottery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryCurrentLotteryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryCurrentLotteryResult" type="tns:ResultRMOfLottery" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfLottery">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:Lottery" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Query">
         <s:complexType>
           <s:sequence>
@@ -224,6 +246,15 @@
   <wsdl:message name="QueryLotteryByTwentyTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="QueryCurrentLotterySoapIn">
+    <wsdl:part name="parameters" element="tns:QueryCurrentLottery" />
+  </wsdl:message>
+  <wsdl:message name="QueryCurrentLotterySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryCurrentLotteryResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryCurrentLotteryTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:message name="QuerySoapIn">
     <wsdl:part name="parameters" element="tns:Query" />
   </wsdl:message>
@@ -271,6 +302,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近20期的结果</wsdl:documentation>
       <wsdl:input message="tns:QueryLotteryByTwentySoapIn" />
       <wsdl:output message="tns:QueryLotteryByTwentySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryCurrentLottery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近1期的结果</wsdl:documentation>
+      <wsdl:input message="tns:QueryCurrentLotterySoapIn" />
+      <wsdl:output message="tns:QueryCurrentLotterySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Query">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询开奖结果</wsdl:documentation>
@@ -330,6 +366,16 @@
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:QueryLotteryByTwentyTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCurrentLottery">
+      <soap:operation soapAction="http://tempuri.org/QueryCurrentLottery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryCurrentLotteryTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -410,6 +456,16 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:QueryLotteryByTwentyTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCurrentLottery">
+      <soap12:operation soapAction="http://tempuri.org/QueryCurrentLottery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryCurrentLotteryTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

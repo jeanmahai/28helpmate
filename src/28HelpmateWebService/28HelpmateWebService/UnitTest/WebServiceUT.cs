@@ -33,6 +33,17 @@ namespace UnitTest
         }
 
         [TestMethod]
+        public void QueryCurrentLotteryServiceTest()
+        {
+            var data = m_client.QueryCurrentLottery(new TokenHeader()
+            {
+                Token = "1"
+            },SITE_NAME);
+            Console.WriteLine(data.Message);
+            Console.WriteLine("期号{0}",data.Data.PeriodNum);
+        }
+
+        [TestMethod]
         public void QueryLotteryByDayServiceTest()
         {
             var data = m_client.QueryLotteryByDay(new TokenHeader(),DateTime.Now,SITE_NAME);

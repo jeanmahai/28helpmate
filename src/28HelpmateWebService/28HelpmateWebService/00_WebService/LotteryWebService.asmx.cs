@@ -1,4 +1,5 @@
-﻿using System.Web.Services;
+﻿using System.Linq;
+using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml.Serialization;
 using System;
@@ -141,6 +142,33 @@ namespace WebService
             }
             return result;
         }
+        [WebMethod(Description = "查询最近1期的结果")]
+        [SoapHeader("Token")]
+        public ResultRM<Lottery> QueryCurrentLottery(string siteName)
+        {
+            var result = new ResultRM<Lottery>();
+            if (Token.ValidateToken())
+            {
+                var userSite = ForBeiJingDal.QueryUserSite(siteName);
+                if (userSite != null)
+                {
+                    result.Data = (from a in ForBeiJingDal.QueryTop20(userSite.SysNo).Lotteries
+                                       select a).FirstOrDefault();
+                }
+                else
+                {
+                    result.Data = new Lottery();
+                }
+                result.Success = true;
+                result.Message = MESSAGE_SUCCESS;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
         [WebMethod(Description = "查询开奖结果")]
         [SoapHeader("Token")]
         public ResultRM<PageList<Lottery>> Query(LotteryFilter filter)
@@ -159,7 +187,6 @@ namespace WebService
             }
             return result;
         }
-
         [WebMethod(Description = "登录")]
         public string Login(string userName,string psw)
         {

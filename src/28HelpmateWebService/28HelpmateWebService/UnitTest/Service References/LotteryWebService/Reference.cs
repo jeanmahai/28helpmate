@@ -35,6 +35,11 @@ namespace UnitTest.LotteryWebService {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         UnitTest.LotteryWebService.QueryLotteryByTwentyResponse QueryLotteryByTwenty(UnitTest.LotteryWebService.QueryLotteryByTwentyRequest request);
         
+        // CODEGEN: 消息 QueryCurrentLotteryRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryCurrentLottery", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        UnitTest.LotteryWebService.QueryCurrentLotteryResponse QueryCurrentLottery(UnitTest.LotteryWebService.QueryCurrentLotteryRequest request);
+        
         // CODEGEN: 消息 QueryRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -601,6 +606,80 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfLottery : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private Lottery dataField;
+        
+        private int codeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Lottery Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class LotteryByTwentyPeriodRM : object, System.ComponentModel.INotifyPropertyChanged {
         
         private Lottery[] lotteriesField;
@@ -882,6 +961,44 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryCurrentLottery", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryCurrentLotteryRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string siteName;
+        
+        public QueryCurrentLotteryRequest() {
+        }
+        
+        public QueryCurrentLotteryRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            this.TokenHeader = TokenHeader;
+            this.siteName = siteName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryCurrentLotteryResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryCurrentLotteryResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfLottery QueryCurrentLotteryResult;
+        
+        public QueryCurrentLotteryResponse() {
+        }
+        
+        public QueryCurrentLotteryResponse(UnitTest.LotteryWebService.ResultRMOfLottery QueryCurrentLotteryResult) {
+            this.QueryCurrentLotteryResult = QueryCurrentLotteryResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="Query", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class QueryRequest {
         
@@ -997,6 +1114,19 @@ namespace UnitTest.LotteryWebService {
             inValue.siteName = siteName;
             UnitTest.LotteryWebService.QueryLotteryByTwentyResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).QueryLotteryByTwenty(inValue);
             return retVal.QueryLotteryByTwentyResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.QueryCurrentLotteryResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.QueryCurrentLottery(UnitTest.LotteryWebService.QueryCurrentLotteryRequest request) {
+            return base.Channel.QueryCurrentLottery(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfLottery QueryCurrentLottery(UnitTest.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            UnitTest.LotteryWebService.QueryCurrentLotteryRequest inValue = new UnitTest.LotteryWebService.QueryCurrentLotteryRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.siteName = siteName;
+            UnitTest.LotteryWebService.QueryCurrentLotteryResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).QueryCurrentLottery(inValue);
+            return retVal.QueryCurrentLotteryResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
