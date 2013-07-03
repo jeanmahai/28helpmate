@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Diagnostics;
+
 using Helpmate.DataService.Utility;
 
 namespace Helpmate.DataService.Beijing

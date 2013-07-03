@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\ProxyRealse" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/Helpmate.DataService.CanadaProxyWeb.pdb" publishTime="07/03/2013 00:27:04" />
+    <file relUrl="bin/Helpmate.DataService.CanadaProxyWeb.dll" publishTime="07/03/2013 00:27:04" />
+    <file relUrl="Web.config" publishTime="07/03/2013 00:47:52" />
+    <file relUrl="Proxy.ashx" publishTime="07/03/2013 00:21:26" />
+  </publishProfile>
+</publishData>

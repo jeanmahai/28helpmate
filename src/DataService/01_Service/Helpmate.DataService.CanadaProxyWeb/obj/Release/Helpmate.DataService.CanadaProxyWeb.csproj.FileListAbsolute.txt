@@ -1,0 +1,5 @@
+D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\bin\Helpmate.DataService.CanadaProxyWeb.dll
+D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\bin\Helpmate.DataService.CanadaProxyWeb.pdb
+D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Release\ResolveAssemblyReference.cache
+D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Release\Helpmate.DataService.CanadaProxyWeb.dll
+D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Release\Helpmate.DataService.CanadaProxyWeb.pdb

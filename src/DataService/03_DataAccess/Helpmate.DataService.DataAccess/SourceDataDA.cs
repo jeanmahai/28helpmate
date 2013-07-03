@@ -72,7 +72,7 @@ namespace Helpmate.DataService.DataAccess
         {
             CollectResultEntity result = new CollectResultEntity();
 
-            string sql = @"SELECT TOP 1 [PeriodNum] FROM [Helpmate].[dbo].[SourceData_28_Canadan] ORDER BY [PeriodNum] DESC";
+            string sql = @"SELECT TOP 1 [PeriodNum],[RetTime] FROM [Helpmate].[dbo].[SourceData_28_Canada] ORDER BY [PeriodNum] DESC";
             DBHelper db = new DBHelper();
             try
             {
@@ -81,11 +81,7 @@ namespace Helpmate.DataService.DataAccess
                 {
                     result.PeriodNum = long.Parse(dt.Rows[0]["PeriodNum"].ToString()) + 1;
                     result.RetTime = DateTime.Parse(dt.Rows[0]["RetTime"].ToString());
-                    //到23:55当天开奖就结束了，下一期在第二天9:05
-                    if (result.RetTime.Hour == 23 && result.RetTime.Minute == 55)
-                        result.RetTime = DateTime.Parse(string.Format("{0} 9:05", result.RetTime.ToShortDateString())).AddDays(1);
-                    else
-                        result.RetTime = result.RetTime.AddMinutes(5);
+                    result.RetTime = result.RetTime.AddMinutes(4);
                 }
                 else
                 {
@@ -148,7 +144,7 @@ namespace Helpmate.DataService.DataAccess
         {
             List<CollectResultEntity> result = null;
 
-            string sql = @"SELECT [PeriodNum],[RetTime] FROM [Helpmate].[dbo].[SourceData_28_Canadan] WHERE [Status] = -1";
+            string sql = @"SELECT [PeriodNum],[RetTime] FROM [Helpmate].[dbo].[SourceData_28_Canada] WHERE [Status] = -1";
             DBHelper db = new DBHelper();
             try
             {
@@ -186,7 +182,7 @@ namespace Helpmate.DataService.DataAccess
         {
             bool result = false;
 
-            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Beijing);
+            DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Beijing);
             string sql = string.Empty;
             string sqlFormat = @"INSERT INTO [Helpmate].[dbo].[SourceData_28_Beijing]
 ([PeriodNum],[RetTime],[SiteSysNo],[RetOddNum],[RetNum],[RetMidNum],[CollectRet],[CollectTime],[Status])
@@ -222,7 +218,7 @@ VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
         {
             bool result = false;
 
-            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Canadan);
+            DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Canadan);
             string sql = string.Empty;
             string sqlFormat = @"INSERT INTO [Helpmate].[dbo].[SourceData_28_Canada]
 ([PeriodNum],[RetTime],[SiteSysNo],[RetOddNum],[RetNum],[RetMidNum],[CollectRet],[CollectTime],[Status])
@@ -259,7 +255,7 @@ VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
         {
             bool result = false;
 
-            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Beijing);
+            DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Beijing);
             string sql = string.Empty;
             string sqlFormat = @"UPDATE [Helpmate].[dbo].[SourceData_28_Beijing] SET [RetOddNum] = {0},
 [RetNum] = {1}, [RetMidNum] = '{2}', [CollectRet] = '{3}', [CollectTime] = '{4}',
@@ -295,7 +291,7 @@ VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
         {
             bool result = false;
 
-            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Canadan);
+            DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Canadan);
             string sql = string.Empty;
             string sqlFormat = @"UPDATE [Helpmate].[dbo].[SourceData_28_Canada] SET [RetOddNum] = {0},
 [RetNum] = {1}, [RetMidNum] = '{2}', [CollectRet] = '{3}', [CollectTime] = '{4}',

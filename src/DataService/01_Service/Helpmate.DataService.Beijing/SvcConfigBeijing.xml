@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <config>
-  <ServiceName>28伴侣北京数据服务</ServiceName>
-  <ServiceDesciption>28伴侣北京数据服务进程，采集北京快乐8数据，如果该进程被关闭，则28伴侣北京数据服务的某些功能将无法正常运行。</ServiceDesciption>
+  <ServiceName>28伴侣北京数据采集服务</ServiceName>
+  <ServiceDesciption>28伴侣北京数据采集服务进程，采集北京快乐8数据，如果该进程被关闭，则28伴侣北京数据采集服务的某些功能将无法正常运行。</ServiceDesciption>
   <SqlServices>Data Source = .;User ID = sa; Password = 123;Initial Catalog=Helpmate;Max Pool Size=500;</SqlServices>
-  <PeriodNumUrl>http://www.bjfcdt.gov.cn/Happy8/V1/ImageAward.aspx?periodnum={0}</PeriodNumUrl>
-  <GetNewPeriodNumUrl>http://www.bjfcdt.gov.cn/LtrAPI/happy8/v1/getAwardNumber.aspx</GetNewPeriodNumUrl>
+  <PeriodNumUrl><![CDATA[http://www.bjfcdt.gov.cn/Happy8/V1/ImageAward.aspx?periodnum={0}]]></PeriodNumUrl>
+  <GetNewPeriodNumUrl><![CDATA[http://www.bjfcdt.gov.cn/LtrAPI/happy8/v1/getAwardNumber.aspx]]></GetNewPeriodNumUrl>
+  <PeriodNumUrl2><![CDATA[http://www.bwlc.gov.cn/bulletin/search.jsp?id=3&period={0}]]></PeriodNumUrl2>
+  <GetNewPeriodNumUrl2><![CDATA[http://www.bwlc.gov.cn/bulletin/search.jsp?id=3]]></GetNewPeriodNumUrl2>
   <IsDatabaseMsg>1</IsDatabaseMsg>
   <IsSvcMsg>1</IsSvcMsg>
   <MailResultNotice>0</MailResultNotice>
@@ -16,4 +18,6 @@
   <!--正式接收地址：15158080999@139.com-->
   <bjGameArithmetic28>1</bjGameArithmetic28>
   <bjGameArithmetic16>1</bjGameArithmetic16>
+  <!--1.使用地址1；2.使用地址2；3.两个地址都使用，先使用地址1，地址1失败使用地址2-->
+  <UrlType>3</UrlType>
 </config>

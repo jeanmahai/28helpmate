@@ -9,9 +9,10 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Helpmate.DataService.Canada</RootNamespace>
-    <AssemblyName>Helpmate.DataService.Canada</AssemblyName>
+    <AssemblyName>HelpmateCanadaSvc</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -33,8 +34,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,8 +57,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SvcMain.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\02_Logic\Helpmate.DataService.Entity\Helpmate.DataService.Entity.csproj">
+      <Project>{16712E09-B571-4423-9361-D29A5FAFE850}</Project>
+      <Name>Helpmate.DataService.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\02_Logic\Helpmate.DataService.Logic\Helpmate.DataService.Logic.csproj">
       <Project>{597E4230-30DE-4C6E-B3F1-EFFE9C1AC893}</Project>
       <Name>Helpmate.DataService.Logic</Name>
@@ -66,6 +76,9 @@
   <ItemGroup>
     <Content Include="SvcConfig.xml" />
     <Content Include="SvcConfigCanadan.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
