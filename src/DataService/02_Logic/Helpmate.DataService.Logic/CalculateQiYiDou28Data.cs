@@ -94,14 +94,14 @@ namespace Helpmate.DataService.Logic
             int retMidNum1 = 0;
             int retMidNum2 = 0;
             int retMidNum3 = 0;
-            //取1-6位数字之和
-            for (int i = 0; i < 6; i++)
+            //取3-8位数字之和
+            for (int i = 2; i < 8; i++)
                 retMidNum1 += collectResult.Group[i];
-            //取7-12位数字之和
-            for (int i = 6; i < 12; i++)
+            //取9-14位数字之和
+            for (int i = 8; i < 14; i++)
                 retMidNum2 += collectResult.Group[i];
-            //取13-18位数字之和
-            for (int i = 12; i < 18; i++)
+            //取15-20位数字之和
+            for (int i = 14; i < 20; i++)
                 retMidNum3 += collectResult.Group[i];
             #endregion
 

@@ -48,15 +48,32 @@ namespace Helpmate.DataService.Utility
         /// <summary>
         /// 格式化加拿大采集日期
         /// </summary>
+        /// <param name="dtTime">时间</param>
         /// <returns></returns>
-        public string FormatCanadanCollectDate()
+        public string FormatCanadanCollectDate(DateTime dtTime)
         {
             string result = "{0}-{1}-{2}";
 
-            DateTime dtNow = ConvertBeijingToCanadan(DateTime.Now);
-            int year = dtNow.Year;
-            string month = dtNow.Month < 10 ? string.Format("0{0}", dtNow.Month) : dtNow.Month.ToString();
-            string day = dtNow.Day < 10 ? string.Format("0{0}", dtNow.Day) : dtNow.Day.ToString();
+            int year = dtTime.Year;
+            string month = dtTime.Month < 10 ? string.Format("0{0}", dtTime.Month) : dtTime.Month.ToString();
+            string day = dtTime.Day < 10 ? string.Format("0{0}", dtTime.Day) : dtTime.Day.ToString();
+            result = string.Format(result, year, month, day);
+
+            return result;
+        }
+
+        /// <summary>
+        /// 格式化北京采集日期
+        /// </summary>
+        /// <param name="dtTime">时间</param>
+        /// <returns></returns>
+        public string FormatBeijingCollectDate(DateTime dtTime)
+        {
+            string result = "{0}-{1}-{2}";
+
+            int year = dtTime.Year;
+            string month = dtTime.Month < 10 ? string.Format("0{0}", dtTime.Month) : dtTime.Month.ToString();
+            string day = dtTime.Day < 10 ? string.Format("0{0}", dtTime.Day) : dtTime.Day.ToString();
             result = string.Format(result, year, month, day);
 
             return result;

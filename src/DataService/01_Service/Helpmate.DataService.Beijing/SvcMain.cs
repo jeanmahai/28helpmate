@@ -61,16 +61,16 @@ namespace Helpmate.DataService.Beijing
 
             if (dtNow.Hour == 23 && dtNow.Minute >= 55)
             {
-                return (int)(DateTime.Parse(dtNow.AddDays(1).ToShortDateString() + " 09:05:15") - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
+                return (int)(DateTime.Parse(dtNow.AddDays(1).ToShortDateString() + " 09:05:10") - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
             }
             else if (dtNow.Hour >= 0 && dtNow.Hour < 9)
             {
-                return (int)(DateTime.Parse(dtNow.ToShortDateString() + " 09:05:15") - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
+                return (int)(DateTime.Parse(dtNow.ToShortDateString() + " 09:05:10") - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
             }
             else
             {
                 minutes = 5 - dtNow.Minute % 5;
-                seconds = 15 - dtNow.Second;
+                seconds = 10 - dtNow.Second;
                 dtNow = dtNow.AddMinutes(minutes).AddSeconds(seconds);
                 return (int)(dtNow - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
             }
@@ -94,9 +94,9 @@ namespace Helpmate.DataService.Beijing
                     Thread.Sleep(30000);
                     continue;
                 }
-                //如果当前采集的期开奖时间小于等于当前时间-15秒(每次在整分15秒开奖），则开奖
+                //如果当前采集的期开奖时间小于等于当前时间-10秒(每次在整分10秒开奖），则开奖
                 //否则跳出间间断计算，等待下一期开奖时间开奖
-                if ((int)(nowPeriod.RetTime - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds <= -15)
+                if ((int)(nowPeriod.RetTime - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds <= -10)
                     NormalCompute();
                 else
                     break;

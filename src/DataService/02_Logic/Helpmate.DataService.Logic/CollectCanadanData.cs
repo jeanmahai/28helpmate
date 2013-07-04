@@ -32,14 +32,15 @@ namespace Helpmate.DataService.Logic
         /// 采集加拿大数据
         /// </summary>
         /// <param name="periodNum">期号</param>
+        /// <param name="dtTime">开奖时间(北京时间)</param>
         /// <returns></returns>
-        public List<CollectResultEntity> Collect(long periodNum)
+        public List<CollectResultEntity> Collect(long periodNum, DateTime dtTime)
         {
             int tryTimes = 3;
             List<CollectResultEntity> result = null;
             while (tryTimes > 0)
             {
-                result = CollectCanadanData.Instance().CollectData(periodNum);
+                result = CollectCanadanData.Instance().CollectData(periodNum, dtTime);
                 if (result == null || result.Count == 0)
                 {
                     tryTimes--;
@@ -57,8 +58,9 @@ namespace Helpmate.DataService.Logic
         /// 采集加拿大数据
         /// </summary>
         /// <param name="periodNum">期号</param>
+        /// <param name="dtTime">开奖时间(北京时间)</param>
         /// <returns></returns>
-        public List<CollectResultEntity> CollectData(long periodNum)
+        public List<CollectResultEntity> CollectData(long periodNum, DateTime dtTime)
         {
             List<CollectResultEntity> result = new List<CollectResultEntity>();
 
@@ -68,7 +70,8 @@ namespace Helpmate.DataService.Logic
                 string resultData = string.Empty;
 
                 url = GetConfig.GetXMLValue(ConfigSource.Canadan, "PeriodNumUrl");
-                url = string.Format(url, (new GetTime()).FormatCanadanCollectDate());
+                dtTime = (new GetTime()).ConvertBeijingToCanadan(dtTime);
+                url = string.Format(url, (new GetTime()).FormatCanadanCollectDate(dtTime));
                 resultData = HttpHelper.GetHttpData(url);
                 if (string.IsNullOrEmpty(resultData))
                     return null;
@@ -131,7 +134,8 @@ namespace Helpmate.DataService.Logic
                     string resultData = string.Empty;
 
                     url = GetConfig.GetXMLValue(ConfigSource.Canadan, "GetNewPeriodNumUrl");
-                    url = string.Format(url, (new GetTime()).FormatCanadanCollectDate());
+                    DateTime dtTime = (new GetTime()).ConvertBeijingToCanadan(DateTime.Now);
+                    url = string.Format(url, (new GetTime()).FormatCanadanCollectDate(dtTime));
                     resultData = HttpHelper.GetHttpData(url);
                     if (string.IsNullOrEmpty(resultData))
                     {

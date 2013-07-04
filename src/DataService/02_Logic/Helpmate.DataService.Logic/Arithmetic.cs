@@ -45,7 +45,7 @@ namespace Helpmate.DataService.Logic
             try
             {
                 //[[采集数据
-                CollectResultEntity collectResult = CollectBeijingData.Instance().Collect(periodNum);
+                CollectResultEntity collectResult = CollectBeijingData.Instance().Collect(periodNum, retTime);
                 if (collectResult == null || collectResult.Group == null || collectResult.Group.Length != 20)
                 {
                     WriteLog.Write(string.Format(errorMessage, "采集数据失败"));
@@ -89,8 +89,9 @@ namespace Helpmate.DataService.Logic
         /// 采集并计算加拿大数据
         /// </summary>
         /// <param name="periodNum">期号</param>
+        /// <param name="retTime">开奖时间(北京时间)</param>
         /// <returns></returns>
-        public void CollectAndCalculateCanadan(long periodNum)
+        public void CollectAndCalculateCanadan(long periodNum, DateTime retTime)
         {
             bool result = true;
 
@@ -99,7 +100,7 @@ namespace Helpmate.DataService.Logic
             try
             {
                 //[[采集数据
-                List<CollectResultEntity> collectResult = CollectCanadanData.Instance().Collect(periodNum);
+                List<CollectResultEntity> collectResult = CollectCanadanData.Instance().Collect(periodNum, retTime);
                 if (collectResult == null || collectResult.Count == 0)
                 {
                     bool bWriteError = Arithmetic.Instance().IsWriteErrorMessage();

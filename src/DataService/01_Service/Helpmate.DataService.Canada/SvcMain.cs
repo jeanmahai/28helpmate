@@ -56,12 +56,12 @@ namespace Helpmate.DataService.Canada
 
             if (dtNow.Hour == 19)
             {
-                return (int)(DateTime.Parse(dtNow.ToShortDateString() + " 20:00:15") - (new GetTime()).NowTime(ConfigSource.Canadan)).TotalSeconds * 1000;
+                return (int)(DateTime.Parse(dtNow.ToShortDateString() + " 20:00:10") - (new GetTime()).NowTime(ConfigSource.Canadan).AddSeconds(proofreadTime)).TotalSeconds * 1000;
             }
             else
             {
                 minutes = 4 - dtNow.Minute % 4;
-                seconds = 15 - dtNow.Second;
+                seconds = 10 - dtNow.Second;
                 dtNow = dtNow.AddMinutes(minutes).AddSeconds(seconds);
                 return (int)(dtNow - (new GetTime()).NowTime(ConfigSource.Canadan).AddSeconds(proofreadTime)).TotalSeconds * 1000;
             }
@@ -105,7 +105,7 @@ namespace Helpmate.DataService.Canada
             if (nowPeriod.PeriodNum > 0)
             {
                 //采集、计算并写入DB持久化
-                Arithmetic.Instance().CollectAndCalculateCanadan(nowPeriod.PeriodNum);
+                Arithmetic.Instance().CollectAndCalculateCanadan(nowPeriod.PeriodNum, nowPeriod.RetTime);
             }
             else
             {
