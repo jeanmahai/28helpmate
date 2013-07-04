@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Business;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Model.Model;
 using UnitTest.LotteryWebService;
 
 namespace UnitTest
@@ -11,7 +12,7 @@ namespace UnitTest
     public class WebServiceUT
     {
         private static LotteryWebServiceSoapClient m_client = new LotteryWebServiceSoapClient();
-        private static LotteryForBeiJingDAL _mForBeiJingDal = new LotteryForBeiJingDAL();
+        private static LotteryDAL m_Dal = new LotteryDAL();
         private const string SITE_NAME = "龙虎";
 
         [TestMethod]
@@ -79,7 +80,7 @@ namespace UnitTest
         [TestMethod]
         public void Query20BySameNoTest()
         {
-            var data = _mForBeiJingDal.Query20BySameNo(17,QueryUserSiteSysNo());
+            var data = m_Dal.Query20BySameNoForBJ(17,QueryUserSiteSysNo());
             foreach (var a in data)
             {
                 Console.WriteLine("期号{0}",a.PeriodNum);
@@ -88,14 +89,14 @@ namespace UnitTest
         [TestMethod]
         public void QueryNextLotteryWithSameNumberTest()
         {
-            var data = _mForBeiJingDal.QueryNextLotteryWithSameNumber(17,QueryUserSiteSysNo());
+            var data = m_Dal.QueryNextLotteryWithSameNumberForBJ(17,QueryUserSiteSysNo());
             Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
                 data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryLotteryByDayTest()
         {
-            var data = _mForBeiJingDal.QueryLotteryByDay(DateTime.Parse("2013-06-30 11:30:00.000"),
+            var data = m_Dal.QueryLotteryByDayForBJ(DateTime.Parse("2013-06-30 11:30:00.000"),
                 QueryUserSiteSysNo());
             Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
                 data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
@@ -103,7 +104,7 @@ namespace UnitTest
         [TestMethod]
         public void QueryLotteryByHourStepTest()
         {
-            var data = _mForBeiJingDal.QueryLotteryByHourStep(DateTime.Parse("2013-06-30 11:30:00.000")
+            var data = m_Dal.QueryLotteryByHourStepForBJ(DateTime.Parse("2013-06-30 11:30:00.000")
                 ,QueryUserSiteSysNo());
             Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
                 data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
@@ -111,14 +112,14 @@ namespace UnitTest
         [TestMethod]
         public void QueryUserSiteTest()
         {
-            var data = _mForBeiJingDal.QueryUserSite("龙虎");
+            var data = m_Dal.QueryUserSite("龙虎");
             Console.WriteLine(string.Format("{0},{1}",
                 data.SysNo,data.SiteName));
             //return data.SysNo;
         }
         public int QueryUserSiteSysNo()
         {
-            var data = _mForBeiJingDal.QueryUserSite("龙虎");
+            var data = m_Dal.QueryUserSite("龙虎");
             Console.WriteLine(string.Format("{0},{1}",
                 data.SysNo,data.SiteName));
             return data.SysNo;
@@ -130,13 +131,40 @@ namespace UnitTest
             filter.PageIndex = 1;
             filter.PageSize = 10;
 
-            var data = _mForBeiJingDal.Query(filter);
+            var data = m_Dal.QueryForBJ(filter);
             Console.WriteLine(string.Format("total:{0}",data.Total));
             foreach (var item in data.List)
             {
                 Console.WriteLine(string.Format("期号{0}",item.PeriodNum));
             }
 
+        }
+        [TestMethod]
+        public void RegisterTest()
+        {
+            var user = new User()
+                       {
+                           UserID = "11",
+                           RechargeUseBeginTime = DateTime.Now,
+                           RechargeUseEndTime = DateTime.Now,
+                           RegDate = DateTime.Now,
+                           RegIP = "123",
+                           Status = 0,
+                           UserName = "11",
+                           UserPwd = "test"
+                       };
+            var result=m_Dal.Register(user);
+            Console.WriteLine(result);
+        }
+        [TestMethod]
+        public void LoginTest()
+        {
+            Console.WriteLine(string.Format("{0}",m_Dal.Login(1,"test")));
+        }
+        [TestMethod]
+        public void QueryOmissionAllForBJTest()
+        {
+            var result=m_Dal.QueryOmissionAllForBJ();
         }
     }
 }

@@ -34,6 +34,9 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\40_References\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Net.Utility">
+      <HintPath>..\40_References\Net.Utility.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\40_References\NHibernate.dll</HintPath>
     </Reference>
@@ -46,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LotteryForBeiJingDAL.cs" />
+    <Compile Include="LotteryDAL.cs" />
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

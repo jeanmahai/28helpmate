@@ -9,9 +9,7 @@ namespace WebService
     public class TokenHeader:SoapHeader
     {
         public string Token { get; set; }
-        public bool ValidateToken()
-        {
-            return true;
-        }
+        public string UserId { get; set; }
+        public string Psw { get; set; }
     }
 }

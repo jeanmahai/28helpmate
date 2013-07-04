@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.OmissionLottery,Model" 
+         table="[SourceData_28_Beijing]"
+          where="Status=1">
+    <id name="NearPeriod" column="NearPeriod" type="Int32" >
+      <generator class="assigned"/>
+    </id>
+    <property name="Number" column="Number" type="Int32"  />
+    <property name="Interval" column="Interval" type="Int32"  />
+  </class>
+</hibernate-mapping>

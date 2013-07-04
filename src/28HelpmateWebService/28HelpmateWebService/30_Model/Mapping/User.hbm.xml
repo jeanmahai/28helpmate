@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.User,Model"
+         table="[Users]">
+    <id name="SysNo" column="SysNo" type="Int32" >
+      <generator class="native"/>
+    </id>
+    <property name="UserID" column="UserID" type="String" length="40" not-null="true"/>
+    <property name="UserPwd" column="UserPwd" type="String"  length="40" not-null="true"/>
+    <property name="UserName" column="UserName" type="String"  length="40"/>
+    <property name="Status" column="Status" type="Int32"  not-null="true"/>
+    <property name="RegIP" column="RegIP" type="String" length="40" not-null="true"/>
+    <property name="RegDate" column="RegDate" type="DateTime"  not-null="true"/>
+    <property name="RechargeUseBeginTime" column="RechargeUseBeginTime" type="DateTime" not-null="true" />
+    <property name="RechargeUseEndTime" column="RechargeUseEndTime" type="DateTime" not-null="true" />
+  </class>
+</hibernate-mapping>
