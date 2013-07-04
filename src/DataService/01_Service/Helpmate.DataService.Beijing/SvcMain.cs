@@ -56,23 +56,23 @@ namespace Helpmate.DataService.Beijing
         /// <returns></returns>
         private static int GetSleepTimes()
         {
-            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Beijing);
+            DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Beijing);
             int minutes = 0, seconds = 0;
 
             if (dtNow.Hour == 23 && dtNow.Minute >= 55)
             {
-                return (int)(DateTime.Parse(dtNow.AddDays(1).ToShortDateString() + " 09:05:15") - (new GetNowTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
+                return (int)(DateTime.Parse(dtNow.AddDays(1).ToShortDateString() + " 09:05:15") - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
             }
             else if (dtNow.Hour >= 0 && dtNow.Hour < 9)
             {
-                return (int)(DateTime.Parse(dtNow.ToShortDateString() + " 09:05:15") - (new GetNowTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
+                return (int)(DateTime.Parse(dtNow.ToShortDateString() + " 09:05:15") - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
             }
             else
             {
                 minutes = 5 - dtNow.Minute % 5;
                 seconds = 15 - dtNow.Second;
                 dtNow = dtNow.AddMinutes(minutes).AddSeconds(seconds);
-                return (int)(dtNow - (new GetNowTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
+                return (int)(dtNow - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds * 1000;
             }
         }
 
@@ -96,7 +96,7 @@ namespace Helpmate.DataService.Beijing
                 }
                 //如果当前采集的期开奖时间小于等于当前时间-15秒(每次在整分15秒开奖），则开奖
                 //否则跳出间间断计算，等待下一期开奖时间开奖
-                if ((int)(nowPeriod.RetTime - (new GetNowTime()).NowTime(ConfigSource.Beijing)).TotalSeconds <= -15)
+                if ((int)(nowPeriod.RetTime - (new GetTime()).NowTime(ConfigSource.Beijing)).TotalSeconds <= -15)
                     NormalCompute();
                 else
                     break;
@@ -116,7 +116,7 @@ namespace Helpmate.DataService.Beijing
         {
             int tmpMin = 0;
             int tmpSec = 0;
-            DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Beijing);
+            DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Beijing);
             if (dtNow.Minute % 2 != 0 || dtNow.Second != 0 || (dtNow.Minute % 2 == 0 && dtNow.Second != 0))
             {
                 tmpMin = 2 - dtNow.Minute % 2;
@@ -132,7 +132,7 @@ namespace Helpmate.DataService.Beijing
             while (running)
             {
                 AsyncWays_FailSvc();
-                DateTime dtNow1 = (new GetNowTime()).NowTime(ConfigSource.Beijing);
+                DateTime dtNow1 = (new GetTime()).NowTime(ConfigSource.Beijing);
                 if (dtNow1.Hour >= 9 && dtNow1.Hour <= 23)
                 {
                     tmpMin = 2 - dtNow1.Minute % 2;
@@ -169,7 +169,7 @@ namespace Helpmate.DataService.Beijing
             if (nowPeriod.PeriodNum > 0)
             {
                 //采集、计算并写入DB持久化
-                bool result = Arithmetic.Instance().CollectAndCalculate(Source.Beijing, nowPeriod.PeriodNum, nowPeriod.RetTime, DBOperateType.Insert);
+                bool result = Arithmetic.Instance().CollectAndCalculateBeijing(nowPeriod.PeriodNum, nowPeriod.RetTime, DBOperateType.Insert);
                 if (!result)
                     Arithmetic.Instance().FailInsertData(Source.Beijing, nowPeriod.PeriodNum, nowPeriod.RetTime);
             }
@@ -201,7 +201,7 @@ namespace Helpmate.DataService.Beijing
             {
                 foreach (CollectResultEntity period in periodList)
                 {
-                    bool result = Arithmetic.Instance().CollectAndCalculate(Source.Beijing, period.PeriodNum, period.RetTime, DBOperateType.Update);
+                    bool result = Arithmetic.Instance().CollectAndCalculateBeijing(period.PeriodNum, period.RetTime, DBOperateType.Update);
                     if (!result)
                         WriteLog.Write(string.Format("间隔计算失败的期再次失败，期号：{0}。", period.PeriodNum));
                 }

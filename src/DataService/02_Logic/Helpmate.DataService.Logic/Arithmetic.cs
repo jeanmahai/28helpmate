@@ -30,14 +30,13 @@ namespace Helpmate.DataService.Logic
         #endregion
 
         /// <summary>
-        /// 采集并计算
+        /// 采集并计算北京数据
         /// </summary>
-        /// <param name="source">采集计算源</param>
         /// <param name="periodNum">期号</param>
         /// <param name="retTime">开奖时间</param>
         /// <param name="dbOperateType">DB操作类型</param>
         /// <returns></returns>
-        public bool CollectAndCalculate(Source source, long periodNum, DateTime retTime, DBOperateType dbOperateType)
+        public bool CollectAndCalculateBeijing(long periodNum, DateTime retTime, DBOperateType dbOperateType)
         {
             bool result = true;
 
@@ -46,33 +45,11 @@ namespace Helpmate.DataService.Logic
             try
             {
                 //[[采集数据
-                ICollectData collectData = CreateCollectData(source);
-                if (collectData == null)
-                {
-                    WriteLog.Write(string.Format(errorMessage, "创建采集实现类失败"));
-                    return false;
-                }
-                int tryTimes = 3;
-                CollectResultEntity collectResult = null;
-                while (tryTimes > 0)
-                {
-                    collectResult = collectData.Collect(periodNum);
-                    if (collectResult == null || collectResult.Group == null || collectResult.Group.Length != 20)
-                    {
-                        result = false;
-                        tryTimes--;
-                        //如果采集失败，则间隔5秒重试，重试2次
-                        Thread.Sleep(5 * 1000);
-                    }
-                    else
-                    {
-                        tryTimes = 0;
-                    }
-                }
-                if (!result)
+                CollectResultEntity collectResult = CollectBeijingData.Instance().Collect(periodNum);
+                if (collectResult == null || collectResult.Group == null || collectResult.Group.Length != 20)
                 {
                     WriteLog.Write(string.Format(errorMessage, "采集数据失败"));
-                    return result;
+                    return false;
                 }
                 collectResult.PeriodNum = periodNum;
                 collectResult.RetTime = retTime;
@@ -81,8 +58,6 @@ namespace Helpmate.DataService.Logic
                 //[[计算数据
                 //28数据
                 List<SourceDataEntity> sourceDataList28 = Calculate28Data(collectResult);
-                //16数据
-                //List<SourceDataEntity> sourceDataList16 = Calculate16Data(collectResult);
                 if (sourceDataList28 == null || sourceDataList28.Count == 0)
                 {
                     WriteLog.Write(string.Format(errorMessage, "计算数据失败"));
@@ -95,14 +70,12 @@ namespace Helpmate.DataService.Logic
                 switch (dbOperateType)
                 {
                     case DBOperateType.Insert:
-                        result = Insert28Data(source, sourceDataList28);
+                        result = Insert28Data(Source.Beijing, sourceDataList28);
                         break;
                     case DBOperateType.Update:
-                        result = Update28Data(source, sourceDataList28);
+                        result = Update28Data(Source.Beijing, sourceDataList28);
                         break;
                 }
-                //16数据
-                //result = Insert16Data(source, sourceDataList16);
                 //]]
             }
             catch (Exception ex)
@@ -111,6 +84,74 @@ namespace Helpmate.DataService.Logic
             }
 
             return result;
+        }
+        /// <summary>
+        /// 采集并计算加拿大数据
+        /// </summary>
+        /// <param name="periodNum">期号</param>
+        /// <returns></returns>
+        public void CollectAndCalculateCanadan(long periodNum)
+        {
+            bool result = true;
+
+            string errorMessage = "{0}，方法：CollectAndCalculateCanadan，期号：" + periodNum.ToString();
+
+            try
+            {
+                //[[采集数据
+                List<CollectResultEntity> collectResult = CollectCanadanData.Instance().Collect(periodNum);
+                if (collectResult == null || collectResult.Count == 0)
+                {
+                    bool bWriteError = Arithmetic.Instance().IsWriteErrorMessage();
+                    if (bWriteError)
+                    {
+                        WriteLog.Write(string.Format(errorMessage, "采集数据失败"));
+                    }
+                    return;
+                }
+                //]]
+
+                if (collectResult != null && collectResult.Count > 0)
+                {
+                    foreach (CollectResultEntity item in collectResult)
+                    {
+                        //[[计算数据
+                        //28数据
+                        List<SourceDataEntity> sourceDataList28 = CalculateCanada28Data(item);
+                        if (sourceDataList28 == null || sourceDataList28.Count == 0)
+                        {
+                            WriteLog.Write(string.Format(errorMessage, "计算数据失败"));
+                        }
+                        //]]
+
+                        //[[DB持久化
+                        //28数据
+                        result = Insert28Data(Source.Canadan, sourceDataList28);
+                        //]]
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog.Write(string.Format(errorMessage, "异常，异常信息：" + ex.ToString()));
+            }
+        }
+        /// <summary>
+        /// 加拿大数据采集是否写错误 北京时间19点04到21点不写错误，因为这个时间点加拿大可能不开奖
+        /// </summary>
+        /// <returns></returns>
+        private bool IsWriteErrorMessage()
+        {
+            bool bWriteError = true;
+            int proofreadTime = int.Parse(GetConfig.GetXMLValue(ConfigSource.Canadan, "ProofreadTime"));
+            DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Canadan).AddSeconds(proofreadTime);
+            if ((dtNow.Hour == 19 && dtNow.Minute > 0)
+                || dtNow.Hour == 20
+                || (dtNow.Hour == 21 && dtNow.Minute < 4))
+            {
+                bWriteError = false;
+            }
+            return bWriteError;
         }
         /// <summary>
         /// 读取下期期号
@@ -137,9 +178,18 @@ namespace Helpmate.DataService.Logic
             //如果期号为0，则需要从网站采集
             if (result.PeriodNum == 0)
             {
-                ICollectData collectData = CreateCollectData(source);
-                if (collectData != null)
-                    result = collectData.CollectPeriodNum();
+                switch (source)
+                {
+                    case Source.Beijing:
+                        result = CollectBeijingData.Instance().CollectPeriodNum();
+                        break;
+                    case Source.Canadan:
+                        result = CollectCanadanData.Instance().CollectPeriodNum();
+                        break;
+                    default:
+                        result.PeriodNum = -1;
+                        break;
+                }
             }
 
             return result;
@@ -195,26 +245,9 @@ namespace Helpmate.DataService.Logic
 
             Insert28Data(source, dataList);
         }
-        /// <summary>
-        /// 创建采集实现类
-        /// </summary>
-        /// <param name="source">采集计算源</param>
-        /// <returns></returns>
-        private ICollectData CreateCollectData(Source source)
-        {
-            switch (source)
-            {
-                case Source.Beijing:
-                    return CollectBeijingData.Instance();
-                case Source.Canadan:
-                    return CollectCanadanData.Instance();
-                default:
-                    return null;
-            }
-        }
         #region 28
         /// <summary>
-        /// 计算28数据
+        /// 计算北京28数据
         /// </summary>
         /// <param name="collectResult">采集结果</param>
         /// <returns></returns>
@@ -254,6 +287,49 @@ namespace Helpmate.DataService.Logic
             }
             //]]
             
+            return result;
+        }
+        /// <summary>
+        /// 计算加拿大28数据
+        /// </summary>
+        /// <param name="collectResult">采集结果</param>
+        /// <returns></returns>
+        private List<SourceDataEntity> CalculateCanada28Data(CollectResultEntity collectResult)
+        {
+            List<SourceDataEntity> result = null;
+
+            ICalculate28Data calculateData = null;
+
+            //[[计算龙虎网站数据
+            calculateData = CalculateLongHu28Data.Instance();
+            SourceDataEntity itemLongHu = calculateData.CalculateCanada(collectResult);
+            if (itemLongHu != null)
+            {
+                result = new List<SourceDataEntity>();
+                result.Add(itemLongHu);
+            }
+            //]]
+            //[[计算71豆网站数据
+            calculateData = CalculateQiYiDou28Data.Instance();
+            SourceDataEntity itemQiYiDou = calculateData.CalculateCanada(collectResult);
+            if (itemQiYiDou != null)
+            {
+                if (result == null)
+                    result = new List<SourceDataEntity>();
+                result.Add(itemQiYiDou);
+            }
+            //]]
+            //[[计算芝麻西西网站数据
+            calculateData = CalculateZhiMaXiXi28Data.Instance();
+            SourceDataEntity itemZhiMaXiXi = calculateData.CalculateCanada(collectResult);
+            if (itemZhiMaXiXi != null)
+            {
+                if (result == null)
+                    result = new List<SourceDataEntity>();
+                result.Add(itemZhiMaXiXi);
+            }
+            //]]
+
             return result;
         }
         /// <summary>

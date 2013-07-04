@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
+using CsQuery;
 using Helpmate.DataService.Entity;
 using Helpmate.DataService.Utility;
-using System.Threading;
 
 namespace Helpmate.DataService.Logic
 {
     /// <summary>
     /// 采集北京数据实现类
     /// </summary>
-    public class CollectBeijingData : ICollectData
+    public class CollectBeijingData
     {
         #region 单例模式
 
@@ -28,7 +29,7 @@ namespace Helpmate.DataService.Logic
 
         #endregion
 
-        #region ICollectData 成员
+        #region 采集北京数据
 
         /// <summary>
         /// 采集北京数据
@@ -38,44 +39,127 @@ namespace Helpmate.DataService.Logic
         public CollectResultEntity Collect(long periodNum)
         {
             CollectResultEntity result = new CollectResultEntity();
-
-            try
+            string urlType = GetConfig.GetXMLValue(ConfigSource.Beijing, "UrlType");
+            switch (urlType)
             {
-                string url = string.Empty;
-                string resultData = string.Empty;
-                int startIndex = 0;
-                int endIndex = 0;
-
-                url = GetConfig.GetXMLValue(ConfigSource.Beijing, "PeriodNumUrl");
-                url = url.Replace("{0}", periodNum.ToString());
-                resultData = HttpHelper.GetHttpData(url);
-                if (string.IsNullOrEmpty(resultData))
-                    return null;
-                startIndex = resultData.IndexOf("快乐8开奖号码") + 8;
-                endIndex = resultData.IndexOf("奖池");
-                resultData = resultData.Substring(startIndex, endIndex - startIndex);
-                startIndex = resultData.IndexOf("<ul>") + 4;
-                endIndex = resultData.IndexOf("</ul>");
-                resultData = resultData.Substring(startIndex, endIndex - startIndex);
-                resultData = resultData.Replace("<li>", "");
-                resultData = resultData.Replace("</li>", "|");
-                string[] sortResultChr = resultData.Split('|');
-                resultData = string.Empty;
-                for (int i = 0; i < sortResultChr.Length; i++)
-                {
-                    resultData += i == sortResultChr.Length - 1 ? sortResultChr[i].Trim() : sortResultChr[i].Trim() + "|";
-                }
-                resultData = string.IsNullOrEmpty(resultData) ? resultData : resultData.Substring(0, resultData.Length - 1);
-                result.Result = resultData;
-                result.Group = Array.ConvertAll<string, int>(resultData.Split('|'), delegate(string s) { return int.Parse(s); });
+                //使用地址1
+                case "1":
+                    result = CollectBeijingData.Instance().CollectUrl1(periodNum);
+                    break;
+                //使用地址2
+                case "2":
+                    result = CollectBeijingData.Instance().CollectUrl2(periodNum);
+                    break;
+                //两个地址都使用，先使用地址1，地址1失败使用地址2
+                case "3":
+                    result = CollectBeijingData.Instance().CollectUrl1(periodNum);
+                    if (result == null || result.Group == null || result.Group.Length != 20)
+                        result = CollectBeijingData.Instance().CollectUrl2(periodNum);
+                    break;
+                default:
+                    result = new CollectResultEntity();
+                    break;
             }
-            catch (Exception ex)
+            return result;
+        }
+        /// <summary>
+        /// 采集北京地址1数据
+        /// </summary>
+        /// <param name="periodNum">期号</param>
+        /// <returns></returns>
+        private CollectResultEntity CollectUrl1(long periodNum)
+        {
+            CollectResultEntity result = new CollectResultEntity();
+
+            int tryTimes = 3;
+            while (tryTimes > 0)
             {
-                WriteLog.Write(ex.ToString());
+                try
+                {
+                    string url = string.Empty;
+                    string resultData = string.Empty;
+
+                    url = GetConfig.GetXMLValue(ConfigSource.Beijing, "PeriodNumUrl");
+                    url = string.Format(url, periodNum);
+                    resultData = HttpHelper.GetHttpDataUTF8(url);
+                    if (string.IsNullOrEmpty(resultData))
+                    {
+                        tryTimes--;
+                        Thread.Sleep(5000);
+                        continue;
+                    }
+                    CQ cq = resultData;
+
+                    CQ val = cq["li"];
+                    resultData = "";
+                    for (int i = 0; i < val.Length; i++)
+                    {
+                        if (i == val.Length - 1)
+                            resultData += val[i].TextContent.Trim();
+                        else
+                            resultData += string.Format("{0}|", val[i].TextContent.Trim());
+                    }
+                    result.Result = resultData;
+                    result.Group = Array.ConvertAll<string, int>(resultData.Split('|'), delegate(string s) { return int.Parse(s); });
+                    tryTimes = 0;
+                }
+                catch (Exception ex)
+                {
+                    WriteLog.Write(ex.ToString());
+                    tryTimes--;
+                    Thread.Sleep(5000);
+                }
             }
 
             return result;
         }
+        /// <summary>
+        /// 采集北京地址2数据
+        /// </summary>
+        /// <param name="periodNum">期号</param>
+        /// <returns></returns>
+        private CollectResultEntity CollectUrl2(long periodNum)
+        {
+            CollectResultEntity result = new CollectResultEntity();
+
+            int tryTimes = 3;
+            while (tryTimes > 0)
+            {
+                try
+                {
+                    string url = string.Empty;
+                    string resultData = string.Empty;
+
+                    url = GetConfig.GetXMLValue(ConfigSource.Beijing, "PeriodNumUrl2");
+                    url = string.Format(url, periodNum);
+                    resultData = HttpHelper.GetHttpDataUTF8(url);
+                    if (string.IsNullOrEmpty(resultData))
+                    {
+                        tryTimes--;
+                        Thread.Sleep(5000);
+                        continue;
+                    }
+                    CQ cq = resultData;
+                    resultData = cq["div #gameListItem-2"].Find("tr.dataBack1:eq(0)>td:eq(1)").Text().Trim();
+                    resultData = resultData.Replace(',', '|');
+                    result.Result = resultData;
+                    result.Group = Array.ConvertAll<string, int>(resultData.Split('|'), delegate(string s) { return int.Parse(s); });
+                    tryTimes = 0;
+                }
+                catch (Exception ex)
+                {
+                    WriteLog.Write(ex.ToString());
+                    tryTimes--;
+                    Thread.Sleep(5000);
+                }
+            }
+
+            return result;
+        }
+
+        #endregion
+
+        #region 采集期号
 
         /// <summary>
         /// 采集期号
@@ -84,30 +168,127 @@ namespace Helpmate.DataService.Logic
         public CollectResultEntity CollectPeriodNum()
         {
             CollectResultEntity result = new CollectResultEntity();
+            string urlType = GetConfig.GetXMLValue(ConfigSource.Beijing, "UrlType");
+            switch (urlType)
+            {
+                case "1":
+                    result = CollectBeijingData.Instance().CollectPeriodNum1();
+                    break;
+                case "2":
+                    result = CollectBeijingData.Instance().CollectPeriodNum2();
+                    break;
+                case "3":
+                    result = CollectBeijingData.Instance().CollectPeriodNum1();
+                    if(result == null || result.PeriodNum <= 0)
+                        result = CollectBeijingData.Instance().CollectPeriodNum2();
+                    break;
+                default:
+                    result.PeriodNum = 0;
+                    break;
+            }
+            return result;
+        }
+        /// <summary>
+        /// 采集地址1期号
+        /// </summary>
+        /// <returns></returns>
+        public CollectResultEntity CollectPeriodNum1()
+        {
+            CollectResultEntity result = new CollectResultEntity();
+
+            int tryTimes = 3;
+            while (tryTimes > 0)
+            {
+                try
+                {
+                    string resultData = HttpHelper.GetHttpData(GetConfig.GetXMLValue(ConfigSource.Beijing, "GetNewPeriodNumUrl"));
+                    if (string.IsNullOrEmpty(resultData))
+                    {
+                        tryTimes--;
+                        Thread.Sleep(10000);
+                        continue;
+                    }
+                    CQ cq = resultData;
+                    resultData = cq["span:first"].Text().Trim();
+                    long periondNum = 0;
+                    long.TryParse(resultData, out periondNum);
+                    if (periondNum <= 0)
+                    {
+                        tryTimes--;
+                        Thread.Sleep(10000);
+                        continue;
+                    }
+                    //期号
+                    result.PeriodNum = periondNum;
+                    //时间
+                    DateTime dtRetTime = (new GetTime()).NowTime(ConfigSource.Beijing);
+                    DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Beijing);
+                    int hour = dtNow.Hour;
+
+                    if (hour >= 0 && hour < 9)
+                    {
+                        dtRetTime = DateTime.Parse(string.Format("{0} 23:55:00", dtNow.ToShortDateString()));
+                    }
+                    else
+                    {
+                        int minute = dtNow.Minute % 5;
+                        int second = dtNow.Second;
+                        dtRetTime = dtNow.AddMinutes(0 - minute).AddSeconds(0 - second);
+                    }
+                    result.RetTime = dtRetTime;
+                    tryTimes = 0;
+                }
+                catch (Exception ex)
+                {
+                    result.PeriodNum = 0;
+                    WriteLog.Write(ex.ToString());
+                    tryTimes--;
+                    Thread.Sleep(10000);
+                }
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// 采集地址2期号
+        /// </summary>
+        /// <returns></returns>
+        private CollectResultEntity CollectPeriodNum2()
+        {
+            CollectResultEntity result = new CollectResultEntity();
 
             int tryTimes = 10;
             while (tryTimes > 0)
             {
                 try
                 {
-                    string str = HttpHelper.GetHttpData(GetConfig.GetXMLValue(ConfigSource.Beijing, "GetNewPeriodNumUrl"));
-                    if (string.IsNullOrEmpty(str))
+                    string url = string.Empty;
+                    string resultData = string.Empty;
+
+                    url = GetConfig.GetXMLValue(ConfigSource.Beijing, "GetNewPeriodNumUrl2");
+                    resultData = HttpHelper.GetHttpDataUTF8(url);
+                    if (string.IsNullOrEmpty(resultData))
                     {
                         tryTimes--;
                         Thread.Sleep(10000);
                         continue;
                     }
-                    int startIndex = str.IndexOf("<span class=\"flow_font\">") + 24;
-                    int endIndex = 0;
-                    str = str.Substring(startIndex, str.Length - startIndex);
-                    endIndex = str.IndexOf("</span>");
-                    str = str.Substring(0, endIndex);
-                    long periondNum = 0;
-                    long.TryParse(str, out periondNum);
-                    result.PeriodNum = periondNum;
 
-                    DateTime dtRetTime = (new GetNowTime()).NowTime(ConfigSource.Beijing);
-                    DateTime dtNow = (new GetNowTime()).NowTime(ConfigSource.Beijing);
+                    CQ cq = resultData;
+                    resultData = cq["div #gameListItem-2"].Find("tr.dataBack1:eq(0)>td:eq(0)").Text().Trim();
+                    long periondNum = 0;
+                    long.TryParse(resultData, out periondNum);
+                    if (periondNum <= 0)
+                    {
+                        tryTimes--;
+                        Thread.Sleep(10000);
+                        continue;
+                    }
+                    //期号
+                    result.PeriodNum = periondNum;
+                    //时间
+                    DateTime dtRetTime = (new GetTime()).NowTime(ConfigSource.Beijing);
+                    DateTime dtNow = (new GetTime()).NowTime(ConfigSource.Beijing);
                     int hour = dtNow.Hour;
 
                     if (hour >= 0 && hour < 9)
