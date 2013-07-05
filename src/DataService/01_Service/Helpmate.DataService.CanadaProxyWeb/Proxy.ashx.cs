@@ -17,7 +17,6 @@ namespace Helpmate.DataService.CanadaProxyWeb
             if (context.Request["d"] != null && context.Request["d"].Trim().Length > 0)
             {
                 string date = context.Request["d"].Trim();
-                context.Response.Write(date);
                 string url = string.Format("http://lotto.bclc.com/services2/keno/draw/{0}", date);
                 WebClient webClient = new WebClient();
                 webClient.Encoding = System.Text.Encoding.UTF8;

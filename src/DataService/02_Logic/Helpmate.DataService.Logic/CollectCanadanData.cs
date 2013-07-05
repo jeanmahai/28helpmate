@@ -36,7 +36,7 @@ namespace Helpmate.DataService.Logic
         /// <returns></returns>
         public List<CollectResultEntity> Collect(long periodNum, DateTime dtTime)
         {
-            int tryTimes = 3;
+            int tryTimes = 11;
             List<CollectResultEntity> result = null;
             while (tryTimes > 0)
             {
@@ -44,8 +44,8 @@ namespace Helpmate.DataService.Logic
                 if (result == null || result.Count == 0)
                 {
                     tryTimes--;
-                    //如果采集失败，则间隔5秒重试，重试2次
-                    Thread.Sleep(5000);
+                    //如果采集失败，则间隔3秒重试，重试10次
+                    Thread.Sleep(3000);
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace Helpmate.DataService.Logic
                 dtTime = (new GetTime()).ConvertBeijingToCanadan(dtTime);
                 url = string.Format(url, (new GetTime()).FormatCanadanCollectDate(dtTime));
                 resultData = HttpHelper.GetHttpData(url);
-                if (string.IsNullOrEmpty(resultData))
+                if (string.IsNullOrEmpty(resultData) || !resultData.Contains(periodNum.ToString()))
                     return null;
 
                 List<Draw> drawList = new List<Draw>();

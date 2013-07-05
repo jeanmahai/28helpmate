@@ -225,6 +225,8 @@ VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
 VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
             foreach (SourceDataEntity item in dataList)
             {
+                if (item.SiteSysNo == 10002 || item.SiteSysNo == 10003)
+                    item.RetTime = item.RetTime.AddMinutes(1);
                 sql += string.Format(sqlFormat, item.PeriodNum, item.RetTime, item.SiteSysNo, item.RetOddNum,
                     item.RetNum, item.RetMidNum, item.CollectRet, dtNow.ToString(), item.Status);
             }
