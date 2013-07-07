@@ -1,0 +1,10 @@
+E:\GitHub\28helpmate\src\SoftWare\02_Service\QueryFilter\bin\Debug\Helpmate.QueryFilter.dll
+E:\GitHub\28helpmate\src\SoftWare\02_Service\QueryFilter\bin\Debug\Helpmate.QueryFilter.pdb
+E:\GitHub\28helpmate\src\SoftWare\02_Service\QueryFilter\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\28helpmate\src\SoftWare\02_Service\QueryFilter\obj\Debug\Helpmate.QueryFilter.dll
+E:\GitHub\28helpmate\src\SoftWare\02_Service\QueryFilter\obj\Debug\Helpmate.QueryFilter.pdb
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\bin\Debug\Helpmate.QueryFilter.dll
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\bin\Debug\Helpmate.QueryFilter.pdb
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\Helpmate.QueryFilter.dll
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\Helpmate.QueryFilter.pdb

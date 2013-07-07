@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpmate.QueryFilter", "Que
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Service.Utility.WCF", "00_CommonLib\Common.Utility.WCF\Common.Service.Utility.WCF.csproj", "{8461C87D-FDD1-422E-B24B-2074D8FE6DED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpmate.Restful", "01_Facades\Helpmate.Restful\Helpmate.Restful.csproj", "{0329290D-3966-4B9E-AA2E-89C5C717018A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{8461C87D-FDD1-422E-B24B-2074D8FE6DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8461C87D-FDD1-422E-B24B-2074D8FE6DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8461C87D-FDD1-422E-B24B-2074D8FE6DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0329290D-3966-4B9E-AA2E-89C5C717018A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0329290D-3966-4B9E-AA2E-89C5C717018A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0329290D-3966-4B9E-AA2E-89C5C717018A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0329290D-3966-4B9E-AA2E-89C5C717018A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,5 +108,6 @@ Global
 		{8967EBCA-8F6F-45C4-ACF7-02120539B6F2} = {453B3D06-49C0-4079-8290-1F46EF1E655C}
 		{9287AE34-4A69-4B74-ABA1-262489EE1EAC} = {453B3D06-49C0-4079-8290-1F46EF1E655C}
 		{94BBE2A2-C220-4EB3-88B4-ADBE9020E908} = {453B3D06-49C0-4079-8290-1F46EF1E655C}
+		{0329290D-3966-4B9E-AA2E-89C5C717018A} = {453B3D06-49C0-4079-8290-1F46EF1E655C}
 	EndGlobalSection
 EndGlobal

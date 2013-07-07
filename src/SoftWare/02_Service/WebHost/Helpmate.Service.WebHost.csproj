@@ -51,6 +51,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configuration\MailTemplates\ReadMe.txt" />
+    <Content Include="Configuration\MessageResources\Common\Common.zh-cn.xml" />
+    <Content Include="Configuration\SegmentDict\chsstopwords.txt" />
+    <Content Include="Configuration\SegmentDict\engstopwords.txt" />
+    <Content Include="Configuration\SegmentDict\SingleWords.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -62,6 +67,26 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\AppSettings\Common.config" />
+    <Content Include="Configuration\Autorun.config" />
+    <Content Include="Configuration\CodeNamePairs\Common.zh-cn.config" />
+    <Content Include="Configuration\Data\Common\Email.config" />
+    <Content Include="Configuration\Data\Customer\Customer_Agent.config" />
+    <Content Include="Configuration\Data\Database.config" />
+    <Content Include="Configuration\Data\DbCommandFiles.config" />
+    <Content Include="Configuration\EventConsumer.config" />
+    <Content Include="Configuration\FileExporter.config" />
+    <Content Include="Configuration\KTDictSeg.config" />
+    <Content Include="Configuration\MailTemplates\MailTemplatesFiles.config" />
+    <Content Include="Configuration\MailTemplates\Templates\Common\Default_Send.zh-CN.config" />
+    <Content Include="Configuration\RestService.config" />
+    <None Include="Configuration\SegmentDict\Dict.dct" />
+    <None Include="Configuration\SegmentDict\Name.dct" />
+    <Content Include="Configuration\TicketCompany.config" />
+    <Content Include="Configuration\TypeVersion.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
