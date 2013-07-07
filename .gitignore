@@ -16,4 +16,6 @@ doc/~*.doc
 doc/~*.docx
 
 *.suo
+bin/
+obj/
 
