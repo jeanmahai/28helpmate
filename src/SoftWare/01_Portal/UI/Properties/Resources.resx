@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="headbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\headbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Log" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Log.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -217,7 +220,94 @@
   <data name="pageup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pageup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="headbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\headbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="na" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\na.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nacolor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nacolor.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_0x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_0x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_1x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_1x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_2x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_3x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_3x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_4x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_4x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_5x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_5x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_6x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_6x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_7x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_7x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_8x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_8x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_9x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_9x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_10x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_10x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_11x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_11x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_12x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_12x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_13x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_13x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_14x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_14x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_15x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_15x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_16x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_17x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_17x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_18x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_18x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_19x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_19x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_20x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_20x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_21x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_21x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_22x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_22x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_23x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_23x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_24x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_25x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_25x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_26x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_26x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="number_27x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\number_27x.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
