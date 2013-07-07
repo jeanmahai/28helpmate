@@ -1,0 +1,5 @@
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\UI\bin\Debug\Helpmate.UI.dll
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\UI\bin\Debug\Helpmate.UI.pdb
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\UI\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\UI\obj\Debug\Helpmate.UI.dll
+E:\GitHub\28helpmate\src\SoftWare\01_Portal\UI\obj\Debug\Helpmate.UI.pdb
