@@ -19,3 +19,16 @@ doc/~*.docx
 bin/
 obj/
 
+src/SoftWare/01_Portal/*.suo
+src/SoftWare/01_Portal/01_CommonLib/Common.Utility/bin
+src/SoftWare/01_Portal/01_CommonLib/Common.Utility/obj
+src/SoftWare/01_Portal/02_BizFocade/Helpmate.Facades/bin
+src/SoftWare/01_Portal/02_BizFocade/Helpmate.Facades/obj
+src/SoftWare/01_Portal/BizEntity.Enum/bin
+src/SoftWare/01_Portal/BizEntity.Enum/obj
+src/SoftWare/01_Portal/BizEntity/bin
+src/SoftWare/01_Portal/BizEntity/obj
+src/SoftWare/01_Portal/QueryFilter/bin
+src/SoftWare/01_Portal/QueryFilter/obj
+src/SoftWare/01_Portal/UI/bin
+src/SoftWare/01_Portal/UI/obj
