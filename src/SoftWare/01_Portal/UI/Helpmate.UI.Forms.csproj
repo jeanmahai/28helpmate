@@ -61,12 +61,6 @@
     <Compile Include="Default.Designer.cs">
       <DependentUpon>Default.cs</DependentUpon>
     </Compile>
-    <Compile Include="DefaultForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DefaultForm.designer.cs">
-      <DependentUpon>DefaultForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormUI\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,18 +122,6 @@
     <Compile Include="UIContorl\Common\SiteMapCtrl.Designer.cs">
       <DependentUpon>SiteMapCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIContorl\UIPage\NormalChart.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UIContorl\UIPage\NormalChart.Designer.cs">
-      <DependentUpon>NormalChart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UIContorl\UIPage\OmissionCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UIContorl\UIPage\OmissionCtrl.Designer.cs">
-      <DependentUpon>OmissionCtrl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UIContorl\UIPlug\UCNormalCount.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,9 +158,6 @@
     <EmbeddedResource Include="Default.resx">
       <DependentUpon>Default.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DefaultForm.resx">
-      <DependentUpon>DefaultForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormUI\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,12 +185,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIContorl\Common\SiteMapCtrl.resx">
       <DependentUpon>SiteMapCtrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIContorl\UIPage\NormalChart.resx">
-      <DependentUpon>NormalChart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIContorl\UIPage\OmissionCtrl.resx">
-      <DependentUpon>OmissionCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIContorl\UIPlug\UCNormalCount.resx">
       <DependentUpon>UCNormalCount.cs</DependentUpon>
