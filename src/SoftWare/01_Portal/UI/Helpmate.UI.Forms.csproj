@@ -319,6 +319,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Firefox.ico" />
+    <Content Include="Resources\data\na.gif" />
+    <Content Include="Resources\data\nacolor.gif" />
+    <Content Include="Resources\data\number_0x.gif" />
+    <Content Include="Resources\data\number_10x.gif" />
+    <Content Include="Resources\data\number_11x.gif" />
+    <Content Include="Resources\data\number_12x.gif" />
+    <Content Include="Resources\data\number_13x.gif" />
+    <Content Include="Resources\data\number_14x.gif" />
+    <Content Include="Resources\data\number_15x.gif" />
+    <Content Include="Resources\data\number_16x.gif" />
+    <Content Include="Resources\data\number_17x.gif" />
+    <Content Include="Resources\data\number_18x.gif" />
+    <Content Include="Resources\data\number_19x.gif" />
+    <Content Include="Resources\data\number_1x.gif" />
+    <Content Include="Resources\data\number_20x.gif" />
+    <Content Include="Resources\data\number_21x.gif" />
+    <Content Include="Resources\data\number_22x.gif" />
+    <Content Include="Resources\data\number_23x.gif" />
+    <Content Include="Resources\data\number_24x.gif" />
+    <Content Include="Resources\data\number_25x.gif" />
+    <Content Include="Resources\data\number_26x.gif" />
+    <Content Include="Resources\data\number_27x.gif" />
+    <Content Include="Resources\data\number_2x.gif" />
+    <Content Include="Resources\data\number_3x.gif" />
+    <Content Include="Resources\data\number_4x.gif" />
+    <Content Include="Resources\data\number_5x.gif" />
+    <Content Include="Resources\data\number_6x.gif" />
+    <Content Include="Resources\data\number_7x.gif" />
+    <Content Include="Resources\data\number_8x.gif" />
+    <Content Include="Resources\data\number_9x.gif" />
     <None Include="Resources\headbg.png" />
   </ItemGroup>
   <ItemGroup />
