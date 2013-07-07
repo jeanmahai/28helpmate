@@ -66,7 +66,7 @@ namespace Helpmate.UI.Forms
                 case MenuEnum.NormalTrend:
                     CurrMenuCtrl(lblNormalTrend, picNormalTrendCurr, conForm, siteMapList);
                     break;
-                case MenuEnum.Email:
+                case MenuEnum.Special:
                     CurrMenuCtrl(lblEmail, picEmailCurr, conForm, siteMapList);
                     break;
                 case MenuEnum.Tools:

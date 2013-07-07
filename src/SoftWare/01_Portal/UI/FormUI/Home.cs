@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Helpmate.BizEntity;
 using Helpmate.BizEntity.Enum;
 using Helpmate.Facades;
+using Helpmate.UI.Forms.UserContorl;
+using Helpmate.UI.Forms.UIContorl.Common;
 
 namespace Helpmate.UI.Forms.FormUI
 {
@@ -31,12 +33,33 @@ namespace Helpmate.UI.Forms.FormUI
 
         private void Home_Load(object sender, EventArgs e)
         {
+            QueryData();
+        }
+
+        private void QueryData()
+        {
+            cmd.ShowOpaqueLayer(this, 125, true);
             serviceFacade.QuerySuperPerson(result =>
             {
-                var c = result.Success;
-                var b = result.Message;
-                var d = result.Data;
+                cmd.HideOpaqueLayer();
+                if (result.Error != null || !result.Result.Success)
+                {
+                    string message = result.Error != null ? "无法连接服务器，请稍后重试！" : result.Result.Message;
+                    MessageBox.Show(message);
+                    return;
+                }
+
+                var c = result.Result.Success;
+                var b = result.Result.Message;
+                var d = result.Result.Data;
             });
+        }
+
+        public OpaqueCommand cmd = new OpaqueCommand();
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            QueryData();
+
         }
     }
 }

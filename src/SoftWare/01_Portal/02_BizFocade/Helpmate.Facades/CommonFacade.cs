@@ -11,7 +11,7 @@ namespace Helpmate.Facades
     {
         private readonly RestClient restClient = new RestClient();
 
-        public void QuerySuperPerson(Action<ResultRMOfPageListOfLotteryForBJ> callback)
+        public void QuerySuperPerson(Action<QueryCompletedEventArgs> callback)
         {
             TokenHeader tokenHeader = new TokenHeader();
             LotteryFilterForBJ filterForBj = new LotteryFilterForBJ();
@@ -19,12 +19,7 @@ namespace Helpmate.Facades
             restClient.ClientService.QueryAsync(tokenHeader, filterForBj);
             EventHandler<QueryCompletedEventArgs> callbackHandler = (obj, args) =>
             {
-                if (args.Error != null)
-                {
-                    MessageBox.Show(args.Error.Message);
-                    return;
-                }
-                callback(args.Result);
+                callback(args);
             };
             restClient.ClientService.QueryCompleted += callbackHandler;
         }

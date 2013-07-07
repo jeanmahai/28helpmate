@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppContorl\RowMergeView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AppContorl\RowMergeView.designer.cs">
-      <DependentUpon>RowMergeView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Default.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +104,7 @@
     <Compile Include="UIContorl\Common\LoadingCtrl.Designer.cs">
       <DependentUpon>LoadingCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIContorl\Common\OpaqueCommand.cs" />
     <Compile Include="UIContorl\Common\SimplePageCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,6 +116,9 @@
     </Compile>
     <Compile Include="UIContorl\Common\SiteMapCtrl.Designer.cs">
       <DependentUpon>SiteMapCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIContorl\Common\UCOpaqueLayer.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UIContorl\UIPlug\UCNormalCount.cs">
       <SubType>UserControl</SubType>
@@ -152,9 +150,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AppContorl\RowMergeView.resx">
-      <DependentUpon>RowMergeView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Default.resx">
       <DependentUpon>Default.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UIContorl\Common\SiteMapCtrl.resx">
       <DependentUpon>SiteMapCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIContorl\Common\UCOpaqueLayer.resx">
+      <DependentUpon>UCOpaqueLayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIContorl\UIPlug\UCNormalCount.resx">
       <DependentUpon>UCNormalCount.cs</DependentUpon>
