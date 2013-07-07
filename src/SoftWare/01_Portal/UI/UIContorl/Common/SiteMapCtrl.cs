@@ -17,7 +17,7 @@ namespace Helpmate.UI.Forms.UserContorl.Common
         private int TextLeft = 10;
         private int TextTop = 5;
 
-        private int SplitLeft = 80;
+        private int SplitLeft = 100;
         private int SplitTop = 5;
 
         public SiteMapCtrl()
@@ -34,8 +34,7 @@ namespace Helpmate.UI.Forms.UserContorl.Common
                 lblText.Text = item.Text;
                 lblText.Left = TextLeft;
                 lblText.Top = TextTop;
-                lblText.Width = 100;
-                lblText.Width = 70;
+                lblText.Width = 90;
                 lblText.TextAlign = ContentAlignment.MiddleLeft;
                 this.Controls.Add(lblText);
 

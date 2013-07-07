@@ -7,7 +7,7 @@ namespace Helpmate.BizEntity.Enum
 {
     public enum MenuEnum
     {
-        Home, Prediction, Movie, Email, Tools, Log
+        Home, Prediction, Omission, NormalTrend, Special, Tools, Log
     }
 
     public enum AppMessage

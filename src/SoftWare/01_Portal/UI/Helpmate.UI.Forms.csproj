@@ -49,23 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppContorl\RowMergeView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AppContorl\RowMergeView.designer.cs">
-      <DependentUpon>RowMergeView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Default.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Default.Designer.cs">
       <DependentUpon>Default.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DefaultForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DefaultForm.designer.cs">
-      <DependentUpon>DefaultForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUI\Home.cs">
       <SubType>Form</SubType>
@@ -97,6 +85,9 @@
     <Compile Include="LoginForm.designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\TrendCountModel.cs" />
+    <Compile Include="Models\TrendDataModel.cs" />
+    <Compile Include="Models\TrendHeaderModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -116,6 +107,7 @@
     <Compile Include="UIContorl\Common\LoadingCtrl.Designer.cs">
       <DependentUpon>LoadingCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIContorl\Common\OpaqueCommand.cs" />
     <Compile Include="UIContorl\Common\SimplePageCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -128,17 +120,8 @@
     <Compile Include="UIContorl\Common\SiteMapCtrl.Designer.cs">
       <DependentUpon>SiteMapCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIContorl\UIPage\NormalChart.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UIContorl\UIPage\NormalChart.Designer.cs">
-      <DependentUpon>NormalChart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UIContorl\UIPage\OmissionCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UIContorl\UIPage\OmissionCtrl.Designer.cs">
-      <DependentUpon>OmissionCtrl.cs</DependentUpon>
+    <Compile Include="UIContorl\Common\UCOpaqueLayer.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UIContorl\UIPlug\UCNormalCount.cs">
       <SubType>UserControl</SubType>
@@ -170,14 +153,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AppContorl\RowMergeView.resx">
-      <DependentUpon>RowMergeView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Default.resx">
       <DependentUpon>Default.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DefaultForm.resx">
-      <DependentUpon>DefaultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -207,18 +184,17 @@
     <EmbeddedResource Include="UIContorl\Common\SiteMapCtrl.resx">
       <DependentUpon>SiteMapCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIContorl\UIPage\NormalChart.resx">
-      <DependentUpon>NormalChart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UIContorl\UIPage\OmissionCtrl.resx">
-      <DependentUpon>OmissionCtrl.cs</DependentUpon>
+    <EmbeddedResource Include="UIContorl\Common\UCOpaqueLayer.resx">
+      <DependentUpon>UCOpaqueLayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIContorl\UIPlug\UCNormalCount.resx">
       <DependentUpon>UCNormalCount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Add.png" />
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +295,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Firefox.ico" />
+    <None Include="Resources\number_27x.gif" />
+    <None Include="Resources\number_26x.gif" />
+    <None Include="Resources\number_25x.gif" />
+    <None Include="Resources\number_24x.gif" />
+    <None Include="Resources\number_23x.gif" />
+    <None Include="Resources\number_22x.gif" />
+    <None Include="Resources\number_21x.gif" />
+    <None Include="Resources\number_20x.gif" />
+    <None Include="Resources\number_19x.gif" />
+    <None Include="Resources\number_18x.gif" />
+    <None Include="Resources\number_17x.gif" />
+    <None Include="Resources\number_16x.gif" />
+    <None Include="Resources\number_15x.gif" />
+    <None Include="Resources\number_14x.gif" />
+    <None Include="Resources\number_13x.gif" />
+    <None Include="Resources\number_12x.gif" />
+    <None Include="Resources\number_11x.gif" />
+    <None Include="Resources\number_10x.gif" />
+    <None Include="Resources\number_9x.gif" />
+    <None Include="Resources\number_8x.gif" />
+    <None Include="Resources\number_7x.gif" />
+    <None Include="Resources\number_6x.gif" />
+    <None Include="Resources\number_5x.gif" />
+    <None Include="Resources\number_4x.gif" />
+    <None Include="Resources\number_3x.gif" />
+    <None Include="Resources\number_2x.gif" />
+    <None Include="Resources\number_1x.gif" />
+    <None Include="Resources\number_0x.gif" />
+    <None Include="Resources\nacolor.gif" />
+    <None Include="Resources\na.gif" />
     <None Include="Resources\headbg.png" />
   </ItemGroup>
   <ItemGroup />

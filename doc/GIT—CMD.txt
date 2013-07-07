@@ -1,8 +1,6 @@
 1.进入Master文件夹
 
-2.get pull
-
-3.git pull
+2.git pull
 
 4.Git status
 
