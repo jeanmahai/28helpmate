@@ -52,6 +52,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="TrendFacade.cs" />
     <Compile Include="ValidCode.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +77,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.LotteryTrend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

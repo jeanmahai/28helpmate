@@ -11,11 +11,15 @@ using Common.Utility;
 using System.IO;
 using Helpmate.UI.Forms.Properties;
 using Helpmate.UI.Forms.Models;
+using Helpmate.UI.Forms.UIContorl.Common;
+using Helpmate.Facades;
+using Helpmate.Facades.LotteryWebService;
 
 namespace Helpmate.UI.Forms.FormUI
 {
     public partial class NormalTrend : Form
     {
+        public TrendFacade serviceFacade = new TrendFacade();
         public List<SiteModel> SiteMapList { get; set; }
 
         public NormalTrend()
@@ -26,23 +30,93 @@ namespace Helpmate.UI.Forms.FormUI
                 new SiteModel(){ Text="近期开奖走势"}
             };
             InitializeComponent();
+            QueryData();
+        }
+        private void dataList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case 30:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#03C");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#03C");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 31:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#F33");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F33");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 32:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#609");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#609");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 33:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#F90");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F90");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 34:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#F09");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F09");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 35:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#0C0");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#0C0");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+            }
+        }
 
+        #region Bussiness
+        public OpaqueCommand cmd = new OpaqueCommand();
+        private void QueryData()
+        {
+            cmd.ShowOpaqueLayer(this, 125, true);
+            int pageIndex = 1;
+            var data = serviceFacade.QueryTrend(pageIndex);
+            LoadData(data.PageList.List, data.LotteryTimeses);
+            cmd.HideOpaqueLayer();
+        }
+        private void LoadData(LotteryForBJ[] list, LotteryTimes[] count)
+        {
             //统计
-            List<TrendCountModel> countData = GetCountList();
+            List<TrendCountModel> countData = (new TrendCountModel()).GetCountList(count);
             countList.DataSource = countData;
             SetCountStyle(countList, countData.Count);
             //头
-            List<TrendHeaderModel> headerData = GetHeaderList();
+            List<TrendHeaderModel> headerData = (new TrendHeaderModel()).GetHeader();
             headerList.DataSource = headerData;
-            SetHeaderStyle(headerList, headerData.Count);
+            SetHeaderStyle(headerList, 1);
             //数据
-            List<TrendDataModel> listData = GetDataList();
+            List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(list);
             dataList.DataSource = listData;
             SetDataStyle(dataList, listData.Count);
-            //22
-            if (listData.Count < 22)
-            {
-            }
         }
         private void SetCountStyle(object obj, int rows)
         {
@@ -149,249 +223,6 @@ namespace Helpmate.UI.Forms.FormUI
             dgv.BorderStyle = BorderStyle.None;
             dgv.BackgroundColor = Color.White;
         }
-        private List<TrendCountModel> GetCountList()
-        {
-            List<TrendCountModel> headerList = new List<TrendCountModel>();
-            TrendCountModel count = new TrendCountModel();
-            headerList.Add(count);
-            return headerList;
-        }
-        private List<TrendHeaderModel> GetHeaderList()
-        {
-            List<TrendHeaderModel> headerList = new List<TrendHeaderModel>();
-            TrendHeaderModel header = new TrendHeaderModel();
-            headerList.Add(header);
-            return headerList;
-        }
-        private List<TrendDataModel> GetDataList()
-        {
-            List<TrendDataModel> dataList = new List<TrendDataModel>();
-            TrendDataModel data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T20 = Resources.number_20x;
-            data.Big = "大";
-            data.Small = "";
-            data.Middle = "中";
-            data.Side = "";
-            data.Odd = "单";
-            data.Dual = "";
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T10 = Resources.number_10x;
-            data.Big = "";
-            data.Small = "小";
-            data.Middle = "";
-            data.Side = "边";
-            data.Odd = "";
-            data.Dual = "双";
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T12 = Resources.number_12x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T15 = Resources.number_15x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T19 = Resources.number_19x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T27 = Resources.number_27x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T26 = Resources.number_26x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T11 = Resources.number_11x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T0 = Resources.number_0x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T2 = Resources.number_2x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T5 = Resources.number_5x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T8 = Resources.number_8x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T1 = Resources.number_1x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T6 = Resources.number_6x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T4 = Resources.number_4x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T11 = Resources.number_11x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T3 = Resources.number_3x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T7 = Resources.number_7x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T9 = Resources.number_9x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T13 = Resources.number_13x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T14 = Resources.number_14x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T16 = Resources.number_16x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T22 = Resources.number_22x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T17 = Resources.number_17x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T24 = Resources.number_24x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T18 = Resources.number_18x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T21 = Resources.number_21x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T23 = Resources.number_23x;
-            dataList.Add(data);
-            data = new TrendDataModel();
-            data.PeriodNum = 575990;
-            data.RetTime = UtilsTool.ConvertDateToTrendDate();
-            data.T25 = Resources.number_25x;
-            dataList.Add(data);
-            for (int i = 0; i < 317; i++)
-            {
-                data = new TrendDataModel();
-                data.PeriodNum = 575990;
-                data.RetTime = UtilsTool.ConvertDateToTrendDate();
-                data.T25 = Resources.number_25x;
-                dataList.Add(data);
-            }
-            return dataList;
-        }
-        private void dataList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            switch (e.ColumnIndex)
-            {
-                case 30:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#03C");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#03C");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 31:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#F33");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F33");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 32:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#609");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#609");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 33:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#F90");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F90");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 34:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#F09");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F09");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 35:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#0C0");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#0C0");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-            }
-        }
+        #endregion
     }
 }

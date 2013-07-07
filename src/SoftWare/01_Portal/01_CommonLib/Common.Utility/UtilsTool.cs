@@ -38,10 +38,9 @@ namespace Common.Utility
             }
         }
 
-        public static string ConvertDateToTrendDate()
+        public static string ConvertDateToTrendDate(DateTime dtNow)
         {
             string result = "{0}-{1} {2}:{3}";
-            DateTime dtNow = DateTime.Now;
             string month = dtNow.Month < 10 ? string.Format("0{0}", dtNow.Month) : dtNow.Month.ToString();
             string day = dtNow.Day < 10 ? string.Format("0{0}", dtNow.Day) : dtNow.Day.ToString();
             string hour = dtNow.Hour < 10 ? string.Format("0{0}", dtNow.Hour) : dtNow.Hour.ToString();
