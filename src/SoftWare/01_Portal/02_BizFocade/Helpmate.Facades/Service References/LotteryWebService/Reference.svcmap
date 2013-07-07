@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="40ff861d-e78c-4715-af2a-17ea5d3a5b22" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1ef2f921-4655-4a76-8941-19d0263495d2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
-    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -21,8 +21,8 @@
     <MetadataSource Address="http://117.25.145.170:8088/LotteryWebService.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="LotteryWebService.wsdl" MetadataType="Wsdl" ID="275ee841-b337-4664-989f-a108fc8c798b" SourceId="1" SourceUrl="http://117.25.145.170:8088/LotteryWebService.asmx?wsdl" />
-    <MetadataFile FileName="LotteryWebService.disco" MetadataType="Disco" ID="0181bc63-8953-4f9f-a67d-94a54137ff32" SourceId="1" SourceUrl="http://117.25.145.170:8088/LotteryWebService.asmx?disco" />
+    <MetadataFile FileName="LotteryWebService.wsdl" MetadataType="Wsdl" ID="1d55f9d9-a0cb-4d96-bbb0-89980a65d30f" SourceId="1" SourceUrl="http://117.25.145.170:8088/LotteryWebService.asmx?wsdl" />
+    <MetadataFile FileName="LotteryWebService.disco" MetadataType="Disco" ID="680d9334-3999-436f-851b-00728354e1dd" SourceId="1" SourceUrl="http://117.25.145.170:8088/LotteryWebService.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

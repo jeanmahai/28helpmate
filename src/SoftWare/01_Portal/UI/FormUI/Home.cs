@@ -9,11 +9,13 @@ using System.Windows.Forms;
 using Helpmate.UI.Forms.UIContorl.UIPage;
 using Helpmate.BizEntity;
 using Helpmate.BizEntity.Enum;
+using Helpmate.Facades;
 
 namespace Helpmate.UI.Forms.FormUI
 {
     public partial class Home : Form
     {
+        public CommonFacade serviceFacade = new CommonFacade();
         public List<SiteModel> SiteMapList { get; set; }
 
         public Home()
@@ -30,9 +32,12 @@ namespace Helpmate.UI.Forms.FormUI
 
         private void Home_Load(object sender, EventArgs e)
         {
-           
+            serviceFacade.QuerySuperPerson(result =>
+            {
+                var c = result.Success;
+                var b = result.Message;
+                var d = result.Data;
+            });
         }
-
-       
     }
 }
