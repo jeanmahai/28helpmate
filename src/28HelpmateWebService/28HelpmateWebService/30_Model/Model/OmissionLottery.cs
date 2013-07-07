@@ -10,5 +10,6 @@ namespace Model.Model
         public virtual int Number { get; set; }
         public virtual int NearPeriod { get; set; }
         public virtual int Interval { get; set; }
+        public virtual int MaxInterval { get; set; }
     }
 }

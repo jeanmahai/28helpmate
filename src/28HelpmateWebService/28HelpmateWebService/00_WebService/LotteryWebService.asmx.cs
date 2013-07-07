@@ -38,9 +38,10 @@ namespace WebService
         }
         private bool ValidateToken(TokenHeader header)
         {
-            var token = Dal.GenerateToken(header.ToString(SessionValue.UserName,SessionValue.Key));
-            return Dal.ValidateToken(header.ToString(),
-                token);
+            //var token = Dal.GenerateToken(header.ToString(SessionValue.UserName,SessionValue.Key));
+            //return Dal.ValidateToken(header.ToString(),
+            //    token);
+            return true;
         }
 
         [WebMethod(Description = "查询最近20期号码相同的下一期的开奖结果")]
@@ -53,7 +54,7 @@ namespace WebService
                 var userSite = Dal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = Dal.QueryNextLotteryWithSameNumberForBJ(number,userSite.SysNo);
+                    result.Data = Dal.QueryNextLotteryWithSameNumber_28BJ(number,userSite.SysNo);
                 }
                 else
                 {
@@ -79,7 +80,7 @@ namespace WebService
                 var userSite = Dal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = Dal.QueryLotteryByHourStepForBJ(time,userSite.SysNo);
+                    result.Data = Dal.QueryLotteryByHourStep_28BJ(time,userSite.SysNo);
                 }
                 else
                 {
@@ -106,7 +107,7 @@ namespace WebService
                 var userSite = Dal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = Dal.QueryLotteryByDayForBJ(time,userSite.SysNo);
+                    result.Data = Dal.QueryLotteryByDay_28BJ(time,userSite.SysNo);
                 }
                 else
                 {
@@ -123,6 +124,28 @@ namespace WebService
             }
             return result;
         }
+        [WebMethod(Description = "查询模块1-模块4的数据")]
+        [SoapHeader("Token")]
+        public ResultRM<CustomModules> GetCustomeModule(string siteName)
+        {
+            var result = new ResultRM<CustomModules>();
+            result.Data=new CustomModules();
+
+            var lastestLottery = Dal.MaxPeriod_28BJ();
+
+            var userSite = Dal.QueryUserSite(siteName);
+            if(userSite!=null)
+            {
+                result.Data.M1 = Dal.QueryNextLotteryWithSameNumber_28BJ(lastestLottery.RetNum, userSite.SysNo);
+                result.Data.M2 = Dal.QueryLotteryByHourStep_28BJ(lastestLottery.RetTime, userSite.SysNo);
+                result.Data.M3 = Dal.QueryLotteryByDay_28BJ(lastestLottery.RetTime, userSite.SysNo);
+                result.Data.M4 = Dal.QueryTop20_28BJ(userSite.SysNo);
+                result.Success = true;
+                return result;
+            }
+            result.Success = false;
+            return result;
+        } 
         [WebMethod(Description = "查询最近20期的结果")]
         [SoapHeader("Token")]
         public ResultRM<LotteryByTwentyPeriod> QueryLotteryByTwenty(string siteName)
@@ -133,7 +156,7 @@ namespace WebService
                 var userSite = Dal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = Dal.QueryTop20ForBJ(userSite.SysNo);
+                    result.Data = Dal.QueryTop20_28BJ(userSite.SysNo);
                 }
                 else
                 {
@@ -159,7 +182,7 @@ namespace WebService
                 var userSite = Dal.QueryUserSite(siteName);
                 if (userSite != null)
                 {
-                    result.Data = (from a in Dal.QueryTop20ForBJ(userSite.SysNo).Lotteries
+                    result.Data = (from a in Dal.QueryTop20_28BJ(userSite.SysNo).Lotteries
                                    select a).FirstOrDefault();
                 }
                 else
@@ -178,12 +201,12 @@ namespace WebService
         }
         [WebMethod(Description = "查询开奖结果")]
         [SoapHeader("Token")]
-        public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilter filter)
+        public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilterForBJ filterForBj)
         {
             var result = new ResultRM<PageList<LotteryForBJ>>();
             if (ValidateToken(Token))
             {
-                result.Data = Dal.QueryForBJ(filter);
+                result.Data = Dal.Query_28BJ(filterForBj);
                 result.Success = true;
                 result.Message = MESSAGE_SUCCESS;
             }
@@ -200,9 +223,9 @@ namespace WebService
             var isSuccess = Dal.Login(userName,psw);
             if (isSuccess)
             {
-                SessionValue.UserName = userName;
-                SessionValue.Key = Guid.NewGuid().ToString();
-                return SessionValue.Key;
+                //SessionValue.UserName = userName;
+                //SessionValue.Key = Guid.NewGuid().ToString();
+                //return SessionValue.Key;
             }
             return "";
         }
@@ -210,6 +233,23 @@ namespace WebService
         public int Register(User user)
         {
             return Dal.Register(user);
+        }
+
+        [WebMethod]
+        public string GenerateCode()
+        {
+            var code = Dal.GenerateCode();
+            //SessionValue.Code = code;
+            return code;
+        }
+
+        [WebMethod(Description = "一般走势图")]
+        public LotteryTrend QueryTrend(DateTime from,
+            DateTime to,
+            int pageSize,
+            int pageIndex)
+        {
+            return Dal.QueryTrend_28BJ(from,to,pageIndex,pageSize);
         }
     }
 }

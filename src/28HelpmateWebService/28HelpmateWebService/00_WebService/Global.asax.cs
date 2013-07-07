@@ -17,8 +17,8 @@ namespace WebService
 
         protected void Session_Start(object sender,EventArgs e)
         {
-            Session[SessionValue.TOKEN] = "";
-            Session[SessionValue.USER_NAME] = "";
+            //Session[SessionValue.TOKEN] = "";
+            //Session[SessionValue.USER_NAME] = "";
         }
 
         protected void Application_BeginRequest(object sender,EventArgs e)

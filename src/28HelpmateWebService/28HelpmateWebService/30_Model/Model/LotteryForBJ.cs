@@ -18,7 +18,6 @@ namespace Model.Model
         public virtual string CollectRet { get; set; }
         public virtual DateTime CollectTime { get; set; }
         public virtual int Status { get; set; }
-
         public virtual LotteryType type { get; set; }
     }
 }

@@ -43,8 +43,11 @@
     <Compile Include="Enum\BigSmall.cs" />
     <Compile Include="Enum\CenterSideEnum.cs" />
     <Compile Include="Enum\OddEvenEnum.cs" />
+    <Compile Include="Model\LotteryExtByBJ.cs" />
     <Compile Include="Model\LotteryForBJ.cs" />
+    <Compile Include="Model\LotteryTimes.cs" />
     <Compile Include="Model\LotteryType.cs" />
+    <Compile Include="Model\LotteryTypeTimes.cs" />
     <Compile Include="Model\OmissionLottery.cs" />
     <Compile Include="Model\OmitStatistics.cs" />
     <Compile Include="Model\RegionEnum.cs" />
@@ -52,8 +55,10 @@
     <Compile Include="Model\UserSite.cs" />
     <Compile Include="Model\UseSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseModel\CustomModule.cs" />
     <Compile Include="ResponseModel\LotteryByTwentyPeriod.cs" />
     <Compile Include="ResponseModel\LotteryFilter.cs" />
+    <Compile Include="ResponseModel\LotteryTrend.cs" />
     <Compile Include="ResponseModel\PageList.cs" />
     <Compile Include="ResponseModel\ResultRM.cs" />
   </ItemGroup>
@@ -87,6 +92,16 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\UseSource.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\LotteryTimes.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\LotteryExtByBJ.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

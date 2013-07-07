@@ -5,10 +5,11 @@
   <class name="Model.Model.OmissionLottery,Model" 
          table="[SourceData_28_Beijing]"
           where="Status=1">
-    <id name="NearPeriod" column="NearPeriod" type="Int32" >
+    <id name="Number" column="Number" type="Int32" >
       <generator class="assigned"/>
     </id>
-    <property name="Number" column="Number" type="Int32"  />
+    <property name="NearPeriod" column="NearPeriod" type="Int32"  />
     <property name="Interval" column="Interval" type="Int32"  />
+    <property name="MaxInterval" column="MaxInterval" type="Int32"  />
   </class>
 </hibernate-mapping>

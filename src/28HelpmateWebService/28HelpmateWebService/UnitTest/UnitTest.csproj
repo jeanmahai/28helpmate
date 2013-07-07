@@ -59,13 +59,19 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Service References\LotteryWebService\LotteryWebService.wsdl" />
-    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfLottery.datasource">
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.LotteryTrend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM.datasource">
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfCustomModules.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfLottery.datasource">
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfLotteryByTwentyPeriod.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfLotteryForBJ.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfLotteryForBJ.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
