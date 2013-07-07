@@ -48,3 +48,8 @@ E:\GitHub\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\bin\Debu
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\obj\Debug\ResolveAssemblyReference.cache
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\obj\Debug\Common.Utility.dll
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\obj\Debug\Common.Utility.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\bin\Debug\Common.Utility.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\bin\Debug\Common.Utility.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\obj\Debug\ResolveAssemblyReference.cache
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\obj\Debug\Common.Utility.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\01_CommonLib\Common.Utility\obj\Debug\Common.Utility.pdb

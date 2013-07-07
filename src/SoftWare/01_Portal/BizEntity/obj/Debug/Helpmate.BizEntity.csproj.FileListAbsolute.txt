@@ -12,3 +12,10 @@ E:\GitHub\28helpmate\src\SoftWare\01_Portal\BizEntity\bin\Debug\Helpmate.BizEnti
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\BizEntity\obj\Debug\ResolveAssemblyReference.cache
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\BizEntity\obj\Debug\Helpmate.BizEntity.dll
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\BizEntity\obj\Debug\Helpmate.BizEntity.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity\bin\Debug\Helpmate.BizEntity.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity\bin\Debug\Helpmate.BizEntity.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity\bin\Debug\Helpmate.BizEntity.Enum.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity\bin\Debug\Helpmate.BizEntity.Enum.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity\obj\Debug\ResolveAssemblyReference.cache
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity\obj\Debug\Helpmate.BizEntity.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity\obj\Debug\Helpmate.BizEntity.pdb

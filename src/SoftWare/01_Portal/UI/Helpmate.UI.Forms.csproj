@@ -73,6 +73,12 @@
     <Compile Include="FormUI\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUI\NormalTrend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUI\NormalTrend.Designer.cs">
+      <DependentUpon>NormalTrend.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUI\Omission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUI\NormalTrend.resx">
+      <DependentUpon>NormalTrend.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\Omission.resx">
       <DependentUpon>Omission.cs</DependentUpon>
