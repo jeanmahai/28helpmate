@@ -36,7 +36,7 @@ namespace Helpmate.DataService.Logic
         /// <returns></returns>
         public List<CollectResultEntity> Collect(long periodNum, DateTime dtTime)
         {
-            int tryTimes = 11;
+            int tryTimes = 21;
             List<CollectResultEntity> result = null;
             while (tryTimes > 0)
             {
@@ -44,7 +44,7 @@ namespace Helpmate.DataService.Logic
                 if (result == null || result.Count == 0)
                 {
                     tryTimes--;
-                    //如果采集失败，则间隔3秒重试，重试10次
+                    //如果采集失败，则间隔3秒重试，重试20次
                     Thread.Sleep(3000);
                 }
                 else
