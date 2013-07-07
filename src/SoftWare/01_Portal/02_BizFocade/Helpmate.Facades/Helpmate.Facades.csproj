@@ -49,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ValidCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01_CommonLib\Common.Utility\Common.Utility.csproj">

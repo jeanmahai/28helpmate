@@ -44,6 +44,12 @@ namespace Helpmate.UI.Forms
             CurrMenu(MenuEnum.Omission, childForm.SiteMapList, childForm);
         }
 
+        private void pnlNormalTrend_Click(object sender, EventArgs e)
+        {
+            var childForm = new NormalTrend();
+            CurrMenu(MenuEnum.NormalTrend, childForm.SiteMapList, childForm);
+        }
+
         public void CurrMenu(MenuEnum menuEnum, List<SiteModel> siteMapList, Form conForm)
         {
             switch (menuEnum)
@@ -56,6 +62,9 @@ namespace Helpmate.UI.Forms
                     break;
                 case MenuEnum.Omission:
                     CurrMenuCtrl(lblMovie, picMovieCurr, conForm, siteMapList);
+                    break;
+                case MenuEnum.NormalTrend:
+                    CurrMenuCtrl(lblNormalTrend, picNormalTrendCurr, conForm, siteMapList);
                     break;
                 case MenuEnum.Email:
                     CurrMenuCtrl(lblEmail, picEmailCurr, conForm, siteMapList);
@@ -110,6 +119,8 @@ namespace Helpmate.UI.Forms
                 this.MdiChildren[i].BringToFront();
             }
         }
+
+        
 
     }
 }
