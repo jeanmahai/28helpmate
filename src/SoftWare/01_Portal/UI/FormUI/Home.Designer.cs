@@ -77,12 +77,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("宋体", 9F);
             this.label15.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label15.Location = new System.Drawing.Point(266, 7);
-=======
-            this.label15.Location = new System.Drawing.Point(351, 7);
-            this.label15.Location = new System.Drawing.Point(368, 7);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(89, 12);
             this.label15.TabIndex = 150;
@@ -94,12 +89,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F);
             this.label14.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label14.Location = new System.Drawing.Point(94, 7);
-=======
-            this.label14.Location = new System.Drawing.Point(179, 7);
-            this.label14.Location = new System.Drawing.Point(196, 7);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(137, 12);
             this.label14.TabIndex = 149;
@@ -149,12 +139,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 9F);
             this.label16.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label16.Location = new System.Drawing.Point(494, 268);
-=======
-            this.label16.Location = new System.Drawing.Point(380, 265);
-            this.label16.Location = new System.Drawing.Point(397, 265);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 12);
             this.label16.TabIndex = 156;
@@ -166,12 +151,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 9F);
             this.label17.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label17.Location = new System.Drawing.Point(300, 268);
-=======
-            this.label17.Location = new System.Drawing.Point(186, 265);
-            this.label17.Location = new System.Drawing.Point(203, 265);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(137, 12);
             this.label17.TabIndex = 155;
@@ -197,12 +177,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label1.Location = new System.Drawing.Point(444, 268);
-=======
-            this.label1.Location = new System.Drawing.Point(330, 265);
-            this.label1.Location = new System.Drawing.Point(347, 265);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 12);
@@ -227,12 +202,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F);
             this.label5.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label5.Location = new System.Drawing.Point(118, 801);
-=======
-            this.label5.Location = new System.Drawing.Point(203, 801);
-            this.label5.Location = new System.Drawing.Point(220, 801);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(173, 12);
             this.label5.TabIndex = 159;
@@ -269,12 +239,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("宋体", 9F);
             this.label18.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label18.Location = new System.Drawing.Point(494, 541);
-=======
-            this.label18.Location = new System.Drawing.Point(379, 542);
-            this.label18.Location = new System.Drawing.Point(396, 542);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(41, 12);
             this.label18.TabIndex = 164;
@@ -286,12 +251,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("宋体", 9F);
             this.label19.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label19.Location = new System.Drawing.Point(301, 541);
-=======
-            this.label19.Location = new System.Drawing.Point(186, 542);
-            this.label19.Location = new System.Drawing.Point(203, 542);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(137, 12);
             this.label19.TabIndex = 163;
@@ -304,12 +264,7 @@
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label20.ForeColor = System.Drawing.Color.Red;
-<<<<<<< HEAD
             this.label20.Location = new System.Drawing.Point(445, 541);
-=======
-            this.label20.Location = new System.Drawing.Point(330, 542);
-            this.label20.Location = new System.Drawing.Point(347, 542);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(40, 12);
@@ -344,12 +299,7 @@
             // ucNormalCount3
             // 
             this.ucNormalCount3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-<<<<<<< HEAD
             this.ucNormalCount3.Location = new System.Drawing.Point(-39, 842);
-=======
-            this.ucNormalCount3.Location = new System.Drawing.Point(2, 842);
-            this.ucNormalCount3.Location = new System.Drawing.Point(11, 842);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.ucNormalCount3.Name = "ucNormalCount3";
             this.ucNormalCount3.Size = new System.Drawing.Size(706, 201);
             this.ucNormalCount3.TabIndex = 165;
@@ -357,12 +307,7 @@
             // ucNormalCount4
             // 
             this.ucNormalCount4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-<<<<<<< HEAD
             this.ucNormalCount4.Location = new System.Drawing.Point(-39, 575);
-=======
-            this.ucNormalCount4.Location = new System.Drawing.Point(2, 575);
-            this.ucNormalCount4.Location = new System.Drawing.Point(11, 575);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.ucNormalCount4.Name = "ucNormalCount4";
             this.ucNormalCount4.Size = new System.Drawing.Size(706, 201);
             this.ucNormalCount4.TabIndex = 165;
@@ -370,12 +315,7 @@
             // ucNormalCount2
             // 
             this.ucNormalCount2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-<<<<<<< HEAD
             this.ucNormalCount2.Location = new System.Drawing.Point(-39, 309);
-=======
-            this.ucNormalCount2.Location = new System.Drawing.Point(2, 309);
-            this.ucNormalCount2.Location = new System.Drawing.Point(11, 309);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.ucNormalCount2.Name = "ucNormalCount2";
             this.ucNormalCount2.Size = new System.Drawing.Size(706, 201);
             this.ucNormalCount2.TabIndex = 165;
@@ -383,12 +323,7 @@
             // ucNormalCount1
             // 
             this.ucNormalCount1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-<<<<<<< HEAD
             this.ucNormalCount1.Location = new System.Drawing.Point(-39, 40);
-=======
-            this.ucNormalCount1.Location = new System.Drawing.Point(2, 40);
-            this.ucNormalCount1.Location = new System.Drawing.Point(11, 40);
->>>>>>> 5418caeca418830973e8c490cae9b10adb0da78a
             this.ucNormalCount1.Name = "ucNormalCount1";
             this.ucNormalCount1.Size = new System.Drawing.Size(706, 201);
             this.ucNormalCount1.TabIndex = 165;
