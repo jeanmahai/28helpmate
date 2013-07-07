@@ -10,5 +10,7 @@ namespace Model.ResponseModel
     {
         public int Total { get; set; }
         public List<T> List { get; set; }
+        public int PageSize { get; set; }
+        public int PageIndex { get; set; }
     }
 }

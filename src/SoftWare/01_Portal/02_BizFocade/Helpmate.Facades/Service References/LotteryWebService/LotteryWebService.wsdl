@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="QueryNextLotteryWithSameNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="number" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryNextLotteryWithSameNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryNextLotteryWithSameNumberResult" type="tns:ResultRMOfLotteryByTwentyPeriod" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfLotteryByTwentyPeriod">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryByTwentyPeriod" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotteryByTwentyPeriod">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Lotteries" type="tns:ArrayOfLotteryForBJ" />
+          <s:element minOccurs="0" maxOccurs="1" name="NotAppearNumber" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLotteryForBJ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LotteryForBJ" nillable="true" type="tns:LotteryForBJ" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotteryForBJ">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteSysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetOddNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetNum" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RetMidNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CollectRet" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CollectTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="type" type="tns:LotteryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotteryType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RetNum" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BigOrSmall" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleOrSide" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OddOrDual" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MantissaBigOrSmall" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThreeRemainder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FourRemainder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FiveRemainder" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TokenHeader" type="tns:TokenHeader" />
+      <s:complexType name="TokenHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="QueryLotteryByHourStep">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryLotteryByHourStepResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryLotteryByHourStepResult" type="tns:ResultRMOfLotteryByTwentyPeriod" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryLotteryByDay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryLotteryByDayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryLotteryByDayResult" type="tns:ResultRMOfLotteryByTwentyPeriod" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomeModule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomeModuleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomeModuleResult" type="tns:ResultRMOfCustomModules" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfCustomModules">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:CustomModules" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomModules">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="M1" type="tns:LotteryByTwentyPeriod" />
+          <s:element minOccurs="0" maxOccurs="1" name="M2" type="tns:LotteryByTwentyPeriod" />
+          <s:element minOccurs="0" maxOccurs="1" name="M3" type="tns:LotteryByTwentyPeriod" />
+          <s:element minOccurs="0" maxOccurs="1" name="M4" type="tns:LotteryByTwentyPeriod" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryLotteryByTwenty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryLotteryByTwentyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryLotteryByTwentyResult" type="tns:ResultRMOfLotteryByTwentyPeriod" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryCurrentLottery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryCurrentLotteryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryCurrentLotteryResult" type="tns:ResultRMOfLotteryForBJ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfLotteryForBJ">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryForBJ" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filterForBj" type="tns:LotteryFilterForBJ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LotteryFilterForBJ">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="From" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="To" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SiteName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GameName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryResult" type="tns:ResultRMOfPageListOfLotteryForBJ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfPageListOfLotteryForBJ">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:PageListOfLotteryForBJ" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PageListOfLotteryForBJ">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="List" type="tns:ArrayOfLotteryForBJ" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="psw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Register">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SysNo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPwd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegIP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RechargeUseBeginTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RechargeUseEndTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateCode">
+        <s:complexType />
+      </s:element>
+      <s:element name="GenerateCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryTrend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryTrendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryTrendResult" type="tns:LotteryTrend" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LotteryTrend">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LotteryTimeses" type="tns:ArrayOfLotteryTimes" />
+          <s:element minOccurs="0" maxOccurs="1" name="PageList" type="tns:PageListOfLotteryExtByBJ" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLotteryTimes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LotteryTimes" nillable="true" type="tns:LotteryTimes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotteryTimes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PageListOfLotteryExtByBJ">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="List" type="tns:ArrayOfLotteryExtByBJ" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLotteryExtByBJ">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LotteryExtByBJ" nillable="true" type="tns:LotteryExtByBJ" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotteryExtByBJ">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:LotteryForBJ">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Type" type="tns:LotteryType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="QueryNextLotteryWithSameNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryNextLotteryWithSameNumber" />
+  </wsdl:message>
+  <wsdl:message name="QueryNextLotteryWithSameNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryNextLotteryWithSameNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryNextLotteryWithSameNumberTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByHourStepSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryLotteryByHourStep" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByHourStepSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryLotteryByHourStepResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByHourStepTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByDaySoapIn">
+    <wsdl:part name="parameters" element="tns:QueryLotteryByDay" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByDaySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryLotteryByDayResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByDayTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomeModuleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomeModule" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomeModuleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomeModuleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomeModuleTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByTwentySoapIn">
+    <wsdl:part name="parameters" element="tns:QueryLotteryByTwenty" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByTwentySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryLotteryByTwentyResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryLotteryByTwentyTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="QueryCurrentLotterySoapIn">
+    <wsdl:part name="parameters" element="tns:QueryCurrentLottery" />
+  </wsdl:message>
+  <wsdl:message name="QueryCurrentLotterySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryCurrentLotteryResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryCurrentLotteryTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapIn">
+    <wsdl:part name="parameters" element="tns:Query" />
+  </wsdl:message>
+  <wsdl:message name="QuerySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapIn">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateCode" />
+  </wsdl:message>
+  <wsdl:message name="GenerateCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryTrendSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryTrend" />
+  </wsdl:message>
+  <wsdl:message name="QueryTrendSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryTrendResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LotteryWebServiceSoap">
+    <wsdl:operation name="QueryNextLotteryWithSameNumber">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近20期号码相同的下一期的开奖结果</wsdl:documentation>
+      <wsdl:input message="tns:QueryNextLotteryWithSameNumberSoapIn" />
+      <wsdl:output message="tns:QueryNextLotteryWithSameNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByHourStep">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询同一时间点的近20小时的数据</wsdl:documentation>
+      <wsdl:input message="tns:QueryLotteryByHourStepSoapIn" />
+      <wsdl:output message="tns:QueryLotteryByHourStepSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByDay">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询同一时间点的近20天的数据</wsdl:documentation>
+      <wsdl:input message="tns:QueryLotteryByDaySoapIn" />
+      <wsdl:output message="tns:QueryLotteryByDaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomeModule">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
+      <wsdl:input message="tns:GetCustomeModuleSoapIn" />
+      <wsdl:output message="tns:GetCustomeModuleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByTwenty">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近20期的结果</wsdl:documentation>
+      <wsdl:input message="tns:QueryLotteryByTwentySoapIn" />
+      <wsdl:output message="tns:QueryLotteryByTwentySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryCurrentLottery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近1期的结果</wsdl:documentation>
+      <wsdl:input message="tns:QueryCurrentLotterySoapIn" />
+      <wsdl:output message="tns:QueryCurrentLotterySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询开奖结果</wsdl:documentation>
+      <wsdl:input message="tns:QuerySoapIn" />
+      <wsdl:output message="tns:QuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">登录,如果返回空字符串则登录失败,成功返回key</wsdl:documentation>
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">注册</wsdl:documentation>
+      <wsdl:input message="tns:RegisterSoapIn" />
+      <wsdl:output message="tns:RegisterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCode">
+      <wsdl:input message="tns:GenerateCodeSoapIn" />
+      <wsdl:output message="tns:GenerateCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryTrend">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">一般走势图</wsdl:documentation>
+      <wsdl:input message="tns:QueryTrendSoapIn" />
+      <wsdl:output message="tns:QueryTrendSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryNextLotteryWithSameNumber">
+      <soap:operation soapAction="http://tempuri.org/QueryNextLotteryWithSameNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryNextLotteryWithSameNumberTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByHourStep">
+      <soap:operation soapAction="http://tempuri.org/QueryLotteryByHourStep" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryLotteryByHourStepTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByDay">
+      <soap:operation soapAction="http://tempuri.org/QueryLotteryByDay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryLotteryByDayTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomeModule">
+      <soap:operation soapAction="http://tempuri.org/GetCustomeModule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCustomeModuleTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByTwenty">
+      <soap:operation soapAction="http://tempuri.org/QueryLotteryByTwenty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryLotteryByTwentyTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCurrentLottery">
+      <soap:operation soapAction="http://tempuri.org/QueryCurrentLottery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryCurrentLotteryTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap:operation soapAction="http://tempuri.org/Query" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCode">
+      <soap:operation soapAction="http://tempuri.org/GenerateCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryTrend">
+      <soap:operation soapAction="http://tempuri.org/QueryTrend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryNextLotteryWithSameNumber">
+      <soap12:operation soapAction="http://tempuri.org/QueryNextLotteryWithSameNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryNextLotteryWithSameNumberTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByHourStep">
+      <soap12:operation soapAction="http://tempuri.org/QueryLotteryByHourStep" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryLotteryByHourStepTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByDay">
+      <soap12:operation soapAction="http://tempuri.org/QueryLotteryByDay" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryLotteryByDayTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomeModule">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomeModule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCustomeModuleTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryLotteryByTwenty">
+      <soap12:operation soapAction="http://tempuri.org/QueryLotteryByTwenty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryLotteryByTwentyTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCurrentLottery">
+      <soap12:operation soapAction="http://tempuri.org/QueryCurrentLottery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryCurrentLotteryTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Query">
+      <soap12:operation soapAction="http://tempuri.org/Query" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://tempuri.org/Register" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCode">
+      <soap12:operation soapAction="http://tempuri.org/GenerateCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryTrend">
+      <soap12:operation soapAction="http://tempuri.org/QueryTrend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LotteryWebService">
+    <wsdl:port name="LotteryWebServiceSoap" binding="tns:LotteryWebServiceSoap">
+      <soap:address location="http://117.25.145.170:8088/LotteryWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LotteryWebServiceSoap12" binding="tns:LotteryWebServiceSoap12">
+      <soap12:address location="http://117.25.145.170:8088/LotteryWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

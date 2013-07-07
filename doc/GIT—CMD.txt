@@ -1,0 +1,11 @@
+1.进入Master文件夹
+
+2.git pull
+
+4.Git status
+
+5.git add .
+
+6. $ git commit -a -m "remark"
+
+7.$ git push

@@ -40,6 +40,9 @@
     <Reference Include="NHibernate">
       <HintPath>..\40_References\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.Utility">
+      <HintPath>..\40_References\NHibernate.Utility.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,6 +66,9 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="sqls\sql.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
