@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="EFB27LLaDdtrIoqPFaBRA2V/4Zs=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Kl5fuGD0AFWllaoB/nnOIJQQv4A=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="LotteryWebServiceSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="LotteryWebServiceSoap" contract="Helpmate.Service.LotteryWebServiceSoap" bindingType="basicHttpBinding" address="http://117.25.155.107:8088/LotteryWebService.asmx" bindingConfiguration="LotteryWebServiceSoap">
+    <endpoint name="LotteryWebServiceSoap" contract="LotteryWebService.LotteryWebServiceSoap" bindingType="basicHttpBinding" address="http://117.25.145.170:8088/LotteryWebService.asmx" bindingConfiguration="LotteryWebServiceSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://117.25.155.107:8088/LotteryWebService.asmx</serializedValue>
+          <serializedValue>http://117.25.145.170:8088/LotteryWebService.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -127,7 +127,7 @@
           <serializedValue>LotteryWebServiceSoap</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>Helpmate.Service.LotteryWebServiceSoap</serializedValue>
+          <serializedValue>LotteryWebService.LotteryWebServiceSoap</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

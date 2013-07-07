@@ -511,10 +511,10 @@
   </wsdl:binding>
   <wsdl:service name="LotteryWebService">
     <wsdl:port name="LotteryWebServiceSoap" binding="tns:LotteryWebServiceSoap">
-      <soap:address location="http://117.25.155.107:8088/LotteryWebService.asmx" />
+      <soap:address location="http://117.25.145.170:8088/LotteryWebService.asmx" />
     </wsdl:port>
     <wsdl:port name="LotteryWebServiceSoap12" binding="tns:LotteryWebServiceSoap12">
-      <soap12:address location="http://117.25.155.107:8088/LotteryWebService.asmx" />
+      <soap12:address location="http://117.25.145.170:8088/LotteryWebService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

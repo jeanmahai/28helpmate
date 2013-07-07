@@ -38,6 +38,12 @@ namespace Helpmate.UI.Forms
             CurrMenu(MenuEnum.Prediction, childForm.SiteMapList, childForm);
         }
 
+        private void pnlOmission_Click(object sender, EventArgs e)
+        {
+            var childForm = new Omission();
+            CurrMenu(MenuEnum.Omission, childForm.SiteMapList, childForm);
+        }
+
         public void CurrMenu(MenuEnum menuEnum, List<SiteModel> siteMapList, Form conForm)
         {
             switch (menuEnum)
@@ -48,7 +54,7 @@ namespace Helpmate.UI.Forms
                 case MenuEnum.Prediction:
                     CurrMenuCtrl(lblMtv, picMtvCurr, conForm, siteMapList);
                     break;
-                case MenuEnum.Movie:
+                case MenuEnum.Omission:
                     CurrMenuCtrl(lblMovie, picMovieCurr, conForm, siteMapList);
                     break;
                 case MenuEnum.Email:
@@ -104,7 +110,6 @@ namespace Helpmate.UI.Forms
                 this.MdiChildren[i].BringToFront();
             }
         }
-
 
     }
 }

@@ -8,42 +8,42 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Helpmate.Service {
+namespace Helpmate.Facades.LotteryWebService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Helpmate.Service.LotteryWebServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LotteryWebService.LotteryWebServiceSoap")]
     public interface LotteryWebServiceSoap {
         
         // CODEGEN: 消息 QueryNextLotteryWithSameNumberRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryNextLotteryWithSameNumber", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Helpmate.Service.QueryNextLotteryWithSameNumberResponse QueryNextLotteryWithSameNumber(Helpmate.Service.QueryNextLotteryWithSameNumberRequest request);
+        Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse QueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest request);
         
         // CODEGEN: 消息 QueryLotteryByHourStepRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryLotteryByHourStep", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Helpmate.Service.QueryLotteryByHourStepResponse QueryLotteryByHourStep(Helpmate.Service.QueryLotteryByHourStepRequest request);
+        Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepResponse QueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest request);
         
         // CODEGEN: 消息 QueryLotteryByDayRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryLotteryByDay", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Helpmate.Service.QueryLotteryByDayResponse QueryLotteryByDay(Helpmate.Service.QueryLotteryByDayRequest request);
+        Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse QueryLotteryByDay(Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest request);
         
         // CODEGEN: 消息 QueryLotteryByTwentyRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryLotteryByTwenty", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Helpmate.Service.QueryLotteryByTwentyResponse QueryLotteryByTwenty(Helpmate.Service.QueryLotteryByTwentyRequest request);
+        Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyResponse QueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest request);
         
         // CODEGEN: 消息 QueryCurrentLotteryRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryCurrentLottery", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Helpmate.Service.QueryCurrentLotteryResponse QueryCurrentLottery(Helpmate.Service.QueryCurrentLotteryRequest request);
+        Helpmate.Facades.LotteryWebService.QueryCurrentLotteryResponse QueryCurrentLottery(Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest request);
         
         // CODEGEN: 消息 QueryRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Helpmate.Service.QueryResponse Query(Helpmate.Service.QueryRequest request);
+        Helpmate.Facades.LotteryWebService.QueryResponse Query(Helpmate.Facades.LotteryWebService.QueryRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -801,7 +801,7 @@ namespace Helpmate.Service {
     public partial class QueryNextLotteryWithSameNumberRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public Helpmate.Service.TokenHeader TokenHeader;
+        public Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
         public int number;
@@ -812,7 +812,7 @@ namespace Helpmate.Service {
         public QueryNextLotteryWithSameNumberRequest() {
         }
         
-        public QueryNextLotteryWithSameNumberRequest(Helpmate.Service.TokenHeader TokenHeader, int number, string siteName) {
+        public QueryNextLotteryWithSameNumberRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, int number, string siteName) {
             this.TokenHeader = TokenHeader;
             this.number = number;
             this.siteName = siteName;
@@ -826,12 +826,12 @@ namespace Helpmate.Service {
     public partial class QueryNextLotteryWithSameNumberResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumberResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumberResult;
         
         public QueryNextLotteryWithSameNumberResponse() {
         }
         
-        public QueryNextLotteryWithSameNumberResponse(Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumberResult) {
+        public QueryNextLotteryWithSameNumberResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumberResult) {
             this.QueryNextLotteryWithSameNumberResult = QueryNextLotteryWithSameNumberResult;
         }
     }
@@ -843,7 +843,7 @@ namespace Helpmate.Service {
     public partial class QueryLotteryByHourStepRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public Helpmate.Service.TokenHeader TokenHeader;
+        public Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
         public System.DateTime time;
@@ -854,7 +854,7 @@ namespace Helpmate.Service {
         public QueryLotteryByHourStepRequest() {
         }
         
-        public QueryLotteryByHourStepRequest(Helpmate.Service.TokenHeader TokenHeader, System.DateTime time, string siteName) {
+        public QueryLotteryByHourStepRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
             this.TokenHeader = TokenHeader;
             this.time = time;
             this.siteName = siteName;
@@ -868,12 +868,12 @@ namespace Helpmate.Service {
     public partial class QueryLotteryByHourStepResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStepResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStepResult;
         
         public QueryLotteryByHourStepResponse() {
         }
         
-        public QueryLotteryByHourStepResponse(Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStepResult) {
+        public QueryLotteryByHourStepResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStepResult) {
             this.QueryLotteryByHourStepResult = QueryLotteryByHourStepResult;
         }
     }
@@ -885,7 +885,7 @@ namespace Helpmate.Service {
     public partial class QueryLotteryByDayRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public Helpmate.Service.TokenHeader TokenHeader;
+        public Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
         public System.DateTime time;
@@ -896,7 +896,7 @@ namespace Helpmate.Service {
         public QueryLotteryByDayRequest() {
         }
         
-        public QueryLotteryByDayRequest(Helpmate.Service.TokenHeader TokenHeader, System.DateTime time, string siteName) {
+        public QueryLotteryByDayRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
             this.TokenHeader = TokenHeader;
             this.time = time;
             this.siteName = siteName;
@@ -910,12 +910,12 @@ namespace Helpmate.Service {
     public partial class QueryLotteryByDayResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDayResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDayResult;
         
         public QueryLotteryByDayResponse() {
         }
         
-        public QueryLotteryByDayResponse(Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDayResult) {
+        public QueryLotteryByDayResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDayResult) {
             this.QueryLotteryByDayResult = QueryLotteryByDayResult;
         }
     }
@@ -927,7 +927,7 @@ namespace Helpmate.Service {
     public partial class QueryLotteryByTwentyRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public Helpmate.Service.TokenHeader TokenHeader;
+        public Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
         public string siteName;
@@ -935,7 +935,7 @@ namespace Helpmate.Service {
         public QueryLotteryByTwentyRequest() {
         }
         
-        public QueryLotteryByTwentyRequest(Helpmate.Service.TokenHeader TokenHeader, string siteName) {
+        public QueryLotteryByTwentyRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
             this.TokenHeader = TokenHeader;
             this.siteName = siteName;
         }
@@ -948,12 +948,12 @@ namespace Helpmate.Service {
     public partial class QueryLotteryByTwentyResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwentyResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwentyResult;
         
         public QueryLotteryByTwentyResponse() {
         }
         
-        public QueryLotteryByTwentyResponse(Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwentyResult) {
+        public QueryLotteryByTwentyResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwentyResult) {
             this.QueryLotteryByTwentyResult = QueryLotteryByTwentyResult;
         }
     }
@@ -965,7 +965,7 @@ namespace Helpmate.Service {
     public partial class QueryCurrentLotteryRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public Helpmate.Service.TokenHeader TokenHeader;
+        public Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
         public string siteName;
@@ -973,7 +973,7 @@ namespace Helpmate.Service {
         public QueryCurrentLotteryRequest() {
         }
         
-        public QueryCurrentLotteryRequest(Helpmate.Service.TokenHeader TokenHeader, string siteName) {
+        public QueryCurrentLotteryRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
             this.TokenHeader = TokenHeader;
             this.siteName = siteName;
         }
@@ -986,12 +986,12 @@ namespace Helpmate.Service {
     public partial class QueryCurrentLotteryResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Service.ResultRMOfLottery QueryCurrentLotteryResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLottery QueryCurrentLotteryResult;
         
         public QueryCurrentLotteryResponse() {
         }
         
-        public QueryCurrentLotteryResponse(Helpmate.Service.ResultRMOfLottery QueryCurrentLotteryResult) {
+        public QueryCurrentLotteryResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLottery QueryCurrentLotteryResult) {
             this.QueryCurrentLotteryResult = QueryCurrentLotteryResult;
         }
     }
@@ -1003,15 +1003,15 @@ namespace Helpmate.Service {
     public partial class QueryRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public Helpmate.Service.TokenHeader TokenHeader;
+        public Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Service.LotteryFilter filter;
+        public Helpmate.Facades.LotteryWebService.LotteryFilter filter;
         
         public QueryRequest() {
         }
         
-        public QueryRequest(Helpmate.Service.TokenHeader TokenHeader, Helpmate.Service.LotteryFilter filter) {
+        public QueryRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilter filter) {
             this.TokenHeader = TokenHeader;
             this.filter = filter;
         }
@@ -1024,23 +1024,23 @@ namespace Helpmate.Service {
     public partial class QueryResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Service.ResultRMOfPageListOfLottery QueryResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLottery QueryResult;
         
         public QueryResponse() {
         }
         
-        public QueryResponse(Helpmate.Service.ResultRMOfPageListOfLottery QueryResult) {
+        public QueryResponse(Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLottery QueryResult) {
             this.QueryResult = QueryResult;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface LotteryWebServiceSoapChannel : Helpmate.Service.LotteryWebServiceSoap, System.ServiceModel.IClientChannel {
+    public interface LotteryWebServiceSoapChannel : Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LotteryWebServiceSoapClient : System.ServiceModel.ClientBase<Helpmate.Service.LotteryWebServiceSoap>, Helpmate.Service.LotteryWebServiceSoap {
+    public partial class LotteryWebServiceSoapClient : System.ServiceModel.ClientBase<Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap>, Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap {
         
         public LotteryWebServiceSoapClient() {
         }
@@ -1062,83 +1062,83 @@ namespace Helpmate.Service {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Helpmate.Service.QueryNextLotteryWithSameNumberResponse Helpmate.Service.LotteryWebServiceSoap.QueryNextLotteryWithSameNumber(Helpmate.Service.QueryNextLotteryWithSameNumberRequest request) {
+        Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest request) {
             return base.Channel.QueryNextLotteryWithSameNumber(request);
         }
         
-        public Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumber(Helpmate.Service.TokenHeader TokenHeader, int number, string siteName) {
-            Helpmate.Service.QueryNextLotteryWithSameNumberRequest inValue = new Helpmate.Service.QueryNextLotteryWithSameNumberRequest();
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, int number, string siteName) {
+            Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest inValue = new Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.number = number;
             inValue.siteName = siteName;
-            Helpmate.Service.QueryNextLotteryWithSameNumberResponse retVal = ((Helpmate.Service.LotteryWebServiceSoap)(this)).QueryNextLotteryWithSameNumber(inValue);
+            Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).QueryNextLotteryWithSameNumber(inValue);
             return retVal.QueryNextLotteryWithSameNumberResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Helpmate.Service.QueryLotteryByHourStepResponse Helpmate.Service.LotteryWebServiceSoap.QueryLotteryByHourStep(Helpmate.Service.QueryLotteryByHourStepRequest request) {
+        Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest request) {
             return base.Channel.QueryLotteryByHourStep(request);
         }
         
-        public Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStep(Helpmate.Service.TokenHeader TokenHeader, System.DateTime time, string siteName) {
-            Helpmate.Service.QueryLotteryByHourStepRequest inValue = new Helpmate.Service.QueryLotteryByHourStepRequest();
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.time = time;
             inValue.siteName = siteName;
-            Helpmate.Service.QueryLotteryByHourStepResponse retVal = ((Helpmate.Service.LotteryWebServiceSoap)(this)).QueryLotteryByHourStep(inValue);
+            Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).QueryLotteryByHourStep(inValue);
             return retVal.QueryLotteryByHourStepResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Helpmate.Service.QueryLotteryByDayResponse Helpmate.Service.LotteryWebServiceSoap.QueryLotteryByDay(Helpmate.Service.QueryLotteryByDayRequest request) {
+        Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryLotteryByDay(Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest request) {
             return base.Channel.QueryLotteryByDay(request);
         }
         
-        public Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDay(Helpmate.Service.TokenHeader TokenHeader, System.DateTime time, string siteName) {
-            Helpmate.Service.QueryLotteryByDayRequest inValue = new Helpmate.Service.QueryLotteryByDayRequest();
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDay(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.time = time;
             inValue.siteName = siteName;
-            Helpmate.Service.QueryLotteryByDayResponse retVal = ((Helpmate.Service.LotteryWebServiceSoap)(this)).QueryLotteryByDay(inValue);
+            Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).QueryLotteryByDay(inValue);
             return retVal.QueryLotteryByDayResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Helpmate.Service.QueryLotteryByTwentyResponse Helpmate.Service.LotteryWebServiceSoap.QueryLotteryByTwenty(Helpmate.Service.QueryLotteryByTwentyRequest request) {
+        Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest request) {
             return base.Channel.QueryLotteryByTwenty(request);
         }
         
-        public Helpmate.Service.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwenty(Helpmate.Service.TokenHeader TokenHeader, string siteName) {
-            Helpmate.Service.QueryLotteryByTwentyRequest inValue = new Helpmate.Service.QueryLotteryByTwentyRequest();
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.siteName = siteName;
-            Helpmate.Service.QueryLotteryByTwentyResponse retVal = ((Helpmate.Service.LotteryWebServiceSoap)(this)).QueryLotteryByTwenty(inValue);
+            Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).QueryLotteryByTwenty(inValue);
             return retVal.QueryLotteryByTwentyResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Helpmate.Service.QueryCurrentLotteryResponse Helpmate.Service.LotteryWebServiceSoap.QueryCurrentLottery(Helpmate.Service.QueryCurrentLotteryRequest request) {
+        Helpmate.Facades.LotteryWebService.QueryCurrentLotteryResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryCurrentLottery(Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest request) {
             return base.Channel.QueryCurrentLottery(request);
         }
         
-        public Helpmate.Service.ResultRMOfLottery QueryCurrentLottery(Helpmate.Service.TokenHeader TokenHeader, string siteName) {
-            Helpmate.Service.QueryCurrentLotteryRequest inValue = new Helpmate.Service.QueryCurrentLotteryRequest();
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLottery QueryCurrentLottery(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest inValue = new Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.siteName = siteName;
-            Helpmate.Service.QueryCurrentLotteryResponse retVal = ((Helpmate.Service.LotteryWebServiceSoap)(this)).QueryCurrentLottery(inValue);
+            Helpmate.Facades.LotteryWebService.QueryCurrentLotteryResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).QueryCurrentLottery(inValue);
             return retVal.QueryCurrentLotteryResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Helpmate.Service.QueryResponse Helpmate.Service.LotteryWebServiceSoap.Query(Helpmate.Service.QueryRequest request) {
+        Helpmate.Facades.LotteryWebService.QueryResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.Query(Helpmate.Facades.LotteryWebService.QueryRequest request) {
             return base.Channel.Query(request);
         }
         
-        public Helpmate.Service.ResultRMOfPageListOfLottery Query(Helpmate.Service.TokenHeader TokenHeader, Helpmate.Service.LotteryFilter filter) {
-            Helpmate.Service.QueryRequest inValue = new Helpmate.Service.QueryRequest();
+        public Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLottery Query(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilter filter) {
+            Helpmate.Facades.LotteryWebService.QueryRequest inValue = new Helpmate.Facades.LotteryWebService.QueryRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.filter = filter;
-            Helpmate.Service.QueryResponse retVal = ((Helpmate.Service.LotteryWebServiceSoap)(this)).Query(inValue);
+            Helpmate.Facades.LotteryWebService.QueryResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).Query(inValue);
             return retVal.QueryResult;
         }
         

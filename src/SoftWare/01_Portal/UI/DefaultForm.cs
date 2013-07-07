@@ -77,7 +77,7 @@ namespace Helpmate.UI.Forms
         private void pnlNormalChart_Click(object sender, EventArgs e)
         {
             var conCtrl = NormalChart.Initialize();
-            CurrMenu(MenuEnum.Movie, conCtrl.SiteMapList, conCtrl);
+            CurrMenu(MenuEnum.Omission, conCtrl.SiteMapList, conCtrl);
         }
 
         private void pnlOther_Click(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace Helpmate.UI.Forms
                 case MenuEnum.Prediction:
                     CurrMenuCtrl(lblMtv, picMtvCurr, conCtrl, siteMapList);
                     break;
-                case MenuEnum.Movie:
+                case MenuEnum.Omission:
                     CurrMenuCtrl(lblMovie, picMovieCurr, conCtrl, siteMapList);
                     break;
                 case MenuEnum.Email:
