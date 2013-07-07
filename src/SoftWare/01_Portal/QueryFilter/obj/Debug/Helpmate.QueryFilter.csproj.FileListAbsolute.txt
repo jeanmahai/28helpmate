@@ -8,3 +8,8 @@ E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\bin\Debug\Helpmate.Query
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\ResolveAssemblyReference.cache
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\Helpmate.QueryFilter.dll
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\Helpmate.QueryFilter.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\QueryFilter\bin\Debug\Helpmate.QueryFilter.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\QueryFilter\bin\Debug\Helpmate.QueryFilter.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\ResolveAssemblyReference.cache
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\Helpmate.QueryFilter.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\QueryFilter\obj\Debug\Helpmate.QueryFilter.pdb

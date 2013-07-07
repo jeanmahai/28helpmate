@@ -13,8 +13,8 @@ namespace Helpmate.Facades
         {
 
 
-
             var serviceInstance = new LotteryWebServiceSoapClient();
+            serviceInstance.Query("");
 
             //var WebserviceInstance = new localhost.Service();
             //    //通过实例化的webservice对象来调用Webservice暴露的方法

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sqls>
+  <sql name="QueryOmissionAllForBJ">
+    <![CDATA[
+DECLARE @MAX_P INT
+SELECT @MAX_P=MAX(PeriodNum) FROM dbo.SourceData_28_Beijing
+SELECT MAX(PeriodNum) AS NearPeriod
+        ,MAX(RetNum) AS [Number]
+        ,(@MAX_P-MAX(PeriodNum)) AS [Interval]
+FROM dbo.SourceData_28_Beijing
+GROUP BY RetNum
+    ]]>
+  </sql>
+</Sqls>

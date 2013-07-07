@@ -8,6 +8,7 @@ using Model.ResponseModel;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Impl;
+using NHibernate.Utility;
 using Net.Utility.Security;
 
 namespace Business
@@ -37,7 +38,7 @@ namespace Business
             });
             return notAppearNo;
         }
-        private List<int> GetNotAppearNo(List<Lottery> lotteries)
+        private List<int> GetNotAppearNo(List<LotteryForBJ> lotteries)
         {
             var appearNo = (from a in lotteries
                             select a.RetNum).ToList();
@@ -52,7 +53,7 @@ namespace Business
             });
             return notAppearNo;
         }
-        private List<Lottery> MappingType(List<Lottery> lotteries)
+        private List<LotteryForBJ> MappingType(List<LotteryForBJ> lotteries)
         {
             lotteries.ForEach(p =>
             {
@@ -73,9 +74,17 @@ namespace Business
                                                                  userId,
                                                                  psw));
         }
+        public string GenerateToken(string str)
+        {
+            return CiphertextService.MD5Encryption(str);
+        }
         public bool ValidateToken(string userId,string psw,string token)
         {
-            return GenerateToken(userId, psw) == token;
+            return GenerateToken(userId,psw) == token;
+        }
+        public bool ValidateToken(string str,string token)
+        {
+            return GenerateToken(str) == token;
         }
 
         #region BeiJing
@@ -83,16 +92,16 @@ namespace Business
         /// 查询最近20期的结果
         /// </summary>
         /// <returns></returns>
-        public LotteryByTwentyPeriodRM QueryTop20ForBJ(int siteSysNo)
+        public LotteryByTwentyPeriod QueryTop20ForBJ(int siteSysNo)
         {
-            var criteria = Session.CreateCriteria(typeof(Lottery));
+            var criteria = Session.CreateCriteria(typeof(LotteryForBJ));
             criteria.SetMaxResults(20);
             criteria.AddOrder(new Order("PeriodNum",false));
-            criteria.Add(Restrictions.Eq("SiteSysNo", siteSysNo));
+            criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
 
-            var lotteries = criteria.List<Lottery>().ToList();
+            var lotteries = criteria.List<LotteryForBJ>().ToList();
             MappingType(lotteries);
-            var result = new LotteryByTwentyPeriodRM();
+            var result = new LotteryByTwentyPeriod();
             result.Lotteries = lotteries;
             result.NotAppearNumber = GetNotAppearNo(lotteries);
             return result;
@@ -103,14 +112,14 @@ namespace Business
         /// <param name="number"></param>
         /// <param name="siteSysNo"> </param>
         /// <returns></returns>
-        public List<Lottery> Query20BySameNoForBJ(int number,int siteSysNo)
+        public List<LotteryForBJ> Query20BySameNoForBJ(int number,int siteSysNo)
         {
-            ICriteria criteria = Session.CreateCriteria(typeof(Lottery));
+            ICriteria criteria = Session.CreateCriteria(typeof(LotteryForBJ));
             criteria.AddOrder(new Order("PeriodNum",false));
             criteria.SetMaxResults(20);
             criteria.Add(Restrictions.Eq("RetNum",number));
             criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
-            var data = criteria.List<Lottery>().ToList();
+            var data = criteria.List<LotteryForBJ>().ToList();
             MappingType(data);
             return data;
         }
@@ -119,19 +128,19 @@ namespace Business
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
-        public LotteryByTwentyPeriodRM QueryNextLotteryWithSameNumberForBJ(int number,int siteSysNo)
+        public LotteryByTwentyPeriod QueryNextLotteryWithSameNumberForBJ(int number,int siteSysNo)
         {
             var sameLotteries = Query20BySameNoForBJ(number,siteSysNo);
             var periods = (from a in sameLotteries
                            select a.PeriodNum + 1).ToList();
-            var criteria = Session.CreateCriteria(typeof(Lottery));
+            var criteria = Session.CreateCriteria(typeof(LotteryForBJ));
             criteria.Add(Restrictions.In("PeriodNum",periods));
             criteria.AddOrder(new Order("PeriodNum",false));
             criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
 
-            var data = criteria.List<Lottery>().ToList();
+            var data = criteria.List<LotteryForBJ>().ToList();
             MappingType(data);
-            var result = new LotteryByTwentyPeriodRM();
+            var result = new LotteryByTwentyPeriod();
             result.Lotteries = data;
             result.NotAppearNumber = GetNotAppearNo(data);
             return result;
@@ -141,20 +150,20 @@ namespace Business
         /// </summary>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public LotteryByTwentyPeriodRM QueryLotteryByHourStepForBJ(DateTime dateTime,int siteSysNo)
+        public LotteryByTwentyPeriod QueryLotteryByHourStepForBJ(DateTime dateTime,int siteSysNo)
         {
             var dates = new List<DateTime>();
             for (var i = 1;i <= 20;i++)
             {
                 dates.Add(dateTime.AddHours(-i));
             }
-            var criteria = Session.CreateCriteria(typeof(Lottery));
+            var criteria = Session.CreateCriteria(typeof(LotteryForBJ));
             criteria.Add(Restrictions.In("RetTime",dates));
             criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
 
-            var data = criteria.List<Lottery>().ToList();
+            var data = criteria.List<LotteryForBJ>().ToList();
             MappingType(data);
-            var result = new LotteryByTwentyPeriodRM();
+            var result = new LotteryByTwentyPeriod();
             result.Lotteries = data;
             result.NotAppearNumber = GetNotAppearNo(data);
             return result;
@@ -163,20 +172,20 @@ namespace Business
         /// 查询同一时间点的近20天的数据
         /// </summary>
         /// <returns></returns>
-        public LotteryByTwentyPeriodRM QueryLotteryByDayForBJ(DateTime dateTime,int siteSysNo)
+        public LotteryByTwentyPeriod QueryLotteryByDayForBJ(DateTime dateTime,int siteSysNo)
         {
             var dates = new List<DateTime>();
             for (var i = 1;i <= 20;i++)
             {
                 dates.Add(dateTime.AddDays(-i));
             }
-            var criteria = Session.CreateCriteria(typeof(Lottery));
+            var criteria = Session.CreateCriteria(typeof(LotteryForBJ));
             criteria.Add(Restrictions.In("RetTime",dates));
             criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
 
-            var data = criteria.List<Lottery>().ToList();
+            var data = criteria.List<LotteryForBJ>().ToList();
             MappingType(data);
-            var result = new LotteryByTwentyPeriodRM();
+            var result = new LotteryByTwentyPeriod();
             result.Lotteries = data;
             result.NotAppearNumber = GetNotAppearNo(data);
             return result;
@@ -186,73 +195,65 @@ namespace Business
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public PageList<Lottery> QueryForBJ(LotteryFilter filter)
+        public PageList<LotteryForBJ> QueryForBJ(LotteryFilter filter)
         {
-            var criteriaCountCondition = Session.CreateCriteria(typeof(Lottery));
-            
+            var criteriaCountCondition = Session.CreateCriteria(typeof(LotteryForBJ));
+
             if (filter.From.HasValue && filter.To.HasValue)
             {
                 criteriaCountCondition.Add(Restrictions.Between("RetTime",filter.From.Value,
                                                   filter.To.Value));
             }
-            if(!string.IsNullOrEmpty(filter.SiteName))
+            if (!string.IsNullOrEmpty(filter.SiteName))
             {
                 var userSite = QueryUserSite(filter.SiteName);
-                if(userSite!=null)
+                if (userSite != null)
                 {
-                    criteriaCountCondition.Add(Restrictions.Eq("SiteSysNo", userSite.SysNo));
+                    criteriaCountCondition.Add(Restrictions.Eq("SiteSysNo",userSite.SysNo));
                 }
             }
             var criteriaQueryCondition = criteriaCountCondition.Clone() as ICriteria;
-            var total =criteriaCountCondition
+            var total = criteriaCountCondition
                 .SetProjection(Projections.Count("PeriodNum"))
                 .UniqueResult<int>();
 
-            var result = new PageList<Lottery>();
+            var result = new PageList<LotteryForBJ>();
             result.Total = total;
 
-            
+
             criteriaQueryCondition.AddOrder(new Order("PeriodNum",false));
-            
-            criteriaQueryCondition.SetFirstResult((filter.PageIndex-1) *filter.PageSize);
+
+            criteriaQueryCondition.SetFirstResult((filter.PageIndex - 1) * filter.PageSize);
             criteriaQueryCondition.SetMaxResults(filter.PageSize);
-            
-            
-            result.List = criteriaQueryCondition.List<Lottery>().ToList();
+
+
+            result.List = criteriaQueryCondition.List<LotteryForBJ>().ToList();
             return result;
         }
 
-        public Lottery MaxPeriodForBJ()
+        public LotteryForBJ MaxPeriodForBJ()
         {
-            return Session.QueryOver<Lottery>()
+            return Session.QueryOver<LotteryForBJ>()
                 .OrderBy(l => l.PeriodNum).Desc
                 .Take(1)
-                .SingleOrDefault<Lottery>();
+                .SingleOrDefault<LotteryForBJ>();
         }
         public OmissionLottery QueryOmissionForBJ(int number)
         {
             var maxPeriod = MaxPeriodForBJ();
             var result = new OmissionLottery();
             result.Number = number;
-            var nearLottery = Session.QueryOver<Lottery>()
+            var nearLottery = Session.QueryOver<LotteryForBJ>()
                 .OrderBy(l => l.PeriodNum).Desc
                 .Where(l => l.RetNum == number)
-                .Take(1).SingleOrDefault<Lottery>();
+                .Take(1).SingleOrDefault<LotteryForBJ>();
             result.NearPeriod = nearLottery.PeriodNum;
             result.Interval = maxPeriod.PeriodNum - nearLottery.PeriodNum;
             return result;
-        } 
+        }
         public List<OmissionLottery> QueryOmissionAllForBJ()
         {
-            var query = Session.CreateSQLQuery(@" 
-                            DECLARE @MAX_P INT
-                            SELECT @MAX_P=MAX(PeriodNum) FROM dbo.SourceData_28_Beijing
-                            SELECT MAX(PeriodNum) AS NearPeriod
-                                   ,MAX(RetNum) AS [Number]
-                                   ,(@MAX_P-MAX(PeriodNum)) AS [Interval]
-                            FROM dbo.SourceData_28_Beijing
-                            GROUP BY RetNum
-                                            ")
+            var query = Session.CreateSQLQuery(SqlManager.GetSqlText("QueryOmissionAllForBJ"))
                                              .AddEntity(typeof(OmissionLottery))
                                              .List<OmissionLottery>();
             return query.ToList();
@@ -260,21 +261,21 @@ namespace Business
         #endregion
 
         #region User
-        public bool Login(int sysNo,string psw)
+        public bool Login(string userName,string psw)
         {
-            
-            var user = Session.QueryOver<User>().Where(p => p.SysNo == sysNo).SingleOrDefault<User>();
-            if(user==null) return false;
+
+            var user = Session.QueryOver<User>().Where(p => p.UserName == userName).SingleOrDefault<User>();
+            if (user == null) return false;
             var pswHash = CiphertextService.MD5Encryption(psw);
-            if(pswHash!=user.UserPwd) return false;
+            if (pswHash != user.UserPwd) return false;
             return true;
         }
         public int Register(User user)
         {
             user.UserPwd = CiphertextService.MD5Encryption(user.UserPwd);
-            var result=Session.Save(user);
+            var result = Session.Save(user);
             Session.Flush();
-            return (int) result;
+            return (int)result;
         }
         #endregion
     }

@@ -8,3 +8,8 @@ E:\GitHub\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\bin\Debug\Helpmate.Bi
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\obj\Debug\ResolveAssemblyReference.cache
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\obj\Debug\Helpmate.BizEntity.Enum.dll
 E:\GitHub\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\obj\Debug\Helpmate.BizEntity.Enum.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\bin\Debug\Helpmate.BizEntity.Enum.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\bin\Debug\Helpmate.BizEntity.Enum.pdb
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\obj\Debug\ResolveAssemblyReference.cache
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\obj\Debug\Helpmate.BizEntity.Enum.dll
+D:\PersonalWork\28helpmate\src\SoftWare\01_Portal\BizEntity.Enum\obj\Debug\Helpmate.BizEntity.Enum.pdb

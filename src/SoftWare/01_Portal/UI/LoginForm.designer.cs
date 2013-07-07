@@ -36,9 +36,10 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.pnlLoading = new System.Windows.Forms.Panel();
             this.bgwUserLogin = new System.ComponentModel.BackgroundWorker();
-            this.txtDBName = new System.Windows.Forms.TextBox();
+            this.txtCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -91,7 +92,7 @@
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(482, 243);
+            this.btnLogin.Location = new System.Drawing.Point(368, 247);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(94, 31);
             this.btnLogin.TabIndex = 3;
@@ -112,13 +113,13 @@
             this.bgwUserLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwUserLogin_DoWork);
             this.bgwUserLogin.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwUserLogin_RunWorkerCompleted);
             // 
-            // txtDBName
+            // txtCode
             // 
-            this.txtDBName.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtDBName.Location = new System.Drawing.Point(368, 172);
-            this.txtDBName.Name = "txtDBName";
-            this.txtDBName.Size = new System.Drawing.Size(83, 21);
-            this.txtDBName.TabIndex = 5;
+            this.txtCode.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCode.Location = new System.Drawing.Point(368, 172);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(83, 21);
+            this.txtCode.TabIndex = 5;
             // 
             // label4
             // 
@@ -144,6 +145,23 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "28伴侣-分析平台";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.btn;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(482, 247);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 31);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "用户注册";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnLogin;
@@ -153,9 +171,10 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(590, 286);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtDBName);
+            this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pnlLoading);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtUserPwd);
             this.Controls.Add(this.txtUserName);
@@ -182,8 +201,9 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel pnlLoading;
         private System.ComponentModel.BackgroundWorker bgwUserLogin;
-        private System.Windows.Forms.TextBox txtDBName;
+        private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
     }
 }

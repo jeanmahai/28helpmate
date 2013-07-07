@@ -159,7 +159,7 @@ namespace UnitTest
         [TestMethod]
         public void LoginTest()
         {
-            Console.WriteLine(string.Format("{0}",m_Dal.Login(1,"test")));
+            //Console.WriteLine(string.Format("{0}",m_Dal.Login(1,"test")));
         }
         [TestMethod]
         public void QueryOmissionAllForBJTest()
