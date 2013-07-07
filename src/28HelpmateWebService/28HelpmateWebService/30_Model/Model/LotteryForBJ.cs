@@ -7,7 +7,7 @@ using Model.Enum;
 namespace Model.Model
 {
     [Serializable]
-    public class Lottery
+    public class LotteryForBJ
     {
         public virtual int PeriodNum { get; set; }
         public virtual DateTime RetTime { get; set; }

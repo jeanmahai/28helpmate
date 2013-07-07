@@ -8,7 +8,7 @@ using Model.Model;
 namespace Model.ResponseModel
 {
     [Serializable]
-    public class LotteryByTwentyPeriodRM
+    public class LotteryByTwentyPeriod
     {
         private readonly string BIG = "大";
         private readonly string SMALL = "小";
@@ -17,7 +17,7 @@ namespace Model.ResponseModel
         private readonly string CENTER = "中";
         private readonly string SIDE = "边";
 
-        public List<Lottery> Lotteries { get; set; }
+        public List<LotteryForBJ> Lotteries { get; set; }
 
         public List<int> NotAppearNumber { get; set; }
         

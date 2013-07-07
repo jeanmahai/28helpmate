@@ -2,7 +2,7 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="Model"
                    namespace="Model">
-  <class name="Model.Model.Lottery,Model" 
+  <class name="Model.Model.LotteryForBJ,Model" 
          table="[SourceData_28_Beijing]"
           where="Status=1">
     <id name="PeriodNum" column="PeriodNum" type="Int32" >
