@@ -20,42 +20,87 @@ namespace Helpmate.Facades.LotteryWebService {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse QueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/QueryNextLotteryWithSameNumber", ReplyAction="*")]
+        System.IAsyncResult BeginQueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest request, System.AsyncCallback callback, object asyncState);
+        
+        Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse EndQueryNextLotteryWithSameNumber(System.IAsyncResult result);
+        
         // CODEGEN: 消息 QueryLotteryByHourStepRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryLotteryByHourStep", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepResponse QueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/QueryLotteryByHourStep", ReplyAction="*")]
+        System.IAsyncResult BeginQueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest request, System.AsyncCallback callback, object asyncState);
+        
+        Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepResponse EndQueryLotteryByHourStep(System.IAsyncResult result);
         
         // CODEGEN: 消息 QueryLotteryByDayRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryLotteryByDay", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse QueryLotteryByDay(Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/QueryLotteryByDay", ReplyAction="*")]
+        System.IAsyncResult BeginQueryLotteryByDay(Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest request, System.AsyncCallback callback, object asyncState);
+        
+        Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse EndQueryLotteryByDay(System.IAsyncResult result);
+        
         // CODEGEN: 消息 QueryLotteryByTwentyRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryLotteryByTwenty", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyResponse QueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/QueryLotteryByTwenty", ReplyAction="*")]
+        System.IAsyncResult BeginQueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest request, System.AsyncCallback callback, object asyncState);
+        
+        Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyResponse EndQueryLotteryByTwenty(System.IAsyncResult result);
         
         // CODEGEN: 消息 QueryCurrentLotteryRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryCurrentLottery", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Helpmate.Facades.LotteryWebService.QueryCurrentLotteryResponse QueryCurrentLottery(Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/QueryCurrentLottery", ReplyAction="*")]
+        System.IAsyncResult BeginQueryCurrentLottery(Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest request, System.AsyncCallback callback, object asyncState);
+        
+        Helpmate.Facades.LotteryWebService.QueryCurrentLotteryResponse EndQueryCurrentLottery(System.IAsyncResult result);
+        
         // CODEGEN: 消息 QueryRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Query", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         Helpmate.Facades.LotteryWebService.QueryResponse Query(Helpmate.Facades.LotteryWebService.QueryRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/Query", ReplyAction="*")]
+        System.IAsyncResult BeginQuery(Helpmate.Facades.LotteryWebService.QueryRequest request, System.AsyncCallback callback, object asyncState);
+        
+        Helpmate.Facades.LotteryWebService.QueryResponse EndQuery(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Login", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string Login(string userName, string psw);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/Login", ReplyAction="*")]
+        System.IAsyncResult BeginLogin(string userName, string psw, System.AsyncCallback callback, object asyncState);
+        
+        string EndLogin(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Register", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void Register();
+        int Register(Helpmate.Facades.LotteryWebService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegisterAndLogin", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/Register", ReplyAction="*")]
+        System.IAsyncResult BeginRegister(Helpmate.Facades.LotteryWebService.User user, System.AsyncCallback callback, object asyncState);
+        
+        int EndRegister(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GenerateCode", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string RegisterAndLogin();
+        string GenerateCode();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GenerateCode", ReplyAction="*")]
+        System.IAsyncResult BeginGenerateCode(System.AsyncCallback callback, object asyncState);
+        
+        string EndGenerateCode(System.IAsyncResult result);
     }
     
     /// <remarks/>
@@ -66,12 +111,26 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class TokenHeader : object, System.ComponentModel.INotifyPropertyChanged {
         
+        private string keyField;
+        
         private string tokenField;
         
         private System.Xml.XmlAttribute[] anyAttrField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
         public string Token {
             get {
                 return this.tokenField;
@@ -110,11 +169,155 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class PageListOfLottery : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class User : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int sysNoField;
+        
+        private string userIDField;
+        
+        private string userPwdField;
+        
+        private string userNameField;
+        
+        private int statusField;
+        
+        private string regIPField;
+        
+        private System.DateTime regDateField;
+        
+        private System.DateTime rechargeUseBeginTimeField;
+        
+        private System.DateTime rechargeUseEndTimeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int SysNo {
+            get {
+                return this.sysNoField;
+            }
+            set {
+                this.sysNoField = value;
+                this.RaisePropertyChanged("SysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string UserID {
+            get {
+                return this.userIDField;
+            }
+            set {
+                this.userIDField = value;
+                this.RaisePropertyChanged("UserID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string UserPwd {
+            get {
+                return this.userPwdField;
+            }
+            set {
+                this.userPwdField = value;
+                this.RaisePropertyChanged("UserPwd");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string UserName {
+            get {
+                return this.userNameField;
+            }
+            set {
+                this.userNameField = value;
+                this.RaisePropertyChanged("UserName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+                this.RaisePropertyChanged("Status");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string RegIP {
+            get {
+                return this.regIPField;
+            }
+            set {
+                this.regIPField = value;
+                this.RaisePropertyChanged("RegIP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public System.DateTime RegDate {
+            get {
+                return this.regDateField;
+            }
+            set {
+                this.regDateField = value;
+                this.RaisePropertyChanged("RegDate");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public System.DateTime RechargeUseBeginTime {
+            get {
+                return this.rechargeUseBeginTimeField;
+            }
+            set {
+                this.rechargeUseBeginTimeField = value;
+                this.RaisePropertyChanged("RechargeUseBeginTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public System.DateTime RechargeUseEndTime {
+            get {
+                return this.rechargeUseEndTimeField;
+            }
+            set {
+                this.rechargeUseEndTimeField = value;
+                this.RaisePropertyChanged("RechargeUseEndTime");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class PageListOfLotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int totalField;
         
-        private Lottery[] listField;
+        private LotteryForBJ[] listField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -130,7 +333,7 @@ namespace Helpmate.Facades.LotteryWebService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        public Lottery[] List {
+        public LotteryForBJ[] List {
             get {
                 return this.listField;
             }
@@ -156,7 +359,7 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Lottery : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class LotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int periodNumField;
         
@@ -444,13 +647,13 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfPageListOfLottery : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ResultRMOfPageListOfLotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool successField;
         
         private string messageField;
         
-        private PageListOfLottery dataField;
+        private PageListOfLotteryForBJ dataField;
         
         private int codeField;
         
@@ -480,7 +683,7 @@ namespace Helpmate.Facades.LotteryWebService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public PageListOfLottery Data {
+        public PageListOfLotteryForBJ Data {
             get {
                 return this.dataField;
             }
@@ -518,7 +721,7 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryFilter : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class LotteryFilterForBJ : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int pageIndexField;
         
@@ -529,6 +732,8 @@ namespace Helpmate.Facades.LotteryWebService {
         private System.Nullable<System.DateTime> toField;
         
         private string siteNameField;
+        
+        private string gameNameField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -590,6 +795,18 @@ namespace Helpmate.Facades.LotteryWebService {
             }
         }
         
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string GameName {
+            get {
+                return this.gameNameField;
+            }
+            set {
+                this.gameNameField = value;
+                this.RaisePropertyChanged("GameName");
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -606,13 +823,13 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfLottery : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ResultRMOfLotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool successField;
         
         private string messageField;
         
-        private Lottery dataField;
+        private LotteryForBJ dataField;
         
         private int codeField;
         
@@ -642,7 +859,7 @@ namespace Helpmate.Facades.LotteryWebService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public Lottery Data {
+        public LotteryForBJ Data {
             get {
                 return this.dataField;
             }
@@ -680,15 +897,15 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryByTwentyPeriodRM : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class LotteryByTwentyPeriod : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private Lottery[] lotteriesField;
+        private LotteryForBJ[] lotteriesField;
         
         private int[] notAppearNumberField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        public Lottery[] Lotteries {
+        public LotteryForBJ[] Lotteries {
             get {
                 return this.lotteriesField;
             }
@@ -726,13 +943,13 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfLotteryByTwentyPeriodRM : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ResultRMOfLotteryByTwentyPeriod : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool successField;
         
         private string messageField;
         
-        private LotteryByTwentyPeriodRM dataField;
+        private LotteryByTwentyPeriod dataField;
         
         private int codeField;
         
@@ -762,7 +979,7 @@ namespace Helpmate.Facades.LotteryWebService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public LotteryByTwentyPeriodRM Data {
+        public LotteryByTwentyPeriod Data {
             get {
                 return this.dataField;
             }
@@ -826,12 +1043,12 @@ namespace Helpmate.Facades.LotteryWebService {
     public partial class QueryNextLotteryWithSameNumberResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumberResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryNextLotteryWithSameNumberResult;
         
         public QueryNextLotteryWithSameNumberResponse() {
         }
         
-        public QueryNextLotteryWithSameNumberResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumberResult) {
+        public QueryNextLotteryWithSameNumberResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryNextLotteryWithSameNumberResult) {
             this.QueryNextLotteryWithSameNumberResult = QueryNextLotteryWithSameNumberResult;
         }
     }
@@ -868,12 +1085,12 @@ namespace Helpmate.Facades.LotteryWebService {
     public partial class QueryLotteryByHourStepResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStepResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByHourStepResult;
         
         public QueryLotteryByHourStepResponse() {
         }
         
-        public QueryLotteryByHourStepResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStepResult) {
+        public QueryLotteryByHourStepResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByHourStepResult) {
             this.QueryLotteryByHourStepResult = QueryLotteryByHourStepResult;
         }
     }
@@ -910,12 +1127,12 @@ namespace Helpmate.Facades.LotteryWebService {
     public partial class QueryLotteryByDayResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDayResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByDayResult;
         
         public QueryLotteryByDayResponse() {
         }
         
-        public QueryLotteryByDayResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDayResult) {
+        public QueryLotteryByDayResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByDayResult) {
             this.QueryLotteryByDayResult = QueryLotteryByDayResult;
         }
     }
@@ -948,12 +1165,12 @@ namespace Helpmate.Facades.LotteryWebService {
     public partial class QueryLotteryByTwentyResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwentyResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByTwentyResult;
         
         public QueryLotteryByTwentyResponse() {
         }
         
-        public QueryLotteryByTwentyResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwentyResult) {
+        public QueryLotteryByTwentyResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByTwentyResult) {
             this.QueryLotteryByTwentyResult = QueryLotteryByTwentyResult;
         }
     }
@@ -986,12 +1203,12 @@ namespace Helpmate.Facades.LotteryWebService {
     public partial class QueryCurrentLotteryResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLottery QueryCurrentLotteryResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ QueryCurrentLotteryResult;
         
         public QueryCurrentLotteryResponse() {
         }
         
-        public QueryCurrentLotteryResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLottery QueryCurrentLotteryResult) {
+        public QueryCurrentLotteryResponse(Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ QueryCurrentLotteryResult) {
             this.QueryCurrentLotteryResult = QueryCurrentLotteryResult;
         }
     }
@@ -1006,14 +1223,14 @@ namespace Helpmate.Facades.LotteryWebService {
         public Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Facades.LotteryWebService.LotteryFilter filter;
+        public Helpmate.Facades.LotteryWebService.LotteryFilterForBJ filterForBj;
         
         public QueryRequest() {
         }
         
-        public QueryRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilter filter) {
+        public QueryRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilterForBJ filterForBj) {
             this.TokenHeader = TokenHeader;
-            this.filter = filter;
+            this.filterForBj = filterForBj;
         }
     }
     
@@ -1024,12 +1241,12 @@ namespace Helpmate.Facades.LotteryWebService {
     public partial class QueryResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLottery QueryResult;
+        public Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ QueryResult;
         
         public QueryResponse() {
         }
         
-        public QueryResponse(Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLottery QueryResult) {
+        public QueryResponse(Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ QueryResult) {
             this.QueryResult = QueryResult;
         }
     }
@@ -1040,7 +1257,232 @@ namespace Helpmate.Facades.LotteryWebService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QueryNextLotteryWithSameNumberCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public QueryNextLotteryWithSameNumberCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QueryLotteryByHourStepCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public QueryLotteryByHourStepCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QueryLotteryByDayCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public QueryLotteryByDayCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QueryLotteryByTwentyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public QueryLotteryByTwentyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QueryCurrentLotteryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public QueryCurrentLotteryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QueryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public QueryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public LoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RegisterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public RegisterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GenerateCodeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GenerateCodeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class LotteryWebServiceSoapClient : System.ServiceModel.ClientBase<Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap>, Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap {
+        
+        private BeginOperationDelegate onBeginQueryNextLotteryWithSameNumberDelegate;
+        
+        private EndOperationDelegate onEndQueryNextLotteryWithSameNumberDelegate;
+        
+        private System.Threading.SendOrPostCallback onQueryNextLotteryWithSameNumberCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginQueryLotteryByHourStepDelegate;
+        
+        private EndOperationDelegate onEndQueryLotteryByHourStepDelegate;
+        
+        private System.Threading.SendOrPostCallback onQueryLotteryByHourStepCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginQueryLotteryByDayDelegate;
+        
+        private EndOperationDelegate onEndQueryLotteryByDayDelegate;
+        
+        private System.Threading.SendOrPostCallback onQueryLotteryByDayCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginQueryLotteryByTwentyDelegate;
+        
+        private EndOperationDelegate onEndQueryLotteryByTwentyDelegate;
+        
+        private System.Threading.SendOrPostCallback onQueryLotteryByTwentyCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginQueryCurrentLotteryDelegate;
+        
+        private EndOperationDelegate onEndQueryCurrentLotteryDelegate;
+        
+        private System.Threading.SendOrPostCallback onQueryCurrentLotteryCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginQueryDelegate;
+        
+        private EndOperationDelegate onEndQueryDelegate;
+        
+        private System.Threading.SendOrPostCallback onQueryCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginLoginDelegate;
+        
+        private EndOperationDelegate onEndLoginDelegate;
+        
+        private System.Threading.SendOrPostCallback onLoginCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginRegisterDelegate;
+        
+        private EndOperationDelegate onEndRegisterDelegate;
+        
+        private System.Threading.SendOrPostCallback onRegisterCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGenerateCodeDelegate;
+        
+        private EndOperationDelegate onEndGenerateCodeDelegate;
+        
+        private System.Threading.SendOrPostCallback onGenerateCodeCompletedDelegate;
         
         public LotteryWebServiceSoapClient() {
         }
@@ -1061,12 +1503,30 @@ namespace Helpmate.Facades.LotteryWebService {
                 base(binding, remoteAddress) {
         }
         
+        public event System.EventHandler<QueryNextLotteryWithSameNumberCompletedEventArgs> QueryNextLotteryWithSameNumberCompleted;
+        
+        public event System.EventHandler<QueryLotteryByHourStepCompletedEventArgs> QueryLotteryByHourStepCompleted;
+        
+        public event System.EventHandler<QueryLotteryByDayCompletedEventArgs> QueryLotteryByDayCompleted;
+        
+        public event System.EventHandler<QueryLotteryByTwentyCompletedEventArgs> QueryLotteryByTwentyCompleted;
+        
+        public event System.EventHandler<QueryCurrentLotteryCompletedEventArgs> QueryCurrentLotteryCompleted;
+        
+        public event System.EventHandler<QueryCompletedEventArgs> QueryCompleted;
+        
+        public event System.EventHandler<LoginCompletedEventArgs> LoginCompleted;
+        
+        public event System.EventHandler<RegisterCompletedEventArgs> RegisterCompleted;
+        
+        public event System.EventHandler<GenerateCodeCompletedEventArgs> GenerateCodeCompleted;
+        
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest request) {
             return base.Channel.QueryNextLotteryWithSameNumber(request);
         }
         
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, int number, string siteName) {
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, int number, string siteName) {
             Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest inValue = new Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.number = number;
@@ -1076,11 +1536,76 @@ namespace Helpmate.Facades.LotteryWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.BeginQueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginQueryNextLotteryWithSameNumber(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginQueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, int number, string siteName, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest inValue = new Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.number = number;
+            inValue.siteName = siteName;
+            return ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).BeginQueryNextLotteryWithSameNumber(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.EndQueryNextLotteryWithSameNumber(System.IAsyncResult result) {
+            return base.Channel.EndQueryNextLotteryWithSameNumber(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod EndQueryNextLotteryWithSameNumber(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).EndQueryNextLotteryWithSameNumber(result);
+            return retVal.QueryNextLotteryWithSameNumberResult;
+        }
+        
+        private System.IAsyncResult OnBeginQueryNextLotteryWithSameNumber(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader = ((Helpmate.Facades.LotteryWebService.TokenHeader)(inValues[0]));
+            int number = ((int)(inValues[1]));
+            string siteName = ((string)(inValues[2]));
+            return this.BeginQueryNextLotteryWithSameNumber(TokenHeader, number, siteName, callback, asyncState);
+        }
+        
+        private object[] OnEndQueryNextLotteryWithSameNumber(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod retVal = this.EndQueryNextLotteryWithSameNumber(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnQueryNextLotteryWithSameNumberCompleted(object state) {
+            if ((this.QueryNextLotteryWithSameNumberCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.QueryNextLotteryWithSameNumberCompleted(this, new QueryNextLotteryWithSameNumberCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void QueryNextLotteryWithSameNumberAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, int number, string siteName) {
+            this.QueryNextLotteryWithSameNumberAsync(TokenHeader, number, siteName, null);
+        }
+        
+        public void QueryNextLotteryWithSameNumberAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, int number, string siteName, object userState) {
+            if ((this.onBeginQueryNextLotteryWithSameNumberDelegate == null)) {
+                this.onBeginQueryNextLotteryWithSameNumberDelegate = new BeginOperationDelegate(this.OnBeginQueryNextLotteryWithSameNumber);
+            }
+            if ((this.onEndQueryNextLotteryWithSameNumberDelegate == null)) {
+                this.onEndQueryNextLotteryWithSameNumberDelegate = new EndOperationDelegate(this.OnEndQueryNextLotteryWithSameNumber);
+            }
+            if ((this.onQueryNextLotteryWithSameNumberCompletedDelegate == null)) {
+                this.onQueryNextLotteryWithSameNumberCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryNextLotteryWithSameNumberCompleted);
+            }
+            base.InvokeAsync(this.onBeginQueryNextLotteryWithSameNumberDelegate, new object[] {
+                        TokenHeader,
+                        number,
+                        siteName}, this.onEndQueryNextLotteryWithSameNumberDelegate, this.onQueryNextLotteryWithSameNumberCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest request) {
             return base.Channel.QueryLotteryByHourStep(request);
         }
         
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
             Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.time = time;
@@ -1090,11 +1615,76 @@ namespace Helpmate.Facades.LotteryWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.BeginQueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginQueryLotteryByHourStep(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginQueryLotteryByHourStep(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.time = time;
+            inValue.siteName = siteName;
+            return ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).BeginQueryLotteryByHourStep(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.EndQueryLotteryByHourStep(System.IAsyncResult result) {
+            return base.Channel.EndQueryLotteryByHourStep(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod EndQueryLotteryByHourStep(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByHourStepResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).EndQueryLotteryByHourStep(result);
+            return retVal.QueryLotteryByHourStepResult;
+        }
+        
+        private System.IAsyncResult OnBeginQueryLotteryByHourStep(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader = ((Helpmate.Facades.LotteryWebService.TokenHeader)(inValues[0]));
+            System.DateTime time = ((System.DateTime)(inValues[1]));
+            string siteName = ((string)(inValues[2]));
+            return this.BeginQueryLotteryByHourStep(TokenHeader, time, siteName, callback, asyncState);
+        }
+        
+        private object[] OnEndQueryLotteryByHourStep(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod retVal = this.EndQueryLotteryByHourStep(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnQueryLotteryByHourStepCompleted(object state) {
+            if ((this.QueryLotteryByHourStepCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.QueryLotteryByHourStepCompleted(this, new QueryLotteryByHourStepCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void QueryLotteryByHourStepAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
+            this.QueryLotteryByHourStepAsync(TokenHeader, time, siteName, null);
+        }
+        
+        public void QueryLotteryByHourStepAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName, object userState) {
+            if ((this.onBeginQueryLotteryByHourStepDelegate == null)) {
+                this.onBeginQueryLotteryByHourStepDelegate = new BeginOperationDelegate(this.OnBeginQueryLotteryByHourStep);
+            }
+            if ((this.onEndQueryLotteryByHourStepDelegate == null)) {
+                this.onEndQueryLotteryByHourStepDelegate = new EndOperationDelegate(this.OnEndQueryLotteryByHourStep);
+            }
+            if ((this.onQueryLotteryByHourStepCompletedDelegate == null)) {
+                this.onQueryLotteryByHourStepCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryLotteryByHourStepCompleted);
+            }
+            base.InvokeAsync(this.onBeginQueryLotteryByHourStepDelegate, new object[] {
+                        TokenHeader,
+                        time,
+                        siteName}, this.onEndQueryLotteryByHourStepDelegate, this.onQueryLotteryByHourStepCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryLotteryByDay(Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest request) {
             return base.Channel.QueryLotteryByDay(request);
         }
         
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByDay(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByDay(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
             Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.time = time;
@@ -1104,11 +1694,76 @@ namespace Helpmate.Facades.LotteryWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.BeginQueryLotteryByDay(Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginQueryLotteryByDay(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginQueryLotteryByDay(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByDayRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.time = time;
+            inValue.siteName = siteName;
+            return ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).BeginQueryLotteryByDay(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.EndQueryLotteryByDay(System.IAsyncResult result) {
+            return base.Channel.EndQueryLotteryByDay(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod EndQueryLotteryByDay(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).EndQueryLotteryByDay(result);
+            return retVal.QueryLotteryByDayResult;
+        }
+        
+        private System.IAsyncResult OnBeginQueryLotteryByDay(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader = ((Helpmate.Facades.LotteryWebService.TokenHeader)(inValues[0]));
+            System.DateTime time = ((System.DateTime)(inValues[1]));
+            string siteName = ((string)(inValues[2]));
+            return this.BeginQueryLotteryByDay(TokenHeader, time, siteName, callback, asyncState);
+        }
+        
+        private object[] OnEndQueryLotteryByDay(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod retVal = this.EndQueryLotteryByDay(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnQueryLotteryByDayCompleted(object state) {
+            if ((this.QueryLotteryByDayCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.QueryLotteryByDayCompleted(this, new QueryLotteryByDayCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void QueryLotteryByDayAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName) {
+            this.QueryLotteryByDayAsync(TokenHeader, time, siteName, null);
+        }
+        
+        public void QueryLotteryByDayAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, System.DateTime time, string siteName, object userState) {
+            if ((this.onBeginQueryLotteryByDayDelegate == null)) {
+                this.onBeginQueryLotteryByDayDelegate = new BeginOperationDelegate(this.OnBeginQueryLotteryByDay);
+            }
+            if ((this.onEndQueryLotteryByDayDelegate == null)) {
+                this.onEndQueryLotteryByDayDelegate = new EndOperationDelegate(this.OnEndQueryLotteryByDay);
+            }
+            if ((this.onQueryLotteryByDayCompletedDelegate == null)) {
+                this.onQueryLotteryByDayCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryLotteryByDayCompleted);
+            }
+            base.InvokeAsync(this.onBeginQueryLotteryByDayDelegate, new object[] {
+                        TokenHeader,
+                        time,
+                        siteName}, this.onEndQueryLotteryByDayDelegate, this.onQueryLotteryByDayCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest request) {
             return base.Channel.QueryLotteryByTwenty(request);
         }
         
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM QueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod QueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
             Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.siteName = siteName;
@@ -1117,11 +1772,73 @@ namespace Helpmate.Facades.LotteryWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.BeginQueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginQueryLotteryByTwenty(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginQueryLotteryByTwenty(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest inValue = new Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.siteName = siteName;
+            return ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).BeginQueryLotteryByTwenty(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.EndQueryLotteryByTwenty(System.IAsyncResult result) {
+            return base.Channel.EndQueryLotteryByTwenty(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod EndQueryLotteryByTwenty(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.QueryLotteryByTwentyResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).EndQueryLotteryByTwenty(result);
+            return retVal.QueryLotteryByTwentyResult;
+        }
+        
+        private System.IAsyncResult OnBeginQueryLotteryByTwenty(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader = ((Helpmate.Facades.LotteryWebService.TokenHeader)(inValues[0]));
+            string siteName = ((string)(inValues[1]));
+            return this.BeginQueryLotteryByTwenty(TokenHeader, siteName, callback, asyncState);
+        }
+        
+        private object[] OnEndQueryLotteryByTwenty(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod retVal = this.EndQueryLotteryByTwenty(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnQueryLotteryByTwentyCompleted(object state) {
+            if ((this.QueryLotteryByTwentyCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.QueryLotteryByTwentyCompleted(this, new QueryLotteryByTwentyCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void QueryLotteryByTwentyAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            this.QueryLotteryByTwentyAsync(TokenHeader, siteName, null);
+        }
+        
+        public void QueryLotteryByTwentyAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName, object userState) {
+            if ((this.onBeginQueryLotteryByTwentyDelegate == null)) {
+                this.onBeginQueryLotteryByTwentyDelegate = new BeginOperationDelegate(this.OnBeginQueryLotteryByTwenty);
+            }
+            if ((this.onEndQueryLotteryByTwentyDelegate == null)) {
+                this.onEndQueryLotteryByTwentyDelegate = new EndOperationDelegate(this.OnEndQueryLotteryByTwenty);
+            }
+            if ((this.onQueryLotteryByTwentyCompletedDelegate == null)) {
+                this.onQueryLotteryByTwentyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryLotteryByTwentyCompleted);
+            }
+            base.InvokeAsync(this.onBeginQueryLotteryByTwentyDelegate, new object[] {
+                        TokenHeader,
+                        siteName}, this.onEndQueryLotteryByTwentyDelegate, this.onQueryLotteryByTwentyCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Helpmate.Facades.LotteryWebService.QueryCurrentLotteryResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryCurrentLottery(Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest request) {
             return base.Channel.QueryCurrentLottery(request);
         }
         
-        public Helpmate.Facades.LotteryWebService.ResultRMOfLottery QueryCurrentLottery(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ QueryCurrentLottery(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
             Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest inValue = new Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.siteName = siteName;
@@ -1130,28 +1847,290 @@ namespace Helpmate.Facades.LotteryWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.BeginQueryCurrentLottery(Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginQueryCurrentLottery(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginQueryCurrentLottery(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest inValue = new Helpmate.Facades.LotteryWebService.QueryCurrentLotteryRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.siteName = siteName;
+            return ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).BeginQueryCurrentLottery(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Helpmate.Facades.LotteryWebService.QueryCurrentLotteryResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.EndQueryCurrentLottery(System.IAsyncResult result) {
+            return base.Channel.EndQueryCurrentLottery(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ EndQueryCurrentLottery(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.QueryCurrentLotteryResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).EndQueryCurrentLottery(result);
+            return retVal.QueryCurrentLotteryResult;
+        }
+        
+        private System.IAsyncResult OnBeginQueryCurrentLottery(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader = ((Helpmate.Facades.LotteryWebService.TokenHeader)(inValues[0]));
+            string siteName = ((string)(inValues[1]));
+            return this.BeginQueryCurrentLottery(TokenHeader, siteName, callback, asyncState);
+        }
+        
+        private object[] OnEndQueryCurrentLottery(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ retVal = this.EndQueryCurrentLottery(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnQueryCurrentLotteryCompleted(object state) {
+            if ((this.QueryCurrentLotteryCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.QueryCurrentLotteryCompleted(this, new QueryCurrentLotteryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void QueryCurrentLotteryAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            this.QueryCurrentLotteryAsync(TokenHeader, siteName, null);
+        }
+        
+        public void QueryCurrentLotteryAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName, object userState) {
+            if ((this.onBeginQueryCurrentLotteryDelegate == null)) {
+                this.onBeginQueryCurrentLotteryDelegate = new BeginOperationDelegate(this.OnBeginQueryCurrentLottery);
+            }
+            if ((this.onEndQueryCurrentLotteryDelegate == null)) {
+                this.onEndQueryCurrentLotteryDelegate = new EndOperationDelegate(this.OnEndQueryCurrentLottery);
+            }
+            if ((this.onQueryCurrentLotteryCompletedDelegate == null)) {
+                this.onQueryCurrentLotteryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryCurrentLotteryCompleted);
+            }
+            base.InvokeAsync(this.onBeginQueryCurrentLotteryDelegate, new object[] {
+                        TokenHeader,
+                        siteName}, this.onEndQueryCurrentLotteryDelegate, this.onQueryCurrentLotteryCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Helpmate.Facades.LotteryWebService.QueryResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.Query(Helpmate.Facades.LotteryWebService.QueryRequest request) {
             return base.Channel.Query(request);
         }
         
-        public Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLottery Query(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilter filter) {
+        public Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ Query(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilterForBJ filterForBj) {
             Helpmate.Facades.LotteryWebService.QueryRequest inValue = new Helpmate.Facades.LotteryWebService.QueryRequest();
             inValue.TokenHeader = TokenHeader;
-            inValue.filter = filter;
+            inValue.filterForBj = filterForBj;
             Helpmate.Facades.LotteryWebService.QueryResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).Query(inValue);
             return retVal.QueryResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.BeginQuery(Helpmate.Facades.LotteryWebService.QueryRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginQuery(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginQuery(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilterForBJ filterForBj, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.QueryRequest inValue = new Helpmate.Facades.LotteryWebService.QueryRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.filterForBj = filterForBj;
+            return ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).BeginQuery(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Helpmate.Facades.LotteryWebService.QueryResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.EndQuery(System.IAsyncResult result) {
+            return base.Channel.EndQuery(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ EndQuery(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.QueryResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).EndQuery(result);
+            return retVal.QueryResult;
+        }
+        
+        private System.IAsyncResult OnBeginQuery(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader = ((Helpmate.Facades.LotteryWebService.TokenHeader)(inValues[0]));
+            Helpmate.Facades.LotteryWebService.LotteryFilterForBJ filterForBj = ((Helpmate.Facades.LotteryWebService.LotteryFilterForBJ)(inValues[1]));
+            return this.BeginQuery(TokenHeader, filterForBj, callback, asyncState);
+        }
+        
+        private object[] OnEndQuery(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ retVal = this.EndQuery(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnQueryCompleted(object state) {
+            if ((this.QueryCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.QueryCompleted(this, new QueryCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void QueryAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilterForBJ filterForBj) {
+            this.QueryAsync(TokenHeader, filterForBj, null);
+        }
+        
+        public void QueryAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, Helpmate.Facades.LotteryWebService.LotteryFilterForBJ filterForBj, object userState) {
+            if ((this.onBeginQueryDelegate == null)) {
+                this.onBeginQueryDelegate = new BeginOperationDelegate(this.OnBeginQuery);
+            }
+            if ((this.onEndQueryDelegate == null)) {
+                this.onEndQueryDelegate = new EndOperationDelegate(this.OnEndQuery);
+            }
+            if ((this.onQueryCompletedDelegate == null)) {
+                this.onQueryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryCompleted);
+            }
+            base.InvokeAsync(this.onBeginQueryDelegate, new object[] {
+                        TokenHeader,
+                        filterForBj}, this.onEndQueryDelegate, this.onQueryCompletedDelegate, userState);
         }
         
         public string Login(string userName, string psw) {
             return base.Channel.Login(userName, psw);
         }
         
-        public void Register() {
-            base.Channel.Register();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginLogin(string userName, string psw, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginLogin(userName, psw, callback, asyncState);
         }
         
-        public string RegisterAndLogin() {
-            return base.Channel.RegisterAndLogin();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndLogin(System.IAsyncResult result) {
+            return base.Channel.EndLogin(result);
+        }
+        
+        private System.IAsyncResult OnBeginLogin(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string userName = ((string)(inValues[0]));
+            string psw = ((string)(inValues[1]));
+            return this.BeginLogin(userName, psw, callback, asyncState);
+        }
+        
+        private object[] OnEndLogin(System.IAsyncResult result) {
+            string retVal = this.EndLogin(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnLoginCompleted(object state) {
+            if ((this.LoginCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.LoginCompleted(this, new LoginCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void LoginAsync(string userName, string psw) {
+            this.LoginAsync(userName, psw, null);
+        }
+        
+        public void LoginAsync(string userName, string psw, object userState) {
+            if ((this.onBeginLoginDelegate == null)) {
+                this.onBeginLoginDelegate = new BeginOperationDelegate(this.OnBeginLogin);
+            }
+            if ((this.onEndLoginDelegate == null)) {
+                this.onEndLoginDelegate = new EndOperationDelegate(this.OnEndLogin);
+            }
+            if ((this.onLoginCompletedDelegate == null)) {
+                this.onLoginCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLoginCompleted);
+            }
+            base.InvokeAsync(this.onBeginLoginDelegate, new object[] {
+                        userName,
+                        psw}, this.onEndLoginDelegate, this.onLoginCompletedDelegate, userState);
+        }
+        
+        public int Register(Helpmate.Facades.LotteryWebService.User user) {
+            return base.Channel.Register(user);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginRegister(Helpmate.Facades.LotteryWebService.User user, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginRegister(user, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public int EndRegister(System.IAsyncResult result) {
+            return base.Channel.EndRegister(result);
+        }
+        
+        private System.IAsyncResult OnBeginRegister(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.User user = ((Helpmate.Facades.LotteryWebService.User)(inValues[0]));
+            return this.BeginRegister(user, callback, asyncState);
+        }
+        
+        private object[] OnEndRegister(System.IAsyncResult result) {
+            int retVal = this.EndRegister(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnRegisterCompleted(object state) {
+            if ((this.RegisterCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.RegisterCompleted(this, new RegisterCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void RegisterAsync(Helpmate.Facades.LotteryWebService.User user) {
+            this.RegisterAsync(user, null);
+        }
+        
+        public void RegisterAsync(Helpmate.Facades.LotteryWebService.User user, object userState) {
+            if ((this.onBeginRegisterDelegate == null)) {
+                this.onBeginRegisterDelegate = new BeginOperationDelegate(this.OnBeginRegister);
+            }
+            if ((this.onEndRegisterDelegate == null)) {
+                this.onEndRegisterDelegate = new EndOperationDelegate(this.OnEndRegister);
+            }
+            if ((this.onRegisterCompletedDelegate == null)) {
+                this.onRegisterCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnRegisterCompleted);
+            }
+            base.InvokeAsync(this.onBeginRegisterDelegate, new object[] {
+                        user}, this.onEndRegisterDelegate, this.onRegisterCompletedDelegate, userState);
+        }
+        
+        public string GenerateCode() {
+            return base.Channel.GenerateCode();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGenerateCode(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGenerateCode(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndGenerateCode(System.IAsyncResult result) {
+            return base.Channel.EndGenerateCode(result);
+        }
+        
+        private System.IAsyncResult OnBeginGenerateCode(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGenerateCode(callback, asyncState);
+        }
+        
+        private object[] OnEndGenerateCode(System.IAsyncResult result) {
+            string retVal = this.EndGenerateCode(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGenerateCodeCompleted(object state) {
+            if ((this.GenerateCodeCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GenerateCodeCompleted(this, new GenerateCodeCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GenerateCodeAsync() {
+            this.GenerateCodeAsync(null);
+        }
+        
+        public void GenerateCodeAsync(object userState) {
+            if ((this.onBeginGenerateCodeDelegate == null)) {
+                this.onBeginGenerateCodeDelegate = new BeginOperationDelegate(this.OnBeginGenerateCode);
+            }
+            if ((this.onEndGenerateCodeDelegate == null)) {
+                this.onEndGenerateCodeDelegate = new EndOperationDelegate(this.OnEndGenerateCode);
+            }
+            if ((this.onGenerateCodeCompletedDelegate == null)) {
+                this.onGenerateCodeCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGenerateCodeCompleted);
+            }
+            base.InvokeAsync(this.onBeginGenerateCodeDelegate, null, this.onEndGenerateCodeDelegate, this.onGenerateCodeCompletedDelegate, userState);
         }
     }
 }

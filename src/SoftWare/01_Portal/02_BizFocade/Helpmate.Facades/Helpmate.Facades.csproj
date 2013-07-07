@@ -33,8 +33,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,8 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonFacede.cs" />
+    <Compile Include="CommonFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestClient.cs" />
     <Compile Include="Service References\LotteryWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,13 +76,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLottery.datasource">
+    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriodRM.datasource">
+    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLottery.datasource">
+    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\LotteryWebService.wsdl" />
