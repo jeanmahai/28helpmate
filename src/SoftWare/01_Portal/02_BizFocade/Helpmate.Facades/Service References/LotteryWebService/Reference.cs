@@ -45,6 +45,16 @@ namespace Helpmate.Facades.LotteryWebService {
         
         Helpmate.Facades.LotteryWebService.QueryLotteryByDayResponse EndQueryLotteryByDay(System.IAsyncResult result);
         
+        // CODEGEN: 消息 GetCustomeModuleRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomeModule", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Helpmate.Facades.LotteryWebService.GetCustomeModuleResponse GetCustomeModule(Helpmate.Facades.LotteryWebService.GetCustomeModuleRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetCustomeModule", ReplyAction="*")]
+        System.IAsyncResult BeginGetCustomeModule(Helpmate.Facades.LotteryWebService.GetCustomeModuleRequest request, System.AsyncCallback callback, object asyncState);
+        
+        Helpmate.Facades.LotteryWebService.GetCustomeModuleResponse EndGetCustomeModule(System.IAsyncResult result);
+        
         // CODEGEN: 消息 QueryLotteryByTwentyRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryLotteryByTwenty", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -101,6 +111,15 @@ namespace Helpmate.Facades.LotteryWebService {
         System.IAsyncResult BeginGenerateCode(System.AsyncCallback callback, object asyncState);
         
         string EndGenerateCode(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryTrend", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Helpmate.Facades.LotteryWebService.LotteryTrend QueryTrend(System.DateTime from, System.DateTime to, int pageSize, int pageIndex);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/QueryTrend", ReplyAction="*")]
+        System.IAsyncResult BeginQueryTrend(System.DateTime from, System.DateTime to, int pageSize, int pageIndex, System.AsyncCallback callback, object asyncState);
+        
+        Helpmate.Facades.LotteryWebService.LotteryTrend EndQueryTrend(System.IAsyncResult result);
     }
     
     /// <remarks/>
@@ -150,6 +169,484 @@ namespace Helpmate.Facades.LotteryWebService {
             set {
                 this.anyAttrField = value;
                 this.RaisePropertyChanged("AnyAttr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class PageListOfLotteryExtByBJ : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int totalField;
+        
+        private LotteryExtByBJ[] listField;
+        
+        private int pageSizeField;
+        
+        private int pageIndexField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int Total {
+            get {
+                return this.totalField;
+            }
+            set {
+                this.totalField = value;
+                this.RaisePropertyChanged("Total");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        public LotteryExtByBJ[] List {
+            get {
+                return this.listField;
+            }
+            set {
+                this.listField = value;
+                this.RaisePropertyChanged("List");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int PageSize {
+            get {
+                return this.pageSizeField;
+            }
+            set {
+                this.pageSizeField = value;
+                this.RaisePropertyChanged("PageSize");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int PageIndex {
+            get {
+                return this.pageIndexField;
+            }
+            set {
+                this.pageIndexField = value;
+                this.RaisePropertyChanged("PageIndex");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryExtByBJ : LotteryForBJ {
+        
+        private LotteryType typeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public LotteryType Type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+                this.RaisePropertyChanged("Type");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryType : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int retNumField;
+        
+        private string bigOrSmallField;
+        
+        private string middleOrSideField;
+        
+        private string oddOrDualField;
+        
+        private string mantissaBigOrSmallField;
+        
+        private string threeRemainderField;
+        
+        private string fourRemainderField;
+        
+        private string fiveRemainderField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+                this.RaisePropertyChanged("RetNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string BigOrSmall {
+            get {
+                return this.bigOrSmallField;
+            }
+            set {
+                this.bigOrSmallField = value;
+                this.RaisePropertyChanged("BigOrSmall");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string MiddleOrSide {
+            get {
+                return this.middleOrSideField;
+            }
+            set {
+                this.middleOrSideField = value;
+                this.RaisePropertyChanged("MiddleOrSide");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string OddOrDual {
+            get {
+                return this.oddOrDualField;
+            }
+            set {
+                this.oddOrDualField = value;
+                this.RaisePropertyChanged("OddOrDual");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string MantissaBigOrSmall {
+            get {
+                return this.mantissaBigOrSmallField;
+            }
+            set {
+                this.mantissaBigOrSmallField = value;
+                this.RaisePropertyChanged("MantissaBigOrSmall");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string ThreeRemainder {
+            get {
+                return this.threeRemainderField;
+            }
+            set {
+                this.threeRemainderField = value;
+                this.RaisePropertyChanged("ThreeRemainder");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string FourRemainder {
+            get {
+                return this.fourRemainderField;
+            }
+            set {
+                this.fourRemainderField = value;
+                this.RaisePropertyChanged("FourRemainder");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string FiveRemainder {
+            get {
+                return this.fiveRemainderField;
+            }
+            set {
+                this.fiveRemainderField = value;
+                this.RaisePropertyChanged("FiveRemainder");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LotteryExtByBJ))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int periodNumField;
+        
+        private System.DateTime retTimeField;
+        
+        private int siteSysNoField;
+        
+        private int retOddNumField;
+        
+        private int retNumField;
+        
+        private string retMidNumField;
+        
+        private string collectRetField;
+        
+        private System.DateTime collectTimeField;
+        
+        private int statusField;
+        
+        private LotteryType typeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int PeriodNum {
+            get {
+                return this.periodNumField;
+            }
+            set {
+                this.periodNumField = value;
+                this.RaisePropertyChanged("PeriodNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public System.DateTime RetTime {
+            get {
+                return this.retTimeField;
+            }
+            set {
+                this.retTimeField = value;
+                this.RaisePropertyChanged("RetTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int SiteSysNo {
+            get {
+                return this.siteSysNoField;
+            }
+            set {
+                this.siteSysNoField = value;
+                this.RaisePropertyChanged("SiteSysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int RetOddNum {
+            get {
+                return this.retOddNumField;
+            }
+            set {
+                this.retOddNumField = value;
+                this.RaisePropertyChanged("RetOddNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+                this.RaisePropertyChanged("RetNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string RetMidNum {
+            get {
+                return this.retMidNumField;
+            }
+            set {
+                this.retMidNumField = value;
+                this.RaisePropertyChanged("RetMidNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public string CollectRet {
+            get {
+                return this.collectRetField;
+            }
+            set {
+                this.collectRetField = value;
+                this.RaisePropertyChanged("CollectRet");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public System.DateTime CollectTime {
+            get {
+                return this.collectTimeField;
+            }
+            set {
+                this.collectTimeField = value;
+                this.RaisePropertyChanged("CollectTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+                this.RaisePropertyChanged("Status");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public LotteryType type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+                this.RaisePropertyChanged("type");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryTimes : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string nameField;
+        
+        private int totalField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+                this.RaisePropertyChanged("Name");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int Total {
+            get {
+                return this.totalField;
+            }
+            set {
+                this.totalField = value;
+                this.RaisePropertyChanged("Total");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryTrend : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private LotteryTimes[] lotteryTimesesField;
+        
+        private PageListOfLotteryExtByBJ pageListField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public LotteryTimes[] LotteryTimeses {
+            get {
+                return this.lotteryTimesesField;
+            }
+            set {
+                this.lotteryTimesesField = value;
+                this.RaisePropertyChanged("LotteryTimeses");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public PageListOfLotteryExtByBJ PageList {
+            get {
+                return this.pageListField;
+            }
+            set {
+                this.pageListField = value;
+                this.RaisePropertyChanged("PageList");
             }
         }
         
@@ -319,6 +816,10 @@ namespace Helpmate.Facades.LotteryWebService {
         
         private LotteryForBJ[] listField;
         
+        private int pageSizeField;
+        
+        private int pageIndexField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public int Total {
@@ -343,291 +844,27 @@ namespace Helpmate.Facades.LotteryWebService {
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int periodNumField;
-        
-        private System.DateTime retTimeField;
-        
-        private int siteSysNoField;
-        
-        private int retOddNumField;
-        
-        private int retNumField;
-        
-        private string retMidNumField;
-        
-        private string collectRetField;
-        
-        private System.DateTime collectTimeField;
-        
-        private int statusField;
-        
-        private LotteryType typeField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int PeriodNum {
-            get {
-                return this.periodNumField;
-            }
-            set {
-                this.periodNumField = value;
-                this.RaisePropertyChanged("PeriodNum");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public System.DateTime RetTime {
-            get {
-                return this.retTimeField;
-            }
-            set {
-                this.retTimeField = value;
-                this.RaisePropertyChanged("RetTime");
-            }
-        }
-        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int SiteSysNo {
+        public int PageSize {
             get {
-                return this.siteSysNoField;
+                return this.pageSizeField;
             }
             set {
-                this.siteSysNoField = value;
-                this.RaisePropertyChanged("SiteSysNo");
+                this.pageSizeField = value;
+                this.RaisePropertyChanged("PageSize");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int RetOddNum {
+        public int PageIndex {
             get {
-                return this.retOddNumField;
+                return this.pageIndexField;
             }
             set {
-                this.retOddNumField = value;
-                this.RaisePropertyChanged("RetOddNum");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public int RetNum {
-            get {
-                return this.retNumField;
-            }
-            set {
-                this.retNumField = value;
-                this.RaisePropertyChanged("RetNum");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public string RetMidNum {
-            get {
-                return this.retMidNumField;
-            }
-            set {
-                this.retMidNumField = value;
-                this.RaisePropertyChanged("RetMidNum");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public string CollectRet {
-            get {
-                return this.collectRetField;
-            }
-            set {
-                this.collectRetField = value;
-                this.RaisePropertyChanged("CollectRet");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-        public System.DateTime CollectTime {
-            get {
-                return this.collectTimeField;
-            }
-            set {
-                this.collectTimeField = value;
-                this.RaisePropertyChanged("CollectTime");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
-        public int Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-                this.RaisePropertyChanged("Status");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
-        public LotteryType type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-                this.RaisePropertyChanged("type");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryType : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int retNumField;
-        
-        private string bigOrSmallField;
-        
-        private string middleOrSideField;
-        
-        private string oddOrDualField;
-        
-        private string mantissaBigOrSmallField;
-        
-        private string threeRemainderField;
-        
-        private string fourRemainderField;
-        
-        private string fiveRemainderField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int RetNum {
-            get {
-                return this.retNumField;
-            }
-            set {
-                this.retNumField = value;
-                this.RaisePropertyChanged("RetNum");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string BigOrSmall {
-            get {
-                return this.bigOrSmallField;
-            }
-            set {
-                this.bigOrSmallField = value;
-                this.RaisePropertyChanged("BigOrSmall");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string MiddleOrSide {
-            get {
-                return this.middleOrSideField;
-            }
-            set {
-                this.middleOrSideField = value;
-                this.RaisePropertyChanged("MiddleOrSide");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string OddOrDual {
-            get {
-                return this.oddOrDualField;
-            }
-            set {
-                this.oddOrDualField = value;
-                this.RaisePropertyChanged("OddOrDual");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string MantissaBigOrSmall {
-            get {
-                return this.mantissaBigOrSmallField;
-            }
-            set {
-                this.mantissaBigOrSmallField = value;
-                this.RaisePropertyChanged("MantissaBigOrSmall");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public string ThreeRemainder {
-            get {
-                return this.threeRemainderField;
-            }
-            set {
-                this.threeRemainderField = value;
-                this.RaisePropertyChanged("ThreeRemainder");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public string FourRemainder {
-            get {
-                return this.fourRemainderField;
-            }
-            set {
-                this.fourRemainderField = value;
-                this.RaisePropertyChanged("FourRemainder");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-        public string FiveRemainder {
-            get {
-                return this.fiveRemainderField;
-            }
-            set {
-                this.fiveRemainderField = value;
-                this.RaisePropertyChanged("FiveRemainder");
+                this.pageIndexField = value;
+                this.RaisePropertyChanged("PageIndex");
             }
         }
         
@@ -897,6 +1134,80 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class CustomModules : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private LotteryByTwentyPeriod m1Field;
+        
+        private LotteryByTwentyPeriod m2Field;
+        
+        private LotteryByTwentyPeriod m3Field;
+        
+        private LotteryByTwentyPeriod m4Field;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public LotteryByTwentyPeriod M1 {
+            get {
+                return this.m1Field;
+            }
+            set {
+                this.m1Field = value;
+                this.RaisePropertyChanged("M1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public LotteryByTwentyPeriod M2 {
+            get {
+                return this.m2Field;
+            }
+            set {
+                this.m2Field = value;
+                this.RaisePropertyChanged("M2");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public LotteryByTwentyPeriod M3 {
+            get {
+                return this.m3Field;
+            }
+            set {
+                this.m3Field = value;
+                this.RaisePropertyChanged("M3");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public LotteryByTwentyPeriod M4 {
+            get {
+                return this.m4Field;
+            }
+            set {
+                this.m4Field = value;
+                this.RaisePropertyChanged("M4");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class LotteryByTwentyPeriod : object, System.ComponentModel.INotifyPropertyChanged {
         
         private LotteryForBJ[] lotteriesField;
@@ -924,6 +1235,80 @@ namespace Helpmate.Facades.LotteryWebService {
             set {
                 this.notAppearNumberField = value;
                 this.RaisePropertyChanged("NotAppearNumber");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.233")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfCustomModules : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private CustomModules dataField;
+        
+        private int codeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public CustomModules Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
             }
         }
         
@@ -1140,6 +1525,44 @@ namespace Helpmate.Facades.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCustomeModule", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetCustomeModuleRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string siteName;
+        
+        public GetCustomeModuleRequest() {
+        }
+        
+        public GetCustomeModuleRequest(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            this.TokenHeader = TokenHeader;
+            this.siteName = siteName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCustomeModuleResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetCustomeModuleResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules GetCustomeModuleResult;
+        
+        public GetCustomeModuleResponse() {
+        }
+        
+        public GetCustomeModuleResponse(Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules GetCustomeModuleResult) {
+            this.GetCustomeModuleResult = GetCustomeModuleResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="QueryLotteryByTwenty", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class QueryLotteryByTwentyRequest {
         
@@ -1314,6 +1737,25 @@ namespace Helpmate.Facades.LotteryWebService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetCustomeModuleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetCustomeModuleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class QueryLotteryByTwentyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -1428,6 +1870,25 @@ namespace Helpmate.Facades.LotteryWebService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QueryTrendCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public QueryTrendCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public Helpmate.Facades.LotteryWebService.LotteryTrend Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((Helpmate.Facades.LotteryWebService.LotteryTrend)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class LotteryWebServiceSoapClient : System.ServiceModel.ClientBase<Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap>, Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap {
         
         private BeginOperationDelegate onBeginQueryNextLotteryWithSameNumberDelegate;
@@ -1447,6 +1908,12 @@ namespace Helpmate.Facades.LotteryWebService {
         private EndOperationDelegate onEndQueryLotteryByDayDelegate;
         
         private System.Threading.SendOrPostCallback onQueryLotteryByDayCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetCustomeModuleDelegate;
+        
+        private EndOperationDelegate onEndGetCustomeModuleDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetCustomeModuleCompletedDelegate;
         
         private BeginOperationDelegate onBeginQueryLotteryByTwentyDelegate;
         
@@ -1484,6 +1951,12 @@ namespace Helpmate.Facades.LotteryWebService {
         
         private System.Threading.SendOrPostCallback onGenerateCodeCompletedDelegate;
         
+        private BeginOperationDelegate onBeginQueryTrendDelegate;
+        
+        private EndOperationDelegate onEndQueryTrendDelegate;
+        
+        private System.Threading.SendOrPostCallback onQueryTrendCompletedDelegate;
+        
         public LotteryWebServiceSoapClient() {
         }
         
@@ -1509,6 +1982,8 @@ namespace Helpmate.Facades.LotteryWebService {
         
         public event System.EventHandler<QueryLotteryByDayCompletedEventArgs> QueryLotteryByDayCompleted;
         
+        public event System.EventHandler<GetCustomeModuleCompletedEventArgs> GetCustomeModuleCompleted;
+        
         public event System.EventHandler<QueryLotteryByTwentyCompletedEventArgs> QueryLotteryByTwentyCompleted;
         
         public event System.EventHandler<QueryCurrentLotteryCompletedEventArgs> QueryCurrentLotteryCompleted;
@@ -1520,6 +1995,8 @@ namespace Helpmate.Facades.LotteryWebService {
         public event System.EventHandler<RegisterCompletedEventArgs> RegisterCompleted;
         
         public event System.EventHandler<GenerateCodeCompletedEventArgs> GenerateCodeCompleted;
+        
+        public event System.EventHandler<QueryTrendCompletedEventArgs> QueryTrendCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.QueryNextLotteryWithSameNumber(Helpmate.Facades.LotteryWebService.QueryNextLotteryWithSameNumberRequest request) {
@@ -1756,6 +2233,81 @@ namespace Helpmate.Facades.LotteryWebService {
                         TokenHeader,
                         time,
                         siteName}, this.onEndQueryLotteryByDayDelegate, this.onQueryLotteryByDayCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Helpmate.Facades.LotteryWebService.GetCustomeModuleResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.GetCustomeModule(Helpmate.Facades.LotteryWebService.GetCustomeModuleRequest request) {
+            return base.Channel.GetCustomeModule(request);
+        }
+        
+        public Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules GetCustomeModule(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            Helpmate.Facades.LotteryWebService.GetCustomeModuleRequest inValue = new Helpmate.Facades.LotteryWebService.GetCustomeModuleRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.siteName = siteName;
+            Helpmate.Facades.LotteryWebService.GetCustomeModuleResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).GetCustomeModule(inValue);
+            return retVal.GetCustomeModuleResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.BeginGetCustomeModule(Helpmate.Facades.LotteryWebService.GetCustomeModuleRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetCustomeModule(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetCustomeModule(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.GetCustomeModuleRequest inValue = new Helpmate.Facades.LotteryWebService.GetCustomeModuleRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.siteName = siteName;
+            return ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).BeginGetCustomeModule(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Helpmate.Facades.LotteryWebService.GetCustomeModuleResponse Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap.EndGetCustomeModule(System.IAsyncResult result) {
+            return base.Channel.EndGetCustomeModule(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules EndGetCustomeModule(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.GetCustomeModuleResponse retVal = ((Helpmate.Facades.LotteryWebService.LotteryWebServiceSoap)(this)).EndGetCustomeModule(result);
+            return retVal.GetCustomeModuleResult;
+        }
+        
+        private System.IAsyncResult OnBeginGetCustomeModule(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader = ((Helpmate.Facades.LotteryWebService.TokenHeader)(inValues[0]));
+            string siteName = ((string)(inValues[1]));
+            return this.BeginGetCustomeModule(TokenHeader, siteName, callback, asyncState);
+        }
+        
+        private object[] OnEndGetCustomeModule(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules retVal = this.EndGetCustomeModule(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetCustomeModuleCompleted(object state) {
+            if ((this.GetCustomeModuleCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetCustomeModuleCompleted(this, new GetCustomeModuleCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetCustomeModuleAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName) {
+            this.GetCustomeModuleAsync(TokenHeader, siteName, null);
+        }
+        
+        public void GetCustomeModuleAsync(Helpmate.Facades.LotteryWebService.TokenHeader TokenHeader, string siteName, object userState) {
+            if ((this.onBeginGetCustomeModuleDelegate == null)) {
+                this.onBeginGetCustomeModuleDelegate = new BeginOperationDelegate(this.OnBeginGetCustomeModule);
+            }
+            if ((this.onEndGetCustomeModuleDelegate == null)) {
+                this.onEndGetCustomeModuleDelegate = new EndOperationDelegate(this.OnEndGetCustomeModule);
+            }
+            if ((this.onGetCustomeModuleCompletedDelegate == null)) {
+                this.onGetCustomeModuleCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetCustomeModuleCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetCustomeModuleDelegate, new object[] {
+                        TokenHeader,
+                        siteName}, this.onEndGetCustomeModuleDelegate, this.onGetCustomeModuleCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2131,6 +2683,62 @@ namespace Helpmate.Facades.LotteryWebService {
                 this.onGenerateCodeCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGenerateCodeCompleted);
             }
             base.InvokeAsync(this.onBeginGenerateCodeDelegate, null, this.onEndGenerateCodeDelegate, this.onGenerateCodeCompletedDelegate, userState);
+        }
+        
+        public Helpmate.Facades.LotteryWebService.LotteryTrend QueryTrend(System.DateTime from, System.DateTime to, int pageSize, int pageIndex) {
+            return base.Channel.QueryTrend(from, to, pageSize, pageIndex);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginQueryTrend(System.DateTime from, System.DateTime to, int pageSize, int pageIndex, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginQueryTrend(from, to, pageSize, pageIndex, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public Helpmate.Facades.LotteryWebService.LotteryTrend EndQueryTrend(System.IAsyncResult result) {
+            return base.Channel.EndQueryTrend(result);
+        }
+        
+        private System.IAsyncResult OnBeginQueryTrend(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.DateTime from = ((System.DateTime)(inValues[0]));
+            System.DateTime to = ((System.DateTime)(inValues[1]));
+            int pageSize = ((int)(inValues[2]));
+            int pageIndex = ((int)(inValues[3]));
+            return this.BeginQueryTrend(from, to, pageSize, pageIndex, callback, asyncState);
+        }
+        
+        private object[] OnEndQueryTrend(System.IAsyncResult result) {
+            Helpmate.Facades.LotteryWebService.LotteryTrend retVal = this.EndQueryTrend(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnQueryTrendCompleted(object state) {
+            if ((this.QueryTrendCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.QueryTrendCompleted(this, new QueryTrendCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void QueryTrendAsync(System.DateTime from, System.DateTime to, int pageSize, int pageIndex) {
+            this.QueryTrendAsync(from, to, pageSize, pageIndex, null);
+        }
+        
+        public void QueryTrendAsync(System.DateTime from, System.DateTime to, int pageSize, int pageIndex, object userState) {
+            if ((this.onBeginQueryTrendDelegate == null)) {
+                this.onBeginQueryTrendDelegate = new BeginOperationDelegate(this.OnBeginQueryTrend);
+            }
+            if ((this.onEndQueryTrendDelegate == null)) {
+                this.onEndQueryTrendDelegate = new EndOperationDelegate(this.OnEndQueryTrend);
+            }
+            if ((this.onQueryTrendCompletedDelegate == null)) {
+                this.onQueryTrendCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnQueryTrendCompleted);
+            }
+            base.InvokeAsync(this.onBeginQueryTrendDelegate, new object[] {
+                        from,
+                        to,
+                        pageSize,
+                        pageIndex}, this.onEndQueryTrendDelegate, this.onQueryTrendCompletedDelegate, userState);
         }
     }
 }

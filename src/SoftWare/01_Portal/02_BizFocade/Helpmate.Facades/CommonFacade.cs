@@ -11,12 +11,11 @@ namespace Helpmate.Facades
     {
         private readonly RestClient restClient = new RestClient();
 
-        public void QuerySuperPerson(Action<QueryCompletedEventArgs> callback)
+        public void GetCustomeModule(Action<QueryCompletedEventArgs> callback)
         {
             TokenHeader tokenHeader = new TokenHeader();
-            LotteryFilterForBJ filterForBj = new LotteryFilterForBJ();
 
-            restClient.ClientService.QueryAsync(tokenHeader, filterForBj);
+            restClient.ClientService.GetCustomeModuleAsync(tokenHeader, "1001");
             EventHandler<QueryCompletedEventArgs> callbackHandler = (obj, args) =>
             {
                 callback(args);

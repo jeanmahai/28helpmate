@@ -39,7 +39,7 @@ namespace Helpmate.UI.Forms.FormUI
         private void QueryData()
         {
             cmd.ShowOpaqueLayer(this, 125, true);
-            serviceFacade.QuerySuperPerson(result =>
+            serviceFacade.GetCustomeModule(result =>
             {
                 cmd.HideOpaqueLayer();
                 if (result.Error != null || !result.Result.Success)
