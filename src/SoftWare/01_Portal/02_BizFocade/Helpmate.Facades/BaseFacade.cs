@@ -6,11 +6,14 @@ using Helpmate.Facades.LotteryWebService;
 
 namespace Helpmate.Facades
 {
-    public class RestClient
+    public class BaseFacade
     {
+        public string Key { get; set; }
+
+        protected readonly BaseFacade restClient = new BaseFacade();
         public LotteryWebServiceSoapClient ClientService { get; set; }
 
-        public RestClient()
+        public BaseFacade()
         {
             ClientService = new LotteryWebServiceSoapClient("LotteryWebServiceSoap");
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Helpmate.Facades.LotteryWebService;
 
 namespace Helpmate.UI.Forms.Models
 {
@@ -80,5 +81,121 @@ namespace Helpmate.UI.Forms.Models
         public string Side { get; set; }
         public string Big { get; set; }
         public string Small { get; set; }
+
+        public List<TrendCountModel> GetCountList(LotteryTimes[] data)
+        {
+            List<TrendCountModel> headerList = new List<TrendCountModel>();
+            TrendCountModel count = new TrendCountModel();
+            if (data != null && data.Length > 0)
+            {
+                for (int i = 0; i < data.Length; i++)
+                {
+                    switch (data[i].Name)
+                    {
+                        case "0":
+                            count.T0 = data[i].Total.ToString();
+                            break;
+                        case "1":
+                            count.T1 = data[i].Total.ToString();
+                            break;
+                        case "2":
+                            count.T2 = data[i].Total.ToString();
+                            break;
+                        case "3":
+                            count.T3 = data[i].Total.ToString();
+                            break;
+                        case "4":
+                            count.T4 = data[i].Total.ToString();
+                            break;
+                        case "5":
+                            count.T5 = data[i].Total.ToString();
+                            break;
+                        case "6":
+                            count.T6 = data[i].Total.ToString();
+                            break;
+                        case "7":
+                            count.T7 = data[i].Total.ToString();
+                            break;
+                        case "8":
+                            count.T8 = data[i].Total.ToString();
+                            break;
+                        case "9":
+                            count.T9 = data[i].Total.ToString();
+                            break;
+                        case "10":
+                            count.T10 = data[i].Total.ToString();
+                            break;
+                        case "11":
+                            count.T11 = data[i].Total.ToString();
+                            break;
+                        case "12":
+                            count.T13 = data[i].Total.ToString();
+                            break;
+                        case "14":
+                            count.T14 = data[i].Total.ToString();
+                            break;
+                        case "15":
+                            count.T15 = data[i].Total.ToString();
+                            break;
+                        case "16":
+                            count.T16 = data[i].Total.ToString();
+                            break;
+                        case "17":
+                            count.T17 = data[i].Total.ToString();
+                            break;
+                        case "18":
+                            count.T18 = data[i].Total.ToString();
+                            break;
+                        case "19":
+                            count.T19 = data[i].Total.ToString();
+                            break;
+                        case "20":
+                            count.T20 = data[i].Total.ToString();
+                            break;
+                        case "21":
+                            count.T21 = data[i].Total.ToString();
+                            break;
+                        case "22":
+                            count.T22 = data[i].Total.ToString();
+                            break;
+                        case "23":
+                            count.T23 = data[i].Total.ToString();
+                            break;
+                        case "24":
+                            count.T24 = data[i].Total.ToString();
+                            break;
+                        case "25":
+                            count.T25 = data[i].Total.ToString();
+                            break;
+                        case "26":
+                            count.T26 = data[i].Total.ToString();
+                            break;
+                        case "27":
+                            count.T27 = data[i].Total.ToString();
+                            break;
+                        case "大":
+                            count.Big = data[i].Total.ToString();
+                            break;
+                        case "小":
+                            count.Small = data[i].Total.ToString();
+                            break;
+                        case "中":
+                            count.Middle = data[i].Total.ToString();
+                            break;
+                        case "边":
+                            count.Side = data[i].Total.ToString();
+                            break;
+                        case "单":
+                            count.Odd = data[i].Total.ToString();
+                            break;
+                        case "双":
+                            count.Dual = data[i].Total.ToString();
+                            break;
+                    }
+                }
+            }
+            headerList.Add(count);
+            return headerList;
+        }
     }
 }

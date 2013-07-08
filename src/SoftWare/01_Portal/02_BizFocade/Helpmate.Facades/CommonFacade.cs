@@ -7,20 +7,24 @@ using System.Windows.Forms;
 
 namespace Helpmate.Facades
 {
-    public class CommonFacade
+    public class CommonFacade : BaseFacade
     {
-        private readonly RestClient restClient = new RestClient();
-
-        public void GetCustomeModule(Action<QueryCompletedEventArgs> callback)
+        public void GetCustomeModule(Action<GetCustomeModuleCompletedEventArgs> callback)
         {
             TokenHeader tokenHeader = new TokenHeader();
 
             restClient.ClientService.GetCustomeModuleAsync(tokenHeader, "1001");
-            EventHandler<QueryCompletedEventArgs> callbackHandler = (obj, args) =>
+            restClient.ClientService.GetCustomeModuleCompleted += (obj, args) =>
             {
-                callback(args);
+                try
+                {
+                    callback(args);
+                }
+                catch (Exception ex)
+                {
+                    string msg = ex.Message;
+                }
             };
-            restClient.ClientService.QueryCompleted += callbackHandler;
         }
 
 

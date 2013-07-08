@@ -82,5 +82,13 @@ namespace Helpmate.UI.Forms.Models
         public string Side { get; set; }
         public string Big { get; set; }
         public string Small { get; set; }
+
+        public List<TrendHeaderModel> GetHeader()
+        {
+            List<TrendHeaderModel> headerList = new List<TrendHeaderModel>();
+            TrendHeaderModel header = new TrendHeaderModel();
+            headerList.Add(header);
+            return headerList;
+        }
     }
 }
