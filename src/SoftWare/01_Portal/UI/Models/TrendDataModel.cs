@@ -93,7 +93,7 @@ namespace Helpmate.UI.Forms.Models
         /// </summary>
         /// <param name="list">Service实体</param>
         /// <returns></returns>
-        public List<TrendDataModel> GetDataList(LotteryForBJ[] list)
+        public List<TrendDataModel> GetDataList(LotteryExtByBJ[] list)
         {
             List<TrendDataModel> dataList = new List<TrendDataModel>();
             if (list != null && list.Length > 0)
@@ -104,38 +104,35 @@ namespace Helpmate.UI.Forms.Models
                     item.PeriodNum = list[i].PeriodNum;
                     item.RetTime = UtilsTool.ConvertDateToTrendDate(list[i].RetTime);
                     #region 大小、中边、单双
-                    if (list[i].type != null)
+                    if (list[i].BigOrSmall == "大")
                     {
-                        if (list[i].type.BigOrSmall == "大")
-                        {
-                            item.Big = "大";
-                            item.Small = "";
-                        }
-                        else
-                        {
-                            item.Big = "";
-                            item.Small = "小";
-                        }
-                        if (list[i].type.OddOrDual == "单")
-                        {
-                            item.Odd = "单";
-                            item.Dual = "";
-                        }
-                        else
-                        {
-                            item.Odd = "";
-                            item.Dual = "双";
-                        }
-                        if (list[i].type.MiddleOrSide == "中")
-                        {
-                            item.Middle = "中";
-                            item.Side = "";
-                        }
-                        else
-                        {
-                            item.Middle = "";
-                            item.Side = "边";
-                        }
+                        item.Big = "大";
+                        item.Small = "";
+                    }
+                    else
+                    {
+                        item.Big = "";
+                        item.Small = "小";
+                    }
+                    if (list[i].OddOrDual == "单")
+                    {
+                        item.Odd = "单";
+                        item.Dual = "";
+                    }
+                    else
+                    {
+                        item.Odd = "";
+                        item.Dual = "双";
+                    }
+                    if (list[i].MiddleOrSide == "中")
+                    {
+                        item.Middle = "中";
+                        item.Side = "";
+                    }
+                    else
+                    {
+                        item.Middle = "";
+                        item.Side = "边";
                     }
                     #endregion
                     #region 28个数字

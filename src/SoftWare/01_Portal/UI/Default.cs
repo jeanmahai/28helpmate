@@ -34,7 +34,7 @@ namespace Helpmate.UI.Forms
 
         private void pnlPrediction_Click(object sender, EventArgs e)
         {
-            var childForm = new Prediction();
+            var childForm = new SuperTrend();
             CurrMenu(MenuEnum.Prediction, childForm.SiteMapList, childForm);
         }
 
@@ -73,6 +73,9 @@ namespace Helpmate.UI.Forms
                     CurrMenuCtrl(lblOther, picOtherCurr, conForm, siteMapList);
                     break;
                 case MenuEnum.Log:
+                    CurrMenuCtrl(lblLog, picLogCurr, conForm, siteMapList);
+                    break;
+                case MenuEnum.SuperTrend:
                     CurrMenuCtrl(lblLog, picLogCurr, conForm, siteMapList);
                     break;
             }

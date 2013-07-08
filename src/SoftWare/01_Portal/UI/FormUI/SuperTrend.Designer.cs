@@ -1,6 +1,6 @@
 ﻿namespace Helpmate.UI.Forms.FormUI
 {
-    partial class NormalTrend
+    partial class SuperTrend
     {
         /// <summary>
         /// Required designer variable.
@@ -44,38 +44,38 @@
             // countList
             // 
             this.countList.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.countList.BackgroundColor = System.Drawing.Color.White;
-            this.countList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.countList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.countList.Location = new System.Drawing.Point(-101, 28);
             this.countList.Name = "countList";
             this.countList.RowTemplate.Height = 23;
             this.countList.Size = new System.Drawing.Size(1011, 23);
             this.countList.TabIndex = 0;
+            this.countList.BackgroundColor = System.Drawing.Color.White;
+            this.countList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             // 
             // headerList
             // 
             this.headerList.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.headerList.BackgroundColor = System.Drawing.Color.White;
-            this.headerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.headerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.headerList.Location = new System.Drawing.Point(-101, 50);
             this.headerList.Name = "headerList";
             this.headerList.RowTemplate.Height = 23;
             this.headerList.Size = new System.Drawing.Size(1011, 23);
             this.headerList.TabIndex = 1;
+            this.headerList.BackgroundColor = System.Drawing.Color.White;
+            this.headerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             // 
             // dataList
             // 
             this.dataList.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dataList.BackgroundColor = System.Drawing.Color.White;
-            this.dataList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataList.Location = new System.Drawing.Point(-101, 72);
             this.dataList.Name = "dataList";
             this.dataList.RowTemplate.Height = 23;
             this.dataList.Size = new System.Drawing.Size(1011, 514);
             this.dataList.TabIndex = 2;
+            this.dataList.BackgroundColor = System.Drawing.Color.White;
+            this.dataList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataList_CellFormatting);
             // 
             // lnkPrev
@@ -99,7 +99,6 @@
             this.lblPage.Size = new System.Drawing.Size(47, 12);
             this.lblPage.TabIndex = 4;
             this.lblPage.Text = "100/100";
-            this.lblPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lnkNext
             // 
@@ -122,7 +121,6 @@
             this.lnkLast.TabIndex = 6;
             this.lnkLast.TabStop = true;
             this.lnkLast.Text = "尾页";
-            this.lnkLast.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLast_LinkClicked);
             // 
             // lnkFirst
             // 
@@ -151,8 +149,8 @@
             this.Controls.Add(this.headerList);
             this.Controls.Add(this.countList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "NormalTrend";
-            this.Text = "NormalTrend";
+            this.Name = "SuperTrend";
+            this.Text = "SuperTrend";
             ((System.ComponentModel.ISupportInitialize)(this.countList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).EndInit();

@@ -6,22 +6,39 @@ using Helpmate.Facades.LotteryWebService;
 
 namespace Helpmate.Facades
 {
-    public class TrendFacade : BaseFacade
+    public class TrendFacade// : BaseFacade
     {
-        public void QueryTrend(int pageIndex, Action<QueryCompletedEventArgs> callback)
+        public ResultRMOfLotteryTrend QueryTrend(int pageIndex)
         {
-            restClient.ClientService.QueryTrendAsync(DateTime.Now.AddDays(-1), DateTime.Now, 1000, pageIndex);
-            EventHandler<QueryCompletedEventArgs> callbackHandler = (obj, args) =>
+            TokenHeader header = new TokenHeader();
+            header.GameSourceSysNo = 10001;
+            header.RegionSourceSysNo = 10001;
+            header.SiteSourceSysNo = 10001;
+            header.UserSysNo = 0;
+            lock (Header.obj)
             {
-                callback(args);
-            };
-            restClient.ClientService.QueryCompleted += callbackHandler;
+                header.Key = Header.Key;
+                LotteryWebServiceSoapClient svc = new LotteryWebServiceSoapClient("LotteryWebServiceSoap");
+                var data = svc.QueryTrend(header, pageIndex);
+                Header.Key = data.Key;
+                return data;
+            }
         }
-        public LotteryTrend QueryTrend(int pageIndex)
+        public ResultRMOfLotteryTrend QuerySuperTrend(int pageIndex)
         {
-            LotteryWebServiceSoapClient svc = new LotteryWebServiceSoapClient("LotteryWebServiceSoap");
-            var data = svc.QueryTrend(DateTime.Now.AddDays(-1), DateTime.Now, 100, pageIndex);
-            return data;
+            TokenHeader header = new TokenHeader();
+            header.GameSourceSysNo = 10001;
+            header.RegionSourceSysNo = 10001;
+            header.SiteSourceSysNo = 10001;
+            header.UserSysNo = 0;
+            lock (Header.obj)
+            {
+                header.Key = Header.Key;
+                LotteryWebServiceSoapClient svc = new LotteryWebServiceSoapClient("LotteryWebServiceSoap");
+                var data = svc.QueryTrend(header, pageIndex);
+                Header.Key = data.Key;
+                return data;
+            }
         }
     }
 }

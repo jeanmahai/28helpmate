@@ -39,20 +39,20 @@ namespace Helpmate.UI.Forms.FormUI
         private void QueryData()
         {
             cmd.ShowOpaqueLayer(this, 125, true);
-            serviceFacade.GetCustomeModule(result =>
-            {
-                cmd.HideOpaqueLayer();
-                if (result.Error != null || !result.Result.Success)
-                {
-                    string message = result.Error != null ? "无法连接服务器，请稍后重试！" : result.Result.Message;
-                    MessageBox.Show(message);
-                    return;
-                }
+            //serviceFacade.GetCustomeModule(result =>
+            //{
+            //    cmd.HideOpaqueLayer();
+            //    if (result.Error != null || !result.Result.Success)
+            //    {
+            //        string message = result.Error != null ? "无法连接服务器，请稍后重试！" : result.Result.Message;
+            //        MessageBox.Show(message);
+            //        return;
+            //    }
 
-                var c = result.Result.Success;
-                var b = result.Result.Message;
-                var d = result.Result.Data;
-            });
+            //    var c = result.Result.Success;
+            //    var b = result.Result.Message;
+            //    var d = result.Result.Data;
+            //});
         }
 
         public OpaqueCommand cmd = new OpaqueCommand();

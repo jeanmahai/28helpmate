@@ -6,28 +6,26 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Helpmate.BizEntity;
 using Common.Utility;
-using System.IO;
-using Helpmate.UI.Forms.Properties;
-using Helpmate.UI.Forms.Models;
-using Helpmate.UI.Forms.UIContorl.Common;
 using Helpmate.Facades;
+using Helpmate.BizEntity;
+using Helpmate.UI.Forms.UIContorl.Common;
 using Helpmate.Facades.LotteryWebService;
+using Helpmate.UI.Forms.Models;
 
 namespace Helpmate.UI.Forms.FormUI
 {
-    public partial class NormalTrend : Form
+    public partial class SuperTrend : Form
     {
         public TrendFacade serviceFacade = new TrendFacade();
         public List<SiteModel> SiteMapList { get; set; }
 
-        public NormalTrend()
+        public SuperTrend()
         {
             SiteMapList = new List<SiteModel>()
             {
                 new SiteModel(){ Text="本期预测分析"},
-                new SiteModel(){ Text="近期开奖走势"}
+                new SiteModel(){ Text="超级开奖走势"}
             };
             InitializeComponent();
             QueryData(1);
@@ -111,17 +109,17 @@ namespace Helpmate.UI.Forms.FormUI
         {
             QueryDataDelegate dn = (QueryDataDelegate)ar.AsyncState;
             var data = dn.EndInvoke(ar);
-            this.LoadData(data.Data.DataList, data.Data.LotteryTimeses, data.Data.PageIndex, data.Data.PageCount);
+            this.LoadData(data.Data.DataList, data.Data.LotteryTimeses);
         }
         #endregion
         #region 异步Bind
-        public delegate void LoadDataCallback(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount);
-        private void LoadData(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount)
+        public delegate void LoadDataCallback(LotteryExtByBJ[] list, LotteryTimes[] count);
+        private void LoadData(LotteryExtByBJ[] list, LotteryTimes[] count)
         {
             if (this.lblPage.InvokeRequired)
             {
                 LoadDataCallback d = new LoadDataCallback(LoadData);
-                this.Invoke(d, new object[] { list, count, currPageIndex, pageCount });
+                this.Invoke(d, new object[] { list, count });
             }
             else
             {
@@ -137,9 +135,6 @@ namespace Helpmate.UI.Forms.FormUI
                 List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(list);
                 dataList.DataSource = listData;
                 SetDataStyle(dataList, listData.Count);
-
-                //页码信息
-                //lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
             }
             cmd.HideOpaqueLayer();
         }
@@ -253,11 +248,5 @@ namespace Helpmate.UI.Forms.FormUI
             dgv.BackgroundColor = Color.White;
         }
         #endregion
-
-        private void lnkLast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[1]);
-            QueryData(pageIndex);
-        }
     }
 }

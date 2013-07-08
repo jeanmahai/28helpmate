@@ -51,6 +51,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Header.cs" />
     <Compile Include="TrendFacade.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,13 +76,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryByTwentyPeriod.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ.datasource">
+    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfListOfOmitStatistics.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryTrend.datasource">

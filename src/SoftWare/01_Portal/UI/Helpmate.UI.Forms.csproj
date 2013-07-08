@@ -79,6 +79,12 @@
     <Compile Include="FormUI\Prediction.Designer.cs">
       <DependentUpon>Prediction.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUI\SuperTrend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUI\SuperTrend.Designer.cs">
+      <DependentUpon>SuperTrend.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

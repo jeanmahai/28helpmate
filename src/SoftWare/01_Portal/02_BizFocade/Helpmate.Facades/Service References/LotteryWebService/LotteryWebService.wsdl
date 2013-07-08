@@ -2,17 +2,13 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="GetCustomeModule">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
+      <s:element name="GetCustomeModule_28BJ">
+        <s:complexType />
       </s:element>
-      <s:element name="GetCustomeModuleResponse">
+      <s:element name="GetCustomeModule_28BJResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCustomeModuleResult" type="tns:ResultRMOfCustomModules" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomeModule_28BJResult" type="tns:ResultRMOfCustomModules" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -22,7 +18,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:CustomModules" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="CustomModules">
@@ -37,6 +33,12 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="Lotteries" type="tns:ArrayOfLotteryForBJ" />
           <s:element minOccurs="0" maxOccurs="1" name="NotAppearNumber" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="BigP" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SmallP" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CenterP" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SideP" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="OddP" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="EvenP" type="s:decimal" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfLotteryForBJ">
@@ -81,56 +83,10 @@
           <s:element minOccurs="1" maxOccurs="1" name="SiteSourceSysNo" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="GameSourceSysNo" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="RegionSourceSysNo" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="UserSysNo" type="s:int" />
         </s:sequence>
         <s:anyAttribute />
-      </s:complexType>
-      <s:element name="QueryLotteryByTwenty">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QueryLotteryByTwentyResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryLotteryByTwentyResult" type="tns:ResultRMOfLotteryByTwentyPeriod" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ResultRMOfLotteryByTwentyPeriod">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryByTwentyPeriod" />
-          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="QueryCurrentLottery">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QueryCurrentLotteryResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryCurrentLotteryResult" type="tns:ResultRMOfLotteryForBJ" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ResultRMOfLotteryForBJ">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryForBJ" />
-          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
-        </s:sequence>
       </s:complexType>
       <s:element name="Query">
         <s:complexType>
@@ -162,7 +118,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:PageListOfLotteryForBJ" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="PageListOfLotteryForBJ">
@@ -245,7 +201,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryTrend" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="LotteryTrend">
@@ -274,6 +230,7 @@
       </s:complexType>
       <s:complexType name="LotteryExtByBJ">
         <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PeriodNum" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="RetNum" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="BigOrSmall" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="MiddleOrSide" type="s:string" />
@@ -281,33 +238,52 @@
           <s:element minOccurs="1" maxOccurs="1" name="RetTime" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
+      <s:element name="QueryOmission">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueryOmissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryOmissionResult" type="tns:ResultRMOfListOfOmitStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfListOfOmitStatistics">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfOmitStatistics" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOmitStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OmitStatistics" nillable="true" type="tns:OmitStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OmitStatistics">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GameSysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SourceSysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteSysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OmitCnt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxOmitCnt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StandardCnt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NowPeriodNum" type="s:long" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetCustomeModuleSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCustomeModule" />
+  <wsdl:message name="GetCustomeModule_28BJSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomeModule_28BJ" />
   </wsdl:message>
-  <wsdl:message name="GetCustomeModuleSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCustomeModuleResponse" />
+  <wsdl:message name="GetCustomeModule_28BJSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomeModule_28BJResponse" />
   </wsdl:message>
-  <wsdl:message name="GetCustomeModuleTokenHeader">
-    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
-  </wsdl:message>
-  <wsdl:message name="QueryLotteryByTwentySoapIn">
-    <wsdl:part name="parameters" element="tns:QueryLotteryByTwenty" />
-  </wsdl:message>
-  <wsdl:message name="QueryLotteryByTwentySoapOut">
-    <wsdl:part name="parameters" element="tns:QueryLotteryByTwentyResponse" />
-  </wsdl:message>
-  <wsdl:message name="QueryLotteryByTwentyTokenHeader">
-    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
-  </wsdl:message>
-  <wsdl:message name="QueryCurrentLotterySoapIn">
-    <wsdl:part name="parameters" element="tns:QueryCurrentLottery" />
-  </wsdl:message>
-  <wsdl:message name="QueryCurrentLotterySoapOut">
-    <wsdl:part name="parameters" element="tns:QueryCurrentLotteryResponse" />
-  </wsdl:message>
-  <wsdl:message name="QueryCurrentLotteryTokenHeader">
+  <wsdl:message name="GetCustomeModule_28BJTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
   <wsdl:message name="QuerySoapIn">
@@ -346,21 +322,20 @@
   <wsdl:message name="QueryTrendTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="QueryOmissionSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryOmission" />
+  </wsdl:message>
+  <wsdl:message name="QueryOmissionSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryOmissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryOmissionTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
-    <wsdl:operation name="GetCustomeModule">
+    <wsdl:operation name="GetCustomeModule_28BJ">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
-      <wsdl:input message="tns:GetCustomeModuleSoapIn" />
-      <wsdl:output message="tns:GetCustomeModuleSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="QueryLotteryByTwenty">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近20期的结果</wsdl:documentation>
-      <wsdl:input message="tns:QueryLotteryByTwentySoapIn" />
-      <wsdl:output message="tns:QueryLotteryByTwentySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="QueryCurrentLottery">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近1期的结果</wsdl:documentation>
-      <wsdl:input message="tns:QueryCurrentLotterySoapIn" />
-      <wsdl:output message="tns:QueryCurrentLotterySoapOut" />
+      <wsdl:input message="tns:GetCustomeModule_28BJSoapIn" />
+      <wsdl:output message="tns:GetCustomeModule_28BJSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Query">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询开奖结果</wsdl:documentation>
@@ -378,6 +353,7 @@
       <wsdl:output message="tns:RegisterSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GenerateCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">生成验证码</wsdl:documentation>
       <wsdl:input message="tns:GenerateCodeSoapIn" />
       <wsdl:output message="tns:GenerateCodeSoapOut" />
     </wsdl:operation>
@@ -386,34 +362,19 @@
       <wsdl:input message="tns:QueryTrendSoapIn" />
       <wsdl:output message="tns:QueryTrendSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="QueryOmission">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">遗漏号码</wsdl:documentation>
+      <wsdl:input message="tns:QueryOmissionSoapIn" />
+      <wsdl:output message="tns:QueryOmissionSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetCustomeModule">
-      <soap:operation soapAction="http://tempuri.org/GetCustomeModule" style="document" />
+    <wsdl:operation name="GetCustomeModule_28BJ">
+      <soap:operation soapAction="http://tempuri.org/GetCustomeModule_28BJ" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
-        <soap:header message="tns:GetCustomeModuleTokenHeader" part="TokenHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryLotteryByTwenty">
-      <soap:operation soapAction="http://tempuri.org/QueryLotteryByTwenty" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:QueryLotteryByTwentyTokenHeader" part="TokenHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryCurrentLottery">
-      <soap:operation soapAction="http://tempuri.org/QueryCurrentLottery" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:QueryCurrentLotteryTokenHeader" part="TokenHeader" use="literal" />
+        <soap:header message="tns:GetCustomeModule_28BJTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -466,34 +427,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="QueryOmission">
+      <soap:operation soapAction="http://tempuri.org/QueryOmission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryOmissionTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetCustomeModule">
-      <soap12:operation soapAction="http://tempuri.org/GetCustomeModule" style="document" />
+    <wsdl:operation name="GetCustomeModule_28BJ">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomeModule_28BJ" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
-        <soap12:header message="tns:GetCustomeModuleTokenHeader" part="TokenHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryLotteryByTwenty">
-      <soap12:operation soapAction="http://tempuri.org/QueryLotteryByTwenty" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:QueryLotteryByTwentyTokenHeader" part="TokenHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryCurrentLottery">
-      <soap12:operation soapAction="http://tempuri.org/QueryCurrentLottery" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:QueryCurrentLotteryTokenHeader" part="TokenHeader" use="literal" />
+        <soap12:header message="tns:GetCustomeModule_28BJTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
@@ -541,6 +492,16 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:QueryTrendTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryOmission">
+      <soap12:operation soapAction="http://tempuri.org/QueryOmission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryOmissionTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

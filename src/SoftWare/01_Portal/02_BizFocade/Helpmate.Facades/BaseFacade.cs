@@ -10,7 +10,7 @@ namespace Helpmate.Facades
     {
         public string Key { get; set; }
 
-        protected readonly BaseFacade restClient = new BaseFacade();
+        //protected readonly BaseFacade restClient = new BaseFacade();
         public LotteryWebServiceSoapClient ClientService { get; set; }
 
         public BaseFacade()
