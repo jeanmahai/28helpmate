@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.LotteryTimes,Model">
+    <id name="Name" column="Name" type="String" >
+      <generator class="assigned"/>
+    </id>
+
+    <property name="Total" column="Total" type="Int32" />
+  </class>
+</hibernate-mapping>

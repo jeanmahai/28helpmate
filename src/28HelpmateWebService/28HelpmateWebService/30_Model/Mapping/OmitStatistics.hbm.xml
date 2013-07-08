@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.OmitStatistics,Model"
+         table="[OmitStatistics]">
+
+    <id name="SysNo" column="SysNo" type="Int32" >
+      <generator class="native"/>
+    </id>
+
+    <property name="GameSysNo" column="GameSysNo" type="Int32"  />
+    <property name="SourceSysNo" column="SourceSysNo" type="Int32"  />
+    <property name="SiteSysNo" column="SiteSysNo" type="Int32"  />
+    <property name="RetNum" column="RetNum" type="Int32"  />
+    <property name="OmitCnt" column="OmitCnt" type="Int32"  />
+    <property name="MaxOmitCnt" column="MaxOmitCnt" type="Int32"  />
+    <property name="StandardCnt" column="StandardCnt" type="Int32"  />
+    <property name="NowPeriodNum" column="NowPeriodNum" type="Int64"  />
+  </class>
+</hibernate-mapping>
