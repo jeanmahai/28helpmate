@@ -203,5 +203,19 @@ namespace UnitTest
             var result = m_client.GetCustomeModule_28BJ(head);
             //result.Data.M1.BigP
         }
+
+        [TestMethod]
+        public void QueryOmissionTest()
+        {
+            var head = new TokenHeader()
+            {
+                GameSourceSysNo = 10001,
+                RegionSourceSysNo = 10001,
+                SiteSourceSysNo = 10001,
+                Key = "",
+                UserSysNo = 1
+            };
+            var result = m_client.QueryOmission(head);
+        }
     }
 }

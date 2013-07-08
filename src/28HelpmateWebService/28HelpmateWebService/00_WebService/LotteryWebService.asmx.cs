@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml.Serialization;
@@ -242,7 +243,7 @@ namespace WebService
             return Dal.Register(user);
         }
 
-        [WebMethod]
+        [WebMethod(Description = "生成验证码")]
         public string GenerateCode()
         {
             var code = Dal.GenerateCode();
@@ -259,6 +260,27 @@ namespace WebService
             if (ValidateToken(Token))
             {
                 result.Data = Dal.QueryTrend_28BJ(Token.SiteSourceSysNo,pageIndex,AppSettingValues.PageCount);
+                result.Success = true;
+                result.Key = Dal.generateKey();
+                SessionValue.Key = result.Key;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
+        [WebMethod(Description = "一般走势图,分页从1开始",EnableSession = true)]
+        [SoapHeader("Token")]
+        public ResultRM<List<OmitStatistics>> QueryOmission()
+        {
+            var result = new ResultRM<List<OmitStatistics>>();
+            if(ValidateToken(Token))
+            {
+                var data=Dal.QueryOmissionAll_28BJ(Token.GameSourceSysNo, Token.SiteSourceSysNo, Token.RegionSourceSysNo);
+                result.Data = data;
                 result.Success = true;
                 result.Key = Dal.generateKey();
                 SessionValue.Key = result.Key;

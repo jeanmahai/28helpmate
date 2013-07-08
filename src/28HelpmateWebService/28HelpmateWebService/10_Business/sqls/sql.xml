@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Sqls>
+  <sql name="UpdateOmission">
+    <![CDATA[
+    exec RefreshOmitStatistics :GameSysNo :SourceSysNo :SiteSysNo
+    ]]>
+  </sql>
   <sql name="QueryOmissionAllForBJ">
     <![CDATA[
 DECLARE @MAX_P INT

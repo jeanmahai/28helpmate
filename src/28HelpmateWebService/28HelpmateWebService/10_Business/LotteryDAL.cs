@@ -100,7 +100,7 @@ namespace Business
         }
         public string generateKey()
         {
-            return new Guid().ToString();
+            return Guid.NewGuid().ToString();
         }
         public bool ValidateToken(string userId,string psw,string token)
         {
@@ -328,6 +328,16 @@ namespace Business
             int siteSysNo,
             int sourceSysNo)
         {
+            //Session.GetNamedQuery("UpdateOmission")
+            //    .SetParameter("GameSysNo", gameSysNo)
+            //    .SetParameter("RegionSysNo", sourceSysNo)
+            //    .SetParameter("SiteSysNo", siteSysNo)
+            //    .ExecuteUpdate();
+            var sql = string.Format("exec RefreshOmitStatistics {0},{1},{2};",
+                                    gameSysNo, sourceSysNo, siteSysNo);
+            Session.CreateSQLQuery(sql)
+                .ExecuteUpdate();
+
             return Session
                 .QueryOver<OmitStatistics>()
                 .Where(p => p.GameSysNo == gameSysNo && p.SiteSysNo == siteSysNo && p.SourceSysNo == sourceSysNo)

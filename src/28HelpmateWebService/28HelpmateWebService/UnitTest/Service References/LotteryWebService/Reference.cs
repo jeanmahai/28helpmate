@@ -41,6 +41,11 @@ namespace UnitTest.LotteryWebService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryTrend", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         UnitTest.LotteryWebService.QueryTrendResponse QueryTrend(UnitTest.LotteryWebService.QueryTrendRequest request);
+        
+        // CODEGEN: 消息 QueryOmissionRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryOmission", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        UnitTest.LotteryWebService.QueryOmissionResponse QueryOmission(UnitTest.LotteryWebService.QueryOmissionRequest request);
     }
     
     /// <remarks/>
@@ -132,6 +137,238 @@ namespace UnitTest.LotteryWebService {
             set {
                 this.anyAttrField = value;
                 this.RaisePropertyChanged("AnyAttr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class OmitStatistics : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int sysNoField;
+        
+        private int gameSysNoField;
+        
+        private int sourceSysNoField;
+        
+        private int siteSysNoField;
+        
+        private int retNumField;
+        
+        private int omitCntField;
+        
+        private int maxOmitCntField;
+        
+        private int standardCntField;
+        
+        private long nowPeriodNumField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int SysNo {
+            get {
+                return this.sysNoField;
+            }
+            set {
+                this.sysNoField = value;
+                this.RaisePropertyChanged("SysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int GameSysNo {
+            get {
+                return this.gameSysNoField;
+            }
+            set {
+                this.gameSysNoField = value;
+                this.RaisePropertyChanged("GameSysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int SourceSysNo {
+            get {
+                return this.sourceSysNoField;
+            }
+            set {
+                this.sourceSysNoField = value;
+                this.RaisePropertyChanged("SourceSysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int SiteSysNo {
+            get {
+                return this.siteSysNoField;
+            }
+            set {
+                this.siteSysNoField = value;
+                this.RaisePropertyChanged("SiteSysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+                this.RaisePropertyChanged("RetNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public int OmitCnt {
+            get {
+                return this.omitCntField;
+            }
+            set {
+                this.omitCntField = value;
+                this.RaisePropertyChanged("OmitCnt");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public int MaxOmitCnt {
+            get {
+                return this.maxOmitCntField;
+            }
+            set {
+                this.maxOmitCntField = value;
+                this.RaisePropertyChanged("MaxOmitCnt");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public int StandardCnt {
+            get {
+                return this.standardCntField;
+            }
+            set {
+                this.standardCntField = value;
+                this.RaisePropertyChanged("StandardCnt");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public long NowPeriodNum {
+            get {
+                return this.nowPeriodNumField;
+            }
+            set {
+                this.nowPeriodNumField = value;
+                this.RaisePropertyChanged("NowPeriodNum");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfListOfOmitStatistics : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private OmitStatistics[] dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        public OmitStatistics[] Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
             }
         }
         
@@ -1553,6 +1790,40 @@ namespace UnitTest.LotteryWebService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryOmission", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryOmissionRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        public QueryOmissionRequest() {
+        }
+        
+        public QueryOmissionRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
+            this.TokenHeader = TokenHeader;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryOmissionResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryOmissionResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfListOfOmitStatistics QueryOmissionResult;
+        
+        public QueryOmissionResponse() {
+        }
+        
+        public QueryOmissionResponse(UnitTest.LotteryWebService.ResultRMOfListOfOmitStatistics QueryOmissionResult) {
+            this.QueryOmissionResult = QueryOmissionResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface LotteryWebServiceSoapChannel : UnitTest.LotteryWebService.LotteryWebServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -1628,6 +1899,18 @@ namespace UnitTest.LotteryWebService {
             inValue.pageIndex = pageIndex;
             UnitTest.LotteryWebService.QueryTrendResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).QueryTrend(inValue);
             return retVal.QueryTrendResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.QueryOmissionResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.QueryOmission(UnitTest.LotteryWebService.QueryOmissionRequest request) {
+            return base.Channel.QueryOmission(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfListOfOmitStatistics QueryOmission(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
+            UnitTest.LotteryWebService.QueryOmissionRequest inValue = new UnitTest.LotteryWebService.QueryOmissionRequest();
+            inValue.TokenHeader = TokenHeader;
+            UnitTest.LotteryWebService.QueryOmissionResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).QueryOmission(inValue);
+            return retVal.QueryOmissionResult;
         }
     }
 }
