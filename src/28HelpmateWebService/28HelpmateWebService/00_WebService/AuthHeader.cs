@@ -13,22 +13,31 @@ namespace WebService
         /// <summary>
         /// 网站来源,龙虎,芝麻豆豆
         /// </summary>
-        public string SiteSource { get; set; }
+        public int SiteSourceSysNo { get; set; }
         /// <summary>
         /// 游戏来源,28,16
         /// </summary>
-        public string GameSource { get; set; }
+        public int GameSourceSysNo { get; set; }
         /// <summary>
         /// 区域来源,加拿大,北京
         /// </summary>
-        public string RegionSource { get; set; }
+        public int RegionSourceSysNo { get; set; }
         /// <summary>
         /// token
         /// </summary>
-        public string Token { get; set; }
+        public string Key { get; set; }
         /// <summary>
         /// 用户系统编号
         /// </summary>
         public int UserSysNo { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}{1}{2}{3}{4}", Key, UserSysNo, GameSourceSysNo, RegionSourceSysNo, SiteSourceSysNo);
+        }
+        public string ToString(string key)
+        {
+            return string.Format("{0}{1}{2}{3}{4}",key,UserSysNo,GameSourceSysNo,RegionSourceSysNo,SiteSourceSysNo);
+        }
     }
 }

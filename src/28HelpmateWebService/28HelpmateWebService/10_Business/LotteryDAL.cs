@@ -62,11 +62,30 @@ namespace Business
             });
             return lotteries;
         }
+
+        private List<LotteryExtByBJ> MappingType(List<LotteryExtByBJ> lotteries)
+        {
+            lotteries.ForEach(p =>
+                              {
+                                  var t = LotteryDictionary.Single(s => s.RetNum == p.RetNum);
+                                  p.BigOrSmall = t.BigOrSmall;
+                                  p.MiddleOrSide = t.MiddleOrSide;
+                                  p.OddOrDual = t.OddOrDual;
+                              });
+            return lotteries;
+        }
         public UserSite QueryUserSite(string name)
         {
             var result = Session
                 .QueryOver<UserSite>()
                 .List<UserSite>().SingleOrDefault(p => p.SiteName == name);
+            return result;
+        }
+        public UserSite QueryUserSite(int sysNo)
+        {
+            var result = Session
+                .QueryOver<UserSite>()
+                .List<UserSite>().SingleOrDefault(p => p.SysNo == sysNo);
             return result;
         }
         public string GenerateToken(string userId,string psw)
@@ -79,6 +98,10 @@ namespace Business
         {
             return CiphertextService.MD5Encryption(str);
         }
+        public string generateKey()
+        {
+            return new Guid().ToString();
+        }
         public bool ValidateToken(string userId,string psw,string token)
         {
             return GenerateToken(userId,psw) == token;
@@ -90,7 +113,7 @@ namespace Business
         public string GenerateCode()
         {
             var random = new Random();
-            return random.Next(100000, 999999).ToString(CultureInfo.InvariantCulture);
+            return random.Next(100000,999999).ToString(CultureInfo.InvariantCulture);
         }
 
         #region 28 BeiJing
@@ -122,6 +145,7 @@ namespace Business
         {
             ICriteria criteria = Session.CreateCriteria(typeof(LotteryForBJ));
             criteria.AddOrder(new Order("PeriodNum",false));
+            criteria.SetFirstResult(1);
             criteria.SetMaxResults(20);
             criteria.Add(Restrictions.Eq("RetNum",number));
             criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
@@ -240,99 +264,43 @@ namespace Business
             result.List = criteriaQueryCondition.List<LotteryForBJ>().ToList();
             return result;
         }
-        public LotteryTrend QueryTrend_28BJ(DateTime from,DateTime to,int pageIndex,int pageSize)
+        public LotteryTrend QueryTrend_28BJ(int siteSysNo,int pageIndex,int pageCount)
         {
-
-            var total=Session.CreateSQLQuery(@"
-SELECT COUNT(1) AS TOTAL
-FROM dbo.SourceData_28_Beijing
-WHERE (RetTime BETWEEN :START_DATE AND :END_DATE)
-")
-                .SetParameter("START_DATE",from)
-                .SetParameter("END_DATE",to)
-                
-                .UniqueResult<int>();
-            var times = Session.CreateSQLQuery(@"
-(
-SELECT RC.BigOrSmall AS Name
-      ,COUNT(RC.BigOrSmall) AS Total
-      
-FROM dbo.SourceData_28_Beijing BJ
-	INNER JOIN dbo.ResultCategory_28 RC
-		ON BJ.RetNum=RC.RetNum
-WHERE BJ.RetTime BETWEEN :START_DATE AND :END_DATE
-GROUP BY RC.BigOrSmall
-)
-union
-(
-SELECT RC.MiddleOrSide AS Name
-      ,COUNT(RC.MiddleOrSide) AS Total
-      
-FROM dbo.SourceData_28_Beijing BJ
-	INNER JOIN dbo.ResultCategory_28 RC
-		ON BJ.RetNum=RC.RetNum
-WHERE BJ.RetTime BETWEEN :START_DATE AND :END_DATE
-GROUP BY RC.MiddleOrSide
-)
-union
-(
-SELECT RC.OddOrDual AS Name
-      ,COUNT(RC.OddOrDual) AS Total
-      
-FROM dbo.SourceData_28_Beijing BJ
-	INNER JOIN dbo.ResultCategory_28 RC
-		ON BJ.RetNum=RC.RetNum
-WHERE BJ.RetTime BETWEEN :START_DATE AND :END_DATE
-GROUP BY RC.OddOrDual
-)
-union
-(
-SELECT convert(nvarchar(40),RetNum) as Name,
-	   COUNT(RetNum) AS Total
-FROM dbo.SourceData_28_Beijing
-WHERE (RetTime BETWEEN :START_DATE AND :END_DATE)
-GROUP BY RetNum
-)
-")
-                .AddEntity(typeof (LotteryTimes))
-                .SetParameter("START_DATE", from)
-                .SetParameter("END_DATE", to)
+            pageIndex -= 1;
+            var curDate = DateTime.Now.AddDays(-pageIndex);
+            DateTime @from;
+            //if(pageIndex==1)
+            //{
+            @from = DateTime.Parse(curDate.ToString("yyyy-MM-dd 00:00:00"));
+            //}
+            //else
+            //{
+            //    @from = DateTime.Parse(searchDateTime.ToString("yyyy-MM-dd 00:00:00"));
+            //}
+            DateTime to = DateTime.Parse(curDate.ToString("yyyy-MM-dd 23:59:59"));
+            //每个号码及类型所出现的次数
+            var times = Session.CreateSQLQuery(SqlManager.GetSqlText("QueryTrend2"))
+                .AddEntity(typeof(LotteryTimes))
+                .SetParameter("START_DATE",DateTime.Parse(curDate.AddDays(-pageCount).AddDays(1).ToString("yyyy-MM-dd 00:00:00")))
+                .SetParameter("END_DATE",DateTime.Now)
+                .SetParameter("SiteSysNo",siteSysNo)
                 .List<LotteryTimes>().ToList();
 
-            //var times2=Session.QueryOver<LotteryForBJ>()
-            //    .JoinAlias(p=>p.RetNum,()=>qtest)
-
-
-            var data = Session.CreateSQLQuery(@"
-
-SELECT *
-FROM (
-SELECT 
-	ROW_NUMBER() OVER  (ORDER BY PERIODNUM DESC) AS ROWNO,
-	*
-FROM dbo.SourceData_28_Beijing
-WHERE (RetTime BETWEEN :START_DATE AND :END_DATE)
-	) AS TEMP
-WHERE ROWNO>(:PAGE_SIZE * :PAGE_INDEX) AND ROWNO<( :PAGE_INDEX + 1) * :PAGE_SIZE
-")
+            //每页的数据
+            var data = Session.CreateSQLQuery(SqlManager.GetSqlText("QueryTrend3"))
                 .AddEntity(typeof(LotteryExtByBJ))
-                .SetParameter("START_DATE",from)
+                .SetParameter("START_DATE",@from)
                 .SetParameter("END_DATE",to)
-                .SetParameter("PAGE_INDEX",pageIndex)
-                .SetParameter("PAGE_SIZE",pageSize)
+                .SetParameter("SiteSysNo",siteSysNo)
                 .List<LotteryExtByBJ>().ToList();
+
+            MappingType(data);
 
             var result = new LotteryTrend();
             result.LotteryTimeses = times;
-
-
-            var pageList = new PageList<LotteryExtByBJ>();
-            pageList.PageIndex = pageIndex;
-            pageList.PageSize = pageSize;
-            pageList.List = data;
-            pageList.Total = total;
-            result.PageList = pageList;
-            //var typeTimes=
+            result.DataList = data;
+            result.PageCount = pageCount;
+            result.PageIndex = pageIndex;
 
             return result;
         }

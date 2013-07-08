@@ -9,13 +9,6 @@
       <generator class="assigned"/>
     </id>
     <property name="RetTime" column="RetTime" type="DateTime"  />
-    <property name="SiteSysNo" column="SiteSysNo" type="Int32"  />
-    <property name="RetOddNum" column="RetOddNum" type="Int32"  />
     <property name="RetNum" column="RetNum" type="Int32"  />
-    <property name="RetMidNum" column="RetMidNum" type="String"  />
-    <property name="CollectRet" column="CollectRet" type="String"  />
-    <property name="CollectTime" column="CollectTime" type="DateTime"  />
-    <property name="Status" column="Status" type="Int32"/>
-    
   </class>
 </hibernate-mapping>

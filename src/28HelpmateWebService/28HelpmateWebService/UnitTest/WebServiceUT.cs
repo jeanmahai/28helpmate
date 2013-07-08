@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Text;
 using System.Collections.Generic;
 using Business;
@@ -15,68 +16,65 @@ namespace UnitTest
         private static LotteryDAL m_Dal = new LotteryDAL();
         private const string SITE_NAME = "龙虎";
 
-        [TestMethod]
-        public void QueryLotteryByTwentyServiceTest()
-        {
-            var data = m_client.QueryLotteryByTwenty(new TokenHeader()
-                                          {
-                                              Token = "1"
-                                          },SITE_NAME);
-            Console.WriteLine(data.Message);
-            var rm = data.Data;
-            if (rm != null)
-            {
-                foreach (var a in rm.Lotteries)
-                {
-                    Console.WriteLine("期号{0}",a.PeriodNum);
-                }
-            }
-        }
+        //[TestMethod]
+        //public void QueryLotteryByTwentyServiceTest()
+        //{
+        //    var data = m_client.QueryLotteryByTwenty(new TokenHeader()
+        //                                  {
+        //                                      Token = "1"
+        //                                  },SITE_NAME);
+        //    Console.WriteLine(data.Message);
+        //    var rm = data.Data;
+        //    if (rm != null)
+        //    {
+        //        foreach (var a in rm.Lotteries)
+        //        {
+        //            Console.WriteLine("期号{0}",a.PeriodNum);
+        //        }
+        //    }
+        //}
 
-        [TestMethod]
-        public void QueryCurrentLotteryServiceTest()
-        {
-            var data = m_client.QueryCurrentLottery(new TokenHeader()
-            {
-                Token = "1"
-            },SITE_NAME);
-            Console.WriteLine(data.Message);
-            Console.WriteLine("期号{0}",data.Data.PeriodNum);
-        }
+        //[TestMethod]
+        //public void QueryCurrentLotteryServiceTest()
+        //{
+        //    var data = m_client.QueryCurrentLottery(new TokenHeader()
+        //    {
+        //        Token = "1"
+        //    },SITE_NAME);
+        //    Console.WriteLine(data.Message);
+        //    Console.WriteLine("期号{0}",data.Data.PeriodNum);
+        //}
 
         [TestMethod]
         public void QueryLotteryByDayServiceTest()
         {
-            var data = m_client.QueryLotteryByDay(new TokenHeader(),DateTime.Now,SITE_NAME);
-            Console.WriteLine(data.Message);
-            foreach (var a in data.Data.Lotteries)
-            {
-                Console.WriteLine("期号{0}",a.PeriodNum);
-            }
+            //var data = m_client.QueryLotteryByDay(new TokenHeader(),DateTime.Now,SITE_NAME);
+            //Console.WriteLine(data.Message);
+            //foreach (var a in data.Data.Lotteries)
+            //{
+            //    Console.WriteLine("期号{0}",a.PeriodNum);
+            //}
         }
-
         [TestMethod]
         public void QueryLotteryByHourStepServiceTest()
         {
-            var data = m_client.QueryLotteryByHourStep(new TokenHeader(),DateTime.Parse("2013-7-2 21:45:00"),SITE_NAME);
-            Console.WriteLine(data.Message);
-            foreach (var a in data.Data.Lotteries)
-            {
-                Console.WriteLine("期号{0}",a.PeriodNum);
-            }
+            //var data = m_client.QueryLotteryByHourStep(new TokenHeader(),DateTime.Parse("2013-7-2 21:45:00"),SITE_NAME);
+            //Console.WriteLine(data.Message);
+            //foreach (var a in data.Data.Lotteries)
+            //{
+            //    Console.WriteLine("期号{0}",a.PeriodNum);
+            //}
         }
-
         [TestMethod]
         public void QueryNextLotteryWithSameNumberServiceTest()
         {
-            var data = m_client.QueryNextLotteryWithSameNumber(new TokenHeader(),1,SITE_NAME);
-            Console.WriteLine(data.Message);
-            foreach (var a in data.Data.Lotteries)
-            {
-                Console.WriteLine("期号{0}",a.PeriodNum);
-            }
+            //var data = m_client.QueryNextLotteryWithSameNumber(new TokenHeader(),1,SITE_NAME);
+            //Console.WriteLine(data.Message);
+            //foreach (var a in data.Data.Lotteries)
+            //{
+            //    Console.WriteLine("期号{0}",a.PeriodNum);
+            //}
         }
-
         [TestMethod]
         public void Query20BySameNoTest()
         {
@@ -166,22 +164,44 @@ namespace UnitTest
         {
             //var result=m_Dal.QueryOmissionAllForBJ();
         }
-
         [TestMethod]
         public void GenerateCodeTest()
         {
             Console.WriteLine(m_Dal.GenerateCode());
         }
-
         [TestMethod]
         public void QueryTrend_28BJTest()
         {
-            var from = DateTime.Now.AddDays(-1);
-            var to = DateTime.Now;
-            var pageSize = 1000;
-            var pageIndex = 0;
-            var result=m_client.QueryTrend(from, to, pageSize, pageIndex);
-            //m_Dal.QueryTrend_28BJ(from, to, pageIndex, pageSize);
+            //client
+            var head = new TokenHeader()
+                       {
+                           GameSourceSysNo = 28,
+                           RegionSourceSysNo = 10,
+                           SiteSourceSysNo = 10001,
+                           Key = "",
+                           UserSysNo = 1
+                       };
+            var result = m_client.QueryTrend(head,1);
+            Console.WriteLine(string.Format("执行{0},PageIndex{1},PageCount{2},TimesCount{3},DataCount{4}",
+                result.Success,
+                result.Data.PageIndex,
+                result.Data.PageCount,
+                result.Data.LotteryTimeses.Length,
+                result.Data.DataList.Length));
+        }
+        [TestMethod]
+        public void GetCustomeModule_28BJTest()
+        {
+            var head = new TokenHeader()
+            {
+                GameSourceSysNo = 28,
+                RegionSourceSysNo = 10,
+                SiteSourceSysNo = 10001,
+                Key = "",
+                UserSysNo = 1
+            };
+            var result = m_client.GetCustomeModule_28BJ(head);
+            //result.Data.M1.BigP
         }
     }
 }

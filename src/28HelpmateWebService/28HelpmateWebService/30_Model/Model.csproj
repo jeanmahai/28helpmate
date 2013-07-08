@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettingValues.cs" />
     <Compile Include="Enum\BigSmall.cs" />
     <Compile Include="Enum\CenterSideEnum.cs" />
     <Compile Include="Enum\OddEvenEnum.cs" />

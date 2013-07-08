@@ -17,13 +17,13 @@ namespace WebService
     {
         //public const string TOKEN = "TOKEN";
         //public const string USER_NAME = "USER_NAME";
-        //public const string KEY = "KEY";
+        public const string KEY = "KEY";
         //public const string CODE = "CODE";
 
-        //private static HttpSessionState CurrentSession
-        //{
-        //    get { return HttpContext.Current.Session; }
-        //}
+        private static HttpSessionState CurrentSession
+        {
+            get { return HttpContext.Current.Session; }
+        }
 
         //public static string UserName
         //{
@@ -35,11 +35,11 @@ namespace WebService
         //    get { return CurrentSession[TOKEN].ToString(); }
         //    set { CurrentSession[TOKEN] = value; }
         //}
-        //public static string Key
-        //{
-        //    get { return CurrentSession[KEY].ToString(); }
-        //    set { CurrentSession[KEY] = value; }
-        //}
+        public static string Key
+        {
+            get { return CurrentSession[KEY].ToString(); }
+            set { CurrentSession[KEY] = value; }
+        }
         //public static string Code
         //{
         //    get { return CurrentSession[CODE].ToString(); }

@@ -25,6 +25,8 @@ namespace Model.ResponseModel
         {
             get { return Convert.ToDecimal(Lotteries.Count); }
         }
+
+        private decimal bigP;
         public decimal BigP
         {
             get
@@ -35,7 +37,10 @@ namespace Model.ResponseModel
                                 select a).Count();
                 return bigTotal / Total;
             }
+            set { bigP = value; }
         }
+
+        private decimal smallP;
         public decimal SmallP
         {
             get
@@ -46,7 +51,10 @@ namespace Model.ResponseModel
                                   select a).Count();
                 return smallTotal / Total;
             }
+            set { smallP = value; }
         }
+
+        private decimal centerP;
         public decimal CenterP
         {
             get
@@ -57,7 +65,10 @@ namespace Model.ResponseModel
                                    select a).Count();
                 return centerTotal / Total;
             }
+            set { centerP = value; }
         }
+
+        private decimal sideP;
         public decimal SideP
         {
             get
@@ -68,7 +79,10 @@ namespace Model.ResponseModel
                                  select a).Count();
                 return sideTotal / Total;
             }
+            set { sideP = value; }
         }
+
+        private decimal oddP;
         public decimal OddP
         {
             get
@@ -79,7 +93,10 @@ namespace Model.ResponseModel
                                 select a).Count();
                 return oddTotal / Total;
             }
+            set { oddP = value; }
         }
+
+        private decimal evenP;
         public decimal EvenP
         {
             get
@@ -90,6 +107,7 @@ namespace Model.ResponseModel
                                  select a).Count();
                 return evenTotal / Total;
             }
+            set { evenP = value; }
         }
     }
 }
