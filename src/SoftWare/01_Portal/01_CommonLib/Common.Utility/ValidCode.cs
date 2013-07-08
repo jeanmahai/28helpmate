@@ -6,7 +6,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Helpmate.Facades
+namespace Common.Utility
 {
     public class ValidCode
     {
@@ -145,9 +145,8 @@ namespace Helpmate.Facades
 
         #region Public Methods
 
-        public Stream CreateCheckCodeImage()
+        public Stream CreateCheckCodeImage(string checkCode)
         {
-            string checkCode = CommonFacade.LoadCode();
             this._checkCode = checkCode;
 
             MemoryStream ms = null;

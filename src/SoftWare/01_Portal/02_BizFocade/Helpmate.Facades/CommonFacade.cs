@@ -19,7 +19,6 @@ namespace Helpmate.Facades
                 try
                 {
                     callback(args);
-
                 }
                 catch (Exception ex)
                 {

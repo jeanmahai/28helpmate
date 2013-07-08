@@ -6,10 +6,8 @@ using Helpmate.Facades.LotteryWebService;
 
 namespace Helpmate.Facades
 {
-    public class TrendFacade
+    public class TrendFacade : BaseFacade
     {
-        private readonly BaseFacade restClient = new BaseFacade();
-
         public void QueryTrend(int pageIndex, Action<QueryCompletedEventArgs> callback)
         {
             restClient.ClientService.QueryTrendAsync(DateTime.Now.AddDays(-1), DateTime.Now, 1000, pageIndex);

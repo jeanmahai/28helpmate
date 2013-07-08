@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
@@ -53,7 +52,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="TrendFacade.cs" />
-    <Compile Include="ValidCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01_CommonLib\Common.Utility\Common.Utility.csproj">
@@ -77,10 +75,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.LotteryTrend.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -88,6 +82,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryForBJ.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryTrend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ.datasource">
