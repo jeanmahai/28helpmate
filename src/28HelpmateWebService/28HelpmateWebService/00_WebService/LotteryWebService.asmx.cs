@@ -272,7 +272,7 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "一般走势图,分页从1开始",EnableSession = true)]
+        [WebMethod(Description = "遗漏号码",EnableSession = true)]
         [SoapHeader("Token")]
         public ResultRM<List<OmitStatistics>> QueryOmission()
         {
