@@ -8,7 +8,7 @@ namespace Helpmate.Facades
 {
     public class TrendFacade
     {
-        private readonly RestClient restClient = new RestClient();
+        private readonly BaseFacade restClient = new BaseFacade();
 
         public void QueryTrend(int pageIndex, Action<QueryCompletedEventArgs> callback)
         {
