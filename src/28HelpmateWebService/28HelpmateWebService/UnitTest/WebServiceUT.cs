@@ -217,5 +217,11 @@ namespace UnitTest
             };
             var result = m_client.QueryOmission(head);
         }
+
+        [TestMethod]
+        public void QuerySupperTrend_28BJTest()
+        {
+            var result = m_Dal.QuerySupperTrend_28BJ(10001, 0, 10, 5000, "", "13", "");
+        }
     }
 }

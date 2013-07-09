@@ -2,13 +2,14 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    assembly="Model"
                    namespace="Model">
-  <class name="Model.Model.LotteryExtByBJ,Model" 
-         table="[SourceData_28_Beijing]"
-          where="Status=1">
+  <class name="Model.Model.LotteryExtByBJ,Model">
     <id name="PeriodNum" column="PeriodNum" type="Int32" >
       <generator class="assigned"/>
     </id>
     <property name="RetTime" column="RetTime" type="DateTime"  />
     <property name="RetNum" column="RetNum" type="Int32"  />
+    <property name="BigOrSmall" column="BigOrSmall" type="String"  />
+    <property name="MiddleOrSide" column="MiddleOrSide" type="String"  />
+    <property name="OddOrDual" column="OddOrDual" type="String"  />
   </class>
 </hibernate-mapping>

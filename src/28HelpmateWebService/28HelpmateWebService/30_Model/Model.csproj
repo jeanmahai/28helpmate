@@ -52,6 +52,7 @@
     <Compile Include="Model\LotteryTypeTimes.cs" />
     <Compile Include="Model\OmissionLottery.cs" />
     <Compile Include="Model\OmitStatistics.cs" />
+    <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\RegionEnum.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserSite.cs" />
@@ -104,6 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\LotteryExtByBJ.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\PageInfo.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

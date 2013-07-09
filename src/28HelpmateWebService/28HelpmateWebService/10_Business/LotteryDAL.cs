@@ -9,6 +9,7 @@ using Model.ResponseModel;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Impl;
+using NHibernate.Linq;
 using NHibernate.Utility;
 using Net.Utility.Security;
 
@@ -16,7 +17,7 @@ namespace Business
 {
     public class LotteryDAL
     {
-        private readonly List<int> LotteryNumber = new List<int>() { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 };
+        private readonly List<int> LotteryNumber = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27 };
         private ISession Session { get; set; }
         private IEnumerable<LotteryType> LotteryDictionary
         {
@@ -88,7 +89,7 @@ namespace Business
                 .List<UserSite>().SingleOrDefault(p => p.SysNo == sysNo);
             return result;
         }
-        public string GenerateToken(string userId,string psw)
+        public string GenerateToken(string userId, string psw)
         {
             return CiphertextService.MD5Encryption(string.Format("{0}_{1}",
                                                                  userId,
@@ -102,18 +103,18 @@ namespace Business
         {
             return Guid.NewGuid().ToString();
         }
-        public bool ValidateToken(string userId,string psw,string token)
+        public bool ValidateToken(string userId, string psw, string token)
         {
-            return GenerateToken(userId,psw) == token;
+            return GenerateToken(userId, psw) == token;
         }
-        public bool ValidateToken(string str,string token)
+        public bool ValidateToken(string str, string token)
         {
             return GenerateToken(str) == token;
         }
         public string GenerateCode()
         {
             var random = new Random();
-            return random.Next(100000,999999).ToString(CultureInfo.InvariantCulture);
+            return random.Next(100000, 999999).ToString(CultureInfo.InvariantCulture);
         }
 
         #region 28 BeiJing
@@ -125,8 +126,8 @@ namespace Business
         {
             var criteria = Session.CreateCriteria(typeof(LotteryForBJ));
             criteria.SetMaxResults(20);
-            criteria.AddOrder(new Order("PeriodNum",false));
-            criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
+            criteria.AddOrder(new Order("PeriodNum", false));
+            criteria.Add(Restrictions.Eq("SiteSysNo", siteSysNo));
 
             var lotteries = criteria.List<LotteryForBJ>().ToList();
             MappingType(lotteries);
@@ -141,14 +142,14 @@ namespace Business
         /// <param name="number"></param>
         /// <param name="siteSysNo"> </param>
         /// <returns></returns>
-        public List<LotteryForBJ> Query20BySameNo_28BJ(int number,int siteSysNo)
+        public List<LotteryForBJ> Query20BySameNo_28BJ(int number, int siteSysNo)
         {
             ICriteria criteria = Session.CreateCriteria(typeof(LotteryForBJ));
-            criteria.AddOrder(new Order("PeriodNum",false));
+            criteria.AddOrder(new Order("PeriodNum", false));
             criteria.SetFirstResult(1);
             criteria.SetMaxResults(20);
-            criteria.Add(Restrictions.Eq("RetNum",number));
-            criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
+            criteria.Add(Restrictions.Eq("RetNum", number));
+            criteria.Add(Restrictions.Eq("SiteSysNo", siteSysNo));
             var data = criteria.List<LotteryForBJ>().ToList();
             MappingType(data);
             return data;
@@ -160,15 +161,15 @@ namespace Business
         /// <param name="number"></param>
         /// <param name="siteSysNo"> </param>
         /// <returns></returns>
-        public LotteryByTwentyPeriod QueryNextLotteryWithSameNumber_28BJ(int number,int siteSysNo)
+        public LotteryByTwentyPeriod QueryNextLotteryWithSameNumber_28BJ(int number, int siteSysNo)
         {
-            var sameLotteries = Query20BySameNo_28BJ(number,siteSysNo);
+            var sameLotteries = Query20BySameNo_28BJ(number, siteSysNo);
             var periods = (from a in sameLotteries
                            select a.PeriodNum + 1).ToList();
             var criteria = Session.CreateCriteria(typeof(LotteryForBJ));
-            criteria.Add(Restrictions.In("PeriodNum",periods));
-            criteria.AddOrder(new Order("PeriodNum",false));
-            criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
+            criteria.Add(Restrictions.In("PeriodNum", periods));
+            criteria.AddOrder(new Order("PeriodNum", false));
+            criteria.Add(Restrictions.Eq("SiteSysNo", siteSysNo));
 
             var data = criteria.List<LotteryForBJ>().ToList();
             MappingType(data);
@@ -184,16 +185,16 @@ namespace Business
         /// <param name="dateTime"></param>
         /// <param name="siteSysNo"> </param>
         /// <returns></returns>
-        public LotteryByTwentyPeriod QueryLotteryByHourStep_28BJ(DateTime dateTime,int siteSysNo)
+        public LotteryByTwentyPeriod QueryLotteryByHourStep_28BJ(DateTime dateTime, int siteSysNo)
         {
             var dates = new List<DateTime>();
-            for (var i = 1;i <= 20;i++)
+            for (var i = 1; i <= 20; i++)
             {
                 dates.Add(dateTime.AddHours(-i));
             }
             var criteria = Session.CreateCriteria(typeof(LotteryForBJ));
-            criteria.Add(Restrictions.In("RetTime",dates));
-            criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
+            criteria.Add(Restrictions.In("RetTime", dates));
+            criteria.Add(Restrictions.Eq("SiteSysNo", siteSysNo));
 
             var data = criteria.List<LotteryForBJ>().ToList();
             MappingType(data);
@@ -206,16 +207,16 @@ namespace Business
         /// 查询同一时间点的近20天的数据
         /// </summary>
         /// <returns></returns>
-        public LotteryByTwentyPeriod QueryLotteryByDay_28BJ(DateTime dateTime,int siteSysNo)
+        public LotteryByTwentyPeriod QueryLotteryByDay_28BJ(DateTime dateTime, int siteSysNo)
         {
             var dates = new List<DateTime>();
-            for (var i = 1;i <= 20;i++)
+            for (var i = 1; i <= 20; i++)
             {
                 dates.Add(dateTime.AddDays(-i));
             }
             var criteria = Session.CreateCriteria(typeof(LotteryForBJ));
-            criteria.Add(Restrictions.In("RetTime",dates));
-            criteria.Add(Restrictions.Eq("SiteSysNo",siteSysNo));
+            criteria.Add(Restrictions.In("RetTime", dates));
+            criteria.Add(Restrictions.Eq("SiteSysNo", siteSysNo));
 
             var data = criteria.List<LotteryForBJ>().ToList();
             MappingType(data);
@@ -235,7 +236,7 @@ namespace Business
 
             if (filterForBj.From.HasValue && filterForBj.To.HasValue)
             {
-                criteriaCountCondition.Add(Restrictions.Between("RetTime",filterForBj.From.Value,
+                criteriaCountCondition.Add(Restrictions.Between("RetTime", filterForBj.From.Value,
                                                   filterForBj.To.Value));
             }
             if (!string.IsNullOrEmpty(filterForBj.SiteName))
@@ -243,7 +244,7 @@ namespace Business
                 var userSite = QueryUserSite(filterForBj.SiteName);
                 if (userSite != null)
                 {
-                    criteriaCountCondition.Add(Restrictions.Eq("SiteSysNo",userSite.SysNo));
+                    criteriaCountCondition.Add(Restrictions.Eq("SiteSysNo", userSite.SysNo));
                 }
             }
             var criteriaQueryCondition = criteriaCountCondition.Clone() as ICriteria;
@@ -255,7 +256,7 @@ namespace Business
             result.Total = total;
 
 
-            criteriaQueryCondition.AddOrder(new Order("PeriodNum",false));
+            criteriaQueryCondition.AddOrder(new Order("PeriodNum", false));
 
             criteriaQueryCondition.SetFirstResult((filterForBj.PageIndex - 1) * filterForBj.PageSize);
             criteriaQueryCondition.SetMaxResults(filterForBj.PageSize);
@@ -264,7 +265,7 @@ namespace Business
             result.List = criteriaQueryCondition.List<LotteryForBJ>().ToList();
             return result;
         }
-        public LotteryTrend QueryTrend_28BJ(int siteSysNo,int pageIndex,int pageCount)
+        public LotteryTrend QueryTrend_28BJ(int siteSysNo, int pageIndex, int pageCount)
         {
             pageIndex -= 1;
             var curDate = DateTime.Now.AddDays(-pageIndex);
@@ -281,17 +282,17 @@ namespace Business
             //每个号码及类型所出现的次数
             var times = Session.CreateSQLQuery(SqlManager.GetSqlText("QueryTrend2"))
                 .AddEntity(typeof(LotteryTimes))
-                .SetParameter("START_DATE",DateTime.Parse(curDate.AddDays(-pageCount).AddDays(1).ToString("yyyy-MM-dd 00:00:00")))
-                .SetParameter("END_DATE",DateTime.Now)
-                .SetParameter("SiteSysNo",siteSysNo)
+                .SetParameter("START_DATE", DateTime.Parse(curDate.AddDays(-pageCount).AddDays(1).ToString("yyyy-MM-dd 00:00:00")))
+                .SetParameter("END_DATE", DateTime.Now)
+                .SetParameter("SiteSysNo", siteSysNo)
                 .List<LotteryTimes>().ToList();
 
             //每页的数据
             var data = Session.CreateSQLQuery(SqlManager.GetSqlText("QueryTrend3"))
                 .AddEntity(typeof(LotteryExtByBJ))
-                .SetParameter("START_DATE",@from)
-                .SetParameter("END_DATE",to)
-                .SetParameter("SiteSysNo",siteSysNo)
+                .SetParameter("START_DATE", @from)
+                .SetParameter("END_DATE", to)
+                .SetParameter("SiteSysNo", siteSysNo)
                 .List<LotteryExtByBJ>().ToList();
 
             MappingType(data);
@@ -344,10 +345,86 @@ namespace Business
                 .List<OmitStatistics>()
                 .ToList();
         }
+
+        /// <summary>
+        /// 超级走势图;
+        /// </summary>
+        /// <param name="siteSysNo"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"> </param>
+        /// <param name="maxTotal"></param>
+        /// <param name="day"></param>
+        /// <param name="hour"></param>
+        /// <param name="minute"></param>
+        /// <returns></returns>
+        public LotteryTrend QuerySupperTrend_28BJ(int siteSysNo,
+            int pageIndex,
+            int pageSize,
+            int maxTotal,
+            string date,
+            string hour,
+            string minute)
+        {
+            var result = new LotteryTrend();
+            //查询每个号码及类型的出现次数,总次数以maxTotal为准
+            var curLottery = MaxPeriod_28BJ();
+            var maxPeriod = curLottery.PeriodNum;
+            var minPeriod = maxPeriod - maxTotal;
+
+            //condition
+            var condition = string.Empty;
+
+            //查询数字的出现次数
+            var sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_1");
+            sql = string.Format(sql, condition);
+            var q1 = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof (LotteryTimes))
+                .SetParameter("SITE_SYS_NO", siteSysNo)
+                .SetParameter("MIN_PERIOD", minPeriod)
+                .List<LotteryTimes>();
+            //查询类型的出现次数
+            sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_2");
+            sql = string.Format(sql, condition);
+            var q2 = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof(LotteryTimes))
+                .SetParameter("SITE_SYS_NO", siteSysNo)
+                .SetParameter("MIN_PERIOD", minPeriod)
+                .List<LotteryTimes>();
+
+            result.LotteryTimeses = new List<LotteryTimes>();
+            result.LotteryTimeses.AddRange(q1);
+            result.LotteryTimeses.AddRange(q2);
+
+            //total
+            sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_3");
+            sql = string.Format(sql, condition);
+            var q3 = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof (PageInfo))
+                .SetParameter("SITE_SYS_NO", siteSysNo)
+                .SetParameter("MIN_PERIOD", minPeriod)
+                .SetParameter("PAGE_INDEX", pageIndex)
+                .SetParameter("PAGE_SIZE", pageSize)
+                .UniqueResult<PageInfo>();
+            //result.PageInfo = q3;
+            result.PageCount = q3.PageCount;
+            result.PageIndex = q3.PageIndex;
+            //list
+            sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_4");
+            sql = string.Format(sql, condition);
+            var q4 = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof(LotteryExtByBJ))
+                .SetParameter("SITE_SYS_NO", siteSysNo)
+                .SetParameter("MIN_PERIOD", minPeriod)
+                .SetParameter("PAGE_INDEX", pageIndex)
+                .SetParameter("PAGE_SIZE", pageSize)
+                .List<LotteryExtByBJ>();
+            result.DataList = q4.ToList();
+            return result;
+        }
         #endregion
 
         #region User
-        public bool Login(string userName,string psw)
+        public bool Login(string userName, string psw)
         {
 
             var user = Session.QueryOver<User>().Where(p => p.UserName == userName).SingleOrDefault<User>();
