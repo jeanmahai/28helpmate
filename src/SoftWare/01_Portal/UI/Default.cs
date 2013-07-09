@@ -97,6 +97,8 @@ namespace Helpmate.UI.Forms
             lblOther.Font = new Font(lblOther.Font, FontStyle.Regular);
             picLogCurr.Visible = false;
             lblLog.Font = new Font(lblLog.Font, FontStyle.Regular);
+            picNormalTrendCurr.Visible = false;
+            lblNormalTrend.Font = new Font(lblLog.Font, FontStyle.Regular);
 
             currLbl.Font = new Font(lblMtv.Font, FontStyle.Bold);
             currPic.Visible = true;
@@ -123,7 +125,7 @@ namespace Helpmate.UI.Forms
             }
         }
 
-        
+
 
     }
 }
