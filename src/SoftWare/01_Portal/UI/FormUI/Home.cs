@@ -12,10 +12,11 @@ using Helpmate.Facades;
 using Helpmate.UI.Forms.UserContorl;
 using Helpmate.UI.Forms.UIContorl.Common;
 using Helpmate.Facades.LotteryWebService;
+using Helpmate.UI.Forms.Models;
 
 namespace Helpmate.UI.Forms.FormUI
 {
-    public partial class Home : Form
+    public partial class Home : Form, IPage
     {
         public delegate ResultRMOfCustomModules QueryDataDelegate();
         public delegate void BindDataCallback(ResultRMOfCustomModules result);
@@ -41,7 +42,7 @@ namespace Helpmate.UI.Forms.FormUI
             QueryData();
         }
 
-        private void QueryData()
+        public void QueryData(int? pageIndex = null)
         {
             tmRefresh.Enabled = false;
             cmd.ShowOpaqueLayer(this, 125, true);

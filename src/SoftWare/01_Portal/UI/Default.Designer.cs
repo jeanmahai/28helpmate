@@ -35,9 +35,9 @@
             this.splApp = new System.Windows.Forms.Splitter();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlLine = new System.Windows.Forms.Panel();
-            this.pnlLog = new System.Windows.Forms.Panel();
+            this.pnlUser = new System.Windows.Forms.Panel();
             this.picLogCurr = new System.Windows.Forms.PictureBox();
-            this.lblLog = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pnlOther = new System.Windows.Forms.Panel();
             this.picOtherCurr = new System.Windows.Forms.PictureBox();
@@ -55,9 +55,9 @@
             this.picMovieCurr = new System.Windows.Forms.PictureBox();
             this.lblMovie = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pnlPrediction = new System.Windows.Forms.Panel();
-            this.picMtvCurr = new System.Windows.Forms.PictureBox();
-            this.lblMtv = new System.Windows.Forms.Label();
+            this.pnlSuperTrend = new System.Windows.Forms.Panel();
+            this.picSuperTrend = new System.Windows.Forms.PictureBox();
+            this.lblSuperTrend = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlHome = new System.Windows.Forms.Panel();
             this.picHomeCurr = new System.Windows.Forms.PictureBox();
@@ -77,7 +77,7 @@
             this.pnlSiteMap = new System.Windows.Forms.Panel();
             this.stsPage.SuspendLayout();
             this.pnlRight.SuspendLayout();
-            this.pnlLog.SuspendLayout();
+            this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogCurr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlOther.SuspendLayout();
@@ -92,8 +92,8 @@
             this.pnlOmission.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMovieCurr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pnlPrediction.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMtvCurr)).BeginInit();
+            this.pnlSuperTrend.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSuperTrend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHomeCurr)).BeginInit();
@@ -143,12 +143,12 @@
             // 
             this.pnlRight.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.appbg;
             this.pnlRight.Controls.Add(this.pnlLine);
-            this.pnlRight.Controls.Add(this.pnlLog);
+            this.pnlRight.Controls.Add(this.pnlUser);
             this.pnlRight.Controls.Add(this.pnlOther);
             this.pnlRight.Controls.Add(this.pnlSpecial);
             this.pnlRight.Controls.Add(this.pnlNormalTrend);
             this.pnlRight.Controls.Add(this.pnlOmission);
-            this.pnlRight.Controls.Add(this.pnlPrediction);
+            this.pnlRight.Controls.Add(this.pnlSuperTrend);
             this.pnlRight.Controls.Add(this.pnlHome);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlRight.Location = new System.Drawing.Point(0, 72);
@@ -168,19 +168,19 @@
             this.pnlLine.Size = new System.Drawing.Size(166, 10);
             this.pnlLine.TabIndex = 32;
             // 
-            // pnlLog
+            // pnlUser
             // 
-            this.pnlLog.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLog.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.pnlLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlLog.Controls.Add(this.picLogCurr);
-            this.pnlLog.Controls.Add(this.lblLog);
-            this.pnlLog.Controls.Add(this.pictureBox6);
-            this.pnlLog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLog.Location = new System.Drawing.Point(1, 265);
-            this.pnlLog.Name = "pnlLog";
-            this.pnlLog.Size = new System.Drawing.Size(166, 44);
-            this.pnlLog.TabIndex = 37;
+            this.pnlUser.BackColor = System.Drawing.Color.Transparent;
+            this.pnlUser.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
+            this.pnlUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlUser.Controls.Add(this.picLogCurr);
+            this.pnlUser.Controls.Add(this.lblUser);
+            this.pnlUser.Controls.Add(this.pictureBox6);
+            this.pnlUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlUser.Location = new System.Drawing.Point(1, 265);
+            this.pnlUser.Name = "pnlUser";
+            this.pnlUser.Size = new System.Drawing.Size(166, 44);
+            this.pnlUser.TabIndex = 37;
             // 
             // picLogCurr
             // 
@@ -192,16 +192,16 @@
             this.picLogCurr.TabStop = false;
             this.picLogCurr.Visible = false;
             // 
-            // lblLog
+            // lblUser
             // 
-            this.lblLog.AutoSize = true;
-            this.lblLog.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblLog.ForeColor = System.Drawing.Color.Black;
-            this.lblLog.Location = new System.Drawing.Point(55, 12);
-            this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(65, 20);
-            this.lblLog.TabIndex = 1;
-            this.lblLog.Text = "个人信息";
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblUser.ForeColor = System.Drawing.Color.Black;
+            this.lblUser.Location = new System.Drawing.Point(55, 12);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(65, 20);
+            this.lblUser.TabIndex = 1;
+            this.lblUser.Text = "个人信息";
             // 
             // pictureBox6
             // 
@@ -399,42 +399,42 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pnlOmission_Click);
             // 
-            // pnlPrediction
+            // pnlSuperTrend
             // 
-            this.pnlPrediction.BackColor = System.Drawing.Color.Transparent;
-            this.pnlPrediction.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.pnlPrediction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlPrediction.Controls.Add(this.picMtvCurr);
-            this.pnlPrediction.Controls.Add(this.lblMtv);
-            this.pnlPrediction.Controls.Add(this.pictureBox2);
-            this.pnlPrediction.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlPrediction.Location = new System.Drawing.Point(1, 45);
-            this.pnlPrediction.Name = "pnlPrediction";
-            this.pnlPrediction.Size = new System.Drawing.Size(166, 44);
-            this.pnlPrediction.TabIndex = 34;
-            this.pnlPrediction.Click += new System.EventHandler(this.pnlPrediction_Click);
+            this.pnlSuperTrend.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSuperTrend.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
+            this.pnlSuperTrend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlSuperTrend.Controls.Add(this.picSuperTrend);
+            this.pnlSuperTrend.Controls.Add(this.lblSuperTrend);
+            this.pnlSuperTrend.Controls.Add(this.pictureBox2);
+            this.pnlSuperTrend.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlSuperTrend.Location = new System.Drawing.Point(1, 45);
+            this.pnlSuperTrend.Name = "pnlSuperTrend";
+            this.pnlSuperTrend.Size = new System.Drawing.Size(166, 44);
+            this.pnlSuperTrend.TabIndex = 34;
+            this.pnlSuperTrend.Click += new System.EventHandler(this.pnlSuperTrend_Click);
             // 
-            // picMtvCurr
+            // picSuperTrend
             // 
-            this.picMtvCurr.Image = global::Helpmate.UI.Forms.Properties.Resources.sidemenu_li_curr;
-            this.picMtvCurr.Location = new System.Drawing.Point(153, 13);
-            this.picMtvCurr.Name = "picMtvCurr";
-            this.picMtvCurr.Size = new System.Drawing.Size(13, 18);
-            this.picMtvCurr.TabIndex = 2;
-            this.picMtvCurr.TabStop = false;
-            this.picMtvCurr.Visible = false;
+            this.picSuperTrend.Image = global::Helpmate.UI.Forms.Properties.Resources.sidemenu_li_curr;
+            this.picSuperTrend.Location = new System.Drawing.Point(153, 13);
+            this.picSuperTrend.Name = "picSuperTrend";
+            this.picSuperTrend.Size = new System.Drawing.Size(13, 18);
+            this.picSuperTrend.TabIndex = 2;
+            this.picSuperTrend.TabStop = false;
+            this.picSuperTrend.Visible = false;
             // 
-            // lblMtv
+            // lblSuperTrend
             // 
-            this.lblMtv.AutoSize = true;
-            this.lblMtv.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMtv.ForeColor = System.Drawing.Color.Black;
-            this.lblMtv.Location = new System.Drawing.Point(55, 12);
-            this.lblMtv.Name = "lblMtv";
-            this.lblMtv.Size = new System.Drawing.Size(93, 20);
-            this.lblMtv.TabIndex = 1;
-            this.lblMtv.Text = "超级走势统计";
-            this.lblMtv.Click += new System.EventHandler(this.pnlPrediction_Click);
+            this.lblSuperTrend.AutoSize = true;
+            this.lblSuperTrend.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblSuperTrend.ForeColor = System.Drawing.Color.Black;
+            this.lblSuperTrend.Location = new System.Drawing.Point(55, 12);
+            this.lblSuperTrend.Name = "lblSuperTrend";
+            this.lblSuperTrend.Size = new System.Drawing.Size(93, 20);
+            this.lblSuperTrend.TabIndex = 1;
+            this.lblSuperTrend.Text = "超级走势统计";
+            this.lblSuperTrend.Click += new System.EventHandler(this.pnlSuperTrend_Click);
             // 
             // pictureBox2
             // 
@@ -445,7 +445,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pnlPrediction_Click);
+            this.pictureBox2.Click += new System.EventHandler(this.pnlSuperTrend_Click);
             // 
             // pnlHome
             // 
@@ -581,6 +581,7 @@
             // 
             this.lbl53.AutoSize = true;
             this.lbl53.BackColor = System.Drawing.Color.LightGray;
+            this.lbl53.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl53.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl53.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbl53.Location = new System.Drawing.Point(69, 1);
@@ -597,6 +598,7 @@
             // 
             this.lblZM.AutoSize = true;
             this.lblZM.BackColor = System.Drawing.Color.LightGray;
+            this.lblZM.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblZM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblZM.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblZM.Location = new System.Drawing.Point(137, 1);
@@ -613,6 +615,7 @@
             // 
             this.lbl71.AutoSize = true;
             this.lbl71.BackColor = System.Drawing.Color.White;
+            this.lbl71.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl71.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl71.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbl71.Location = new System.Drawing.Point(1, 1);
@@ -690,8 +693,8 @@
             this.stsPage.ResumeLayout(false);
             this.stsPage.PerformLayout();
             this.pnlRight.ResumeLayout(false);
-            this.pnlLog.ResumeLayout(false);
-            this.pnlLog.PerformLayout();
+            this.pnlUser.ResumeLayout(false);
+            this.pnlUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogCurr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnlOther.ResumeLayout(false);
@@ -710,9 +713,9 @@
             this.pnlOmission.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMovieCurr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pnlPrediction.ResumeLayout(false);
-            this.pnlPrediction.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMtvCurr)).EndInit();
+            this.pnlSuperTrend.ResumeLayout(false);
+            this.pnlSuperTrend.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSuperTrend)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlHome.ResumeLayout(false);
             this.pnlHome.PerformLayout();
@@ -739,9 +742,9 @@
         private System.Windows.Forms.Panel pnlHead;
         private System.Windows.Forms.Splitter splApp;
         private System.Windows.Forms.Panel pnlLine;
-        private System.Windows.Forms.Panel pnlLog;
+        private System.Windows.Forms.Panel pnlUser;
         private System.Windows.Forms.PictureBox picLogCurr;
-        private System.Windows.Forms.Label lblLog;
+        private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Panel pnlOther;
         private System.Windows.Forms.PictureBox picOtherCurr;
@@ -758,9 +761,9 @@
         private System.Windows.Forms.Panel pnlOmission;
         private System.Windows.Forms.PictureBox picMovieCurr;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel pnlPrediction;
-        private System.Windows.Forms.PictureBox picMtvCurr;
-        private System.Windows.Forms.Label lblMtv;
+        private System.Windows.Forms.Panel pnlSuperTrend;
+        private System.Windows.Forms.PictureBox picSuperTrend;
+        private System.Windows.Forms.Label lblSuperTrend;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel pnlHome;
         private System.Windows.Forms.PictureBox picHomeCurr;

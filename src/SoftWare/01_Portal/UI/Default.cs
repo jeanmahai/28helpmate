@@ -11,6 +11,7 @@ using Helpmate.BizEntity.Enum;
 using Helpmate.BizEntity;
 using Helpmate.UI.Forms.UserContorl.Common;
 using Helpmate.Facades;
+using Helpmate.UI.Forms.Models;
 
 namespace Helpmate.UI.Forms
 {
@@ -34,12 +35,14 @@ namespace Helpmate.UI.Forms
         {
             var childForm = new Home();
             CurrMenu(MenuEnum.Home, childForm.SiteMapList, childForm);
+            RefreshPage();
         }
 
-        private void pnlPrediction_Click(object sender, EventArgs e)
+        private void pnlSuperTrend_Click(object sender, EventArgs e)
         {
             var childForm = new SuperTrend();
-            CurrMenu(MenuEnum.Prediction, childForm.SiteMapList, childForm);
+            CurrMenu(MenuEnum.SuperTrend, childForm.SiteMapList, childForm);
+            RefreshPage();
         }
 
         private void pnlOmission_Click(object sender, EventArgs e)
@@ -61,8 +64,8 @@ namespace Helpmate.UI.Forms
                 case MenuEnum.Home:
                     CurrMenuCtrl(lblHome, picHomeCurr, conForm, siteMapList);
                     break;
-                case MenuEnum.Prediction:
-                    CurrMenuCtrl(lblMtv, picMtvCurr, conForm, siteMapList);
+                case MenuEnum.SuperTrend:
+                    CurrMenuCtrl(lblSuperTrend, picSuperTrend, conForm, siteMapList);
                     break;
                 case MenuEnum.Omission:
                     CurrMenuCtrl(lblMovie, picMovieCurr, conForm, siteMapList);
@@ -77,10 +80,10 @@ namespace Helpmate.UI.Forms
                     CurrMenuCtrl(lblOther, picOtherCurr, conForm, siteMapList);
                     break;
                 case MenuEnum.Log:
-                    CurrMenuCtrl(lblLog, picLogCurr, conForm, siteMapList);
+                    CurrMenuCtrl(lblUser, picLogCurr, conForm, siteMapList);
                     break;
-                case MenuEnum.SuperTrend:
-                    CurrMenuCtrl(lblLog, picLogCurr, conForm, siteMapList);
+                case MenuEnum.User:
+                    CurrMenuCtrl(lblUser, picLogCurr, conForm, siteMapList);
                     break;
             }
         }
@@ -91,8 +94,8 @@ namespace Helpmate.UI.Forms
 
             picHomeCurr.Visible = false;
             lblHome.Font = new Font(lblHome.Font, FontStyle.Regular);
-            picMtvCurr.Visible = false;
-            lblMtv.Font = new Font(lblMtv.Font, FontStyle.Regular);
+            picSuperTrend.Visible = false;
+            lblSuperTrend.Font = new Font(lblSuperTrend.Font, FontStyle.Regular);
             picMovieCurr.Visible = false;
             lblMovie.Font = new Font(lblMovie.Font, FontStyle.Regular);
             picEmailCurr.Visible = false;
@@ -100,11 +103,11 @@ namespace Helpmate.UI.Forms
             picOtherCurr.Visible = false;
             lblOther.Font = new Font(lblOther.Font, FontStyle.Regular);
             picLogCurr.Visible = false;
-            lblLog.Font = new Font(lblLog.Font, FontStyle.Regular);
+            lblUser.Font = new Font(lblUser.Font, FontStyle.Regular);
             picNormalTrendCurr.Visible = false;
-            lblNormalTrend.Font = new Font(lblLog.Font, FontStyle.Regular);
+            lblNormalTrend.Font = new Font(lblUser.Font, FontStyle.Regular);
 
-            currLbl.Font = new Font(lblMtv.Font, FontStyle.Bold);
+            currLbl.Font = new Font(lblSuperTrend.Font, FontStyle.Bold);
             currPic.Visible = true;
             pnlSiteMap.Controls.Clear();
             var siteMap = new SiteMapCtrl();
@@ -136,6 +139,7 @@ namespace Helpmate.UI.Forms
             lblBJ.BackColor = Color.White;
             lblCanada.BackColor = Color.LightGray;
             Header.SiteSourceSysNo = Convert.ToInt32(lblBJ.Tag);
+            RefreshPage();
         }
 
         private void lblCanada_Click(object sender, EventArgs e)
@@ -143,14 +147,16 @@ namespace Helpmate.UI.Forms
             lblBJ.BackColor = Color.LightGray;
             lblCanada.BackColor = Color.White;
             Header.SiteSourceSysNo = Convert.ToInt32(lblCanada.Tag);
+            RefreshPage();
         }
 
         private void lbl71_Click(object sender, EventArgs e)
         {
             lbl71.BackColor = Color.White;
             lbl53.BackColor = Color.LightGray;
-            lblCanada.BackColor = Color.LightGray;
+            lblZM.BackColor = Color.LightGray;
             Header.GameSourceSysNo = Convert.ToInt32(lbl71.Tag);
+            RefreshPage();
         }
 
         private void lbl53_Click(object sender, EventArgs e)
@@ -159,6 +165,7 @@ namespace Helpmate.UI.Forms
             lbl53.BackColor = Color.White;
             lblZM.BackColor = Color.LightGray;
             Header.GameSourceSysNo = Convert.ToInt32(lbl53.Tag);
+            RefreshPage();
         }
 
         private void lblZM_Click(object sender, EventArgs e)
@@ -167,6 +174,16 @@ namespace Helpmate.UI.Forms
             lbl53.BackColor = Color.LightGray;
             lblZM.BackColor = Color.White;
             Header.GameSourceSysNo = Convert.ToInt32(lblZM.Tag);
+            RefreshPage();
+        }
+
+        public void RefreshPage()
+        {
+            var page = this.ActiveMdiChild as IPage;
+            if (page != null)
+            {
+                page.QueryData(1);
+            }
         }
 
         # endregion Title Tab Click Event
