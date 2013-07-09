@@ -55,6 +55,7 @@ namespace Helpmate.UI.Forms
         {
             var childForm = new NormalTrend();
             CurrMenu(MenuEnum.NormalTrend, childForm.SiteMapList, childForm);
+            RefreshPage();
         }
 
         public void CurrMenu(MenuEnum menuEnum, List<SiteModel> siteMapList, Form conForm)
