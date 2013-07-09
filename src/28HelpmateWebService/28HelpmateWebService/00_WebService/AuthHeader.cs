@@ -25,7 +25,7 @@ namespace WebService
         /// <summary>
         /// token
         /// </summary>
-        public string Key { get; set; }
+        public string Token { get; set; }
         /// <summary>
         /// 用户系统编号
         /// </summary>
@@ -33,7 +33,7 @@ namespace WebService
 
         public override string ToString()
         {
-            return string.Format("{0}{1}{2}{3}{4}", Key, UserSysNo, GameSourceSysNo, RegionSourceSysNo, SiteSourceSysNo);
+            return string.Format("{0}{1}{2}{3}{4}", Token, UserSysNo, GameSourceSysNo, RegionSourceSysNo, SiteSourceSysNo);
         }
         public string ToString(string key)
         {

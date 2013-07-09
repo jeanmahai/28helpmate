@@ -222,6 +222,10 @@ namespace UnitTest
         public void QuerySupperTrend_28BJTest()
         {
             var result = m_Dal.QuerySupperTrend_28BJ(10001, 0, 10, 5000, "", "13", "");
+            foreach (var t in result.LotteryTimeses)
+            {
+                Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
+            }
         }
     }
 }

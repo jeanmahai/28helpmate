@@ -8,8 +8,13 @@ namespace Model
 {
     public class AppSettingValues
     {
-        public static int PageCount {
+        public static int PageCount
+        {
             get { return int.Parse(ConfigurationManager.AppSettings["PageCount"]); }
+        }
+        public static int MaxTotal
+        {
+            get { return int.Parse(ConfigurationManager.AppSettings["MaxTotal"]); }
         }
     }
 }

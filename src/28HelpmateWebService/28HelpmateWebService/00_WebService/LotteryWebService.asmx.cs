@@ -40,10 +40,9 @@ namespace WebService
         }
         private bool ValidateToken(TokenHeader header)
         {
-            //var token = Dal.GenerateToken(header.ToString());
-            //if(Dal.ValidateToken(header.ToString(SessionValue.Key),token))
+            //if (Dal.ValidateToken(header.ToString(SessionValue.Key),header.Token))
             //{
-            return true;
+                return true;
             //}
             //return false;
         }
@@ -277,10 +276,33 @@ namespace WebService
         public ResultRM<List<OmitStatistics>> QueryOmission()
         {
             var result = new ResultRM<List<OmitStatistics>>();
-            if(ValidateToken(Token))
+            if (ValidateToken(Token))
             {
-                var data=Dal.QueryOmissionAll_28BJ(Token.GameSourceSysNo, Token.SiteSourceSysNo, Token.RegionSourceSysNo);
+                var data = Dal.QueryOmissionAll_28BJ(Token.GameSourceSysNo,Token.SiteSourceSysNo,Token.RegionSourceSysNo);
                 result.Data = data;
+                result.Success = true;
+                result.Key = Dal.generateKey();
+                SessionValue.Key = result.Key;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+        [WebMethod(Description = "超级走势图",EnableSession = true)]
+        [SoapHeader("Token")]
+        public ResultRM<LotteryTrend> QuerySupperTrend_28BJ(int pageIndex,
+            int pageSize,
+            string date,
+            string hour,
+            string minute)
+        {
+            var result = new ResultRM<LotteryTrend>();
+            if (ValidateToken(Token))
+            {
+                result.Data = Dal.QuerySupperTrend_28BJ(Token.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute);
                 result.Success = true;
                 result.Key = Dal.generateKey();
                 SessionValue.Key = result.Key;
