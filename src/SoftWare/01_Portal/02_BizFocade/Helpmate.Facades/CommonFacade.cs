@@ -17,8 +17,8 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    TokenHeader.Key = Header.Key;
-                    var result = ClientService.GetCustomeModule_28BJ(TokenHeader);
+                    //TokenHeader.Key = Header.Key;
+                    var result = ClientService.GetCustomeModule(TokenHeader);
                     Header.Key = result.Key;
                     if (!result.Success) AppMessage.AlertMessage(result.Message);
                     return result;
@@ -37,7 +37,7 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    TokenHeader.Key = Header.Key;
+                    //TokenHeader.Key = Header.Key;
                     var result = ClientService.QueryOmission(TokenHeader);
                     Header.Key = result.Key;
                     if (!result.Success) AppMessage.AlertMessage(result.Message);

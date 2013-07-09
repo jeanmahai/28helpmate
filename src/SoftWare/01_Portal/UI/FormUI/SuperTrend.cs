@@ -28,8 +28,75 @@ namespace Helpmate.UI.Forms.FormUI
                 new SiteModel(){ Text="超级开奖走势"}
             };
             InitializeComponent();
-            QueryData(1);
         }
+        public void QueryData(int? pageIndex = null)
+        {
+            #region 初始化小时选择数据
+            ddlHour.Items.Clear();
+            if (Header.RegionSourceSysNo == 10001)
+            {
+                //北京，9-23
+                int hour = 9;
+                this.ddlHour.Items.Add(" 请选择 ");
+                while (hour < 24)
+                {
+                    this.ddlHour.Items.Add(string.Format(" {0} 小时 ", hour));
+                    hour++;
+                }
+                this.ddlHour.SelectedIndex = 0;
+            }
+            else if (Header.RegionSourceSysNo == 10002)
+            {
+                //加拿大，全部小时
+                int hour = 0;
+                this.ddlHour.Items.Add(" 请选择 ");
+                while (hour < 24)
+                {
+                    this.ddlHour.Items.Add(string.Format(" {0} 小时 ", hour));
+                    hour++;
+                }
+                this.ddlHour.SelectedIndex = 0;
+            }
+            #endregion
+            #region 初始化分钟选择数据
+            this.ddlMinute.Items.Clear();
+            if (Header.RegionSourceSysNo == 10001)
+            {
+                //北京，5分钟一期
+                int minute = 0;
+                this.ddlMinute.Items.Add(" 请选择 ");
+                while (minute < 60)
+                {
+                    this.ddlMinute.Items.Add(string.Format(" {0} 分钟 ", minute));
+                    minute += 5;
+                }
+                this.ddlMinute.SelectedIndex = 0;
+            }
+            else if (Header.RegionSourceSysNo == 10002)
+            {
+                //加拿大，4分钟一期
+                int minute = 0;
+                this.ddlMinute.Items.Add(" 请选择 ");
+                while (minute < 60)
+                {
+                    if (Header.SiteSourceSysNo == 10001)
+                    {
+                        //龙虎
+                        this.ddlMinute.Items.Add(string.Format(" {0} 分钟 ", minute));
+                    }
+                    else if (Header.SiteSourceSysNo == 10002 || Header.SiteSourceSysNo == 10003)
+                    {
+                        //71豆，芝麻西西
+                        this.ddlMinute.Items.Add(string.Format(" {0} 分钟 ", minute + 1));
+                    }
+                    minute += 4;
+                }
+                this.ddlMinute.SelectedIndex = 0;
+            }
+            #endregion            
+            LoadData(1, DateTime.Now.ToShortDateString(), "", "");
+        }
+
         private void dataList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             switch (e.ColumnIndex)
@@ -93,48 +160,71 @@ namespace Helpmate.UI.Forms.FormUI
 
         #region 异步调用Service
         public OpaqueCommand cmd = new OpaqueCommand();
-        public void QueryData(int? pageIndex = null)
+        public void LoadData(int pageIndex, string date, string hour, string minute)
         {
             cmd.ShowOpaqueLayer(this, 125, true);
             QueryDataDelegate dn = new QueryDataDelegate(AsyncWaysQueryData);
             AsyncCallback acb = new AsyncCallback(CallBackMethod);
-            IAsyncResult iar = dn.BeginInvoke(pageIndex.Value, acb, dn);
+            IAsyncResult iar = dn.BeginInvoke(pageIndex, date, hour, minute, acb, dn);
         }
-        public delegate ResultRMOfLotteryTrend QueryDataDelegate(int pageIndex);
-        private ResultRMOfLotteryTrend AsyncWaysQueryData(int pageIndex)
+        public delegate ResultRMOfLotteryTrend QueryDataDelegate(int pageIndex, string date, string hour, string minute);
+        private ResultRMOfLotteryTrend AsyncWaysQueryData(int pageIndex, string date, string hour, string minute)
         {
-            return serviceFacade.QueryTrend(pageIndex);
+            return serviceFacade.QuerySuperTrend(pageIndex, date, hour, minute);
         }
         public void CallBackMethod(IAsyncResult ar)
         {
             QueryDataDelegate dn = (QueryDataDelegate)ar.AsyncState;
-            var data = dn.EndInvoke(ar);
-            this.LoadData(data.Data.DataList, data.Data.LotteryTimeses);
+            var result = dn.EndInvoke(ar);
+            if (result != null && result.Data != null
+                && result.Data.DataList != null && result.Data.LotteryTimeses != null)
+                this.LoadResultData(result.Data.DataList, result.Data.LotteryTimeses, result.Data.PageIndex, result.Data.PageCount);
+            else
+                this.LoadResultData(null, null, 0, 0);
         }
         #endregion
         #region 异步Bind
-        public delegate void LoadDataCallback(LotteryExtByBJ[] list, LotteryTimes[] count);
-        private void LoadData(LotteryExtByBJ[] list, LotteryTimes[] count)
+        public delegate void LoadResultDataCallback(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount);
+        private void LoadResultData(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount)
         {
             if (this.lblPage.InvokeRequired)
             {
-                LoadDataCallback d = new LoadDataCallback(LoadData);
-                this.Invoke(d, new object[] { list, count });
+                LoadResultDataCallback d = new LoadResultDataCallback(LoadResultData);
+                this.Invoke(d, new object[] { list, count, currPageIndex, pageCount });
             }
             else
             {
-                //统计
-                List<TrendCountModel> countData = (new TrendCountModel()).GetCountList(count);
-                countList.DataSource = countData;
-                SetCountStyle(countList, countData.Count);
-                //头
-                List<TrendHeaderModel> headerData = (new TrendHeaderModel()).GetHeader();
-                headerList.DataSource = headerData;
-                SetHeaderStyle(headerList, 1);
-                //数据
-                List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(list);
-                dataList.DataSource = listData;
-                SetDataStyle(dataList, listData.Count);
+                if (count != null && list != null)
+                {
+                    //统计
+                    List<TrendCountModel> countData = (new TrendCountModel()).GetCountList(count);
+                    countList.DataSource = countData;
+                    SetCountStyle(countList, countData.Count);
+                    //头
+                    List<TrendHeaderModel> headerData = (new TrendHeaderModel()).GetHeader();
+                    headerList.DataSource = headerData;
+                    SetHeaderStyle(headerList, 1);
+                    //数据
+                    List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(list);
+                    dataList.DataSource = listData;
+                    SetDataStyle(dataList, listData.Count);
+                    //页码信息
+                    lnkFirst.Enabled = true;
+                    lnkPrev.Enabled = true;
+                    lnkLast.Enabled = true;
+                    lnkNext.Enabled = true;
+                    if (currPageIndex <= 1)
+                    {
+                        lnkFirst.Enabled = false;
+                        lnkPrev.Enabled = false;
+                    }
+                    if (currPageIndex >= pageCount)
+                    {
+                        lnkLast.Enabled = false;
+                        lnkNext.Enabled = false;
+                    }
+                    lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
+                }
             }
             cmd.HideOpaqueLayer();
         }
@@ -248,5 +338,84 @@ namespace Helpmate.UI.Forms.FormUI
             dgv.BackgroundColor = Color.White;
         }
         #endregion
+
+        #region 分页
+        /// <summary>
+        /// 尾页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkLast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+            LoadData(pageIndex, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+        }
+        /// <summary>
+        /// 首页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkFirst_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LoadData(1, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+        }
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkPrev_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) - 1;
+            pageIndex = pageIndex < 1 ? 1 : pageIndex;
+            LoadData(pageIndex, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+        }
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkNext_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) + 1;
+            int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+            pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
+            LoadData(pageIndex, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+        }
+        #endregion
+
+        #region 选择日期
+        private void tbxDate_Click(object sender, EventArgs e)
+        {
+            string dtSltDate = string.Empty;
+            OpenWindow(ref dtSltDate);
+            if (dtSltDate != null)
+                this.tbxDate.Text = dtSltDate;
+        }
+        public static void OpenWindow(ref string dtSltDate)
+        {
+            DateSlt frmDate = new DateSlt();
+            dtSltDate = frmDate.GetNewWindowDateTime();
+        }
+        #endregion
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbxDate.Text.Trim())
+                && ddlHour.Text.Trim() == "请选择"
+                && ddlMinute.Text.Trim() == "请选择")
+            {
+                MessageBox.Show("请选择一个条件进行查询！");
+            }
+            else
+            {
+                LoadData(1, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+            }
+        }
     }
 }

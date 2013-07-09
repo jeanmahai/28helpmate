@@ -43,11 +43,10 @@
             // 
             // countList
             // 
-            this.countList.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.countList.BackgroundColor = System.Drawing.Color.White;
             this.countList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.countList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.countList.Location = new System.Drawing.Point(-101, 28);
+            this.countList.Location = new System.Drawing.Point(20, 28);
             this.countList.Name = "countList";
             this.countList.RowTemplate.Height = 23;
             this.countList.Size = new System.Drawing.Size(1011, 23);
@@ -55,11 +54,10 @@
             // 
             // headerList
             // 
-            this.headerList.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.headerList.BackgroundColor = System.Drawing.Color.White;
             this.headerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.headerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.headerList.Location = new System.Drawing.Point(-101, 50);
+            this.headerList.Location = new System.Drawing.Point(20, 50);
             this.headerList.Name = "headerList";
             this.headerList.RowTemplate.Height = 23;
             this.headerList.Size = new System.Drawing.Size(1011, 23);
@@ -67,11 +65,10 @@
             // 
             // dataList
             // 
-            this.dataList.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dataList.BackgroundColor = System.Drawing.Color.White;
             this.dataList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataList.Location = new System.Drawing.Point(-101, 72);
+            this.dataList.Location = new System.Drawing.Point(20, 72);
             this.dataList.Name = "dataList";
             this.dataList.RowTemplate.Height = 23;
             this.dataList.Size = new System.Drawing.Size(1011, 514);
@@ -80,43 +77,41 @@
             // 
             // lnkPrev
             // 
-            this.lnkPrev.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkPrev.AutoSize = true;
-            this.lnkPrev.Location = new System.Drawing.Point(39, 9);
+            this.lnkPrev.Location = new System.Drawing.Point(54, 9);
             this.lnkPrev.Name = "lnkPrev";
             this.lnkPrev.Size = new System.Drawing.Size(41, 12);
             this.lnkPrev.TabIndex = 3;
             this.lnkPrev.TabStop = true;
             this.lnkPrev.Text = "上一页";
+            this.lnkPrev.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPrev_LinkClicked);
             // 
             // lblPage
             // 
-            this.lblPage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblPage.AutoSize = true;
             this.lblPage.ForeColor = System.Drawing.Color.Red;
-            this.lblPage.Location = new System.Drawing.Point(84, 10);
+            this.lblPage.Location = new System.Drawing.Point(103, 10);
             this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(47, 12);
+            this.lblPage.Size = new System.Drawing.Size(23, 12);
             this.lblPage.TabIndex = 4;
-            this.lblPage.Text = "100/100";
+            this.lblPage.Text = "0/0";
             this.lblPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lnkNext
             // 
-            this.lnkNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkNext.AutoSize = true;
-            this.lnkNext.Location = new System.Drawing.Point(136, 8);
+            this.lnkNext.Location = new System.Drawing.Point(136, 9);
             this.lnkNext.Name = "lnkNext";
             this.lnkNext.Size = new System.Drawing.Size(41, 12);
             this.lnkNext.TabIndex = 5;
             this.lnkNext.TabStop = true;
             this.lnkNext.Text = "下一页";
+            this.lnkNext.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkNext_LinkClicked);
             // 
             // lnkLast
             // 
-            this.lnkLast.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkLast.AutoSize = true;
-            this.lnkLast.Location = new System.Drawing.Point(185, 8);
+            this.lnkLast.Location = new System.Drawing.Point(185, 9);
             this.lnkLast.Name = "lnkLast";
             this.lnkLast.Size = new System.Drawing.Size(29, 12);
             this.lnkLast.TabIndex = 6;
@@ -126,14 +121,14 @@
             // 
             // lnkFirst
             // 
-            this.lnkFirst.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkFirst.AutoSize = true;
-            this.lnkFirst.Location = new System.Drawing.Point(3, 9);
+            this.lnkFirst.Location = new System.Drawing.Point(20, 9);
             this.lnkFirst.Name = "lnkFirst";
             this.lnkFirst.Size = new System.Drawing.Size(29, 12);
             this.lnkFirst.TabIndex = 7;
             this.lnkFirst.TabStop = true;
             this.lnkFirst.Text = "首页";
+            this.lnkFirst.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkFirst_LinkClicked);
             // 
             // NormalTrend
             // 

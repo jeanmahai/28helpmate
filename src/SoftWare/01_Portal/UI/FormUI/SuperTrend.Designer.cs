@@ -36,6 +36,13 @@
             this.lnkNext = new System.Windows.Forms.LinkLabel();
             this.lnkLast = new System.Windows.Forms.LinkLabel();
             this.lnkFirst = new System.Windows.Forms.LinkLabel();
+            this.ddlHour = new System.Windows.Forms.ComboBox();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.tbxDate = new System.Windows.Forms.TextBox();
+            this.lblHour = new System.Windows.Forms.Label();
+            this.lblMinute = new System.Windows.Forms.Label();
+            this.ddlMinute = new System.Windows.Forms.ComboBox();
+            this.btnQuery = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.countList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
@@ -43,103 +50,172 @@
             // 
             // countList
             // 
-            this.countList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.countList.BackgroundColor = System.Drawing.Color.White;
+            this.countList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.countList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.countList.Location = new System.Drawing.Point(-101, 28);
+            this.countList.Location = new System.Drawing.Point(20, 88);
             this.countList.Name = "countList";
             this.countList.RowTemplate.Height = 23;
             this.countList.Size = new System.Drawing.Size(1011, 23);
             this.countList.TabIndex = 0;
-            this.countList.BackgroundColor = System.Drawing.Color.White;
-            this.countList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             // 
             // headerList
             // 
-            this.headerList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.headerList.BackgroundColor = System.Drawing.Color.White;
+            this.headerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.headerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.headerList.Location = new System.Drawing.Point(-101, 50);
+            this.headerList.Location = new System.Drawing.Point(20, 110);
             this.headerList.Name = "headerList";
             this.headerList.RowTemplate.Height = 23;
             this.headerList.Size = new System.Drawing.Size(1011, 23);
             this.headerList.TabIndex = 1;
-            this.headerList.BackgroundColor = System.Drawing.Color.White;
-            this.headerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             // 
             // dataList
             // 
-            this.dataList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dataList.BackgroundColor = System.Drawing.Color.White;
+            this.dataList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataList.Location = new System.Drawing.Point(-101, 72);
+            this.dataList.Location = new System.Drawing.Point(20, 132);
             this.dataList.Name = "dataList";
             this.dataList.RowTemplate.Height = 23;
             this.dataList.Size = new System.Drawing.Size(1011, 514);
             this.dataList.TabIndex = 2;
-            this.dataList.BackgroundColor = System.Drawing.Color.White;
-            this.dataList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataList_CellFormatting);
             // 
             // lnkPrev
             // 
-            this.lnkPrev.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkPrev.AutoSize = true;
-            this.lnkPrev.Location = new System.Drawing.Point(39, 9);
+            this.lnkPrev.Location = new System.Drawing.Point(55, 66);
             this.lnkPrev.Name = "lnkPrev";
             this.lnkPrev.Size = new System.Drawing.Size(41, 12);
             this.lnkPrev.TabIndex = 3;
             this.lnkPrev.TabStop = true;
             this.lnkPrev.Text = "上一页";
+            this.lnkPrev.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPrev_LinkClicked);
             // 
             // lblPage
             // 
-            this.lblPage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblPage.AutoSize = true;
             this.lblPage.ForeColor = System.Drawing.Color.Red;
-            this.lblPage.Location = new System.Drawing.Point(84, 10);
+            this.lblPage.Location = new System.Drawing.Point(100, 67);
             this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(47, 12);
+            this.lblPage.Size = new System.Drawing.Size(35, 12);
             this.lblPage.TabIndex = 4;
-            this.lblPage.Text = "100/100";
+            this.lblPage.Text = "0/0";
             // 
             // lnkNext
             // 
-            this.lnkNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkNext.AutoSize = true;
-            this.lnkNext.Location = new System.Drawing.Point(136, 8);
+            this.lnkNext.Location = new System.Drawing.Point(141, 65);
             this.lnkNext.Name = "lnkNext";
             this.lnkNext.Size = new System.Drawing.Size(41, 12);
             this.lnkNext.TabIndex = 5;
             this.lnkNext.TabStop = true;
             this.lnkNext.Text = "下一页";
+            this.lnkNext.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkNext_LinkClicked);
             // 
             // lnkLast
             // 
-            this.lnkLast.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkLast.AutoSize = true;
-            this.lnkLast.Location = new System.Drawing.Point(185, 8);
+            this.lnkLast.Location = new System.Drawing.Point(187, 65);
             this.lnkLast.Name = "lnkLast";
             this.lnkLast.Size = new System.Drawing.Size(29, 12);
             this.lnkLast.TabIndex = 6;
             this.lnkLast.TabStop = true;
             this.lnkLast.Text = "尾页";
+            this.lnkLast.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLast_LinkClicked);
             // 
             // lnkFirst
             // 
-            this.lnkFirst.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkFirst.AutoSize = true;
-            this.lnkFirst.Location = new System.Drawing.Point(3, 9);
+            this.lnkFirst.Location = new System.Drawing.Point(20, 66);
             this.lnkFirst.Name = "lnkFirst";
             this.lnkFirst.Size = new System.Drawing.Size(29, 12);
             this.lnkFirst.TabIndex = 7;
             this.lnkFirst.TabStop = true;
             this.lnkFirst.Text = "首页";
+            this.lnkFirst.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkFirst_LinkClicked);
             // 
-            // NormalTrend
+            // ddlHour
+            // 
+            this.ddlHour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlHour.FormattingEnabled = true;
+            this.ddlHour.Location = new System.Drawing.Point(226, 25);
+            this.ddlHour.Name = "ddlHour";
+            this.ddlHour.Size = new System.Drawing.Size(121, 20);
+            this.ddlHour.TabIndex = 8;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblDate.Location = new System.Drawing.Point(20, 28);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(44, 12);
+            this.lblDate.TabIndex = 9;
+            this.lblDate.Text = "日期：";
+            // 
+            // tbxDate
+            // 
+            this.tbxDate.Location = new System.Drawing.Point(57, 24);
+            this.tbxDate.Name = "tbxDate";
+            this.tbxDate.Size = new System.Drawing.Size(100, 21);
+            this.tbxDate.TabIndex = 10;
+            this.tbxDate.Click += new System.EventHandler(this.tbxDate_Click);
+            // 
+            // lblHour
+            // 
+            this.lblHour.AutoSize = true;
+            this.lblHour.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblHour.Location = new System.Drawing.Point(182, 28);
+            this.lblHour.Name = "lblHour";
+            this.lblHour.Size = new System.Drawing.Size(44, 12);
+            this.lblHour.TabIndex = 11;
+            this.lblHour.Text = "小时：";
+            // 
+            // lblMinute
+            // 
+            this.lblMinute.AutoSize = true;
+            this.lblMinute.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMinute.Location = new System.Drawing.Point(376, 29);
+            this.lblMinute.Name = "lblMinute";
+            this.lblMinute.Size = new System.Drawing.Size(44, 12);
+            this.lblMinute.TabIndex = 13;
+            this.lblMinute.Text = "分钟：";
+            // 
+            // ddlMinute
+            // 
+            this.ddlMinute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMinute.FormattingEnabled = true;
+            this.ddlMinute.Location = new System.Drawing.Point(420, 26);
+            this.ddlMinute.Name = "ddlMinute";
+            this.ddlMinute.Size = new System.Drawing.Size(121, 20);
+            this.ddlMinute.TabIndex = 12;
+            // 
+            // btnQuery
+            // 
+            this.btnQuery.Location = new System.Drawing.Point(566, 25);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
+            this.btnQuery.TabIndex = 14;
+            this.btnQuery.Text = "查询";
+            this.btnQuery.UseVisualStyleBackColor = true;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
+            // 
+            // SuperTrend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnQuery);
+            this.Controls.Add(this.lblMinute);
+            this.Controls.Add(this.ddlMinute);
+            this.Controls.Add(this.lblHour);
+            this.Controls.Add(this.tbxDate);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.ddlHour);
             this.Controls.Add(this.lnkFirst);
             this.Controls.Add(this.lnkLast);
             this.Controls.Add(this.lnkNext);
@@ -169,5 +245,12 @@
         private System.Windows.Forms.LinkLabel lnkNext;
         private System.Windows.Forms.LinkLabel lnkLast;
         private System.Windows.Forms.LinkLabel lnkFirst;
+        private System.Windows.Forms.ComboBox ddlHour;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.TextBox tbxDate;
+        private System.Windows.Forms.Label lblHour;
+        private System.Windows.Forms.Label lblMinute;
+        private System.Windows.Forms.ComboBox ddlMinute;
+        private System.Windows.Forms.Button btnQuery;
     }
 }
