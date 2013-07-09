@@ -15,10 +15,10 @@ namespace UnitTest.LotteryWebService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LotteryWebService.LotteryWebServiceSoap")]
     public interface LotteryWebServiceSoap {
         
-        // CODEGEN: 消息 GetCustomeModule_28BJRequest 以后生成的消息协定具有标头
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomeModule_28BJ", ReplyAction="*")]
+        // CODEGEN: 消息 GetCustomeModuleRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomeModule", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        UnitTest.LotteryWebService.GetCustomeModule_28BJResponse GetCustomeModule_28BJ(UnitTest.LotteryWebService.GetCustomeModule_28BJRequest request);
+        UnitTest.LotteryWebService.GetCustomeModuleResponse GetCustomeModule(UnitTest.LotteryWebService.GetCustomeModuleRequest request);
         
         // CODEGEN: 消息 QueryRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Query", ReplyAction="*")]
@@ -47,10 +47,10 @@ namespace UnitTest.LotteryWebService {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         UnitTest.LotteryWebService.QueryOmissionResponse QueryOmission(UnitTest.LotteryWebService.QueryOmissionRequest request);
         
-        // CODEGEN: 消息 QuerySupperTrend_28BJRequest 以后生成的消息协定具有标头
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QuerySupperTrend_28BJ", ReplyAction="*")]
+        // CODEGEN: 消息 QuerySupperTrendRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QuerySupperTrend", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        UnitTest.LotteryWebService.QuerySupperTrend_28BJResponse QuerySupperTrend_28BJ(UnitTest.LotteryWebService.QuerySupperTrend_28BJRequest request);
+        UnitTest.LotteryWebService.QuerySupperTrendResponse QuerySupperTrend(UnitTest.LotteryWebService.QuerySupperTrendRequest request);
     }
     
     /// <remarks/>
@@ -67,7 +67,7 @@ namespace UnitTest.LotteryWebService {
         
         private int regionSourceSysNoField;
         
-        private string keyField;
+        private string tokenField;
         
         private int userSysNoField;
         
@@ -111,13 +111,13 @@ namespace UnitTest.LotteryWebService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string Key {
+        public string Token {
             get {
-                return this.keyField;
+                return this.tokenField;
             }
             set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
+                this.tokenField = value;
+                this.RaisePropertyChanged("Token");
             }
         }
         
@@ -1688,16 +1688,16 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCustomeModule_28BJ", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetCustomeModule_28BJRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCustomeModule", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetCustomeModuleRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
         public UnitTest.LotteryWebService.TokenHeader TokenHeader;
         
-        public GetCustomeModule_28BJRequest() {
+        public GetCustomeModuleRequest() {
         }
         
-        public GetCustomeModule_28BJRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
+        public GetCustomeModuleRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
             this.TokenHeader = TokenHeader;
         }
     }
@@ -1705,17 +1705,17 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCustomeModule_28BJResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetCustomeModule_28BJResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCustomeModuleResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetCustomeModuleResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public UnitTest.LotteryWebService.ResultRMOfCustomModules GetCustomeModule_28BJResult;
+        public UnitTest.LotteryWebService.ResultRMOfCustomModules GetCustomeModuleResult;
         
-        public GetCustomeModule_28BJResponse() {
+        public GetCustomeModuleResponse() {
         }
         
-        public GetCustomeModule_28BJResponse(UnitTest.LotteryWebService.ResultRMOfCustomModules GetCustomeModule_28BJResult) {
-            this.GetCustomeModule_28BJResult = GetCustomeModule_28BJResult;
+        public GetCustomeModuleResponse(UnitTest.LotteryWebService.ResultRMOfCustomModules GetCustomeModuleResult) {
+            this.GetCustomeModuleResult = GetCustomeModuleResult;
         }
     }
     
@@ -1832,8 +1832,8 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="QuerySupperTrend_28BJ", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class QuerySupperTrend_28BJRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QuerySupperTrend", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QuerySupperTrendRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
         public UnitTest.LotteryWebService.TokenHeader TokenHeader;
@@ -1853,10 +1853,10 @@ namespace UnitTest.LotteryWebService {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
         public string minute;
         
-        public QuerySupperTrend_28BJRequest() {
+        public QuerySupperTrendRequest() {
         }
         
-        public QuerySupperTrend_28BJRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, int pageIndex, int pageSize, string date, string hour, string minute) {
+        public QuerySupperTrendRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, int pageIndex, int pageSize, string date, string hour, string minute) {
             this.TokenHeader = TokenHeader;
             this.pageIndex = pageIndex;
             this.pageSize = pageSize;
@@ -1869,17 +1869,17 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="QuerySupperTrend_28BJResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class QuerySupperTrend_28BJResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QuerySupperTrendResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QuerySupperTrendResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public UnitTest.LotteryWebService.ResultRMOfLotteryTrend QuerySupperTrend_28BJResult;
+        public UnitTest.LotteryWebService.ResultRMOfLotteryTrend QuerySupperTrendResult;
         
-        public QuerySupperTrend_28BJResponse() {
+        public QuerySupperTrendResponse() {
         }
         
-        public QuerySupperTrend_28BJResponse(UnitTest.LotteryWebService.ResultRMOfLotteryTrend QuerySupperTrend_28BJResult) {
-            this.QuerySupperTrend_28BJResult = QuerySupperTrend_28BJResult;
+        public QuerySupperTrendResponse(UnitTest.LotteryWebService.ResultRMOfLotteryTrend QuerySupperTrendResult) {
+            this.QuerySupperTrendResult = QuerySupperTrendResult;
         }
     }
     
@@ -1911,15 +1911,15 @@ namespace UnitTest.LotteryWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        UnitTest.LotteryWebService.GetCustomeModule_28BJResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.GetCustomeModule_28BJ(UnitTest.LotteryWebService.GetCustomeModule_28BJRequest request) {
-            return base.Channel.GetCustomeModule_28BJ(request);
+        UnitTest.LotteryWebService.GetCustomeModuleResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.GetCustomeModule(UnitTest.LotteryWebService.GetCustomeModuleRequest request) {
+            return base.Channel.GetCustomeModule(request);
         }
         
-        public UnitTest.LotteryWebService.ResultRMOfCustomModules GetCustomeModule_28BJ(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
-            UnitTest.LotteryWebService.GetCustomeModule_28BJRequest inValue = new UnitTest.LotteryWebService.GetCustomeModule_28BJRequest();
+        public UnitTest.LotteryWebService.ResultRMOfCustomModules GetCustomeModule(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
+            UnitTest.LotteryWebService.GetCustomeModuleRequest inValue = new UnitTest.LotteryWebService.GetCustomeModuleRequest();
             inValue.TokenHeader = TokenHeader;
-            UnitTest.LotteryWebService.GetCustomeModule_28BJResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).GetCustomeModule_28BJ(inValue);
-            return retVal.GetCustomeModule_28BJResult;
+            UnitTest.LotteryWebService.GetCustomeModuleResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).GetCustomeModule(inValue);
+            return retVal.GetCustomeModuleResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1973,20 +1973,20 @@ namespace UnitTest.LotteryWebService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        UnitTest.LotteryWebService.QuerySupperTrend_28BJResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.QuerySupperTrend_28BJ(UnitTest.LotteryWebService.QuerySupperTrend_28BJRequest request) {
-            return base.Channel.QuerySupperTrend_28BJ(request);
+        UnitTest.LotteryWebService.QuerySupperTrendResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.QuerySupperTrend(UnitTest.LotteryWebService.QuerySupperTrendRequest request) {
+            return base.Channel.QuerySupperTrend(request);
         }
         
-        public UnitTest.LotteryWebService.ResultRMOfLotteryTrend QuerySupperTrend_28BJ(UnitTest.LotteryWebService.TokenHeader TokenHeader, int pageIndex, int pageSize, string date, string hour, string minute) {
-            UnitTest.LotteryWebService.QuerySupperTrend_28BJRequest inValue = new UnitTest.LotteryWebService.QuerySupperTrend_28BJRequest();
+        public UnitTest.LotteryWebService.ResultRMOfLotteryTrend QuerySupperTrend(UnitTest.LotteryWebService.TokenHeader TokenHeader, int pageIndex, int pageSize, string date, string hour, string minute) {
+            UnitTest.LotteryWebService.QuerySupperTrendRequest inValue = new UnitTest.LotteryWebService.QuerySupperTrendRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.pageIndex = pageIndex;
             inValue.pageSize = pageSize;
             inValue.date = date;
             inValue.hour = hour;
             inValue.minute = minute;
-            UnitTest.LotteryWebService.QuerySupperTrend_28BJResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).QuerySupperTrend_28BJ(inValue);
-            return retVal.QuerySupperTrend_28BJResult;
+            UnitTest.LotteryWebService.QuerySupperTrendResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).QuerySupperTrend(inValue);
+            return retVal.QuerySupperTrendResult;
         }
     }
 }

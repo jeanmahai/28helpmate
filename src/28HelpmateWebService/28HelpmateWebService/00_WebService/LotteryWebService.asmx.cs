@@ -129,7 +129,7 @@ namespace WebService
         //}
         [WebMethod(Description = "查询模块1-模块4的数据",EnableSession = true)]
         [SoapHeader("Token")]
-        public ResultRM<CustomModules> GetCustomeModule_28BJ()
+        public ResultRM<CustomModules> GetCustomeModule()
         {
             var result = new ResultRM<CustomModules>();
             if (ValidateToken(Token))
@@ -293,7 +293,7 @@ namespace WebService
         }
         [WebMethod(Description = "超级走势图",EnableSession = true)]
         [SoapHeader("Token")]
-        public ResultRM<LotteryTrend> QuerySupperTrend_28BJ(int pageIndex,
+        public ResultRM<LotteryTrend> QuerySupperTrend(int pageIndex,
             int pageSize,
             string date,
             string hour,
