@@ -9,12 +9,8 @@ namespace Helpmate.Facades
 {
     public class BaseFacade
     {
-<<<<<<< Updated upstream
         public string Key { get; set; }
 
-        //protected readonly BaseFacade restClient = new BaseFacade();
-=======
->>>>>>> Stashed changes
         public LotteryWebServiceSoapClient ClientService { get; set; }
 
         public BaseFacade()

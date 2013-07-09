@@ -88,55 +88,6 @@
         </s:sequence>
         <s:anyAttribute />
       </s:complexType>
-<<<<<<< Updated upstream
-=======
-      <s:element name="QueryLotteryByTwenty">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QueryLotteryByTwentyResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryLotteryByTwentyResult" type="tns:ResultRMOfLotteryByTwentyPeriod" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ResultRMOfLotteryByTwentyPeriod">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryByTwentyPeriod" />
-          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="QueryCurrentLottery">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="siteName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="QueryCurrentLotteryResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryCurrentLotteryResult" type="tns:ResultRMOfLotteryForBJ" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ResultRMOfLotteryForBJ">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryForBJ" />
-          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
-        </s:sequence>
-      </s:complexType>
->>>>>>> Stashed changes
       <s:element name="Query">
         <s:complexType>
           <s:sequence>
@@ -328,18 +279,6 @@
   </wsdl:types>
   <wsdl:message name="GetCustomeModule_28BJSoapIn">
     <wsdl:part name="parameters" element="tns:GetCustomeModule_28BJ" />
-<<<<<<< Updated upstream
-=======
-  </wsdl:message>
-  <wsdl:message name="GetCustomeModule_28BJSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCustomeModule_28BJResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetCustomeModule_28BJTokenHeader">
-    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
-  </wsdl:message>
-  <wsdl:message name="QueryLotteryByTwentySoapIn">
-    <wsdl:part name="parameters" element="tns:QueryLotteryByTwenty" />
->>>>>>> Stashed changes
   </wsdl:message>
   <wsdl:message name="GetCustomeModule_28BJSoapOut">
     <wsdl:part name="parameters" element="tns:GetCustomeModule_28BJResponse" />
@@ -397,19 +336,6 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
       <wsdl:input message="tns:GetCustomeModule_28BJSoapIn" />
       <wsdl:output message="tns:GetCustomeModule_28BJSoapOut" />
-<<<<<<< Updated upstream
-=======
-    </wsdl:operation>
-    <wsdl:operation name="QueryLotteryByTwenty">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近20期的结果</wsdl:documentation>
-      <wsdl:input message="tns:QueryLotteryByTwentySoapIn" />
-      <wsdl:output message="tns:QueryLotteryByTwentySoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="QueryCurrentLottery">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最近1期的结果</wsdl:documentation>
-      <wsdl:input message="tns:QueryCurrentLotterySoapIn" />
-      <wsdl:output message="tns:QueryCurrentLotterySoapOut" />
->>>>>>> Stashed changes
     </wsdl:operation>
     <wsdl:operation name="Query">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询开奖结果</wsdl:documentation>
@@ -446,29 +372,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetCustomeModule_28BJ">
       <soap:operation soapAction="http://tempuri.org/GetCustomeModule_28BJ" style="document" />
-<<<<<<< Updated upstream
-=======
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:GetCustomeModule_28BJTokenHeader" part="TokenHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryLotteryByTwenty">
-      <soap:operation soapAction="http://tempuri.org/QueryLotteryByTwenty" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-        <soap:header message="tns:QueryLotteryByTwentyTokenHeader" part="TokenHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryCurrentLottery">
-      <soap:operation soapAction="http://tempuri.org/QueryCurrentLottery" style="document" />
->>>>>>> Stashed changes
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:GetCustomeModule_28BJTokenHeader" part="TokenHeader" use="literal" />
@@ -524,26 +427,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-<<<<<<< Updated upstream
     <wsdl:operation name="QueryOmission">
       <soap:operation soapAction="http://tempuri.org/QueryOmission" style="document" />
-=======
-  </wsdl:binding>
-  <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetCustomeModule_28BJ">
-      <soap12:operation soapAction="http://tempuri.org/GetCustomeModule_28BJ" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-        <soap12:header message="tns:GetCustomeModule_28BJTokenHeader" part="TokenHeader" use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="QueryLotteryByTwenty">
-      <soap12:operation soapAction="http://tempuri.org/QueryLotteryByTwenty" style="document" />
->>>>>>> Stashed changes
       <wsdl:input>
         <soap:body use="literal" />
         <soap:header message="tns:QueryOmissionTokenHeader" part="TokenHeader" use="literal" />

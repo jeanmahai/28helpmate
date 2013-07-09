@@ -39,22 +39,16 @@ namespace Helpmate.UI.Forms.FormUI
         private void QueryData()
         {
             cmd.ShowOpaqueLayer(this, 125, true);
-            //serviceFacade.GetCustomeModule(result =>
-            //{
-            //    cmd.HideOpaqueLayer();
-            //    if (result.Error != null || !result.Result.Success)
-            //    {
-            //        string message = result.Error != null ? "无法连接服务器，请稍后重试！" : result.Result.Message;
-            //        MessageBox.Show(message);
-            //        return;
-            //    }
+            serviceFacade.GetCustomeModule(result =>
+            {
+                cmd.HideOpaqueLayer();
+                if (result.Error != null || !result.Result.Success)
+                {
+                    string message = result.Error != null ? "无法连接服务器，请稍后重试！" : result.Result.Message;
+                    MessageBox.Show(message);
+                    return;
+                }
 
-<<<<<<< Updated upstream
-            //    var c = result.Result.Success;
-            //    var b = result.Result.Message;
-            //    var d = result.Result.Data;
-            //});
-=======
                 //picNuming.Image = UtilsModel.LoadNumImage(result.Result.Data.M1);
 
                 ucLotteryM1.LoadBindData(result.Result.Data.M1);
@@ -62,7 +56,6 @@ namespace Helpmate.UI.Forms.FormUI
                 ucLotteryM3.LoadBindData(result.Result.Data.M3);
                 ucLotteryM4.LoadBindData(result.Result.Data.M4);
             });
->>>>>>> Stashed changes
         }
 
         public OpaqueCommand cmd = new OpaqueCommand();
