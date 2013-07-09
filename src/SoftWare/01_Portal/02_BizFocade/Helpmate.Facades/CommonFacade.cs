@@ -5,6 +5,7 @@ using System.Text;
 using Helpmate.Facades.LotteryWebService;
 using System.Windows.Forms;
 using Common.Utility;
+using System.Threading;
 
 namespace Helpmate.Facades
 {
@@ -18,10 +19,8 @@ namespace Helpmate.Facades
                 {
                     TokenHeader.Key = Header.Key;
                     var result = ClientService.GetCustomeModule_28BJ(TokenHeader);
-                    if (!result.Success)
-                    {
-                        AppMessage.AlertMessage(400);
-                    }
+                    Header.Key = result.Key;
+                    if (!result.Success) AppMessage.AlertMessage(result.Message);
                     return result;
                 }
             }
