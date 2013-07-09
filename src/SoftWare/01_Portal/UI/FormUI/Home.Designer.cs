@@ -41,10 +41,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ucNormalCount3 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
-            this.ucNormalCount4 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
-            this.ucNormalCount2 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
-            this.ucNormalCount1 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
+            this.ucLotteryM4 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
+            this.ucLotteryM3 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
+            this.ucLotteryM2 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
+            this.ucLotteryM1 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -54,30 +54,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.picNuming)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
-            this.btnRefresh.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.Refresh;
-            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Location = new System.Drawing.Point(546, 2);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(32, 22);
-            this.btnRefresh.TabIndex = 151;
-            this.btnRefresh.Tag = "";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // label15
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("宋体", 9F);
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(266, 7);
+            this.label15.Location = new System.Drawing.Point(481, 9);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(89, 12);
             this.label15.TabIndex = 150;
@@ -89,24 +72,11 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F);
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(94, 7);
+            this.label14.Location = new System.Drawing.Point(284, 9);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(137, 12);
             this.label14.TabIndex = 149;
             this.label14.Text = "提示：统计本期开奖号码";
-            // 
-            // picNuming
-            // 
-            this.picNuming.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picNuming.BackColor = System.Drawing.Color.White;
-            this.picNuming.Image = global::Helpmate.UI.Forms.Properties.Resources.nobg;
-            this.picNuming.Location = new System.Drawing.Point(233, 0);
-            this.picNuming.Margin = new System.Windows.Forms.Padding(4);
-            this.picNuming.Name = "picNuming";
-            this.picNuming.Size = new System.Drawing.Size(29, 27);
-            this.picNuming.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picNuming.TabIndex = 148;
-            this.picNuming.TabStop = false;
             // 
             // label6
             // 
@@ -120,26 +90,13 @@
             this.label6.TabIndex = 147;
             this.label6.Text = "同号码统计：";
             // 
-            // pnlLine
-            // 
-            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlLine.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLine.Location = new System.Drawing.Point(0, 32);
-            this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(610, 1);
-            this.pnlLine.TabIndex = 146;
-            // 
             // label16
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 9F);
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(494, 268);
+            this.label16.Location = new System.Drawing.Point(477, 268);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 12);
             this.label16.TabIndex = 156;
@@ -151,24 +108,11 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 9F);
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(300, 268);
+            this.label17.Location = new System.Drawing.Point(283, 268);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(137, 12);
             this.label17.TabIndex = 155;
             this.label17.Text = "提示：统计本期相同分钟";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel1.Location = new System.Drawing.Point(0, 287);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(610, 1);
-            this.panel1.TabIndex = 152;
             // 
             // label1
             // 
@@ -177,7 +121,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(444, 268);
+            this.label1.Location = new System.Drawing.Point(427, 268);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 12);
@@ -202,24 +146,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F);
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(118, 801);
+            this.label5.Location = new System.Drawing.Point(345, 800);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(173, 12);
             this.label5.TabIndex = 159;
             this.label5.Text = "提示：统计本期之前20期的号码";
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel3.Location = new System.Drawing.Point(0, 834);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(610, 1);
-            this.panel3.TabIndex = 157;
             // 
             // label7
             // 
@@ -239,7 +170,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("宋体", 9F);
             this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(494, 541);
+            this.label18.Location = new System.Drawing.Point(477, 541);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(41, 12);
             this.label18.TabIndex = 164;
@@ -251,7 +182,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("宋体", 9F);
             this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(301, 541);
+            this.label19.Location = new System.Drawing.Point(284, 541);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(137, 12);
             this.label19.TabIndex = 163;
@@ -264,25 +195,12 @@
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label20.ForeColor = System.Drawing.Color.Red;
-            this.label20.Location = new System.Drawing.Point(445, 541);
+            this.label20.Location = new System.Drawing.Point(428, 541);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(40, 12);
             this.label20.TabIndex = 162;
             this.label20.Text = "11:45";
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel2.Location = new System.Drawing.Point(0, 567);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(610, 1);
-            this.panel2.TabIndex = 160;
             // 
             // label4
             // 
@@ -296,75 +214,75 @@
             this.label4.TabIndex = 161;
             this.label4.Text = "同时间统计：";
             // 
-            // ucNormalCount3
+            // ucLotteryM4
             // 
-            this.ucNormalCount3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucNormalCount3.Location = new System.Drawing.Point(-39, 842);
-            this.ucNormalCount3.Name = "ucNormalCount3";
-            this.ucNormalCount3.Size = new System.Drawing.Size(706, 201);
-            this.ucNormalCount3.TabIndex = 165;
+            this.ucLotteryM4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ucLotteryM4.Location = new System.Drawing.Point(46, 841);
+            this.ucLotteryM4.Name = "ucLotteryM4";
+            this.ucLotteryM4.Size = new System.Drawing.Size(706, 201);
+            this.ucLotteryM4.TabIndex = 165;
             // 
-            // ucNormalCount4
+            // ucLotteryM3
             // 
-            this.ucNormalCount4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucNormalCount4.Location = new System.Drawing.Point(-39, 575);
-            this.ucNormalCount4.Name = "ucNormalCount4";
-            this.ucNormalCount4.Size = new System.Drawing.Size(706, 201);
-            this.ucNormalCount4.TabIndex = 165;
+            this.ucLotteryM3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ucLotteryM3.Location = new System.Drawing.Point(46, 577);
+            this.ucLotteryM3.Name = "ucLotteryM3";
+            this.ucLotteryM3.Size = new System.Drawing.Size(706, 201);
+            this.ucLotteryM3.TabIndex = 165;
             // 
-            // ucNormalCount2
+            // ucLotteryM2
             // 
-            this.ucNormalCount2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucNormalCount2.Location = new System.Drawing.Point(-39, 309);
-            this.ucNormalCount2.Name = "ucNormalCount2";
-            this.ucNormalCount2.Size = new System.Drawing.Size(706, 201);
-            this.ucNormalCount2.TabIndex = 165;
+            this.ucLotteryM2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ucLotteryM2.Location = new System.Drawing.Point(32, 305);
+            this.ucLotteryM2.Name = "ucLotteryM2";
+            this.ucLotteryM2.Size = new System.Drawing.Size(706, 201);
+            this.ucLotteryM2.TabIndex = 165;
             // 
-            // ucNormalCount1
+            // ucLotteryM1
             // 
-            this.ucNormalCount1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucNormalCount1.Location = new System.Drawing.Point(-39, 40);
-            this.ucNormalCount1.Name = "ucNormalCount1";
-            this.ucNormalCount1.Size = new System.Drawing.Size(706, 201);
-            this.ucNormalCount1.TabIndex = 165;
+            this.ucLotteryM1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ucLotteryM1.Location = new System.Drawing.Point(32, 40);
+            this.ucLotteryM1.Name = "ucLotteryM1";
+            this.ucLotteryM1.Size = new System.Drawing.Size(706, 201);
+            this.ucLotteryM1.TabIndex = 165;
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel2.Location = new System.Drawing.Point(0, 567);
+            this.panel2.Location = new System.Drawing.Point(46, 557);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(695, 1);
+            this.panel2.Size = new System.Drawing.Size(678, 1);
             this.panel2.TabIndex = 160;
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel3.Location = new System.Drawing.Point(0, 834);
+            this.panel3.Location = new System.Drawing.Point(60, 817);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(695, 1);
+            this.panel3.Size = new System.Drawing.Size(678, 1);
             this.panel3.TabIndex = 157;
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel1.Location = new System.Drawing.Point(0, 287);
+            this.panel1.Location = new System.Drawing.Point(46, 285);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(695, 1);
+            this.panel1.Size = new System.Drawing.Size(678, 1);
             this.panel1.TabIndex = 152;
             // 
             // btnRefresh
@@ -376,19 +294,20 @@
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Location = new System.Drawing.Point(480, 0);
+            this.btnRefresh.Location = new System.Drawing.Point(590, 2);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(32, 22);
             this.btnRefresh.TabIndex = 151;
             this.btnRefresh.Tag = "";
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // picNuming
             // 
             this.picNuming.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picNuming.BackColor = System.Drawing.Color.White;
             this.picNuming.Image = global::Helpmate.UI.Forms.Properties.Resources.nobg;
-            this.picNuming.Location = new System.Drawing.Point(318, 0);
+            this.picNuming.Location = new System.Drawing.Point(428, 2);
             this.picNuming.Margin = new System.Windows.Forms.Padding(4);
             this.picNuming.Name = "picNuming";
             this.picNuming.Size = new System.Drawing.Size(29, 27);
@@ -398,15 +317,15 @@
             // 
             // pnlLine
             // 
-            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLine.BackColor = System.Drawing.Color.Transparent;
             this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLine.Location = new System.Drawing.Point(0, 32);
+            this.pnlLine.Location = new System.Drawing.Point(46, 33);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(695, 1);
+            this.pnlLine.Size = new System.Drawing.Size(678, 1);
             this.pnlLine.TabIndex = 146;
             // 
             // Home
@@ -415,11 +334,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(817, 600);
-            this.Controls.Add(this.ucNormalCount3);
-            this.Controls.Add(this.ucNormalCount4);
-            this.Controls.Add(this.ucNormalCount2);
-            this.Controls.Add(this.ucNormalCount1);
+            this.ClientSize = new System.Drawing.Size(834, 600);
+            this.Controls.Add(this.ucLotteryM4);
+            this.Controls.Add(this.ucLotteryM3);
+            this.Controls.Add(this.ucLotteryM2);
+            this.Controls.Add(this.ucLotteryM1);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label20);
@@ -473,10 +392,10 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
-        private UIContorl.UIPlug.UCNormalCount ucNormalCount1;
-        private UIContorl.UIPlug.UCNormalCount ucNormalCount2;
-        private UIContorl.UIPlug.UCNormalCount ucNormalCount3;
-        private UIContorl.UIPlug.UCNormalCount ucNormalCount4;
+        private UIContorl.UIPlug.UCNormalCount ucLotteryM1;
+        private UIContorl.UIPlug.UCNormalCount ucLotteryM2;
+        private UIContorl.UIPlug.UCNormalCount ucLotteryM4;
+        private UIContorl.UIPlug.UCNormalCount ucLotteryM3;
 
 
     }

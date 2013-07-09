@@ -46,6 +46,7 @@
     <Compile Include="CommonFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseFacade.cs" />
+    <Compile Include="RequestMsg\RequestHeader.cs" />
     <Compile Include="Service References\LotteryWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

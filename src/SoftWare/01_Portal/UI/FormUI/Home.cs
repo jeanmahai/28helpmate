@@ -49,10 +49,20 @@ namespace Helpmate.UI.Forms.FormUI
             //        return;
             //    }
 
+<<<<<<< Updated upstream
             //    var c = result.Result.Success;
             //    var b = result.Result.Message;
             //    var d = result.Result.Data;
             //});
+=======
+                //picNuming.Image = UtilsModel.LoadNumImage(result.Result.Data.M1);
+
+                ucLotteryM1.LoadBindData(result.Result.Data.M1);
+                ucLotteryM2.LoadBindData(result.Result.Data.M2);
+                ucLotteryM3.LoadBindData(result.Result.Data.M3);
+                ucLotteryM4.LoadBindData(result.Result.Data.M4);
+            });
+>>>>>>> Stashed changes
         }
 
         public OpaqueCommand cmd = new OpaqueCommand();

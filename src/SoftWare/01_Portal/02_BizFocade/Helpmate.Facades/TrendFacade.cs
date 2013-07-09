@@ -26,6 +26,7 @@ namespace Helpmate.Facades
         }
         public ResultRMOfLotteryTrend QuerySuperTrend(int pageIndex)
         {
+<<<<<<< Updated upstream
             TokenHeader header = new TokenHeader();
             header.GameSourceSysNo = 10001;
             header.RegionSourceSysNo = 10001;
@@ -39,6 +40,12 @@ namespace Helpmate.Facades
                 Header.Key = data.Key;
                 return data;
             }
+=======
+            LotteryWebServiceSoapClient svc = new LotteryWebServiceSoapClient("LotteryWebServiceSoap");
+            var data = svc.QueryTrend(DateTime.Now.AddDays(-1), DateTime.Now, 100, pageIndex);
+            return data;
+            return null;
+>>>>>>> Stashed changes
         }
     }
 }
