@@ -23,7 +23,7 @@ namespace Common.Utility
             return diaLog;
         }
 
-        public static void PlayMusic(string musicName,bool isLooping)
+        public static void PlayMusic(string musicName, bool isLooping)
         {
             SoundPlayer p = new SoundPlayer();
             p.SoundLocation = Application.StartupPath + "//" + musicName;

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\IPage.cs" />
     <Compile Include="Models\UtilsModel.cs" />
     <Compile Include="Default.cs">
       <SubType>Form</SubType>

@@ -35,9 +35,9 @@
             this.splApp = new System.Windows.Forms.Splitter();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlLine = new System.Windows.Forms.Panel();
-            this.pnlLog = new System.Windows.Forms.Panel();
+            this.pnlUser = new System.Windows.Forms.Panel();
             this.picLogCurr = new System.Windows.Forms.PictureBox();
-            this.lblLog = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pnlOther = new System.Windows.Forms.Panel();
             this.picOtherCurr = new System.Windows.Forms.PictureBox();
@@ -55,9 +55,9 @@
             this.picMovieCurr = new System.Windows.Forms.PictureBox();
             this.lblMovie = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pnlPrediction = new System.Windows.Forms.Panel();
-            this.picMtvCurr = new System.Windows.Forms.PictureBox();
-            this.lblMtv = new System.Windows.Forms.Label();
+            this.pnlSuperTrend = new System.Windows.Forms.Panel();
+            this.picSuperTrend = new System.Windows.Forms.PictureBox();
+            this.lblSuperTrend = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlHome = new System.Windows.Forms.Panel();
             this.picHomeCurr = new System.Windows.Forms.PictureBox();
@@ -65,19 +65,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlHead = new System.Windows.Forms.Panel();
             this.tabArea = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCanada = new System.Windows.Forms.Label();
+            this.lblBJ = new System.Windows.Forms.Label();
             this.tabSite = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl53 = new System.Windows.Forms.Label();
+            this.lblZM = new System.Windows.Forms.Label();
+            this.lbl71 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlHeadBg = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
             this.stsPage.SuspendLayout();
             this.pnlRight.SuspendLayout();
-            this.pnlLog.SuspendLayout();
+            this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogCurr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlOther.SuspendLayout();
@@ -92,8 +92,8 @@
             this.pnlOmission.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMovieCurr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pnlPrediction.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMtvCurr)).BeginInit();
+            this.pnlSuperTrend.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSuperTrend)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHomeCurr)).BeginInit();
@@ -143,12 +143,12 @@
             // 
             this.pnlRight.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.appbg;
             this.pnlRight.Controls.Add(this.pnlLine);
-            this.pnlRight.Controls.Add(this.pnlLog);
+            this.pnlRight.Controls.Add(this.pnlUser);
             this.pnlRight.Controls.Add(this.pnlOther);
             this.pnlRight.Controls.Add(this.pnlSpecial);
             this.pnlRight.Controls.Add(this.pnlNormalTrend);
             this.pnlRight.Controls.Add(this.pnlOmission);
-            this.pnlRight.Controls.Add(this.pnlPrediction);
+            this.pnlRight.Controls.Add(this.pnlSuperTrend);
             this.pnlRight.Controls.Add(this.pnlHome);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlRight.Location = new System.Drawing.Point(0, 72);
@@ -168,19 +168,19 @@
             this.pnlLine.Size = new System.Drawing.Size(166, 10);
             this.pnlLine.TabIndex = 32;
             // 
-            // pnlLog
+            // pnlUser
             // 
-            this.pnlLog.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLog.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.pnlLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlLog.Controls.Add(this.picLogCurr);
-            this.pnlLog.Controls.Add(this.lblLog);
-            this.pnlLog.Controls.Add(this.pictureBox6);
-            this.pnlLog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLog.Location = new System.Drawing.Point(1, 265);
-            this.pnlLog.Name = "pnlLog";
-            this.pnlLog.Size = new System.Drawing.Size(166, 44);
-            this.pnlLog.TabIndex = 37;
+            this.pnlUser.BackColor = System.Drawing.Color.Transparent;
+            this.pnlUser.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
+            this.pnlUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlUser.Controls.Add(this.picLogCurr);
+            this.pnlUser.Controls.Add(this.lblUser);
+            this.pnlUser.Controls.Add(this.pictureBox6);
+            this.pnlUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlUser.Location = new System.Drawing.Point(1, 265);
+            this.pnlUser.Name = "pnlUser";
+            this.pnlUser.Size = new System.Drawing.Size(166, 44);
+            this.pnlUser.TabIndex = 37;
             // 
             // picLogCurr
             // 
@@ -192,16 +192,16 @@
             this.picLogCurr.TabStop = false;
             this.picLogCurr.Visible = false;
             // 
-            // lblLog
+            // lblUser
             // 
-            this.lblLog.AutoSize = true;
-            this.lblLog.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblLog.ForeColor = System.Drawing.Color.Black;
-            this.lblLog.Location = new System.Drawing.Point(55, 12);
-            this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(65, 20);
-            this.lblLog.TabIndex = 1;
-            this.lblLog.Text = "个人信息";
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblUser.ForeColor = System.Drawing.Color.Black;
+            this.lblUser.Location = new System.Drawing.Point(55, 12);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(65, 20);
+            this.lblUser.TabIndex = 1;
+            this.lblUser.Text = "个人信息";
             // 
             // pictureBox6
             // 
@@ -399,42 +399,42 @@
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pnlOmission_Click);
             // 
-            // pnlPrediction
+            // pnlSuperTrend
             // 
-            this.pnlPrediction.BackColor = System.Drawing.Color.Transparent;
-            this.pnlPrediction.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.pnlPrediction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlPrediction.Controls.Add(this.picMtvCurr);
-            this.pnlPrediction.Controls.Add(this.lblMtv);
-            this.pnlPrediction.Controls.Add(this.pictureBox2);
-            this.pnlPrediction.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlPrediction.Location = new System.Drawing.Point(1, 45);
-            this.pnlPrediction.Name = "pnlPrediction";
-            this.pnlPrediction.Size = new System.Drawing.Size(166, 44);
-            this.pnlPrediction.TabIndex = 34;
-            this.pnlPrediction.Click += new System.EventHandler(this.pnlPrediction_Click);
+            this.pnlSuperTrend.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSuperTrend.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
+            this.pnlSuperTrend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlSuperTrend.Controls.Add(this.picSuperTrend);
+            this.pnlSuperTrend.Controls.Add(this.lblSuperTrend);
+            this.pnlSuperTrend.Controls.Add(this.pictureBox2);
+            this.pnlSuperTrend.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlSuperTrend.Location = new System.Drawing.Point(1, 45);
+            this.pnlSuperTrend.Name = "pnlSuperTrend";
+            this.pnlSuperTrend.Size = new System.Drawing.Size(166, 44);
+            this.pnlSuperTrend.TabIndex = 34;
+            this.pnlSuperTrend.Click += new System.EventHandler(this.pnlSuperTrend_Click);
             // 
-            // picMtvCurr
+            // picSuperTrend
             // 
-            this.picMtvCurr.Image = global::Helpmate.UI.Forms.Properties.Resources.sidemenu_li_curr;
-            this.picMtvCurr.Location = new System.Drawing.Point(153, 13);
-            this.picMtvCurr.Name = "picMtvCurr";
-            this.picMtvCurr.Size = new System.Drawing.Size(13, 18);
-            this.picMtvCurr.TabIndex = 2;
-            this.picMtvCurr.TabStop = false;
-            this.picMtvCurr.Visible = false;
+            this.picSuperTrend.Image = global::Helpmate.UI.Forms.Properties.Resources.sidemenu_li_curr;
+            this.picSuperTrend.Location = new System.Drawing.Point(153, 13);
+            this.picSuperTrend.Name = "picSuperTrend";
+            this.picSuperTrend.Size = new System.Drawing.Size(13, 18);
+            this.picSuperTrend.TabIndex = 2;
+            this.picSuperTrend.TabStop = false;
+            this.picSuperTrend.Visible = false;
             // 
-            // lblMtv
+            // lblSuperTrend
             // 
-            this.lblMtv.AutoSize = true;
-            this.lblMtv.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMtv.ForeColor = System.Drawing.Color.Black;
-            this.lblMtv.Location = new System.Drawing.Point(55, 12);
-            this.lblMtv.Name = "lblMtv";
-            this.lblMtv.Size = new System.Drawing.Size(93, 20);
-            this.lblMtv.TabIndex = 1;
-            this.lblMtv.Text = "超级走势统计";
-            this.lblMtv.Click += new System.EventHandler(this.pnlPrediction_Click);
+            this.lblSuperTrend.AutoSize = true;
+            this.lblSuperTrend.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblSuperTrend.ForeColor = System.Drawing.Color.Black;
+            this.lblSuperTrend.Location = new System.Drawing.Point(55, 12);
+            this.lblSuperTrend.Name = "lblSuperTrend";
+            this.lblSuperTrend.Size = new System.Drawing.Size(93, 20);
+            this.lblSuperTrend.TabIndex = 1;
+            this.lblSuperTrend.Text = "超级走势统计";
+            this.lblSuperTrend.Click += new System.EventHandler(this.pnlSuperTrend_Click);
             // 
             // pictureBox2
             // 
@@ -445,7 +445,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pnlPrediction_Click);
+            this.pictureBox2.Click += new System.EventHandler(this.pnlSuperTrend_Click);
             // 
             // pnlHome
             // 
@@ -516,8 +516,8 @@
             this.tabArea.ColumnCount = 2;
             this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tabArea.Controls.Add(this.label2, 1, 0);
-            this.tabArea.Controls.Add(this.label3, 0, 0);
+            this.tabArea.Controls.Add(this.lblCanada, 1, 0);
+            this.tabArea.Controls.Add(this.lblBJ, 0, 0);
             this.tabArea.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabArea.Location = new System.Drawing.Point(1, 34);
             this.tabArea.Margin = new System.Windows.Forms.Padding(0);
@@ -527,33 +527,37 @@
             this.tabArea.Size = new System.Drawing.Size(163, 35);
             this.tabArea.TabIndex = 46;
             // 
-            // label2
+            // lblCanada
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.LightGray;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(82, 1);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 33);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "加拿大";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCanada.AutoSize = true;
+            this.lblCanada.BackColor = System.Drawing.Color.LightGray;
+            this.lblCanada.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCanada.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblCanada.Location = new System.Drawing.Point(82, 1);
+            this.lblCanada.Margin = new System.Windows.Forms.Padding(0);
+            this.lblCanada.Name = "lblCanada";
+            this.lblCanada.Size = new System.Drawing.Size(80, 33);
+            this.lblCanada.TabIndex = 1;
+            this.lblCanada.Tag = "10002";
+            this.lblCanada.Text = "加拿大";
+            this.lblCanada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCanada.Click += new System.EventHandler(this.lblCanada_Click);
             // 
-            // label3
+            // lblBJ
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(1, 1);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 33);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "北京";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBJ.AutoSize = true;
+            this.lblBJ.BackColor = System.Drawing.Color.White;
+            this.lblBJ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBJ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblBJ.Location = new System.Drawing.Point(1, 1);
+            this.lblBJ.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBJ.Name = "lblBJ";
+            this.lblBJ.Size = new System.Drawing.Size(80, 33);
+            this.lblBJ.TabIndex = 0;
+            this.lblBJ.Tag = "10001";
+            this.lblBJ.Text = "北京";
+            this.lblBJ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBJ.Click += new System.EventHandler(this.lblBJ_Click);
             // 
             // tabSite
             // 
@@ -563,9 +567,9 @@
             this.tabSite.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tabSite.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tabSite.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tabSite.Controls.Add(this.label7, 0, 0);
-            this.tabSite.Controls.Add(this.label4, 1, 0);
-            this.tabSite.Controls.Add(this.label5, 0, 0);
+            this.tabSite.Controls.Add(this.lbl53, 0, 0);
+            this.tabSite.Controls.Add(this.lblZM, 1, 0);
+            this.tabSite.Controls.Add(this.lbl71, 0, 0);
             this.tabSite.Location = new System.Drawing.Point(167, 1);
             this.tabSite.Name = "tabSite";
             this.tabSite.RowCount = 1;
@@ -573,47 +577,56 @@
             this.tabSite.Size = new System.Drawing.Size(205, 35);
             this.tabSite.TabIndex = 46;
             // 
-            // label7
+            // lbl53
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.LightGray;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(69, 1);
-            this.label7.Margin = new System.Windows.Forms.Padding(0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 33);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "53游";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl53.AutoSize = true;
+            this.lbl53.BackColor = System.Drawing.Color.LightGray;
+            this.lbl53.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl53.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl53.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl53.Location = new System.Drawing.Point(69, 1);
+            this.lbl53.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl53.Name = "lbl53";
+            this.lbl53.Size = new System.Drawing.Size(67, 33);
+            this.lbl53.TabIndex = 2;
+            this.lbl53.Tag = "10001";
+            this.lbl53.Text = "53游";
+            this.lbl53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl53.Click += new System.EventHandler(this.lbl53_Click);
             // 
-            // label4
+            // lblZM
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.LightGray;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(137, 1);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 33);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "芝麻西西";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblZM.AutoSize = true;
+            this.lblZM.BackColor = System.Drawing.Color.LightGray;
+            this.lblZM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblZM.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblZM.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblZM.Location = new System.Drawing.Point(137, 1);
+            this.lblZM.Margin = new System.Windows.Forms.Padding(0);
+            this.lblZM.Name = "lblZM";
+            this.lblZM.Size = new System.Drawing.Size(67, 33);
+            this.lblZM.TabIndex = 1;
+            this.lblZM.Tag = "10003";
+            this.lblZM.Text = "芝麻西西";
+            this.lblZM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblZM.Click += new System.EventHandler(this.lblZM_Click);
             // 
-            // label5
+            // lbl71
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(1, 1);
-            this.label5.Margin = new System.Windows.Forms.Padding(0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 33);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "71豆";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl71.AutoSize = true;
+            this.lbl71.BackColor = System.Drawing.Color.White;
+            this.lbl71.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl71.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl71.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl71.Location = new System.Drawing.Point(1, 1);
+            this.lbl71.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl71.Name = "lbl71";
+            this.lbl71.Size = new System.Drawing.Size(67, 33);
+            this.lbl71.TabIndex = 0;
+            this.lbl71.Tag = "10002";
+            this.lbl71.Text = "71豆";
+            this.lbl71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl71.Click += new System.EventHandler(this.lbl71_Click);
             // 
             // label8
             // 
@@ -629,8 +642,8 @@
             // 
             // pnlHeadBg
             // 
-            this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeadBg.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.headbg;
             this.pnlHeadBg.Controls.Add(this.label6);
             this.pnlHeadBg.Controls.Add(this.pnlSiteMap);
@@ -680,8 +693,8 @@
             this.stsPage.ResumeLayout(false);
             this.stsPage.PerformLayout();
             this.pnlRight.ResumeLayout(false);
-            this.pnlLog.ResumeLayout(false);
-            this.pnlLog.PerformLayout();
+            this.pnlUser.ResumeLayout(false);
+            this.pnlUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogCurr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnlOther.ResumeLayout(false);
@@ -700,9 +713,9 @@
             this.pnlOmission.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMovieCurr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pnlPrediction.ResumeLayout(false);
-            this.pnlPrediction.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMtvCurr)).EndInit();
+            this.pnlSuperTrend.ResumeLayout(false);
+            this.pnlSuperTrend.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSuperTrend)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlHome.ResumeLayout(false);
             this.pnlHome.PerformLayout();
@@ -729,9 +742,9 @@
         private System.Windows.Forms.Panel pnlHead;
         private System.Windows.Forms.Splitter splApp;
         private System.Windows.Forms.Panel pnlLine;
-        private System.Windows.Forms.Panel pnlLog;
+        private System.Windows.Forms.Panel pnlUser;
         private System.Windows.Forms.PictureBox picLogCurr;
-        private System.Windows.Forms.Label lblLog;
+        private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Panel pnlOther;
         private System.Windows.Forms.PictureBox picOtherCurr;
@@ -748,9 +761,9 @@
         private System.Windows.Forms.Panel pnlOmission;
         private System.Windows.Forms.PictureBox picMovieCurr;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel pnlPrediction;
-        private System.Windows.Forms.PictureBox picMtvCurr;
-        private System.Windows.Forms.Label lblMtv;
+        private System.Windows.Forms.Panel pnlSuperTrend;
+        private System.Windows.Forms.PictureBox picSuperTrend;
+        private System.Windows.Forms.Label lblSuperTrend;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel pnlHome;
         private System.Windows.Forms.PictureBox picHomeCurr;
@@ -758,15 +771,15 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel tabSite;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblZM;
+        private System.Windows.Forms.Label lbl71;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlHeadBg;
         private System.Windows.Forms.TableLayoutPanel tabArea;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCanada;
+        private System.Windows.Forms.Label lblBJ;
         private System.Windows.Forms.Panel pnlSiteMap;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl53;
         private System.Windows.Forms.Label lblMovie;
         private System.Windows.Forms.ToolStripStatusLabel tslNews;
     }

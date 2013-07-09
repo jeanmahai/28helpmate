@@ -15,7 +15,7 @@ using Helpmate.UI.Forms.Models;
 
 namespace Helpmate.UI.Forms.FormUI
 {
-    public partial class SuperTrend : Form
+    public partial class SuperTrend : Form, IPage
     {
         public TrendFacade serviceFacade = new TrendFacade();
         public List<SiteModel> SiteMapList { get; set; }
@@ -93,12 +93,12 @@ namespace Helpmate.UI.Forms.FormUI
 
         #region 异步调用Service
         public OpaqueCommand cmd = new OpaqueCommand();
-        private void QueryData(int pageIndex)
+        public void QueryData(int? pageIndex = null)
         {
             cmd.ShowOpaqueLayer(this, 125, true);
             QueryDataDelegate dn = new QueryDataDelegate(AsyncWaysQueryData);
             AsyncCallback acb = new AsyncCallback(CallBackMethod);
-            IAsyncResult iar = dn.BeginInvoke(pageIndex, acb, dn);
+            IAsyncResult iar = dn.BeginInvoke(pageIndex.Value, acb, dn);
         }
         public delegate ResultRMOfLotteryTrend QueryDataDelegate(int pageIndex);
         private ResultRMOfLotteryTrend AsyncWaysQueryData(int pageIndex)

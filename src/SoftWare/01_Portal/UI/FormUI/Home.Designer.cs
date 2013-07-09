@@ -28,43 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label15 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
             this.label14 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ucLotteryM4 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
-            this.ucLotteryM3 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
-            this.ucLotteryM2 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
-            this.ucLotteryM1 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.picNuming = new System.Windows.Forms.PictureBox();
             this.pnlLine = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.picNuming)).BeginInit();
+            this.tmRefresh = new System.Windows.Forms.Timer(this.components);
+            this.ucLotteryM4 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
+            this.ucLotteryM3 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
+            this.ucLotteryM2 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
+            this.ucLotteryM1 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
             this.SuspendLayout();
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("宋体", 9F);
-            this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(481, 9);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(89, 12);
-            this.label15.TabIndex = 150;
-            this.label15.Text = "之后一期的号码";
             // 
             // label14
             // 
@@ -72,11 +57,11 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F);
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(284, 9);
+            this.label14.Location = new System.Drawing.Point(412, 7);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(137, 12);
+            this.label14.Size = new System.Drawing.Size(173, 12);
             this.label14.TabIndex = 149;
-            this.label14.Text = "提示：统计本期开奖号码";
+            this.label14.Text = "提示：统计本期之后开奖号码为";
             // 
             // label6
             // 
@@ -90,25 +75,13 @@
             this.label6.TabIndex = 147;
             this.label6.Text = "同号码统计：";
             // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("宋体", 9F);
-            this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(477, 268);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 12);
-            this.label16.TabIndex = 156;
-            this.label16.Text = "的号码";
-            // 
             // label17
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 9F);
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(283, 268);
+            this.label17.Location = new System.Drawing.Point(464, 265);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(137, 12);
             this.label17.TabIndex = 155;
@@ -121,12 +94,12 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(427, 268);
+            this.label1.Location = new System.Drawing.Point(583, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 12);
+            this.label1.Size = new System.Drawing.Size(19, 12);
             this.label1.TabIndex = 154;
-            this.label1.Text = "11:45";
+            this.label1.Text = "15";
             // 
             // label2
             // 
@@ -146,7 +119,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F);
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(345, 800);
+            this.label5.Location = new System.Drawing.Point(459, 794);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(173, 12);
             this.label5.TabIndex = 159;
@@ -164,25 +137,13 @@
             this.label7.TabIndex = 158;
             this.label7.Text = "前20期统计：";
             // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("宋体", 9F);
-            this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(477, 541);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(41, 12);
-            this.label18.TabIndex = 164;
-            this.label18.Text = "的号码";
-            // 
             // label19
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("宋体", 9F);
             this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(284, 541);
+            this.label19.Location = new System.Drawing.Point(459, 537);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(137, 12);
             this.label19.TabIndex = 163;
@@ -195,7 +156,7 @@
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label20.ForeColor = System.Drawing.Color.Red;
-            this.label20.Location = new System.Drawing.Point(428, 541);
+            this.label20.Location = new System.Drawing.Point(603, 537);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(40, 12);
@@ -214,38 +175,6 @@
             this.label4.TabIndex = 161;
             this.label4.Text = "同时间统计：";
             // 
-            // ucLotteryM4
-            // 
-            this.ucLotteryM4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM4.Location = new System.Drawing.Point(46, 841);
-            this.ucLotteryM4.Name = "ucLotteryM4";
-            this.ucLotteryM4.Size = new System.Drawing.Size(706, 201);
-            this.ucLotteryM4.TabIndex = 165;
-            // 
-            // ucLotteryM3
-            // 
-            this.ucLotteryM3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM3.Location = new System.Drawing.Point(46, 577);
-            this.ucLotteryM3.Name = "ucLotteryM3";
-            this.ucLotteryM3.Size = new System.Drawing.Size(706, 201);
-            this.ucLotteryM3.TabIndex = 165;
-            // 
-            // ucLotteryM2
-            // 
-            this.ucLotteryM2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM2.Location = new System.Drawing.Point(32, 305);
-            this.ucLotteryM2.Name = "ucLotteryM2";
-            this.ucLotteryM2.Size = new System.Drawing.Size(706, 201);
-            this.ucLotteryM2.TabIndex = 165;
-            // 
-            // ucLotteryM1
-            // 
-            this.ucLotteryM1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM1.Location = new System.Drawing.Point(32, 40);
-            this.ucLotteryM1.Name = "ucLotteryM1";
-            this.ucLotteryM1.Size = new System.Drawing.Size(706, 201);
-            this.ucLotteryM1.TabIndex = 165;
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -253,10 +182,10 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel2.Location = new System.Drawing.Point(46, 557);
+            this.panel2.Location = new System.Drawing.Point(33, 557);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(678, 1);
+            this.panel2.Size = new System.Drawing.Size(699, 1);
             this.panel2.TabIndex = 160;
             // 
             // panel3
@@ -266,10 +195,10 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel3.Location = new System.Drawing.Point(60, 817);
+            this.panel3.Location = new System.Drawing.Point(33, 817);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(678, 1);
+            this.panel3.Size = new System.Drawing.Size(699, 1);
             this.panel3.TabIndex = 157;
             // 
             // panel1
@@ -279,10 +208,10 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel1.Location = new System.Drawing.Point(46, 285);
+            this.panel1.Location = new System.Drawing.Point(33, 285);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(678, 1);
+            this.panel1.Size = new System.Drawing.Size(699, 1);
             this.panel1.TabIndex = 152;
             // 
             // btnRefresh
@@ -294,26 +223,13 @@
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Location = new System.Drawing.Point(590, 2);
+            this.btnRefresh.Location = new System.Drawing.Point(611, 2);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(32, 22);
             this.btnRefresh.TabIndex = 151;
             this.btnRefresh.Tag = "";
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // picNuming
-            // 
-            this.picNuming.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picNuming.BackColor = System.Drawing.Color.White;
-            this.picNuming.Image = global::Helpmate.UI.Forms.Properties.Resources.nobg;
-            this.picNuming.Location = new System.Drawing.Point(428, 2);
-            this.picNuming.Margin = new System.Windows.Forms.Padding(4);
-            this.picNuming.Name = "picNuming";
-            this.picNuming.Size = new System.Drawing.Size(29, 27);
-            this.picNuming.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picNuming.TabIndex = 148;
-            this.picNuming.TabStop = false;
             // 
             // pnlLine
             // 
@@ -322,11 +238,48 @@
             this.pnlLine.BackColor = System.Drawing.Color.Transparent;
             this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLine.Location = new System.Drawing.Point(46, 33);
+            this.pnlLine.Location = new System.Drawing.Point(33, 33);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(678, 1);
+            this.pnlLine.Size = new System.Drawing.Size(699, 1);
             this.pnlLine.TabIndex = 146;
+            // 
+            // tmRefresh
+            // 
+            this.tmRefresh.Interval = 5000;
+            this.tmRefresh.Tick += new System.EventHandler(this.tmRefresh_Tick);
+            // 
+            // ucLotteryM4
+            // 
+            this.ucLotteryM4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ucLotteryM4.Location = new System.Drawing.Point(28, 841);
+            this.ucLotteryM4.Name = "ucLotteryM4";
+            this.ucLotteryM4.Size = new System.Drawing.Size(706, 201);
+            this.ucLotteryM4.TabIndex = 165;
+            // 
+            // ucLotteryM3
+            // 
+            this.ucLotteryM3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ucLotteryM3.Location = new System.Drawing.Point(28, 577);
+            this.ucLotteryM3.Name = "ucLotteryM3";
+            this.ucLotteryM3.Size = new System.Drawing.Size(706, 201);
+            this.ucLotteryM3.TabIndex = 165;
+            // 
+            // ucLotteryM2
+            // 
+            this.ucLotteryM2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ucLotteryM2.Location = new System.Drawing.Point(28, 305);
+            this.ucLotteryM2.Name = "ucLotteryM2";
+            this.ucLotteryM2.Size = new System.Drawing.Size(706, 201);
+            this.ucLotteryM2.TabIndex = 165;
+            // 
+            // ucLotteryM1
+            // 
+            this.ucLotteryM1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ucLotteryM1.Location = new System.Drawing.Point(28, 43);
+            this.ucLotteryM1.Name = "ucLotteryM1";
+            this.ucLotteryM1.Size = new System.Drawing.Size(706, 201);
+            this.ucLotteryM1.TabIndex = 165;
             // 
             // Home
             // 
@@ -339,7 +292,6 @@
             this.Controls.Add(this.ucLotteryM3);
             this.Controls.Add(this.ucLotteryM2);
             this.Controls.Add(this.ucLotteryM1);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.panel2);
@@ -347,15 +299,12 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.picNuming);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pnlLine);
             this.DoubleBuffered = true;
@@ -365,7 +314,6 @@
             this.Name = "Home";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Home_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picNuming)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,12 +322,9 @@
         #endregion
 
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.PictureBox picNuming;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlLine;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
@@ -387,7 +332,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panel2;
@@ -396,6 +340,7 @@
         private UIContorl.UIPlug.UCNormalCount ucLotteryM2;
         private UIContorl.UIPlug.UCNormalCount ucLotteryM4;
         private UIContorl.UIPlug.UCNormalCount ucLotteryM3;
+        private System.Windows.Forms.Timer tmRefresh;
 
 
     }
