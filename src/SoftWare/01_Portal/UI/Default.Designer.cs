@@ -538,7 +538,7 @@
             this.lblCanada.Name = "lblCanada";
             this.lblCanada.Size = new System.Drawing.Size(80, 33);
             this.lblCanada.TabIndex = 1;
-            this.lblCanada.Tag = "1002";
+            this.lblCanada.Tag = "10002";
             this.lblCanada.Text = "加拿大";
             this.lblCanada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblCanada.Click += new System.EventHandler(this.lblCanada_Click);
@@ -554,7 +554,7 @@
             this.lblBJ.Name = "lblBJ";
             this.lblBJ.Size = new System.Drawing.Size(80, 33);
             this.lblBJ.TabIndex = 0;
-            this.lblBJ.Tag = "1001";
+            this.lblBJ.Tag = "10001";
             this.lblBJ.Text = "北京";
             this.lblBJ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblBJ.Click += new System.EventHandler(this.lblBJ_Click);
@@ -589,7 +589,7 @@
             this.lbl53.Name = "lbl53";
             this.lbl53.Size = new System.Drawing.Size(67, 33);
             this.lbl53.TabIndex = 2;
-            this.lbl53.Tag = "1001";
+            this.lbl53.Tag = "10001";
             this.lbl53.Text = "53游";
             this.lbl53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl53.Click += new System.EventHandler(this.lbl53_Click);
@@ -606,7 +606,7 @@
             this.lblZM.Name = "lblZM";
             this.lblZM.Size = new System.Drawing.Size(67, 33);
             this.lblZM.TabIndex = 1;
-            this.lblZM.Tag = "1003";
+            this.lblZM.Tag = "10003";
             this.lblZM.Text = "芝麻西西";
             this.lblZM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblZM.Click += new System.EventHandler(this.lblZM_Click);
@@ -623,7 +623,7 @@
             this.lbl71.Name = "lbl71";
             this.lbl71.Size = new System.Drawing.Size(67, 33);
             this.lbl71.TabIndex = 0;
-            this.lbl71.Tag = "1002";
+            this.lbl71.Tag = "10002";
             this.lbl71.Text = "71豆";
             this.lbl71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl71.Click += new System.EventHandler(this.lbl71_Click);

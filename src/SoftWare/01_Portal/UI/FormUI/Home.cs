@@ -69,7 +69,7 @@ namespace Helpmate.UI.Forms.FormUI
 
         private void BindDataAsync(ResultRMOfCustomModules result)
         {
-            if (result != null)
+            if (result != null && result.Data != null)
             {
                 //picNuming.Image = UtilsModel.LoadNumImage(result.Result.Data.M1);
 

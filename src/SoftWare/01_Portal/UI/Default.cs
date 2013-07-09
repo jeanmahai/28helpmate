@@ -24,8 +24,10 @@ namespace Helpmate.UI.Forms
 
         private void Default_Load(object sender, EventArgs e)
         {
-            Header.SiteSourceSysNo = Convert.ToInt32(lblBJ.Tag);
-            Header.GameSourceSysNo = Convert.ToInt32(lbl71.Tag);
+            Header.UserSysNo = 1;//用户编号
+            Header.GameSourceSysNo = 10001;//28游戏
+            Header.RegionSourceSysNo = Convert.ToInt32(lblBJ.Tag);
+            Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);
 
             var childForm = new Home();
             CurrMenu(MenuEnum.Home, childForm.SiteMapList, childForm);
@@ -49,6 +51,7 @@ namespace Helpmate.UI.Forms
         {
             var childForm = new Omission();
             CurrMenu(MenuEnum.Omission, childForm.SiteMapList, childForm);
+            RefreshPage();
         }
 
         private void pnlNormalTrend_Click(object sender, EventArgs e)
@@ -139,7 +142,7 @@ namespace Helpmate.UI.Forms
         {
             lblBJ.BackColor = Color.White;
             lblCanada.BackColor = Color.LightGray;
-            Header.SiteSourceSysNo = Convert.ToInt32(lblBJ.Tag);
+            Header.RegionSourceSysNo = Convert.ToInt32(lblBJ.Tag);
             RefreshPage();
         }
 
@@ -147,7 +150,7 @@ namespace Helpmate.UI.Forms
         {
             lblBJ.BackColor = Color.LightGray;
             lblCanada.BackColor = Color.White;
-            Header.SiteSourceSysNo = Convert.ToInt32(lblCanada.Tag);
+            Header.RegionSourceSysNo = Convert.ToInt32(lblCanada.Tag);
             RefreshPage();
         }
 
@@ -156,7 +159,7 @@ namespace Helpmate.UI.Forms
             lbl71.BackColor = Color.White;
             lbl53.BackColor = Color.LightGray;
             lblZM.BackColor = Color.LightGray;
-            Header.GameSourceSysNo = Convert.ToInt32(lbl71.Tag);
+            Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);
             RefreshPage();
         }
 
@@ -165,7 +168,7 @@ namespace Helpmate.UI.Forms
             lbl71.BackColor = Color.LightGray;
             lbl53.BackColor = Color.White;
             lblZM.BackColor = Color.LightGray;
-            Header.GameSourceSysNo = Convert.ToInt32(lbl53.Tag);
+            Header.SiteSourceSysNo = Convert.ToInt32(lbl53.Tag);
             RefreshPage();
         }
 
@@ -174,7 +177,7 @@ namespace Helpmate.UI.Forms
             lbl71.BackColor = Color.LightGray;
             lbl53.BackColor = Color.LightGray;
             lblZM.BackColor = Color.White;
-            Header.GameSourceSysNo = Convert.ToInt32(lblZM.Tag);
+            Header.SiteSourceSysNo = Convert.ToInt32(lblZM.Tag);
             RefreshPage();
         }
 
