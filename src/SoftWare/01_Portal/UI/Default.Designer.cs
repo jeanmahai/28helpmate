@@ -65,12 +65,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlHead = new System.Windows.Forms.Panel();
             this.tabArea = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCanada = new System.Windows.Forms.Label();
+            this.lblBJ = new System.Windows.Forms.Label();
             this.tabSite = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl53 = new System.Windows.Forms.Label();
+            this.lblZM = new System.Windows.Forms.Label();
+            this.lbl71 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlHeadBg = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -516,8 +516,8 @@
             this.tabArea.ColumnCount = 2;
             this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tabArea.Controls.Add(this.label2, 1, 0);
-            this.tabArea.Controls.Add(this.label3, 0, 0);
+            this.tabArea.Controls.Add(this.lblCanada, 1, 0);
+            this.tabArea.Controls.Add(this.lblBJ, 0, 0);
             this.tabArea.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabArea.Location = new System.Drawing.Point(1, 34);
             this.tabArea.Margin = new System.Windows.Forms.Padding(0);
@@ -527,33 +527,37 @@
             this.tabArea.Size = new System.Drawing.Size(163, 35);
             this.tabArea.TabIndex = 46;
             // 
-            // label2
+            // lblCanada
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.LightGray;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(82, 1);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 33);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "加拿大";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCanada.AutoSize = true;
+            this.lblCanada.BackColor = System.Drawing.Color.LightGray;
+            this.lblCanada.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCanada.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblCanada.Location = new System.Drawing.Point(82, 1);
+            this.lblCanada.Margin = new System.Windows.Forms.Padding(0);
+            this.lblCanada.Name = "lblCanada";
+            this.lblCanada.Size = new System.Drawing.Size(80, 33);
+            this.lblCanada.TabIndex = 1;
+            this.lblCanada.Tag = "1002";
+            this.lblCanada.Text = "加拿大";
+            this.lblCanada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCanada.Click += new System.EventHandler(this.lblCanada_Click);
             // 
-            // label3
+            // lblBJ
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(1, 1);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 33);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "北京";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBJ.AutoSize = true;
+            this.lblBJ.BackColor = System.Drawing.Color.White;
+            this.lblBJ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBJ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblBJ.Location = new System.Drawing.Point(1, 1);
+            this.lblBJ.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBJ.Name = "lblBJ";
+            this.lblBJ.Size = new System.Drawing.Size(80, 33);
+            this.lblBJ.TabIndex = 0;
+            this.lblBJ.Tag = "1001";
+            this.lblBJ.Text = "北京";
+            this.lblBJ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBJ.Click += new System.EventHandler(this.lblBJ_Click);
             // 
             // tabSite
             // 
@@ -563,9 +567,9 @@
             this.tabSite.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tabSite.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tabSite.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tabSite.Controls.Add(this.label7, 0, 0);
-            this.tabSite.Controls.Add(this.label4, 1, 0);
-            this.tabSite.Controls.Add(this.label5, 0, 0);
+            this.tabSite.Controls.Add(this.lbl53, 0, 0);
+            this.tabSite.Controls.Add(this.lblZM, 1, 0);
+            this.tabSite.Controls.Add(this.lbl71, 0, 0);
             this.tabSite.Location = new System.Drawing.Point(167, 1);
             this.tabSite.Name = "tabSite";
             this.tabSite.RowCount = 1;
@@ -573,47 +577,53 @@
             this.tabSite.Size = new System.Drawing.Size(205, 35);
             this.tabSite.TabIndex = 46;
             // 
-            // label7
+            // lbl53
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.LightGray;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(69, 1);
-            this.label7.Margin = new System.Windows.Forms.Padding(0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 33);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "53游";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl53.AutoSize = true;
+            this.lbl53.BackColor = System.Drawing.Color.LightGray;
+            this.lbl53.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl53.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl53.Location = new System.Drawing.Point(69, 1);
+            this.lbl53.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl53.Name = "lbl53";
+            this.lbl53.Size = new System.Drawing.Size(67, 33);
+            this.lbl53.TabIndex = 2;
+            this.lbl53.Tag = "1001";
+            this.lbl53.Text = "53游";
+            this.lbl53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl53.Click += new System.EventHandler(this.lbl53_Click);
             // 
-            // label4
+            // lblZM
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.LightGray;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(137, 1);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 33);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "芝麻西西";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblZM.AutoSize = true;
+            this.lblZM.BackColor = System.Drawing.Color.LightGray;
+            this.lblZM.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblZM.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblZM.Location = new System.Drawing.Point(137, 1);
+            this.lblZM.Margin = new System.Windows.Forms.Padding(0);
+            this.lblZM.Name = "lblZM";
+            this.lblZM.Size = new System.Drawing.Size(67, 33);
+            this.lblZM.TabIndex = 1;
+            this.lblZM.Tag = "1003";
+            this.lblZM.Text = "芝麻西西";
+            this.lblZM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblZM.Click += new System.EventHandler(this.lblZM_Click);
             // 
-            // label5
+            // lbl71
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(1, 1);
-            this.label5.Margin = new System.Windows.Forms.Padding(0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 33);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "71豆";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl71.AutoSize = true;
+            this.lbl71.BackColor = System.Drawing.Color.White;
+            this.lbl71.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl71.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl71.Location = new System.Drawing.Point(1, 1);
+            this.lbl71.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl71.Name = "lbl71";
+            this.lbl71.Size = new System.Drawing.Size(67, 33);
+            this.lbl71.TabIndex = 0;
+            this.lbl71.Tag = "1002";
+            this.lbl71.Text = "71豆";
+            this.lbl71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl71.Click += new System.EventHandler(this.lbl71_Click);
             // 
             // label8
             // 
@@ -629,8 +639,8 @@
             // 
             // pnlHeadBg
             // 
-            this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeadBg.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.headbg;
             this.pnlHeadBg.Controls.Add(this.label6);
             this.pnlHeadBg.Controls.Add(this.pnlSiteMap);
@@ -758,15 +768,15 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel tabSite;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblZM;
+        private System.Windows.Forms.Label lbl71;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlHeadBg;
         private System.Windows.Forms.TableLayoutPanel tabArea;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCanada;
+        private System.Windows.Forms.Label lblBJ;
         private System.Windows.Forms.Panel pnlSiteMap;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl53;
         private System.Windows.Forms.Label lblMovie;
         private System.Windows.Forms.ToolStripStatusLabel tslNews;
     }

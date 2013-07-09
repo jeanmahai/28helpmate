@@ -17,7 +17,6 @@ namespace Helpmate.Facades
                 lock (Header.obj)
                 {
                     TokenHeader.Key = Header.Key;
-                    TokenHeader.SiteSourceSysNo = 1001;
                     var result = ClientService.GetCustomeModule_28BJ(TokenHeader);
                     if (!result.Success)
                     {

@@ -10,6 +10,7 @@ using Helpmate.UI.Forms.FormUI;
 using Helpmate.BizEntity.Enum;
 using Helpmate.BizEntity;
 using Helpmate.UI.Forms.UserContorl.Common;
+using Helpmate.Facades;
 
 namespace Helpmate.UI.Forms
 {
@@ -22,6 +23,9 @@ namespace Helpmate.UI.Forms
 
         private void Default_Load(object sender, EventArgs e)
         {
+            Header.SiteSourceSysNo = Convert.ToInt32(lblBJ.Tag);
+            Header.GameSourceSysNo = Convert.ToInt32(lbl71.Tag);
+
             var childForm = new Home();
             CurrMenu(MenuEnum.Home, childForm.SiteMapList, childForm);
         }
@@ -125,7 +129,46 @@ namespace Helpmate.UI.Forms
             }
         }
 
+        # region Title Tab Click Event
 
+        private void lblBJ_Click(object sender, EventArgs e)
+        {
+            lblBJ.BackColor = Color.White;
+            lblCanada.BackColor = Color.LightGray;
+            Header.SiteSourceSysNo = Convert.ToInt32(lblBJ.Tag);
+        }
 
+        private void lblCanada_Click(object sender, EventArgs e)
+        {
+            lblBJ.BackColor = Color.LightGray;
+            lblCanada.BackColor = Color.White;
+            Header.SiteSourceSysNo = Convert.ToInt32(lblCanada.Tag);
+        }
+
+        private void lbl71_Click(object sender, EventArgs e)
+        {
+            lbl71.BackColor = Color.White;
+            lbl53.BackColor = Color.LightGray;
+            lblCanada.BackColor = Color.LightGray;
+            Header.GameSourceSysNo = Convert.ToInt32(lbl71.Tag);
+        }
+
+        private void lbl53_Click(object sender, EventArgs e)
+        {
+            lbl71.BackColor = Color.LightGray;
+            lbl53.BackColor = Color.White;
+            lblZM.BackColor = Color.LightGray;
+            Header.GameSourceSysNo = Convert.ToInt32(lbl53.Tag);
+        }
+
+        private void lblZM_Click(object sender, EventArgs e)
+        {
+            lbl71.BackColor = Color.LightGray;
+            lbl53.BackColor = Color.LightGray;
+            lblZM.BackColor = Color.White;
+            Header.GameSourceSysNo = Convert.ToInt32(lblZM.Tag);
+        }
+
+        # endregion Title Tab Click Event
     }
 }

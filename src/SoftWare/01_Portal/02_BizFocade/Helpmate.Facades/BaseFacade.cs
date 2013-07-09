@@ -11,13 +11,19 @@ namespace Helpmate.Facades
     {
         public LotteryWebServiceSoapClient ClientService { get; set; }
 
-        public TokenHeader TokenHeader = new TokenHeader()
+        public TokenHeader TokenHeader
         {
-            GameSourceSysNo = Header.GameSourceSysNo,
-            RegionSourceSysNo = Header.RegionSourceSysNo,
-            SiteSourceSysNo = Header.SiteSourceSysNo,
-            UserSysNo = Header.UserSysNo
-        };
+            get
+            {
+                return new TokenHeader()
+                {
+                    GameSourceSysNo = Header.GameSourceSysNo,
+                    RegionSourceSysNo = Header.RegionSourceSysNo,
+                    SiteSourceSysNo = Header.SiteSourceSysNo,
+                    UserSysNo = Header.UserSysNo
+                };
+            }
+        }
 
         public BaseFacade()
         {
