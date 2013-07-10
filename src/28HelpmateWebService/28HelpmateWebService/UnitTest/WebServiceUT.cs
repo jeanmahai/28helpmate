@@ -176,18 +176,12 @@ namespace UnitTest
             var head = new TokenHeader()
                        {
                            GameSourceSysNo = 10001,
-                           RegionSourceSysNo = 10002,
-                           SiteSourceSysNo = 10001,
+                           RegionSourceSysNo = 10001,
+                           SiteSourceSysNo = 10002,
                            Token = "",
                            UserSysNo = 1
                        };
             var result = m_client.QueryTrend(head,1);
-            //Console.WriteLine(string.Format("执行{0},PageIndex{1},PageCount{2},TimesCount{3},DataCount{4}",
-            //    result.Success,
-            //    result.Data.PageIndex,
-            //    result.Data.PageCount,
-            //    result.Data.LotteryTimeses.Length,
-            //    result.Data.DataList.Length));
             Console.WriteLine(string.Format("页数:{0},当前数量:{1},{2}",result.Data.PageCount,result.Data.DataList.Length,result.Data.PageIndex));
             foreach (var item in result.Data.DataList)
             {

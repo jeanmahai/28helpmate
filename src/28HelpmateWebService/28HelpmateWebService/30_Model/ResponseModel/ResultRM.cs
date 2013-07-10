@@ -3,7 +3,7 @@
 namespace Model.ResponseModel
 {
     [Serializable]
-    public class ResultRM<T> where T:class ,new()
+    public class ResultRM<T> 
     {
         public bool Success { get; set; }
         public string Message { get; set; }

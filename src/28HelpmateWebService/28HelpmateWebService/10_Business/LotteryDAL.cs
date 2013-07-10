@@ -553,6 +553,22 @@ namespace Business
             Session.Flush();
             return (int)result;
         }
+        public string ChangePsw(int userSysNo,string oldPsw,string newPsw)
+        {
+            var q = (from a in Session.Query<User>()
+                     where a.SysNo == userSysNo && CiphertextService.MD5Encryption(oldPsw) == a.UserPwd
+                    select a).SingleOrDefault();
+            if(q==null)
+            {
+                return "密码错误";
+            }
+
+            q.UserPwd = CiphertextService.MD5Encryption(newPsw);
+            Session.Save(q);
+            Session.Flush();
+
+            return "";
+        }
         #endregion
     }
 }

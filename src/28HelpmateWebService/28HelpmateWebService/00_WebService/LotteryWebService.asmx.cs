@@ -89,8 +89,7 @@ namespace WebService
                 }
                 
                 result.Success = true;
-                result.Key = Dal.generateKey();
-                SessionValue.Key = result.Key;
+                NewKey(result);
             }
             else
             {
@@ -156,8 +155,7 @@ namespace WebService
             {
                 result.Data = Dal.QueryTrend(Token.SiteSourceSysNo,pageIndex,AppSettingValues.PageCount,GetTableName(Token.RegionSourceSysNo));
                 result.Success = true;
-                result.Key = Dal.generateKey();
-                SessionValue.Key = result.Key;
+                NewKey(result);
             }
             else
             {
@@ -177,8 +175,7 @@ namespace WebService
                 var data = Dal.QueryOmissionAll(Token.GameSourceSysNo,Token.SiteSourceSysNo,Token.RegionSourceSysNo);
                 result.Data = data;
                 result.Success = true;
-                result.Key = Dal.generateKey();
-                SessionValue.Key = result.Key;
+                NewKey(result);
             }
             else
             {
@@ -201,8 +198,7 @@ namespace WebService
             {
                 result.Data = Dal.QuerySupperTrend(Token.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute,GetTableName(Token.RegionSourceSysNo));
                 result.Success = true;
-                result.Key = Dal.generateKey();
-                SessionValue.Key = result.Key;
+                NewKey(result);
             }
             else
             {
@@ -211,10 +207,38 @@ namespace WebService
             }
             return result;
         }
+
         [WebMethod(Description = "获得服务器的时间")]
         public DateTime GetServerDate()
         {
             return DateTime.Now;
+        }
+
+        [WebMethod(Description = "获得服务器的时间")]
+        [SoapHeader("Token")]
+        public ResultRM<object> ChangePsw(string oldPsw,string newPsw)
+        {
+            var result = new ResultRM<object>();
+            if(ValidateToken(Token))
+            {
+                var msg=Dal.ChangePsw(Token.UserSysNo, oldPsw, newPsw);
+                if(string.IsNullOrEmpty(msg))
+                {
+                    result.Success = true;
+                    NewKey(result);
+                }
+                else
+                {
+                    result.Success = false;
+                    result.Message = msg;
+                }
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
         }
 
         private string GetTableName(int regionSourceSysNo)
@@ -229,6 +253,12 @@ namespace WebService
                 tableName = ConstValue.Source_Data_10001_28_BeiJing;
             }
             return tableName;
+        }
+
+        private void NewKey<T>(ResultRM<T> result)
+        {
+            result.Key = Dal.generateKey();
+            SessionValue.Key = result.Key;
         }
     }
 }
