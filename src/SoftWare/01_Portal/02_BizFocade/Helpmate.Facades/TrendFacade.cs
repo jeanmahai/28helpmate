@@ -15,7 +15,6 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    TokenHeader.Key = Header.Key;
                     var data = ClientService.QueryTrend(TokenHeader, pageIndex);
                     Header.Key = data.Key;
                     if (!data.Success) AppMessage.AlertMessage(data.Message);
@@ -30,20 +29,21 @@ namespace Helpmate.Facades
         }
 
 
-        public ResultRMOfLotteryTrend QuerySuperTrend(int pageIndex)
+        public ResultRMOfLotteryTrend QuerySuperTrend(int pageIndex, string date, string hour, string minute)
         {
-            TokenHeader header = new TokenHeader();
-            header.GameSourceSysNo = 10001;
-            header.RegionSourceSysNo = 10001;
-            header.SiteSourceSysNo = 10001;
-            header.UserSysNo = 0;
-            lock (Header.obj)
+            try
             {
-                header.Key = Header.Key;
-                LotteryWebServiceSoapClient svc = new LotteryWebServiceSoapClient("LotteryWebServiceSoap");
-                var data = svc.QueryTrend(header, pageIndex);
-                Header.Key = data.Key;
-                return data;
+                lock (Header.obj)
+                {
+                    var data = ClientService.QuerySupperTrend(TokenHeader, pageIndex, 10, date, hour, minute);
+                    Header.Key = data.Key;
+                    if (!data.Success) AppMessage.AlertMessage(data.Message);
+                    return data;
+                }
+            }
+            catch (Exception ex)
+            {
+                AppMessage.AlertMessage(400);
             }
             return null;
         }

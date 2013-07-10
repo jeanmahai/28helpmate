@@ -20,7 +20,8 @@ namespace Helpmate.Facades
                     GameSourceSysNo = Header.GameSourceSysNo,
                     RegionSourceSysNo = Header.RegionSourceSysNo,
                     SiteSourceSysNo = Header.SiteSourceSysNo,
-                    UserSysNo = Header.UserSysNo
+                    UserSysNo = Header.UserSysNo,
+                    Token = ""
                 };
             }
         }

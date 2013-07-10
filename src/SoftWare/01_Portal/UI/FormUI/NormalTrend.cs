@@ -30,7 +30,6 @@ namespace Helpmate.UI.Forms.FormUI
                 new SiteModel(){ Text="近期开奖走势"}
             };
             InitializeComponent();
-            QueryData(1);
         }
         private void dataList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -110,36 +109,56 @@ namespace Helpmate.UI.Forms.FormUI
         public void CallBackMethod(IAsyncResult ar)
         {
             QueryDataDelegate dn = (QueryDataDelegate)ar.AsyncState;
-            var data = dn.EndInvoke(ar);
-            this.LoadData(data.Data.DataList, data.Data.LotteryTimeses, data.Data.PageIndex, data.Data.PageCount);
+            var result = dn.EndInvoke(ar);
+            if (result != null && result.Data != null
+                && result.Data.DataList != null && result.Data.LotteryTimeses != null)
+                this.LoadResultData(result.Data.DataList, result.Data.LotteryTimeses, result.Data.PageIndex, result.Data.PageCount);
+            else
+                this.LoadResultData(null, null, 0, 0);
         }
         #endregion
         #region 异步Bind
-        public delegate void LoadDataCallback(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount);
-        private void LoadData(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount)
+        public delegate void LoadResultDataCallback(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount);
+        private void LoadResultData(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount)
         {
             if (this.lblPage.InvokeRequired)
             {
-                LoadDataCallback d = new LoadDataCallback(LoadData);
+                LoadResultDataCallback d = new LoadResultDataCallback(LoadResultData);
                 this.Invoke(d, new object[] { list, count, currPageIndex, pageCount });
             }
             else
             {
-                //统计
-                List<TrendCountModel> countData = (new TrendCountModel()).GetCountList(count);
-                countList.DataSource = countData;
-                SetCountStyle(countList, countData.Count);
-                //头
-                List<TrendHeaderModel> headerData = (new TrendHeaderModel()).GetHeader();
-                headerList.DataSource = headerData;
-                SetHeaderStyle(headerList, 1);
-                //数据
-                List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(list);
-                dataList.DataSource = listData;
-                SetDataStyle(dataList, listData.Count);
-
-                //页码信息
-                //lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
+                if (list != null && count != null)
+                {
+                    //统计
+                    List<TrendCountModel> countData = (new TrendCountModel()).GetCountList(count);
+                    countList.DataSource = countData;
+                    SetCountStyle(countList, countData.Count);
+                    //头
+                    List<TrendHeaderModel> headerData = (new TrendHeaderModel()).GetHeader();
+                    headerList.DataSource = headerData;
+                    SetHeaderStyle(headerList, 1);
+                    //数据
+                    List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(list);
+                    dataList.DataSource = listData;
+                    SetDataStyle(dataList, listData.Count);
+                    //页码信息
+                    lnkFirst.Enabled = true;
+                    lnkPrev.Enabled = true;
+                    lnkLast.Enabled = true;
+                    lnkNext.Enabled = true;
+                    if (currPageIndex <= 1)
+                    {
+                        lnkFirst.Enabled = false;
+                        lnkPrev.Enabled = false;
+                    }
+                    if (currPageIndex >= pageCount)
+                    {
+                        lnkLast.Enabled = false;
+                        lnkNext.Enabled = false;
+                    }
+                    lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
+                }
             }
             cmd.HideOpaqueLayer();
         }
@@ -254,10 +273,49 @@ namespace Helpmate.UI.Forms.FormUI
         }
         #endregion
 
+        #region 分页
+        /// <summary>
+        /// 尾页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lnkLast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[1]);
             QueryData(pageIndex);
         }
+        /// <summary>
+        /// 首页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkFirst_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            QueryData(1);
+        }
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkPrev_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) - 1;
+            pageIndex = pageIndex < 1 ? 1 : pageIndex;
+            QueryData(pageIndex);
+        }
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkNext_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) + 1;
+            int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+            pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
+            QueryData(pageIndex);
+        }
+        #endregion
     }
 }

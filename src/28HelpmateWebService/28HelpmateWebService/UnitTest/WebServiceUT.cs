@@ -175,13 +175,13 @@ namespace UnitTest
             //client
             var head = new TokenHeader()
                        {
-                           GameSourceSysNo = 28,
-                           RegionSourceSysNo = 10,
-                           SiteSourceSysNo = 10001,
-                           Key = "",
+                           GameSourceSysNo = 10001,
+                           RegionSourceSysNo = 10001,
+                           SiteSourceSysNo = 10002,
+                           Token = "",
                            UserSysNo = 1
                        };
-            var result = m_client.QueryTrend(head,1);
+            var result = m_client.QueryTrend(head,2);
             Console.WriteLine(string.Format("执行{0},PageIndex{1},PageCount{2},TimesCount{3},DataCount{4}",
                 result.Success,
                 result.Data.PageIndex,
@@ -197,10 +197,10 @@ namespace UnitTest
                 GameSourceSysNo = 28,
                 RegionSourceSysNo = 10,
                 SiteSourceSysNo = 10001,
-                Key = "",
+                Token = "",
                 UserSysNo = 1
             };
-            var result = m_client.GetCustomeModule_28BJ(head);
+            var result = m_client.GetCustomeModule(head);
             //result.Data.M1.BigP
         }
 
@@ -212,7 +212,7 @@ namespace UnitTest
                 GameSourceSysNo = 10001,
                 RegionSourceSysNo = 10001,
                 SiteSourceSysNo = 10001,
-                Key = "",
+                Token = "",
                 UserSysNo = 1
             };
             var result = m_client.QueryOmission(head);
@@ -221,7 +221,25 @@ namespace UnitTest
         [TestMethod]
         public void QuerySupperTrend_28BJTest()
         {
-            var result = m_Dal.QuerySupperTrend_28BJ(10001, 0, 10, 5000, "", "13", "");
+            //var result = m_Dal.QuerySupperTrend_28BJ(10001, 1, 10, 5000, "", "", "");
+            //foreach (var t in result.LotteryTimeses)
+            //{
+            //    Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
+            //}
+            var head = new TokenHeader()
+            {
+                GameSourceSysNo = 10001,
+                RegionSourceSysNo = 10001,
+                SiteSourceSysNo = 10001,
+                Token = "",
+                UserSysNo = 1
+            };
+            var result = m_client.QuerySupperTrend(head,0,10,"","","");
+            foreach (var t in result.Data.LotteryTimeses)
+            {
+                Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
+            }
+            Console.WriteLine(string.Format("页数:{0},当前数量:{1}",result.Data.PageCount,result.Data.DataList.Length));
         }
     }
 }

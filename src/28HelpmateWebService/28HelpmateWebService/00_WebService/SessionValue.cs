@@ -15,7 +15,7 @@ namespace WebService
     }
     public static class SessionValue
     {
-        //public const string TOKEN = "TOKEN";
+        public const string TOKEN = "TOKEN";
         //public const string USER_NAME = "USER_NAME";
         public const string KEY = "KEY";
         //public const string CODE = "CODE";
@@ -30,11 +30,11 @@ namespace WebService
         //    get { return CurrentSession[USER_NAME].ToString(); }
         //    set { CurrentSession[USER_NAME] = value; }
         //}
-        //public static string Token
-        //{
-        //    get { return CurrentSession[TOKEN].ToString(); }
-        //    set { CurrentSession[TOKEN] = value; }
-        //}
+        public static string Token
+        {
+            get { return CurrentSession[TOKEN].ToString(); }
+            set { CurrentSession[TOKEN] = value; }
+        }
         public static string Key
         {
             get { return CurrentSession[KEY].ToString(); }

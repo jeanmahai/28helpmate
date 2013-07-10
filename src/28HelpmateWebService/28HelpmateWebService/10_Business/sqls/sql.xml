@@ -173,11 +173,17 @@ GROUP BY RetNum
   </sql>
   <sql name="QueryTrend3">
     <![CDATA[
-SELECT *
+SELECT BJ.PeriodNum,
+       BJ.RetTime,
+       BJ.RetNum,
+       RC.BigOrSmall,
+       RC.MiddleOrSide,
+       RC.OddOrDual
 FROM dbo.SourceData_28_Beijing BJ
-	INNER JOIN dbo.UseSite US ON BJ.SiteSysNo=US.SysNo
-WHERE (RetTime BETWEEN :START_DATE AND :END_DATE)
-	AND US.SysNo=:SiteSysNo
+	JOIN dbo.ResultCategory_28 RC
+		ON BJ.RetNum=RC.RetNum
+WHERE (BJ.RetTime BETWEEN :START_DATE AND :END_DATE)
+AND BJ.SiteSysNo=:SiteSysNo
 order by BJ.PeriodNum DESC
   ]]>
   </sql>

@@ -2,13 +2,13 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="GetCustomeModule_28BJ">
+      <s:element name="GetCustomeModule">
         <s:complexType />
       </s:element>
-      <s:element name="GetCustomeModule_28BJResponse">
+      <s:element name="GetCustomeModuleResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCustomeModule_28BJResult" type="tns:ResultRMOfCustomModules" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomeModuleResult" type="tns:ResultRMOfCustomModules" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -83,7 +83,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="SiteSourceSysNo" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="GameSourceSysNo" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="RegionSourceSysNo" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="UserSysNo" type="s:int" />
         </s:sequence>
         <s:anyAttribute />
@@ -275,15 +275,33 @@
           <s:element minOccurs="1" maxOccurs="1" name="NowPeriodNum" type="s:long" />
         </s:sequence>
       </s:complexType>
+      <s:element name="QuerySupperTrend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hour" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="minute" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySupperTrendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuerySupperTrendResult" type="tns:ResultRMOfLotteryTrend" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetCustomeModule_28BJSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCustomeModule_28BJ" />
+  <wsdl:message name="GetCustomeModuleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomeModule" />
   </wsdl:message>
-  <wsdl:message name="GetCustomeModule_28BJSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCustomeModule_28BJResponse" />
+  <wsdl:message name="GetCustomeModuleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomeModuleResponse" />
   </wsdl:message>
-  <wsdl:message name="GetCustomeModule_28BJTokenHeader">
+  <wsdl:message name="GetCustomeModuleTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
   <wsdl:message name="QuerySoapIn">
@@ -331,11 +349,20 @@
   <wsdl:message name="QueryOmissionTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="QuerySupperTrendSoapIn">
+    <wsdl:part name="parameters" element="tns:QuerySupperTrend" />
+  </wsdl:message>
+  <wsdl:message name="QuerySupperTrendSoapOut">
+    <wsdl:part name="parameters" element="tns:QuerySupperTrendResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySupperTrendTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
-    <wsdl:operation name="GetCustomeModule_28BJ">
+    <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
-      <wsdl:input message="tns:GetCustomeModule_28BJSoapIn" />
-      <wsdl:output message="tns:GetCustomeModule_28BJSoapOut" />
+      <wsdl:input message="tns:GetCustomeModuleSoapIn" />
+      <wsdl:output message="tns:GetCustomeModuleSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Query">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询开奖结果</wsdl:documentation>
@@ -363,18 +390,23 @@
       <wsdl:output message="tns:QueryTrendSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="QueryOmission">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">一般走势图,分页从1开始</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">遗漏号码</wsdl:documentation>
       <wsdl:input message="tns:QueryOmissionSoapIn" />
       <wsdl:output message="tns:QueryOmissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySupperTrend">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">超级走势图</wsdl:documentation>
+      <wsdl:input message="tns:QuerySupperTrendSoapIn" />
+      <wsdl:output message="tns:QuerySupperTrendSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetCustomeModule_28BJ">
-      <soap:operation soapAction="http://tempuri.org/GetCustomeModule_28BJ" style="document" />
+    <wsdl:operation name="GetCustomeModule">
+      <soap:operation soapAction="http://tempuri.org/GetCustomeModule" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
-        <soap:header message="tns:GetCustomeModule_28BJTokenHeader" part="TokenHeader" use="literal" />
+        <soap:header message="tns:GetCustomeModuleTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -437,14 +469,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="QuerySupperTrend">
+      <soap:operation soapAction="http://tempuri.org/QuerySupperTrend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QuerySupperTrendTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetCustomeModule_28BJ">
-      <soap12:operation soapAction="http://tempuri.org/GetCustomeModule_28BJ" style="document" />
+    <wsdl:operation name="GetCustomeModule">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomeModule" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
-        <soap12:header message="tns:GetCustomeModule_28BJTokenHeader" part="TokenHeader" use="literal" />
+        <soap12:header message="tns:GetCustomeModuleTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
@@ -502,6 +544,16 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:QueryOmissionTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySupperTrend">
+      <soap12:operation soapAction="http://tempuri.org/QuerySupperTrend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QuerySupperTrendTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
