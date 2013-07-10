@@ -182,10 +182,22 @@ namespace UnitTest
                            UserSysNo = 1
                        };
             var result = m_client.QueryTrend(head,1);
-            Console.WriteLine(string.Format("页数:{0},当前数量:{1},{2}",result.Data.PageCount,result.Data.DataList.Length,result.Data.PageIndex));
-            foreach (var item in result.Data.DataList)
+
+            var head2 = new TokenHeader()
             {
-                Console.WriteLine(string.Format("{0},{1},{2}",item.PeriodNum,item.RetNum,item.RetTime.ToString()));
+                GameSourceSysNo = 10001,
+                RegionSourceSysNo = 10001,
+                SiteSourceSysNo = 10002,
+                Token = "",
+                UserSysNo = 1
+            };
+            var result2 = m_client.QueryTrend(head2,1);
+
+            for (var i=0;i<5;i++)
+            {
+                Console.WriteLine(string.Format("{0},{1},{2}",result.Data.DataList[i].PeriodNum,result.Data.DataList[i].RetNum,result.Data.DataList[i].RetTime.ToString()));
+                Console.WriteLine(string.Format("{0},{1},{2}",result2.Data.DataList[i].PeriodNum,result2.Data.DataList[i].RetNum,result2.Data.DataList[i].RetTime.ToString()));
+                Console.WriteLine("=============");
             }
         }
         [TestMethod]
