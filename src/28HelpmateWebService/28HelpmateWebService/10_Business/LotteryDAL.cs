@@ -363,15 +363,10 @@ namespace Business
         //    result.Interval = maxPeriod.PeriodNum - nearLottery.PeriodNum;
         //    return result;
         //}
-        public List<OmitStatistics> QueryOmissionAll_28BJ(int gameSysNo,
+        public List<OmitStatistics> QueryOmissionAll(int gameSysNo,
             int siteSysNo,
             int sourceSysNo)
         {
-            //Session.GetNamedQuery("UpdateOmission")
-            //    .SetParameter("GameSysNo", gameSysNo)
-            //    .SetParameter("RegionSysNo", sourceSysNo)
-            //    .SetParameter("SiteSysNo", siteSysNo)
-            //    .ExecuteUpdate();
             var sql = string.Format("exec RefreshOmitStatistics {0},{1},{2};",
                                     gameSysNo,sourceSysNo,siteSysNo);
             Session.CreateSQLQuery(sql)
