@@ -6,7 +6,7 @@ using System.Xml;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Updater.Core
+namespace Utility.Update
 {
     [XmlRoot("manifest")]
     public class Manifest
@@ -77,7 +77,7 @@ namespace Updater.Core
     public class UpdaterConfigurationView
     {
         private static XmlDocument document = new XmlDocument();
-        private static readonly string xmlFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config/update.config");
+        private static readonly string xmlFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config/Version.config");
 
         static UpdaterConfigurationView()
         {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpmate.UI", "Helpmate.UI\Helpmate.UI.csproj", "{B1E3BA36-A8C6-452B-9563-19FB57A1C703}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpmate.BizProcess", "Helpmate.BizProcess\Helpmate.BizProcess.csproj", "{D0E0219B-D9C1-48C8-B2D1-54D9997B4F6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility.Update", "Utility.Update\Utility.Update.csproj", "{D0E0219B-D9C1-48C8-B2D1-54D9997B4F6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

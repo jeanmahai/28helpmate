@@ -8,7 +8,7 @@ using System.Collections.Specialized;
 using System.Collections;
 using System.IO;
 
-namespace Updater.Core
+namespace Utility.Update
 {
     /// <summary>
     /// 文件复制进度报告事件参数

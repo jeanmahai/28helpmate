@@ -9,7 +9,7 @@ using System.IO;
 using System.Threading;
 using System.Collections.Specialized;
 
-namespace Updater.Core
+namespace Utility.Update
 {
     public class DownloadErrorEventArgs : EventArgs
     {

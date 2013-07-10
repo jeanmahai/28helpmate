@@ -16,7 +16,7 @@ namespace Helpmate.UI.Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Default());
+            Application.Run(new LoginForm());
             Application.Exit();
             //LoginForm loginForm = new LoginForm();
             //loginForm.ShowDialog();

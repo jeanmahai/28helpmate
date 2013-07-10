@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_CommonLib", "01_CommonLib", "{6E6E7B49-50DE-40ED-AA2F-04A09F99B233}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_ReferenceLib", "00_ReferenceLib", "{7E8B4237-D3BE-45AE-A5CE-D8916FA24D40}"
+	ProjectSection(SolutionItems) = preProject
+		00_ReferenceLib\Utility.Update.dll = 00_ReferenceLib\Utility.Update.dll
+		00_ReferenceLib\Utility.Update.pdb = 00_ReferenceLib\Utility.Update.pdb
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpmate.BizEntity", "BizEntity\Helpmate.BizEntity.csproj", "{02C9A8D4-26A8-4246-B1DD-46B4EFAFDE3C}"
 EndProject

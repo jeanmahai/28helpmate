@@ -17,7 +17,7 @@ namespace Updater
         {
             try
             {
-                string filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "update.txt");
+                string filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogUpdate.txt");
                 if (!Directory.Exists(Path.GetDirectoryName(filename)))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(filename));

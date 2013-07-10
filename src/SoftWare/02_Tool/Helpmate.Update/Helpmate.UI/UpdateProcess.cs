@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Updater.Core;
+using Utility.Update;
 using Updater;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -25,11 +25,6 @@ namespace Helpmate.UI
         private UpdateClass updater;
         private List<Manifest> mList = new List<Manifest>();
         private int mLen = 0;
-
-        public UpdateProcess()
-        {
-            InitializeComponent();
-        }
 
         public UpdateProcess(string[] args)
         {
@@ -59,7 +54,7 @@ namespace Helpmate.UI
             Exit();
         }
 
-       
+
 
         private void picClose_Click(object sender, EventArgs e)
         {
@@ -87,13 +82,12 @@ namespace Helpmate.UI
                 updater.DownloadCompleted += new EventHandler<DownloadCompleteEventArgs>(DownloadCompleted);
                 updater.DownloadError += new EventHandler<DownloadErrorEventArgs>(DownloadError);
                 updater.DownloadProgressChanged += new EventHandler<DownloadProgressEventArgs>(DownloadProgressChanged);
-
                 InitUpdater();
             }
             catch (Exception ex)
             {
                 Log.Write("更新错误：" + ex.Message);
-                MessageBox.Show("更新错误", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("请检查网络连接是否正常，客户端更新失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -232,10 +226,10 @@ namespace Helpmate.UI
 
         void DownloadProgressChanged(object sender, DownloadProgressEventArgs e)
         {
-            progressBar1.Value = e.ProgressPercentage;
+            pgbApp.Value = e.ProgressPercentage;
             lab_percent.Text = e.ProgressPercentage.ToString() + "%";
             lab_percent.Update();
-            lab_fileinfo.Text = string.Format("字节数:{0}/{1}", e.BytesReceived, e.TotalBytesToReceive);
+            lab_fileinfo.Text = string.Format("{0}KB/{1}KB", (e.BytesReceived / 1024).ToString("F2"), (e.TotalBytesToReceive / 1024).ToString("F2"));
             lab_fileinfo.Update();
             lab_filename.Text = "正在下载文件：" + e.FileName;
             lab_filename.Update();
@@ -294,18 +288,18 @@ namespace Helpmate.UI
             return cancel;
         }
 
-       protected void ActivationProgressChanged(object sender, FileCopyProgressChangedEventArgs e)
+        protected void ActivationProgressChanged(object sender, FileCopyProgressChangedEventArgs e)
         {
-            progressBar1.Value = e.ProgressPercentage;
+            pgbApp.Value = e.ProgressPercentage;
             lab_percent.Text = e.ProgressPercentage.ToString() + "%";
             lab_percent.Update();
-            lab_fileinfo.Text = string.Format("字节数:{0}/{1}", e.BytesToCopy, e.TotalBytesToCopy);
+            lab_fileinfo.Text = string.Format("{0}KB/{1}KB", (e.BytesToCopy / 1024).ToString("F2"), (e.TotalBytesToCopy / 1024).ToString("F2"));
             lab_fileinfo.Update();
             lab_filename.Text = "正在安装：" + e.SourceFileName;
             lab_filename.Update();
         }
 
-       protected void ActivationInitializing(object sender, ManifestEventArgs e)
+        protected void ActivationInitializing(object sender, ManifestEventArgs e)
         {
             lab_filename.Text = "正在初始化安装，请稍后......";
             lab_filename.Update();
@@ -313,7 +307,7 @@ namespace Helpmate.UI
             lab_percent.Update();
             lab_fileinfo.Text = "";
             lab_fileinfo.Update();
-            progressBar1.Value = 0;
+            pgbApp.Value = 0;
         }
 
         void ActivationError(object sender, FileCopyErrorEventArgs e)
@@ -330,9 +324,9 @@ namespace Helpmate.UI
             isComplete = true;
             lab_filename.Text = "安装完成";
             lab_percent.Text = "100%";
-            if (progressBar1.Value != progressBar1.Maximum)
+            if (pgbApp.Value != pgbApp.Maximum)
             {
-                progressBar1.Value = progressBar1.Maximum;
+                pgbApp.Value = pgbApp.Maximum;
             }
             if (e.Error != null)
             {

@@ -8,8 +8,8 @@
     <ProjectGuid>{D0E0219B-D9C1-48C8-B2D1-54D9997B4F6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Helpmate.BizProcess</RootNamespace>
-    <AssemblyName>Helpmate.BizProcess</AssemblyName>
+    <RootNamespace>Utility.Update</RootNamespace>
+    <AssemblyName>Utility.Update</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

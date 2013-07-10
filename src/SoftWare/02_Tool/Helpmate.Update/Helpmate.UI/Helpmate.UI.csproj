@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Helpmate.UI</RootNamespace>
-    <AssemblyName>Helpmate.UI</AssemblyName>
+    <AssemblyName>Update</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -54,6 +54,7 @@
     <Compile Include="UpdateProcess.Designer.cs">
       <DependentUpon>UpdateProcess.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\bg.jpg" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -67,7 +68,9 @@
     <EmbeddedResource Include="UpdateProcess.resx">
       <DependentUpon>UpdateProcess.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="Config\update.config" />
+    <Content Include="Config\Version.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -82,12 +85,9 @@
     <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\载入条2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Helpmate.BizProcess\Helpmate.BizProcess.csproj">
+    <ProjectReference Include="..\Utility.Update\Utility.Update.csproj">
       <Project>{D0E0219B-D9C1-48C8-B2D1-54D9997B4F6A}</Project>
-      <Name>Helpmate.BizProcess</Name>
+      <Name>Utility.Update</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

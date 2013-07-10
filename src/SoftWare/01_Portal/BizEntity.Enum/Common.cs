@@ -10,7 +10,7 @@ namespace Helpmate.BizEntity.Enum
         Home, User, Omission, NormalTrend, Special, Tools, Log, SuperTrend
     }
 
-    public enum AppMessage
+    public enum MessageType
     {
         Loading = 0, Right = 1, Error = 2
     }

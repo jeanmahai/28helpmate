@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.ComponentModel;
 
-namespace Updater.Core
+namespace Utility.Update
 {
     public class ManifestEventArgs : EventArgs
     {

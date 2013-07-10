@@ -17,12 +17,16 @@ namespace Common.Utility
             return UserPassword.ToLower();
         }
 
-        public static DialogResult ShowMsg(String msg)
+        public static DialogResult Confirm(String msg)
         {
             DialogResult diaLog = MessageBox.Show(msg, " 系统提示 ", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             return diaLog;
         }
 
+        public static void Alert(String msg)
+        {
+            DialogResult diaLog = MessageBox.Show(msg, " 系统提示 ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         public static void PlayMusic(string musicName, bool isLooping)
         {
             SoundPlayer p = new SoundPlayer();

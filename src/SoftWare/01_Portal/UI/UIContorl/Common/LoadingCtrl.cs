@@ -34,17 +34,17 @@ namespace Helpmate.UI.Forms.UserContorl
         /// </summary>
         /// <param name="enumType">Right,Error</param>
         /// <param name="msg">提示信息</param>
-        public static LoadingCtrl LoadModel(AppMessage enumType, string msg)
+        public static LoadingCtrl LoadModel(MessageType enumType, string msg)
         {
             loadingCtrl = LoadingInstance();
             switch (enumType)
             {
-                case AppMessage.Right:
+                case MessageType.Right:
                     loadingCtrl.picLoading.Image = Resources.right;
                     loadingCtrl.lblMsg.Text = msg;
                     loadingCtrl.lblMsg.ForeColor = Color.Black;
                     break;
-                case AppMessage.Error:
+                case MessageType.Error:
                     loadingCtrl.picLoading.Image = Resources.error;
                     loadingCtrl.lblMsg.Text = msg;
                     loadingCtrl.lblMsg.ForeColor = Color.Red;
