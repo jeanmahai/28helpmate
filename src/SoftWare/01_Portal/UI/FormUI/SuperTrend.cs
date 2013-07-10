@@ -40,7 +40,7 @@ namespace Helpmate.UI.Forms.FormUI
                 this.ddlHour.Items.Add(" 请选择 ");
                 while (hour < 24)
                 {
-                    this.ddlHour.Items.Add(string.Format(" {0} 小时 ", hour));
+                    this.ddlHour.Items.Add(string.Format(" {0} 时 ", hour));
                     hour++;
                 }
                 this.ddlHour.SelectedIndex = 0;
@@ -94,6 +94,7 @@ namespace Helpmate.UI.Forms.FormUI
                 this.ddlMinute.SelectedIndex = 0;
             }
             #endregion            
+            tbxDate.Text = DateTime.Now.ToShortDateString();
             LoadData(1, DateTime.Now.ToShortDateString(), "", "");
         }
 
@@ -347,8 +348,22 @@ namespace Helpmate.UI.Forms.FormUI
         /// <param name="e"></param>
         private void lnkLast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[1]);
-            LoadData(pageIndex, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+            DateTime dtTime = DateTime.Now;
+            if (!string.IsNullOrEmpty(tbxDate.Text.Trim())
+                   && !DateTime.TryParse(tbxDate.Text.Trim(), out dtTime))
+            {
+                MessageBox.Show("请选择正确的日期！");
+            }
+            else
+            {
+                int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+                string date = tbxDate.Text.Trim();
+                string hour = ddlHour.Text.Replace("时", "").Trim();
+                string minute = ddlMinute.Text.Replace("分钟", "").Trim();
+                hour = hour == "请选择" ? "" : hour;
+                minute = minute == "请选择" ? "" : minute;
+                LoadData(pageIndex, date, hour, minute);
+            }
         }
         /// <summary>
         /// 首页
@@ -357,7 +372,21 @@ namespace Helpmate.UI.Forms.FormUI
         /// <param name="e"></param>
         private void lnkFirst_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LoadData(1, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+            DateTime dtTime = DateTime.Now;
+            if (!string.IsNullOrEmpty(tbxDate.Text.Trim())
+                   && !DateTime.TryParse(tbxDate.Text.Trim(), out dtTime))
+            {
+                MessageBox.Show("请选择正确的日期！");
+            }
+            else
+            {
+                string date = tbxDate.Text.Trim();
+                string hour = ddlHour.Text.Replace("时", "").Trim();
+                string minute = ddlMinute.Text.Replace("分钟", "").Trim();
+                hour = hour == "请选择" ? "" : hour;
+                minute = minute == "请选择" ? "" : minute;
+                LoadData(1, date, hour, minute);
+            }
         }
         /// <summary>
         /// 上一页
@@ -366,9 +395,23 @@ namespace Helpmate.UI.Forms.FormUI
         /// <param name="e"></param>
         private void lnkPrev_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) - 1;
-            pageIndex = pageIndex < 1 ? 1 : pageIndex;
-            LoadData(pageIndex, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+            DateTime dtTime = DateTime.Now;
+            if (!string.IsNullOrEmpty(tbxDate.Text.Trim())
+                   && !DateTime.TryParse(tbxDate.Text.Trim(), out dtTime))
+            {
+                MessageBox.Show("请选择正确的日期！");
+            }
+            else
+            {
+                int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) - 1;
+                pageIndex = pageIndex < 1 ? 1 : pageIndex;
+                string date = tbxDate.Text.Trim();
+                string hour = ddlHour.Text.Replace("时", "").Trim();
+                string minute = ddlMinute.Text.Replace("分钟", "").Trim();
+                hour = hour == "请选择" ? "" : hour;
+                minute = minute == "请选择" ? "" : minute;
+                LoadData(pageIndex, date, hour, minute);
+            }
         }
         /// <summary>
         /// 下一页
@@ -377,10 +420,24 @@ namespace Helpmate.UI.Forms.FormUI
         /// <param name="e"></param>
         private void lnkNext_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) + 1;
-            int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
-            pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
-            LoadData(pageIndex, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+            DateTime dtTime = DateTime.Now;
+            if (!string.IsNullOrEmpty(tbxDate.Text.Trim())
+                   && !DateTime.TryParse(tbxDate.Text.Trim(), out dtTime))
+            {
+                MessageBox.Show("请选择正确的日期！");
+            }
+            else
+            {
+                int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) + 1;
+                int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+                pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
+                string date = tbxDate.Text.Trim();
+                string hour = ddlHour.Text.Replace("时", "").Trim();
+                string minute = ddlMinute.Text.Replace("分钟", "").Trim();
+                hour = hour == "请选择" ? "" : hour;
+                minute = minute == "请选择" ? "" : minute;
+                LoadData(pageIndex, date, hour, minute);
+            }
         }
         #endregion
 
@@ -406,15 +463,26 @@ namespace Helpmate.UI.Forms.FormUI
         /// <param name="e"></param>
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            DateTime dtTime = DateTime.Now;
             if (string.IsNullOrEmpty(tbxDate.Text.Trim())
                 && ddlHour.Text.Trim() == "请选择"
                 && ddlMinute.Text.Trim() == "请选择")
             {
                 MessageBox.Show("请选择一个条件进行查询！");
             }
+            else if (!string.IsNullOrEmpty(tbxDate.Text.Trim()) 
+                && !DateTime.TryParse(tbxDate.Text.Trim(), out dtTime))
+            {
+                MessageBox.Show("请选择正确的日期！");
+            }
             else
             {
-                LoadData(1, tbxDate.Text.Trim(), ddlHour.Text.Trim(), ddlHour.Text.Trim());
+                string date = tbxDate.Text.Trim();
+                string hour = ddlHour.Text.Replace("时", "").Trim();
+                string minute = ddlMinute.Text.Replace("分钟", "").Trim();
+                hour = hour == "请选择" ? "" : hour;
+                minute = minute == "请选择" ? "" : minute;
+                LoadData(1, date, hour, minute);
             }
         }
     }
