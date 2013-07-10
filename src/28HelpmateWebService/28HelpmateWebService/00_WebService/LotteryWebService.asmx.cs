@@ -141,6 +141,34 @@ namespace WebService
                 result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
                 result.Data.M3 = Dal.QueryLotteryByDay(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
                 result.Data.M4 = Dal.QueryTop20(Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
+                result.Data.CurrentLottery = lastestLottery;
+                if (GetTableName(Token.RegionSourceSysNo)==ConstValue.Source_Data_10001_28_BeiJing)
+                {
+                    result.Data.NextLottery = new LotteryForBJ()
+                    {
+                        PeriodNum = lastestLottery.PeriodNum + 1
+                        //RetTime = lastestLottery.RetTime.AddMinutes(AppSettingValues.LotteryInteval)
+                    };
+                    if(lastestLottery.RetTime.ToString("HH:mm")=="23:55")
+                    {
+                        result.Data.NextLottery.RetTime =
+                            DateTime.Parse(lastestLottery.RetTime.AddDays(1).ToString("yyyy-MM-dd 09:05:00"));
+                    }
+                    else
+                    {
+                        result.Data.NextLottery.RetTime =
+                            lastestLottery.RetTime.AddMinutes(AppSettingValues.BJLotteryInteval);
+                    }
+                }
+                if (GetTableName(Token.RegionSourceSysNo) == ConstValue.Source_Data_10002_28_Canada)
+                {
+                    result.Data.NextLottery = new LotteryForBJ()
+                    {
+                        PeriodNum = lastestLottery.PeriodNum + 1,
+                        RetTime = lastestLottery.RetTime.AddMinutes(AppSettingValues.CanadaLotteryInteval)
+                    };
+                }
+                
                 result.Success = true;
                 result.Key = Dal.generateKey();
                 SessionValue.Key = result.Key;
@@ -312,6 +340,11 @@ namespace WebService
                 result.Message = ERROR_VALIDATE_TOKEN;
             }
             return result;
+        }
+        [WebMethod(Description = "获得服务器的时间")]
+        public DateTime GetServerDate()
+        {
+            return DateTime.Now;
         }
 
         private string GetTableName(int regionSourceSysNo)

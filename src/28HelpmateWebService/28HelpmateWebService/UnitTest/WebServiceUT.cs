@@ -177,17 +177,22 @@ namespace UnitTest
                        {
                            GameSourceSysNo = 10001,
                            RegionSourceSysNo = 10002,
-                           SiteSourceSysNo = 10002,
+                           SiteSourceSysNo = 10001,
                            Token = "",
                            UserSysNo = 1
                        };
-            var result = m_client.QueryTrend(head,2);
-            Console.WriteLine(string.Format("执行{0},PageIndex{1},PageCount{2},TimesCount{3},DataCount{4}",
-                result.Success,
-                result.Data.PageIndex,
-                result.Data.PageCount,
-                result.Data.LotteryTimeses.Length,
-                result.Data.DataList.Length));
+            var result = m_client.QueryTrend(head,1);
+            //Console.WriteLine(string.Format("执行{0},PageIndex{1},PageCount{2},TimesCount{3},DataCount{4}",
+            //    result.Success,
+            //    result.Data.PageIndex,
+            //    result.Data.PageCount,
+            //    result.Data.LotteryTimeses.Length,
+            //    result.Data.DataList.Length));
+            Console.WriteLine(string.Format("页数:{0},当前数量:{1},{2}",result.Data.PageCount,result.Data.DataList.Length,result.Data.PageIndex));
+            foreach (var item in result.Data.DataList)
+            {
+                Console.WriteLine(string.Format("{0},{1},{2}",item.PeriodNum,item.RetNum,item.RetTime.ToString()));
+            }
         }
         [TestMethod]
         public void GetCustomeModule_Test()
@@ -219,13 +224,8 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void QuerySupperTrend_28BJTest()
+        public void QuerySupperTrend_Test()
         {
-            //var result = m_Dal.QuerySupperTrend(10001, 1, 10, 5000, "", "", "");
-            //foreach (var t in result.LotteryTimeses)
-            //{
-            //    Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
-            //}
             var head = new TokenHeader()
             {
                 GameSourceSysNo = 10001,
@@ -239,7 +239,7 @@ namespace UnitTest
             {
                 Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
             }
-            Console.WriteLine(string.Format("页数:{0},当前数量:{1}",result.Data.PageCount,result.Data.DataList.Length));
+            Console.WriteLine(string.Format("页数:{0},当前数量:{1},{2}",result.Data.PageCount,result.Data.DataList.Length,result.Data.PageIndex));
             foreach (var item in result.Data.DataList)
             {
                 Console.WriteLine(string.Format("{0},{1},{2}",item.PeriodNum,item.RetNum,item.RetTime.ToString()));
