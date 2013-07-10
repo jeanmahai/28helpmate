@@ -1,5 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Sqls>
+
+  <sql name="QueryLotteryByHourStep">
+    <![CDATA[
+select *
+from {0}
+where RetTime in ({1})
+	and SiteSysNo={2}
+order by PeriodNum desc
+    ]]>
+  </sql>
+  
+  <sql name="QueryNextLotteryWithSameNumber">
+    <![CDATA[
+select *
+from {0}
+where PeriodNum in ({1})
+	and SiteSysNo={2}
+order by PeriodNum desc
+    ]]>
+  </sql>
+  <sql name="Query20BySameNo">
+    <![CDATA[
+
+DECLARE @Last_Num int,@Max_Period int
+select top 1 @Last_Num=RetNum,@Max_Period=PeriodNum
+from {0}
+where SiteSysNo={1}
+order by PeriodNum desc
+
+select top 20  *
+from {0}
+where RetNum=@Last_Num 
+	and PeriodNum<>@Max_Period
+	and SiteSysNo={1}
+order by PeriodNum desc
+    ]]>
+  </sql>
+  <sql name="QueryTop20">
+    <![CDATA[
+SELECT TOP 20 *
+FROM {0}
+WHERE SiteSysNo={1}
+ORDER BY PeriodNum DESC
+    ]]>
+  </sql>
   <sql name="QuerySupperTrend_28BJ_1">
     <![CDATA[
 SELECT 

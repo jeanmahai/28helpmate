@@ -57,7 +57,7 @@ namespace WebService
         //        var userSite = Dal.QueryUserSite(siteName);
         //        if (userSite != null)
         //        {
-        //            result.Data = Dal.QueryNextLotteryWithSameNumber_28BJ(number,userSite.SysNo);
+        //            result.Data = Dal.QueryNextLotteryWithSameNumber(number,userSite.SysNo);
         //        }
         //        else
         //        {
@@ -83,7 +83,7 @@ namespace WebService
         //        var userSite = Dal.QueryUserSite(siteName);
         //        if (userSite != null)
         //        {
-        //            result.Data = Dal.QueryLotteryByHourStep_28BJ(time,userSite.SysNo);
+        //            result.Data = Dal.QueryLotteryByHourStep(time,userSite.SysNo);
         //        }
         //        else
         //        {
@@ -110,7 +110,7 @@ namespace WebService
         //        var userSite = Dal.QueryUserSite(siteName);
         //        if (userSite != null)
         //        {
-        //            result.Data = Dal.QueryLotteryByDay_28BJ(time,userSite.SysNo);
+        //            result.Data = Dal.QueryLotteryByDay(time,userSite.SysNo);
         //        }
         //        else
         //        {
@@ -137,11 +137,10 @@ namespace WebService
                 result.Data = new CustomModules();
                 var lastestLottery = Dal.MaxPeriod_28BJ();
 
-                result.Data.M1 = Dal.QueryNextLotteryWithSameNumber_28BJ(lastestLottery.RetNum,Token.SiteSourceSysNo);
-                result.Data.M2 = Dal.QueryLotteryByHourStep_28BJ(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo);
-                result.Data.M3 = Dal.QueryLotteryByDay_28BJ(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo);
-
-                result.Data.M4 = Dal.QueryTop20_28BJ(Token.SiteSourceSysNo);
+                result.Data.M1 = Dal.QueryNextLotteryWithSameNumber(lastestLottery.RetNum,Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
+                result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
+                result.Data.M3 = Dal.QueryLotteryByDay(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
+                result.Data.M4 = Dal.QueryTop20(Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
                 result.Success = true;
                 result.Key = Dal.generateKey();
                 SessionValue.Key = result.Key;
@@ -163,7 +162,7 @@ namespace WebService
         //        var userSite = Dal.QueryUserSite(siteName);
         //        if (userSite != null)
         //        {
-        //            result.Data = Dal.QueryTop20_28BJ(userSite.SysNo);
+        //            result.Data = Dal.QueryTop20(userSite.SysNo);
         //        }
         //        else
         //        {
@@ -189,7 +188,7 @@ namespace WebService
         //        var userSite = Dal.QueryUserSite(siteName);
         //        if (userSite != null)
         //        {
-        //            result.Data = (from a in Dal.QueryTop20_28BJ(userSite.SysNo).Lotteries
+        //            result.Data = (from a in Dal.QueryTop20(userSite.SysNo).Lotteries
         //                           select a).FirstOrDefault();
         //        }
         //        else
@@ -302,7 +301,7 @@ namespace WebService
             var result = new ResultRM<LotteryTrend>();
             if (ValidateToken(Token))
             {
-                result.Data = Dal.QuerySupperTrend_28(Token.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute,GetTableName(Token.RegionSourceSysNo));
+                result.Data = Dal.QuerySupperTrend(Token.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute,GetTableName(Token.RegionSourceSysNo));
                 result.Success = true;
                 result.Key = Dal.generateKey();
                 SessionValue.Key = result.Key;

@@ -78,34 +78,34 @@ namespace UnitTest
         [TestMethod]
         public void Query20BySameNoTest()
         {
-            var data = m_Dal.Query20BySameNo_28BJ(17,QueryUserSiteSysNo());
-            foreach (var a in data)
-            {
-                Console.WriteLine("期号{0}",a.PeriodNum);
-            }
+            //var data = m_Dal.Query20BySameNo(17,QueryUserSiteSysNo());
+            //foreach (var a in data)
+            //{
+            //    Console.WriteLine("期号{0}",a.PeriodNum);
+            //}
         }
         [TestMethod]
         public void QueryNextLotteryWithSameNumberTest()
         {
-            var data = m_Dal.QueryNextLotteryWithSameNumber_28BJ(17,QueryUserSiteSysNo());
-            Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
-                data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            //var data = m_Dal.QueryNextLotteryWithSameNumber(17,QueryUserSiteSysNo());
+            //Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
+            //    data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryLotteryByDayTest()
         {
-            var data = m_Dal.QueryLotteryByDay_28BJ(DateTime.Parse("2013-06-30 11:30:00.000"),
-                QueryUserSiteSysNo());
-            Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
-                data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            //var data = m_Dal.QueryLotteryByDay(DateTime.Parse("2013-06-30 11:30:00.000"),
+            //    QueryUserSiteSysNo());
+            //Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
+            //    data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryLotteryByHourStepTest()
         {
-            var data = m_Dal.QueryLotteryByHourStep_28BJ(DateTime.Parse("2013-06-30 11:30:00.000")
-                ,QueryUserSiteSysNo());
-            Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
-                data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            //var data = m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-06-30 11:30:00.000")
+            //    ,QueryUserSiteSysNo());
+            //Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
+            //    data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryUserSiteTest()
@@ -190,18 +190,18 @@ namespace UnitTest
                 result.Data.DataList.Length));
         }
         [TestMethod]
-        public void GetCustomeModule_28BJTest()
+        public void GetCustomeModule_Test()
         {
             var head = new TokenHeader()
             {
                 GameSourceSysNo = 28,
-                RegionSourceSysNo = 10,
+                RegionSourceSysNo = 10001,
                 SiteSourceSysNo = 10001,
                 Token = "",
                 UserSysNo = 1
             };
             var result = m_client.GetCustomeModule(head);
-            //result.Data.M1.BigP
+            
         }
 
         [TestMethod]
@@ -221,7 +221,7 @@ namespace UnitTest
         [TestMethod]
         public void QuerySupperTrend_28BJTest()
         {
-            //var result = m_Dal.QuerySupperTrend_28(10001, 1, 10, 5000, "", "", "");
+            //var result = m_Dal.QuerySupperTrend(10001, 1, 10, 5000, "", "", "");
             //foreach (var t in result.LotteryTimeses)
             //{
             //    Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
