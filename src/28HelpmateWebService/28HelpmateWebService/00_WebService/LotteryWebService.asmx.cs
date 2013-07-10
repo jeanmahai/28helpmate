@@ -42,7 +42,7 @@ namespace WebService
         {
             //if (Dal.ValidateToken(header.ToString(SessionValue.Key),header.Token))
             //{
-                return true;
+            return true;
             //}
             //return false;
         }
@@ -258,7 +258,7 @@ namespace WebService
             var result = new ResultRM<LotteryTrend>();
             if (ValidateToken(Token))
             {
-                result.Data = Dal.QueryTrend_28BJ(Token.SiteSourceSysNo,pageIndex,AppSettingValues.PageCount);
+                result.Data = Dal.QueryTrend(Token.SiteSourceSysNo,pageIndex,AppSettingValues.PageCount,GetTableName(Token.RegionSourceSysNo));
                 result.Success = true;
                 result.Key = Dal.generateKey();
                 SessionValue.Key = result.Key;
@@ -291,7 +291,7 @@ namespace WebService
             }
             return result;
         }
-        [WebMethod(Description = "超级走势图",EnableSession = true)]
+        [WebMethod(Description = "超级走势图,分页从1开始",EnableSession = true)]
         [SoapHeader("Token")]
         public ResultRM<LotteryTrend> QuerySupperTrend(int pageIndex,
             int pageSize,
@@ -302,7 +302,7 @@ namespace WebService
             var result = new ResultRM<LotteryTrend>();
             if (ValidateToken(Token))
             {
-                result.Data = Dal.QuerySupperTrend_28BJ(Token.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute);
+                result.Data = Dal.QuerySupperTrend_28(Token.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute,GetTableName(Token.RegionSourceSysNo));
                 result.Success = true;
                 result.Key = Dal.generateKey();
                 SessionValue.Key = result.Key;
@@ -313,6 +313,20 @@ namespace WebService
                 result.Message = ERROR_VALIDATE_TOKEN;
             }
             return result;
+        }
+
+        private string GetTableName(int regionSourceSysNo)
+        {
+            string tableName;
+            if (regionSourceSysNo == 10002)
+            {
+                tableName = ConstValue.Source_Data_10002_28_Canada;
+            }
+            else
+            {
+                tableName = ConstValue.Source_Data_10001_28_BeiJing;
+            }
+            return tableName;
         }
     }
 }

@@ -170,13 +170,13 @@ namespace UnitTest
             Console.WriteLine(m_Dal.GenerateCode());
         }
         [TestMethod]
-        public void QueryTrend_28BJTest()
+        public void QueryTrend_Test()
         {
             //client
             var head = new TokenHeader()
                        {
                            GameSourceSysNo = 10001,
-                           RegionSourceSysNo = 10001,
+                           RegionSourceSysNo = 10002,
                            SiteSourceSysNo = 10002,
                            Token = "",
                            UserSysNo = 1
@@ -221,7 +221,7 @@ namespace UnitTest
         [TestMethod]
         public void QuerySupperTrend_28BJTest()
         {
-            //var result = m_Dal.QuerySupperTrend_28BJ(10001, 1, 10, 5000, "", "", "");
+            //var result = m_Dal.QuerySupperTrend_28(10001, 1, 10, 5000, "", "", "");
             //foreach (var t in result.LotteryTimeses)
             //{
             //    Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
@@ -229,17 +229,21 @@ namespace UnitTest
             var head = new TokenHeader()
             {
                 GameSourceSysNo = 10001,
-                RegionSourceSysNo = 10001,
+                RegionSourceSysNo = 10002,
                 SiteSourceSysNo = 10001,
                 Token = "",
                 UserSysNo = 1
             };
-            var result = m_client.QuerySupperTrend(head,0,10,"","","");
+            var result = m_client.QuerySupperTrend(head,1,10,"","","");
             foreach (var t in result.Data.LotteryTimeses)
             {
                 Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
             }
             Console.WriteLine(string.Format("页数:{0},当前数量:{1}",result.Data.PageCount,result.Data.DataList.Length));
+            foreach (var item in result.Data.DataList)
+            {
+                Console.WriteLine(string.Format("{0},{1},{2}",item.PeriodNum,item.RetNum,item.RetTime.ToString()));
+            }
         }
     }
 }

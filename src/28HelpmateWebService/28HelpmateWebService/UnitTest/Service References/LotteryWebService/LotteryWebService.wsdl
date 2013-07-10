@@ -395,7 +395,7 @@
       <wsdl:output message="tns:QueryOmissionSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="QuerySupperTrend">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">超级走势图</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">超级走势图,分页从1开始</wsdl:documentation>
       <wsdl:input message="tns:QuerySupperTrendSoapIn" />
       <wsdl:output message="tns:QuerySupperTrendSoapOut" />
     </wsdl:operation>

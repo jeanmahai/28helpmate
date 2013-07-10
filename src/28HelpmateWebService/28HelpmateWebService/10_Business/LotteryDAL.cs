@@ -265,22 +265,28 @@ namespace Business
             result.List = criteriaQueryCondition.List<LotteryForBJ>().ToList();
             return result;
         }
-        public LotteryTrend QueryTrend_28BJ(int siteSysNo,int pageIndex,int pageCount)
+        /// <summary>
+        /// 一般走势图
+        /// </summary>
+        /// <param name="siteSysNo"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageCount"></param>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public LotteryTrend QueryTrend(int siteSysNo,
+            int pageIndex,
+            int pageCount,
+            string tableName)
         {
             pageIndex -= 1;
             var curDate = DateTime.Now.AddDays(-pageIndex);
             DateTime @from;
-            //if(pageIndex==1)
-            //{
             @from = DateTime.Parse(curDate.ToString("yyyy-MM-dd 00:00:00"));
-            //}
-            //else
-            //{
-            //    @from = DateTime.Parse(searchDateTime.ToString("yyyy-MM-dd 00:00:00"));
-            //}
             DateTime to = DateTime.Parse(curDate.ToString("yyyy-MM-dd 23:59:59"));
+            var sql = SqlManager.GetSqlText("QueryTrend2");
+            sql = string.Format(sql, tableName);
             //每个号码及类型所出现的次数
-            var times = Session.CreateSQLQuery(SqlManager.GetSqlText("QueryTrend2"))
+            var times = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(LotteryTimes))
                 .SetParameter("START_DATE",DateTime.Parse(curDate.AddDays(-pageCount).AddDays(1).ToString("yyyy-MM-dd 00:00:00")))
                 .SetParameter("END_DATE",DateTime.Now)
@@ -288,7 +294,9 @@ namespace Business
                 .List<LotteryTimes>().ToList();
 
             //每页的数据
-            var data = Session.CreateSQLQuery(SqlManager.GetSqlText("QueryTrend3"))
+            sql = SqlManager.GetSqlText("QueryTrend3");
+            sql = string.Format(sql,tableName);
+            var data = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(LotteryExtByBJ))
                 .SetParameter("START_DATE",@from)
                 .SetParameter("END_DATE",to)
@@ -301,7 +309,7 @@ namespace Business
             result.LotteryTimeses = times;
             result.DataList = data;
             result.PageCount = pageCount;
-            result.PageIndex = pageIndex;
+            result.PageIndex = pageIndex+1;
 
             return result;
         }
@@ -357,15 +365,19 @@ namespace Business
         /// <param name="date"> </param>
         /// <param name="hour"></param>
         /// <param name="minute"></param>
+        /// <param name="tableName"> </param>
         /// <returns></returns>
-        public LotteryTrend QuerySupperTrend_28BJ(int siteSysNo,
+        public LotteryTrend QuerySupperTrend_28(int siteSysNo,
             int pageIndex,
             int pageSize,
             int maxTotal,
             string date,
             string hour,
-            string minute)
+            string minute,
+            string tableName)
         {
+
+
             var result = new LotteryTrend();
             //查询每个号码及类型的出现次数,总次数以maxTotal为准
             var curLottery = MaxPeriod_28BJ();
@@ -393,7 +405,7 @@ namespace Business
 
             //查询数字的出现次数
             var sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_1");
-            sql = string.Format(sql,condition);
+            sql = string.Format(sql,condition,tableName);
             var q1 = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(LotteryTimes))
                 .SetParameter("SITE_SYS_NO",siteSysNo)
@@ -401,7 +413,7 @@ namespace Business
                 .List<LotteryTimes>();
             //查询类型的出现次数
             sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_2");
-            sql = string.Format(sql,condition);
+            sql = string.Format(sql,condition,tableName);
             var q2 = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(LotteryTimes))
                 .SetParameter("SITE_SYS_NO",siteSysNo)
@@ -470,10 +482,10 @@ namespace Business
                     Total = 0
                 });
             }
-            result.LotteryTimeses.ForEach(p=>p.Name=p.Name.Trim());
+            result.LotteryTimeses.ForEach(p => p.Name = p.Name.Trim());
             //total
             sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_3");
-            sql = string.Format(sql,condition);
+            sql = string.Format(sql,condition,tableName);
             var q3 = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(PageInfo))
                 .SetParameter("SITE_SYS_NO",siteSysNo)
@@ -486,7 +498,7 @@ namespace Business
             result.PageIndex = q3.PageIndex;
             //list
             sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_4");
-            sql = string.Format(sql,condition);
+            sql = string.Format(sql,condition,tableName);
             var q4 = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(LotteryExtByBJ))
                 .SetParameter("SITE_SYS_NO",siteSysNo)
