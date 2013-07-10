@@ -42,91 +42,11 @@ namespace WebService
         {
             //if (Dal.ValidateToken(header.ToString(SessionValue.Key),header.Token))
             //{
-                return true;
+            return true;
             //}
             //return false;
         }
 
-        //[WebMethod(Description = "查询最近20期号码相同的下一期的开奖结果")]
-        //[SoapHeader("Token")]
-        //public ResultRM<LotteryByTwentyPeriod> QueryNextLotteryWithSameNumber(int number,string siteName)
-        //{
-        //    var result = new ResultRM<LotteryByTwentyPeriod>();
-        //    if (ValidateToken(Token))
-        //    {
-        //        var userSite = Dal.QueryUserSite(siteName);
-        //        if (userSite != null)
-        //        {
-        //            result.Data = Dal.QueryNextLotteryWithSameNumber_28BJ(number,userSite.SysNo);
-        //        }
-        //        else
-        //        {
-        //            result.Data = new LotteryByTwentyPeriod();
-        //        }
-
-        //        result.Message = MESSAGE_SUCCESS;
-        //    }
-        //    else
-        //    {
-        //        result.Success = false;
-        //        result.Message = ERROR_VALIDATE_TOKEN;
-        //    }
-        //    return result;
-        //}
-        //[WebMethod(Description = "查询同一时间点的近20小时的数据")]
-        //[SoapHeader("Token")]
-        //public ResultRM<LotteryByTwentyPeriod> QueryLotteryByHourStep(DateTime time,string siteName)
-        //{
-        //    var result = new ResultRM<LotteryByTwentyPeriod>();
-        //    if (ValidateToken(Token))
-        //    {
-        //        var userSite = Dal.QueryUserSite(siteName);
-        //        if (userSite != null)
-        //        {
-        //            result.Data = Dal.QueryLotteryByHourStep_28BJ(time,userSite.SysNo);
-        //        }
-        //        else
-        //        {
-        //            result.Data = new LotteryByTwentyPeriod();
-        //        }
-
-        //        result.Success = true;
-        //        result.Message = MESSAGE_SUCCESS;
-        //    }
-        //    else
-        //    {
-        //        result.Success = false;
-        //        result.Message = ERROR_VALIDATE_TOKEN;
-        //    }
-        //    return result;
-        //}
-        //[WebMethod(Description = "查询同一时间点的近20天的数据")]
-        //[SoapHeader("Token")]
-        //public ResultRM<LotteryByTwentyPeriod> QueryLotteryByDay(DateTime time,string siteName)
-        //{
-        //    var result = new ResultRM<LotteryByTwentyPeriod>();
-        //    if (ValidateToken(Token))
-        //    {
-        //        var userSite = Dal.QueryUserSite(siteName);
-        //        if (userSite != null)
-        //        {
-        //            result.Data = Dal.QueryLotteryByDay_28BJ(time,userSite.SysNo);
-        //        }
-        //        else
-        //        {
-        //            result.Data = new LotteryByTwentyPeriod();
-        //        }
-
-        //        result.Success = true;
-        //        result.Message = MESSAGE_SUCCESS;
-        //    }
-        //    else
-        //    {
-        //        result.Success = false;
-        //        result.Message = ERROR_VALIDATE_TOKEN;
-        //    }
-        //    return result;
-        //}
         [WebMethod(Description = "查询模块1-模块4的数据",EnableSession = true)]
         [SoapHeader("Token")]
         public ResultRM<CustomModules> GetCustomeModule()
@@ -137,14 +57,39 @@ namespace WebService
                 result.Data = new CustomModules();
                 var lastestLottery = Dal.MaxPeriod_28BJ();
 
-                result.Data.M1 = Dal.QueryNextLotteryWithSameNumber_28BJ(lastestLottery.RetNum,Token.SiteSourceSysNo);
-                result.Data.M2 = Dal.QueryLotteryByHourStep_28BJ(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo);
-                result.Data.M3 = Dal.QueryLotteryByDay_28BJ(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo);
-
-                result.Data.M4 = Dal.QueryTop20_28BJ(Token.SiteSourceSysNo);
+                result.Data.M1 = Dal.QueryNextLotteryWithSameNumber(lastestLottery.RetNum,Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
+                result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
+                result.Data.M3 = Dal.QueryLotteryByDay(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
+                result.Data.M4 = Dal.QueryTop20(Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
+                result.Data.CurrentLottery = lastestLottery;
+                if (GetTableName(Token.RegionSourceSysNo)==ConstValue.Source_Data_10001_28_BeiJing)
+                {
+                    result.Data.NextLottery = new LotteryForBJ()
+                    {
+                        PeriodNum = lastestLottery.PeriodNum + 1
+                    };
+                    if(lastestLottery.RetTime.ToString("HH:mm")=="23:55")
+                    {
+                        result.Data.NextLottery.RetTime =
+                            DateTime.Parse(lastestLottery.RetTime.AddDays(1).ToString("yyyy-MM-dd 09:05:00"));
+                    }
+                    else
+                    {
+                        result.Data.NextLottery.RetTime =
+                            lastestLottery.RetTime.AddMinutes(AppSettingValues.BJLotteryInteval);
+                    }
+                }
+                if (GetTableName(Token.RegionSourceSysNo) == ConstValue.Source_Data_10002_28_Canada)
+                {
+                    result.Data.NextLottery = new LotteryForBJ()
+                    {
+                        PeriodNum = lastestLottery.PeriodNum + 1,
+                        RetTime = lastestLottery.RetTime.AddMinutes(AppSettingValues.CanadaLotteryInteval)
+                    };
+                }
+                
                 result.Success = true;
-                result.Key = Dal.generateKey();
-                SessionValue.Key = result.Key;
+                NewKey(result);
             }
             else
             {
@@ -153,59 +98,7 @@ namespace WebService
             }
             return result;
         }
-        //[WebMethod(Description = "查询最近20期的结果")]
-        //[SoapHeader("Token")]
-        //public ResultRM<LotteryByTwentyPeriod> QueryLotteryByTwenty(string siteName)
-        //{
-        //    var result = new ResultRM<LotteryByTwentyPeriod>();
-        //    if (ValidateToken(Token))
-        //    {
-        //        var userSite = Dal.QueryUserSite(siteName);
-        //        if (userSite != null)
-        //        {
-        //            result.Data = Dal.QueryTop20_28BJ(userSite.SysNo);
-        //        }
-        //        else
-        //        {
-        //            result.Data = new LotteryByTwentyPeriod();
-        //        }
-        //        result.Success = true;
-        //        result.Message = MESSAGE_SUCCESS;
-        //    }
-        //    else
-        //    {
-        //        result.Success = false;
-        //        result.Message = ERROR_VALIDATE_TOKEN;
-        //    }
-        //    return result;
-        //}
-        //[WebMethod(Description = "查询最近1期的结果")]
-        //[SoapHeader("Token")]
-        //public ResultRM<LotteryForBJ> QueryCurrentLottery(string siteName)
-        //{
-        //    var result = new ResultRM<LotteryForBJ>();
-        //    if (ValidateToken(Token))
-        //    {
-        //        var userSite = Dal.QueryUserSite(siteName);
-        //        if (userSite != null)
-        //        {
-        //            result.Data = (from a in Dal.QueryTop20_28BJ(userSite.SysNo).Lotteries
-        //                           select a).FirstOrDefault();
-        //        }
-        //        else
-        //        {
-        //            result.Data = new LotteryForBJ();
-        //        }
-        //        result.Success = true;
-        //        result.Message = MESSAGE_SUCCESS;
-        //    }
-        //    else
-        //    {
-        //        result.Success = false;
-        //        result.Message = ERROR_VALIDATE_TOKEN;
-        //    }
-        //    return result;
-        //}
+
         [WebMethod(Description = "查询开奖结果")]
         [SoapHeader("Token")]
         public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilterForBJ filterForBj)
@@ -224,6 +117,7 @@ namespace WebService
             }
             return result;
         }
+
         [WebMethod(Description = "登录,如果返回空字符串则登录失败,成功返回key")]
         public string Login(string userName,string psw)
         {
@@ -236,6 +130,7 @@ namespace WebService
             }
             return "";
         }
+
         [WebMethod(Description = "注册")]
         public int Register(User user)
         {
@@ -258,10 +153,9 @@ namespace WebService
             var result = new ResultRM<LotteryTrend>();
             if (ValidateToken(Token))
             {
-                result.Data = Dal.QueryTrend_28BJ(Token.SiteSourceSysNo,pageIndex,AppSettingValues.PageCount);
+                result.Data = Dal.QueryTrend(Token.SiteSourceSysNo,pageIndex,AppSettingValues.PageCount,GetTableName(Token.RegionSourceSysNo));
                 result.Success = true;
-                result.Key = Dal.generateKey();
-                SessionValue.Key = result.Key;
+                NewKey(result);
             }
             else
             {
@@ -278,11 +172,10 @@ namespace WebService
             var result = new ResultRM<List<OmitStatistics>>();
             if (ValidateToken(Token))
             {
-                var data = Dal.QueryOmissionAll_28BJ(Token.GameSourceSysNo,Token.SiteSourceSysNo,Token.RegionSourceSysNo);
+                var data = Dal.QueryOmissionAll(Token.GameSourceSysNo,Token.SiteSourceSysNo,Token.RegionSourceSysNo);
                 result.Data = data;
                 result.Success = true;
-                result.Key = Dal.generateKey();
-                SessionValue.Key = result.Key;
+                NewKey(result);
             }
             else
             {
@@ -291,7 +184,8 @@ namespace WebService
             }
             return result;
         }
-        [WebMethod(Description = "超级走势图",EnableSession = true)]
+
+        [WebMethod(Description = "超级走势图,分页从1开始",EnableSession = true)]
         [SoapHeader("Token")]
         public ResultRM<LotteryTrend> QuerySupperTrend(int pageIndex,
             int pageSize,
@@ -302,10 +196,9 @@ namespace WebService
             var result = new ResultRM<LotteryTrend>();
             if (ValidateToken(Token))
             {
-                result.Data = Dal.QuerySupperTrend_28BJ(Token.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute);
+                result.Data = Dal.QuerySupperTrend(Token.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute,GetTableName(Token.RegionSourceSysNo));
                 result.Success = true;
-                result.Key = Dal.generateKey();
-                SessionValue.Key = result.Key;
+                NewKey(result);
             }
             else
             {
@@ -313,6 +206,59 @@ namespace WebService
                 result.Message = ERROR_VALIDATE_TOKEN;
             }
             return result;
+        }
+
+        [WebMethod(Description = "获得服务器的时间")]
+        public DateTime GetServerDate()
+        {
+            return DateTime.Now;
+        }
+
+        [WebMethod(Description = "获得服务器的时间")]
+        [SoapHeader("Token")]
+        public ResultRM<object> ChangePsw(string oldPsw,string newPsw)
+        {
+            var result = new ResultRM<object>();
+            if(ValidateToken(Token))
+            {
+                var msg=Dal.ChangePsw(Token.UserSysNo, oldPsw, newPsw);
+                if(string.IsNullOrEmpty(msg))
+                {
+                    result.Success = true;
+                    NewKey(result);
+                }
+                else
+                {
+                    result.Success = false;
+                    result.Message = msg;
+                }
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
+        private string GetTableName(int regionSourceSysNo)
+        {
+            string tableName;
+            if (regionSourceSysNo == 10002)
+            {
+                tableName = ConstValue.Source_Data_10002_28_Canada;
+            }
+            else
+            {
+                tableName = ConstValue.Source_Data_10001_28_BeiJing;
+            }
+            return tableName;
+        }
+
+        private void NewKey<T>(ResultRM<T> result)
+        {
+            result.Key = Dal.generateKey();
+            SessionValue.Key = result.Key;
         }
     }
 }

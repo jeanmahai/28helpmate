@@ -16,5 +16,13 @@ namespace Model
         {
             get { return int.Parse(ConfigurationManager.AppSettings["MaxTotal"]); }
         }
+        public static int BJLotteryInteval
+        {
+            get { return int.Parse(ConfigurationManager.AppSettings["BJLotteryInteval"]); }
+        }
+        public static int CanadaLotteryInteval
+        {
+            get { return int.Parse(ConfigurationManager.AppSettings["CanadaLotteryInteval"]); }
+        }
     }
 }

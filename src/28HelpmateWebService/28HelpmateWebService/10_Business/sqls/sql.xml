@@ -1,11 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Sqls>
+
+  <sql name="QueryLotteryByHourStep">
+    <![CDATA[
+select *
+from {0}
+where RetTime in ({1})
+	and SiteSysNo={2}
+order by PeriodNum desc
+    ]]>
+  </sql>
+  
+  <sql name="QueryNextLotteryWithSameNumber">
+    <![CDATA[
+select *
+from {0}
+where PeriodNum in ({1})
+	and SiteSysNo={2}
+order by PeriodNum desc
+    ]]>
+  </sql>
+  <sql name="Query20BySameNo">
+    <![CDATA[
+
+DECLARE @Last_Num int,@Max_Period int
+select top 1 @Last_Num=RetNum,@Max_Period=PeriodNum
+from {0}
+where SiteSysNo={1}
+order by PeriodNum desc
+
+select top 20  *
+from {0}
+where RetNum=@Last_Num 
+	and PeriodNum<>@Max_Period
+	and SiteSysNo={1}
+order by PeriodNum desc
+    ]]>
+  </sql>
+  <sql name="QueryTop20">
+    <![CDATA[
+SELECT TOP 20 *
+FROM {0}
+WHERE SiteSysNo={1}
+ORDER BY PeriodNum DESC
+    ]]>
+  </sql>
   <sql name="QuerySupperTrend_28BJ_1">
     <![CDATA[
 SELECT 
 	CONVERT(NCHAR(40),BJ.RetNum) as Name,
 	COUNT(BJ.RetNum) AS Total
-FROM dbo.SourceData_28_Beijing BJ
+FROM {1} BJ
 	JOIN dbo.UseSite US 
 		ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
@@ -19,7 +64,7 @@ GROUP BY BJ.RetNum
 (
 SELECT RC.BigOrSmall AS Name,
        COUNT(RC.BigOrSmall) AS Total
-FROM dbo.SourceData_28_Beijing BJ
+FROM {1} BJ
 	JOIN dbo.ResultCategory_28 RC
 		ON BJ.RetNum=RC.RetNum
 	JOIN dbo.UseSite US
@@ -33,7 +78,7 @@ UNION ALL
 (
 SELECT RC.MiddleOrSide AS Name,
        COUNT(RC.MiddleOrSide) AS Total
-FROM dbo.SourceData_28_Beijing BJ
+FROM {1} BJ
 	JOIN dbo.ResultCategory_28 RC
 		ON BJ.RetNum=RC.RetNum
 	JOIN dbo.UseSite US
@@ -47,7 +92,7 @@ UNION ALL
 (
 SELECT RC.OddOrDual AS Name,
        COUNT(RC.OddOrDual) AS Total
-FROM dbo.SourceData_28_Beijing BJ
+FROM {1} BJ
 	JOIN dbo.ResultCategory_28 RC
 		ON BJ.RetNum=RC.RetNum
 	JOIN dbo.UseSite US
@@ -66,7 +111,7 @@ SELECT COUNT(1) Total,
        :PAGE_INDEX PageIndex,
        :PAGE_SIZE PageSize,
        CEILING(COUNT(1)/CONVERT(DECIMAL,:PAGE_SIZE)) AS [PageCount]
-FROM dbo.SourceData_28_Beijing BJ
+FROM {1} BJ
 	JOIN dbo.UseSite US
 		ON BJ.SiteSysNo=US.SysNo
 	JOIN dbo.ResultCategory_28 RC
@@ -89,7 +134,7 @@ SELECT BJ.PeriodNum,
        RC.MiddleOrSide,
        RC.OddOrDual,
        ROW_NUMBER() OVER (ORDER BY BJ.PeriodNum DESC) AS ROW
-FROM dbo.SourceData_28_Beijing BJ
+FROM {1} BJ
 	JOIN dbo.UseSite US
 		ON BJ.SiteSysNo=US.SysNo
 	JOIN dbo.ResultCategory_28 RC
@@ -98,8 +143,8 @@ WHERE BJ.SiteSysNo=:SITE_SYS_NO
       AND BJ.PeriodNum>:MIN_PERIOD
       {0}
 ) AS TEMP
-WHERE ROW>:PAGE_INDEX*:PAGE_SIZE
-      AND ROW<(:PAGE_INDEX+1)*:PAGE_SIZE
+WHERE ROW>(:PAGE_INDEX-1)*:PAGE_SIZE
+      AND ROW<:PAGE_INDEX*:PAGE_SIZE
     ]]>
   </sql>
   
@@ -121,7 +166,7 @@ GROUP BY RetNum
 SELECT RC.BigOrSmall AS Name
       ,COUNT(RC.BigOrSmall) AS Total
       
-FROM dbo.SourceData_28_Beijing BJ
+FROM {0} BJ
 	INNER JOIN dbo.ResultCategory_28 RC
 		ON BJ.RetNum=RC.RetNum
 	INNER JOIN DBO.UseSite US
@@ -135,7 +180,7 @@ union
 SELECT RC.MiddleOrSide AS Name
       ,COUNT(RC.MiddleOrSide) AS Total
       
-FROM dbo.SourceData_28_Beijing BJ
+FROM {0} BJ
 	INNER JOIN dbo.ResultCategory_28 RC
 		ON BJ.RetNum=RC.RetNum
 		INNER JOIN DBO.UseSite US
@@ -149,7 +194,7 @@ union
 SELECT RC.OddOrDual AS Name
       ,COUNT(RC.OddOrDual) AS Total
       
-FROM dbo.SourceData_28_Beijing BJ
+FROM {0} BJ
 	INNER JOIN dbo.ResultCategory_28 RC
 		ON BJ.RetNum=RC.RetNum
 		INNER JOIN DBO.UseSite US
@@ -162,7 +207,7 @@ union
 (
 SELECT convert(nvarchar(40),RetNum) as Name,
 	   COUNT(RetNum) AS Total
-FROM dbo.SourceData_28_Beijing BJ
+FROM {0} BJ
 	INNER JOIN dbo.UseSite US
 		ON BJ.SiteSysNo=US.SysNo
 WHERE (RetTime BETWEEN :START_DATE AND :END_DATE)
@@ -179,7 +224,7 @@ SELECT BJ.PeriodNum,
        RC.BigOrSmall,
        RC.MiddleOrSide,
        RC.OddOrDual
-FROM dbo.SourceData_28_Beijing BJ
+FROM {0} BJ
 	JOIN dbo.ResultCategory_28 RC
 		ON BJ.RetNum=RC.RetNum
 WHERE (BJ.RetTime BETWEEN :START_DATE AND :END_DATE)

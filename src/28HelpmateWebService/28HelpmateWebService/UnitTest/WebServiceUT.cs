@@ -78,34 +78,34 @@ namespace UnitTest
         [TestMethod]
         public void Query20BySameNoTest()
         {
-            var data = m_Dal.Query20BySameNo_28BJ(17,QueryUserSiteSysNo());
-            foreach (var a in data)
-            {
-                Console.WriteLine("期号{0}",a.PeriodNum);
-            }
+            //var data = m_Dal.Query20BySameNo(17,QueryUserSiteSysNo());
+            //foreach (var a in data)
+            //{
+            //    Console.WriteLine("期号{0}",a.PeriodNum);
+            //}
         }
         [TestMethod]
         public void QueryNextLotteryWithSameNumberTest()
         {
-            var data = m_Dal.QueryNextLotteryWithSameNumber_28BJ(17,QueryUserSiteSysNo());
-            Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
-                data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            //var data = m_Dal.QueryNextLotteryWithSameNumber(17,QueryUserSiteSysNo());
+            //Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
+            //    data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryLotteryByDayTest()
         {
-            var data = m_Dal.QueryLotteryByDay_28BJ(DateTime.Parse("2013-06-30 11:30:00.000"),
-                QueryUserSiteSysNo());
-            Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
-                data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            //var data = m_Dal.QueryLotteryByDay(DateTime.Parse("2013-06-30 11:30:00.000"),
+            //    QueryUserSiteSysNo());
+            //Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
+            //    data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryLotteryByHourStepTest()
         {
-            var data = m_Dal.QueryLotteryByHourStep_28BJ(DateTime.Parse("2013-06-30 11:30:00.000")
-                ,QueryUserSiteSysNo());
-            Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
-                data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            //var data = m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-06-30 11:30:00.000")
+            //    ,QueryUserSiteSysNo());
+            //Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
+            //    data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryUserSiteTest()
@@ -170,7 +170,7 @@ namespace UnitTest
             Console.WriteLine(m_Dal.GenerateCode());
         }
         [TestMethod]
-        public void QueryTrend_28BJTest()
+        public void QueryTrend_Test()
         {
             //client
             var head = new TokenHeader()
@@ -181,27 +181,38 @@ namespace UnitTest
                            Token = "",
                            UserSysNo = 1
                        };
-            var result = m_client.QueryTrend(head,2);
-            Console.WriteLine(string.Format("执行{0},PageIndex{1},PageCount{2},TimesCount{3},DataCount{4}",
-                result.Success,
-                result.Data.PageIndex,
-                result.Data.PageCount,
-                result.Data.LotteryTimeses.Length,
-                result.Data.DataList.Length));
+            var result = m_client.QueryTrend(head,1);
+
+            var head2 = new TokenHeader()
+            {
+                GameSourceSysNo = 10001,
+                RegionSourceSysNo = 10001,
+                SiteSourceSysNo = 10002,
+                Token = "",
+                UserSysNo = 1
+            };
+            var result2 = m_client.QueryTrend(head2,1);
+
+            for (var i=0;i<5;i++)
+            {
+                Console.WriteLine(string.Format("{0},{1},{2}",result.Data.DataList[i].PeriodNum,result.Data.DataList[i].RetNum,result.Data.DataList[i].RetTime.ToString()));
+                Console.WriteLine(string.Format("{0},{1},{2}",result2.Data.DataList[i].PeriodNum,result2.Data.DataList[i].RetNum,result2.Data.DataList[i].RetTime.ToString()));
+                Console.WriteLine("=============");
+            }
         }
         [TestMethod]
-        public void GetCustomeModule_28BJTest()
+        public void GetCustomeModule_Test()
         {
             var head = new TokenHeader()
             {
                 GameSourceSysNo = 28,
-                RegionSourceSysNo = 10,
+                RegionSourceSysNo = 10001,
                 SiteSourceSysNo = 10001,
                 Token = "",
                 UserSysNo = 1
             };
             var result = m_client.GetCustomeModule(head);
-            //result.Data.M1.BigP
+            
         }
 
         [TestMethod]
@@ -219,27 +230,26 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void QuerySupperTrend_28BJTest()
+        public void QuerySupperTrend_Test()
         {
-            //var result = m_Dal.QuerySupperTrend_28BJ(10001, 1, 10, 5000, "", "", "");
-            //foreach (var t in result.LotteryTimeses)
-            //{
-            //    Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
-            //}
             var head = new TokenHeader()
             {
                 GameSourceSysNo = 10001,
-                RegionSourceSysNo = 10001,
+                RegionSourceSysNo = 10002,
                 SiteSourceSysNo = 10001,
                 Token = "",
                 UserSysNo = 1
             };
-            var result = m_client.QuerySupperTrend(head,0,10,"","","");
+            var result = m_client.QuerySupperTrend(head,1,10,"","","");
             foreach (var t in result.Data.LotteryTimeses)
             {
                 Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
             }
-            Console.WriteLine(string.Format("页数:{0},当前数量:{1}",result.Data.PageCount,result.Data.DataList.Length));
+            Console.WriteLine(string.Format("页数:{0},当前数量:{1},{2}",result.Data.PageCount,result.Data.DataList.Length,result.Data.PageIndex));
+            foreach (var item in result.Data.DataList)
+            {
+                Console.WriteLine(string.Format("{0},{1},{2}",item.PeriodNum,item.RetNum,item.RetTime.ToString()));
+            }
         }
     }
 }

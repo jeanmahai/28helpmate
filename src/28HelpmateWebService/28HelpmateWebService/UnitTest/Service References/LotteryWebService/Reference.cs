@@ -51,6 +51,10 @@ namespace UnitTest.LotteryWebService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QuerySupperTrend", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         UnitTest.LotteryWebService.QuerySupperTrendResponse QuerySupperTrend(UnitTest.LotteryWebService.QuerySupperTrendRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetServerDate", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.DateTime GetServerDate();
     }
     
     /// <remarks/>
@@ -1539,6 +1543,10 @@ namespace UnitTest.LotteryWebService {
         
         private LotteryByTwentyPeriod m4Field;
         
+        private LotteryForBJ currentLotteryField;
+        
+        private LotteryForBJ nextLotteryField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public LotteryByTwentyPeriod M1 {
@@ -1584,6 +1592,30 @@ namespace UnitTest.LotteryWebService {
             set {
                 this.m4Field = value;
                 this.RaisePropertyChanged("M4");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public LotteryForBJ CurrentLottery {
+            get {
+                return this.currentLotteryField;
+            }
+            set {
+                this.currentLotteryField = value;
+                this.RaisePropertyChanged("CurrentLottery");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public LotteryForBJ NextLottery {
+            get {
+                return this.nextLotteryField;
+            }
+            set {
+                this.nextLotteryField = value;
+                this.RaisePropertyChanged("NextLottery");
             }
         }
         
@@ -1987,6 +2019,10 @@ namespace UnitTest.LotteryWebService {
             inValue.minute = minute;
             UnitTest.LotteryWebService.QuerySupperTrendResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).QuerySupperTrend(inValue);
             return retVal.QuerySupperTrendResult;
+        }
+        
+        public System.DateTime GetServerDate() {
+            return base.Channel.GetServerDate();
         }
     }
 }
