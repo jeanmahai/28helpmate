@@ -177,7 +177,7 @@ namespace UnitTest
                        {
                            GameSourceSysNo = 10001,
                            RegionSourceSysNo = 10001,
-                           SiteSourceSysNo = 10002,
+                           SiteSourceSysNo = 10001,
                            Token = "",
                            UserSysNo = 1
                        };

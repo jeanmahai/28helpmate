@@ -227,8 +227,8 @@ SELECT BJ.PeriodNum,
 FROM {0} BJ
 	JOIN dbo.ResultCategory_28 RC
 		ON BJ.RetNum=RC.RetNum
-WHERE (BJ.RetTime BETWEEN :START_DATE AND :END_DATE)
-AND BJ.SiteSysNo=:SiteSysNo
+WHERE (BJ.RetTime BETWEEN '{1}' AND '{2}')
+AND BJ.SiteSysNo={3}
 order by BJ.PeriodNum DESC
   ]]>
   </sql>

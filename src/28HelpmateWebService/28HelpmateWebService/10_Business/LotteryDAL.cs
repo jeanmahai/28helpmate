@@ -18,14 +18,13 @@ namespace Business
     public class LotteryDAL
     {
         private readonly List<int> LotteryNumber = new List<int>() { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 };
-        private ISession Session { get; set; }
+        private ISession Session
+        {
+            get { return NHibernateHelper.GetSession(); }
+        }
         private IEnumerable<LotteryType> LotteryDictionary
         {
             get { return Session.QueryOver<LotteryType>().List<LotteryType>().ToList(); }
-        }
-        public LotteryDAL()
-        {
-            Session = NHibernateHelper.GetSession();
         }
         private List<int> GetNotAppearNo(List<int> appearNo)
         {
@@ -325,12 +324,12 @@ namespace Business
 
             //每页的数据
             sql = SqlManager.GetSqlText("QueryTrend3");
-            sql = string.Format(sql,tableName);
+            sql = string.Format(sql,tableName,@from,to,siteSysNo);
             var data = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(LotteryExtByBJ))
-                .SetParameter("START_DATE",@from)
-                .SetParameter("END_DATE",to)
-                .SetParameter("SiteSysNo",siteSysNo)
+                //.SetParameter("START_DATE",@from)
+                //.SetParameter("END_DATE",to)
+                //.SetParameter("SiteSysNo",siteSysNo)
                 .List<LotteryExtByBJ>().ToList();
 
             MappingType(data);

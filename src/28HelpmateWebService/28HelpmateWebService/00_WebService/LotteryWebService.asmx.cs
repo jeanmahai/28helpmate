@@ -214,7 +214,7 @@ namespace WebService
             return DateTime.Now;
         }
 
-        [WebMethod(Description = "获得服务器的时间")]
+        [WebMethod(Description = "修改密码")]
         [SoapHeader("Token")]
         public ResultRM<object> ChangePsw(string oldPsw,string newPsw)
         {
