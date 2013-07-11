@@ -40,11 +40,11 @@ namespace WebService
 
         private bool ValidateToken(TokenHeader header)
         {
-            //if (Dal.ValidateToken(header.ToString(SessionValue.Key),header.Token))
-            //{
-            return true;
-            //}
-            //return false;
+            if (Dal.ValidateToken(header.ToString(SessionValue.Key),header.Token))
+            {
+                return true;
+            }
+            return false;
         }
 
         [WebMethod(Description = "查询模块1-模块4的数据",EnableSession = true)]
@@ -121,9 +121,9 @@ namespace WebService
         [WebMethod(Description = "登录")]
         public ResultRM<string> Login(string userId,string psw,string code)
         {
-            
+
             var result = new ResultRM<string>();
-            if(code!=SessionValue.Code)
+            if (code != SessionValue.Code)
             {
                 result.Success = false;
                 result.Message = "验证码错误";
@@ -151,8 +151,8 @@ namespace WebService
             MyTree.Utility.Log.Log4netExt.Info(Dal.GetClientIP());
             var result = new ResultRM<string>();
             string error;
-            var data=Dal.Register(user,out error);
-            if(data>0)
+            var data = Dal.Register(user,out error);
+            if (data > 0)
             {
                 result.Success = true;
                 result.Message = "注册成功";
@@ -313,6 +313,15 @@ namespace WebService
                 result.Success = false;
                 result.Message = ERROR_VALIDATE_TOKEN;
             }
+            return result;
+        }
+
+        [WebMethod(Description = "获得广告")]
+        public ResultRM<Notices> GetNotice(int sysNo)
+        {
+            var result = new ResultRM<Notices>();
+            result.Data = Dal.GetNotices(sysNo);
+            result.Success = true;
             return result;
         }
 

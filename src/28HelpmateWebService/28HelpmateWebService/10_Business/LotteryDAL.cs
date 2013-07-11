@@ -579,12 +579,12 @@ namespace Business
                 error = "用户不存在";
                 return false;
             }
-            if(user.Status==-1)
+            if (user.Status == -1)
             {
                 error = "用户已锁定";
                 return false;
             }
-            if(user.Status==0)
+            if (user.Status == 0)
             {
                 error = "用户未激活";
                 return false;
@@ -595,6 +595,7 @@ namespace Business
                 error = "密码错误";
                 return false;
             }
+            //该用户的充值是否可用
             return true;
         }
         public int Register(User user,out string error)
@@ -604,23 +605,23 @@ namespace Business
             var q = from a in Session.Query<User>()
                     where a.UserName == user.UserName
                     select a;
-            if(q.SingleOrDefault()!=null)
+            if (q.SingleOrDefault() != null)
             {
-                error = string.Format("用户名{0}已经存在", user.UserName);
+                error = string.Format("用户名{0}已经存在",user.UserName);
                 return -1;
             }
             //检查用户ID是否存在
             q = from a in Session.Query<User>()
                 where a.UserID == user.UserID
                 select a;
-            if(q.SingleOrDefault()!=null)
+            if (q.SingleOrDefault() != null)
             {
                 error = string.Format("用户ID{0}已经存在",user.UserID);
                 return -2;
             }
             //每个ip只能每天只能注册3个
             var ip = GetClientIP();
-            if(IPOver(ip))
+            if (IPOver(ip))
             {
                 error = string.Format("每个IP每天最多注册3个账号");
                 return -3;
@@ -666,6 +667,11 @@ namespace Business
             return result;
         }
 
+        public Notices GetNotices(int sysNo)
+        {
+            return Session.QueryOver<Notices>().Where(p => p.SysNo == sysNo && p.Status == 1).SingleOrDefault<Notices>();
+        }
+
         private void SetCache(string key,object val)
         {
             HttpContext.Current.Cache.Insert(key,val,null,DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59")),TimeSpan.Zero);
@@ -691,7 +697,7 @@ namespace Business
         private bool IPOver(string ip)
         {
             int? val = GetCache<int?>(ip);
-            if(val.HasValue) return val.Value > 3;
+            if (val.HasValue) return val.Value > 3;
             return false;
         }
     }

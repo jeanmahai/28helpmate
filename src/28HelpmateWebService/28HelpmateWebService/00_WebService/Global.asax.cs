@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using Business;
 
 namespace WebService
 {
     public class Global:System.Web.HttpApplication
     {
+        private static LotteryDAL Dal=new LotteryDAL();
 
         protected void Application_Start(object sender,EventArgs e)
         {
@@ -19,6 +21,7 @@ namespace WebService
         {
             //Session[SessionValue.TOKEN] = "";
             //Session[SessionValue.USER_NAME] = "";
+            MyTree.Utility.Log.Log4netExt.Info(Dal.GetClientIP());
         }
 
         protected void Application_BeginRequest(object sender,EventArgs e)
