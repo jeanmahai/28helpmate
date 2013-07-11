@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Drawing;
 using Helpmate.UI.Forms.Properties;
-using Helpmate.Facades.LotteryWebService;
+using Helpmate.Facades.LotteryWebSvc;
 using Common.Utility;
 
 namespace Helpmate.UI.Forms.Models

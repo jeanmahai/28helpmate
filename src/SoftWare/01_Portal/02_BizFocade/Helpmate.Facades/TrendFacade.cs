@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Helpmate.Facades.LotteryWebService;
 using Common.Utility;
+using System.Net;
+using Helpmate.Facades.LotteryWebSvc;
 
 namespace Helpmate.Facades
 {
@@ -20,7 +21,9 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    var data = ClientService.QueryTrend(TokenHeader, pageIndex);
+                    TokenHeader.Token = UtilsTool.MD5(string.Format("{0}{1}{2}{3}{4}", Header.Key, Header.UserSysNo, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo));
+                    ClientService.TokenHeaderValue = TokenHeader;
+                    var data = ClientService.QueryTrend(pageIndex);
                     Header.Key = data.Key;
                     if (!data.Success) AppMessage.AlertMessage(data.Message);
                     return data;
@@ -28,6 +31,7 @@ namespace Helpmate.Facades
             }
             catch (Exception ex)
             {
+                WriteLog.Write("QueryTrend", ex.ToString());
                 AppMessage.AlertMessage(400);
             }
             return null;
@@ -47,7 +51,9 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    var data = ClientService.QuerySupperTrend(TokenHeader, pageIndex, 20, date, hour, minute);
+                    TokenHeader.Token = UtilsTool.MD5(string.Format("{0}{1}{2}{3}{4}", Header.Key, Header.UserSysNo, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo));
+                    ClientService.TokenHeaderValue = TokenHeader;
+                    var data = ClientService.QuerySupperTrend(pageIndex, 20, date, hour, minute);
                     Header.Key = data.Key;
                     if (!data.Success) AppMessage.AlertMessage(data.Message);
                     return data;
@@ -55,6 +61,7 @@ namespace Helpmate.Facades
             }
             catch (Exception ex)
             {
+                WriteLog.Write("QuerySuperTrend", ex.ToString());
                 AppMessage.AlertMessage(400);
             }
             return null;

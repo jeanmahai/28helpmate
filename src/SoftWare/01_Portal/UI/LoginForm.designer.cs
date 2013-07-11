@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.bgwUpdate = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // label2
@@ -95,7 +96,7 @@
             this.btnLogin.Location = new System.Drawing.Point(368, 247);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(94, 31);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "立即登录";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -119,7 +120,7 @@
             this.txtCode.Location = new System.Drawing.Point(368, 172);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(83, 21);
-            this.txtCode.TabIndex = 5;
+            this.txtCode.TabIndex = 3;
             // 
             // label4
             // 
@@ -157,10 +158,15 @@
             this.button1.Location = new System.Drawing.Point(482, 247);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 31);
-            this.button1.TabIndex = 3;
+            this.button1.TabIndex = 5;
             this.button1.Text = "用户注册";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // bgwUpdate
+            // 
+            this.bgwUpdate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundUpdate_DoWork);
+            this.bgwUpdate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundUpdate_RunWorkerCompleted);
             // 
             // LoginForm
             // 
@@ -186,7 +192,6 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "28伴侣-分析平台";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +210,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.ComponentModel.BackgroundWorker bgwUpdate;
     }
 }

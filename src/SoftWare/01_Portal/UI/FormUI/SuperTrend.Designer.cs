@@ -57,7 +57,7 @@
             this.countList.Location = new System.Drawing.Point(20, 88);
             this.countList.Name = "countList";
             this.countList.RowTemplate.Height = 23;
-            this.countList.Size = new System.Drawing.Size(1011, 23);
+            this.countList.Size = new System.Drawing.Size(1113, 23);
             this.countList.TabIndex = 0;
             // 
             // headerList
@@ -68,7 +68,7 @@
             this.headerList.Location = new System.Drawing.Point(20, 110);
             this.headerList.Name = "headerList";
             this.headerList.RowTemplate.Height = 23;
-            this.headerList.Size = new System.Drawing.Size(1011, 23);
+            this.headerList.Size = new System.Drawing.Size(1113, 23);
             this.headerList.TabIndex = 1;
             // 
             // dataList
@@ -79,7 +79,7 @@
             this.dataList.Location = new System.Drawing.Point(20, 132);
             this.dataList.Name = "dataList";
             this.dataList.RowTemplate.Height = 23;
-            this.dataList.Size = new System.Drawing.Size(1011, 440);
+            this.dataList.Size = new System.Drawing.Size(1113, 440);
             this.dataList.TabIndex = 2;
             this.dataList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataList_CellFormatting);
             // 
@@ -139,6 +139,7 @@
             // 
             // ddlHour
             // 
+            this.ddlHour.BackColor = System.Drawing.SystemColors.Window;
             this.ddlHour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlHour.DropDownWidth = 85;
             this.ddlHour.FormattingEnabled = true;
@@ -197,6 +198,13 @@
             // 
             // btnQuery
             // 
+            this.btnQuery.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuery.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.btn;
+            this.btnQuery.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnQuery.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuery.FlatAppearance.BorderSize = 0;
+            this.btnQuery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuery.ForeColor = System.Drawing.Color.White;
             this.btnQuery.Location = new System.Drawing.Point(503, 25);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
@@ -215,7 +223,7 @@
             this.pnlLine.Location = new System.Drawing.Point(22, 55);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(682, 1);
+            this.pnlLine.Size = new System.Drawing.Size(1015, 1);
             this.pnlLine.TabIndex = 147;
             // 
             // SuperTrend

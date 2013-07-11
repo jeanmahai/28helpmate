@@ -16,21 +16,14 @@ namespace Helpmate.UI.Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
-            Application.Exit();
-            //LoginForm loginForm = new LoginForm();
-            //loginForm.ShowDialog();
-            //if (loginForm.DialogResult == DialogResult.OK)
-            //{
-            //    try
-            //    {
-            //        Application.Run(DefaultForm.Initialize());
-            //    }
-            //    catch (Exception ex)
-            //    {
 
-            //    }
-            //}
+            var login = new LoginForm();
+            var result = login.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Application.Run(new Default());
+            }
+            Application.Exit();
         }
     }
 }
