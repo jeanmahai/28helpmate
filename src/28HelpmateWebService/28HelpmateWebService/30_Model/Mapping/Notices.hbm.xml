@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.Notices,Model"
+         table="[Notices]">
+    <id name="SysNo" column="SysNo" type="Int32" >
+      <generator class="native"/>
+    </id>
+    <property name="Contents" column="Contents" type="String" />
+    <property name="PublishUser" column="PublishUser" type="String" />
+    <property name="InDate" column="InDate" type="DateTime"  />
+    <property name="Status" column="Status" type="Int32"/>
+    <property name="Rank" column="Rank" type="Int32" />
+  </class>
+</hibernate-mapping>

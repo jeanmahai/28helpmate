@@ -139,6 +139,7 @@
             // 
             // ddlHour
             // 
+            this.ddlHour.BackColor = System.Drawing.SystemColors.Window;
             this.ddlHour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlHour.DropDownWidth = 85;
             this.ddlHour.FormattingEnabled = true;
@@ -197,6 +198,13 @@
             // 
             // btnQuery
             // 
+            this.btnQuery.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuery.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.btn;
+            this.btnQuery.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnQuery.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuery.FlatAppearance.BorderSize = 0;
+            this.btnQuery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuery.ForeColor = System.Drawing.Color.White;
             this.btnQuery.Location = new System.Drawing.Point(503, 25);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
@@ -215,7 +223,7 @@
             this.pnlLine.Location = new System.Drawing.Point(22, 55);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(682, 1);
+            this.pnlLine.Size = new System.Drawing.Size(1015, 1);
             this.pnlLine.TabIndex = 147;
             // 
             // SuperTrend
