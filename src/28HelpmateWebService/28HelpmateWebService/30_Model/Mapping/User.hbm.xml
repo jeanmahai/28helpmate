@@ -13,8 +13,8 @@
     <property name="Status" column="Status" type="Int32"  not-null="true"/>
     <property name="RegIP" column="RegIP" type="String" length="40" not-null="true"/>
     <property name="RegDate" column="RegDate" type="DateTime"  not-null="true"/>
-    <property name="RechargeUseBeginTime" column="RechargeUseBeginTime" type="DateTime" not-null="true" />
-    <property name="RechargeUseEndTime" column="RechargeUseEndTime" type="DateTime" not-null="true" />
+    <property name="RechargeUseBeginTime" column="PayUseBeginTime" type="DateTime" not-null="true" />
+    <property name="RechargeUseEndTime" column="PayUseEndTime" type="DateTime" not-null="true" />
 
     <property name="SecurityQuestion1" column="SecurityQuestion1" type="String"/>
     <property name="SecurityAnswer1" column="SecurityAnswer1" type="String"/>

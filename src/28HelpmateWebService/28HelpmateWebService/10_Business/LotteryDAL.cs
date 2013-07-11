@@ -627,6 +627,7 @@ namespace Business
                 return -3;
             }
 
+            user.RegIP = GetClientIP();
             user.UserPwd = CiphertextService.MD5Encryption(user.UserPwd);
             var result = Session.Save(user);
             Session.Flush();
