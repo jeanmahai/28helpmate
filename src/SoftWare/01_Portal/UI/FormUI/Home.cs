@@ -11,7 +11,7 @@ using Helpmate.BizEntity.Enum;
 using Helpmate.Facades;
 using Helpmate.UI.Forms.UserContorl;
 using Helpmate.UI.Forms.UIContorl.Common;
-using Helpmate.Facades.LotteryWebService;
+using Helpmate.Facades.LotteryWebSvc;
 using Helpmate.UI.Forms.Models;
 
 namespace Helpmate.UI.Forms.FormUI

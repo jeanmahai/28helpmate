@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Helpmate.Facades.LotteryWebService;
 using Helpmate.Facades.RequestMsg;
+using Helpmate.Facades.LotteryWebSvc;
 
 namespace Helpmate.Facades
 {
     public class BaseFacade
     {
-        public LotteryWebServiceSoapClient ClientService { get; set; }
+        public LotteryWebService ClientService { get; set; }
 
         public TokenHeader TokenHeader
         {
@@ -28,7 +28,7 @@ namespace Helpmate.Facades
 
         public BaseFacade()
         {
-            ClientService = new LotteryWebServiceSoapClient("LotteryWebServiceSoap");
+            ClientService = new LotteryWebService();
         }
     }
 }

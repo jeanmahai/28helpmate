@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Helpmate.UI.Forms.Properties;
-using Helpmate.Facades.LotteryWebService;
+using Helpmate.Facades.LotteryWebSvc;
 using Helpmate.UI.Forms.Code;
 
 namespace Helpmate.UI.Forms.UIContorl.UIPlug

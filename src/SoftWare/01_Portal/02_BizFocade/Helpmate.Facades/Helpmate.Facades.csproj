@@ -33,8 +33,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,16 +46,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonFacade.cs" />
+    <Compile Include="CustomerFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseFacade.cs" />
-    <Compile Include="RequestMsg\RequestHeader.cs" />
-    <Compile Include="Service References\LotteryWebService\Reference.cs">
+    <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RequestMsg\RequestHeader.cs" />
     <Compile Include="Header.cs" />
     <Compile Include="TrendFacade.cs" />
+    <Compile Include="Web References\LotteryWebSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\01_CommonLib\Common.Utility\Common.Utility.csproj">
@@ -74,49 +82,61 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfListOfOmitStatistics.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryTrend.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfObject.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfRemindStatistics.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfString.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LotteryWebService\LotteryWebService.wsdl" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\LotteryWebService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LotteryWebService\LotteryWebService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LotteryWebService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LotteryWebService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LotteryWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
+    <None Include="Web References\LotteryWebSvc\LotteryWebService.wsdl" />
+    <None Include="Web References\LotteryWebSvc\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfCustomModules.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfListOfOmitStatistics.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfLotteryTrend.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfNotices.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfPageListOfLotteryForBJ.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfRemindStatistics.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfString.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfUser.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://117.25.145.170:8088/LotteryWebService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LotteryWebSvc\</RelPath>
+      <UpdateFromURL>http://117.25.145.170:8088/LotteryWebService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Helpmate_Facades_LotteryWebSvc_LotteryWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\LotteryWebSvc\LotteryWebService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

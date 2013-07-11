@@ -49,7 +49,7 @@
             this.countList.Location = new System.Drawing.Point(20, 28);
             this.countList.Name = "countList";
             this.countList.RowTemplate.Height = 23;
-            this.countList.Size = new System.Drawing.Size(1011, 23);
+            this.countList.Size = new System.Drawing.Size(1113, 23);
             this.countList.TabIndex = 0;
             // 
             // headerList
@@ -60,7 +60,7 @@
             this.headerList.Location = new System.Drawing.Point(20, 50);
             this.headerList.Name = "headerList";
             this.headerList.RowTemplate.Height = 23;
-            this.headerList.Size = new System.Drawing.Size(1011, 23);
+            this.headerList.Size = new System.Drawing.Size(1113, 23);
             this.headerList.TabIndex = 1;
             // 
             // dataList
@@ -71,7 +71,7 @@
             this.dataList.Location = new System.Drawing.Point(20, 72);
             this.dataList.Name = "dataList";
             this.dataList.RowTemplate.Height = 23;
-            this.dataList.Size = new System.Drawing.Size(1011, 514);
+            this.dataList.Size = new System.Drawing.Size(1113, 514);
             this.dataList.TabIndex = 2;
             this.dataList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataList_CellFormatting);
             // 

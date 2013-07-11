@@ -11,8 +11,9 @@ using Helpmate.BizEntity.Enum;
 using Utility.Update;
 using Common.Utility;
 using System.Diagnostics;
-using Helpmate.Facades.LotteryWebService;
 using Helpmate.UI.Forms.FormUI.Customer;
+using Helpmate.Facades.LotteryWebSvc;
+
 
 namespace Helpmate.UI.Forms
 {
@@ -59,13 +60,13 @@ namespace Helpmate.UI.Forms
 
             if (e.Error != null)
             {
-                AppMessage.AlertMessage("请检查网络是否正常，稍后再试！");
+                AppMessage.AlertErrMessage("请检查网络是否正常，稍后再试！");
                 return;
             }
 
             if (Convert.ToBoolean(e.Result))
             {
-                UtilsTool.Alert("发现新的版本，立即更新！");
+                AppMessage.Alert("发现新的版本，立即更新！");
                 Process.Start("Update.exe", "121");
             }
             else

@@ -88,6 +88,7 @@
             this.txtUserPwd.Name = "txtUserPwd";
             this.txtUserPwd.Size = new System.Drawing.Size(234, 21);
             this.txtUserPwd.TabIndex = 8;
+            this.txtUserPwd.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -227,6 +228,7 @@
             this.txtNUserPwd.Name = "txtNUserPwd";
             this.txtNUserPwd.Size = new System.Drawing.Size(234, 21);
             this.txtNUserPwd.TabIndex = 10;
+            this.txtNUserPwd.UseSystemPasswordChar = true;
             // 
             // label7
             // 

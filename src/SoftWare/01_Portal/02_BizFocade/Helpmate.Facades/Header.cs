@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Helpmate.Facades.LotteryWebService;
+using Helpmate.Facades.LotteryWebSvc;
 
 namespace Helpmate.Facades
 {

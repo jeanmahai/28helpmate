@@ -6,10 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Helpmate.Facades.LotteryWebService;
 using Common.Utility;
 using Helpmate.UI.Forms.UserContorl;
 using Helpmate.BizEntity.Enum;
+using Helpmate.Facades.LotteryWebSvc;
+using Helpmate.Facades;
 
 namespace Helpmate.UI.Forms.FormUI.Customer
 {
@@ -27,19 +28,29 @@ namespace Helpmate.UI.Forms.FormUI.Customer
             user.UserID = txtUserID.Text.Trim();
             user.UserPwd = txtUserPwd.Text.Trim();
             user.UserName = txtUserName.Text.Trim();
+            user.Phone = txtPhone.Text.Trim();
+            user.QQ = txtQQ.Text.Trim();
 
+            user.SecurityQuestion1 = txtQuestionOne.Text.Trim();
+            user.SecurityAnswer1 = txtAnswerOne.Text.Trim();
+            user.SecurityQuestion2 = txtQuestionTwo.Text.Trim();
+            user.SecurityAnswer2 = txtAnswerTwo.Text.Trim();
 
             string msg = ValidationTool.IsEmpty(user.UserID, "邮箱账号");
             if (!AlertMessage(msg, txtUserID)) return;
 
             if (!ValidationTool.IsEmail(user.UserID))
             {
-                AlertMessage("请输入正确的邮箱地址！", txtUserID);
-                return;
+                AlertMessage("请输入正确的邮箱地址！", txtUserID); return;
             }
 
             msg = ValidationTool.IsEmpty(user.UserName, "昵称");
             if (!AlertMessage(msg, txtUserName)) return;
+
+            if (!string.IsNullOrEmpty(user.Phone) && !ValidationTool.IsMobile(user.Phone))
+            {
+                AlertMessage("请输入正确的手机号码！", txtPhone); return;
+            }
 
             msg = ValidationTool.IsEmpty(user.UserPwd, "密码");
             if (!AlertMessage(msg, txtUserPwd)) return;
@@ -49,28 +60,26 @@ namespace Helpmate.UI.Forms.FormUI.Customer
 
             if (!ValidationTool.Equals(user.UserPwd, txtNUserPwd.Text.Trim()))
             {
-                AlertMessage("两次输入的密码不一致！", txtNUserPwd);
-                return;
+                AlertMessage("两次输入的密码不一致！", txtNUserPwd); return;
             }
 
-            if (string.IsNullOrEmpty(txtQuestionOne.Text.Trim()) && string.IsNullOrEmpty(txtQuestionTwo.Text.Trim()))
+            if (string.IsNullOrEmpty(user.SecurityQuestion1) && string.IsNullOrEmpty(user.SecurityQuestion2))
             {
                 AlertMessage("必须至少有一个密码保护问题！", txtQuestionOne);
                 return;
             }
 
-            if (!string.IsNullOrEmpty(txtQuestionOne.Text.Trim()) && string.IsNullOrEmpty(txtAnswerOne.Text.Trim()))
+            if (!string.IsNullOrEmpty(user.SecurityQuestion1) && string.IsNullOrEmpty(user.SecurityAnswer1))
             {
                 AlertMessage("请输入密码问题答案一！", txtAnswerOne);
                 return;
             }
 
-            if (!string.IsNullOrEmpty(txtQuestionTwo.Text.Trim()) && string.IsNullOrEmpty(txtAnswerTwo.Text.Trim()))
+            if (!string.IsNullOrEmpty(user.SecurityQuestion2) && string.IsNullOrEmpty(user.SecurityAnswer2))
             {
-                AlertMessage("请输入密码问题答案二！", txtAnswerTwo);
-                return;
+                AlertMessage("请输入密码问题答案二！", txtAnswerTwo); return;
             }
-            
+
             btnRegister.Enabled = false;
             btnCancel.Enabled = false;
             pnlLoading.Controls.Clear();
@@ -96,8 +105,8 @@ namespace Helpmate.UI.Forms.FormUI.Customer
 
         private void bgwRegister_DoWork(object sender, DoWorkEventArgs e)
         {
-
-
+            var customer = new CustomerFacade();
+            customer.UserRegister(user);
         }
 
         private void bgwRegister_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -108,11 +117,20 @@ namespace Helpmate.UI.Forms.FormUI.Customer
 
             if (e.Error != null)
             {
+                WriteLog.Write("UserRegister", e.Error.Message);
                 pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, "用户注册失败，请稍后再试！"));
                 return;
             }
 
-
+            var result = e.Result as ResultRMOfString;
+            if (!result.Success)
+            {
+                AppMessage.AlertErrMessage(result.Message);
+            }
+            else
+            {
+                AppMessage.Alert("恭喜您，注册成功！");
+            }
         }
     }
 }
