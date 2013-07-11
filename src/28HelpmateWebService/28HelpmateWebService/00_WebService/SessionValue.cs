@@ -18,7 +18,7 @@ namespace WebService
         public const string TOKEN = "TOKEN";
         //public const string USER_NAME = "USER_NAME";
         public const string KEY = "KEY";
-        //public const string CODE = "CODE";
+        public const string CODE = "CODE";
 
         private static HttpSessionState CurrentSession
         {
@@ -40,11 +40,11 @@ namespace WebService
             get { return CurrentSession[KEY].ToString(); }
             set { CurrentSession[KEY] = value; }
         }
-        //public static string Code
-        //{
-        //    get { return CurrentSession[CODE].ToString(); }
-        //    set { CurrentSession[CODE] = value; }
-        //}
+        public static string Code
+        {
+            get { return CurrentSession[CODE].ToString(); }
+            set { CurrentSession[CODE] = value; }
+        }
         private static List<UserState> UserStates { get; set; }
 
         static SessionValue()

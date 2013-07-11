@@ -17,7 +17,6 @@ namespace WebService
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    [XmlInclude(typeof(LotteryByTwentyPeriod))]
     // 若要允许使用 ASP.NET AJAX 从脚本中调用此 Web 服务，请取消对下行的注释。
     // [System.Web.Script.Services.ScriptService]
     public class LotteryWebService:System.Web.Services.WebService
@@ -38,6 +37,7 @@ namespace WebService
                 return _mDal;
             }
         }
+
         private bool ValidateToken(TokenHeader header)
         {
             //if (Dal.ValidateToken(header.ToString(SessionValue.Key),header.Token))
@@ -62,13 +62,13 @@ namespace WebService
                 result.Data.M3 = Dal.QueryLotteryByDay(lastestLottery.RetTime.AddMinutes(5),Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
                 result.Data.M4 = Dal.QueryTop20(Token.SiteSourceSysNo,GetTableName(Token.RegionSourceSysNo));
                 result.Data.CurrentLottery = lastestLottery;
-                if (GetTableName(Token.RegionSourceSysNo)==ConstValue.Source_Data_10001_28_BeiJing)
+                if (GetTableName(Token.RegionSourceSysNo) == ConstValue.Source_Data_10001_28_BeiJing)
                 {
                     result.Data.NextLottery = new LotteryForBJ()
                     {
                         PeriodNum = lastestLottery.PeriodNum + 1
                     };
-                    if(lastestLottery.RetTime.ToString("HH:mm")=="23:55")
+                    if (lastestLottery.RetTime.ToString("HH:mm") == "23:55")
                     {
                         result.Data.NextLottery.RetTime =
                             DateTime.Parse(lastestLottery.RetTime.AddDays(1).ToString("yyyy-MM-dd 09:05:00"));
@@ -87,7 +87,7 @@ namespace WebService
                         RetTime = lastestLottery.RetTime.AddMinutes(AppSettingValues.CanadaLotteryInteval)
                     };
                 }
-                
+
                 result.Success = true;
                 NewKey(result);
             }
@@ -100,7 +100,7 @@ namespace WebService
         }
 
         [WebMethod(Description = "查询开奖结果")]
-        [SoapHeader("Token")]
+        [SoapHeader("Token",Direction = SoapHeaderDirection.In)]
         public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilterForBJ filterForBj)
         {
             var result = new ResultRM<PageList<LotteryForBJ>>();
@@ -118,30 +118,59 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "登录,如果返回空字符串则登录失败,成功返回key")]
-        public string Login(string userName,string psw)
+        [WebMethod(Description = "登录")]
+        public ResultRM<string> Login(string userId,string psw,string code)
         {
-            var isSuccess = Dal.Login(userName,psw);
+            
+            var result = new ResultRM<string>();
+            if(code!=SessionValue.Code)
+            {
+                result.Success = false;
+                result.Message = "验证码错误";
+                return result;
+            }
+            string error;
+            var isSuccess = Dal.Login(userId,psw,out error);
             if (isSuccess)
             {
-                //SessionValue.UserName = userName;
-                //SessionValue.Key = Guid.NewGuid().ToString();
-                //return SessionValue.Key;
+                result.Success = true;
+                result.Message = "登录成功";
+                NewKey(result);
             }
-            return "";
+            else
+            {
+                result.Success = false;
+                result.Message = error;
+            }
+            return result;
         }
 
         [WebMethod(Description = "注册")]
-        public int Register(User user)
+        public ResultRM<string> Register(User user)
         {
-            return Dal.Register(user);
+            MyTree.Utility.Log.Log4netExt.Info(Dal.GetClientIP());
+            var result = new ResultRM<string>();
+            string error;
+            var data=Dal.Register(user,out error);
+            if(data>0)
+            {
+                result.Success = true;
+                result.Message = "注册成功";
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = error;
+                result.Code = data;
+            }
+            return result;
         }
 
         [WebMethod(Description = "生成验证码")]
         public string GenerateCode()
         {
             var code = Dal.GenerateCode();
-            //SessionValue.Code = code;
+            SessionValue.Code = code;
             return code;
         }
 
@@ -219,10 +248,10 @@ namespace WebService
         public ResultRM<object> ChangePsw(string oldPsw,string newPsw)
         {
             var result = new ResultRM<object>();
-            if(ValidateToken(Token))
+            if (ValidateToken(Token))
             {
-                var msg=Dal.ChangePsw(Token.UserSysNo, oldPsw, newPsw);
-                if(string.IsNullOrEmpty(msg))
+                var msg = Dal.ChangePsw(Token.UserSysNo,oldPsw,newPsw);
+                if (string.IsNullOrEmpty(msg))
                 {
                     result.Success = true;
                     NewKey(result);
@@ -243,12 +272,41 @@ namespace WebService
 
         [WebMethod(Description = "连号提醒")]
         [SoapHeader("Token")]
-        public ResultRM<object> QueryRemindLottery()
+        public ResultRM<RemindStatistics> QueryRemindLottery()
         {
-            var result = new ResultRM<object>();
-            if(ValidateToken(Token))
+            var result = new ResultRM<RemindStatistics>();
+            if (ValidateToken(Token))
             {
-                
+                result.Data = Dal.QueryRemind(Token.GameSourceSysNo,Token.RegionSourceSysNo,Token.SiteSourceSysNo,
+                                              Token.UserSysNo);
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
+        [WebMethod(Description = "获取用户信息")]
+        [SoapHeader("Token")]
+        public ResultRM<User> GetUserInfo()
+        {
+            var result = new ResultRM<User>();
+            if (ValidateToken(Token))
+            {
+                var data = Dal.Queryuser(Token.UserSysNo);
+                if (data == null)
+                {
+                    result.Success = false;
+                    result.Message = "没有找到用户信息";
+                }
+                else
+                {
+                    result.Success = true;
+                    result.Data = data;
+                }
             }
             else
             {
@@ -277,5 +335,6 @@ namespace WebService
             result.Key = Dal.generateKey();
             SessionValue.Key = result.Key;
         }
+
     }
 }

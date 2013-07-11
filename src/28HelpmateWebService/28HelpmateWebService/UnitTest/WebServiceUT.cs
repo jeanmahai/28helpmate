@@ -54,6 +54,7 @@ namespace UnitTest
             //{
             //    Console.WriteLine("期号{0}",a.PeriodNum);
             //}
+            //m_client.CookieContainer = "";
         }
         [TestMethod]
         public void QueryLotteryByHourStepServiceTest()
@@ -250,6 +251,20 @@ namespace UnitTest
             {
                 Console.WriteLine(string.Format("{0},{1},{2}",item.PeriodNum,item.RetNum,item.RetTime.ToString()));
             }
+        }
+
+        [TestMethod]
+        public void GetClientIP_Test()
+        {
+            Console.WriteLine(m_client.GetClientIP());
+        }
+
+        [TestMethod]
+        public void TestSession()
+        {
+            var client = new LotteryService2.LotteryWebService();
+            client.TokenHeaderValue = new LotteryService2.TokenHeader();
+            Console.WriteLine(m_client.GetClientIP());
         }
     }
 }

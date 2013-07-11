@@ -31,10 +31,6 @@ namespace WebService
         /// </summary>
         public int UserSysNo { get; set; }
 
-        public override string ToString()
-        {
-            return string.Format("{0}{1}{2}{3}{4}", Token, UserSysNo, GameSourceSysNo, RegionSourceSysNo, SiteSourceSysNo);
-        }
         public string ToString(string key)
         {
             return string.Format("{0}{1}{2}{3}{4}",key,UserSysNo,GameSourceSysNo,RegionSourceSysNo,SiteSourceSysNo);

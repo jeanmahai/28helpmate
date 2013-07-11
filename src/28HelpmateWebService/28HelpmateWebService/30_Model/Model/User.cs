@@ -16,5 +16,14 @@ namespace Model.Model
         public virtual DateTime RegDate { get; set; }
         public virtual DateTime RechargeUseBeginTime { get; set; }
         public virtual DateTime RechargeUseEndTime { get; set; }
+
+        public virtual string SecurityQuestion1 { get; set; }
+        public virtual string SecurityAnswer1 { get; set; }
+        public virtual string SecurityQuestion2 { get; set; }
+        public virtual string SecurityAnswer2 { get; set; }
+        public virtual string Phone { get; set; }
+
+        public virtual string QQ { get; set; }
+
     }
 }
