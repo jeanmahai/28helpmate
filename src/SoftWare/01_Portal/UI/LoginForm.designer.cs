@@ -39,7 +39,7 @@
             this.txtCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.bgwUpdate = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
@@ -146,22 +146,22 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "28伴侣-分析平台";
             // 
-            // button1
+            // btnRegister
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.btn;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(482, 247);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 31);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "用户注册";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnRegister.BackColor = System.Drawing.Color.Transparent;
+            this.btnRegister.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.btn;
+            this.btnRegister.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Location = new System.Drawing.Point(482, 247);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(94, 31);
+            this.btnRegister.TabIndex = 5;
+            this.btnRegister.Text = "用户注册";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // bgwUpdate
             // 
@@ -180,7 +180,7 @@
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pnlLoading);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtUserPwd);
             this.Controls.Add(this.txtUserName);
@@ -209,7 +209,7 @@
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegister;
         private System.ComponentModel.BackgroundWorker bgwUpdate;
     }
 }

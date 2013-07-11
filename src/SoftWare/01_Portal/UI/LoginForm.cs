@@ -12,6 +12,7 @@ using Utility.Update;
 using Common.Utility;
 using System.Diagnostics;
 using Helpmate.Facades.LotteryWebService;
+using Helpmate.UI.Forms.FormUI.Customer;
 
 namespace Helpmate.UI.Forms
 {
@@ -104,6 +105,12 @@ namespace Helpmate.UI.Forms
                     pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, "用户或密码错误！"));
                     break;
             }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            var register = new Register();
+            register.ShowDialog();
         }
     }
 }
