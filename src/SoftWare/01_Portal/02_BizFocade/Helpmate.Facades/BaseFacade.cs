@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Helpmate.Facades.RequestMsg;
 using Helpmate.Facades.LotteryWebSvc;
+using Common.Utility;
 
 namespace Helpmate.Facades
 {
@@ -21,7 +22,7 @@ namespace Helpmate.Facades
                     RegionSourceSysNo = Header.RegionSourceSysNo,
                     SiteSourceSysNo = Header.SiteSourceSysNo,
                     UserSysNo = Header.UserSysNo,
-                    Token = ""
+                    Token = UtilsTool.MD5(string.Format("{0}{1}{2}{3}{4}", Header.Key, Header.UserSysNo, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo))
                 };
             }
         }

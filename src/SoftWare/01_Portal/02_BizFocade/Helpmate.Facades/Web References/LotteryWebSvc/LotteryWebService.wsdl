@@ -395,6 +395,39 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetNotice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sysNo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfNotices">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:Notices" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Notices">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SysNo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contents" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PublishUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNoticeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNoticeResult" type="tns:ResultRMOfNotices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetCustomeModuleSoapIn">
@@ -493,6 +526,12 @@
   <wsdl:message name="GetUserInfoTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="GetNoticeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotice" />
+  </wsdl:message>
+  <wsdl:message name="GetNoticeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNoticeResponse" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
@@ -553,6 +592,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取用户信息</wsdl:documentation>
       <wsdl:input message="tns:GetUserInfoSoapIn" />
       <wsdl:output message="tns:GetUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得广告</wsdl:documentation>
+      <wsdl:input message="tns:GetNoticeSoapIn" />
+      <wsdl:output message="tns:GetNoticeSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
@@ -673,6 +717,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetNotice">
+      <soap:operation soapAction="http://tempuri.org/GetNotice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -787,6 +840,15 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:GetUserInfoTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotice">
+      <soap12:operation soapAction="http://tempuri.org/GetNotice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

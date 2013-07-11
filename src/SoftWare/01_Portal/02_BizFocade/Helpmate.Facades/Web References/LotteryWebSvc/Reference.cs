@@ -55,6 +55,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private System.Threading.SendOrPostCallback GetUserInfoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetNoticeOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -137,6 +139,9 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         /// <remarks/>
         public event GetUserInfoCompletedEventHandler GetUserInfoCompleted;
+        
+        /// <remarks/>
+        public event GetNoticeCompletedEventHandler GetNoticeCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
@@ -497,6 +502,35 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetNotice", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfNotices GetNotice(int sysNo) {
+            object[] results = this.Invoke("GetNotice", new object[] {
+                        sysNo});
+            return ((ResultRMOfNotices)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetNoticeAsync(int sysNo) {
+            this.GetNoticeAsync(sysNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetNoticeAsync(int sysNo, object userState) {
+            if ((this.GetNoticeOperationCompleted == null)) {
+                this.GetNoticeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetNoticeOperationCompleted);
+            }
+            this.InvokeAsync("GetNotice", new object[] {
+                        sysNo}, this.GetNoticeOperationCompleted, userState);
+        }
+        
+        private void OnGetNoticeOperationCompleted(object arg) {
+            if ((this.GetNoticeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetNoticeCompleted(this, new GetNoticeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -594,6 +628,156 @@ namespace Helpmate.Facades.LotteryWebSvc {
             }
             set {
                 this.anyAttrField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Notices {
+        
+        private int sysNoField;
+        
+        private string contentsField;
+        
+        private int statusField;
+        
+        private int rankField;
+        
+        private System.DateTime inDateField;
+        
+        private string publishUserField;
+        
+        /// <remarks/>
+        public int SysNo {
+            get {
+                return this.sysNoField;
+            }
+            set {
+                this.sysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Contents {
+            get {
+                return this.contentsField;
+            }
+            set {
+                this.contentsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Rank {
+            get {
+                return this.rankField;
+            }
+            set {
+                this.rankField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime InDate {
+            get {
+                return this.inDateField;
+            }
+            set {
+                this.inDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PublishUser {
+            get {
+                return this.publishUserField;
+            }
+            set {
+                this.publishUserField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfNotices {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private Notices dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        /// <remarks/>
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Notices Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
             }
         }
     }
@@ -2600,6 +2784,32 @@ namespace Helpmate.Facades.LotteryWebSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ResultRMOfUser)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetNoticeCompletedEventHandler(object sender, GetNoticeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetNoticeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetNoticeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfNotices Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfNotices)(this.results[0]));
             }
         }
     }

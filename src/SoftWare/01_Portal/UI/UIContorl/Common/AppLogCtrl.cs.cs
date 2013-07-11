@@ -13,7 +13,7 @@ namespace Helpmate.UI.Forms.UIContorl.Common
 {
     public partial class AppLogCtrl : UserControl
     {
-        private static AppLogCtrl _appLogCtrl;
+        //private static AppLogCtrl _appLogCtrl;
         private PageModel _pageModel = new PageModel();
 
 

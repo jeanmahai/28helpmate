@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Common.Utility;
 
 namespace Helpmate.UI.Forms.UIContorl.Common
 {
@@ -45,6 +46,7 @@ namespace Helpmate.UI.Forms.UIContorl.Common
             }
             catch (Exception ex)
             {
+                WriteLog.Write("HideOpaqueLayer", ex.ToString());
                 //MessageBox.Show(ex.Message);
             }
         }

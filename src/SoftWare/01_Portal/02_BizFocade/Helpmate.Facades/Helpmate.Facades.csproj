@@ -100,6 +100,9 @@
     <None Include="Web References\LotteryWebSvc\ResultRMOfLotteryTrend.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfNotices.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\LotteryWebSvc\ResultRMOfObject.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
