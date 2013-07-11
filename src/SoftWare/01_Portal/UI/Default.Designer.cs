@@ -687,8 +687,9 @@
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "Default";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "28伴侣-分析平台";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Default_Load);
             this.stsPage.ResumeLayout(false);
             this.stsPage.PerformLayout();
