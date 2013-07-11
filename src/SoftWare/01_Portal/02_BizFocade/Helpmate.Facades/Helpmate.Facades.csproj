@@ -77,7 +77,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfCustomModules.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -87,7 +86,16 @@
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfLotteryTrend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfPageListOfLotteryForBJ.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfRemindStatistics.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LotteryWebService\Helpmate.Facades.LotteryWebService.ResultRMOfString.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\LotteryWebService.wsdl" />

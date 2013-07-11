@@ -17,7 +17,6 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    //TokenHeader.Key = Header.Key;
                     var result = ClientService.GetCustomeModule(TokenHeader);
                     Header.Key = result.Key;
                     if (!result.Success) AppMessage.AlertMessage(result.Message);

@@ -142,10 +142,19 @@
       <s:element name="LoginResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:ResultRMOfString" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ResultRMOfString">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Register">
         <s:complexType>
           <s:sequence>
@@ -305,6 +314,61 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ChangePsw">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oldPsw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPsw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePswResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangePswResult" type="tns:ResultRMOfObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryRemindLottery">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ResultRMOfRemindStatistics">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:RemindStatistics" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemindStatistics">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserSysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GameSysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SourceSysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteSysNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetNum" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cnt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryRemindLotteryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryRemindLotteryResult" type="tns:ResultRMOfRemindStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetCustomeModuleSoapIn">
@@ -376,6 +440,24 @@
   <wsdl:message name="GetServerDateSoapOut">
     <wsdl:part name="parameters" element="tns:GetServerDateResponse" />
   </wsdl:message>
+  <wsdl:message name="ChangePswSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePsw" />
+  </wsdl:message>
+  <wsdl:message name="ChangePswSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePswResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePswTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="QueryRemindLotterySoapIn">
+    <wsdl:part name="parameters" element="tns:QueryRemindLottery" />
+  </wsdl:message>
+  <wsdl:message name="QueryRemindLotterySoapOut">
+    <wsdl:part name="parameters" element="tns:QueryRemindLotteryResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryRemindLotteryTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
@@ -388,7 +470,7 @@
       <wsdl:output message="tns:QuerySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Login">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">登录,如果返回空字符串则登录失败,成功返回key</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">登录</wsdl:documentation>
       <wsdl:input message="tns:LoginSoapIn" />
       <wsdl:output message="tns:LoginSoapOut" />
     </wsdl:operation>
@@ -421,6 +503,16 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得服务器的时间</wsdl:documentation>
       <wsdl:input message="tns:GetServerDateSoapIn" />
       <wsdl:output message="tns:GetServerDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePsw">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改密码</wsdl:documentation>
+      <wsdl:input message="tns:ChangePswSoapIn" />
+      <wsdl:output message="tns:ChangePswSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryRemindLottery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">连号提醒</wsdl:documentation>
+      <wsdl:input message="tns:QueryRemindLotterySoapIn" />
+      <wsdl:output message="tns:QueryRemindLotterySoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
@@ -511,6 +603,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ChangePsw">
+      <soap:operation soapAction="http://tempuri.org/ChangePsw" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChangePswTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryRemindLottery">
+      <soap:operation soapAction="http://tempuri.org/QueryRemindLottery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryRemindLotteryTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -595,6 +707,26 @@
       <soap12:operation soapAction="http://tempuri.org/GetServerDate" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePsw">
+      <soap12:operation soapAction="http://tempuri.org/ChangePsw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChangePswTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryRemindLottery">
+      <soap12:operation soapAction="http://tempuri.org/QueryRemindLottery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryRemindLotteryTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
