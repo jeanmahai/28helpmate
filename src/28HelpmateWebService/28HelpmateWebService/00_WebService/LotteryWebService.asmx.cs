@@ -241,6 +241,23 @@ namespace WebService
             return result;
         }
 
+        [WebMethod(Description = "连号提醒")]
+        [SoapHeader("Token")]
+        public ResultRM<object> QueryRemindLottery()
+        {
+            var result = new ResultRM<object>();
+            if(ValidateToken(Token))
+            {
+                
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
         private string GetTableName(int regionSourceSysNo)
         {
             string tableName;

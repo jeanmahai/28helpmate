@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.RemindStatistics,Model">
+    <id name="SysNo" column="SysNo" type="Int32" >
+      <generator class="assigned"/>
+    </id>
+
+    <property name="UserSysNo" column="UserSysNo" type="Int32"  />
+    <property name="GameSysNo" column="GameSysNo" type="Int32"  />
+    <property name="SourceSysNo" column="SourceSysNo" type="Int32"  />
+    <property name="SiteSysNo" column="SiteSysNo" type="Int32"  />
+    <property name="RetNum" column="RetNum" type="Int32"  />
+    <property name="Cnt" column="Cnt" type="Int32"  />
+    <property name="Status" column="Status" type="Int32"  />
+  </class>
+</hibernate-mapping>

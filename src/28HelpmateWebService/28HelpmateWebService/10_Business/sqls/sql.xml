@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Sqls>
 
+  <sql name="RefreshRemind">
+    <![CDATA[
+exec RefreshRemind {0},{1},{2}
+    ]]>
+  </sql>
+
   <sql name="QueryLotteryByHourStep">
     <![CDATA[
 select *

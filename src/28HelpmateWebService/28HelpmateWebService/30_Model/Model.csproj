@@ -54,6 +54,7 @@
     <Compile Include="Model\OmitStatistics.cs" />
     <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\RegionEnum.cs" />
+    <Compile Include="Model\RemindStatistics.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserSite.cs" />
     <Compile Include="Model\UseSource.cs" />
@@ -110,6 +111,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\PageInfo.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\RemindStatistics.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
