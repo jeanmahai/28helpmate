@@ -11,7 +11,7 @@ using Helpmate.BizEntity.Enum;
 using Utility.Update;
 using Common.Utility;
 using System.Diagnostics;
-using Helpmate.Facades.LotteryWebService;
+using Helpmate.Facades.LotteryWebSvc;
 
 namespace Helpmate.UI.Forms
 {

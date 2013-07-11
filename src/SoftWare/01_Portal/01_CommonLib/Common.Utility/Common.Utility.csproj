@@ -59,6 +59,7 @@
     <Compile Include="UtilsTool.cs" />
     <Compile Include="ValidationTool.cs" />
     <Compile Include="ValidCode.cs" />
+    <Compile Include="WriteLog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

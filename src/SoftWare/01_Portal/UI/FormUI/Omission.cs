@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Helpmate.BizEntity;
-using Helpmate.Facades.LotteryWebService;
+using Helpmate.Facades.LotteryWebSvc;
 using Helpmate.UI.Forms.Models;
 using Helpmate.UI.Forms.UIContorl.Common;
 using Helpmate.Facades;

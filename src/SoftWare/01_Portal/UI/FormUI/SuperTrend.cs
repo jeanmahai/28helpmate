@@ -10,7 +10,7 @@ using Common.Utility;
 using Helpmate.Facades;
 using Helpmate.BizEntity;
 using Helpmate.UI.Forms.UIContorl.Common;
-using Helpmate.Facades.LotteryWebService;
+using Helpmate.Facades.LotteryWebSvc;
 using Helpmate.UI.Forms.Models;
 
 namespace Helpmate.UI.Forms.FormUI
@@ -242,7 +242,7 @@ namespace Helpmate.UI.Forms.FormUI
             dgv.Columns[0].DefaultCellStyle.SelectionForeColor = Color.Black;
             for (int i = 1; i < dgv.Columns.Count; i++)
             {
-                dgv.Columns[i].Width = 25;
+                dgv.Columns[i].Width = 28;
                 dgv.Columns[i].DefaultCellStyle.BackColor = UtilsTool.ToColor("#fffde3");
                 dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgv.Columns[i].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#fffde3");
@@ -277,7 +277,7 @@ namespace Helpmate.UI.Forms.FormUI
             dgv.Columns[1].DefaultCellStyle.SelectionForeColor = Color.Black;
             for (int i = 2; i < dgv.Columns.Count; i++)
             {
-                dgv.Columns[i].Width = 25;
+                dgv.Columns[i].Width = 28;
                 dgv.Columns[i].DefaultCellStyle.BackColor = UtilsTool.ToColor("#c6e2ff");
                 dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgv.Columns[i].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#c6e2ff");
@@ -313,7 +313,7 @@ namespace Helpmate.UI.Forms.FormUI
             dgv.Columns[1].DefaultCellStyle.SelectionForeColor = Color.Black;
             for (int i = 2; i < dgv.Columns.Count; i++)
             {
-                dgv.Columns[i].Width = 25;
+                dgv.Columns[i].Width = 28;
                 if ((i >= 2 && i <= 11) || (i >= 20 && i <= 29))
                 {
                     dgv.Columns[i].DefaultCellStyle.BackColor = UtilsTool.ToColor("#C1FFC1");

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Helpmate.Facades.LotteryWebService;
+using Helpmate.Facades.LotteryWebSvc;
 using System.Windows.Forms;
 using Common.Utility;
 using System.Threading;
@@ -17,7 +17,9 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    var result = ClientService.GetCustomeModule(TokenHeader);
+                    TokenHeader.Token = UtilsTool.MD5(string.Format("{0}{1}{2}{3}{4}", Header.Key, Header.UserSysNo, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo));
+                    ClientService.TokenHeaderValue = TokenHeader;
+                    var result = ClientService.GetCustomeModule();
                     Header.Key = result.Key;
                     if (!result.Success) AppMessage.AlertMessage(result.Message);
                     return result;
@@ -25,6 +27,7 @@ namespace Helpmate.Facades
             }
             catch (Exception ex)
             {
+                WriteLog.Write("GetCustomeModule", ex.ToString());
                 AppMessage.AlertMessage(400);
             }
             return null;
@@ -36,8 +39,9 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    //TokenHeader.Key = Header.Key;
-                    var result = ClientService.QueryOmission(TokenHeader);
+                    TokenHeader.Token = UtilsTool.MD5(string.Format("{0}{1}{2}{3}{4}", Header.Key, Header.UserSysNo, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo));
+                    ClientService.TokenHeaderValue = TokenHeader;
+                    var result = ClientService.QueryOmission();
                     Header.Key = result.Key;
                     if (!result.Success) AppMessage.AlertMessage(result.Message);
                     return result;
@@ -45,6 +49,7 @@ namespace Helpmate.Facades
             }
             catch (Exception ex)
             {
+                WriteLog.Write("QueryOmission", ex.ToString());
                 AppMessage.AlertMessage(400);
             }
             return null;
