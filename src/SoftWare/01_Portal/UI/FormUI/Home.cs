@@ -94,7 +94,7 @@ namespace Helpmate.UI.Forms.FormUI
 
         private void tmRefresh_Tick(object sender, EventArgs e)
         {
-            QueryData();
+            //QueryData();
         }
     }
 }

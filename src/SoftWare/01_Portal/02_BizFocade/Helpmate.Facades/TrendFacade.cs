@@ -21,7 +21,6 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    TokenHeader.Token = UtilsTool.MD5(string.Format("{0}{1}{2}{3}{4}", Header.Key, Header.UserSysNo, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo));
                     ClientService.TokenHeaderValue = TokenHeader;
                     var data = ClientService.QueryTrend(pageIndex);
                     Header.Key = data.Key;
@@ -51,7 +50,6 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    TokenHeader.Token = UtilsTool.MD5(string.Format("{0}{1}{2}{3}{4}", Header.Key, Header.UserSysNo, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo));
                     ClientService.TokenHeaderValue = TokenHeader;
                     var data = ClientService.QuerySupperTrend(pageIndex, 20, date, hour, minute);
                     Header.Key = data.Key;

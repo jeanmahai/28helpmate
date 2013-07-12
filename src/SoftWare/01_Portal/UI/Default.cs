@@ -17,6 +17,8 @@ namespace Helpmate.UI.Forms
 {
     public partial class Default : Form
     {
+        public CommonFacade serviceFacade = new CommonFacade();
+
         public Default()
         {
             InitializeComponent();
@@ -29,8 +31,10 @@ namespace Helpmate.UI.Forms
             Header.RegionSourceSysNo = Convert.ToInt32(lblBJ.Tag);
             Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);
 
-            var childForm = new Home();
-            CurrMenu(MenuEnum.Home, childForm.SiteMapList, childForm);
+            //var childForm = new Home();
+            var childForm = new UserInfo();
+            CurrMenu(MenuEnum.User, childForm.SiteMapList, childForm);
+            lblServerTime.Text = serviceFacade.GetServerDate().ToString();
         }
 
         private void pnlHome_Click(object sender, EventArgs e)
@@ -61,6 +65,20 @@ namespace Helpmate.UI.Forms
             RefreshPage();
         }
 
+        private void pnlPay_Click(object sender, EventArgs e)
+        {
+            var childForm = new UserInfo();
+            CurrMenu(MenuEnum.Pay, childForm.SiteMapList, childForm);
+            RefreshPage();
+        }
+
+        private void pnlUser_Click(object sender, EventArgs e)
+        {
+            var childForm = new UserInfo();
+            CurrMenu(MenuEnum.User, childForm.SiteMapList, childForm);
+            RefreshPage();
+        }
+
         public void CurrMenu(MenuEnum menuEnum, List<SiteModel> siteMapList, Form conForm)
         {
             switch (menuEnum)
@@ -80,14 +98,8 @@ namespace Helpmate.UI.Forms
                 case MenuEnum.Special:
                     CurrMenuCtrl(lblEmail, picEmailCurr, conForm, siteMapList);
                     break;
-                case MenuEnum.Tools:
-                    CurrMenuCtrl(lblOther, picOtherCurr, conForm, siteMapList);
-                    break;
-                case MenuEnum.Log:
-                    CurrMenuCtrl(lblUser, picLogCurr, conForm, siteMapList);
-                    break;
                 case MenuEnum.User:
-                    CurrMenuCtrl(lblUser, picLogCurr, conForm, siteMapList);
+                    CurrMenuCtrl(lblUser, picUserCurr, conForm, siteMapList);
                     break;
             }
         }
@@ -104,12 +116,10 @@ namespace Helpmate.UI.Forms
             lblMovie.Font = new Font(lblMovie.Font, FontStyle.Regular);
             picEmailCurr.Visible = false;
             lblMovie.Font = new Font(lblMovie.Font, FontStyle.Regular);
-            picOtherCurr.Visible = false;
-            lblOther.Font = new Font(lblOther.Font, FontStyle.Regular);
-            picLogCurr.Visible = false;
-            lblUser.Font = new Font(lblUser.Font, FontStyle.Regular);
             picNormalTrendCurr.Visible = false;
             lblNormalTrend.Font = new Font(lblUser.Font, FontStyle.Regular);
+            picUserCurr.Visible = false;
+            lblUser.Font = new Font(lblUser.Font, FontStyle.Regular);
 
             currLbl.Font = new Font(lblSuperTrend.Font, FontStyle.Bold);
             currPic.Visible = true;
@@ -191,5 +201,11 @@ namespace Helpmate.UI.Forms
         }
 
         # endregion Title Tab Click Event
+
+        private void timerServr_Tick(object sender, EventArgs e)
+        {
+            DateTime dtNow = DateTime.Parse(lblServerTime.Text.Trim()).AddSeconds(1);
+            lblServerTime.Text = dtNow.ToString();
+        }
     }
 }

@@ -64,6 +64,12 @@
     <Compile Include="FormUI\DateSlt.Designer.cs">
       <DependentUpon>DateSlt.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUI\UserInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUI\UserInfo.Designer.cs">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\IPage.cs" />
     <Compile Include="Models\UtilsModel.cs" />
     <Compile Include="Default.cs">
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\SuperTrend.resx">
       <DependentUpon>SuperTrend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUI\UserInfo.resx">
+      <DependentUpon>UserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
