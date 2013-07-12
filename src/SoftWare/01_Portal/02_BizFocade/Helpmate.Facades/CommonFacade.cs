@@ -71,14 +71,14 @@ namespace Helpmate.Facades
                     ClientService.TokenHeaderValue = TokenHeader;
                     var data = ClientService.GetUserInfo();
                     Header.Key = data.Key;
-                    if (!data.Success) AppMessage.AlertMessage(data.Message);
+                    if (!data.Success) AppMessage.AlertErrMessage(data.Message);
                     return data;
                 }
             }
             catch (Exception ex)
             {
                 WriteLog.Write("GetUserInfo", ex.ToString());
-                AppMessage.AlertMessage(400);
+                AppMessage.AlertErrMessage(400);
             }
             return null;
         }
@@ -109,7 +109,7 @@ namespace Helpmate.Facades
             catch (Exception ex)
             {
                 WriteLog.Write("ChangePwd", ex.ToString());
-                AppMessage.AlertMessage(400);
+                AppMessage.AlertErrMessage(400);
             }
             return null;
         }
@@ -135,7 +135,7 @@ namespace Helpmate.Facades
             catch (Exception ex)
             {
                 WriteLog.Write("Pay", ex.ToString());
-                AppMessage.AlertMessage(400);
+                AppMessage.AlertErrMessage(400);
             }
             return null;
         }
@@ -158,7 +158,7 @@ namespace Helpmate.Facades
             catch (Exception ex)
             {
                 WriteLog.Write("GetServerDate", ex.ToString());
-                AppMessage.AlertMessage(400);
+                AppMessage.AlertErrMessage(400);
             }
             return DateTime.Now;
         }
