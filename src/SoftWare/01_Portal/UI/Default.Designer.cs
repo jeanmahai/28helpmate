@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Default));
             this.stsPage = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -36,13 +37,9 @@
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlLine = new System.Windows.Forms.Panel();
             this.pnlUser = new System.Windows.Forms.Panel();
-            this.picLogCurr = new System.Windows.Forms.PictureBox();
+            this.picUserCurr = new System.Windows.Forms.PictureBox();
             this.lblUser = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pnlOther = new System.Windows.Forms.Panel();
-            this.picOtherCurr = new System.Windows.Forms.PictureBox();
-            this.lblOther = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pnlSpecial = new System.Windows.Forms.Panel();
             this.picEmailCurr = new System.Windows.Forms.PictureBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -73,16 +70,15 @@
             this.lbl71 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlHeadBg = new System.Windows.Forms.Panel();
+            this.lblServerTime = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
+            this.timerServr = new System.Windows.Forms.Timer(this.components);
             this.stsPage.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogCurr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUserCurr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.pnlOther.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picOtherCurr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnlSpecial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmailCurr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -144,7 +140,6 @@
             this.pnlRight.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.appbg;
             this.pnlRight.Controls.Add(this.pnlLine);
             this.pnlRight.Controls.Add(this.pnlUser);
-            this.pnlRight.Controls.Add(this.pnlOther);
             this.pnlRight.Controls.Add(this.pnlSpecial);
             this.pnlRight.Controls.Add(this.pnlNormalTrend);
             this.pnlRight.Controls.Add(this.pnlOmission);
@@ -163,7 +158,7 @@
             this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLine.Location = new System.Drawing.Point(1, 309);
+            this.pnlLine.Location = new System.Drawing.Point(4, 261);
             this.pnlLine.Name = "pnlLine";
             this.pnlLine.Size = new System.Drawing.Size(166, 10);
             this.pnlLine.TabIndex = 32;
@@ -173,24 +168,25 @@
             this.pnlUser.BackColor = System.Drawing.Color.Transparent;
             this.pnlUser.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlUser.Controls.Add(this.picLogCurr);
+            this.pnlUser.Controls.Add(this.picUserCurr);
             this.pnlUser.Controls.Add(this.lblUser);
             this.pnlUser.Controls.Add(this.pictureBox6);
             this.pnlUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlUser.Location = new System.Drawing.Point(1, 265);
+            this.pnlUser.Location = new System.Drawing.Point(1, 219);
             this.pnlUser.Name = "pnlUser";
             this.pnlUser.Size = new System.Drawing.Size(166, 44);
             this.pnlUser.TabIndex = 37;
+            this.pnlUser.Click += new System.EventHandler(this.pnlUser_Click);
             // 
-            // picLogCurr
+            // picUserCurr
             // 
-            this.picLogCurr.Image = global::Helpmate.UI.Forms.Properties.Resources.sidemenu_li_curr;
-            this.picLogCurr.Location = new System.Drawing.Point(153, 13);
-            this.picLogCurr.Name = "picLogCurr";
-            this.picLogCurr.Size = new System.Drawing.Size(13, 18);
-            this.picLogCurr.TabIndex = 7;
-            this.picLogCurr.TabStop = false;
-            this.picLogCurr.Visible = false;
+            this.picUserCurr.Image = global::Helpmate.UI.Forms.Properties.Resources.sidemenu_li_curr;
+            this.picUserCurr.Location = new System.Drawing.Point(152, 13);
+            this.picUserCurr.Name = "picUserCurr";
+            this.picUserCurr.Size = new System.Drawing.Size(13, 18);
+            this.picUserCurr.TabIndex = 7;
+            this.picUserCurr.TabStop = false;
+            this.picUserCurr.Visible = false;
             // 
             // lblUser
             // 
@@ -201,62 +197,18 @@
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(65, 20);
             this.lblUser.TabIndex = 1;
-            this.lblUser.Text = "个人信息";
+            this.lblUser.Text = "个人中心";
+            this.lblUser.Click += new System.EventHandler(this.pnlUser_Click);
             // 
             // pictureBox6
             // 
             this.pictureBox6.Image = global::Helpmate.UI.Forms.Properties.Resources.Log;
-            this.pictureBox6.Location = new System.Drawing.Point(11, 9);
+            this.pictureBox6.Location = new System.Drawing.Point(10, 9);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(37, 27);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
-            // 
-            // pnlOther
-            // 
-            this.pnlOther.BackColor = System.Drawing.Color.Transparent;
-            this.pnlOther.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.pnlOther.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlOther.Controls.Add(this.picOtherCurr);
-            this.pnlOther.Controls.Add(this.lblOther);
-            this.pnlOther.Controls.Add(this.pictureBox5);
-            this.pnlOther.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlOther.Location = new System.Drawing.Point(1, 221);
-            this.pnlOther.Name = "pnlOther";
-            this.pnlOther.Size = new System.Drawing.Size(166, 44);
-            this.pnlOther.TabIndex = 36;
-            // 
-            // picOtherCurr
-            // 
-            this.picOtherCurr.Image = global::Helpmate.UI.Forms.Properties.Resources.sidemenu_li_curr;
-            this.picOtherCurr.Location = new System.Drawing.Point(153, 13);
-            this.picOtherCurr.Name = "picOtherCurr";
-            this.picOtherCurr.Size = new System.Drawing.Size(13, 18);
-            this.picOtherCurr.TabIndex = 6;
-            this.picOtherCurr.TabStop = false;
-            this.picOtherCurr.Visible = false;
-            // 
-            // lblOther
-            // 
-            this.lblOther.AutoSize = true;
-            this.lblOther.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblOther.ForeColor = System.Drawing.Color.Black;
-            this.lblOther.Location = new System.Drawing.Point(55, 12);
-            this.lblOther.Name = "lblOther";
-            this.lblOther.Size = new System.Drawing.Size(65, 20);
-            this.lblOther.TabIndex = 1;
-            this.lblOther.Text = "账户充值";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::Helpmate.UI.Forms.Properties.Resources.Tools;
-            this.pictureBox5.Location = new System.Drawing.Point(11, 9);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(37, 27);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
             // 
             // pnlSpecial
             // 
@@ -645,12 +597,25 @@
             this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeadBg.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.headbg;
+            this.pnlHeadBg.Controls.Add(this.lblServerTime);
             this.pnlHeadBg.Controls.Add(this.label6);
             this.pnlHeadBg.Controls.Add(this.pnlSiteMap);
             this.pnlHeadBg.Location = new System.Drawing.Point(167, 0);
             this.pnlHeadBg.Name = "pnlHeadBg";
             this.pnlHeadBg.Size = new System.Drawing.Size(841, 72);
             this.pnlHeadBg.TabIndex = 48;
+            // 
+            // lblServerTime
+            // 
+            this.lblServerTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblServerTime.AutoSize = true;
+            this.lblServerTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblServerTime.ForeColor = System.Drawing.Color.White;
+            this.lblServerTime.Location = new System.Drawing.Point(681, 49);
+            this.lblServerTime.Name = "lblServerTime";
+            this.lblServerTime.Size = new System.Drawing.Size(41, 12);
+            this.lblServerTime.TabIndex = 48;
+            this.lblServerTime.Text = "label1";
             // 
             // label6
             // 
@@ -660,9 +625,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(389, 49);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(419, 12);
+            this.label6.Size = new System.Drawing.Size(269, 12);
             this.label6.TabIndex = 47;
-            this.label6.Text = "本期分析期号：566679   第565578期开奖号码：X    2013年7月3日 16:45:39";
+            this.label6.Text = "本期分析期号：566679   第565578期开奖号码：X";
             // 
             // pnlSiteMap
             // 
@@ -671,6 +636,12 @@
             this.pnlSiteMap.Name = "pnlSiteMap";
             this.pnlSiteMap.Size = new System.Drawing.Size(360, 30);
             this.pnlSiteMap.TabIndex = 1;
+            // 
+            // timerServr
+            // 
+            this.timerServr.Enabled = true;
+            this.timerServr.Interval = 1000;
+            this.timerServr.Tick += new System.EventHandler(this.timerServr_Tick);
             // 
             // Default
             // 
@@ -695,12 +666,8 @@
             this.pnlRight.ResumeLayout(false);
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogCurr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUserCurr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.pnlOther.ResumeLayout(false);
-            this.pnlOther.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picOtherCurr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.pnlSpecial.ResumeLayout(false);
             this.pnlSpecial.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmailCurr)).EndInit();
@@ -743,13 +710,9 @@
         private System.Windows.Forms.Splitter splApp;
         private System.Windows.Forms.Panel pnlLine;
         private System.Windows.Forms.Panel pnlUser;
-        private System.Windows.Forms.PictureBox picLogCurr;
+        private System.Windows.Forms.PictureBox picUserCurr;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Panel pnlOther;
-        private System.Windows.Forms.PictureBox picOtherCurr;
-        private System.Windows.Forms.Label lblOther;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel pnlSpecial;
         private System.Windows.Forms.PictureBox picEmailCurr;
         private System.Windows.Forms.Label lblEmail;
@@ -782,5 +745,7 @@
         private System.Windows.Forms.Label lbl53;
         private System.Windows.Forms.Label lblMovie;
         private System.Windows.Forms.ToolStripStatusLabel tslNews;
+        private System.Windows.Forms.Timer timerServr;
+        private System.Windows.Forms.Label lblServerTime;
     }
 }
