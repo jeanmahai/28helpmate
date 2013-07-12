@@ -136,6 +136,7 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="psw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -184,7 +185,7 @@
       <s:element name="RegisterResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="RegisterResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="tns:ResultRMOfString" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -394,13 +395,36 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetClientIP">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetClientIPResponse">
+      <s:element name="GetNotice">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetClientIPResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sysNo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfNotices">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:Notices" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Notices">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SysNo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contents" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PublishUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNoticeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNoticeResult" type="tns:ResultRMOfNotices" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -502,11 +526,11 @@
   <wsdl:message name="GetUserInfoTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
-  <wsdl:message name="GetClientIPSoapIn">
-    <wsdl:part name="parameters" element="tns:GetClientIP" />
+  <wsdl:message name="GetNoticeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotice" />
   </wsdl:message>
-  <wsdl:message name="GetClientIPSoapOut">
-    <wsdl:part name="parameters" element="tns:GetClientIPResponse" />
+  <wsdl:message name="GetNoticeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNoticeResponse" />
   </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
@@ -569,9 +593,10 @@
       <wsdl:input message="tns:GetUserInfoSoapIn" />
       <wsdl:output message="tns:GetUserInfoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetClientIP">
-      <wsdl:input message="tns:GetClientIPSoapIn" />
-      <wsdl:output message="tns:GetClientIPSoapOut" />
+    <wsdl:operation name="GetNotice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得广告</wsdl:documentation>
+      <wsdl:input message="tns:GetNoticeSoapIn" />
+      <wsdl:output message="tns:GetNoticeSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
@@ -692,8 +717,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetClientIP">
-      <soap:operation soapAction="http://tempuri.org/GetClientIP" style="document" />
+    <wsdl:operation name="GetNotice">
+      <soap:operation soapAction="http://tempuri.org/GetNotice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -820,8 +845,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetClientIP">
-      <soap12:operation soapAction="http://tempuri.org/GetClientIP" style="document" />
+    <wsdl:operation name="GetNotice">
+      <soap12:operation soapAction="http://tempuri.org/GetNotice" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

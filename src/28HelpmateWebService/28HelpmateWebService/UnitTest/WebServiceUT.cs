@@ -194,7 +194,7 @@ namespace UnitTest
             };
             var result2 = m_client.QueryTrend(head2,1);
 
-            for (var i=0;i<5;i++)
+            for (var i = 0;i < 5;i++)
             {
                 Console.WriteLine(string.Format("{0},{1},{2}",result.Data.DataList[i].PeriodNum,result.Data.DataList[i].RetNum,result.Data.DataList[i].RetTime.ToString()));
                 Console.WriteLine(string.Format("{0},{1},{2}",result2.Data.DataList[i].PeriodNum,result2.Data.DataList[i].RetNum,result2.Data.DataList[i].RetTime.ToString()));
@@ -213,7 +213,7 @@ namespace UnitTest
                 UserSysNo = 1
             };
             var result = m_client.GetCustomeModule(head);
-            
+
         }
 
         [TestMethod]
@@ -256,7 +256,7 @@ namespace UnitTest
         [TestMethod]
         public void GetClientIP_Test()
         {
-            Console.WriteLine(m_client.GetClientIP());
+            //Console.WriteLine(m_client.GetClientIP());
         }
 
         [TestMethod]
@@ -264,7 +264,22 @@ namespace UnitTest
         {
             var client = new LotteryService2.LotteryWebService();
             client.TokenHeaderValue = new LotteryService2.TokenHeader();
-            Console.WriteLine(m_client.GetClientIP());
+            //Console.WriteLine(m_client.GetClientIP());
+        }
+
+        [TestMethod]
+        public void TestRegister()
+        {
+            var user = new UnitTest.LotteryWebService.User()
+                       {
+                           UserID = "jeanma",
+                           UserPwd = "jeanma",
+                           UserName = "jeanma",
+                           SecurityQuestion1 = "1",
+                           SecurityAnswer1 = "1"
+                       };
+            var result = m_client.Register(user);
+            Console.WriteLine(result.Message);
         }
     }
 }

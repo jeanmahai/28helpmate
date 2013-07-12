@@ -626,8 +626,27 @@ namespace Business
                 error = string.Format("每个IP每天最多注册3个账号");
                 return -3;
             }
+            //电话号码验证
+
+            //UserID必须是邮箱地址
+
+            if(string.IsNullOrEmpty(user.SecurityQuestion1))
+            {
+                error = "问题1不能为空";
+                return -4;
+            }
+            if (string.IsNullOrEmpty(user.SecurityAnswer1))
+            {
+                error = "答案1不能为空";
+                return -5;
+            }
 
             user.RegIP = GetClientIP();
+            user.RegDate = DateTime.Now;
+            user.RechargeUseBeginTime = DateTime.Now.AddYears(-1);
+            user.RechargeUseEndTime = DateTime.Now.AddYears(-1);
+            user.Status = 1;
+
             user.UserPwd = CiphertextService.MD5Encryption(user.UserPwd);
             var result = Session.Save(user);
             Session.Flush();
