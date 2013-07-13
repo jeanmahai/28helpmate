@@ -76,6 +76,7 @@
             // 
             this.txtUserName.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtUserName.Location = new System.Drawing.Point(368, 82);
+            this.txtUserName.MaxLength = 50;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(208, 21);
             this.txtUserName.TabIndex = 1;
@@ -84,6 +85,7 @@
             // 
             this.txtUserPwd.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtUserPwd.Location = new System.Drawing.Point(368, 127);
+            this.txtUserPwd.MaxLength = 50;
             this.txtUserPwd.Name = "txtUserPwd";
             this.txtUserPwd.Size = new System.Drawing.Size(208, 21);
             this.txtUserPwd.TabIndex = 2;
@@ -123,6 +125,7 @@
             // 
             this.txtCode.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtCode.Location = new System.Drawing.Point(368, 172);
+            this.txtCode.MaxLength = 6;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(83, 21);
             this.txtCode.TabIndex = 3;

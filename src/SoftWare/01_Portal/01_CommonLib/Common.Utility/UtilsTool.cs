@@ -7,6 +7,7 @@ using System.Media;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using Helpmate.BizEntity;
+using System.IO;
 
 namespace Common.Utility
 {

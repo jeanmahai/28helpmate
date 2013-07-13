@@ -37,8 +37,17 @@ namespace Helpmate.UI.Forms
             string msg = ValidationTool.IsEmpty(user.UserName, "用户名");
             if (!string.IsNullOrEmpty(msg)) { pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, msg)); txtUserName.Focus(); return; }
 
+            if (!ValidationTool.IsEmail(user.UserName))
+            {
+                AlertMessage("请输入正确的邮箱地址！", txtUserName); return;
+            }
+
             msg = ValidationTool.IsEmpty(user.UserPwd, "密码");
             if (!string.IsNullOrEmpty(msg)) { pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, msg)); txtUserPwd.Focus(); return; }
+
+            msg = ValidationTool.IsEmpty(txtCode.Text.Trim(), "验证码");
+            if (!string.IsNullOrEmpty(msg)) { pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, msg)); txtCode.Focus(); return; }
+
 
             btnLogin.Enabled = false;
             btnRegister.Enabled = false;
@@ -47,6 +56,18 @@ namespace Helpmate.UI.Forms
             bgwUserLogin.RunWorkerAsync();
             //bgwUpdate.RunWorkerAsync();
         }
+
+        private bool AlertMessage(string msg, Control txtObj)
+        {
+            if (!string.IsNullOrEmpty(msg))
+            {
+                pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, msg));
+                txtObj.Focus();
+                return false;
+            }
+            return true;
+        }
+
 
         private void backgroundUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -99,7 +120,7 @@ namespace Helpmate.UI.Forms
             var result = e.Result as ResultRMOfString;
             if (!result.Success)
             {
-                AppMessage.AlertErrMessage(result.Message);
+                pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, result.Message));
             }
             else
             {

@@ -594,7 +594,7 @@
       <wsdl:output message="tns:GetUserInfoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetNotice">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得广告</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得公告</wsdl:documentation>
       <wsdl:input message="tns:GetNoticeSoapIn" />
       <wsdl:output message="tns:GetNoticeSoapOut" />
     </wsdl:operation>

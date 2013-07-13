@@ -11,6 +11,7 @@ using Helpmate.Facades;
 using Helpmate.BizEntity;
 using Helpmate.UI.Forms.UIContorl.Common;
 using Helpmate.Facades.LotteryWebSvc;
+using Common.Utility;
 
 namespace Helpmate.UI.Forms.FormUI
 {
@@ -27,21 +28,14 @@ namespace Helpmate.UI.Forms.FormUI
                 new SiteModel(){ Text="个人中心"}
             };
             InitializeComponent();
-            ddlQuestion1.Items.Add("你父亲的姓名是什么？");
-            ddlQuestion1.Items.Add("你母亲的姓名是什么？");
-            ddlQuestion1.Items.Add("你的出生地？");
-            ddlQuestion1.Items.Add("你的宠物的名字？");
-            ddlQuestion1.Items.Add("你的职业是什么？");
-            ddlQuestion1.Items.Add("你配偶的职业是什么？");
-            ddlQuestion1.SelectedIndex = 0;
-            ddlQuestion2.Items.Add("你父亲的姓名是什么？");
-            ddlQuestion2.Items.Add("你母亲的姓名是什么？");
-            ddlQuestion2.Items.Add("你的出生地？");
-            ddlQuestion2.Items.Add("你的宠物的名字？");
-            ddlQuestion2.Items.Add("你的职业是什么？");
-            ddlQuestion2.Items.Add("你配偶的职业是什么？");
-            ddlQuestion2.SelectedIndex = 0;
         }
+
+        private void UserInfo_Load(object sender, EventArgs e)
+        {
+            ddlQuestion1.DataSource = UtilsTool.ProtectionQuestion();
+            ddlQuestion2.DataSource = UtilsTool.ProtectionQuestion();
+        }
+
 
         #region 获取用户信息
         public void QueryData(int? pageIndex = null)
@@ -230,5 +224,7 @@ namespace Helpmate.UI.Forms.FormUI
             cmd.HideOpaqueLayer();
         }
         #endregion
+
+       
     }
 }
