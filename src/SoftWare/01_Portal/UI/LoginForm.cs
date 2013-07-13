@@ -48,11 +48,10 @@ namespace Helpmate.UI.Forms
             msg = ValidationTool.IsEmpty(txtCode.Text.Trim(), "验证码");
             if (!string.IsNullOrEmpty(msg)) { pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, msg)); txtCode.Focus(); return; }
 
-
             btnLogin.Enabled = false;
             btnRegister.Enabled = false;
-            pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在检查版本更新..."));
-            bgwUpdate.RunWorkerAsync();
+            pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在登录..."));
+            bgwUserLogin.RunWorkerAsync();
         }
 
         private bool AlertMessage(string msg, Control txtObj)
@@ -95,8 +94,8 @@ namespace Helpmate.UI.Forms
             {
                 btnLogin.Enabled = false;
                 btnRegister.Enabled = false;
-                pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在登录..."));
-                bgwUserLogin.RunWorkerAsync();
+                pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在加载验证码！"));
+                bgwCode.RunWorkerAsync();
             }
         }
 
@@ -139,8 +138,8 @@ namespace Helpmate.UI.Forms
         {
             btnLogin.Enabled = false;
             btnRegister.Enabled = false;
-            pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在加载验证码！"));
-            bgwCode.RunWorkerAsync();
+            pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在检查版本更新..."));
+            bgwUpdate.RunWorkerAsync();
         }
 
         private void bgwCode_DoWork(object sender, DoWorkEventArgs e)

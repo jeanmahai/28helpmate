@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UpdateApp", "UpdateApp", "{6B45C141-F90B-4134-8A31-233CA00A5CD5}"
 	ProjectSection(SolutionItems) = preProject
 		00_ReferenceLib\UpdateApp\ICSharpCode.SharpZipLib.dll = 00_ReferenceLib\UpdateApp\ICSharpCode.SharpZipLib.dll
+		00_ReferenceLib\UpdateApp\ReadMe.txt = 00_ReferenceLib\UpdateApp\ReadMe.txt
 		00_ReferenceLib\UpdateApp\Update.exe = 00_ReferenceLib\UpdateApp\Update.exe
 		00_ReferenceLib\UpdateApp\Update.pdb = 00_ReferenceLib\UpdateApp\Update.pdb
 		00_ReferenceLib\UpdateApp\Utility.Update.dll = 00_ReferenceLib\UpdateApp\Utility.Update.dll
