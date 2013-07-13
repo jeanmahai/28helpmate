@@ -22,10 +22,10 @@ namespace Helpmate.Facades
                 lock (Header.obj)
                 {
                     Client.Service.TokenHeaderValue = TokenHeader;
-                    var data = Client.Service.QueryTrend(pageIndex);
-                    Header.Key = data.Key;
-                    if (!data.Success) AppMessage.AlertErrMessage(data.Message);
-                    return data;
+                    var result = Client.Service.QueryTrend(pageIndex);
+                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
+                    else if (result.Success) Header.Key = result.Key;
+                    return result;
                 }
             }
             catch (Exception ex)
@@ -51,10 +51,10 @@ namespace Helpmate.Facades
                 lock (Header.obj)
                 {
                     Client.Service.TokenHeaderValue = TokenHeader;
-                    var data = Client.Service.QuerySupperTrend(pageIndex, 20, date, hour, minute);
-                    Header.Key = data.Key;
-                    if (!data.Success) AppMessage.AlertErrMessage(data.Message);
-                    return data;
+                    var result = Client.Service.QuerySupperTrend(pageIndex, 20, date, hour, minute);
+                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
+                    else if (result.Success) Header.Key = result.Key;
+                    return result;
                 }
             }
             catch (Exception ex)

@@ -61,4 +61,34 @@ namespace WebService
         }
         //public static string GenerateKey(int userSysNo)
     }
+    public static class UserKeys
+    {
+        private static object obj = new object();
+        private static Dictionary<int, string> _Keys = null;
+        private static Dictionary<int, string> Keys
+        {
+            get
+            {
+                if (_Keys == null)
+                {
+                    _Keys = new Dictionary<int, string>(100000);
+                }
+                return _Keys;
+            }
+        }
+        public static void WriteKey(int userSysNo, string key)
+        {
+            lock (obj)
+            {
+                Keys[userSysNo] = key;
+            }
+        }
+        public static string ReadKey(int userSysNo)
+        {
+            lock (obj)
+            {
+                return Keys != null && Keys.ContainsKey(userSysNo) ? Keys[userSysNo] : "";
+            }
+        }
+    }
 }

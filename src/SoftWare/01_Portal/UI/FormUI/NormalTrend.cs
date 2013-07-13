@@ -19,6 +19,7 @@ namespace Helpmate.UI.Forms.FormUI
 {
     public partial class NormalTrend : Form, IPage
     {
+        BaseFacade bf = new BaseFacade();
         public TrendFacade serviceFacade = new TrendFacade();
         public List<SiteModel> SiteMapList { get; set; }
 
@@ -115,6 +116,16 @@ namespace Helpmate.UI.Forms.FormUI
                 this.LoadResultData(result.Data.DataList, result.Data.LotteryTimeses, result.Data.PageIndex, result.Data.PageCount);
             else
                 this.LoadResultData(null, null, 0, 0);
+            if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
+            {
+                DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (dr == DialogResult.OK)
+                {
+                    this.Close();
+                    Form loginForm = new LoginForm();
+                    loginForm.Show();
+                }
+            }
         }
         #endregion
         #region 异步Bind

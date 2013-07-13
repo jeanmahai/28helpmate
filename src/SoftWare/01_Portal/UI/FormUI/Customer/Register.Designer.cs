@@ -355,6 +355,7 @@
             // 
             this.cmbQuestionOne.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cmbQuestionOne.DisplayMember = "Value";
+            this.cmbQuestionOne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbQuestionOne.FormattingEnabled = true;
             this.cmbQuestionOne.Items.AddRange(new object[] {
             "请选择"});
@@ -368,6 +369,7 @@
             // 
             this.cmbQuestionTwo.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cmbQuestionTwo.DisplayMember = "Value";
+            this.cmbQuestionTwo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbQuestionTwo.FormattingEnabled = true;
             this.cmbQuestionTwo.Items.AddRange(new object[] {
             "请选择"});

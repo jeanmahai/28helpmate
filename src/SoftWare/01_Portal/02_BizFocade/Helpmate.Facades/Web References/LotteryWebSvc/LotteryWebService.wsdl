@@ -532,6 +532,9 @@
   <wsdl:message name="GetNoticeSoapOut">
     <wsdl:part name="parameters" element="tns:GetNoticeResponse" />
   </wsdl:message>
+  <wsdl:message name="GetNoticeTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
@@ -721,6 +724,7 @@
       <soap:operation soapAction="http://tempuri.org/GetNotice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
+        <soap:header message="tns:GetNoticeTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -849,6 +853,7 @@
       <soap12:operation soapAction="http://tempuri.org/GetNotice" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
+        <soap12:header message="tns:GetNoticeTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

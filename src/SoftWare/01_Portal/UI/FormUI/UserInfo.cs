@@ -17,6 +17,7 @@ namespace Helpmate.UI.Forms.FormUI
 {
     public partial class UserInfo : Form, IPage
     {
+        BaseFacade bf = new BaseFacade();
         public CommonFacade serviceFacade = new CommonFacade();
         public List<SiteModel> SiteMapList { get; set; }
         public OpaqueCommand cmd = new OpaqueCommand();
@@ -34,8 +35,8 @@ namespace Helpmate.UI.Forms.FormUI
         {
             ddlQuestion1.DataSource = UtilsTool.ProtectionQuestion();
             ddlQuestion2.DataSource = UtilsTool.ProtectionQuestion();
+            QueryData();
         }
-
 
         #region 获取用户信息
         public void QueryData(int? pageIndex = null)
@@ -74,6 +75,17 @@ namespace Helpmate.UI.Forms.FormUI
                         lblUserID.Text = result.Data.UserID;
                         lblPhone.Text = result.Data.Phone;
                         lblQQ.Text = result.Data.QQ;
+                    }
+                    if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
+                    {
+                        DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (dr == DialogResult.OK)
+                        {
+                            //Form loginForm = new LoginForm();
+                            //loginForm.Show();
+                            Application.ExitThread();
+                            Application.Run(new LoginForm());
+                        }
                     }
                 }
             }
@@ -139,7 +151,20 @@ namespace Helpmate.UI.Forms.FormUI
                     }
                     else
                     {
-                        MessageBox.Show(result.Message, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
+                        {
+                            DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (dr == DialogResult.OK)
+                            {
+                                Application.Exit();
+                                Form loginForm = new LoginForm();
+                                loginForm.Show();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(result.Message, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -155,13 +180,17 @@ namespace Helpmate.UI.Forms.FormUI
         /// <param name="e"></param>
         private void btnIssue_Click(object sender, EventArgs e)
         {
-            string question1 = ddlQuestion1.Text.Trim();
-            string question2 = ddlQuestion1.Text.Trim();
+            string question1 = ddlQuestion1.SelectedValue.ToString();
+            string question2 = ddlQuestion2.SelectedValue.ToString();
             string answer1 = tbxAnswer1.Text.Trim();
             string answer2 = tbxAnswer2.Text.Trim();
             string oldPwd = tbxOldPwd.Text.Trim();
             string newPwd = tbxNewPwd.Text.Trim();
-            if (string.IsNullOrEmpty(answer1) && string.IsNullOrEmpty(answer2))
+            if (string.IsNullOrEmpty(question1) && string.IsNullOrEmpty(question2))
+            {
+                MessageBox.Show("至少需要选择一个密保问题！");
+            }
+            else if (string.IsNullOrEmpty(answer1) && string.IsNullOrEmpty(answer2))
             {
                 MessageBox.Show("至少需要输入一个密保问题答案！");
             }
@@ -217,14 +246,25 @@ namespace Helpmate.UI.Forms.FormUI
                     }
                     else
                     {
-                        MessageBox.Show(result.Message, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
+                        {
+                            DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (dr == DialogResult.OK)
+                            {
+                                Application.Exit();
+                                Form loginForm = new LoginForm();
+                                loginForm.Show();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(result.Message, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
             cmd.HideOpaqueLayer();
         }
         #endregion
-
-       
     }
 }

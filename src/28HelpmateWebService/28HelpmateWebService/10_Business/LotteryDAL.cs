@@ -570,9 +570,10 @@ namespace Business
                     select a;
             return q.SingleOrDefault();
         }
-        public bool Login(string userId,string psw,out string error)
+        public bool Login(string userId,string psw,out string error, out int userSysNo)
         {
             error = "";
+            userSysNo = 0;
             var user = Session.QueryOver<User>().Where(p => p.UserID == userId).SingleOrDefault<User>();
             if (user == null)
             {
@@ -596,6 +597,7 @@ namespace Business
                 return false;
             }
             //该用户的充值是否可用
+            userSysNo = user.SysNo;
             return true;
         }
         public int Register(User user,out string error)

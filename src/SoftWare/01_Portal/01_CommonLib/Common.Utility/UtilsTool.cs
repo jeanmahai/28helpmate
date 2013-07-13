@@ -79,12 +79,12 @@ namespace Common.Utility
         {
             List<KeyValue> keys = new List<KeyValue>();
             keys.Add(new KeyValue() { Key = "", Value = "请选择" });
-            keys.Add(new KeyValue() { Key = "1", Value = "你父亲的姓名是什么?" });
-            keys.Add(new KeyValue() { Key = "2", Value = "你母亲的姓名是什么?" });
-            keys.Add(new KeyValue() { Key = "3", Value = "你的出生地?" });
-            keys.Add(new KeyValue() { Key = "4", Value = "你的宠物的名字?" });
-            keys.Add(new KeyValue() { Key = "5", Value = "你的职业是什么?" });
-            keys.Add(new KeyValue() { Key = "6", Value = "你配偶的职业是什么?" });
+            keys.Add(new KeyValue() { Key = "你父亲的姓名是什么？", Value = "你父亲的姓名是什么？" });
+            keys.Add(new KeyValue() { Key = "你母亲的姓名是什么？", Value = "你母亲的姓名是什么？" });
+            keys.Add(new KeyValue() { Key = "你的出生地？", Value = "你的出生地？" });
+            keys.Add(new KeyValue() { Key = "你的宠物的名字？", Value = "你的宠物的名字？" });
+            keys.Add(new KeyValue() { Key = "你的职业是什么？", Value = "你的职业是什么？" });
+            keys.Add(new KeyValue() { Key = "你配偶的职业是什么？", Value = "你配偶的职业是什么？" });
             return keys;
         }
     }

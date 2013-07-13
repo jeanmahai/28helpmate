@@ -21,6 +21,7 @@ namespace Helpmate.UI.Forms.FormUI
         public delegate ResultRMOfCustomModules QueryDataDelegate();
         public delegate void BindDataCallback(ResultRMOfCustomModules result);
 
+        BaseFacade bf = new BaseFacade();
         public CommonFacade serviceFacade = new CommonFacade();
         public List<SiteModel> SiteMapList { get; set; }
         public OpaqueCommand cmd = new OpaqueCommand();
@@ -80,6 +81,16 @@ namespace Helpmate.UI.Forms.FormUI
             }
             cmd.HideOpaqueLayer();
             tmRefresh.Enabled = true;
+            if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
+            {
+                DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (dr == DialogResult.OK)
+                {
+                    this.Close();
+                    Form loginForm = new LoginForm();
+                    loginForm.Show();
+                }
+            }
         }
 
         private ResultRMOfCustomModules GetCustomeModule()

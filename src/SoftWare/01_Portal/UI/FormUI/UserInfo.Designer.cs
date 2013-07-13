@@ -378,6 +378,7 @@
             // 
             this.ddlQuestion1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ddlQuestion1.DisplayMember = "Value";
+            this.ddlQuestion1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlQuestion1.FormattingEnabled = true;
             this.ddlQuestion1.Location = new System.Drawing.Point(102, 312);
             this.ddlQuestion1.Name = "ddlQuestion1";
@@ -389,6 +390,7 @@
             // 
             this.ddlQuestion2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ddlQuestion2.DisplayMember = "Value";
+            this.ddlQuestion2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlQuestion2.FormattingEnabled = true;
             this.ddlQuestion2.Location = new System.Drawing.Point(102, 358);
             this.ddlQuestion2.Name = "ddlQuestion2";

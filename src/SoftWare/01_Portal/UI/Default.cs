@@ -26,7 +26,7 @@ namespace Helpmate.UI.Forms
 
         private void Default_Load(object sender, EventArgs e)
         {
-            Header.UserSysNo = 1;//用户编号
+            //Header.UserSysNo = 1;//用户编号
             Header.GameSourceSysNo = 10001;//28游戏
             Header.RegionSourceSysNo = Convert.ToInt32(lblBJ.Tag);
             Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);

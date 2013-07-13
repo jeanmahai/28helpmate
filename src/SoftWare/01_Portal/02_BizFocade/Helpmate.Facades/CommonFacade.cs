@@ -19,8 +19,8 @@ namespace Helpmate.Facades
                 {
                     Client.Service.TokenHeaderValue = TokenHeader;
                     var result = Client.Service.GetCustomeModule();
-                    Header.Key = result.Key;
-                    if (!result.Success) AppMessage.AlertErrMessage(result.Message);
+                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
+                    else if (result.Success) Header.Key = result.Key;
                     return result;
                 }
             }
@@ -40,8 +40,8 @@ namespace Helpmate.Facades
                 {
                     Client.Service.TokenHeaderValue = TokenHeader;
                     var result = Client.Service.QueryOmission();
-                    Header.Key = result.Key;
-                    if (!result.Success) AppMessage.AlertErrMessage(result.Message);
+                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
+                    else if (result.Success) Header.Key = result.Key;
                     return result;
                 }
             }
@@ -69,10 +69,10 @@ namespace Helpmate.Facades
                 lock (Header.obj)
                 {
                     Client.Service.TokenHeaderValue = TokenHeader;
-                    var data = Client.Service.GetUserInfo();
-                    Header.Key = data.Key;
-                    if (!data.Success) AppMessage.AlertErrMessage(data.Message);
-                    return data;
+                    var result = Client.Service.GetUserInfo();
+                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
+                    else if (result.Success) Header.Key = result.Key;
+                    return result;
                 }
             }
             catch (Exception ex)
@@ -100,10 +100,10 @@ namespace Helpmate.Facades
                 lock (Header.obj)
                 {
                     Client.Service.TokenHeaderValue = TokenHeader;
-                    var data = Client.Service.ChangePsw(oldPwd, newPwd);
-                    Header.Key = data.Key;
-                    //if (!data.Success) AppMessage.AlertMessage(data.Message);
-                    return data;
+                    var result = Client.Service.ChangePsw(oldPwd, newPwd);
+                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
+                    else if (result.Success) Header.Key = result.Key;
+                    return result;
                 }
             }
             catch (Exception ex)
@@ -126,10 +126,10 @@ namespace Helpmate.Facades
                 lock (Header.obj)
                 {
                     Client.Service.TokenHeaderValue = TokenHeader;
-                    var data = Client.Service.ChangePsw(cardID, cardPwd);
-                    Header.Key = data.Key;
-                    //if (!data.Success) AppMessage.AlertMessage(data.Message);
-                    return data;
+                    var result = Client.Service.ChangePsw(cardID, cardPwd);
+                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
+                    else if (result.Success) Header.Key = result.Key;
+                    return result;
                 }
             }
             catch (Exception ex)
@@ -150,7 +150,6 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    //ClientService.TokenHeaderValue = TokenHeader;
                     var data = Client.Service.GetServerDate();
                     return data;
                 }

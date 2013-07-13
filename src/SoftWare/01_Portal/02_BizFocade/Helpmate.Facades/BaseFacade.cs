@@ -25,6 +25,8 @@ namespace Helpmate.Facades
                 };
             }
         }
+        public int ERROR_VALIDATE_TOKEN_CODE = 10001;
+        public string ERROR_VALIDATE_TOKEN_MSG = "您的帐号异常，请重新登录！";
 
         public BaseFacade()
         { }        

@@ -14,11 +14,11 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 var result = Client.Service.Login(userName, UtilsTool.MD5(userPwd), code);
+                Header.UserSysNo = int.Parse(string.IsNullOrEmpty(result.Data) ? "0" : result.Data);
                 Header.Key = result.Key;
                 return result;
             }
         }
-
 
         public ResultRMOfString UserRegister(User user)
         {
