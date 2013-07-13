@@ -145,11 +145,9 @@ namespace Common.Utility
 
         #region Public Methods
 
-        public Stream CreateCheckCodeImage(string checkCode)
+        public Bitmap CreateCheckCodeImage(string checkCode)
         {
             this._checkCode = checkCode;
-
-            MemoryStream ms = null;
 
             if (checkCode == null || checkCode.Trim() == String.Empty) return null;
 
@@ -225,21 +223,13 @@ namespace Common.Utility
                 // 画图片的边框线 
 
                 g.DrawRectangle(new Pen(Color.Silver), 0, 0, image.Width - 1, image.Height - 1);
-
-
-
-                ms = new System.IO.MemoryStream();
-
-                image.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-
             }
 
             finally
             {
                 g.Dispose();
-                image.Dispose();
             }
-            return ms;
+            return image;
         }
 
         #endregion

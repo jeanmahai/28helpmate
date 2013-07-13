@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyValue.cs" />
     <Compile Include="SiteModel.cs" />
     <Compile Include="PageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -61,6 +61,12 @@
     <Compile Include="ValidCode.cs" />
     <Compile Include="WriteLog.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BizEntity\Helpmate.BizEntity.csproj">
+      <Project>{02C9A8D4-26A8-4246-B1DD-46B4EFAFDE3C}</Project>
+      <Name>Helpmate.BizEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -23,6 +23,12 @@ namespace Helpmate.UI.Forms.FormUI.Customer
 
         public User user = new User();
 
+        private void Register_Load(object sender, EventArgs e)
+        {
+            cmbQuestionOne.DataSource = UtilsTool.ProtectionQuestion();
+            cmbQuestionTwo.DataSource = UtilsTool.ProtectionQuestion();
+        }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             user.UserID = txtUserID.Text.Trim();
@@ -31,9 +37,9 @@ namespace Helpmate.UI.Forms.FormUI.Customer
             user.Phone = txtPhone.Text.Trim();
             user.QQ = txtQQ.Text.Trim();
 
-            user.SecurityQuestion1 = txtQuestionOne.Text.Trim();
+            user.SecurityQuestion1 = cmbQuestionOne.SelectedValue.ToString();
             user.SecurityAnswer1 = txtAnswerOne.Text.Trim();
-            user.SecurityQuestion2 = txtQuestionTwo.Text.Trim();
+            user.SecurityQuestion2 = cmbQuestionTwo.SelectedValue.ToString();
             user.SecurityAnswer2 = txtAnswerTwo.Text.Trim();
 
             string msg = ValidationTool.IsEmpty(user.UserID, "邮箱账号");
@@ -65,7 +71,7 @@ namespace Helpmate.UI.Forms.FormUI.Customer
 
             if (string.IsNullOrEmpty(user.SecurityQuestion1) && string.IsNullOrEmpty(user.SecurityQuestion2))
             {
-                AlertMessage("必须至少有一个密码保护问题！", txtQuestionOne);
+                AlertMessage("必须至少选择一个密码保护问题！", cmbQuestionOne);
                 return;
             }
 
@@ -87,7 +93,7 @@ namespace Helpmate.UI.Forms.FormUI.Customer
             bgwRegister.RunWorkerAsync();
         }
 
-        private bool AlertMessage(string msg, TextBox txtObj)
+        private bool AlertMessage(string msg, Control txtObj)
         {
             if (!string.IsNullOrEmpty(msg))
             {
@@ -106,13 +112,13 @@ namespace Helpmate.UI.Forms.FormUI.Customer
         private void bgwRegister_DoWork(object sender, DoWorkEventArgs e)
         {
             var customer = new CustomerFacade();
-            customer.UserRegister(user);
+            e.Result = customer.UserRegister(user);
         }
 
         private void bgwRegister_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            btnRegister.Enabled = false;
-            btnCancel.Enabled = false;
+            btnRegister.Enabled = true;
+            btnCancel.Enabled = true;
             pnlLoading.Controls.Clear();
 
             if (e.Error != null)
@@ -130,6 +136,7 @@ namespace Helpmate.UI.Forms.FormUI.Customer
             else
             {
                 AppMessage.Alert("恭喜您，注册成功！");
+                this.Close();
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +42,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.bgwUpdate = new System.ComponentModel.BackgroundWorker();
+            this.picCode = new System.Windows.Forms.PictureBox();
+            this.bgwCode = new System.ComponentModel.BackgroundWorker();
+            this.tlAlter = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.picCode)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -168,6 +173,24 @@
             this.bgwUpdate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundUpdate_DoWork);
             this.bgwUpdate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundUpdate_RunWorkerCompleted);
             // 
+            // picCode
+            // 
+            this.picCode.BackColor = System.Drawing.Color.Transparent;
+            this.picCode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picCode.Location = new System.Drawing.Point(457, 166);
+            this.picCode.Name = "picCode";
+            this.picCode.Size = new System.Drawing.Size(119, 33);
+            this.picCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picCode.TabIndex = 7;
+            this.picCode.TabStop = false;
+            this.tlAlter.SetToolTip(this.picCode, "点击获取验证码");
+            this.picCode.Click += new System.EventHandler(this.picCode_Click);
+            // 
+            // bgwCode
+            // 
+            this.bgwCode.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwCode_DoWork);
+            this.bgwCode.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwCode_RunWorkerCompleted);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnLogin;
@@ -176,6 +199,7 @@
             this.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.loginbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(590, 286);
+            this.Controls.Add(this.picCode);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label4);
@@ -192,6 +216,8 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "28伴侣-分析平台";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,5 +237,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRegister;
         private System.ComponentModel.BackgroundWorker bgwUpdate;
+        private System.Windows.Forms.PictureBox picCode;
+        private System.ComponentModel.BackgroundWorker bgwCode;
+        private System.Windows.Forms.ToolTip tlAlter;
     }
 }

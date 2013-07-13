@@ -13,6 +13,7 @@ using Common.Utility;
 using System.Diagnostics;
 using Helpmate.UI.Forms.FormUI.Customer;
 using Helpmate.Facades.LotteryWebSvc;
+using Helpmate.Facades;
 
 
 namespace Helpmate.UI.Forms
@@ -40,6 +41,7 @@ namespace Helpmate.UI.Forms
             if (!string.IsNullOrEmpty(msg)) { pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, msg)); txtUserPwd.Focus(); return; }
 
             btnLogin.Enabled = false;
+            btnRegister.Enabled = false;
             pnlLoading.Controls.Add(LoadingCtrl.LoadModel());
 
             bgwUserLogin.RunWorkerAsync();
@@ -56,6 +58,7 @@ namespace Helpmate.UI.Forms
         private void backgroundUpdate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             btnLogin.Enabled = true;
+            btnRegister.Enabled = true;
             pnlLoading.Controls.Clear();
 
             if (e.Error != null)
@@ -77,34 +80,30 @@ namespace Helpmate.UI.Forms
 
         private void bgwUserLogin_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (user.UserName == "admin" && user.UserPwd == "admin")
-            {
-                e.Result = 800;
-            }
-            else
-            {
-                e.Result = 400;
-            }
+            var customer = new CustomerFacade();
+            e.Result = customer.UserLogin(user.UserName, user.UserPwd, txtCode.Text.Trim());
         }
 
         private void bgwUserLogin_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             btnLogin.Enabled = true;
+            btnRegister.Enabled = true;
+            pnlLoading.Controls.Clear();
+
             if (e.Error != null)
             {
                 pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, "用户登录失败，请稍后再试！"));
                 return;
             }
 
-            switch (Convert.ToInt32(e.Result))
+            var result = e.Result as ResultRMOfString;
+            if (!result.Success)
             {
-                case 800:
-                    this.DialogResult = DialogResult.OK;
-                    break;
-
-                case 400:
-                    pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, "用户或密码错误！"));
-                    break;
+                AppMessage.AlertErrMessage(result.Message);
+            }
+            else
+            {
+                this.DialogResult = DialogResult.OK;
             }
         }
 
@@ -112,6 +111,45 @@ namespace Helpmate.UI.Forms
         {
             var register = new Register();
             register.ShowDialog();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            btnLogin.Enabled = false;
+            btnRegister.Enabled = false;
+            pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在加载验证码！"));
+            bgwCode.RunWorkerAsync();
+        }
+
+        private void bgwCode_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var customer = new CustomerFacade();
+            e.Result = customer.LoadCode();
+
+        }
+
+        private void bgwCode_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnLogin.Enabled = true;
+            btnRegister.Enabled = true;
+            pnlLoading.Controls.Clear();
+
+            if (e.Error != null)
+            {
+                pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Error, "加载验证码失败，请稍后再试！"));
+                return;
+            }
+
+            ValidCode code = new ValidCode(6, ValidCode.CodeType.Numbers);
+            picCode.Image = code.CreateCheckCodeImage(e.Result.ToString());
+        }
+
+        private void picCode_Click(object sender, EventArgs e)
+        {
+            btnLogin.Enabled = false;
+            btnRegister.Enabled = false;
+            pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在加载验证码！"));
+            bgwCode.RunWorkerAsync();
         }
     }
 }

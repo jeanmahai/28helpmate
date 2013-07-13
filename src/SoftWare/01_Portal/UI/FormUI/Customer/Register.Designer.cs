@@ -45,18 +45,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtNUserPwd = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtQuestionTwo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtAnswerTwo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtQuestionOne = new System.Windows.Forms.TextBox();
             this.txtAnswerOne = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bgwRegister = new System.ComponentModel.BackgroundWorker();
+            this.cmbQuestionOne = new System.Windows.Forms.ComboBox();
+            this.cmbQuestionTwo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtUserName
@@ -242,15 +242,6 @@
             this.label7.TabIndex = 108;
             this.label7.Text = "密码保护问题二：";
             // 
-            // txtQuestionTwo
-            // 
-            this.txtQuestionTwo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtQuestionTwo.Location = new System.Drawing.Point(217, 372);
-            this.txtQuestionTwo.MaxLength = 40;
-            this.txtQuestionTwo.Name = "txtQuestionTwo";
-            this.txtQuestionTwo.Size = new System.Drawing.Size(319, 21);
-            this.txtQuestionTwo.TabIndex = 14;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -295,15 +286,6 @@
             this.label10.Size = new System.Drawing.Size(103, 13);
             this.label10.TabIndex = 108;
             this.label10.Text = "密码问题答案一：";
-            // 
-            // txtQuestionOne
-            // 
-            this.txtQuestionOne.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtQuestionOne.Location = new System.Drawing.Point(217, 304);
-            this.txtQuestionOne.MaxLength = 40;
-            this.txtQuestionOne.Name = "txtQuestionOne";
-            this.txtQuestionOne.Size = new System.Drawing.Size(319, 21);
-            this.txtQuestionOne.TabIndex = 11;
             // 
             // txtAnswerOne
             // 
@@ -369,6 +351,32 @@
             this.bgwRegister.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwRegister_DoWork);
             this.bgwRegister.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwRegister_RunWorkerCompleted);
             // 
+            // cmbQuestionOne
+            // 
+            this.cmbQuestionOne.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cmbQuestionOne.DisplayMember = "Value";
+            this.cmbQuestionOne.FormattingEnabled = true;
+            this.cmbQuestionOne.Items.AddRange(new object[] {
+            "请选择"});
+            this.cmbQuestionOne.Location = new System.Drawing.Point(217, 308);
+            this.cmbQuestionOne.Name = "cmbQuestionOne";
+            this.cmbQuestionOne.Size = new System.Drawing.Size(319, 20);
+            this.cmbQuestionOne.TabIndex = 156;
+            this.cmbQuestionOne.ValueMember = "Key";
+            // 
+            // cmbQuestionTwo
+            // 
+            this.cmbQuestionTwo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cmbQuestionTwo.DisplayMember = "Value";
+            this.cmbQuestionTwo.FormattingEnabled = true;
+            this.cmbQuestionTwo.Items.AddRange(new object[] {
+            "请选择"});
+            this.cmbQuestionTwo.Location = new System.Drawing.Point(217, 374);
+            this.cmbQuestionTwo.Name = "cmbQuestionTwo";
+            this.cmbQuestionTwo.Size = new System.Drawing.Size(319, 20);
+            this.cmbQuestionTwo.TabIndex = 156;
+            this.cmbQuestionTwo.ValueMember = "Key";
+            // 
             // Register
             // 
             this.AcceptButton = this.btnRegister;
@@ -377,6 +385,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(644, 522);
+            this.Controls.Add(this.cmbQuestionTwo);
+            this.Controls.Add(this.cmbQuestionOne);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label12);
@@ -390,9 +400,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtAnswerOne);
             this.Controls.Add(this.txtAnswerTwo);
-            this.Controls.Add(this.txtQuestionOne);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtQuestionTwo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtNUserPwd);
@@ -411,6 +419,7 @@
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "用户注册";
+            this.Load += new System.EventHandler(this.Register_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,17 +443,17 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNUserPwd;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtQuestionTwo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtAnswerTwo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtQuestionOne;
         private System.Windows.Forms.TextBox txtAnswerOne;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel2;
         private System.ComponentModel.BackgroundWorker bgwRegister;
+        private System.Windows.Forms.ComboBox cmbQuestionOne;
+        private System.Windows.Forms.ComboBox cmbQuestionTwo;
     }
 }

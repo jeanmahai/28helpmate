@@ -9,11 +9,11 @@ namespace Helpmate.Facades
 {
     public class CustomerFacade : BaseFacade
     {
-        public ResultRMOfString UserLogin(string userID, string userPwd, string code)
+        public ResultRMOfString UserLogin(string userName, string userPwd, string code)
         {
             lock (Header.obj)
             {
-                var result = ClientService.Login(userID, UtilsTool.MD5(userPwd), code);
+                var result = ClientService.Login(userName, UtilsTool.MD5(userPwd), code);
                 Header.Key = result.Key;
                 return result;
             }
@@ -26,6 +26,15 @@ namespace Helpmate.Facades
             {
                 user.UserPwd = UtilsTool.MD5(user.UserPwd);
                 var result = ClientService.Register(user);
+                return result;
+            }
+        }
+
+        public string LoadCode()
+        {
+            lock (Header.obj)
+            {
+                var result = ClientService.GenerateCode();
                 return result;
             }
         }

@@ -230,6 +230,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\02_Tool\Helpmate.Update\Helpmate.UI\Config\Version.config">
+      <Link>Config\Version.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
