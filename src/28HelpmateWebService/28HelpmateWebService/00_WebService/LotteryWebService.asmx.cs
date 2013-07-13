@@ -166,7 +166,7 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "生成验证码")]
+        [WebMethod(Description = "生成验证码", EnableSession=true)]
         public string GenerateCode()
         {
             var code = Dal.GenerateCode();
