@@ -4,10 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_CommonLib", "01_CommonLib", "{6E6E7B49-50DE-40ED-AA2F-04A09F99B233}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_ReferenceLib", "00_ReferenceLib", "{7E8B4237-D3BE-45AE-A5CE-D8916FA24D40}"
-	ProjectSection(SolutionItems) = preProject
-		00_ReferenceLib\Utility.Update.dll = 00_ReferenceLib\Utility.Update.dll
-		00_ReferenceLib\Utility.Update.pdb = 00_ReferenceLib\Utility.Update.pdb
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpmate.BizEntity", "BizEntity\Helpmate.BizEntity.csproj", "{02C9A8D4-26A8-4246-B1DD-46B4EFAFDE3C}"
 EndProject
@@ -22,6 +18,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_BizFocade", "02_BizFocade", "{E2C2C629-8D62-46F4-882F-F9447EEA657F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpmate.Facades", "02_BizFocade\Helpmate.Facades\Helpmate.Facades.csproj", "{472B4B6F-8193-4FF9-B7D6-CAB5A1ED96AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UpdateApp", "UpdateApp", "{6B45C141-F90B-4134-8A31-233CA00A5CD5}"
+	ProjectSection(SolutionItems) = preProject
+		00_ReferenceLib\UpdateApp\ICSharpCode.SharpZipLib.dll = 00_ReferenceLib\UpdateApp\ICSharpCode.SharpZipLib.dll
+		00_ReferenceLib\UpdateApp\Update.exe = 00_ReferenceLib\UpdateApp\Update.exe
+		00_ReferenceLib\UpdateApp\Update.pdb = 00_ReferenceLib\UpdateApp\Update.pdb
+		00_ReferenceLib\UpdateApp\Utility.Update.dll = 00_ReferenceLib\UpdateApp\Utility.Update.dll
+		00_ReferenceLib\UpdateApp\Utility.Update.pdb = 00_ReferenceLib\UpdateApp\Utility.Update.pdb
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +64,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{72E39F75-9206-4980-B215-5D183CF079CD} = {6E6E7B49-50DE-40ED-AA2F-04A09F99B233}
+		{6B45C141-F90B-4134-8A31-233CA00A5CD5} = {7E8B4237-D3BE-45AE-A5CE-D8916FA24D40}
 		{472B4B6F-8193-4FF9-B7D6-CAB5A1ED96AB} = {E2C2C629-8D62-46F4-882F-F9447EEA657F}
 	EndGlobalSection
 EndGlobal

@@ -37,6 +37,9 @@
     <ApplicationIcon>Firefox.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\00_ReferenceLib\UpdateApp\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Deployment" />
@@ -47,8 +50,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Utility.Update">
-      <HintPath>..\00_ReferenceLib\Utility.Update.dll</HintPath>
+    <Reference Include="Update, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>..\00_ReferenceLib\UpdateApp\Update.exe</HintPath>
+    </Reference>
+    <Reference Include="Utility.Update, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\00_ReferenceLib\UpdateApp\Utility.Update.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

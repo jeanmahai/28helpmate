@@ -205,9 +205,9 @@ namespace Utility.Update
             Stream rStream = null;
             Stream wStream = null;
             double writeBytes = 0;
-            string[] sourceFiles = null; 
+            string[] sourceFiles = null;
             string[] targetFiles = null;
-            GetFiles(manifest, sourcePath,out sourceFiles,out targetFiles);
+            GetFiles(manifest, sourcePath, out sourceFiles, out targetFiles);
             if (!TaskCanceled(asyncOp.UserSuppliedState))
             {
                 try
@@ -223,7 +223,7 @@ namespace Utility.Update
                             if (!Directory.Exists(Path.GetDirectoryName(targetFiles[i])))
                             {
                                 Directory.CreateDirectory(Path.GetDirectoryName(targetFiles[i]));
-                            } 
+                            }
                             rStream = new FileStream(sourceFiles[i], FileMode.Open, FileAccess.Read, FileShare.None);
                             wStream = new FileStream(targetFiles[i], FileMode.Create, FileAccess.Write, FileShare.None);
                             while ((len = rStream.Read(buffer, offset, writeFileLength)) > 0)
@@ -252,11 +252,19 @@ namespace Utility.Update
                     exception = ex;
                     OnFileCopyError(new FileCopyErrorEventArgs() { Error = ex, Manifest = manifest });
                 }
+
+                if (exception == null && targetFiles.Length > 0)
+                {
+                    //解压文件
+                    string fileName = targetFiles.First();
+                    ZipHelper.DeCompressionZip(fileName, Path.GetFullPath("."));
+                    File.Delete(fileName);
+                }
             }
             this.CompletionMethod(manifest, exception, TaskCanceled(asyncOp.UserSuppliedState), asyncOp);
         }
 
-        private void GetFiles(Manifest manifest, string sourcePath,out string[] sourceFiles,out string[] targetFiles)
+        private void GetFiles(Manifest manifest, string sourcePath, out string[] sourceFiles, out string[] targetFiles)
         {
             sourceFiles = new string[manifest.ManifestFiles.Files.Length];
             targetFiles = new string[manifest.ManifestFiles.Files.Length];

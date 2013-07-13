@@ -51,10 +51,8 @@ namespace Helpmate.UI.Forms
 
             btnLogin.Enabled = false;
             btnRegister.Enabled = false;
-            pnlLoading.Controls.Add(LoadingCtrl.LoadModel());
-
-            bgwUserLogin.RunWorkerAsync();
-            //bgwUpdate.RunWorkerAsync();
+            pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在检查版本更新..."));
+            bgwUpdate.RunWorkerAsync();
         }
 
         private bool AlertMessage(string msg, Control txtObj)
@@ -95,6 +93,9 @@ namespace Helpmate.UI.Forms
             }
             else
             {
+                btnLogin.Enabled = false;
+                btnRegister.Enabled = false;
+                pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在登录..."));
                 bgwUserLogin.RunWorkerAsync();
             }
         }
