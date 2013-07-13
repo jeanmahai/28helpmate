@@ -17,8 +17,8 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    ClientService.TokenHeaderValue = TokenHeader;
-                    var result = ClientService.GetCustomeModule();
+                    Client.Service.TokenHeaderValue = TokenHeader;
+                    var result = Client.Service.GetCustomeModule();
                     Header.Key = result.Key;
                     if (!result.Success) AppMessage.AlertErrMessage(result.Message);
                     return result;
@@ -38,8 +38,8 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    ClientService.TokenHeaderValue = TokenHeader;
-                    var result = ClientService.QueryOmission();
+                    Client.Service.TokenHeaderValue = TokenHeader;
+                    var result = Client.Service.QueryOmission();
                     Header.Key = result.Key;
                     if (!result.Success) AppMessage.AlertErrMessage(result.Message);
                     return result;
@@ -68,8 +68,8 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    ClientService.TokenHeaderValue = TokenHeader;
-                    var data = ClientService.GetUserInfo();
+                    Client.Service.TokenHeaderValue = TokenHeader;
+                    var data = Client.Service.GetUserInfo();
                     Header.Key = data.Key;
                     if (!data.Success) AppMessage.AlertErrMessage(data.Message);
                     return data;
@@ -99,8 +99,8 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    ClientService.TokenHeaderValue = TokenHeader;
-                    var data = ClientService.ChangePsw(oldPwd, newPwd);
+                    Client.Service.TokenHeaderValue = TokenHeader;
+                    var data = Client.Service.ChangePsw(oldPwd, newPwd);
                     Header.Key = data.Key;
                     //if (!data.Success) AppMessage.AlertMessage(data.Message);
                     return data;
@@ -125,8 +125,8 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    ClientService.TokenHeaderValue = TokenHeader;
-                    var data = ClientService.ChangePsw(cardID, cardPwd);
+                    Client.Service.TokenHeaderValue = TokenHeader;
+                    var data = Client.Service.ChangePsw(cardID, cardPwd);
                     Header.Key = data.Key;
                     //if (!data.Success) AppMessage.AlertMessage(data.Message);
                     return data;
@@ -151,7 +151,7 @@ namespace Helpmate.Facades
                 lock (Header.obj)
                 {
                     //ClientService.TokenHeaderValue = TokenHeader;
-                    var data = ClientService.GetServerDate();
+                    var data = Client.Service.GetServerDate();
                     return data;
                 }
             }

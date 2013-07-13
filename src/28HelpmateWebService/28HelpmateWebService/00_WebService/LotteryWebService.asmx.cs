@@ -99,7 +99,7 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "查询开奖结果")]
+        [WebMethod(Description = "查询开奖结果", EnableSession = true)]
         [SoapHeader("Token",Direction = SoapHeaderDirection.In)]
         public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilterForBJ filterForBj)
         {
@@ -109,6 +109,7 @@ namespace WebService
                 result.Data = Dal.Query_28BJ(filterForBj);
                 result.Success = true;
                 result.Message = MESSAGE_SUCCESS;
+                NewKey(result);
             }
             else
             {
@@ -118,7 +119,7 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "登录")]
+        [WebMethod(Description = "登录", EnableSession = true)]
         public ResultRM<string> Login(string userId,string psw,string code)
         {
 
@@ -166,7 +167,7 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "生成验证码", EnableSession=true)]
+        [WebMethod(Description = "生成验证码", EnableSession = true)]
         public string GenerateCode()
         {
             var code = Dal.GenerateCode();
@@ -243,7 +244,7 @@ namespace WebService
             return DateTime.Now;
         }
 
-        [WebMethod(Description = "修改密码")]
+        [WebMethod(Description = "修改密码", EnableSession = true)]
         [SoapHeader("Token")]
         public ResultRM<object> ChangePsw(string oldPsw,string newPsw)
         {
@@ -270,7 +271,7 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "连号提醒")]
+        [WebMethod(Description = "连号提醒", EnableSession = true)]
         [SoapHeader("Token")]
         public ResultRM<RemindStatistics> QueryRemindLottery()
         {
@@ -280,6 +281,7 @@ namespace WebService
                 result.Data = Dal.QueryRemind(Token.GameSourceSysNo,Token.RegionSourceSysNo,Token.SiteSourceSysNo,
                                               Token.UserSysNo);
                 result.Success = true;
+                NewKey(result);
             }
             else
             {
@@ -289,7 +291,7 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "获取用户信息")]
+        [WebMethod(Description = "获取用户信息", EnableSession = true)]
         [SoapHeader("Token")]
         public ResultRM<User> GetUserInfo()
         {
@@ -306,6 +308,7 @@ namespace WebService
                 {
                     result.Success = true;
                     result.Data = data;
+                    NewKey(result);
                 }
             }
             else
@@ -316,12 +319,13 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "获得广告")]
+        [WebMethod(Description = "获得公告", EnableSession = true)]
         public ResultRM<Notices> GetNotice(int sysNo)
         {
             var result = new ResultRM<Notices>();
             result.Data = Dal.GetNotices(sysNo);
             result.Success = true;
+            NewKey(result);
             return result;
         }
 

@@ -5,13 +5,12 @@ using System.Text;
 using Helpmate.Facades.RequestMsg;
 using Helpmate.Facades.LotteryWebSvc;
 using Common.Utility;
+using System.Net;
 
 namespace Helpmate.Facades
 {
     public class BaseFacade
     {
-        public LotteryWebService ClientService { get; set; }
-
         public TokenHeader TokenHeader
         {
             get
@@ -28,8 +27,24 @@ namespace Helpmate.Facades
         }
 
         public BaseFacade()
+        { }        
+    }
+
+    public class Client
+    {
+        private static LotteryWebSvc.LotteryWebService _Service = null;
+        public static LotteryWebSvc.LotteryWebService Service
         {
-            ClientService = new LotteryWebService();
+            get
+            {
+                if (_Service == null)
+                {
+                    _Service = new LotteryWebSvc.LotteryWebService();
+                    CookieContainer cc = new CookieContainer();
+                    _Service.CookieContainer = cc;
+                }
+                return _Service;
+            }
         }
     }
 }

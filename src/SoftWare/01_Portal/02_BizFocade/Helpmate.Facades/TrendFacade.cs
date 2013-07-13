@@ -21,8 +21,8 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    ClientService.TokenHeaderValue = TokenHeader;
-                    var data = ClientService.QueryTrend(pageIndex);
+                    Client.Service.TokenHeaderValue = TokenHeader;
+                    var data = Client.Service.QueryTrend(pageIndex);
                     Header.Key = data.Key;
                     if (!data.Success) AppMessage.AlertErrMessage(data.Message);
                     return data;
@@ -50,8 +50,8 @@ namespace Helpmate.Facades
             {
                 lock (Header.obj)
                 {
-                    ClientService.TokenHeaderValue = TokenHeader;
-                    var data = ClientService.QuerySupperTrend(pageIndex, 20, date, hour, minute);
+                    Client.Service.TokenHeaderValue = TokenHeader;
+                    var data = Client.Service.QuerySupperTrend(pageIndex, 20, date, hour, minute);
                     Header.Key = data.Key;
                     if (!data.Success) AppMessage.AlertErrMessage(data.Message);
                     return data;

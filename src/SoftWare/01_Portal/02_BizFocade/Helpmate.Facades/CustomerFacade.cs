@@ -13,7 +13,7 @@ namespace Helpmate.Facades
         {
             lock (Header.obj)
             {
-                var result = ClientService.Login(userName, UtilsTool.MD5(userPwd), code);
+                var result = Client.Service.Login(userName, UtilsTool.MD5(userPwd), code);
                 Header.Key = result.Key;
                 return result;
             }
@@ -25,7 +25,7 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 user.UserPwd = UtilsTool.MD5(user.UserPwd);
-                var result = ClientService.Register(user);
+                var result = Client.Service.Register(user);
                 return result;
             }
         }
@@ -34,7 +34,7 @@ namespace Helpmate.Facades
         {
             lock (Header.obj)
             {
-                var result = ClientService.GenerateCode();
+                var result = Client.Service.GenerateCode();
                 return result;
             }
         }
