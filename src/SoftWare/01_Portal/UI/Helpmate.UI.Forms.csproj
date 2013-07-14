@@ -102,6 +102,7 @@
       <DependentUpon>UserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\IPage.cs" />
+    <Compile Include="Models\RemindStatisticsModel.cs" />
     <Compile Include="Models\UtilsModel.cs" />
     <Compile Include="Default.cs">
       <SubType>Form</SubType>

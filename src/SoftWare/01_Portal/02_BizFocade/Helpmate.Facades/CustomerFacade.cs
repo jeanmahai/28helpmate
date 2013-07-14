@@ -37,7 +37,7 @@ namespace Helpmate.Facades
         /// 从Service获取提醒设置
         /// </summary>
         /// <returns></returns>
-        public ResultRMOfRemindStatistics GetRemindLottery()
+        public ResultRMOfRemindStatistics GetRemindLottery(int pageIndex)
         {
             lock (Header.obj)
             {
@@ -52,6 +52,7 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
+                remind.UserSysNo = TokenHeader.UserSysNo;
                 var result = Client.Service.SaveRemind(remind);
                 if (result.Success) Header.Key = result.Key;
                 return result;

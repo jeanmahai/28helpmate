@@ -82,6 +82,7 @@
             // 
             // ddlSource
             // 
+            this.ddlSource.DisplayMember = "Value";
             this.ddlSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlSource.DropDownWidth = 85;
             this.ddlSource.FormattingEnabled = true;
@@ -89,6 +90,7 @@
             this.ddlSource.Name = "ddlSource";
             this.ddlSource.Size = new System.Drawing.Size(130, 20);
             this.ddlSource.TabIndex = 27;
+            this.ddlSource.ValueMember = "Key";
             // 
             // lblGame
             // 
@@ -103,6 +105,7 @@
             // ddlGame
             // 
             this.ddlGame.BackColor = System.Drawing.SystemColors.Window;
+            this.ddlGame.DisplayMember = "Value";
             this.ddlGame.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlGame.DropDownWidth = 85;
             this.ddlGame.FormattingEnabled = true;
@@ -110,6 +113,7 @@
             this.ddlGame.Name = "ddlGame";
             this.ddlGame.Size = new System.Drawing.Size(130, 20);
             this.ddlGame.TabIndex = 23;
+            this.ddlGame.ValueMember = "Key";
             // 
             // lnkFirst
             // 
@@ -195,6 +199,7 @@
             // 
             // ddlSite
             // 
+            this.ddlSite.DisplayMember = "Value";
             this.ddlSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlSite.DropDownWidth = 85;
             this.ddlSite.FormattingEnabled = true;
@@ -202,6 +207,7 @@
             this.ddlSite.Name = "ddlSite";
             this.ddlSite.Size = new System.Drawing.Size(130, 20);
             this.ddlSite.TabIndex = 30;
+            this.ddlSite.ValueMember = "Key";
             // 
             // lblResult
             // 
@@ -215,6 +221,7 @@
             // 
             // ddlResult
             // 
+            this.ddlResult.DisplayMember = "Value";
             this.ddlResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlResult.DropDownWidth = 85;
             this.ddlResult.FormattingEnabled = true;
@@ -222,6 +229,7 @@
             this.ddlResult.Name = "ddlResult";
             this.ddlResult.Size = new System.Drawing.Size(130, 20);
             this.ddlResult.TabIndex = 32;
+            this.ddlResult.ValueMember = "Key";
             // 
             // lblCnt
             // 
@@ -242,8 +250,8 @@
             // 
             // pnlLine
             // 
-            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLine.BackColor = System.Drawing.Color.Transparent;
             this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -291,6 +299,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RemindSet";
             this.Text = "RemindSet";
+            this.Load += new System.EventHandler(this.RemindSet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).EndInit();
             this.ResumeLayout(false);
