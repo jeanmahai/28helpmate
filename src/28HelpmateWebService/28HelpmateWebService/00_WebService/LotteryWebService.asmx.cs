@@ -254,12 +254,12 @@ namespace WebService
 
         [WebMethod(Description = "修改密码", EnableSession = true)]
         [SoapHeader("ReqHeader")]
-        public ResultRM<object> ChangePsw(string oldPsw,string newPsw)
+        public ResultRM<object> ChangePsw(string oldPsw,string newPsw,string q1,string a1,string q2,string a2)
         {
             var result = new ResultRM<object>();
             if (ValidateToken(ReqHeader))
             {
-                var msg = Dal.ChangePsw(ReqHeader.UserSysNo,oldPsw,newPsw);
+                var msg = Dal.ChangePsw(ReqHeader.UserSysNo,oldPsw,newPsw,q1,a1,q2,a2);
                 if (string.IsNullOrEmpty(msg))
                 {
                     result.Success = true;

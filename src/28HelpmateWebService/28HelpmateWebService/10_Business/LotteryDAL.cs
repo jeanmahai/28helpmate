@@ -679,14 +679,23 @@ namespace Business
             IPAsc(ip);
             return (int)result;
         }
-        public string ChangePsw(int userSysNo,string oldPsw,string newPsw)
+        public string ChangePsw(int userSysNo,string oldPsw,string newPsw,string q1,string a1,string q2,string a2)
         {
             var q = (from a in Session.Query<User>()
                      where a.SysNo == userSysNo && CiphertextService.MD5Encryption(oldPsw) == a.UserPwd
                      select a).SingleOrDefault();
             if (q == null)
             {
-                return "密码错误";
+                return "密码错误或用户不存在";
+            }
+            bool isPass = q.SecurityQuestion1 == q1 && q.SecurityAnswer1 == a1;
+            if (q.SecurityQuestion2 == q2 && q.SecurityAnswer2 == a2)
+            {
+                isPass = true;
+            }
+            if(!isPass)
+            {
+                return "问题验证失败";
             }
 
             q.UserPwd = CiphertextService.MD5Encryption(newPsw);
