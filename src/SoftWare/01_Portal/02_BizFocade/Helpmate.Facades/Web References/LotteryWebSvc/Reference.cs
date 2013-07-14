@@ -67,6 +67,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private System.Threading.SendOrPostCallback DelRemindOperationCompleted;
         
+        private System.Threading.SendOrPostCallback QueryRemindOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -167,6 +169,9 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         /// <remarks/>
         public event DelRemindCompletedEventHandler DelRemindCompleted;
+        
+        /// <remarks/>
+        public event QueryRemindCompletedEventHandler QueryRemindCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
@@ -713,6 +718,38 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/QueryRemind", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfPageListOfRemindStatistics QueryRemind(int pageIndex, int pageSize) {
+            object[] results = this.Invoke("QueryRemind", new object[] {
+                        pageIndex,
+                        pageSize});
+            return ((ResultRMOfPageListOfRemindStatistics)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void QueryRemindAsync(int pageIndex, int pageSize) {
+            this.QueryRemindAsync(pageIndex, pageSize, null);
+        }
+        
+        /// <remarks/>
+        public void QueryRemindAsync(int pageIndex, int pageSize, object userState) {
+            if ((this.QueryRemindOperationCompleted == null)) {
+                this.QueryRemindOperationCompleted = new System.Threading.SendOrPostCallback(this.OnQueryRemindOperationCompleted);
+            }
+            this.InvokeAsync("QueryRemind", new object[] {
+                        pageIndex,
+                        pageSize}, this.QueryRemindOperationCompleted, userState);
+        }
+        
+        private void OnQueryRemindOperationCompleted(object arg) {
+            if ((this.QueryRemindCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.QueryRemindCompleted(this, new QueryRemindCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -732,7 +769,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -815,7 +852,262 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class PageListOfRemindStatistics {
+        
+        private int totalField;
+        
+        private RemindStatistics[] listField;
+        
+        private int pageSizeField;
+        
+        private int pageIndexField;
+        
+        private int pageCountField;
+        
+        /// <remarks/>
+        public int Total {
+            get {
+                return this.totalField;
+            }
+            set {
+                this.totalField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RemindStatistics[] List {
+            get {
+                return this.listField;
+            }
+            set {
+                this.listField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PageSize {
+            get {
+                return this.pageSizeField;
+            }
+            set {
+                this.pageSizeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PageIndex {
+            get {
+                return this.pageIndexField;
+            }
+            set {
+                this.pageIndexField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PageCount {
+            get {
+                return this.pageCountField;
+            }
+            set {
+                this.pageCountField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class RemindStatistics {
+        
+        private int sysNoField;
+        
+        private int userSysNoField;
+        
+        private int gameSysNoField;
+        
+        private int sourceSysNoField;
+        
+        private int siteSysNoField;
+        
+        private int retNumField;
+        
+        private int cntField;
+        
+        private int statusField;
+        
+        /// <remarks/>
+        public int SysNo {
+            get {
+                return this.sysNoField;
+            }
+            set {
+                this.sysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int UserSysNo {
+            get {
+                return this.userSysNoField;
+            }
+            set {
+                this.userSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int GameSysNo {
+            get {
+                return this.gameSysNoField;
+            }
+            set {
+                this.gameSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SourceSysNo {
+            get {
+                return this.sourceSysNoField;
+            }
+            set {
+                this.sourceSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SiteSysNo {
+            get {
+                return this.siteSysNoField;
+            }
+            set {
+                this.siteSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Cnt {
+            get {
+                return this.cntField;
+            }
+            set {
+                this.cntField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfPageListOfRemindStatistics {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private PageListOfRemindStatistics dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public PageListOfRemindStatistics Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -848,7 +1140,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -977,7 +1269,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1082,112 +1374,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class RemindStatistics {
-        
-        private int sysNoField;
-        
-        private int userSysNoField;
-        
-        private int gameSysNoField;
-        
-        private int sourceSysNoField;
-        
-        private int siteSysNoField;
-        
-        private int retNumField;
-        
-        private int cntField;
-        
-        private int statusField;
-        
-        /// <remarks/>
-        public int SysNo {
-            get {
-                return this.sysNoField;
-            }
-            set {
-                this.sysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int UserSysNo {
-            get {
-                return this.userSysNoField;
-            }
-            set {
-                this.userSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int GameSysNo {
-            get {
-                return this.gameSysNoField;
-            }
-            set {
-                this.gameSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int SourceSysNo {
-            get {
-                return this.sourceSysNoField;
-            }
-            set {
-                this.sourceSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int SiteSysNo {
-            get {
-                return this.siteSysNoField;
-            }
-            set {
-                this.siteSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int RetNum {
-            get {
-                return this.retNumField;
-            }
-            set {
-                this.retNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Cnt {
-            get {
-                return this.cntField;
-            }
-            set {
-                this.cntField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1268,7 +1455,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1349,7 +1536,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1430,7 +1617,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1511,7 +1698,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1592,7 +1779,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1673,7 +1860,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1862,7 +2049,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1943,7 +2130,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2024,7 +2211,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2141,7 +2328,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2222,7 +2409,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2303,7 +2490,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2336,7 +2523,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2393,7 +2580,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2474,7 +2661,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2555,7 +2742,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2569,6 +2756,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int pageSizeField;
         
         private int pageIndexField;
+        
+        private int pageCountField;
         
         /// <remarks/>
         public int Total {
@@ -2609,10 +2798,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.pageIndexField = value;
             }
         }
+        
+        /// <remarks/>
+        public int PageCount {
+            get {
+                return this.pageCountField;
+            }
+            set {
+                this.pageCountField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2693,7 +2892,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2776,7 +2975,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2893,7 +3092,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2974,7 +3173,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3518,6 +3717,32 @@ namespace Helpmate.Facades.LotteryWebSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ResultRMOfBoolean)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void QueryRemindCompletedEventHandler(object sender, QueryRemindCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class QueryRemindCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal QueryRemindCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfPageListOfRemindStatistics Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfPageListOfRemindStatistics)(this.results[0]));
             }
         }
     }

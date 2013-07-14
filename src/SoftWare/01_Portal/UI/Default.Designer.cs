@@ -133,8 +133,8 @@
             // 
             this.tslNews.Margin = new System.Windows.Forms.Padding(85, 3, 0, 2);
             this.tslNews.Name = "tslNews";
-            this.tslNews.Size = new System.Drawing.Size(106, 17);
-            this.tslNews.Text = "此为消息公告栏11";
+            this.tslNews.Size = new System.Drawing.Size(32, 17);
+            this.tslNews.Text = "公告";
             // 
             // splApp
             // 

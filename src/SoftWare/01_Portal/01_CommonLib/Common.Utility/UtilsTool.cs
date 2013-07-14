@@ -87,5 +87,38 @@ namespace Common.Utility
             keys.Add(new KeyValue() { Key = "你配偶的职业是什么？", Value = "你配偶的职业是什么？" });
             return keys;
         }
+        /// <summary>
+        /// 游戏列表
+        /// </summary>
+        /// <returns></returns>
+        public static List<KeyValue> GameList()
+        {
+            List<KeyValue> keys = new List<KeyValue>();
+            keys.Add(new KeyValue() { Key = "10001", Value = "28游戏" });
+            return keys;
+        }
+        /// <summary>
+        /// 源数据列表
+        /// </summary>
+        /// <returns></returns>
+        public static List<KeyValue> SourceList()
+        {
+            List<KeyValue> keys = new List<KeyValue>();
+            keys.Add(new KeyValue() { Key = "10001", Value = "北京" });
+            keys.Add(new KeyValue() { Key = "10002", Value = "加拿大" });
+            return keys;
+        }
+        /// <summary>
+        /// 网站列表
+        /// </summary>
+        /// <returns></returns>
+        public static List<KeyValue> SiteList()
+        {
+            List<KeyValue> keys = new List<KeyValue>();
+            keys.Add(new KeyValue() { Key = "10001", Value = "53游" });
+            keys.Add(new KeyValue() { Key = "10002", Value = "71豆" });
+            keys.Add(new KeyValue() { Key = "10003", Value = "芝麻西西" });
+            return keys;
+        }
     }
 }
