@@ -35,6 +35,10 @@
             this.tslNews = new System.Windows.Forms.ToolStripStatusLabel();
             this.splApp = new System.Windows.Forms.Splitter();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.pnlRemindSet = new System.Windows.Forms.Panel();
+            this.picRemindSetCurr = new System.Windows.Forms.PictureBox();
+            this.lblRemindSet = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pnlLine = new System.Windows.Forms.Panel();
             this.pnlUser = new System.Windows.Forms.Panel();
             this.picUserCurr = new System.Windows.Forms.PictureBox();
@@ -76,6 +80,9 @@
             this.timerServr = new System.Windows.Forms.Timer(this.components);
             this.stsPage.SuspendLayout();
             this.pnlRight.SuspendLayout();
+            this.pnlRemindSet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRemindSetCurr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.pnlUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUserCurr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -138,6 +145,7 @@
             // pnlRight
             // 
             this.pnlRight.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.appbg;
+            this.pnlRight.Controls.Add(this.pnlRemindSet);
             this.pnlRight.Controls.Add(this.pnlLine);
             this.pnlRight.Controls.Add(this.pnlUser);
             this.pnlRight.Controls.Add(this.pnlSpecial);
@@ -152,13 +160,60 @@
             this.pnlRight.Size = new System.Drawing.Size(168, 468);
             this.pnlRight.TabIndex = 44;
             // 
+            // pnlRemindSet
+            // 
+            this.pnlRemindSet.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRemindSet.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
+            this.pnlRemindSet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlRemindSet.Controls.Add(this.picRemindSetCurr);
+            this.pnlRemindSet.Controls.Add(this.lblRemindSet);
+            this.pnlRemindSet.Controls.Add(this.pictureBox7);
+            this.pnlRemindSet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlRemindSet.Location = new System.Drawing.Point(2, 265);
+            this.pnlRemindSet.Name = "pnlRemindSet";
+            this.pnlRemindSet.Size = new System.Drawing.Size(166, 44);
+            this.pnlRemindSet.TabIndex = 38;
+            this.pnlRemindSet.Click += new System.EventHandler(this.pnlRemindSet_Click);
+            // 
+            // picRemindSetCurr
+            // 
+            this.picRemindSetCurr.Image = global::Helpmate.UI.Forms.Properties.Resources.sidemenu_li_curr;
+            this.picRemindSetCurr.Location = new System.Drawing.Point(152, 13);
+            this.picRemindSetCurr.Name = "picRemindSetCurr";
+            this.picRemindSetCurr.Size = new System.Drawing.Size(13, 18);
+            this.picRemindSetCurr.TabIndex = 7;
+            this.picRemindSetCurr.TabStop = false;
+            this.picRemindSetCurr.Visible = false;
+            // 
+            // lblRemindSet
+            // 
+            this.lblRemindSet.AutoSize = true;
+            this.lblRemindSet.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblRemindSet.ForeColor = System.Drawing.Color.Black;
+            this.lblRemindSet.Location = new System.Drawing.Point(55, 12);
+            this.lblRemindSet.Name = "lblRemindSet";
+            this.lblRemindSet.Size = new System.Drawing.Size(65, 20);
+            this.lblRemindSet.TabIndex = 1;
+            this.lblRemindSet.Text = "提醒设置";
+            this.lblRemindSet.Click += new System.EventHandler(this.pnlRemindSet_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::Helpmate.UI.Forms.Properties.Resources.Log;
+            this.pictureBox7.Location = new System.Drawing.Point(10, 9);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(37, 27);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
+            // 
             // pnlLine
             // 
             this.pnlLine.BackColor = System.Drawing.Color.Transparent;
             this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLine.Location = new System.Drawing.Point(4, 261);
+            this.pnlLine.Location = new System.Drawing.Point(3, 298);
             this.pnlLine.Name = "pnlLine";
             this.pnlLine.Size = new System.Drawing.Size(166, 10);
             this.pnlLine.TabIndex = 32;
@@ -172,7 +227,7 @@
             this.pnlUser.Controls.Add(this.lblUser);
             this.pnlUser.Controls.Add(this.pictureBox6);
             this.pnlUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlUser.Location = new System.Drawing.Point(1, 219);
+            this.pnlUser.Location = new System.Drawing.Point(1, 221);
             this.pnlUser.Name = "pnlUser";
             this.pnlUser.Size = new System.Drawing.Size(166, 44);
             this.pnlUser.TabIndex = 37;
@@ -594,8 +649,8 @@
             // 
             // pnlHeadBg
             // 
-            this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeadBg.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.headbg;
             this.pnlHeadBg.Controls.Add(this.lblServerTime);
             this.pnlHeadBg.Controls.Add(this.label6);
@@ -664,6 +719,10 @@
             this.stsPage.ResumeLayout(false);
             this.stsPage.PerformLayout();
             this.pnlRight.ResumeLayout(false);
+            this.pnlRemindSet.ResumeLayout(false);
+            this.pnlRemindSet.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRemindSetCurr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.pnlUser.ResumeLayout(false);
             this.pnlUser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUserCurr)).EndInit();
@@ -747,5 +806,9 @@
         private System.Windows.Forms.ToolStripStatusLabel tslNews;
         private System.Windows.Forms.Timer timerServr;
         private System.Windows.Forms.Label lblServerTime;
+        private System.Windows.Forms.Panel pnlRemindSet;
+        private System.Windows.Forms.PictureBox picRemindSetCurr;
+        private System.Windows.Forms.Label lblRemindSet;
+        private System.Windows.Forms.PictureBox pictureBox7;
     }
 }
