@@ -375,10 +375,10 @@ namespace Business
         public LotteryForBJ GetCurrentLottery(int siteSysNo,string tableName)
         {
             var sql = SqlManager.GetSqlText("GetCurrentLottery");
-            sql = string.Format(sql, tableName, siteSysNo);
+            sql = string.Format(sql,tableName,siteSysNo);
 
             var q = Session.CreateSQLQuery(sql)
-                .AddEntity(typeof (LotteryForBJ))
+                .AddEntity(typeof(LotteryForBJ))
                 .List<LotteryForBJ>().SingleOrDefault();
             return q;
         }
@@ -576,7 +576,7 @@ namespace Business
                     select a;
             return q.SingleOrDefault();
         }
-        public bool Login(string userId,string psw,out string error, out int userSysNo)
+        public bool Login(string userId,string psw,out string error,out int userSysNo)
         {
             error = "";
             userSysNo = 0;
@@ -638,7 +638,7 @@ namespace Business
 
             //UserID必须是邮箱地址
 
-            if(string.IsNullOrEmpty(user.SecurityQuestion1))
+            if (string.IsNullOrEmpty(user.SecurityQuestion1))
             {
                 error = "问题1不能为空";
                 return -4;
@@ -700,6 +700,75 @@ namespace Business
             return Session.QueryOver<Notices>().Where(p => p.SysNo == sysNo && p.Status == 1).SingleOrDefault<Notices>();
         }
 
+        public void WritePayLog(PayLog log)
+        {
+            log.IP = GetClientIP();
+            log.InDate = DateTime.Now;
+            Session.Save(log);
+            Session.Flush();
+        }
+
+        public void SavePayCard(PayCard card)
+        {
+            card.InDate = DateTime.Now;
+            Session.Save(card);
+            Session.Flush();
+        }
+
+        public PayCard GetPayCard(string cardNo,string base64Psw)
+        {
+            var q = from a in Session.Query<PayCard>()
+                    where a.PayCardID == cardNo && a.PayCardPwd == base64Psw
+                    select a;
+            return q.SingleOrDefault();
+        }
+
+        public bool Recharge(int userSysNo,string cardNo,string cardPsw,out string error)
+        {
+            error = "";
+            var pswb64 = Base64Encode(cardPsw);
+            var card = GetPayCard(cardNo,pswb64);
+            if (card == null)
+            {
+                error = "充值卡不存在";
+                return false;
+            }
+            //TimeSpan duation;
+            //天
+            //if (card.CategorySysNo == 1)
+            //{
+            //duation = card.EndTime - card.BeginTime;
+            //}
+            ////月
+            //if (card.CategorySysNo == 2) { }
+            var duration = card.EndTime - card.BeginTime;
+
+            var user = Queryuser(userSysNo);
+            if(user==null)
+            {
+                error = "用户不存在";
+                return false;
+            }
+            if(user.RechargeUseEndTime<DateTime.Now)
+            {
+                user.RechargeUseEndTime = DateTime.Now.Add(duration);
+            }
+            else
+            {
+                user.RechargeUseEndTime = user.RechargeUseEndTime.Add(duration);
+            }
+            Session.Save(user);
+            Session.Flush();
+
+            var log = new PayLog();
+            log.CardSysNo =card.SysNo;
+            log.UserSysNo = userSysNo;
+
+            WritePayLog(log);
+
+            return true;
+        }
+
         private void SetCache(string key,object val)
         {
             HttpContext.Current.Cache.Insert(key,val,null,DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59")),TimeSpan.Zero);
@@ -728,5 +797,49 @@ namespace Business
             if (val.HasValue) return val.Value > 3;
             return false;
         }
+        /// <summary>
+        /// 进行base64编码
+        /// </summary>
+        /// <param name="data">被编码数据</param>
+        /// <returns></returns>
+        public static string Base64Encode(string data)
+        {
+            try
+            {
+                byte[] encData_byte = new byte[data.Length];
+                encData_byte = System.Text.Encoding.UTF8.GetBytes(data);
+                string encodedData = Convert.ToBase64String(encData_byte);
+                return encodedData;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Base64Encode: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 进行base64解码
+        /// </summary>
+        /// <param name="data">被解码数据</param>
+        /// <returns></returns>
+        public static string Base64Decode(string data)
+        {
+            try
+            {
+                var encoder = new UTF8Encoding();
+                Decoder utf8Decode = encoder.GetDecoder();
+                byte[] todecode_byte = Convert.FromBase64String(data);
+                int charCount = utf8Decode.GetCharCount(todecode_byte,0,todecode_byte.Length);
+                var decoded_char = new char[charCount];
+                utf8Decode.GetChars(todecode_byte,0,todecode_byte.Length,decoded_char,0);
+                var result = new String(decoded_char);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Base64Decode: " + ex.Message);
+            }
+        }
+
     }
 }

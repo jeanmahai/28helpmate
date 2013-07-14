@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.PayCard,Model"
+         table="[PayCard]">
+    <id name="SysNo" column="SysNo" type="Int32" >
+      <generator class="native"/>
+    </id>
+    <property name="PayCardID" column="PayCardID" type="String"/>
+    <property name="PayCardPwd" column="PayCardPwd" type="String"/>
+    <property name="CategorySysNo" column="CategorySysNo" type="Int32"/>
+    <property name="Status" column="Status" type="Int32"/>
+    <property name="InDate" column="InDate" type="DateTime"/>
+    <property name="BeginTime" column="BeginTime" type="DateTime"/>
+    <property name="EndTime" column="EndTime" type="DateTime"/>
+  </class>
+</hibernate-mapping>

@@ -370,6 +370,29 @@ namespace WebService
             return result;
         }
 
+        [WebMethod(Description = "充值", EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<bool> Recharge(string cardNo,string cardPsw)
+        {
+            var result = new ResultRM<bool>();
+            string error;
+            if (ValidateToken(ReqHeader))
+            {
+
+                result.Data = Dal.Recharge(ReqHeader.UserSysNo, cardNo, cardPsw, out error);
+                result.Success = true;
+                result.Message = error;
+                NewKey(result,ReqHeader.UserSysNo);
+            }
+            else
+            {
+                result.Success = false;
+                result.Code = ERROR_VALIDATE_TOKEN_CODE;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
         private string GetTableName(int regionSourceSysNo)
         {
             string tableName;
