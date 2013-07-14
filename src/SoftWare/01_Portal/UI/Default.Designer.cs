@@ -77,7 +77,7 @@
             this.lblServerTime = new System.Windows.Forms.Label();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
-            this.timerServr = new System.Windows.Forms.Timer(this.components);
+            this.timerServer = new System.Windows.Forms.Timer(this.components);
             this.bgwApp = new System.ComponentModel.BackgroundWorker();
             this.tmApp = new System.Windows.Forms.Timer(this.components);
             this.stsPage.SuspendLayout();
@@ -694,11 +694,11 @@
             this.pnlSiteMap.Size = new System.Drawing.Size(360, 30);
             this.pnlSiteMap.TabIndex = 1;
             // 
-            // timerServr
+            // timerServer
             // 
-            this.timerServr.Enabled = true;
-            this.timerServr.Interval = 1000;
-            this.timerServr.Tick += new System.EventHandler(this.timerServr_Tick);
+            this.timerServer.Enabled = true;
+            this.timerServer.Interval = 1000;
+            this.timerServer.Tick += new System.EventHandler(this.timerServer_Tick);
             // 
             // bgwApp
             // 
@@ -816,7 +816,7 @@
         private System.Windows.Forms.Label lbl53;
         private System.Windows.Forms.Label lblMovie;
         private System.Windows.Forms.ToolStripStatusLabel tslNews;
-        private System.Windows.Forms.Timer timerServr;
+        private System.Windows.Forms.Timer timerServer;
         private System.Windows.Forms.Label lblServerTime;
         private System.Windows.Forms.Panel pnlRemindSet;
         private System.Windows.Forms.PictureBox picRemindSetCurr;

@@ -212,20 +212,27 @@ namespace Helpmate.UI.Forms
 
         # endregion Title Tab Click Event
 
-        private void timerServr_Tick(object sender, EventArgs e)
+        private void timerServer_Tick(object sender, EventArgs e)
         {
+            timerServer.Enabled = false;
             DateTime dtNow = DateTime.Parse(lblServerTime.Text.Trim()).AddSeconds(1);
             lblServerTime.Text = dtNow.ToString();
+            timerServer.Enabled = true;
         }
 
         private void bgwApp_DoWork(object sender, DoWorkEventArgs e)
         {
-
+            e.Result = serviceFacade.GetCustomeModule();
         }
 
         private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             var result = e.Result;
+            if (string.IsNullOrEmpty(lblServerTime.Text))
+            {
+                lblServerTime.Text = DateTime.Now.ToString();
+                timerServer.Enabled = true;
+            }
         }
     }
 }
