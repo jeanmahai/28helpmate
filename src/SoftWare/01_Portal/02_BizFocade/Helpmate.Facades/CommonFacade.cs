@@ -63,7 +63,7 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
-                var result = Client.Service.ChangePsw(oldPwd, newPwd);
+                var result = Client.Service.ChangePsw(oldPwd, newPwd, question1, answer1, question2, answer2);
                 if (result.Success) Header.Key = result.Key;
                 return result;
             }
@@ -74,12 +74,12 @@ namespace Helpmate.Facades
         /// <param name="cardID">卡号</param>
         /// <param name="cardPwd">密码</param>
         /// <returns></returns>
-        public ResultRMOfObject Pay(string cardID, string cardPwd)
+        public ResultRMOfBoolean Pay(string cardID, string cardPwd)
         {
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
-                var result = Client.Service.ChangePsw(cardID, cardPwd);
+                var result = Client.Service.Recharge(cardID, cardPwd);
                 if (result.Success) Header.Key = result.Key;
                 return result;
             }
