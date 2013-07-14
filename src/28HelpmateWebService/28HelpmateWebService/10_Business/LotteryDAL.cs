@@ -279,9 +279,16 @@ namespace Business
         public LotteryByTwentyPeriod QueryLotteryByHourStep(DateTime dateTime,int siteSysNo,string tableName)
         {
             var datesStr = new List<string>();
+            DateTime temp = dateTime;
             for (var i = 1;i <= 20;i++)
             {
-                datesStr.Add("'" + dateTime.AddHours(-i).ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                temp = temp.AddHours(-1);
+                if (temp.Hour < 9)
+                {
+                    temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
+                }
+
+                datesStr.Add("'" + temp.ToString("yyyy-MM-dd HH:mm:ss") + "'");
             }
 
             var sql = SqlManager.GetSqlText("QueryLotteryByHourStep");
