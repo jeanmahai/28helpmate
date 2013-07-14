@@ -273,7 +273,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
-            result.Forecast = dateTime.Hour.ToString(CultureInfo.InvariantCulture);
+            result.Forecast = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
             return result;
         }
         /// <summary>
@@ -299,7 +299,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
-            result.Forecast = dateTime.Day.ToString(CultureInfo.InvariantCulture);
+            result.Forecast = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
             return result;
         }
         /// <summary>

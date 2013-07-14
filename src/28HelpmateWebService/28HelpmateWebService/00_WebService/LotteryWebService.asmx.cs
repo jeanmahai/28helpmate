@@ -415,6 +415,32 @@ namespace WebService
             return result;
         }
 
+        [WebMethod(Description = "提醒+当前期", EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<InfoForTimer> GetInfoForTimer()
+        {
+            var result = new ResultRM<InfoForTimer>();
+            if (ValidateToken(ReqHeader))
+            {
+
+                result.Data = new InfoForTimer();
+                result.Data.Lottery = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,
+                                                            GetTableName(ReqHeader.RegionSourceSysNo));
+                result.Data.Remind = Dal.QueryRemind(ReqHeader.GameSourceSysNo,ReqHeader.RegionSourceSysNo,ReqHeader.SiteSourceSysNo,
+                                              ReqHeader.UserSysNo);
+                result.Success =true;
+                //result.Message = error;
+                NewKey(result,ReqHeader.UserSysNo);
+            }
+            else
+            {
+                result.Success = false;
+                result.Code = ERROR_VALIDATE_TOKEN_CODE;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
         private string GetTableName(int regionSourceSysNo)
         {
             string tableName;

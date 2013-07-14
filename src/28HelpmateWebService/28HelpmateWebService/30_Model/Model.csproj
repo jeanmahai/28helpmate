@@ -45,6 +45,7 @@
     <Compile Include="Enum\BigSmall.cs" />
     <Compile Include="Enum\CenterSideEnum.cs" />
     <Compile Include="Enum\OddEvenEnum.cs" />
+    <Compile Include="Model\InfoForTimer.cs" />
     <Compile Include="Model\LotteryExtByBJ.cs" />
     <Compile Include="Model\LotteryForBJ.cs" />
     <Compile Include="Model\LotteryTimes.cs" />
