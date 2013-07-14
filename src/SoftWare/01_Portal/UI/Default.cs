@@ -217,5 +217,15 @@ namespace Helpmate.UI.Forms
             DateTime dtNow = DateTime.Parse(lblServerTime.Text.Trim()).AddSeconds(1);
             lblServerTime.Text = dtNow.ToString();
         }
+
+        private void bgwApp_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var result = e.Result;
+        }
     }
 }
