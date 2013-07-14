@@ -14,6 +14,7 @@ using Helpmate.Facades.LotteryWebSvc;
 using Common.Utility;
 using Helpmate.BizEntity.Enum;
 using Helpmate.UI.Forms.Code;
+using Helpmate.QueryFilter;
 
 namespace Helpmate.UI.Forms.FormUI
 {
@@ -58,6 +59,7 @@ namespace Helpmate.UI.Forms.FormUI
         }
         private void bgworkerUserInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            cmd.HideOpaqueLayer();
             var result = e.Result as ResultRMOfUser;
 
             if (e.Error != null)
@@ -73,7 +75,6 @@ namespace Helpmate.UI.Forms.FormUI
                 lblUserID.Text = result.Data.UserID;
                 lblPhone.Text = result.Data.Phone;
                 lblQQ.Text = result.Data.QQ;
-                cmd.HideOpaqueLayer();
             }
         }
         #endregion
@@ -96,19 +97,24 @@ namespace Helpmate.UI.Forms.FormUI
                 if (!bgworkerPay.IsBusy)
                 {
                     cmd.ShowOpaqueLayer(this, 125, true);
-                    bgworkerPay.RunWorkerAsync();
+                    Pay item = new Pay();
+                    item.CardID = cardID;
+                    item.CardPwd = cardPwd;
+                    bgworkerPay.RunWorkerAsync(item);
                 }
             }
         }
         private void bgworkerPay_DoWork(object sender, DoWorkEventArgs e)
         {
+            Pay item = e.Argument as Pay;
             string cardID = tbxPayCardID.Text.Trim();
             string cardPwd = tbxPayPwd.Text.Trim();
-            e.Result = serviceFacade.Pay(cardID, cardPwd);
+            e.Result = serviceFacade.Pay(item.CardID, item.CardPwd);
         }
         private void bgworkerPay_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var result = e.Result as ResultRMOfObject;
+            cmd.HideOpaqueLayer();
+            var result = e.Result as ResultRMOfBoolean;
 
             if (e.Error != null)
             {
@@ -122,7 +128,6 @@ namespace Helpmate.UI.Forms.FormUI
                 tbxPayCardID.Text = "";
                 tbxPayPwd.Text = "";
                 MessageBox.Show("充值成功", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cmd.HideOpaqueLayer();
             }
         }
         #endregion
@@ -157,22 +162,25 @@ namespace Helpmate.UI.Forms.FormUI
                 if (!bgworkerChangePwd.IsBusy)
                 {
                     cmd.ShowOpaqueLayer(this, 125, true);
-                    bgworkerChangePwd.RunWorkerAsync();
+                    ChangePwd item = new ChangePwd();
+                    item.OldPwd = oldPwd;
+                    item.NewPwd = newPwd;
+                    item.Q1 = question1;
+                    item.A1 = answer1;
+                    item.Q2 = question2;
+                    item.A2 = answer2;
+                    bgworkerChangePwd.RunWorkerAsync(item);
                 }
             }
         }
         private void bgworkerChangePwd_DoWork(object sender, DoWorkEventArgs e)
         {
-            string question1 = ddlQuestion1.SelectedValue.ToString();
-            string question2 = ddlQuestion2.SelectedValue.ToString();
-            string answer1 = tbxAnswer1.Text.Trim();
-            string answer2 = tbxAnswer2.Text.Trim();
-            string oldPwd = tbxOldPwd.Text.Trim();
-            string newPwd = tbxNewPwd.Text.Trim();
-            e.Result = serviceFacade.ChangePwd(question1, question2, answer1, answer2, oldPwd, newPwd);
+            ChangePwd item = e.Argument as ChangePwd;
+            e.Result = serviceFacade.ChangePwd(item.Q1, item.Q2, item.A1, item.A2, item.OldPwd, item.NewPwd);
         }
         private void bgworkerChangePwd_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            cmd.HideOpaqueLayer();
             var result = e.Result as ResultRMOfObject;
 
             if (e.Error != null)
@@ -191,7 +199,6 @@ namespace Helpmate.UI.Forms.FormUI
                 tbxOldPwd.Text = "";
                 tbxNewPwd.Text = "";
                 MessageBox.Show("修改成功", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cmd.HideOpaqueLayer();
             }
         }
         #endregion

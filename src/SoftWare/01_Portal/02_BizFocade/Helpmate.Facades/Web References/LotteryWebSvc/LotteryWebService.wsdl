@@ -19,6 +19,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:CustomModules" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="CustomModules">
@@ -122,6 +123,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:PageListOfLotteryForBJ" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="PageListOfLotteryForBJ">
@@ -155,6 +157,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="Register">
@@ -221,6 +224,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryTrend" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="LotteryTrend">
@@ -274,6 +278,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfOmitStatistics" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfOmitStatistics">
@@ -348,6 +353,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="QueryRemindLottery">
@@ -360,6 +366,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:RemindStatistics" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="RemindStatistics">
@@ -391,6 +398,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:User" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetUserInfoResponse">
@@ -414,6 +422,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:Notices" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="Notices">
@@ -443,6 +452,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryForBJ" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetCurrentLotteryResponse">
@@ -467,6 +477,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="RechargeResponse">
@@ -500,6 +511,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:InfoForTimer" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="InfoForTimer">
