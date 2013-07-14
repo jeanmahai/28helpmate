@@ -12,6 +12,7 @@ using Helpmate.BizEntity;
 using Helpmate.UI.Forms.UserContorl.Common;
 using Helpmate.Facades;
 using Helpmate.UI.Forms.Models;
+using Helpmate.Facades.LotteryWebSvc;
 
 namespace Helpmate.UI.Forms
 {
@@ -222,12 +223,13 @@ namespace Helpmate.UI.Forms
 
         private void bgwApp_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = serviceFacade.GetCustomeModule();
+            e.Result = serviceFacade.GetInfoForTimer();
         }
 
         private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var result = e.Result;
+            var result = e.Result as ResultRMOfInfoForTimer;
+
             if (string.IsNullOrEmpty(lblServerTime.Text))
             {
                 lblServerTime.Text = DateTime.Now.ToString();

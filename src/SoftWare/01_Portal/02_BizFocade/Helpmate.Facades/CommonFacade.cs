@@ -94,5 +94,16 @@ namespace Helpmate.Facades
             var data = Client.Service.GetServerDate();
             return data;
         }
+
+        /// <summary>
+        /// 首页获取提醒+当前期 
+        /// </summary>
+        /// <returns></returns>
+        public ResultRMOfInfoForTimer GetInfoForTimer()
+        {
+            Client.Service.TokenHeaderValue = TokenHeader;
+            var data = Client.Service.GetInfoForTimer();
+            return data;
+        }
     }
 }
