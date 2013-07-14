@@ -76,17 +76,6 @@ namespace Helpmate.UI.Forms.FormUI
                         lblPhone.Text = result.Data.Phone;
                         lblQQ.Text = result.Data.QQ;
                     }
-                    if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
-                    {
-                        DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        if (dr == DialogResult.OK)
-                        {
-                            //Form loginForm = new LoginForm();
-                            //loginForm.Show();
-                            Application.ExitThread();
-                            Application.Run(new LoginForm());
-                        }
-                    }
                 }
             }
             cmd.HideOpaqueLayer();
@@ -151,20 +140,8 @@ namespace Helpmate.UI.Forms.FormUI
                     }
                     else
                     {
-                        if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
-                        {
-                            DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            if (dr == DialogResult.OK)
-                            {
-                                Application.Exit();
-                                Form loginForm = new LoginForm();
-                                loginForm.Show();
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show(result.Message, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+
+                        MessageBox.Show(result.Message, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -246,20 +223,7 @@ namespace Helpmate.UI.Forms.FormUI
                     }
                     else
                     {
-                        if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
-                        {
-                            DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            if (dr == DialogResult.OK)
-                            {
-                                Application.Exit();
-                                Form loginForm = new LoginForm();
-                                loginForm.Show();
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show(result.Message, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show(result.Message, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

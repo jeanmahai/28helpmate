@@ -94,16 +94,6 @@ namespace Helpmate.UI.Forms.FormUI
                 }
             }
             cmd.HideOpaqueLayer();
-            if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
-            {
-                DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (dr == DialogResult.OK)
-                {
-                    this.Close();
-                    Form loginForm = new LoginForm();
-                    loginForm.Show();
-                }
-            }
         }
 
         private ResultRMOfListOfOmitStatistics QueryOmission()

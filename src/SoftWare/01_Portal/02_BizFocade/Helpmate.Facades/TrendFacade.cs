@@ -17,23 +17,12 @@ namespace Helpmate.Facades
         /// <returns></returns>
         public ResultRMOfLotteryTrend QueryTrend(int pageIndex)
         {
-            try
+            lock (Header.obj)
             {
-                lock (Header.obj)
-                {
-                    Client.Service.TokenHeaderValue = TokenHeader;
-                    var result = Client.Service.QueryTrend(pageIndex);
-                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
-                    else if (result.Success) Header.Key = result.Key;
-                    return result;
-                }
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.QueryTrend(pageIndex);
+                return result;
             }
-            catch (Exception ex)
-            {
-                WriteLog.Write("QueryTrend", ex.ToString());
-                AppMessage.AlertErrMessage(400);
-            }
-            return null;
         }
 
         /// <summary>
@@ -46,23 +35,12 @@ namespace Helpmate.Facades
         /// <returns></returns>
         public ResultRMOfLotteryTrend QuerySuperTrend(int pageIndex, string date, string hour, string minute)
         {
-            try
+            lock (Header.obj)
             {
-                lock (Header.obj)
-                {
-                    Client.Service.TokenHeaderValue = TokenHeader;
-                    var result = Client.Service.QuerySupperTrend(pageIndex, 20, date, hour, minute);
-                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
-                    else if (result.Success) Header.Key = result.Key;
-                    return result;
-                }
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.QuerySupperTrend(pageIndex, 20, date, hour, minute);
+                return result;
             }
-            catch (Exception ex)
-            {
-                WriteLog.Write("QuerySuperTrend", ex.ToString());
-                AppMessage.AlertErrMessage(400);
-            }
-            return null;
         }
     }
 }
