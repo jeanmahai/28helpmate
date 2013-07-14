@@ -6,6 +6,7 @@ using Business;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model.Model;
 using UnitTest.LotteryWebService;
+using RemindStatistics = Model.Model.RemindStatistics;
 
 namespace UnitTest
 {
@@ -292,10 +293,11 @@ namespace UnitTest
         [TestMethod]
         public void Test_ChangePsw()
         {
-            //var h = new TokenHeader();
-            //h.UserSysNo = 5;
-            //m_client.ChangePsw(h, "jeanma", "12345678", "你的出生地？", "abc", "", "");
-            Console.WriteLine(m_Dal.ChangePsw(5, "jeanma", "12345678", "你的出生地？", "abc", "", ""));
+            var h = new TokenHeader();
+            h.UserSysNo = 5;
+            var result= m_client.ChangePsw(h, "12345678", "123456", "你的出生地？", "abc", "", "");
+            Console.WriteLine(result.Message);
+            //Console.WriteLine(m_Dal.ChangePsw(5, "jeanma", "12345678", "你的出生地？", "abc", "", ""));
             //var a = m_Dal.ChangePsw(9,"115922","12345678","你的出生地？","abc","","");
         }
         [TestMethod]
@@ -305,6 +307,20 @@ namespace UnitTest
             var a = m_Dal.Recharge(9,"123","123",out error);
             Console.WriteLine(error);
         }
-        
+        [TestMethod]
+        public void Test_SaveRemind()
+        {
+            RemindStatistics data=new RemindStatistics();
+            data.GameSysNo = 10001;
+            data.RetNum = 1;
+            data.SiteSysNo = 10001;
+            data.Status = 1;
+            data.UserSysNo = 5;
+            data.Cnt = 1;
+            
+            string error;
+            var a = m_Dal.SaveRemind(data,out error);
+            Console.WriteLine(error);
+        }
     }
 }

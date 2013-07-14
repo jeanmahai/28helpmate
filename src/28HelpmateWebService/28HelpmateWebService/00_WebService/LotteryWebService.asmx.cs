@@ -462,6 +462,29 @@ namespace WebService
             
         }
 
+        [WebMethod(Description = "查询提醒列表",EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<PageList<RemindStatistics>> QueryRemind(int pageIndex,int pageSize)
+        {
+            var result = new ResultRM<PageList<RemindStatistics>>();
+            if (ValidateToken(ReqHeader))
+            {
+                result.Data = Dal.QueryRemind(ReqHeader.GameSourceSysNo,
+                                              ReqHeader.RegionSourceSysNo,
+                                              ReqHeader.SiteSourceSysNo,
+                                              ReqHeader.UserSysNo, pageIndex, pageSize);
+                result.Success = true;
+                NewKey(result,ReqHeader.UserSysNo);
+            }
+            else
+            {
+                result.Success = false;
+                result.Code = ERROR_VALIDATE_TOKEN_CODE;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
         private string GetTableName(int regionSourceSysNo)
         {
             string tableName;

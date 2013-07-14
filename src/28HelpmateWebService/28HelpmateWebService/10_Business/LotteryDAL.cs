@@ -123,7 +123,7 @@ namespace Business
         public bool DelRemind(int sysNo)
         {
             Session.CreateSQLQuery("delete RemindStatistics where SysNo=:sn")
-                .SetParameter("sn", sysNo)
+                .SetParameter("sn",sysNo)
                 .ExecuteUpdate();
             return true;
         }
@@ -704,8 +704,9 @@ namespace Business
         }
         public string ChangePsw(int userSysNo,string oldPsw,string newPsw,string q1,string a1,string q2,string a2)
         {
+            var hasPsw = CiphertextService.MD5Encryption(oldPsw);
             var q = (from a in Session.Query<User>()
-                     where a.SysNo == userSysNo && CiphertextService.MD5Encryption(oldPsw) == a.UserPwd
+                     where a.SysNo == userSysNo && hasPsw == a.UserPwd
                      select a).SingleOrDefault();
             if (q == null)
             {
@@ -723,13 +724,43 @@ namespace Business
 
             q.UserPwd = CiphertextService.MD5Encryption(newPsw);
             Session.CreateSQLQuery("update Users set UserPwd=:psw where SysNo=:sysNo")
-                .SetParameter("psw", q.UserPwd)
-                .SetParameter("sysNo", q.SysNo)
+                .SetParameter("psw",q.UserPwd)
+                .SetParameter("sysNo",q.SysNo)
                 .ExecuteUpdate();
 
             return "";
         }
         #endregion
+
+        public PageList<RemindStatistics> QueryRemind(int gameSysNo,int siteSysNo,int regionSysNo,int userSysNo,int pageIndex,int pageSize)
+        {
+            var count = Session.CreateSQLQuery("select count(1) from RemindStatistics where" +
+                                               "UserSysNo=:usn " +
+                                               "and GameSysNo=:gsn " +
+                                               "and SourceSysNo=:ssn " +
+                                               "and SiteSysNo=:ssno")
+                                               .SetParameter("usn",userSysNo)
+                                               .SetParameter("gsn",gameSysNo)
+                                               .SetParameter("ssn",regionSysNo)
+                                               .SetParameter("ssno",siteSysNo)
+                .UniqueResult<int>();
+
+            var q = Session.QueryOver<RemindStatistics>()
+                .Where(p => p.GameSysNo == gameSysNo
+                            && p.SiteSysNo == siteSysNo
+                            && p.SourceSysNo == regionSysNo
+                            && p.UserSysNo == userSysNo)
+                .Skip(pageIndex - 1)
+                .Take(pageSize);
+
+            var result = new PageList<RemindStatistics>();
+            result.Total = count;
+            result.List = q.List<RemindStatistics>().ToList();
+            result.PageIndex = pageIndex;
+            result.PageSize = pageSize;
+            result.PageCount = (int)Math.Ceiling(count / (double)pageSize);
+            return result;
+        }
 
         public string GetClientIP()
         {
@@ -835,8 +866,8 @@ namespace Business
             card.Status = 2;
 
             Session.CreateSQLQuery("update PayCard set Status=:s where SysNo=:sn")
-                .SetParameter("s", 2)
-                .SetParameter("sn", card.SysNo)
+                .SetParameter("s",2)
+                .SetParameter("sn",card.SysNo)
                 .ExecuteUpdate();
             //Session.Update(card,card.SysNo);
             //Session.Flush();
