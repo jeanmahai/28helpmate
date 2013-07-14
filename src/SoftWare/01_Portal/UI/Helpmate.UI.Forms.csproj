@@ -73,6 +73,12 @@
     <Compile Include="FormUI\DateSlt.Designer.cs">
       <DependentUpon>DateSlt.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUI\RemindSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUI\RemindSet.Designer.cs">
+      <DependentUpon>RemindSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUI\UserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\Prediction.resx">
       <DependentUpon>Prediction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUI\RemindSet.resx">
+      <DependentUpon>RemindSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\SuperTrend.resx">
       <DependentUpon>SuperTrend.cs</DependentUpon>

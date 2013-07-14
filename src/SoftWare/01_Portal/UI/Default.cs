@@ -79,6 +79,13 @@ namespace Helpmate.UI.Forms
             RefreshPage();
         }
 
+        private void pnlRemindSet_Click(object sender, EventArgs e)
+        {
+            var childForm = new RemindSet();
+            CurrMenu(MenuEnum.RemindSet, childForm.SiteMapList, childForm);
+            RefreshPage();
+        }
+
         public void CurrMenu(MenuEnum menuEnum, List<SiteModel> siteMapList, Form conForm)
         {
             switch (menuEnum)
@@ -101,6 +108,9 @@ namespace Helpmate.UI.Forms
                 case MenuEnum.User:
                     CurrMenuCtrl(lblUser, picUserCurr, conForm, siteMapList);
                     break;
+                case MenuEnum.RemindSet:
+                    CurrMenuCtrl(lblRemindSet, picRemindSetCurr, conForm, siteMapList);
+                    break;
             }
         }
 
@@ -120,6 +130,8 @@ namespace Helpmate.UI.Forms
             lblNormalTrend.Font = new Font(lblUser.Font, FontStyle.Regular);
             picUserCurr.Visible = false;
             lblUser.Font = new Font(lblUser.Font, FontStyle.Regular);
+            picRemindSetCurr.Visible = false;
+            lblRemindSet.Font = new Font(lblRemindSet.Font, FontStyle.Regular);
 
             currLbl.Font = new Font(lblSuperTrend.Font, FontStyle.Bold);
             currPic.Visible = true;
