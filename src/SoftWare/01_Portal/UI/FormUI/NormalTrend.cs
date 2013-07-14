@@ -14,12 +14,14 @@ using Helpmate.UI.Forms.Models;
 using Helpmate.UI.Forms.UIContorl.Common;
 using Helpmate.Facades;
 using Helpmate.Facades.LotteryWebSvc;
+using Helpmate.BizEntity.Enum;
+using Helpmate.UI.Forms.Code;
 
 namespace Helpmate.UI.Forms.FormUI
 {
     public partial class NormalTrend : Form, IPage
     {
-        BaseFacade bf = new BaseFacade();
+        public OpaqueCommand cmd = new OpaqueCommand();
         public TrendFacade serviceFacade = new TrendFacade();
         public List<SiteModel> SiteMapList { get; set; }
 
@@ -32,107 +34,93 @@ namespace Helpmate.UI.Forms.FormUI
             };
             InitializeComponent();
         }
-        private void dataList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+
+        private void NormalTrend_Load(object sender, EventArgs e)
         {
-            switch (e.ColumnIndex)
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.DoubleBuffer, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            QueryData(1);
+        }
+        public void QueryData(int? pageIndex = null)
+        {
+            if (!bgworkerLoad.IsBusy)
             {
-                case 30:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#03C");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#03C");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 31:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#F33");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F33");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 32:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#609");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#609");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 33:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#F90");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F90");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 34:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#F09");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F09");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
-                case 35:
-                    if (e.Value != null && e.Value.ToString() != "")
-                    {
-                        e.CellStyle.ForeColor = Color.White;
-                        e.CellStyle.BackColor = UtilsTool.ToColor("#0C0");
-                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#0C0");
-                        e.CellStyle.SelectionForeColor = Color.White;
-                    }
-                    break;
+                cmd.ShowOpaqueLayer(this, 125, true);
+                bgworkerLoad.RunWorkerAsync(pageIndex);
             }
         }
 
-        #region 异步调用Service
-        public OpaqueCommand cmd = new OpaqueCommand();
-        public void QueryData(int? pageIndex = null)
+        #region 分页
+        /// <summary>
+        /// 尾页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkLast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            cmd.ShowOpaqueLayer(this, 125, true);
-            QueryDataDelegate dn = new QueryDataDelegate(AsyncWaysQueryData);
-            AsyncCallback acb = new AsyncCallback(CallBackMethod);
-            IAsyncResult iar = dn.BeginInvoke(pageIndex.Value, acb, dn);
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+            QueryData(pageIndex);
         }
-        public delegate ResultRMOfLotteryTrend QueryDataDelegate(int pageIndex);
-        private ResultRMOfLotteryTrend AsyncWaysQueryData(int pageIndex)
+        /// <summary>
+        /// 首页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkFirst_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            return serviceFacade.QueryTrend(pageIndex);
+            QueryData(1);
         }
-        public void CallBackMethod(IAsyncResult ar)
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkPrev_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            QueryDataDelegate dn = (QueryDataDelegate)ar.AsyncState;
-            var result = dn.EndInvoke(ar);
-            if (result != null && result.Data != null
-                && result.Data.DataList != null && result.Data.LotteryTimeses != null)
-                this.LoadResultData(result.Data.DataList, result.Data.LotteryTimeses, result.Data.PageIndex, result.Data.PageCount);
-            else
-                this.LoadResultData(null, null, 0, 0);
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) - 1;
+            pageIndex = pageIndex < 1 ? 1 : pageIndex;
+            QueryData(pageIndex);
+        }
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkNext_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) + 1;
+            int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+            pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
+            QueryData(pageIndex);
         }
         #endregion
-        #region 异步Bind
-        public delegate void LoadResultDataCallback(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount);
-        private void LoadResultData(LotteryExtByBJ[] list, LotteryTimes[] count, int currPageIndex, int pageCount)
+
+        private void bgworkerLoad_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (this.lblPage.InvokeRequired)
+            int pageIndex = int.Parse(e.Argument.ToString());
+            e.Result = serviceFacade.QueryTrend(pageIndex);
+        }
+        private void bgworkerLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var result = e.Result as ResultRMOfLotteryTrend;
+
+            if (e.Error != null)
             {
-                LoadResultDataCallback d = new LoadResultDataCallback(LoadResultData);
-                this.Invoke(d, new object[] { list, count, currPageIndex, pageCount });
+                WriteLog.Write("QuerySuperTrend", e.Error.Message);
+                AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
+                return;
             }
-            else
+
+            if (PageUtils.CheckError(result) && result.Data != null)
             {
-                if (list != null && count != null)
+                if (result.Data.LotteryTimeses != null && result.Data.DataList != null)
                 {
+                    int currPageIndex = result.Data.PageIndex;
+                    int pageCount = result.Data.PageCount;
                     //统计
-                    List<TrendCountModel> countData = (new TrendCountModel()).GetCountList(count);
+                    List<TrendCountModel> countData = (new TrendCountModel()).GetCountList(result.Data.LotteryTimeses);
                     countList.DataSource = countData;
                     SetCountStyle(countList, countData.Count);
                     //头
@@ -140,7 +128,7 @@ namespace Helpmate.UI.Forms.FormUI
                     headerList.DataSource = headerData;
                     SetHeaderStyle(headerList, 1);
                     //数据
-                    List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(list);
+                    List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(result.Data.DataList);
                     dataList.DataSource = listData;
                     SetDataStyle(dataList, listData.Count);
                     //页码信息
@@ -160,8 +148,8 @@ namespace Helpmate.UI.Forms.FormUI
                     }
                     lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
                 }
+                cmd.HideOpaqueLayer();
             }
-            cmd.HideOpaqueLayer();
         }
         private void SetCountStyle(object obj, int rows)
         {
@@ -272,51 +260,65 @@ namespace Helpmate.UI.Forms.FormUI
             dgv.BorderStyle = BorderStyle.None;
             dgv.BackgroundColor = Color.White;
         }
-        #endregion
-
-        #region 分页
-        /// <summary>
-        /// 尾页
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lnkLast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void dataList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[1]);
-            QueryData(pageIndex);
+            switch (e.ColumnIndex)
+            {
+                case 30:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#03C");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#03C");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 31:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#F33");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F33");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 32:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#609");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#609");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 33:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#F90");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F90");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 34:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#F09");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#F09");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+                case 35:
+                    if (e.Value != null && e.Value.ToString() != "")
+                    {
+                        e.CellStyle.ForeColor = Color.White;
+                        e.CellStyle.BackColor = UtilsTool.ToColor("#0C0");
+                        e.CellStyle.SelectionBackColor = UtilsTool.ToColor("#0C0");
+                        e.CellStyle.SelectionForeColor = Color.White;
+                    }
+                    break;
+            }
         }
-        /// <summary>
-        /// 首页
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lnkFirst_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            QueryData(1);
-        }
-        /// <summary>
-        /// 上一页
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lnkPrev_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) - 1;
-            pageIndex = pageIndex < 1 ? 1 : pageIndex;
-            QueryData(pageIndex);
-        }
-        /// <summary>
-        /// 下一页
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lnkNext_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) + 1;
-            int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
-            pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
-            QueryData(pageIndex);
-        }
-        #endregion
     }
 }

@@ -44,6 +44,7 @@
             this.ddlMinute = new System.Windows.Forms.ComboBox();
             this.btnQuery = new System.Windows.Forms.Button();
             this.pnlLine = new System.Windows.Forms.Panel();
+            this.bgworkerLoad = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.countList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
@@ -215,16 +216,21 @@
             // 
             // pnlLine
             // 
-            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLine.BackColor = System.Drawing.Color.Transparent;
             this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlLine.Location = new System.Drawing.Point(22, 55);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(1015, 1);
+            this.pnlLine.Size = new System.Drawing.Size(1681, 1);
             this.pnlLine.TabIndex = 147;
+            // 
+            // bgworkerLoad
+            // 
+            this.bgworkerLoad.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerLoad_DoWork);
+            this.bgworkerLoad.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerLoad_RunWorkerCompleted);
             // 
             // SuperTrend
             // 
@@ -252,6 +258,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SuperTrend";
             this.Text = "SuperTrend";
+            this.Load += new System.EventHandler(this.SuperTrend_Load);
             ((System.ComponentModel.ISupportInitialize)(this.countList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).EndInit();
@@ -278,5 +285,6 @@
         private System.Windows.Forms.ComboBox ddlMinute;
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.Panel pnlLine;
+        private System.ComponentModel.BackgroundWorker bgworkerLoad;
     }
 }

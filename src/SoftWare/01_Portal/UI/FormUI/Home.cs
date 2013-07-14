@@ -54,11 +54,6 @@ namespace Helpmate.UI.Forms.FormUI
             }
         }
 
-        private ResultRMOfCustomModules GetCustomeModule()
-        {
-            return serviceFacade.GetCustomeModule();
-        }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             QueryData();
@@ -87,7 +82,7 @@ namespace Helpmate.UI.Forms.FormUI
 
             if (PageUtils.CheckError(result) && result.Data != null)
             {
-                AppMessage.AlertErrMessage(result.Message);
+                //AppMessage.AlertErrMessage(result.Message);
                 //picNuming.Image = UtilsModel.LoadNumImage(result.Result.Data.M1);
                 ucLotteryM1.LoadBindData(result.Data.M1);
                 ucLotteryM2.LoadBindData(result.Data.M2);
