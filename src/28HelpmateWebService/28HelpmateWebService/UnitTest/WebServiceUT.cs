@@ -60,8 +60,9 @@ namespace UnitTest
         [TestMethod]
         public void QueryLotteryByHourStepServiceTest()
         {
-            var data =m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-7-14 21:00:00"),10001,"SourceData_28_Beijing"); //m_client.QueryLotteryByHourStep(new TokenHeader(),DateTime.Parse("2013-7-2 21:45:00"),SITE_NAME);
+            var data =m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-7-14 21:05:00"),10001,"SourceData_28_Beijing"); //m_client.QueryLotteryByHourStep(new TokenHeader(),DateTime.Parse("2013-7-2 21:45:00"),SITE_NAME);
             //Console.WriteLine(data.Message);
+            Console.WriteLine(data.Lotteries.Count);
             foreach (var a in data.Lotteries)
             {
                 Console.WriteLine("期号{0}",a.PeriodNum);

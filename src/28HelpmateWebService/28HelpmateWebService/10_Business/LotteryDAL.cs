@@ -283,7 +283,7 @@ namespace Business
             for (var i = 1;i <= 20;i++)
             {
                 temp = temp.AddHours(-1);
-                if (temp.Hour < 9)
+                if (temp.Hour < 9 || temp.ToString("HH:mm:ss") == "09:00:00")
                 {
                     temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
                 }
