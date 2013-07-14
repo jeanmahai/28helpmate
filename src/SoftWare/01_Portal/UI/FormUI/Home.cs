@@ -87,8 +87,10 @@ namespace Helpmate.UI.Forms.FormUI
 
             if (PageUtils.CheckError(result) && result.Data != null)
             {
-                AppMessage.AlertErrMessage(result.Message);
-                //picNuming.Image = UtilsModel.LoadNumImage(result.Result.Data.M1);
+                lblNuming.Text = result.Data.M1.Forecast;
+                lblMinute.Text = result.Data.M2.Forecast;
+                lblTime.Text = result.Data.M3.Forecast;
+
                 ucLotteryM1.LoadBindData(result.Data.M1);
                 ucLotteryM2.LoadBindData(result.Data.M2);
                 ucLotteryM3.LoadBindData(result.Data.M3);

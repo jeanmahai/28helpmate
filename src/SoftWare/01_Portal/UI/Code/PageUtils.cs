@@ -24,7 +24,6 @@ namespace Helpmate.UI.Forms.Code
                 }
                 return false;
             }
-            Header.Key = result.Key;
             return true;
         }
     }

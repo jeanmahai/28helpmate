@@ -21,6 +21,7 @@ namespace Helpmate.Facades
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
                 var result = Client.Service.QueryTrend(pageIndex);
+                if (result.Success) Header.Key = result.Key;
                 return result;
             }
         }
@@ -39,6 +40,7 @@ namespace Helpmate.Facades
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
                 var result = Client.Service.QuerySupperTrend(pageIndex, 20, date, hour, minute);
+                if (result.Success) Header.Key = result.Key;
                 return result;
             }
         }

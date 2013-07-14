@@ -16,7 +16,9 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
-                return Client.Service.GetCustomeModule();
+                var result = Client.Service.GetCustomeModule();
+                if (result.Success) Header.Key = result.Key;
+                return result;
             }
         }
 
@@ -25,7 +27,9 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
-                return Client.Service.QueryOmission();
+                var result = Client.Service.QueryOmission();
+                if (result.Success) Header.Key = result.Key;
+                return result;
             }
         }
 
@@ -38,7 +42,9 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
-                return Client.Service.GetUserInfo();
+                var result = Client.Service.GetUserInfo();
+                if (result.Success) Header.Key = result.Key;
+                return result;
             }
         }
 
@@ -58,6 +64,7 @@ namespace Helpmate.Facades
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
                 var result = Client.Service.ChangePsw(oldPwd, newPwd);
+                if (result.Success) Header.Key = result.Key;
                 return result;
             }
         }
@@ -73,6 +80,7 @@ namespace Helpmate.Facades
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
                 var result = Client.Service.ChangePsw(cardID, cardPwd);
+                if (result.Success) Header.Key = result.Key;
                 return result;
             }
         }
@@ -83,11 +91,8 @@ namespace Helpmate.Facades
         /// <returns></returns>
         public DateTime GetServerDate()
         {
-            lock (Header.obj)
-            {
-                var data = Client.Service.GetServerDate();
-                return data;
-            }
+            var data = Client.Service.GetServerDate();
+            return data;
         }
     }
 }

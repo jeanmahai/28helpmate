@@ -22,21 +22,15 @@ namespace Helpmate.Facades
 
         public ResultRMOfString UserRegister(User user)
         {
-            lock (Header.obj)
-            {
-                user.UserPwd = UtilsTool.MD5(user.UserPwd);
-                var result = Client.Service.Register(user);
-                return result;
-            }
+            user.UserPwd = UtilsTool.MD5(user.UserPwd);
+            var result = Client.Service.Register(user);
+            return result;
         }
 
         public string LoadCode()
         {
-            lock (Header.obj)
-            {
-                var result = Client.Service.GenerateCode();
-                return result;
-            }
+            var result = Client.Service.GenerateCode();
+            return result;
         }
     }
 }
