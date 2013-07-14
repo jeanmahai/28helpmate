@@ -380,7 +380,7 @@ namespace WebService
             {
 
                 result.Data = Dal.Recharge(ReqHeader.UserSysNo, cardNo, cardPsw, out error);
-                result.Success = true;
+                result.Success = result.Data;
                 result.Message = error;
                 NewKey(result,ReqHeader.UserSysNo);
             }

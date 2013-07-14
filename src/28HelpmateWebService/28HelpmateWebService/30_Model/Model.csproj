@@ -54,6 +54,8 @@
     <Compile Include="Model\OmissionLottery.cs" />
     <Compile Include="Model\OmitStatistics.cs" />
     <Compile Include="Model\PageInfo.cs" />
+    <Compile Include="Model\PayCard.cs" />
+    <Compile Include="Model\PayLog.cs" />
     <Compile Include="Model\RegionEnum.cs" />
     <Compile Include="Model\RemindStatistics.cs" />
     <Compile Include="Model\User.cs" />
@@ -122,6 +124,16 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\Notices.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\PayLog.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\PayCard.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

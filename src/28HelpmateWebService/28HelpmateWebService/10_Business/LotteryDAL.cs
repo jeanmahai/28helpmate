@@ -733,6 +733,16 @@ namespace Business
                 error = "充值卡不存在";
                 return false;
             }
+            if (card.Status != 1)
+            {
+                error = "充值卡不可用";
+                return false;
+            }
+            if (DateTime.Now > card.EndTime || DateTime.Now < card.BeginTime)
+            {
+                error = "充值卡已过期";
+                return false;
+            }
             //TimeSpan duation;
             //天
             //if (card.CategorySysNo == 1)
@@ -741,27 +751,33 @@ namespace Business
             //}
             ////月
             //if (card.CategorySysNo == 2) { }
-            var duration = card.EndTime - card.BeginTime;
+            //var duration = card.EndTime - card.BeginTime;
 
             var user = Queryuser(userSysNo);
-            if(user==null)
+            if (user == null)
             {
                 error = "用户不存在";
                 return false;
             }
-            if(user.RechargeUseEndTime<DateTime.Now)
+            if (user.RechargeUseEndTime < DateTime.Now)
             {
-                user.RechargeUseEndTime = DateTime.Now.Add(duration);
+                if (card.CategorySysNo == 1)
+                    user.RechargeUseEndTime = DateTime.Now.AddDays(1);
+                if (card.CategorySysNo == 2)
+                    user.RechargeUseEndTime = DateTime.Now.AddMonths(1);
             }
             else
             {
-                user.RechargeUseEndTime = user.RechargeUseEndTime.Add(duration);
+                if (card.CategorySysNo == 1)
+                    user.RechargeUseEndTime = user.RechargeUseEndTime.AddDays(1);
+                if (card.CategorySysNo == 2)
+                    user.RechargeUseEndTime = user.RechargeUseEndTime.AddMonths(1);
             }
             Session.Save(user);
             Session.Flush();
 
             var log = new PayLog();
-            log.CardSysNo =card.SysNo;
+            log.CardSysNo = card.SysNo;
             log.UserSysNo = userSysNo;
 
             WritePayLog(log);
