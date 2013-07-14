@@ -327,6 +327,10 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="oldPsw" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="newPsw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="q1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="a1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="q2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="a2" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -472,6 +476,45 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SaveRemind">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remind" type="tns:RemindStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRemindResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveRemindResult" type="tns:ResultRMOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoForTimer">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ResultRMOfInfoForTimer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:InfoForTimer" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InfoForTimer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Lottery" type="tns:LotteryForBJ" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remind" type="tns:RemindStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInfoForTimerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInfoForTimerResult" type="tns:ResultRMOfInfoForTimer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetCustomeModuleSoapIn">
@@ -597,6 +640,24 @@
   <wsdl:message name="RechargeTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="SaveRemindSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRemind" />
+  </wsdl:message>
+  <wsdl:message name="SaveRemindSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRemindResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveRemindTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForTimerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInfoForTimer" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForTimerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInfoForTimerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForTimerTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
@@ -672,6 +733,16 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">充值</wsdl:documentation>
       <wsdl:input message="tns:RechargeSoapIn" />
       <wsdl:output message="tns:RechargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRemind">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">保存提醒</wsdl:documentation>
+      <wsdl:input message="tns:SaveRemindSoapIn" />
+      <wsdl:output message="tns:SaveRemindSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForTimer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">提醒+当前期</wsdl:documentation>
+      <wsdl:input message="tns:GetInfoForTimerSoapIn" />
+      <wsdl:output message="tns:GetInfoForTimerSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
@@ -822,6 +893,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SaveRemind">
+      <soap:operation soapAction="http://tempuri.org/SaveRemind" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveRemindTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForTimer">
+      <soap:operation soapAction="http://tempuri.org/GetInfoForTimer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInfoForTimerTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -966,6 +1057,26 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:RechargeTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRemind">
+      <soap12:operation soapAction="http://tempuri.org/SaveRemind" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveRemindTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForTimer">
+      <soap12:operation soapAction="http://tempuri.org/GetInfoForTimer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInfoForTimerTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

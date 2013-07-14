@@ -97,6 +97,9 @@
     <None Include="Web References\LotteryWebSvc\ResultRMOfCustomModules.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfInfoForTimer.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\LotteryWebSvc\ResultRMOfListOfOmitStatistics.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
