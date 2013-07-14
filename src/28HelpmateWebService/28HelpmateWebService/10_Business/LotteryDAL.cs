@@ -127,8 +127,26 @@ namespace Business
                           && a.SourceSysNo == regionSysNo
                           && a.SiteSysNo == siteSysNo
                           && a.UserSysNo == userSysNo
+                          && a.Status == 1
                     select a;
-            return q.SingleOrDefault();
+            var remind = q.SingleOrDefault();
+            if (remind != null)
+            {
+                remind.Status = 0;
+                Session.Save(remind);
+                Session.Flush();
+                remind.Status = 1;
+            }
+
+            return remind;
+        }
+
+        public bool SaveRemind(RemindStatistics remind)
+        {
+            remind.Status = 0;
+            Session.Save(remind);
+            Session.Flush();
+            return true;
         }
 
         /// <summary>
