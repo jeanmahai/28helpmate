@@ -292,7 +292,11 @@ namespace UnitTest
         [TestMethod]
         public void Test_ChangePsw()
         {
-            var a = m_Dal.ChangePsw(9,"115922","12345678","你的出生地？","abc","","");
+            //var h = new TokenHeader();
+            //h.UserSysNo = 5;
+            //m_client.ChangePsw(h, "jeanma", "12345678", "你的出生地？", "abc", "", "");
+            Console.WriteLine(m_Dal.ChangePsw(5, "jeanma", "12345678", "你的出生地？", "abc", "", ""));
+            //var a = m_Dal.ChangePsw(9,"115922","12345678","你的出生地？","abc","","");
         }
         [TestMethod]
         public void Test_Recharge()

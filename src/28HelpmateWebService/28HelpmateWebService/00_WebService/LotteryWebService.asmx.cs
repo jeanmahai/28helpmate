@@ -351,6 +351,7 @@ namespace WebService
         }
 
         [WebMethod(Description = "获得当前开奖结果",EnableSession = true)]
+        [SoapHeader("ReqHeader")]
         public ResultRM<LotteryForBJ> GetCurrentLottery()
         {
             var result = new ResultRM<LotteryForBJ>();
@@ -415,6 +416,7 @@ namespace WebService
         }
 
         [WebMethod(Description = "提醒+当前期",EnableSession = true)]
+        [SoapHeader("ReqHeader")]
         public ResultRM<InfoForTimer> GetInfoForTimer()
         {
             var result = new ResultRM<InfoForTimer>();
@@ -437,6 +439,27 @@ namespace WebService
             //    result.Message = ERROR_VALIDATE_TOKEN;
             //}
             return result;
+        }
+
+        [WebMethod(Description = "删除提醒",EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<bool> DelRemind(int remindSysNo)
+        {
+            var result = new ResultRM<bool>();
+            if (ValidateToken(ReqHeader))
+            {
+                result.Data = Dal.DelRemind(remindSysNo);
+                result.Success = result.Data;
+                NewKey(result,ReqHeader.UserSysNo);
+            }
+            else
+            {
+                result.Success = false;
+                result.Code = ERROR_VALIDATE_TOKEN_CODE;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+            
         }
 
         private string GetTableName(int regionSourceSysNo)

@@ -122,12 +122,9 @@ namespace Business
 
         public bool DelRemind(int sysNo)
         {
-            var m = new RemindStatistics
-                    {
-                        SysNo = sysNo
-                    };
-            Session.Delete(m);
-            Session.Flush();
+            Session.CreateSQLQuery("delete RemindStatistics where SysNo=:sn")
+                .SetParameter("sn", sysNo)
+                .ExecuteUpdate();
             return true;
         }
 
@@ -162,7 +159,7 @@ namespace Business
                           && a.GameSysNo == remind.GameSysNo
                           && a.RetNum == remind.RetNum
                     select a;
-            if(q.SingleOrDefault()!=null)
+            if (q.SingleOrDefault() != null)
             {
                 error = "此提醒已经设置";
                 return false;
@@ -725,8 +722,10 @@ namespace Business
             }
 
             q.UserPwd = CiphertextService.MD5Encryption(newPsw);
-            Session.Save(q);
-            Session.Flush();
+            Session.CreateSQLQuery("update Users set UserPwd=:psw where SysNo=:sysNo")
+                .SetParameter("psw", q.UserPwd)
+                .SetParameter("sysNo", q.SysNo)
+                .ExecuteUpdate();
 
             return "";
         }
@@ -826,12 +825,21 @@ namespace Business
                 if (card.CategorySysNo == 2)
                     user.RechargeUseEndTime = user.RechargeUseEndTime.AddMonths(1);
             }
-            Session.Update(user);
-            Session.Flush();
+            Session.CreateSQLQuery("update Users set PayUseEndTime=:endDate where SysNo=:sysNo")
+                .SetParameter("endDate",user.RechargeUseEndTime)
+                .SetParameter("sysNo",user.SysNo)
+                .ExecuteUpdate();
+            //Session.Update(user,user.SysNo);
+            //Session.Flush();
 
             card.Status = 2;
-            Session.Update(card);
-            Session.Flush();
+
+            Session.CreateSQLQuery("update PayCard set Status=:s where SysNo=:sn")
+                .SetParameter("s", 2)
+                .SetParameter("sn", card.SysNo)
+                .ExecuteUpdate();
+            //Session.Update(card,card.SysNo);
+            //Session.Flush();
 
             var log = new PayLog();
             log.CardSysNo = card.SysNo;
