@@ -65,6 +65,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private System.Threading.SendOrPostCallback GetInfoForTimerOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DelRemindOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -162,6 +164,9 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         /// <remarks/>
         public event GetInfoForTimerCompletedEventHandler GetInfoForTimerCompleted;
+        
+        /// <remarks/>
+        public event DelRemindCompletedEventHandler DelRemindCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
@@ -674,6 +679,36 @@ namespace Helpmate.Facades.LotteryWebSvc {
             if ((this.GetInfoForTimerCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetInfoForTimerCompleted(this, new GetInfoForTimerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DelRemind", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfBoolean DelRemind(int remindSysNo) {
+            object[] results = this.Invoke("DelRemind", new object[] {
+                        remindSysNo});
+            return ((ResultRMOfBoolean)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DelRemindAsync(int remindSysNo) {
+            this.DelRemindAsync(remindSysNo, null);
+        }
+        
+        /// <remarks/>
+        public void DelRemindAsync(int remindSysNo, object userState) {
+            if ((this.DelRemindOperationCompleted == null)) {
+                this.DelRemindOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDelRemindOperationCompleted);
+            }
+            this.InvokeAsync("DelRemind", new object[] {
+                        remindSysNo}, this.DelRemindOperationCompleted, userState);
+        }
+        
+        private void OnDelRemindOperationCompleted(object arg) {
+            if ((this.DelRemindCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DelRemindCompleted(this, new DelRemindCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3457,6 +3492,32 @@ namespace Helpmate.Facades.LotteryWebSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ResultRMOfInfoForTimer)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void DelRemindCompletedEventHandler(object sender, DelRemindCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DelRemindCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DelRemindCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfBoolean Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfBoolean)(this.results[0]));
             }
         }
     }

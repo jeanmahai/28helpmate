@@ -527,6 +527,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DelRemind">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="remindSysNo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelRemindResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DelRemindResult" type="tns:ResultRMOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetCustomeModuleSoapIn">
@@ -670,6 +684,15 @@
   <wsdl:message name="GetInfoForTimerTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="DelRemindSoapIn">
+    <wsdl:part name="parameters" element="tns:DelRemind" />
+  </wsdl:message>
+  <wsdl:message name="DelRemindSoapOut">
+    <wsdl:part name="parameters" element="tns:DelRemindResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelRemindTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
@@ -755,6 +778,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">提醒+当前期</wsdl:documentation>
       <wsdl:input message="tns:GetInfoForTimerSoapIn" />
       <wsdl:output message="tns:GetInfoForTimerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelRemind">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除提醒</wsdl:documentation>
+      <wsdl:input message="tns:DelRemindSoapIn" />
+      <wsdl:output message="tns:DelRemindSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
@@ -925,6 +953,16 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DelRemind">
+      <soap:operation soapAction="http://tempuri.org/DelRemind" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DelRemindTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1089,6 +1127,16 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:GetInfoForTimerTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelRemind">
+      <soap12:operation soapAction="http://tempuri.org/DelRemind" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DelRemindTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
