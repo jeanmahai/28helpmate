@@ -741,7 +741,7 @@ namespace Business
 
         public PageList<RemindStatistics> QueryRemind(int gameSysNo,int siteSysNo,int regionSysNo,int userSysNo,int pageIndex,int pageSize)
         {
-            var count = Session.CreateSQLQuery("select count(1) from RemindStatistics where" +
+            var count = Session.CreateSQLQuery("select count(1) from RemindStatistics where " +
                                                "UserSysNo=:usn " +
                                                "and GameSysNo=:gsn " +
                                                "and SourceSysNo=:ssn " +

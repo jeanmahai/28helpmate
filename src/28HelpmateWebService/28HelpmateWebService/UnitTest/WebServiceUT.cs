@@ -323,5 +323,18 @@ namespace UnitTest
             var a = m_Dal.SaveRemind(data,out error);
             Console.WriteLine(error);
         }
+
+        [TestMethod]
+        public void Test_QueryRemind()
+        {
+            //var h = new TokenHeader();
+            //h.UserSysNo = 5;
+            //h.GameSourceSysNo = 10001;
+            //h.RegionSourceSysNo = 10001;
+            //h.SiteSourceSysNo = 10001;
+            var a = m_Dal.QueryRemind(10001,10001,10001,5,1,2);
+            //var a = m_client.QueryRemind(h, 1, 2);
+            
+        }
     }
 }

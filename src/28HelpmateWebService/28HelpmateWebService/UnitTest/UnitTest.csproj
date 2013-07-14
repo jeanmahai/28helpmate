@@ -103,6 +103,9 @@
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfLotteryForBJ.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfRemindStatistics.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfRemindStatistics.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

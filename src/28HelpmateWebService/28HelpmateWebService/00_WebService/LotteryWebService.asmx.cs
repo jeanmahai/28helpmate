@@ -39,14 +39,31 @@ namespace WebService
             }
         }
 
-        private bool ValidateToken(TokenHeader reqHeader)
+        private bool ValidateToken(TokenHeader reqHeader,out string error)
         {
+            error = "";
             //if (Dal.ValidateToken(header.ToString(SessionValue.Key), header.Token))
-            if (Dal.ValidateToken(reqHeader.ToString(UserKeys.ReadKey(reqHeader.UserSysNo)),reqHeader.Token))
+            if (!Dal.ValidateToken(reqHeader.ToString(UserKeys.ReadKey(reqHeader.UserSysNo)),reqHeader.Token))
             {
-                return true;
+                error = ERROR_VALIDATE_TOKEN;
+                return false;
             }
-            return false;
+            //验证是否有充值时间
+            var user = Dal.Queryuser(reqHeader.UserSysNo);
+            if(user!=null)
+            {
+                if(user.RechargeUseEndTime<DateTime.Now)
+                {
+                    error = "需要充值才能查看分析数据";
+                    return false;
+                }
+            }
+            else
+            {
+                error = "用户不存在";
+                return false;
+            }
+            return true;
         }
 
         [WebMethod(Description = "查询模块1-模块4的数据",EnableSession = true)]
@@ -54,7 +71,8 @@ namespace WebService
         public ResultRM<CustomModules> GetCustomeModule()
         {
             var result = new ResultRM<CustomModules>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 result.Data = new CustomModules();
                 var lastestLottery = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
@@ -96,7 +114,7 @@ namespace WebService
             else
             {
                 result.Success = false;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
             }
             return result;
@@ -107,7 +125,8 @@ namespace WebService
         public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilterForBJ filterForBj)
         {
             var result = new ResultRM<PageList<LotteryForBJ>>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 result.Data = Dal.Query_28BJ(filterForBj);
                 result.Success = true;
@@ -117,7 +136,7 @@ namespace WebService
             else
             {
                 result.Success = false;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
             }
             return result;
@@ -186,7 +205,8 @@ namespace WebService
         {
             //LotteryTrend
             var result = new ResultRM<LotteryTrend>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 result.Data = Dal.QueryTrend(ReqHeader.SiteSourceSysNo,pageIndex,AppSettingValues.PageCount,GetTableName(ReqHeader.RegionSourceSysNo));
                 result.Success = true;
@@ -195,7 +215,7 @@ namespace WebService
             else
             {
                 result.Success = false;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
             }
             return result;
@@ -206,7 +226,8 @@ namespace WebService
         public ResultRM<List<OmitStatistics>> QueryOmission()
         {
             var result = new ResultRM<List<OmitStatistics>>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 var data = Dal.QueryOmissionAll(ReqHeader.GameSourceSysNo,ReqHeader.SiteSourceSysNo,ReqHeader.RegionSourceSysNo);
                 result.Data = data;
@@ -216,7 +237,7 @@ namespace WebService
             else
             {
                 result.Success = false;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
             }
             return result;
@@ -231,7 +252,8 @@ namespace WebService
             string minute)
         {
             var result = new ResultRM<LotteryTrend>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 result.Data = Dal.QuerySupperTrend(ReqHeader.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute,GetTableName(ReqHeader.RegionSourceSysNo));
                 result.Success = true;
@@ -240,7 +262,7 @@ namespace WebService
             else
             {
                 result.Success = false;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
             }
             return result;
@@ -257,7 +279,8 @@ namespace WebService
         public ResultRM<object> ChangePsw(string oldPsw,string newPsw,string q1,string a1,string q2,string a2)
         {
             var result = new ResultRM<object>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 var msg = Dal.ChangePsw(ReqHeader.UserSysNo,oldPsw,newPsw,q1,a1,q2,a2);
                 if (string.IsNullOrEmpty(msg))
@@ -274,7 +297,7 @@ namespace WebService
             else
             {
                 result.Success = false;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
             }
             return result;
@@ -285,7 +308,8 @@ namespace WebService
         public ResultRM<RemindStatistics> QueryRemindLottery()
         {
             var result = new ResultRM<RemindStatistics>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 result.Data = Dal.QueryRemind(ReqHeader.GameSourceSysNo,ReqHeader.RegionSourceSysNo,ReqHeader.SiteSourceSysNo,
                                               ReqHeader.UserSysNo);
@@ -295,7 +319,7 @@ namespace WebService
             else
             {
                 result.Success = false;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
             }
             return result;
@@ -306,7 +330,8 @@ namespace WebService
         public ResultRM<User> GetUserInfo()
         {
             var result = new ResultRM<User>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 var data = Dal.Queryuser(ReqHeader.UserSysNo);
                 if (data == null)
@@ -324,7 +349,7 @@ namespace WebService
             else
             {
                 result.Success = false;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
             }
             return result;
@@ -335,7 +360,8 @@ namespace WebService
         public ResultRM<Notices> GetNotice(int sysNo)
         {
             var result = new ResultRM<Notices>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 result.Data = Dal.GetNotices(sysNo);
                 result.Success = true;
@@ -345,7 +371,7 @@ namespace WebService
             {
                 result.Success = false;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
             }
             return result;
         }
@@ -376,19 +402,21 @@ namespace WebService
         {
             var result = new ResultRM<bool>();
             string error;
-            if (ValidateToken(ReqHeader))
+            string error2;
+            if (ValidateToken(ReqHeader,out error2))
             {
 
                 result.Data = Dal.Recharge(ReqHeader.UserSysNo,cardNo,cardPsw,out error);
                 result.Success = result.Data;
                 result.Message = error;
-                NewKey(result,ReqHeader.UserSysNo);
+                if (result.Success)
+                    NewKey(result,ReqHeader.UserSysNo);
             }
             else
             {
                 result.Success = false;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error2;
             }
             return result;
         }
@@ -398,7 +426,8 @@ namespace WebService
         public ResultRM<bool> SaveRemind(RemindStatistics remind)
         {
             var result = new ResultRM<bool>();
-            if (ValidateToken(ReqHeader))
+            string error2;
+            if (ValidateToken(ReqHeader,out error2))
             {
                 string error;
                 result.Data = Dal.SaveRemind(remind,out error);
@@ -410,7 +439,7 @@ namespace WebService
             {
                 result.Success = false;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error2;
             }
             return result;
         }
@@ -446,7 +475,8 @@ namespace WebService
         public ResultRM<bool> DelRemind(int remindSysNo)
         {
             var result = new ResultRM<bool>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 result.Data = Dal.DelRemind(remindSysNo);
                 result.Success = result.Data;
@@ -456,10 +486,10 @@ namespace WebService
             {
                 result.Success = false;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
             }
             return result;
-            
+
         }
 
         [WebMethod(Description = "查询提醒列表",EnableSession = true)]
@@ -467,12 +497,13 @@ namespace WebService
         public ResultRM<PageList<RemindStatistics>> QueryRemind(int pageIndex,int pageSize)
         {
             var result = new ResultRM<PageList<RemindStatistics>>();
-            if (ValidateToken(ReqHeader))
+            string error;
+            if (ValidateToken(ReqHeader,out error))
             {
                 result.Data = Dal.QueryRemind(ReqHeader.GameSourceSysNo,
                                               ReqHeader.RegionSourceSysNo,
                                               ReqHeader.SiteSourceSysNo,
-                                              ReqHeader.UserSysNo, pageIndex, pageSize);
+                                              ReqHeader.UserSysNo,pageIndex,pageSize);
                 result.Success = true;
                 NewKey(result,ReqHeader.UserSysNo);
             }
@@ -480,7 +511,7 @@ namespace WebService
             {
                 result.Success = false;
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
-                result.Message = ERROR_VALIDATE_TOKEN;
+                result.Message = error;
             }
             return result;
         }
