@@ -12,6 +12,9 @@ using Helpmate.BizEntity;
 using Helpmate.UI.Forms.UserContorl.Common;
 using Helpmate.Facades;
 using Helpmate.UI.Forms.Models;
+using Helpmate.Facades.LotteryWebSvc;
+using Common.Utility;
+using Helpmate.UI.Forms.Code;
 
 namespace Helpmate.UI.Forms
 {
@@ -26,12 +29,11 @@ namespace Helpmate.UI.Forms
 
         private void Default_Load(object sender, EventArgs e)
         {
-            //Header.UserSysNo = 1;//用户编号
-            Header.GameSourceSysNo = 10001;//28游戏
+            Header.GameSourceSysNo = 10001;
             Header.RegionSourceSysNo = Convert.ToInt32(lblBJ.Tag);
             Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);
 
-            //var childForm = new Home();
+            bgwApp.RunWorkerAsync();
             var childForm = new UserInfo();
             CurrMenu(MenuEnum.User, childForm.SiteMapList, childForm);
             lblServerTime.Text = serviceFacade.GetServerDate().ToString();
@@ -214,10 +216,49 @@ namespace Helpmate.UI.Forms
 
         # endregion Title Tab Click Event
 
-        private void timerServr_Tick(object sender, EventArgs e)
+        private void timerServer_Tick(object sender, EventArgs e)
         {
+            timerServer.Enabled = false;
             DateTime dtNow = DateTime.Parse(lblServerTime.Text.Trim()).AddSeconds(1);
             lblServerTime.Text = dtNow.ToString();
+            timerServer.Enabled = true;
+        }
+
+        private void bgwApp_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = serviceFacade.GetInfoForTimer();
+        }
+
+        private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var result = e.Result as ResultRMOfInfoForTimer;
+            if (e.Error != null)
+            {
+                WriteLog.Write("GetInfoForTimer", e.Error.Message);
+                AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
+                return;
+            }
+
+            if (PageUtils.CheckError(result) && result.Data != null)
+            {
+                lblCurrent.Text = string.Format("本期分析期号：{0}   第{1}期开奖号码：{2}", result.Data.Lottery.PeriodNum + 1, result.Data.Lottery.PeriodNum, result.Data.Lottery.RetNum);
+
+                if (string.IsNullOrEmpty(lblServerTime.Text))
+                {
+                    lblServerTime.Text = result.ServerDate.ToString();
+                    timerServer.Enabled = true;
+                }
+                tmApp.Enabled = true;
+            }
+        }
+
+        private void tmApp_Tick(object sender, EventArgs e)
+        {
+            if (!bgwApp.IsBusy)
+            {
+                tmApp.Enabled = false;
+                bgwApp.RunWorkerAsync();
+            }
         }
     }
 }

@@ -57,6 +57,14 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private System.Threading.SendOrPostCallback GetNoticeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetCurrentLotteryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RechargeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SaveRemindOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetInfoForTimerOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -142,6 +150,18 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         /// <remarks/>
         public event GetNoticeCompletedEventHandler GetNoticeCompleted;
+        
+        /// <remarks/>
+        public event GetCurrentLotteryCompletedEventHandler GetCurrentLotteryCompleted;
+        
+        /// <remarks/>
+        public event RechargeCompletedEventHandler RechargeCompleted;
+        
+        /// <remarks/>
+        public event SaveRemindCompletedEventHandler SaveRemindCompleted;
+        
+        /// <remarks/>
+        public event GetInfoForTimerCompletedEventHandler GetInfoForTimerCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
@@ -416,26 +436,34 @@ namespace Helpmate.Facades.LotteryWebSvc {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ChangePsw", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ResultRMOfObject ChangePsw(string oldPsw, string newPsw) {
+        public ResultRMOfObject ChangePsw(string oldPsw, string newPsw, string q1, string a1, string q2, string a2) {
             object[] results = this.Invoke("ChangePsw", new object[] {
                         oldPsw,
-                        newPsw});
+                        newPsw,
+                        q1,
+                        a1,
+                        q2,
+                        a2});
             return ((ResultRMOfObject)(results[0]));
         }
         
         /// <remarks/>
-        public void ChangePswAsync(string oldPsw, string newPsw) {
-            this.ChangePswAsync(oldPsw, newPsw, null);
+        public void ChangePswAsync(string oldPsw, string newPsw, string q1, string a1, string q2, string a2) {
+            this.ChangePswAsync(oldPsw, newPsw, q1, a1, q2, a2, null);
         }
         
         /// <remarks/>
-        public void ChangePswAsync(string oldPsw, string newPsw, object userState) {
+        public void ChangePswAsync(string oldPsw, string newPsw, string q1, string a1, string q2, string a2, object userState) {
             if ((this.ChangePswOperationCompleted == null)) {
                 this.ChangePswOperationCompleted = new System.Threading.SendOrPostCallback(this.OnChangePswOperationCompleted);
             }
             this.InvokeAsync("ChangePsw", new object[] {
                         oldPsw,
-                        newPsw}, this.ChangePswOperationCompleted, userState);
+                        newPsw,
+                        q1,
+                        a1,
+                        q2,
+                        a2}, this.ChangePswOperationCompleted, userState);
         }
         
         private void OnChangePswOperationCompleted(object arg) {
@@ -532,6 +560,124 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCurrentLottery", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfLotteryForBJ GetCurrentLottery() {
+            object[] results = this.Invoke("GetCurrentLottery", new object[0]);
+            return ((ResultRMOfLotteryForBJ)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCurrentLotteryAsync() {
+            this.GetCurrentLotteryAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetCurrentLotteryAsync(object userState) {
+            if ((this.GetCurrentLotteryOperationCompleted == null)) {
+                this.GetCurrentLotteryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCurrentLotteryOperationCompleted);
+            }
+            this.InvokeAsync("GetCurrentLottery", new object[0], this.GetCurrentLotteryOperationCompleted, userState);
+        }
+        
+        private void OnGetCurrentLotteryOperationCompleted(object arg) {
+            if ((this.GetCurrentLotteryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCurrentLotteryCompleted(this, new GetCurrentLotteryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Recharge", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfBoolean Recharge(string cardNo, string cardPsw) {
+            object[] results = this.Invoke("Recharge", new object[] {
+                        cardNo,
+                        cardPsw});
+            return ((ResultRMOfBoolean)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RechargeAsync(string cardNo, string cardPsw) {
+            this.RechargeAsync(cardNo, cardPsw, null);
+        }
+        
+        /// <remarks/>
+        public void RechargeAsync(string cardNo, string cardPsw, object userState) {
+            if ((this.RechargeOperationCompleted == null)) {
+                this.RechargeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRechargeOperationCompleted);
+            }
+            this.InvokeAsync("Recharge", new object[] {
+                        cardNo,
+                        cardPsw}, this.RechargeOperationCompleted, userState);
+        }
+        
+        private void OnRechargeOperationCompleted(object arg) {
+            if ((this.RechargeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RechargeCompleted(this, new RechargeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveRemind", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfBoolean SaveRemind(RemindStatistics remind) {
+            object[] results = this.Invoke("SaveRemind", new object[] {
+                        remind});
+            return ((ResultRMOfBoolean)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SaveRemindAsync(RemindStatistics remind) {
+            this.SaveRemindAsync(remind, null);
+        }
+        
+        /// <remarks/>
+        public void SaveRemindAsync(RemindStatistics remind, object userState) {
+            if ((this.SaveRemindOperationCompleted == null)) {
+                this.SaveRemindOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveRemindOperationCompleted);
+            }
+            this.InvokeAsync("SaveRemind", new object[] {
+                        remind}, this.SaveRemindOperationCompleted, userState);
+        }
+        
+        private void OnSaveRemindOperationCompleted(object arg) {
+            if ((this.SaveRemindCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SaveRemindCompleted(this, new SaveRemindCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetInfoForTimer", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfInfoForTimer GetInfoForTimer() {
+            object[] results = this.Invoke("GetInfoForTimer", new object[0]);
+            return ((ResultRMOfInfoForTimer)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetInfoForTimerAsync() {
+            this.GetInfoForTimerAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetInfoForTimerAsync(object userState) {
+            if ((this.GetInfoForTimerOperationCompleted == null)) {
+                this.GetInfoForTimerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetInfoForTimerOperationCompleted);
+            }
+            this.InvokeAsync("GetInfoForTimer", new object[0], this.GetInfoForTimerOperationCompleted, userState);
+        }
+        
+        private void OnGetInfoForTimerOperationCompleted(object arg) {
+            if ((this.GetInfoForTimerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetInfoForTimerCompleted(this, new GetInfoForTimerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -551,7 +697,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -634,7 +780,622 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class InfoForTimer {
+        
+        private LotteryForBJ lotteryField;
+        
+        private RemindStatistics remindField;
+        
+        /// <remarks/>
+        public LotteryForBJ Lottery {
+            get {
+                return this.lotteryField;
+            }
+            set {
+                this.lotteryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public RemindStatistics Remind {
+            get {
+                return this.remindField;
+            }
+            set {
+                this.remindField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryForBJ {
+        
+        private int periodNumField;
+        
+        private System.DateTime retTimeField;
+        
+        private int siteSysNoField;
+        
+        private int retOddNumField;
+        
+        private int retNumField;
+        
+        private string retMidNumField;
+        
+        private string collectRetField;
+        
+        private System.DateTime collectTimeField;
+        
+        private int statusField;
+        
+        private LotteryType typeField;
+        
+        /// <remarks/>
+        public int PeriodNum {
+            get {
+                return this.periodNumField;
+            }
+            set {
+                this.periodNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime RetTime {
+            get {
+                return this.retTimeField;
+            }
+            set {
+                this.retTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SiteSysNo {
+            get {
+                return this.siteSysNoField;
+            }
+            set {
+                this.siteSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RetOddNum {
+            get {
+                return this.retOddNumField;
+            }
+            set {
+                this.retOddNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RetMidNum {
+            get {
+                return this.retMidNumField;
+            }
+            set {
+                this.retMidNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CollectRet {
+            get {
+                return this.collectRetField;
+            }
+            set {
+                this.collectRetField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CollectTime {
+            get {
+                return this.collectTimeField;
+            }
+            set {
+                this.collectTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LotteryType type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryType {
+        
+        private int retNumField;
+        
+        private string bigOrSmallField;
+        
+        private string middleOrSideField;
+        
+        private string oddOrDualField;
+        
+        private string mantissaBigOrSmallField;
+        
+        private string threeRemainderField;
+        
+        private string fourRemainderField;
+        
+        private string fiveRemainderField;
+        
+        /// <remarks/>
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string BigOrSmall {
+            get {
+                return this.bigOrSmallField;
+            }
+            set {
+                this.bigOrSmallField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MiddleOrSide {
+            get {
+                return this.middleOrSideField;
+            }
+            set {
+                this.middleOrSideField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string OddOrDual {
+            get {
+                return this.oddOrDualField;
+            }
+            set {
+                this.oddOrDualField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MantissaBigOrSmall {
+            get {
+                return this.mantissaBigOrSmallField;
+            }
+            set {
+                this.mantissaBigOrSmallField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ThreeRemainder {
+            get {
+                return this.threeRemainderField;
+            }
+            set {
+                this.threeRemainderField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FourRemainder {
+            get {
+                return this.fourRemainderField;
+            }
+            set {
+                this.fourRemainderField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FiveRemainder {
+            get {
+                return this.fiveRemainderField;
+            }
+            set {
+                this.fiveRemainderField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class RemindStatistics {
+        
+        private int sysNoField;
+        
+        private int userSysNoField;
+        
+        private int gameSysNoField;
+        
+        private int sourceSysNoField;
+        
+        private int siteSysNoField;
+        
+        private int retNumField;
+        
+        private int cntField;
+        
+        private int statusField;
+        
+        /// <remarks/>
+        public int SysNo {
+            get {
+                return this.sysNoField;
+            }
+            set {
+                this.sysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int UserSysNo {
+            get {
+                return this.userSysNoField;
+            }
+            set {
+                this.userSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int GameSysNo {
+            get {
+                return this.gameSysNoField;
+            }
+            set {
+                this.gameSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SourceSysNo {
+            get {
+                return this.sourceSysNoField;
+            }
+            set {
+                this.sourceSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SiteSysNo {
+            get {
+                return this.siteSysNoField;
+            }
+            set {
+                this.siteSysNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Cnt {
+            get {
+                return this.cntField;
+            }
+            set {
+                this.cntField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfInfoForTimer {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private InfoForTimer dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public InfoForTimer Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfBoolean {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private bool dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfLotteryForBJ {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private LotteryForBJ dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LotteryForBJ Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -715,7 +1476,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -731,6 +1492,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -781,10 +1544,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.keyField = value;
             }
         }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -800,6 +1573,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -850,10 +1625,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.keyField = value;
             }
         }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1042,112 +1827,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class RemindStatistics {
-        
-        private int sysNoField;
-        
-        private int userSysNoField;
-        
-        private int gameSysNoField;
-        
-        private int sourceSysNoField;
-        
-        private int siteSysNoField;
-        
-        private int retNumField;
-        
-        private int cntField;
-        
-        private int statusField;
-        
-        /// <remarks/>
-        public int SysNo {
-            get {
-                return this.sysNoField;
-            }
-            set {
-                this.sysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int UserSysNo {
-            get {
-                return this.userSysNoField;
-            }
-            set {
-                this.userSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int GameSysNo {
-            get {
-                return this.gameSysNoField;
-            }
-            set {
-                this.gameSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int SourceSysNo {
-            get {
-                return this.sourceSysNoField;
-            }
-            set {
-                this.sourceSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int SiteSysNo {
-            get {
-                return this.siteSysNoField;
-            }
-            set {
-                this.siteSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int RetNum {
-            get {
-                return this.retNumField;
-            }
-            set {
-                this.retNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Cnt {
-            get {
-                return this.cntField;
-            }
-            set {
-                this.cntField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1163,6 +1843,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -1213,10 +1895,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.keyField = value;
             }
         }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1232,6 +1924,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -1282,10 +1976,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.keyField = value;
             }
         }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1402,7 +2106,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1418,6 +2122,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -1468,10 +2174,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.keyField = value;
             }
         }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1552,7 +2268,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1585,7 +2301,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1642,7 +2358,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1658,6 +2374,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -1708,10 +2426,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.keyField = value;
             }
         }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1727,6 +2455,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -1777,10 +2507,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.keyField = value;
             }
         }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1837,241 +2577,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryForBJ {
-        
-        private int periodNumField;
-        
-        private System.DateTime retTimeField;
-        
-        private int siteSysNoField;
-        
-        private int retOddNumField;
-        
-        private int retNumField;
-        
-        private string retMidNumField;
-        
-        private string collectRetField;
-        
-        private System.DateTime collectTimeField;
-        
-        private int statusField;
-        
-        private LotteryType typeField;
-        
-        /// <remarks/>
-        public int PeriodNum {
-            get {
-                return this.periodNumField;
-            }
-            set {
-                this.periodNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime RetTime {
-            get {
-                return this.retTimeField;
-            }
-            set {
-                this.retTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int SiteSysNo {
-            get {
-                return this.siteSysNoField;
-            }
-            set {
-                this.siteSysNoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int RetOddNum {
-            get {
-                return this.retOddNumField;
-            }
-            set {
-                this.retOddNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int RetNum {
-            get {
-                return this.retNumField;
-            }
-            set {
-                this.retNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string RetMidNum {
-            get {
-                return this.retMidNumField;
-            }
-            set {
-                this.retMidNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string CollectRet {
-            get {
-                return this.collectRetField;
-            }
-            set {
-                this.collectRetField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CollectTime {
-            get {
-                return this.collectTimeField;
-            }
-            set {
-                this.collectTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public LotteryType type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryType {
-        
-        private int retNumField;
-        
-        private string bigOrSmallField;
-        
-        private string middleOrSideField;
-        
-        private string oddOrDualField;
-        
-        private string mantissaBigOrSmallField;
-        
-        private string threeRemainderField;
-        
-        private string fourRemainderField;
-        
-        private string fiveRemainderField;
-        
-        /// <remarks/>
-        public int RetNum {
-            get {
-                return this.retNumField;
-            }
-            set {
-                this.retNumField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string BigOrSmall {
-            get {
-                return this.bigOrSmallField;
-            }
-            set {
-                this.bigOrSmallField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MiddleOrSide {
-            get {
-                return this.middleOrSideField;
-            }
-            set {
-                this.middleOrSideField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string OddOrDual {
-            get {
-                return this.oddOrDualField;
-            }
-            set {
-                this.oddOrDualField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MantissaBigOrSmall {
-            get {
-                return this.mantissaBigOrSmallField;
-            }
-            set {
-                this.mantissaBigOrSmallField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ThreeRemainder {
-            get {
-                return this.threeRemainderField;
-            }
-            set {
-                this.threeRemainderField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string FourRemainder {
-            get {
-                return this.fourRemainderField;
-            }
-            set {
-                this.fourRemainderField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string FiveRemainder {
-            get {
-                return this.fiveRemainderField;
-            }
-            set {
-                this.fiveRemainderField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2087,6 +2593,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -2137,10 +2645,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.keyField = value;
             }
         }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2223,7 +2741,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2245,6 +2763,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private decimal oddPField;
         
         private decimal evenPField;
+        
+        private string forecastField;
         
         /// <remarks/>
         public LotteryForBJ[] Lotteries {
@@ -2325,10 +2845,20 @@ namespace Helpmate.Facades.LotteryWebSvc {
                 this.evenPField = value;
             }
         }
+        
+        /// <remarks/>
+        public string Forecast {
+            get {
+                return this.forecastField;
+            }
+            set {
+                this.forecastField = value;
+            }
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2409,7 +2939,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2425,6 +2955,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         public bool Success {
@@ -2473,6 +3005,16 @@ namespace Helpmate.Facades.LotteryWebSvc {
             }
             set {
                 this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
             }
         }
     }
@@ -2811,6 +3353,110 @@ namespace Helpmate.Facades.LotteryWebSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ResultRMOfNotices)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetCurrentLotteryCompletedEventHandler(object sender, GetCurrentLotteryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCurrentLotteryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCurrentLotteryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfLotteryForBJ Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfLotteryForBJ)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void RechargeCompletedEventHandler(object sender, RechargeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RechargeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RechargeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfBoolean Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfBoolean)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void SaveRemindCompletedEventHandler(object sender, SaveRemindCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SaveRemindCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SaveRemindCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfBoolean Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfBoolean)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetInfoForTimerCompletedEventHandler(object sender, GetInfoForTimerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetInfoForTimerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetInfoForTimerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfInfoForTimer Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfInfoForTimer)(this.results[0]));
             }
         }
     }

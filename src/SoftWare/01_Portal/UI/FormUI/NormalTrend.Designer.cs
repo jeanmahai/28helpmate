@@ -36,6 +36,7 @@
             this.lnkNext = new System.Windows.Forms.LinkLabel();
             this.lnkLast = new System.Windows.Forms.LinkLabel();
             this.lnkFirst = new System.Windows.Forms.LinkLabel();
+            this.bgworkerLoad = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.countList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
@@ -130,6 +131,11 @@
             this.lnkFirst.Text = "首页";
             this.lnkFirst.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkFirst_LinkClicked);
             // 
+            // bgworkerLoad
+            // 
+            this.bgworkerLoad.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerLoad_DoWork);
+            this.bgworkerLoad.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerLoad_RunWorkerCompleted);
+            // 
             // NormalTrend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -148,6 +154,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NormalTrend";
             this.Text = "NormalTrend";
+            this.Load += new System.EventHandler(this.NormalTrend_Load);
             ((System.ComponentModel.ISupportInitialize)(this.countList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).EndInit();
@@ -166,5 +173,6 @@
         private System.Windows.Forms.LinkLabel lnkNext;
         private System.Windows.Forms.LinkLabel lnkLast;
         private System.Windows.Forms.LinkLabel lnkFirst;
+        private System.ComponentModel.BackgroundWorker bgworkerLoad;
     }
 }

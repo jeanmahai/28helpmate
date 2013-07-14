@@ -153,6 +153,7 @@
             this.lblNow9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.bgwApp = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
@@ -1686,6 +1687,11 @@
             this.label2.TabIndex = 124;
             this.label2.Text = "遗漏号码统计：";
             // 
+            // bgwApp
+            // 
+            this.bgwApp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwApp_DoWork);
+            this.bgwApp.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwApp_RunWorkerCompleted);
+            // 
             // Omission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1864,5 +1870,6 @@
         private System.Windows.Forms.Label lblBZ9;
         private System.Windows.Forms.Label lblLen9;
         private System.Windows.Forms.Label lblNow9;
+        private System.ComponentModel.BackgroundWorker bgwApp;
     }
 }

@@ -60,6 +60,9 @@
             this.btnIssue = new System.Windows.Forms.Button();
             this.ddlQuestion1 = new System.Windows.Forms.ComboBox();
             this.ddlQuestion2 = new System.Windows.Forms.ComboBox();
+            this.bgworkerUserInfo = new System.ComponentModel.BackgroundWorker();
+            this.bgworkerPay = new System.ComponentModel.BackgroundWorker();
+            this.bgworkerChangePwd = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // label6
@@ -76,8 +79,8 @@
             // 
             // pnlLine
             // 
-            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLine.BackColor = System.Drawing.Color.Transparent;
             this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -173,8 +176,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -252,8 +255,8 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -398,6 +401,21 @@
             this.ddlQuestion2.TabIndex = 178;
             this.ddlQuestion2.ValueMember = "Key";
             // 
+            // bgworkerUserInfo
+            // 
+            this.bgworkerUserInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerUserInfo_DoWork);
+            this.bgworkerUserInfo.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerUserInfo_RunWorkerCompleted);
+            // 
+            // bgworkerPay
+            // 
+            this.bgworkerPay.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerPay_DoWork);
+            this.bgworkerPay.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerPay_RunWorkerCompleted);
+            // 
+            // bgworkerChangePwd
+            // 
+            this.bgworkerChangePwd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerChangePwd_DoWork);
+            this.bgworkerChangePwd.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerChangePwd_RunWorkerCompleted);
+            // 
             // UserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -479,5 +497,8 @@
         private System.Windows.Forms.Button btnIssue;
         private System.Windows.Forms.ComboBox ddlQuestion1;
         private System.Windows.Forms.ComboBox ddlQuestion2;
+        private System.ComponentModel.BackgroundWorker bgworkerUserInfo;
+        private System.ComponentModel.BackgroundWorker bgworkerPay;
+        private System.ComponentModel.BackgroundWorker bgworkerChangePwd;
     }
 }

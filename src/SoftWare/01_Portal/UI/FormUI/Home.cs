@@ -13,14 +13,14 @@ using Helpmate.UI.Forms.UserContorl;
 using Helpmate.UI.Forms.UIContorl.Common;
 using Helpmate.Facades.LotteryWebSvc;
 using Helpmate.UI.Forms.Models;
+using Common.Utility;
+using Helpmate.UI.Forms.Code;
+using System.Threading;
 
 namespace Helpmate.UI.Forms.FormUI
 {
     public partial class Home : Form, IPage
     {
-        public delegate ResultRMOfCustomModules QueryDataDelegate();
-        public delegate void BindDataCallback(ResultRMOfCustomModules result);
-
         BaseFacade bf = new BaseFacade();
         public CommonFacade serviceFacade = new CommonFacade();
         public List<SiteModel> SiteMapList { get; set; }
@@ -32,70 +32,26 @@ namespace Helpmate.UI.Forms.FormUI
             {
                 new SiteModel(){ Text="本期统计"}
             };
-
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             InitializeComponent();
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.DoubleBuffer, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
             QueryData();
         }
 
         public void QueryData(int? pageIndex = null)
         {
-            tmRefresh.Enabled = false;
-            cmd.ShowOpaqueLayer(this, 125, true);
-            QueryDataDelegate dele = new QueryDataDelegate(GetCustomeModule);
-            AsyncCallback callBack = new AsyncCallback(CallBackMethod);
-            IAsyncResult iar = dele.BeginInvoke(callBack, dele);
-        }
-
-        public void CallBackMethod(IAsyncResult ar)
-        {
-            QueryDataDelegate dn = (QueryDataDelegate)ar.AsyncState;
-            var result = dn.EndInvoke(ar);
-
-            if (this.InvokeRequired)
+            if (!bgwApp.IsBusy)
             {
-                BindDataCallback bind = new BindDataCallback(BindDataAsync);
-                this.Invoke(bind, result);
+                tmRefresh.Enabled = false;
+                cmd.ShowOpaqueLayer(this, 125, true);
+                bgwApp.RunWorkerAsync();
             }
-            else
-            {
-                BindDataAsync(result);
-            }
-        }
-
-        private void BindDataAsync(ResultRMOfCustomModules result)
-        {
-            if (result != null && result.Data != null)
-            {
-                //picNuming.Image = UtilsModel.LoadNumImage(result.Result.Data.M1);
-
-                ucLotteryM1.LoadBindData(result.Data.M1);
-                ucLotteryM2.LoadBindData(result.Data.M2);
-                ucLotteryM3.LoadBindData(result.Data.M3);
-                ucLotteryM4.LoadBindData(result.Data.M4);
-            }
-            cmd.HideOpaqueLayer();
-            tmRefresh.Enabled = true;
-            if (result.Code == bf.ERROR_VALIDATE_TOKEN_CODE)
-            {
-                DialogResult dr = MessageBox.Show(bf.ERROR_VALIDATE_TOKEN_MSG, "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (dr == DialogResult.OK)
-                {
-                    this.Close();
-                    Form loginForm = new LoginForm();
-                    loginForm.Show();
-                }
-            }
-        }
-
-        private ResultRMOfCustomModules GetCustomeModule()
-        {
-            return serviceFacade.GetCustomeModule();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -105,7 +61,39 @@ namespace Helpmate.UI.Forms.FormUI
 
         private void tmRefresh_Tick(object sender, EventArgs e)
         {
-            //QueryData();
+            QueryData();
+        }
+
+        private void bgwApp_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = serviceFacade.GetCustomeModule();
+        }
+
+        private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            cmd.HideOpaqueLayer();
+            var result = e.Result as ResultRMOfCustomModules;
+
+            if (e.Error != null)
+            {
+                WriteLog.Write("GetCustomeModule", e.Error.Message);
+                AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
+                return;
+            }
+
+            if (PageUtils.CheckError(result) && result.Data != null)
+            {
+                lblNuming.Text = result.Data.M1.Forecast;
+                lblMinute.Text = result.Data.M2.Forecast;
+                lblTime.Text = result.Data.M3.Forecast;
+
+                ucLotteryM1.LoadBindData(result.Data.M1);
+                ucLotteryM2.LoadBindData(result.Data.M2);
+                ucLotteryM3.LoadBindData(result.Data.M3);
+                ucLotteryM4.LoadBindData(result.Data.M4);
+
+                tmRefresh.Enabled = true;
+            }
         }
     }
 }

@@ -136,6 +136,11 @@ namespace Helpmate.UI.Forms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.DoubleBuffer, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+
             btnLogin.Enabled = false;
             btnRegister.Enabled = false;
             pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在检查版本更新..."));

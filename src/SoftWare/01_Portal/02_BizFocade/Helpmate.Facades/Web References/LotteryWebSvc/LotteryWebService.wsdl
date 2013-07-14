@@ -19,6 +19,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:CustomModules" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="CustomModules">
@@ -41,6 +42,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="SideP" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="OddP" type="s:decimal" />
           <s:element minOccurs="1" maxOccurs="1" name="EvenP" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Forecast" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfLotteryForBJ">
@@ -121,6 +123,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:PageListOfLotteryForBJ" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="PageListOfLotteryForBJ">
@@ -154,6 +157,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="Register">
@@ -220,6 +224,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryTrend" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="LotteryTrend">
@@ -273,6 +278,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfOmitStatistics" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfOmitStatistics">
@@ -326,6 +332,10 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="oldPsw" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="newPsw" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="q1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="a1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="q2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="a2" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -343,6 +353,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="QueryRemindLottery">
@@ -355,6 +366,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:RemindStatistics" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="RemindStatistics">
@@ -386,6 +398,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:User" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetUserInfoResponse">
@@ -409,6 +422,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:Notices" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="Notices">
@@ -425,6 +439,91 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetNoticeResult" type="tns:ResultRMOfNotices" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentLottery">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ResultRMOfLotteryForBJ">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:LotteryForBJ" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrentLotteryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentLotteryResult" type="tns:ResultRMOfLotteryForBJ" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Recharge">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardPsw" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfBoolean">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RechargeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RechargeResult" type="tns:ResultRMOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRemind">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="remind" type="tns:RemindStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRemindResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveRemindResult" type="tns:ResultRMOfBoolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoForTimer">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ResultRMOfInfoForTimer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:InfoForTimer" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InfoForTimer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Lottery" type="tns:LotteryForBJ" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remind" type="tns:RemindStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInfoForTimerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInfoForTimerResult" type="tns:ResultRMOfInfoForTimer" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -535,6 +634,42 @@
   <wsdl:message name="GetNoticeTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="GetCurrentLotterySoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentLottery" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentLotterySoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentLotteryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentLotteryTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="RechargeSoapIn">
+    <wsdl:part name="parameters" element="tns:Recharge" />
+  </wsdl:message>
+  <wsdl:message name="RechargeSoapOut">
+    <wsdl:part name="parameters" element="tns:RechargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="RechargeTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="SaveRemindSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRemind" />
+  </wsdl:message>
+  <wsdl:message name="SaveRemindSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRemindResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveRemindTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForTimerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInfoForTimer" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForTimerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInfoForTimerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForTimerTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
@@ -600,6 +735,26 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得公告</wsdl:documentation>
       <wsdl:input message="tns:GetNoticeSoapIn" />
       <wsdl:output message="tns:GetNoticeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentLottery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得当前开奖结果</wsdl:documentation>
+      <wsdl:input message="tns:GetCurrentLotterySoapIn" />
+      <wsdl:output message="tns:GetCurrentLotterySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Recharge">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">充值</wsdl:documentation>
+      <wsdl:input message="tns:RechargeSoapIn" />
+      <wsdl:output message="tns:RechargeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRemind">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">保存提醒</wsdl:documentation>
+      <wsdl:input message="tns:SaveRemindSoapIn" />
+      <wsdl:output message="tns:SaveRemindSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForTimer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">提醒+当前期</wsdl:documentation>
+      <wsdl:input message="tns:GetInfoForTimerSoapIn" />
+      <wsdl:output message="tns:GetInfoForTimerSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
@@ -730,6 +885,46 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCurrentLottery">
+      <soap:operation soapAction="http://tempuri.org/GetCurrentLottery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCurrentLotteryTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Recharge">
+      <soap:operation soapAction="http://tempuri.org/Recharge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RechargeTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRemind">
+      <soap:operation soapAction="http://tempuri.org/SaveRemind" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SaveRemindTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForTimer">
+      <soap:operation soapAction="http://tempuri.org/GetInfoForTimer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInfoForTimerTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -854,6 +1049,46 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:GetNoticeTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentLottery">
+      <soap12:operation soapAction="http://tempuri.org/GetCurrentLottery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCurrentLotteryTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Recharge">
+      <soap12:operation soapAction="http://tempuri.org/Recharge" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RechargeTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRemind">
+      <soap12:operation soapAction="http://tempuri.org/SaveRemind" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SaveRemindTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForTimer">
+      <soap12:operation soapAction="http://tempuri.org/GetInfoForTimer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInfoForTimerTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

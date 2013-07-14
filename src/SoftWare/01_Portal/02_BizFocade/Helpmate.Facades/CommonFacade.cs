@@ -13,49 +13,24 @@ namespace Helpmate.Facades
     {
         public ResultRMOfCustomModules GetCustomeModule()
         {
-            try
+            lock (Header.obj)
             {
-                lock (Header.obj)
-                {
-                    Client.Service.TokenHeaderValue = TokenHeader;
-                    var result = Client.Service.GetCustomeModule();
-                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
-                    else if (result.Success) Header.Key = result.Key;
-                    return result;
-                }
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.GetCustomeModule();
+                if (result.Success) Header.Key = result.Key;
+                return result;
             }
-            catch (Exception ex)
-            {
-                WriteLog.Write("GetCustomeModule", ex.ToString());
-                AppMessage.AlertErrMessage(400);
-            }
-            return null;
         }
 
         public ResultRMOfListOfOmitStatistics QueryOmission()
         {
-            try
+            lock (Header.obj)
             {
-                lock (Header.obj)
-                {
-                    Client.Service.TokenHeaderValue = TokenHeader;
-                    var result = Client.Service.QueryOmission();
-                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
-                    else if (result.Success) Header.Key = result.Key;
-                    return result;
-                }
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.QueryOmission();
+                if (result.Success) Header.Key = result.Key;
+                return result;
             }
-            catch (Exception ex)
-            {
-                WriteLog.Write("QueryOmission", ex.ToString());
-                AppMessage.AlertErrMessage(400);
-            }
-            return null;
-        }
-
-        public int LoadCode()
-        {
-            return 1;
         }
 
         /// <summary>
@@ -64,23 +39,13 @@ namespace Helpmate.Facades
         /// <returns></returns>
         public ResultRMOfUser GetUserInfo()
         {
-            try
+            lock (Header.obj)
             {
-                lock (Header.obj)
-                {
-                    Client.Service.TokenHeaderValue = TokenHeader;
-                    var result = Client.Service.GetUserInfo();
-                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
-                    else if (result.Success) Header.Key = result.Key;
-                    return result;
-                }
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.GetUserInfo();
+                if (result.Success) Header.Key = result.Key;
+                return result;
             }
-            catch (Exception ex)
-            {
-                WriteLog.Write("GetUserInfo", ex.ToString());
-                AppMessage.AlertErrMessage(400);
-            }
-            return null;
         }
 
         /// <summary>
@@ -95,23 +60,13 @@ namespace Helpmate.Facades
         /// <returns></returns>
         public ResultRMOfObject ChangePwd(string question1, string question2, string answer1, string answer2, string oldPwd, string newPwd)
         {
-            try
+            lock (Header.obj)
             {
-                lock (Header.obj)
-                {
-                    Client.Service.TokenHeaderValue = TokenHeader;
-                    var result = Client.Service.ChangePsw(oldPwd, newPwd);
-                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
-                    else if (result.Success) Header.Key = result.Key;
-                    return result;
-                }
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.ChangePsw(oldPwd, newPwd, question1, answer1, question2, answer2);
+                if (result.Success) Header.Key = result.Key;
+                return result;
             }
-            catch (Exception ex)
-            {
-                WriteLog.Write("ChangePwd", ex.ToString());
-                AppMessage.AlertErrMessage(400);
-            }
-            return null;
         }
         /// <summary>
         /// 从Service充值
@@ -119,25 +74,15 @@ namespace Helpmate.Facades
         /// <param name="cardID">卡号</param>
         /// <param name="cardPwd">密码</param>
         /// <returns></returns>
-        public ResultRMOfObject Pay(string cardID, string cardPwd)
+        public ResultRMOfBoolean Pay(string cardID, string cardPwd)
         {
-            try
+            lock (Header.obj)
             {
-                lock (Header.obj)
-                {
-                    Client.Service.TokenHeaderValue = TokenHeader;
-                    var result = Client.Service.ChangePsw(cardID, cardPwd);
-                    if (!result.Success && result.Code != ERROR_VALIDATE_TOKEN_CODE) AppMessage.AlertErrMessage(result.Message);
-                    else if (result.Success) Header.Key = result.Key;
-                    return result;
-                }
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.Recharge(cardID, cardPwd);
+                if (result.Success) Header.Key = result.Key;
+                return result;
             }
-            catch (Exception ex)
-            {
-                WriteLog.Write("Pay", ex.ToString());
-                AppMessage.AlertErrMessage(400);
-            }
-            return null;
         }
 
         /// <summary>
@@ -146,20 +91,19 @@ namespace Helpmate.Facades
         /// <returns></returns>
         public DateTime GetServerDate()
         {
-            try
-            {
-                lock (Header.obj)
-                {
-                    var data = Client.Service.GetServerDate();
-                    return data;
-                }
-            }
-            catch (Exception ex)
-            {
-                WriteLog.Write("GetServerDate", ex.ToString());
-                AppMessage.AlertErrMessage(400);
-            }
-            return DateTime.Now;
+            var data = Client.Service.GetServerDate();
+            return data;
+        }
+
+        /// <summary>
+        /// 首页获取提醒+当前期 
+        /// </summary>
+        /// <returns></returns>
+        public ResultRMOfInfoForTimer GetInfoForTimer()
+        {
+            Client.Service.TokenHeaderValue = TokenHeader;
+            var data = Client.Service.GetInfoForTimer();
+            return data;
         }
     }
 }
