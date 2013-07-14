@@ -109,5 +109,7 @@ namespace Model.ResponseModel
             }
             set { evenP = value; }
         }
+
+        public string Forecast { get; set; }
     }
 }

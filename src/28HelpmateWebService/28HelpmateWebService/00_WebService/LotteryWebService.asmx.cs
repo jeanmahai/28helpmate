@@ -57,7 +57,7 @@ namespace WebService
             if (ValidateToken(ReqHeader))
             {
                 result.Data = new CustomModules();
-                var lastestLottery = Dal.MaxPeriod_28BJ();
+                var lastestLottery = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
 
                 result.Data.M1 = Dal.QueryNextLotteryWithSameNumber(lastestLottery.RetNum,ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
                 result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5),ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
@@ -340,6 +340,26 @@ namespace WebService
                 result.Data = Dal.GetNotices(sysNo);
                 result.Success = true;
                 NewKey(result, ReqHeader.UserSysNo);
+            }
+            else
+            {
+                result.Success = false;
+                result.Code = ERROR_VALIDATE_TOKEN_CODE;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
+        [WebMethod(Description = "获得当前开奖结果", EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<LotteryForBJ> GetCurrentLottery()
+        {
+            var result = new ResultRM<LotteryForBJ>();
+            if (ValidateToken(ReqHeader))
+            {
+                result.Data = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
+                result.Success = true;
+                NewKey(result,ReqHeader.UserSysNo);
             }
             else
             {

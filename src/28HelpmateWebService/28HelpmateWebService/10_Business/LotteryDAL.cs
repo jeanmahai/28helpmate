@@ -226,6 +226,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
+            result.Forecast = number.ToString(CultureInfo.InvariantCulture);
             return result;
         }
 
@@ -254,6 +255,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
+            result.Forecast = dateTime.Hour.ToString(CultureInfo.InvariantCulture);
             return result;
         }
         /// <summary>
@@ -265,7 +267,7 @@ namespace Business
             var datesStr = new List<string>();
             for (var i = 1;i <= 20;i++)
             {
-                datesStr.Add("'" + dateTime.AddHours(-i).ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                datesStr.Add("'" + dateTime.AddDays(-i).ToString("yyyy-MM-dd HH:mm:ss") + "'");
             }
             var sql = SqlManager.GetSqlText("QueryLotteryByHourStep");
             sql = string.Format(sql,tableName,string.Join(",",datesStr),siteSysNo);
@@ -279,6 +281,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
+            result.Forecast = dateTime.Day.ToString(CultureInfo.InvariantCulture);
             return result;
         }
         /// <summary>
@@ -369,12 +372,15 @@ namespace Business
 
             return result;
         }
-        public LotteryForBJ MaxPeriod_28BJ()
+        public LotteryForBJ GetCurrentLottery(int siteSysNo,string tableName)
         {
-            return Session.QueryOver<LotteryForBJ>()
-                .OrderBy(l => l.PeriodNum).Desc
-                .Take(1)
-                .SingleOrDefault<LotteryForBJ>();
+            var sql = SqlManager.GetSqlText("GetCurrentLottery");
+            sql = string.Format(sql, tableName, siteSysNo);
+
+            var q = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof (LotteryForBJ))
+                .List<LotteryForBJ>().SingleOrDefault();
+            return q;
         }
         //public OmissionLottery QueryOmissionForBJ(int number)
         //{
@@ -431,7 +437,7 @@ namespace Business
 
             var result = new LotteryTrend();
             //查询每个号码及类型的出现次数,总次数以maxTotal为准
-            var curLottery = MaxPeriod_28BJ();
+            var curLottery = GetCurrentLottery(siteSysNo,tableName);
             var maxPeriod = curLottery.PeriodNum;
             var minPeriod = maxPeriod - maxTotal;
 
