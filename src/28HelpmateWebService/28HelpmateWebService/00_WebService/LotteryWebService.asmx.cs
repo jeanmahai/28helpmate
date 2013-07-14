@@ -57,7 +57,7 @@ namespace WebService
             if (ValidateToken(ReqHeader))
             {
                 result.Data = new CustomModules();
-                var lastestLottery = Dal.MaxPeriod_28BJ();
+                var lastestLottery = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
 
                 result.Data.M1 = Dal.QueryNextLotteryWithSameNumber(lastestLottery.RetNum,ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
                 result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5),ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
@@ -254,12 +254,12 @@ namespace WebService
 
         [WebMethod(Description = "修改密码", EnableSession = true)]
         [SoapHeader("ReqHeader")]
-        public ResultRM<object> ChangePsw(string oldPsw,string newPsw)
+        public ResultRM<object> ChangePsw(string oldPsw,string newPsw,string q1,string a1,string q2,string a2)
         {
             var result = new ResultRM<object>();
             if (ValidateToken(ReqHeader))
             {
-                var msg = Dal.ChangePsw(ReqHeader.UserSysNo,oldPsw,newPsw);
+                var msg = Dal.ChangePsw(ReqHeader.UserSysNo,oldPsw,newPsw,q1,a1,q2,a2);
                 if (string.IsNullOrEmpty(msg))
                 {
                     result.Success = true;
@@ -340,6 +340,71 @@ namespace WebService
                 result.Data = Dal.GetNotices(sysNo);
                 result.Success = true;
                 NewKey(result, ReqHeader.UserSysNo);
+            }
+            else
+            {
+                result.Success = false;
+                result.Code = ERROR_VALIDATE_TOKEN_CODE;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
+        [WebMethod(Description = "获得当前开奖结果", EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<LotteryForBJ> GetCurrentLottery()
+        {
+            var result = new ResultRM<LotteryForBJ>();
+            if (ValidateToken(ReqHeader))
+            {
+                result.Data = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
+                result.Success = true;
+                NewKey(result,ReqHeader.UserSysNo);
+            }
+            else
+            {
+                result.Success = false;
+                result.Code = ERROR_VALIDATE_TOKEN_CODE;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
+        [WebMethod(Description = "充值", EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<bool> Recharge(string cardNo,string cardPsw)
+        {
+            var result = new ResultRM<bool>();
+            string error;
+            if (ValidateToken(ReqHeader))
+            {
+
+                result.Data = Dal.Recharge(ReqHeader.UserSysNo, cardNo, cardPsw, out error);
+                result.Success = result.Data;
+                result.Message = error;
+                NewKey(result,ReqHeader.UserSysNo);
+            }
+            else
+            {
+                result.Success = false;
+                result.Code = ERROR_VALIDATE_TOKEN_CODE;
+                result.Message = ERROR_VALIDATE_TOKEN;
+            }
+            return result;
+        }
+
+        [WebMethod(Description = "保存提醒", EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<bool> SaveRemind(RemindStatistics remind)
+        {
+            var result = new ResultRM<bool>();
+            if (ValidateToken(ReqHeader))
+            {
+
+                result.Data = Dal.SaveRemind(remind);
+                result.Success = result.Data;
+                //result.Message = error;
+                NewKey(result,ReqHeader.UserSysNo);
             }
             else
             {

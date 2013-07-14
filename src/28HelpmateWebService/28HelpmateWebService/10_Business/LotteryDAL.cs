@@ -127,8 +127,26 @@ namespace Business
                           && a.SourceSysNo == regionSysNo
                           && a.SiteSysNo == siteSysNo
                           && a.UserSysNo == userSysNo
+                          && a.Status == 1
                     select a;
-            return q.SingleOrDefault();
+            var remind = q.SingleOrDefault();
+            if (remind != null)
+            {
+                remind.Status = 0;
+                Session.Save(remind);
+                Session.Flush();
+                remind.Status = 1;
+            }
+
+            return remind;
+        }
+
+        public bool SaveRemind(RemindStatistics remind)
+        {
+            remind.Status = 0;
+            Session.Save(remind);
+            Session.Flush();
+            return true;
         }
 
         /// <summary>
@@ -226,6 +244,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
+            result.Forecast = number.ToString(CultureInfo.InvariantCulture);
             return result;
         }
 
@@ -254,6 +273,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
+            result.Forecast = dateTime.Hour.ToString(CultureInfo.InvariantCulture);
             return result;
         }
         /// <summary>
@@ -265,7 +285,7 @@ namespace Business
             var datesStr = new List<string>();
             for (var i = 1;i <= 20;i++)
             {
-                datesStr.Add("'" + dateTime.AddHours(-i).ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                datesStr.Add("'" + dateTime.AddDays(-i).ToString("yyyy-MM-dd HH:mm:ss") + "'");
             }
             var sql = SqlManager.GetSqlText("QueryLotteryByHourStep");
             sql = string.Format(sql,tableName,string.Join(",",datesStr),siteSysNo);
@@ -279,6 +299,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
+            result.Forecast = dateTime.Day.ToString(CultureInfo.InvariantCulture);
             return result;
         }
         /// <summary>
@@ -369,12 +390,15 @@ namespace Business
 
             return result;
         }
-        public LotteryForBJ MaxPeriod_28BJ()
+        public LotteryForBJ GetCurrentLottery(int siteSysNo,string tableName)
         {
-            return Session.QueryOver<LotteryForBJ>()
-                .OrderBy(l => l.PeriodNum).Desc
-                .Take(1)
-                .SingleOrDefault<LotteryForBJ>();
+            var sql = SqlManager.GetSqlText("GetCurrentLottery");
+            sql = string.Format(sql,tableName,siteSysNo);
+
+            var q = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof(LotteryForBJ))
+                .List<LotteryForBJ>().SingleOrDefault();
+            return q;
         }
         //public OmissionLottery QueryOmissionForBJ(int number)
         //{
@@ -431,7 +455,7 @@ namespace Business
 
             var result = new LotteryTrend();
             //查询每个号码及类型的出现次数,总次数以maxTotal为准
-            var curLottery = MaxPeriod_28BJ();
+            var curLottery = GetCurrentLottery(siteSysNo,tableName);
             var maxPeriod = curLottery.PeriodNum;
             var minPeriod = maxPeriod - maxTotal;
 
@@ -570,7 +594,7 @@ namespace Business
                     select a;
             return q.SingleOrDefault();
         }
-        public bool Login(string userId,string psw,out string error, out int userSysNo)
+        public bool Login(string userId,string psw,out string error,out int userSysNo)
         {
             error = "";
             userSysNo = 0;
@@ -632,7 +656,7 @@ namespace Business
 
             //UserID必须是邮箱地址
 
-            if(string.IsNullOrEmpty(user.SecurityQuestion1))
+            if (string.IsNullOrEmpty(user.SecurityQuestion1))
             {
                 error = "问题1不能为空";
                 return -4;
@@ -655,14 +679,23 @@ namespace Business
             IPAsc(ip);
             return (int)result;
         }
-        public string ChangePsw(int userSysNo,string oldPsw,string newPsw)
+        public string ChangePsw(int userSysNo,string oldPsw,string newPsw,string q1,string a1,string q2,string a2)
         {
             var q = (from a in Session.Query<User>()
                      where a.SysNo == userSysNo && CiphertextService.MD5Encryption(oldPsw) == a.UserPwd
                      select a).SingleOrDefault();
             if (q == null)
             {
-                return "密码错误";
+                return "密码错误或用户不存在";
+            }
+            bool isPass = q.SecurityQuestion1 == q1 && q.SecurityAnswer1 == a1;
+            if (q.SecurityQuestion2 == q2 && q.SecurityAnswer2 == a2)
+            {
+                isPass = true;
+            }
+            if(!isPass)
+            {
+                return "问题验证失败";
             }
 
             q.UserPwd = CiphertextService.MD5Encryption(newPsw);
@@ -694,6 +727,91 @@ namespace Business
             return Session.QueryOver<Notices>().Where(p => p.SysNo == sysNo && p.Status == 1).SingleOrDefault<Notices>();
         }
 
+        public void WritePayLog(PayLog log)
+        {
+            log.IP = GetClientIP();
+            log.InDate = DateTime.Now;
+            Session.Save(log);
+            Session.Flush();
+        }
+
+        public void SavePayCard(PayCard card)
+        {
+            card.InDate = DateTime.Now;
+            Session.Save(card);
+            Session.Flush();
+        }
+
+        public PayCard GetPayCard(string cardNo,string base64Psw)
+        {
+            var q = from a in Session.Query<PayCard>()
+                    where a.PayCardID == cardNo && a.PayCardPwd == base64Psw
+                    select a;
+            return q.SingleOrDefault();
+        }
+
+        public bool Recharge(int userSysNo,string cardNo,string cardPsw,out string error)
+        {
+            error = "";
+            var pswb64 = Base64Encode(cardPsw);
+            var card = GetPayCard(cardNo,pswb64);
+            if (card == null)
+            {
+                error = "充值卡不存在";
+                return false;
+            }
+            if (card.Status != 1)
+            {
+                error = "充值卡不可用";
+                return false;
+            }
+            if (DateTime.Now > card.EndTime || DateTime.Now < card.BeginTime)
+            {
+                error = "充值卡已过期";
+                return false;
+            }
+            //TimeSpan duation;
+            //天
+            //if (card.CategorySysNo == 1)
+            //{
+            //duation = card.EndTime - card.BeginTime;
+            //}
+            ////月
+            //if (card.CategorySysNo == 2) { }
+            //var duration = card.EndTime - card.BeginTime;
+
+            var user = Queryuser(userSysNo);
+            if (user == null)
+            {
+                error = "用户不存在";
+                return false;
+            }
+            if (user.RechargeUseEndTime < DateTime.Now)
+            {
+                if (card.CategorySysNo == 1)
+                    user.RechargeUseEndTime = DateTime.Now.AddDays(1);
+                if (card.CategorySysNo == 2)
+                    user.RechargeUseEndTime = DateTime.Now.AddMonths(1);
+            }
+            else
+            {
+                if (card.CategorySysNo == 1)
+                    user.RechargeUseEndTime = user.RechargeUseEndTime.AddDays(1);
+                if (card.CategorySysNo == 2)
+                    user.RechargeUseEndTime = user.RechargeUseEndTime.AddMonths(1);
+            }
+            Session.Save(user);
+            Session.Flush();
+
+            var log = new PayLog();
+            log.CardSysNo = card.SysNo;
+            log.UserSysNo = userSysNo;
+
+            WritePayLog(log);
+
+            return true;
+        }
+
         private void SetCache(string key,object val)
         {
             HttpContext.Current.Cache.Insert(key,val,null,DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd 23:59:59")),TimeSpan.Zero);
@@ -722,5 +840,49 @@ namespace Business
             if (val.HasValue) return val.Value > 3;
             return false;
         }
+        /// <summary>
+        /// 进行base64编码
+        /// </summary>
+        /// <param name="data">被编码数据</param>
+        /// <returns></returns>
+        public static string Base64Encode(string data)
+        {
+            try
+            {
+                byte[] encData_byte = new byte[data.Length];
+                encData_byte = System.Text.Encoding.UTF8.GetBytes(data);
+                string encodedData = Convert.ToBase64String(encData_byte);
+                return encodedData;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Base64Encode: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 进行base64解码
+        /// </summary>
+        /// <param name="data">被解码数据</param>
+        /// <returns></returns>
+        public static string Base64Decode(string data)
+        {
+            try
+            {
+                var encoder = new UTF8Encoding();
+                Decoder utf8Decode = encoder.GetDecoder();
+                byte[] todecode_byte = Convert.FromBase64String(data);
+                int charCount = utf8Decode.GetCharCount(todecode_byte,0,todecode_byte.Length);
+                var decoded_char = new char[charCount];
+                utf8Decode.GetChars(todecode_byte,0,todecode_byte.Length,decoded_char,0);
+                var result = new String(decoded_char);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Base64Decode: " + ex.Message);
+            }
+        }
+
     }
 }

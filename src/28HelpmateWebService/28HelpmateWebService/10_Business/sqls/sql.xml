@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Sqls>
 
+  <sql name="GetCurrentLottery">
+    <![CDATA[
+select top 1 *
+from {0} sd
+where sd.SiteSysNo={1}
+order by sd.PeriodNum desc
+    ]]>
+  </sql>
+
   <sql name="RefreshRemind">
     <![CDATA[
 exec RefreshRemind {0},{1},{2}
