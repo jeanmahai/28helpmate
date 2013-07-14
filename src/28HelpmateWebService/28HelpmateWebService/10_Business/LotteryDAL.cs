@@ -120,6 +120,17 @@ namespace Business
 
         #region 28
 
+        public bool DelRemind(int sysNo)
+        {
+            var m = new RemindStatistics
+                    {
+                        SysNo = sysNo
+                    };
+            Session.Delete(m);
+            Session.Flush();
+            return true;
+        }
+
         public RemindStatistics QueryRemind(int gameSysNo,int regionSysNo,int siteSysNo,int userSysNo)
         {
             var q = from a in Session.Query<RemindStatistics>()
@@ -141,8 +152,22 @@ namespace Business
             return remind;
         }
 
-        public bool SaveRemind(RemindStatistics remind)
+        public bool SaveRemind(RemindStatistics remind,out string error)
         {
+            error = "";
+            var q = from a in Session.Query<RemindStatistics>()
+                    where a.SiteSysNo == remind.SiteSysNo
+                          && a.SourceSysNo == remind.SourceSysNo
+                          && a.UserSysNo == remind.UserSysNo
+                          && a.GameSysNo == remind.GameSysNo
+                          && a.RetNum == remind.RetNum
+                    select a;
+            if(q.SingleOrDefault()!=null)
+            {
+                error = "此提醒已经设置";
+                return false;
+            }
+
             remind.Status = 0;
             Session.Save(remind);
             Session.Flush();
@@ -598,10 +623,11 @@ namespace Business
         {
             error = "";
             userSysNo = 0;
-            var user = Session.QueryOver<User>().Where(p => p.UserID == userId).SingleOrDefault<User>();
+            var pswHash = CiphertextService.MD5Encryption(psw);
+            var user = Session.QueryOver<User>().Where(p => p.UserID == userId && p.UserPwd == pswHash).SingleOrDefault<User>();
             if (user == null)
             {
-                error = "用户不存在";
+                error = "用户不存在或密码错误";
                 return false;
             }
             if (user.Status == -1)
@@ -614,12 +640,12 @@ namespace Business
                 error = "用户未激活";
                 return false;
             }
-            var pswHash = CiphertextService.MD5Encryption(psw);
-            if (pswHash != user.UserPwd)
-            {
-                error = "密码错误";
-                return false;
-            }
+            //var pswHash = CiphertextService.MD5Encryption(psw);
+            //if (pswHash != user.UserPwd)
+            //{
+            //    error = "密码错误";
+            //    return false;
+            //}
             //该用户的充值是否可用
             userSysNo = user.SysNo;
             return true;
@@ -693,7 +719,7 @@ namespace Business
             {
                 isPass = true;
             }
-            if(!isPass)
+            if (!isPass)
             {
                 return "问题验证失败";
             }
@@ -800,7 +826,11 @@ namespace Business
                 if (card.CategorySysNo == 2)
                     user.RechargeUseEndTime = user.RechargeUseEndTime.AddMonths(1);
             }
-            Session.Save(user);
+            Session.Update(user);
+            Session.Flush();
+
+            card.Status = 2;
+            Session.Update(card);
             Session.Flush();
 
             var log = new PayLog();

@@ -158,7 +158,9 @@ namespace UnitTest
         [TestMethod]
         public void LoginTest()
         {
-            //Console.WriteLine(string.Format("{0}",m_Dal.Login(1,"test")));
+            string error;
+            int userSysNo;
+            Console.WriteLine(string.Format("{0},{1},{2}",m_Dal.Login("xxcode@163.com","115922",out error,out userSysNo),error,userSysNo));
         }
         [TestMethod]
         public void QueryOmissionAllForBJTest()
@@ -281,5 +283,24 @@ namespace UnitTest
             var result = m_client.Register(user);
             Console.WriteLine(result.Message);
         }
+
+        [TestMethod]
+        public void Test_QueryUser()
+        {
+            var a = m_Dal.Queryuser(9);
+        }
+        [TestMethod]
+        public void Test_ChangePsw()
+        {
+            var a = m_Dal.ChangePsw(9,"115922","12345678","你的出生地？","abc","","");
+        }
+        [TestMethod]
+        public void Test_Recharge()
+        {
+            string error;
+            var a = m_Dal.Recharge(9,"123","123",out error);
+            Console.WriteLine(error);
+        }
+        
     }
 }

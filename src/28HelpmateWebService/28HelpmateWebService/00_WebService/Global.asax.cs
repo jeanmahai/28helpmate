@@ -39,8 +39,8 @@ namespace WebService
             var ex = Server.GetLastError().GetBaseException();
             MyTree.Utility.Log.Log4netExt.Error(ex.ToString());
 
-            //Response.Write("系统错误");
-            //Response.End();
+            Response.Write("系统错误");
+            Response.End();
         }
 
         protected void Session_End(object sender,EventArgs e)
