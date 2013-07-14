@@ -60,6 +60,7 @@ namespace Helpmate.UI.Forms.FormUI
 
         private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            cmd.HideOpaqueLayer();
             var result = e.Result as ResultRMOfListOfOmitStatistics;
 
             if (e.Error != null)
@@ -96,7 +97,6 @@ namespace Helpmate.UI.Forms.FormUI
                     }
                 }
             }
-            cmd.HideOpaqueLayer();
         }
     }
 }

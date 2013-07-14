@@ -75,9 +75,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.pnlHeadBg = new System.Windows.Forms.Panel();
             this.lblServerTime = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblCurrent = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
             this.timerServr = new System.Windows.Forms.Timer(this.components);
+            this.bgwApp = new System.ComponentModel.BackgroundWorker();
+            this.tmApp = new System.Windows.Forms.Timer(this.components);
             this.stsPage.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlRemindSet.SuspendLayout();
@@ -649,11 +651,11 @@
             // 
             // pnlHeadBg
             // 
-            this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeadBg.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.headbg;
             this.pnlHeadBg.Controls.Add(this.lblServerTime);
-            this.pnlHeadBg.Controls.Add(this.label6);
+            this.pnlHeadBg.Controls.Add(this.lblCurrent);
             this.pnlHeadBg.Controls.Add(this.pnlSiteMap);
             this.pnlHeadBg.Location = new System.Drawing.Point(167, 0);
             this.pnlHeadBg.Name = "pnlHeadBg";
@@ -672,17 +674,17 @@
             this.lblServerTime.TabIndex = 48;
             this.lblServerTime.Text = "label1";
             // 
-            // label6
+            // lblCurrent
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(389, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(269, 12);
-            this.label6.TabIndex = 47;
-            this.label6.Text = "本期分析期号：566679   第565578期开奖号码：X";
+            this.lblCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCurrent.AutoSize = true;
+            this.lblCurrent.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrent.ForeColor = System.Drawing.Color.White;
+            this.lblCurrent.Location = new System.Drawing.Point(389, 49);
+            this.lblCurrent.Name = "lblCurrent";
+            this.lblCurrent.Size = new System.Drawing.Size(269, 12);
+            this.lblCurrent.TabIndex = 47;
+            this.lblCurrent.Text = "本期分析期号：566679   第565578期开奖号码：X";
             // 
             // pnlSiteMap
             // 
@@ -697,6 +699,16 @@
             this.timerServr.Enabled = true;
             this.timerServr.Interval = 1000;
             this.timerServr.Tick += new System.EventHandler(this.timerServr_Tick);
+            // 
+            // bgwApp
+            // 
+            this.bgwApp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwApp_DoWork);
+            this.bgwApp.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwApp_RunWorkerCompleted);
+            // 
+            // tmApp
+            // 
+            this.tmApp.Enabled = true;
+            this.tmApp.Interval = 30000;
             // 
             // Default
             // 
@@ -795,7 +807,7 @@
         private System.Windows.Forms.TableLayoutPanel tabSite;
         private System.Windows.Forms.Label lblZM;
         private System.Windows.Forms.Label lbl71;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblCurrent;
         private System.Windows.Forms.Panel pnlHeadBg;
         private System.Windows.Forms.TableLayoutPanel tabArea;
         private System.Windows.Forms.Label lblCanada;
@@ -810,5 +822,7 @@
         private System.Windows.Forms.PictureBox picRemindSetCurr;
         private System.Windows.Forms.Label lblRemindSet;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.ComponentModel.BackgroundWorker bgwApp;
+        private System.Windows.Forms.Timer tmApp;
     }
 }
