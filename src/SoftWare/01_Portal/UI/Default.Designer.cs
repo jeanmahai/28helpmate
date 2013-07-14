@@ -705,8 +705,8 @@
             // 
             // tmApp
             // 
-            this.tmApp.Enabled = true;
             this.tmApp.Interval = 30000;
+            this.tmApp.Tick += new System.EventHandler(this.tmApp_Tick);
             // 
             // Default
             // 

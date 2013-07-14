@@ -248,6 +248,16 @@ namespace Helpmate.UI.Forms
                     lblServerTime.Text = result.ServerDate.ToString();
                     timerServer.Enabled = true;
                 }
+                tmApp.Enabled = true;
+            }
+        }
+
+        private void tmApp_Tick(object sender, EventArgs e)
+        {
+            if (!bgwApp.IsBusy)
+            {
+                tmApp.Enabled = false;
+                bgwApp.RunWorkerAsync();
             }
         }
     }
