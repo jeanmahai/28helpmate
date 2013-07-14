@@ -13,6 +13,8 @@ using Helpmate.UI.Forms.UserContorl.Common;
 using Helpmate.Facades;
 using Helpmate.UI.Forms.Models;
 using Helpmate.Facades.LotteryWebSvc;
+using Common.Utility;
+using Helpmate.UI.Forms.Code;
 
 namespace Helpmate.UI.Forms
 {
@@ -31,6 +33,7 @@ namespace Helpmate.UI.Forms
             Header.RegionSourceSysNo = Convert.ToInt32(lblBJ.Tag);
             Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);
 
+            bgwApp.RunWorkerAsync();
             var childForm = new UserInfo();
             CurrMenu(MenuEnum.User, childForm.SiteMapList, childForm);
             lblServerTime.Text = serviceFacade.GetServerDate().ToString();
@@ -229,11 +232,22 @@ namespace Helpmate.UI.Forms
         private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             var result = e.Result as ResultRMOfInfoForTimer;
-
-            if (string.IsNullOrEmpty(lblServerTime.Text))
+            if (e.Error != null)
             {
-                lblServerTime.Text = DateTime.Now.ToString();
-                timerServer.Enabled = true;
+                WriteLog.Write("GetInfoForTimer", e.Error.Message);
+                AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
+                return;
+            }
+
+            if (PageUtils.CheckError(result) && result.Data != null)
+            {
+                lblCurrent.Text = string.Format("本期分析期号：{0}   第{1}期开奖号码：{2}", result.Data.Lottery.PeriodNum + 1, result.Data.Lottery.PeriodNum, result.Data.Lottery.RetNum);
+
+                if (string.IsNullOrEmpty(lblServerTime.Text))
+                {
+                    lblServerTime.Text = result.ServerDate.ToString();
+                    timerServer.Enabled = true;
+                }
             }
         }
     }

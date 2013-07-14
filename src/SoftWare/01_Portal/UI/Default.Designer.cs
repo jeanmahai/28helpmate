@@ -670,9 +670,8 @@
             this.lblServerTime.ForeColor = System.Drawing.Color.White;
             this.lblServerTime.Location = new System.Drawing.Point(681, 49);
             this.lblServerTime.Name = "lblServerTime";
-            this.lblServerTime.Size = new System.Drawing.Size(41, 12);
+            this.lblServerTime.Size = new System.Drawing.Size(0, 12);
             this.lblServerTime.TabIndex = 48;
-            this.lblServerTime.Text = "label1";
             // 
             // lblCurrent
             // 
@@ -682,9 +681,8 @@
             this.lblCurrent.ForeColor = System.Drawing.Color.White;
             this.lblCurrent.Location = new System.Drawing.Point(389, 49);
             this.lblCurrent.Name = "lblCurrent";
-            this.lblCurrent.Size = new System.Drawing.Size(269, 12);
+            this.lblCurrent.Size = new System.Drawing.Size(0, 12);
             this.lblCurrent.TabIndex = 47;
-            this.lblCurrent.Text = "本期分析期号：566679   第565578期开奖号码：X";
             // 
             // pnlSiteMap
             // 
