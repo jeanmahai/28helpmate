@@ -123,7 +123,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
-            if (PageUtils.CheckError(result) && result.Data != null)
+            if (PageUtils.CheckError(result))
             {
                 tbxPayCardID.Text = "";
                 tbxPayPwd.Text = "";
