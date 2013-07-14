@@ -220,12 +220,12 @@ namespace Helpmate.UI.Forms
 
         private void bgwApp_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+
         }
 
         private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var result=e.Result as ;
+            var result = e.Result;
         }
     }
 }
