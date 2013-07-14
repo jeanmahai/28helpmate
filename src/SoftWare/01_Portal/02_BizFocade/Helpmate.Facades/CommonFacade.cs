@@ -63,7 +63,7 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
-                var result = Client.Service.ChangePsw(oldPwd, newPwd, question1, answer1, question2, answer2);
+                var result = Client.Service.ChangePsw(UtilsTool.MD5(oldPwd), UtilsTool.MD5(newPwd), question1, answer1, question2, answer2);
                 if (result.Success) Header.Key = result.Key;
                 return result;
             }

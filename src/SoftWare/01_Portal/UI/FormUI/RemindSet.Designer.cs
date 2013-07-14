@@ -124,6 +124,7 @@
             this.lnkFirst.TabIndex = 22;
             this.lnkFirst.TabStop = true;
             this.lnkFirst.Text = "首页";
+            this.lnkFirst.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkFirst_LinkClicked);
             // 
             // lnkLast
             // 
@@ -134,6 +135,7 @@
             this.lnkLast.TabIndex = 21;
             this.lnkLast.TabStop = true;
             this.lnkLast.Text = "尾页";
+            this.lnkLast.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLast_LinkClicked);
             // 
             // lnkNext
             // 
@@ -144,6 +146,7 @@
             this.lnkNext.TabIndex = 20;
             this.lnkNext.TabStop = true;
             this.lnkNext.Text = "下一页";
+            this.lnkNext.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkNext_LinkClicked);
             // 
             // lblPage
             // 
@@ -164,6 +167,7 @@
             this.lnkPrev.TabIndex = 18;
             this.lnkPrev.TabStop = true;
             this.lnkPrev.Text = "上一页";
+            this.lnkPrev.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPrev_LinkClicked);
             // 
             // dataList
             // 

@@ -71,7 +71,7 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfRemindStatistics;
+            var result = e.Result as ResultRMOfPageListOfRemindStatistics;
 
             if (e.Error != null)
             {
@@ -82,16 +82,16 @@ namespace Helpmate.UI.Forms.FormUI
 
             if (PageUtils.CheckError(result) && result.Data != null)
             {
-                int currPageIndex = 0;// result.Data.PageIndex;
-                int pageCount = 0;// result.Data.PageCount;
+                int currPageIndex = result.Data.PageIndex;
+                int pageCount = result.Data.PageCount;
                 //头
                 List<RemindStatisticsModel> headerData = (new RemindStatisticsModel()).GetHeader();
                 headerList.DataSource = headerData;
                 SetHeaderStyle(headerList, 1);
                 //数据
-                //List<TrendDataModel> listData = (new TrendDataModel()).GetDataList(result.Data.DataList);
-                //dataList.DataSource = listData;
-                //SetDataStyle(dataList, listData.Count);
+                List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDataList(result.Data.List);
+                dataList.DataSource = listData;
+                SetDataStyle(dataList, listData.Count);
                 //页码信息
                 lnkFirst.Enabled = true;
                 lnkPrev.Enabled = true;
@@ -110,6 +110,11 @@ namespace Helpmate.UI.Forms.FormUI
                 lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
             }
         }
+        void dataList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dataList[e.ColumnIndex, e.RowIndex].Value == null) return;
+            MessageBox.Show(dataList[e.ColumnIndex, e.RowIndex].Value.ToString());
+        }
         private void SetHeaderStyle(object obj, int rows)
         {
             DataGridView dgv = obj as DataGridView;
@@ -118,10 +123,10 @@ namespace Helpmate.UI.Forms.FormUI
             //设置单元格宽高
             for (int i = 0; i < dgv.Columns.Count; i++)
             {
-                dgv.Columns[i].Width = 80;
-                dgv.Columns[i].DefaultCellStyle.BackColor = UtilsTool.ToColor("#c6e2ff");
+                dgv.Columns[i].Width = 150;
+                dgv.Columns[i].DefaultCellStyle.BackColor = UtilsTool.ToColor("#fffde3");
                 dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns[i].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#c6e2ff");
+                dgv.Columns[i].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#fffde3");
                 dgv.Columns[i].DefaultCellStyle.SelectionForeColor = Color.Black;
             }
             //不显示列头
@@ -143,7 +148,11 @@ namespace Helpmate.UI.Forms.FormUI
             //设置单元格宽高
             for (int i = 0; i < dgv.Columns.Count; i++)
             {
-                dgv.Columns[i].Width = 80;
+                dgv.Columns[i].Width = 150;
+                dgv.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgv.Columns[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                dgv.Columns[i].DefaultCellStyle.SelectionForeColor = Color.Black;
             }
             //不显示列头
             dgv.ColumnHeadersVisible = false;
@@ -202,8 +211,54 @@ namespace Helpmate.UI.Forms.FormUI
             if (PageUtils.CheckError(result))
             {
                 tbxCnt.Text = "";
+                QueryData(1);
                 MessageBox.Show("添加成功", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        #endregion
+
+        #region 分页
+        /// <summary>
+        /// 尾页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkLast_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+            QueryData(pageIndex);
+        }
+        /// <summary>
+        /// 首页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkFirst_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            QueryData(1);
+        }
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkPrev_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) - 1;
+            pageIndex = pageIndex < 1 ? 1 : pageIndex;
+            QueryData(pageIndex);
+        }
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkNext_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = int.Parse(lblPage.Text.Trim().Split('/')[0]) + 1;
+            int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+            pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
+            QueryData(pageIndex);
         }
         #endregion
     }

@@ -190,7 +190,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
-            if (PageUtils.CheckError(result) && result.Data != null)
+            if (PageUtils.CheckError(result))
             {
                 ddlQuestion1.SelectedIndex = 0;
                 ddlQuestion2.SelectedIndex = 0;
