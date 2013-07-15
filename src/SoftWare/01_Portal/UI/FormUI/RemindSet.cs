@@ -19,7 +19,6 @@ namespace Helpmate.UI.Forms.FormUI
 {
     public partial class RemindSet : Form
     {
-        BaseFacade bf = new BaseFacade();
         public CustomerFacade serviceFacade = new CustomerFacade();
         public List<SiteModel> SiteMapList { get; set; }
         public OpaqueCommand cmd = new OpaqueCommand();
@@ -87,11 +86,46 @@ namespace Helpmate.UI.Forms.FormUI
                 //头
                 List<RemindStatisticsModel> headerData = (new RemindStatisticsModel()).GetHeader();
                 headerList.DataSource = headerData;
-                SetHeaderStyle(headerList, 1);
+                SetHeaderStyle(headerList);
                 //数据
                 List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDataList(result.Data.List);
                 dataList.DataSource = listData;
-                SetDataStyle(dataList, listData.Count);
+                SetDataStyle(dataList);
+                #region 添加删除按钮
+        //        private void TestForm_Load(object sender, EventArgs e)
+        //{
+        //    List<Data> dataList = new List<Data>();
+        //    for (int i = 0; i < 5; i++)
+        //    {
+        //        Data item = new Data();
+        //        item.SysNo = i;
+        //        item.ID = i.ToString();
+        //        item.Name = string.Format("名称{0}", i);
+        //        dataList.Add(item);
+        //    }
+        //    gvList.DataSource = dataList;
+        //    DataGridViewImageColumn btnImageDel = new DataGridViewImageColumn(false);
+        //    Image imgEdit = new Bitmap(Properties.Resources.del, new Size(16, 16));
+        //    btnImageDel.Image = imgEdit;
+        //    btnImageDel.Width = 50;
+        //    btnImageDel.HeaderText = "删除";
+        //    btnImageDel.Name = "btnImageDel";
+        //    gvList.Columns.Insert(3, btnImageDel);
+        //}
+
+        //private void gvList_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    int colIdx = e.ColumnIndex;
+        //    if (colIdx == 3)
+        //    {
+        //        string sysNo = gvList["SysNo", e.RowIndex].Value.ToString();
+        //        if (MessageBox.Show("确认删除？", "此删除不可恢复", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        //        {
+        //            MessageBox.Show(string.Format("删除记录编号{0}！", sysNo));
+        //        }
+        //    }
+        //}
+                #endregion
                 //页码信息
                 lnkFirst.Enabled = true;
                 lnkPrev.Enabled = true;
@@ -115,7 +149,7 @@ namespace Helpmate.UI.Forms.FormUI
             if (dataList[e.ColumnIndex, e.RowIndex].Value == null) return;
             MessageBox.Show(dataList[e.ColumnIndex, e.RowIndex].Value.ToString());
         }
-        private void SetHeaderStyle(object obj, int rows)
+        private void SetHeaderStyle(object obj)
         {
             DataGridView dgv = obj as DataGridView;
             //设置为不可编辑
@@ -140,7 +174,7 @@ namespace Helpmate.UI.Forms.FormUI
             dgv.BorderStyle = BorderStyle.None;
             dgv.BackgroundColor = Color.White;
         }
-        private void SetDataStyle(object obj, int rows)
+        private void SetDataStyle(object obj)
         {
             DataGridView dgv = obj as DataGridView;
             //设置为不可编辑
