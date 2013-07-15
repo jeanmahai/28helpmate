@@ -17,7 +17,7 @@ using Helpmate.UI.Forms.Models;
 
 namespace Helpmate.UI.Forms.FormUI
 {
-    public partial class RemindSet : Form
+    public partial class RemindSet : Form, IPage
     {
         public CustomerFacade serviceFacade = new CustomerFacade();
         public List<SiteModel> SiteMapList { get; set; }
@@ -89,8 +89,8 @@ namespace Helpmate.UI.Forms.FormUI
                 SetHeaderStyle(headerList);
                 //数据
                 dataList.Columns.Clear();
-                //List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDataList(result.Data.List);
-                List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDefaultList();
+                List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDataList(result.Data.List);
+                //List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDefaultList();
                 dataList.DataSource = listData;
                 SetDataStyle(dataList);
                 #region 添加删除按钮
@@ -202,6 +202,10 @@ namespace Helpmate.UI.Forms.FormUI
             if (!int.TryParse(tbxCnt.Text.Trim(), out cnt))
             {
                 MessageBox.Show("请输入正确的次数！");
+            }
+            else if (cnt <= 1)
+            {
+                MessageBox.Show("次数必须大于1！");
             }
             else
             {

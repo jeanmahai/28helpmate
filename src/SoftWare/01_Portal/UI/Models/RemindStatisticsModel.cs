@@ -45,7 +45,7 @@ namespace Helpmate.UI.Forms.Models
                 {
                     RemindStatistics _item = data[i];
                     RemindStatisticsModel item = new RemindStatisticsModel();
-                    item.SysNo = item.SysNo.ToString();
+                    item.SysNo = _item.SysNo.ToString();
                     item.Game = GetGameName(_item.GameSysNo);
                     item.Source = GetSourceName(_item.SourceSysNo);
                     item.Site = GetSiteName(_item.SiteSysNo);
