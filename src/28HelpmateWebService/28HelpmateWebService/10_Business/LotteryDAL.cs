@@ -125,13 +125,13 @@ namespace Business
             error = "";
 
             var user = Queryuser(userSysNo);
-            if(user==null)
+            if (user == null)
             {
                 error = "当前用户不存在";
                 return false;
             }
 
-            if(user.RechargeUseEndTime<DateTime.Now)
+            if (user.RechargeUseEndTime < DateTime.Now)
             {
                 error = "需要充值才能查看分析数据";
                 return false;
@@ -761,16 +761,16 @@ namespace Business
 
         public PageList<RemindStatistics> QueryRemind(int gameSysNo,int siteSysNo,int regionSysNo,int userSysNo,int pageIndex,int pageSize)
         {
-            var count = Session.CreateSQLQuery("select count(1) from RemindStatistics where " +
+            var count = Session.CreateSQLQuery("select count(1) from RemindStatistics with(nolock) where " +
                                                "UserSysNo=:usn " +
-                                               //"and GameSysNo=:gsn " +
-                                               //"and SourceSysNo=:ssn " +
-                                               //"and SiteSysNo=:ssno" +
+                //"and GameSysNo=:gsn " +
+                //"and SourceSysNo=:ssn " +
+                //"and SiteSysNo=:ssno" +
                                                "")
                                                .SetParameter("usn",userSysNo)
-                                               //.SetParameter("gsn",gameSysNo)
-                                               //.SetParameter("ssn",regionSysNo)
-                                               //.SetParameter("ssno",siteSysNo)
+                //.SetParameter("gsn",gameSysNo)
+                //.SetParameter("ssn",regionSysNo)
+                //.SetParameter("ssno",siteSysNo)
                 .UniqueResult<int>();
 
             //var q = Session.QueryOver<RemindStatistics>()
@@ -786,19 +786,19 @@ namespace Business
                     select * from 
                     (
                     select row_number() over(order by SysNo desc) as RowIndex,*
-                    from dbo.RemindStatistics
+                    from dbo.RemindStatistics with(nolock)
                     where UserSysNo=:usn
                     ) as temp
                     where RowIndex>(:PageIndex-1)*:PageSize
 	                    and RowIndex<:PageIndex*:PageSize
                     ")
-                    .AddEntity(typeof (RemindStatistics))
-                    .SetParameter("usn", userSysNo)
-                    //.SetParameter("gsn", gameSysNo).SetParameter("ssn", regionSysNo).
-                    //SetParameter("ssno", siteSysNo)
-                    .SetParameter("PageIndex", pageIndex).SetParameter("PageSize", pageSize)
+                    .AddEntity(typeof(RemindStatistics))
+                    .SetParameter("usn",userSysNo)
+                //.SetParameter("gsn", gameSysNo).SetParameter("ssn", regionSysNo).
+                //SetParameter("ssno", siteSysNo)
+                    .SetParameter("PageIndex",pageIndex).SetParameter("PageSize",pageSize)
                     .List<RemindStatistics>();
- 
+
 
             var result = new PageList<RemindStatistics>();
             result.Total = count;
@@ -825,10 +825,10 @@ namespace Business
             return result;
         }
 
-        public List<Notices> GetNotices(int sysNo)
+        public List<Notices> GetNotices()
         {
             return Session.QueryOver<Notices>()
-                .Where(p => p.SysNo == sysNo && p.Status == 1)
+                .Where(p => p.Status == 1)
                 .OrderBy(p => p.Rank).Desc().Take(3).List<Notices>().ToList();
         }
 

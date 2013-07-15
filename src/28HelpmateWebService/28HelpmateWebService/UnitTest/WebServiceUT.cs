@@ -331,7 +331,15 @@ namespace UnitTest
             var a = m_Dal.QueryRemind(10001,10001,10001,9,1,3);
             Console.WriteLine(a.List.Count);
 
-
+            //var b = m_Dal.QueryRemind(10001, 10001, 10001, 9);
+            //if(b==null)
+            //{
+            //    Console.WriteLine("null");
+            //}
+            //else
+            //{
+            //    Console.WriteLine(b.RetNum);
+            //}
             //var h = new TokenHeader();
             //h.UserSysNo = 9;
             //h.GameSourceSysNo = 10001;

@@ -74,7 +74,7 @@ namespace WebService
             string error;
             if (ValidateToken(ReqHeader,out error))
             {
-                if(!Dal.ValidateUserTime(ReqHeader.UserSysNo,out error))
+                if (!Dal.ValidateUserTime(ReqHeader.UserSysNo,out error))
                 {
                     result.Success = false;
                     result.Message = error;
@@ -393,19 +393,19 @@ namespace WebService
         public ResultRM<List<Notices>> GetNotice(int sysNo)
         {
             var result = new ResultRM<List<Notices>>();
-            string error;
-            if (ValidateToken(ReqHeader,out error))
-            {
-                result.Data = Dal.GetNotices(sysNo);
-                result.Success = true;
-                NewKey(result,ReqHeader.UserSysNo);
-            }
-            else
-            {
-                result.Success = false;
-                result.Code = ERROR_VALIDATE_TOKEN_CODE;
-                result.Message = error;
-            }
+            //string error;
+            //if (ValidateToken(ReqHeader,out error))
+            //{
+            result.Data = Dal.GetNotices();
+            result.Success = true;
+            //NewKey(result,ReqHeader.UserSysNo);
+            //}
+            //else
+            //{
+            //    result.Success = false;
+            //    result.Code = ERROR_VALIDATE_TOKEN_CODE;
+            //    result.Message = error;
+            //}
             return result;
         }
 
