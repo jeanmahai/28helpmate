@@ -165,14 +165,14 @@ namespace Helpmate.UI.Forms
         private void lblBJ_Click(object sender, EventArgs e)
         {
             lblBJ.BackColor = Color.White;
-            lblCanada.BackColor = Color.LightGray;
+            lblCanada.BackColor = Color.DeepSkyBlue;
             Header.RegionSourceSysNo = Convert.ToInt32(lblBJ.Tag);
             RefreshPage();
         }
 
         private void lblCanada_Click(object sender, EventArgs e)
         {
-            lblBJ.BackColor = Color.LightGray;
+            lblBJ.BackColor = Color.DeepSkyBlue;
             lblCanada.BackColor = Color.White;
             Header.RegionSourceSysNo = Convert.ToInt32(lblCanada.Tag);
             RefreshPage();
@@ -181,25 +181,25 @@ namespace Helpmate.UI.Forms
         private void lbl71_Click(object sender, EventArgs e)
         {
             lbl71.BackColor = Color.White;
-            lbl53.BackColor = Color.LightGray;
-            lblZM.BackColor = Color.LightGray;
+            lbl53.BackColor = Color.DeepSkyBlue;
+            lblZM.BackColor = Color.DeepSkyBlue;
             Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);
             RefreshPage();
         }
 
         private void lbl53_Click(object sender, EventArgs e)
         {
-            lbl71.BackColor = Color.LightGray;
+            lbl71.BackColor = Color.DeepSkyBlue;
             lbl53.BackColor = Color.White;
-            lblZM.BackColor = Color.LightGray;
+            lblZM.BackColor = Color.DeepSkyBlue;
             Header.SiteSourceSysNo = Convert.ToInt32(lbl53.Tag);
             RefreshPage();
         }
 
         private void lblZM_Click(object sender, EventArgs e)
         {
-            lbl71.BackColor = Color.LightGray;
-            lbl53.BackColor = Color.LightGray;
+            lbl71.BackColor = Color.DeepSkyBlue;
+            lbl53.BackColor = Color.DeepSkyBlue;
             lblZM.BackColor = Color.White;
             Header.SiteSourceSysNo = Convert.ToInt32(lblZM.Tag);
             RefreshPage();
@@ -211,6 +211,11 @@ namespace Helpmate.UI.Forms
             if (page != null)
             {
                 page.QueryData(1);
+            }
+            if (!bgwApp.IsBusy)
+            {
+                tmApp.Enabled = false;
+                bgwApp.RunWorkerAsync();
             }
         }
 

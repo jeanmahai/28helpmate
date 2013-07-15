@@ -132,6 +132,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="List" type="tns:ArrayOfLotteryForBJ" />
           <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageCount" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="Login">
@@ -541,6 +542,45 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="QueryRemind">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfPageListOfRemindStatistics">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:PageListOfRemindStatistics" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PageListOfRemindStatistics">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="List" type="tns:ArrayOfRemindStatistics" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRemindStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemindStatistics" nillable="true" type="tns:RemindStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryRemindResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryRemindResult" type="tns:ResultRMOfPageListOfRemindStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetCustomeModuleSoapIn">
@@ -693,6 +733,15 @@
   <wsdl:message name="DelRemindTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="QueryRemindSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryRemind" />
+  </wsdl:message>
+  <wsdl:message name="QueryRemindSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryRemindResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryRemindTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
@@ -783,6 +832,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除提醒</wsdl:documentation>
       <wsdl:input message="tns:DelRemindSoapIn" />
       <wsdl:output message="tns:DelRemindSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryRemind">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询提醒列表</wsdl:documentation>
+      <wsdl:input message="tns:QueryRemindSoapIn" />
+      <wsdl:output message="tns:QueryRemindSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
@@ -963,6 +1017,16 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="QueryRemind">
+      <soap:operation soapAction="http://tempuri.org/QueryRemind" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:QueryRemindTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1137,6 +1201,16 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:DelRemindTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryRemind">
+      <soap12:operation soapAction="http://tempuri.org/QueryRemind" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:QueryRemindTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

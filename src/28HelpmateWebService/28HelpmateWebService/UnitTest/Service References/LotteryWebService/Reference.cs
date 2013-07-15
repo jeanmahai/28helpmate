@@ -71,9 +71,40 @@ namespace UnitTest.LotteryWebService {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         UnitTest.LotteryWebService.GetUserInfoResponse GetUserInfo(UnitTest.LotteryWebService.GetUserInfoRequest request);
         
+        // CODEGEN: 消息 GetNoticeRequest 以后生成的消息协定具有标头
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNotice", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        UnitTest.LotteryWebService.ResultRMOfNotices GetNotice(int sysNo);
+        UnitTest.LotteryWebService.GetNoticeResponse GetNotice(UnitTest.LotteryWebService.GetNoticeRequest request);
+        
+        // CODEGEN: 消息 GetCurrentLotteryRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCurrentLottery", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        UnitTest.LotteryWebService.GetCurrentLotteryResponse GetCurrentLottery(UnitTest.LotteryWebService.GetCurrentLotteryRequest request);
+        
+        // CODEGEN: 消息 RechargeRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Recharge", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        UnitTest.LotteryWebService.RechargeResponse Recharge(UnitTest.LotteryWebService.RechargeRequest request);
+        
+        // CODEGEN: 消息 SaveRemindRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SaveRemind", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        UnitTest.LotteryWebService.SaveRemindResponse SaveRemind(UnitTest.LotteryWebService.SaveRemindRequest request);
+        
+        // CODEGEN: 消息 GetInfoForTimerRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetInfoForTimer", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        UnitTest.LotteryWebService.GetInfoForTimerResponse GetInfoForTimer(UnitTest.LotteryWebService.GetInfoForTimerRequest request);
+        
+        // CODEGEN: 消息 DelRemindRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DelRemind", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        UnitTest.LotteryWebService.DelRemindResponse DelRemind(UnitTest.LotteryWebService.DelRemindRequest request);
+        
+        // CODEGEN: 消息 QueryRemindRequest 以后生成的消息协定具有标头
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/QueryRemind", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        UnitTest.LotteryWebService.QueryRemindResponse QueryRemind(UnitTest.LotteryWebService.QueryRemindRequest request);
     }
     
     /// <remarks/>
@@ -184,493 +215,75 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Notices : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class PageListOfRemindStatistics : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private int sysNoField;
+        private int totalField;
         
-        private string contentsField;
+        private RemindStatistics[] listField;
         
-        private int statusField;
+        private int pageSizeField;
         
-        private int rankField;
+        private int pageIndexField;
         
-        private System.DateTime inDateField;
-        
-        private string publishUserField;
+        private int pageCountField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int SysNo {
+        public int Total {
             get {
-                return this.sysNoField;
+                return this.totalField;
             }
             set {
-                this.sysNoField = value;
-                this.RaisePropertyChanged("SysNo");
+                this.totalField = value;
+                this.RaisePropertyChanged("Total");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Contents {
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        public RemindStatistics[] List {
             get {
-                return this.contentsField;
+                return this.listField;
             }
             set {
-                this.contentsField = value;
-                this.RaisePropertyChanged("Contents");
+                this.listField = value;
+                this.RaisePropertyChanged("List");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int Status {
+        public int PageSize {
             get {
-                return this.statusField;
+                return this.pageSizeField;
             }
             set {
-                this.statusField = value;
-                this.RaisePropertyChanged("Status");
+                this.pageSizeField = value;
+                this.RaisePropertyChanged("PageSize");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int Rank {
+        public int PageIndex {
             get {
-                return this.rankField;
+                return this.pageIndexField;
             }
             set {
-                this.rankField = value;
-                this.RaisePropertyChanged("Rank");
+                this.pageIndexField = value;
+                this.RaisePropertyChanged("PageIndex");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public System.DateTime InDate {
+        public int PageCount {
             get {
-                return this.inDateField;
+                return this.pageCountField;
             }
             set {
-                this.inDateField = value;
-                this.RaisePropertyChanged("InDate");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public string PublishUser {
-            get {
-                return this.publishUserField;
-            }
-            set {
-                this.publishUserField = value;
-                this.RaisePropertyChanged("PublishUser");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfNotices : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private bool successField;
-        
-        private string messageField;
-        
-        private Notices dataField;
-        
-        private int codeField;
-        
-        private string keyField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public bool Success {
-            get {
-                return this.successField;
-            }
-            set {
-                this.successField = value;
-                this.RaisePropertyChanged("Success");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-                this.RaisePropertyChanged("Message");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public Notices Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-                this.RaisePropertyChanged("Data");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("Code");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfUser : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private bool successField;
-        
-        private string messageField;
-        
-        private User dataField;
-        
-        private int codeField;
-        
-        private string keyField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public bool Success {
-            get {
-                return this.successField;
-            }
-            set {
-                this.successField = value;
-                this.RaisePropertyChanged("Success");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-                this.RaisePropertyChanged("Message");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public User Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-                this.RaisePropertyChanged("Data");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("Code");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class User : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int sysNoField;
-        
-        private string userIDField;
-        
-        private string userPwdField;
-        
-        private string userNameField;
-        
-        private int statusField;
-        
-        private string regIPField;
-        
-        private System.DateTime regDateField;
-        
-        private System.DateTime rechargeUseBeginTimeField;
-        
-        private System.DateTime rechargeUseEndTimeField;
-        
-        private string securityQuestion1Field;
-        
-        private string securityAnswer1Field;
-        
-        private string securityQuestion2Field;
-        
-        private string securityAnswer2Field;
-        
-        private string phoneField;
-        
-        private string qqField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int SysNo {
-            get {
-                return this.sysNoField;
-            }
-            set {
-                this.sysNoField = value;
-                this.RaisePropertyChanged("SysNo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string UserID {
-            get {
-                return this.userIDField;
-            }
-            set {
-                this.userIDField = value;
-                this.RaisePropertyChanged("UserID");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string UserPwd {
-            get {
-                return this.userPwdField;
-            }
-            set {
-                this.userPwdField = value;
-                this.RaisePropertyChanged("UserPwd");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string UserName {
-            get {
-                return this.userNameField;
-            }
-            set {
-                this.userNameField = value;
-                this.RaisePropertyChanged("UserName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public int Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-                this.RaisePropertyChanged("Status");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public string RegIP {
-            get {
-                return this.regIPField;
-            }
-            set {
-                this.regIPField = value;
-                this.RaisePropertyChanged("RegIP");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public System.DateTime RegDate {
-            get {
-                return this.regDateField;
-            }
-            set {
-                this.regDateField = value;
-                this.RaisePropertyChanged("RegDate");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-        public System.DateTime RechargeUseBeginTime {
-            get {
-                return this.rechargeUseBeginTimeField;
-            }
-            set {
-                this.rechargeUseBeginTimeField = value;
-                this.RaisePropertyChanged("RechargeUseBeginTime");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
-        public System.DateTime RechargeUseEndTime {
-            get {
-                return this.rechargeUseEndTimeField;
-            }
-            set {
-                this.rechargeUseEndTimeField = value;
-                this.RaisePropertyChanged("RechargeUseEndTime");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
-        public string SecurityQuestion1 {
-            get {
-                return this.securityQuestion1Field;
-            }
-            set {
-                this.securityQuestion1Field = value;
-                this.RaisePropertyChanged("SecurityQuestion1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
-        public string SecurityAnswer1 {
-            get {
-                return this.securityAnswer1Field;
-            }
-            set {
-                this.securityAnswer1Field = value;
-                this.RaisePropertyChanged("SecurityAnswer1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
-        public string SecurityQuestion2 {
-            get {
-                return this.securityQuestion2Field;
-            }
-            set {
-                this.securityQuestion2Field = value;
-                this.RaisePropertyChanged("SecurityQuestion2");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
-        public string SecurityAnswer2 {
-            get {
-                return this.securityAnswer2Field;
-            }
-            set {
-                this.securityAnswer2Field = value;
-                this.RaisePropertyChanged("SecurityAnswer2");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
-        public string Phone {
-            get {
-                return this.phoneField;
-            }
-            set {
-                this.phoneField = value;
-                this.RaisePropertyChanged("Phone");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
-        public string QQ {
-            get {
-                return this.qqField;
-            }
-            set {
-                this.qqField = value;
-                this.RaisePropertyChanged("QQ");
+                this.pageCountField = value;
+                this.RaisePropertyChanged("PageCount");
             }
         }
         
@@ -820,17 +433,19 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfRemindStatistics : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ResultRMOfPageListOfRemindStatistics : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool successField;
         
         private string messageField;
         
-        private RemindStatistics dataField;
+        private PageListOfRemindStatistics dataField;
         
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -858,7 +473,7 @@ namespace UnitTest.LotteryWebService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public RemindStatistics Data {
+        public PageListOfRemindStatistics Data {
             get {
                 return this.dataField;
             }
@@ -889,238 +504,18 @@ namespace UnitTest.LotteryWebService {
             set {
                 this.keyField = value;
                 this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfObject : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private bool successField;
-        
-        private string messageField;
-        
-        private object dataField;
-        
-        private int codeField;
-        
-        private string keyField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public bool Success {
-            get {
-                return this.successField;
-            }
-            set {
-                this.successField = value;
-                this.RaisePropertyChanged("Success");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-                this.RaisePropertyChanged("Message");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public object Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-                this.RaisePropertyChanged("Data");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("Code");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class OmitStatistics : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int sysNoField;
-        
-        private int gameSysNoField;
-        
-        private int sourceSysNoField;
-        
-        private int siteSysNoField;
-        
-        private int retNumField;
-        
-        private int omitCntField;
-        
-        private int maxOmitCntField;
-        
-        private int standardCntField;
-        
-        private long nowPeriodNumField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int SysNo {
-            get {
-                return this.sysNoField;
-            }
-            set {
-                this.sysNoField = value;
-                this.RaisePropertyChanged("SysNo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int GameSysNo {
-            get {
-                return this.gameSysNoField;
-            }
-            set {
-                this.gameSysNoField = value;
-                this.RaisePropertyChanged("GameSysNo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int SourceSysNo {
-            get {
-                return this.sourceSysNoField;
-            }
-            set {
-                this.sourceSysNoField = value;
-                this.RaisePropertyChanged("SourceSysNo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int SiteSysNo {
-            get {
-                return this.siteSysNoField;
-            }
-            set {
-                this.siteSysNoField = value;
-                this.RaisePropertyChanged("SiteSysNo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public int RetNum {
-            get {
-                return this.retNumField;
-            }
-            set {
-                this.retNumField = value;
-                this.RaisePropertyChanged("RetNum");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public int OmitCnt {
+        public System.DateTime ServerDate {
             get {
-                return this.omitCntField;
+                return this.serverDateField;
             }
             set {
-                this.omitCntField = value;
-                this.RaisePropertyChanged("OmitCnt");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
-        public int MaxOmitCnt {
-            get {
-                return this.maxOmitCntField;
-            }
-            set {
-                this.maxOmitCntField = value;
-                this.RaisePropertyChanged("MaxOmitCnt");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
-        public int StandardCnt {
-            get {
-                return this.standardCntField;
-            }
-            set {
-                this.standardCntField = value;
-                this.RaisePropertyChanged("StandardCnt");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
-        public long NowPeriodNum {
-            get {
-                return this.nowPeriodNumField;
-            }
-            set {
-                this.nowPeriodNumField = value;
-                this.RaisePropertyChanged("NowPeriodNum");
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
             }
         }
         
@@ -1140,547 +535,33 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfListOfOmitStatistics : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class InfoForTimer : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private bool successField;
+        private LotteryForBJ lotteryField;
         
-        private string messageField;
-        
-        private OmitStatistics[] dataField;
-        
-        private int codeField;
-        
-        private string keyField;
+        private RemindStatistics remindField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public bool Success {
+        public LotteryForBJ Lottery {
             get {
-                return this.successField;
+                return this.lotteryField;
             }
             set {
-                this.successField = value;
-                this.RaisePropertyChanged("Success");
+                this.lotteryField = value;
+                this.RaisePropertyChanged("Lottery");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Message {
+        public RemindStatistics Remind {
             get {
-                return this.messageField;
+                return this.remindField;
             }
             set {
-                this.messageField = value;
-                this.RaisePropertyChanged("Message");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        public OmitStatistics[] Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-                this.RaisePropertyChanged("Data");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("Code");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryExtByBJ : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int periodNumField;
-        
-        private int retNumField;
-        
-        private string bigOrSmallField;
-        
-        private string middleOrSideField;
-        
-        private string oddOrDualField;
-        
-        private System.DateTime retTimeField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int PeriodNum {
-            get {
-                return this.periodNumField;
-            }
-            set {
-                this.periodNumField = value;
-                this.RaisePropertyChanged("PeriodNum");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int RetNum {
-            get {
-                return this.retNumField;
-            }
-            set {
-                this.retNumField = value;
-                this.RaisePropertyChanged("RetNum");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string BigOrSmall {
-            get {
-                return this.bigOrSmallField;
-            }
-            set {
-                this.bigOrSmallField = value;
-                this.RaisePropertyChanged("BigOrSmall");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string MiddleOrSide {
-            get {
-                return this.middleOrSideField;
-            }
-            set {
-                this.middleOrSideField = value;
-                this.RaisePropertyChanged("MiddleOrSide");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string OddOrDual {
-            get {
-                return this.oddOrDualField;
-            }
-            set {
-                this.oddOrDualField = value;
-                this.RaisePropertyChanged("OddOrDual");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public System.DateTime RetTime {
-            get {
-                return this.retTimeField;
-            }
-            set {
-                this.retTimeField = value;
-                this.RaisePropertyChanged("RetTime");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryTimes : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string nameField;
-        
-        private int totalField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("Name");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int Total {
-            get {
-                return this.totalField;
-            }
-            set {
-                this.totalField = value;
-                this.RaisePropertyChanged("Total");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryTrend : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private LotteryTimes[] lotteryTimesesField;
-        
-        private LotteryExtByBJ[] dataListField;
-        
-        private int pageCountField;
-        
-        private int pageIndexField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        public LotteryTimes[] LotteryTimeses {
-            get {
-                return this.lotteryTimesesField;
-            }
-            set {
-                this.lotteryTimesesField = value;
-                this.RaisePropertyChanged("LotteryTimeses");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        public LotteryExtByBJ[] DataList {
-            get {
-                return this.dataListField;
-            }
-            set {
-                this.dataListField = value;
-                this.RaisePropertyChanged("DataList");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int PageCount {
-            get {
-                return this.pageCountField;
-            }
-            set {
-                this.pageCountField = value;
-                this.RaisePropertyChanged("PageCount");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int PageIndex {
-            get {
-                return this.pageIndexField;
-            }
-            set {
-                this.pageIndexField = value;
-                this.RaisePropertyChanged("PageIndex");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfLotteryTrend : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private bool successField;
-        
-        private string messageField;
-        
-        private LotteryTrend dataField;
-        
-        private int codeField;
-        
-        private string keyField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public bool Success {
-            get {
-                return this.successField;
-            }
-            set {
-                this.successField = value;
-                this.RaisePropertyChanged("Success");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-                this.RaisePropertyChanged("Message");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public LotteryTrend Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-                this.RaisePropertyChanged("Data");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("Code");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfString : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private bool successField;
-        
-        private string messageField;
-        
-        private string dataField;
-        
-        private int codeField;
-        
-        private string keyField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public bool Success {
-            get {
-                return this.successField;
-            }
-            set {
-                this.successField = value;
-                this.RaisePropertyChanged("Success");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-                this.RaisePropertyChanged("Message");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-                this.RaisePropertyChanged("Data");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("Code");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("Key");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class PageListOfLotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int totalField;
-        
-        private LotteryForBJ[] listField;
-        
-        private int pageSizeField;
-        
-        private int pageIndexField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int Total {
-            get {
-                return this.totalField;
-            }
-            set {
-                this.totalField = value;
-                this.RaisePropertyChanged("Total");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        public LotteryForBJ[] List {
-            get {
-                return this.listField;
-            }
-            set {
-                this.listField = value;
-                this.RaisePropertyChanged("List");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int PageSize {
-            get {
-                return this.pageSizeField;
-            }
-            set {
-                this.pageSizeField = value;
-                this.RaisePropertyChanged("PageSize");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int PageIndex {
-            get {
-                return this.pageIndexField;
-            }
-            set {
-                this.pageIndexField = value;
-                this.RaisePropertyChanged("PageIndex");
+                this.remindField = value;
+                this.RaisePropertyChanged("Remind");
             }
         }
         
@@ -1988,6 +869,1810 @@ namespace UnitTest.LotteryWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfInfoForTimer : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private InfoForTimer dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public InfoForTimer Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfBoolean : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private bool dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public bool Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfLotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private LotteryForBJ dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public LotteryForBJ Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Notices : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int sysNoField;
+        
+        private string contentsField;
+        
+        private int statusField;
+        
+        private int rankField;
+        
+        private System.DateTime inDateField;
+        
+        private string publishUserField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int SysNo {
+            get {
+                return this.sysNoField;
+            }
+            set {
+                this.sysNoField = value;
+                this.RaisePropertyChanged("SysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Contents {
+            get {
+                return this.contentsField;
+            }
+            set {
+                this.contentsField = value;
+                this.RaisePropertyChanged("Contents");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+                this.RaisePropertyChanged("Status");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Rank {
+            get {
+                return this.rankField;
+            }
+            set {
+                this.rankField = value;
+                this.RaisePropertyChanged("Rank");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public System.DateTime InDate {
+            get {
+                return this.inDateField;
+            }
+            set {
+                this.inDateField = value;
+                this.RaisePropertyChanged("InDate");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string PublishUser {
+            get {
+                return this.publishUserField;
+            }
+            set {
+                this.publishUserField = value;
+                this.RaisePropertyChanged("PublishUser");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfNotices : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private Notices dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Notices Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfUser : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private User dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public User Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class User : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int sysNoField;
+        
+        private string userIDField;
+        
+        private string userPwdField;
+        
+        private string userNameField;
+        
+        private int statusField;
+        
+        private string regIPField;
+        
+        private System.DateTime regDateField;
+        
+        private System.DateTime rechargeUseBeginTimeField;
+        
+        private System.DateTime rechargeUseEndTimeField;
+        
+        private string securityQuestion1Field;
+        
+        private string securityAnswer1Field;
+        
+        private string securityQuestion2Field;
+        
+        private string securityAnswer2Field;
+        
+        private string phoneField;
+        
+        private string qqField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int SysNo {
+            get {
+                return this.sysNoField;
+            }
+            set {
+                this.sysNoField = value;
+                this.RaisePropertyChanged("SysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string UserID {
+            get {
+                return this.userIDField;
+            }
+            set {
+                this.userIDField = value;
+                this.RaisePropertyChanged("UserID");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string UserPwd {
+            get {
+                return this.userPwdField;
+            }
+            set {
+                this.userPwdField = value;
+                this.RaisePropertyChanged("UserPwd");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string UserName {
+            get {
+                return this.userNameField;
+            }
+            set {
+                this.userNameField = value;
+                this.RaisePropertyChanged("UserName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+                this.RaisePropertyChanged("Status");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string RegIP {
+            get {
+                return this.regIPField;
+            }
+            set {
+                this.regIPField = value;
+                this.RaisePropertyChanged("RegIP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public System.DateTime RegDate {
+            get {
+                return this.regDateField;
+            }
+            set {
+                this.regDateField = value;
+                this.RaisePropertyChanged("RegDate");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public System.DateTime RechargeUseBeginTime {
+            get {
+                return this.rechargeUseBeginTimeField;
+            }
+            set {
+                this.rechargeUseBeginTimeField = value;
+                this.RaisePropertyChanged("RechargeUseBeginTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public System.DateTime RechargeUseEndTime {
+            get {
+                return this.rechargeUseEndTimeField;
+            }
+            set {
+                this.rechargeUseEndTimeField = value;
+                this.RaisePropertyChanged("RechargeUseEndTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public string SecurityQuestion1 {
+            get {
+                return this.securityQuestion1Field;
+            }
+            set {
+                this.securityQuestion1Field = value;
+                this.RaisePropertyChanged("SecurityQuestion1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string SecurityAnswer1 {
+            get {
+                return this.securityAnswer1Field;
+            }
+            set {
+                this.securityAnswer1Field = value;
+                this.RaisePropertyChanged("SecurityAnswer1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public string SecurityQuestion2 {
+            get {
+                return this.securityQuestion2Field;
+            }
+            set {
+                this.securityQuestion2Field = value;
+                this.RaisePropertyChanged("SecurityQuestion2");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        public string SecurityAnswer2 {
+            get {
+                return this.securityAnswer2Field;
+            }
+            set {
+                this.securityAnswer2Field = value;
+                this.RaisePropertyChanged("SecurityAnswer2");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        public string Phone {
+            get {
+                return this.phoneField;
+            }
+            set {
+                this.phoneField = value;
+                this.RaisePropertyChanged("Phone");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        public string QQ {
+            get {
+                return this.qqField;
+            }
+            set {
+                this.qqField = value;
+                this.RaisePropertyChanged("QQ");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfRemindStatistics : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private RemindStatistics dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public RemindStatistics Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfObject : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private object dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public object Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class OmitStatistics : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int sysNoField;
+        
+        private int gameSysNoField;
+        
+        private int sourceSysNoField;
+        
+        private int siteSysNoField;
+        
+        private int retNumField;
+        
+        private int omitCntField;
+        
+        private int maxOmitCntField;
+        
+        private int standardCntField;
+        
+        private long nowPeriodNumField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int SysNo {
+            get {
+                return this.sysNoField;
+            }
+            set {
+                this.sysNoField = value;
+                this.RaisePropertyChanged("SysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int GameSysNo {
+            get {
+                return this.gameSysNoField;
+            }
+            set {
+                this.gameSysNoField = value;
+                this.RaisePropertyChanged("GameSysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int SourceSysNo {
+            get {
+                return this.sourceSysNoField;
+            }
+            set {
+                this.sourceSysNoField = value;
+                this.RaisePropertyChanged("SourceSysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int SiteSysNo {
+            get {
+                return this.siteSysNoField;
+            }
+            set {
+                this.siteSysNoField = value;
+                this.RaisePropertyChanged("SiteSysNo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+                this.RaisePropertyChanged("RetNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public int OmitCnt {
+            get {
+                return this.omitCntField;
+            }
+            set {
+                this.omitCntField = value;
+                this.RaisePropertyChanged("OmitCnt");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public int MaxOmitCnt {
+            get {
+                return this.maxOmitCntField;
+            }
+            set {
+                this.maxOmitCntField = value;
+                this.RaisePropertyChanged("MaxOmitCnt");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public int StandardCnt {
+            get {
+                return this.standardCntField;
+            }
+            set {
+                this.standardCntField = value;
+                this.RaisePropertyChanged("StandardCnt");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public long NowPeriodNum {
+            get {
+                return this.nowPeriodNumField;
+            }
+            set {
+                this.nowPeriodNumField = value;
+                this.RaisePropertyChanged("NowPeriodNum");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfListOfOmitStatistics : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private OmitStatistics[] dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        public OmitStatistics[] Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryExtByBJ : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int periodNumField;
+        
+        private int retNumField;
+        
+        private string bigOrSmallField;
+        
+        private string middleOrSideField;
+        
+        private string oddOrDualField;
+        
+        private System.DateTime retTimeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int PeriodNum {
+            get {
+                return this.periodNumField;
+            }
+            set {
+                this.periodNumField = value;
+                this.RaisePropertyChanged("PeriodNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int RetNum {
+            get {
+                return this.retNumField;
+            }
+            set {
+                this.retNumField = value;
+                this.RaisePropertyChanged("RetNum");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string BigOrSmall {
+            get {
+                return this.bigOrSmallField;
+            }
+            set {
+                this.bigOrSmallField = value;
+                this.RaisePropertyChanged("BigOrSmall");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string MiddleOrSide {
+            get {
+                return this.middleOrSideField;
+            }
+            set {
+                this.middleOrSideField = value;
+                this.RaisePropertyChanged("MiddleOrSide");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string OddOrDual {
+            get {
+                return this.oddOrDualField;
+            }
+            set {
+                this.oddOrDualField = value;
+                this.RaisePropertyChanged("OddOrDual");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime RetTime {
+            get {
+                return this.retTimeField;
+            }
+            set {
+                this.retTimeField = value;
+                this.RaisePropertyChanged("RetTime");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryTimes : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string nameField;
+        
+        private int totalField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+                this.RaisePropertyChanged("Name");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int Total {
+            get {
+                return this.totalField;
+            }
+            set {
+                this.totalField = value;
+                this.RaisePropertyChanged("Total");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryTrend : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private LotteryTimes[] lotteryTimesesField;
+        
+        private LotteryExtByBJ[] dataListField;
+        
+        private int pageCountField;
+        
+        private int pageIndexField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        public LotteryTimes[] LotteryTimeses {
+            get {
+                return this.lotteryTimesesField;
+            }
+            set {
+                this.lotteryTimesesField = value;
+                this.RaisePropertyChanged("LotteryTimeses");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        public LotteryExtByBJ[] DataList {
+            get {
+                return this.dataListField;
+            }
+            set {
+                this.dataListField = value;
+                this.RaisePropertyChanged("DataList");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int PageCount {
+            get {
+                return this.pageCountField;
+            }
+            set {
+                this.pageCountField = value;
+                this.RaisePropertyChanged("PageCount");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int PageIndex {
+            get {
+                return this.pageIndexField;
+            }
+            set {
+                this.pageIndexField = value;
+                this.RaisePropertyChanged("PageIndex");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfLotteryTrend : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private LotteryTrend dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public LotteryTrend Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfString : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private string dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+                this.RaisePropertyChanged("Success");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("Message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("Data");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+                this.RaisePropertyChanged("Code");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class PageListOfLotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int totalField;
+        
+        private LotteryForBJ[] listField;
+        
+        private int pageSizeField;
+        
+        private int pageIndexField;
+        
+        private int pageCountField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int Total {
+            get {
+                return this.totalField;
+            }
+            set {
+                this.totalField = value;
+                this.RaisePropertyChanged("Total");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        public LotteryForBJ[] List {
+            get {
+                return this.listField;
+            }
+            set {
+                this.listField = value;
+                this.RaisePropertyChanged("List");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int PageSize {
+            get {
+                return this.pageSizeField;
+            }
+            set {
+                this.pageSizeField = value;
+                this.RaisePropertyChanged("PageSize");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int PageIndex {
+            get {
+                return this.pageIndexField;
+            }
+            set {
+                this.pageIndexField = value;
+                this.RaisePropertyChanged("PageIndex");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int PageCount {
+            get {
+                return this.pageCountField;
+            }
+            set {
+                this.pageCountField = value;
+                this.RaisePropertyChanged("PageCount");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class ResultRMOfPageListOfLotteryForBJ : object, System.ComponentModel.INotifyPropertyChanged {
         
         private bool successField;
@@ -1999,6 +2684,8 @@ namespace UnitTest.LotteryWebService {
         private int codeField;
         
         private string keyField;
+        
+        private System.DateTime serverDateField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -2057,6 +2744,18 @@ namespace UnitTest.LotteryWebService {
             set {
                 this.keyField = value;
                 this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
             }
         }
         
@@ -2196,6 +2895,8 @@ namespace UnitTest.LotteryWebService {
         
         private decimal evenPField;
         
+        private string forecastField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
         public LotteryForBJ[] Lotteries {
@@ -2289,6 +2990,18 @@ namespace UnitTest.LotteryWebService {
             set {
                 this.evenPField = value;
                 this.RaisePropertyChanged("EvenP");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public string Forecast {
+            get {
+                return this.forecastField;
+            }
+            set {
+                this.forecastField = value;
+                this.RaisePropertyChanged("Forecast");
             }
         }
         
@@ -2422,6 +3135,8 @@ namespace UnitTest.LotteryWebService {
         
         private string keyField;
         
+        private System.DateTime serverDateField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public bool Success {
@@ -2479,6 +3194,18 @@ namespace UnitTest.LotteryWebService {
             set {
                 this.keyField = value;
                 this.RaisePropertyChanged("Key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+                this.RaisePropertyChanged("ServerDate");
             }
         }
         
@@ -2705,13 +3432,29 @@ namespace UnitTest.LotteryWebService {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
         public string newPsw;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string q1;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        public string a1;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        public string q2;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
+        public string a2;
+        
         public ChangePswRequest() {
         }
         
-        public ChangePswRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, string oldPsw, string newPsw) {
+        public ChangePswRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, string oldPsw, string newPsw, string q1, string a1, string q2, string a2) {
             this.TokenHeader = TokenHeader;
             this.oldPsw = oldPsw;
             this.newPsw = newPsw;
+            this.q1 = q1;
+            this.a1 = a1;
+            this.q2 = q2;
+            this.a2 = a2;
         }
     }
     
@@ -2797,6 +3540,272 @@ namespace UnitTest.LotteryWebService {
         
         public GetUserInfoResponse(UnitTest.LotteryWebService.ResultRMOfUser GetUserInfoResult) {
             this.GetUserInfoResult = GetUserInfoResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNotice", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetNoticeRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int sysNo;
+        
+        public GetNoticeRequest() {
+        }
+        
+        public GetNoticeRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, int sysNo) {
+            this.TokenHeader = TokenHeader;
+            this.sysNo = sysNo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNoticeResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetNoticeResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfNotices GetNoticeResult;
+        
+        public GetNoticeResponse() {
+        }
+        
+        public GetNoticeResponse(UnitTest.LotteryWebService.ResultRMOfNotices GetNoticeResult) {
+            this.GetNoticeResult = GetNoticeResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCurrentLottery", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetCurrentLotteryRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        public GetCurrentLotteryRequest() {
+        }
+        
+        public GetCurrentLotteryRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
+            this.TokenHeader = TokenHeader;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCurrentLotteryResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetCurrentLotteryResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfLotteryForBJ GetCurrentLotteryResult;
+        
+        public GetCurrentLotteryResponse() {
+        }
+        
+        public GetCurrentLotteryResponse(UnitTest.LotteryWebService.ResultRMOfLotteryForBJ GetCurrentLotteryResult) {
+            this.GetCurrentLotteryResult = GetCurrentLotteryResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="Recharge", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RechargeRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string cardNo;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string cardPsw;
+        
+        public RechargeRequest() {
+        }
+        
+        public RechargeRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, string cardNo, string cardPsw) {
+            this.TokenHeader = TokenHeader;
+            this.cardNo = cardNo;
+            this.cardPsw = cardPsw;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RechargeResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RechargeResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfBoolean RechargeResult;
+        
+        public RechargeResponse() {
+        }
+        
+        public RechargeResponse(UnitTest.LotteryWebService.ResultRMOfBoolean RechargeResult) {
+            this.RechargeResult = RechargeResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SaveRemind", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class SaveRemindRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.RemindStatistics remind;
+        
+        public SaveRemindRequest() {
+        }
+        
+        public SaveRemindRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, UnitTest.LotteryWebService.RemindStatistics remind) {
+            this.TokenHeader = TokenHeader;
+            this.remind = remind;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SaveRemindResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class SaveRemindResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfBoolean SaveRemindResult;
+        
+        public SaveRemindResponse() {
+        }
+        
+        public SaveRemindResponse(UnitTest.LotteryWebService.ResultRMOfBoolean SaveRemindResult) {
+            this.SaveRemindResult = SaveRemindResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetInfoForTimer", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetInfoForTimerRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        public GetInfoForTimerRequest() {
+        }
+        
+        public GetInfoForTimerRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
+            this.TokenHeader = TokenHeader;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetInfoForTimerResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetInfoForTimerResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfInfoForTimer GetInfoForTimerResult;
+        
+        public GetInfoForTimerResponse() {
+        }
+        
+        public GetInfoForTimerResponse(UnitTest.LotteryWebService.ResultRMOfInfoForTimer GetInfoForTimerResult) {
+            this.GetInfoForTimerResult = GetInfoForTimerResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DelRemind", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DelRemindRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int remindSysNo;
+        
+        public DelRemindRequest() {
+        }
+        
+        public DelRemindRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, int remindSysNo) {
+            this.TokenHeader = TokenHeader;
+            this.remindSysNo = remindSysNo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DelRemindResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DelRemindResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfBoolean DelRemindResult;
+        
+        public DelRemindResponse() {
+        }
+        
+        public DelRemindResponse(UnitTest.LotteryWebService.ResultRMOfBoolean DelRemindResult) {
+            this.DelRemindResult = DelRemindResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryRemind", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryRemindRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public UnitTest.LotteryWebService.TokenHeader TokenHeader;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int pageIndex;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int pageSize;
+        
+        public QueryRemindRequest() {
+        }
+        
+        public QueryRemindRequest(UnitTest.LotteryWebService.TokenHeader TokenHeader, int pageIndex, int pageSize) {
+            this.TokenHeader = TokenHeader;
+            this.pageIndex = pageIndex;
+            this.pageSize = pageSize;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="QueryRemindResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class QueryRemindResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public UnitTest.LotteryWebService.ResultRMOfPageListOfRemindStatistics QueryRemindResult;
+        
+        public QueryRemindResponse() {
+        }
+        
+        public QueryRemindResponse(UnitTest.LotteryWebService.ResultRMOfPageListOfRemindStatistics QueryRemindResult) {
+            this.QueryRemindResult = QueryRemindResult;
         }
     }
     
@@ -2915,11 +3924,15 @@ namespace UnitTest.LotteryWebService {
             return base.Channel.ChangePsw(request);
         }
         
-        public UnitTest.LotteryWebService.ResultRMOfObject ChangePsw(UnitTest.LotteryWebService.TokenHeader TokenHeader, string oldPsw, string newPsw) {
+        public UnitTest.LotteryWebService.ResultRMOfObject ChangePsw(UnitTest.LotteryWebService.TokenHeader TokenHeader, string oldPsw, string newPsw, string q1, string a1, string q2, string a2) {
             UnitTest.LotteryWebService.ChangePswRequest inValue = new UnitTest.LotteryWebService.ChangePswRequest();
             inValue.TokenHeader = TokenHeader;
             inValue.oldPsw = oldPsw;
             inValue.newPsw = newPsw;
+            inValue.q1 = q1;
+            inValue.a1 = a1;
+            inValue.q2 = q2;
+            inValue.a2 = a2;
             UnitTest.LotteryWebService.ChangePswResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).ChangePsw(inValue);
             return retVal.ChangePswResult;
         }
@@ -2948,8 +3961,95 @@ namespace UnitTest.LotteryWebService {
             return retVal.GetUserInfoResult;
         }
         
-        public UnitTest.LotteryWebService.ResultRMOfNotices GetNotice(int sysNo) {
-            return base.Channel.GetNotice(sysNo);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.GetNoticeResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.GetNotice(UnitTest.LotteryWebService.GetNoticeRequest request) {
+            return base.Channel.GetNotice(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfNotices GetNotice(UnitTest.LotteryWebService.TokenHeader TokenHeader, int sysNo) {
+            UnitTest.LotteryWebService.GetNoticeRequest inValue = new UnitTest.LotteryWebService.GetNoticeRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.sysNo = sysNo;
+            UnitTest.LotteryWebService.GetNoticeResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).GetNotice(inValue);
+            return retVal.GetNoticeResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.GetCurrentLotteryResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.GetCurrentLottery(UnitTest.LotteryWebService.GetCurrentLotteryRequest request) {
+            return base.Channel.GetCurrentLottery(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfLotteryForBJ GetCurrentLottery(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
+            UnitTest.LotteryWebService.GetCurrentLotteryRequest inValue = new UnitTest.LotteryWebService.GetCurrentLotteryRequest();
+            inValue.TokenHeader = TokenHeader;
+            UnitTest.LotteryWebService.GetCurrentLotteryResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).GetCurrentLottery(inValue);
+            return retVal.GetCurrentLotteryResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.RechargeResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.Recharge(UnitTest.LotteryWebService.RechargeRequest request) {
+            return base.Channel.Recharge(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfBoolean Recharge(UnitTest.LotteryWebService.TokenHeader TokenHeader, string cardNo, string cardPsw) {
+            UnitTest.LotteryWebService.RechargeRequest inValue = new UnitTest.LotteryWebService.RechargeRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.cardNo = cardNo;
+            inValue.cardPsw = cardPsw;
+            UnitTest.LotteryWebService.RechargeResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).Recharge(inValue);
+            return retVal.RechargeResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.SaveRemindResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.SaveRemind(UnitTest.LotteryWebService.SaveRemindRequest request) {
+            return base.Channel.SaveRemind(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfBoolean SaveRemind(UnitTest.LotteryWebService.TokenHeader TokenHeader, UnitTest.LotteryWebService.RemindStatistics remind) {
+            UnitTest.LotteryWebService.SaveRemindRequest inValue = new UnitTest.LotteryWebService.SaveRemindRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.remind = remind;
+            UnitTest.LotteryWebService.SaveRemindResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).SaveRemind(inValue);
+            return retVal.SaveRemindResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.GetInfoForTimerResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.GetInfoForTimer(UnitTest.LotteryWebService.GetInfoForTimerRequest request) {
+            return base.Channel.GetInfoForTimer(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfInfoForTimer GetInfoForTimer(UnitTest.LotteryWebService.TokenHeader TokenHeader) {
+            UnitTest.LotteryWebService.GetInfoForTimerRequest inValue = new UnitTest.LotteryWebService.GetInfoForTimerRequest();
+            inValue.TokenHeader = TokenHeader;
+            UnitTest.LotteryWebService.GetInfoForTimerResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).GetInfoForTimer(inValue);
+            return retVal.GetInfoForTimerResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.DelRemindResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.DelRemind(UnitTest.LotteryWebService.DelRemindRequest request) {
+            return base.Channel.DelRemind(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfBoolean DelRemind(UnitTest.LotteryWebService.TokenHeader TokenHeader, int remindSysNo) {
+            UnitTest.LotteryWebService.DelRemindRequest inValue = new UnitTest.LotteryWebService.DelRemindRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.remindSysNo = remindSysNo;
+            UnitTest.LotteryWebService.DelRemindResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).DelRemind(inValue);
+            return retVal.DelRemindResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        UnitTest.LotteryWebService.QueryRemindResponse UnitTest.LotteryWebService.LotteryWebServiceSoap.QueryRemind(UnitTest.LotteryWebService.QueryRemindRequest request) {
+            return base.Channel.QueryRemind(request);
+        }
+        
+        public UnitTest.LotteryWebService.ResultRMOfPageListOfRemindStatistics QueryRemind(UnitTest.LotteryWebService.TokenHeader TokenHeader, int pageIndex, int pageSize) {
+            UnitTest.LotteryWebService.QueryRemindRequest inValue = new UnitTest.LotteryWebService.QueryRemindRequest();
+            inValue.TokenHeader = TokenHeader;
+            inValue.pageIndex = pageIndex;
+            inValue.pageSize = pageSize;
+            UnitTest.LotteryWebService.QueryRemindResponse retVal = ((UnitTest.LotteryWebService.LotteryWebServiceSoap)(this)).QueryRemind(inValue);
+            return retVal.QueryRemindResult;
         }
     }
 }

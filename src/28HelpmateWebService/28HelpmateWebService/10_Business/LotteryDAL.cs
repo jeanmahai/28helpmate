@@ -120,6 +120,14 @@ namespace Business
 
         #region 28
 
+        public bool DelRemind(int sysNo)
+        {
+            Session.CreateSQLQuery("delete RemindStatistics where SysNo=:sn")
+                .SetParameter("sn",sysNo)
+                .ExecuteUpdate();
+            return true;
+        }
+
         public RemindStatistics QueryRemind(int gameSysNo,int regionSysNo,int siteSysNo,int userSysNo)
         {
             var q = from a in Session.Query<RemindStatistics>()
@@ -141,8 +149,22 @@ namespace Business
             return remind;
         }
 
-        public bool SaveRemind(RemindStatistics remind)
+        public bool SaveRemind(RemindStatistics remind,out string error)
         {
+            error = "";
+            var q = from a in Session.Query<RemindStatistics>()
+                    where a.SiteSysNo == remind.SiteSysNo
+                          && a.SourceSysNo == remind.SourceSysNo
+                          && a.UserSysNo == remind.UserSysNo
+                          && a.GameSysNo == remind.GameSysNo
+                          && a.RetNum == remind.RetNum
+                    select a;
+            if (q.SingleOrDefault() != null)
+            {
+                error = "此提醒已经设置";
+                return false;
+            }
+
             remind.Status = 0;
             Session.Save(remind);
             Session.Flush();
@@ -257,9 +279,16 @@ namespace Business
         public LotteryByTwentyPeriod QueryLotteryByHourStep(DateTime dateTime,int siteSysNo,string tableName)
         {
             var datesStr = new List<string>();
+            DateTime temp = dateTime;
             for (var i = 1;i <= 20;i++)
             {
-                datesStr.Add("'" + dateTime.AddHours(-i).ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                temp = temp.AddHours(-1);
+                if (temp.Hour < 9 || temp.ToString("HH:mm:ss") == "09:00:00")
+                {
+                    temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
+                }
+
+                datesStr.Add("'" + temp.ToString("yyyy-MM-dd HH:mm:ss") + "'");
             }
 
             var sql = SqlManager.GetSqlText("QueryLotteryByHourStep");
@@ -273,7 +302,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
-            result.Forecast = dateTime.Hour.ToString(CultureInfo.InvariantCulture);
+            result.Forecast = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
             return result;
         }
         /// <summary>
@@ -299,7 +328,7 @@ namespace Business
             var result = new LotteryByTwentyPeriod();
             result.Lotteries = q;
             result.NotAppearNumber = GetNotAppearNo(q);
-            result.Forecast = dateTime.Day.ToString(CultureInfo.InvariantCulture);
+            result.Forecast = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
             return result;
         }
         /// <summary>
@@ -598,10 +627,11 @@ namespace Business
         {
             error = "";
             userSysNo = 0;
-            var user = Session.QueryOver<User>().Where(p => p.UserID == userId).SingleOrDefault<User>();
+            var pswHash = CiphertextService.MD5Encryption(psw);
+            var user = Session.QueryOver<User>().Where(p => p.UserID == userId && p.UserPwd == pswHash).SingleOrDefault<User>();
             if (user == null)
             {
-                error = "用户不存在";
+                error = "用户不存在或密码错误";
                 return false;
             }
             if (user.Status == -1)
@@ -614,12 +644,12 @@ namespace Business
                 error = "用户未激活";
                 return false;
             }
-            var pswHash = CiphertextService.MD5Encryption(psw);
-            if (pswHash != user.UserPwd)
-            {
-                error = "密码错误";
-                return false;
-            }
+            //var pswHash = CiphertextService.MD5Encryption(psw);
+            //if (pswHash != user.UserPwd)
+            //{
+            //    error = "密码错误";
+            //    return false;
+            //}
             //该用户的充值是否可用
             userSysNo = user.SysNo;
             return true;
@@ -681,8 +711,9 @@ namespace Business
         }
         public string ChangePsw(int userSysNo,string oldPsw,string newPsw,string q1,string a1,string q2,string a2)
         {
+            var hasPsw = CiphertextService.MD5Encryption(oldPsw);
             var q = (from a in Session.Query<User>()
-                     where a.SysNo == userSysNo && CiphertextService.MD5Encryption(oldPsw) == a.UserPwd
+                     where a.SysNo == userSysNo && hasPsw == a.UserPwd
                      select a).SingleOrDefault();
             if (q == null)
             {
@@ -693,18 +724,50 @@ namespace Business
             {
                 isPass = true;
             }
-            if(!isPass)
+            if (!isPass)
             {
                 return "问题验证失败";
             }
 
             q.UserPwd = CiphertextService.MD5Encryption(newPsw);
-            Session.Save(q);
-            Session.Flush();
+            Session.CreateSQLQuery("update Users set UserPwd=:psw where SysNo=:sysNo")
+                .SetParameter("psw",q.UserPwd)
+                .SetParameter("sysNo",q.SysNo)
+                .ExecuteUpdate();
 
             return "";
         }
         #endregion
+
+        public PageList<RemindStatistics> QueryRemind(int gameSysNo,int siteSysNo,int regionSysNo,int userSysNo,int pageIndex,int pageSize)
+        {
+            var count = Session.CreateSQLQuery("select count(1) from RemindStatistics where " +
+                                               "UserSysNo=:usn " +
+                                               "and GameSysNo=:gsn " +
+                                               "and SourceSysNo=:ssn " +
+                                               "and SiteSysNo=:ssno")
+                                               .SetParameter("usn",userSysNo)
+                                               .SetParameter("gsn",gameSysNo)
+                                               .SetParameter("ssn",regionSysNo)
+                                               .SetParameter("ssno",siteSysNo)
+                .UniqueResult<int>();
+
+            var q = Session.QueryOver<RemindStatistics>()
+                .Where(p => p.GameSysNo == gameSysNo
+                            && p.SiteSysNo == siteSysNo
+                            && p.SourceSysNo == regionSysNo
+                            && p.UserSysNo == userSysNo)
+                .Skip(pageIndex - 1)
+                .Take(pageSize);
+
+            var result = new PageList<RemindStatistics>();
+            result.Total = count;
+            result.List = q.List<RemindStatistics>().ToList();
+            result.PageIndex = pageIndex;
+            result.PageSize = pageSize;
+            result.PageCount = (int)Math.Ceiling(count / (double)pageSize);
+            return result;
+        }
 
         public string GetClientIP()
         {
@@ -800,8 +863,21 @@ namespace Business
                 if (card.CategorySysNo == 2)
                     user.RechargeUseEndTime = user.RechargeUseEndTime.AddMonths(1);
             }
-            Session.Save(user);
-            Session.Flush();
+            Session.CreateSQLQuery("update Users set PayUseEndTime=:endDate where SysNo=:sysNo")
+                .SetParameter("endDate",user.RechargeUseEndTime)
+                .SetParameter("sysNo",user.SysNo)
+                .ExecuteUpdate();
+            //Session.Update(user,user.SysNo);
+            //Session.Flush();
+
+            card.Status = 2;
+
+            Session.CreateSQLQuery("update PayCard set Status=:s where SysNo=:sn")
+                .SetParameter("s",2)
+                .SetParameter("sn",card.SysNo)
+                .ExecuteUpdate();
+            //Session.Update(card,card.SysNo);
+            //Session.Flush();
 
             var log = new PayLog();
             log.CardSysNo = card.SysNo;

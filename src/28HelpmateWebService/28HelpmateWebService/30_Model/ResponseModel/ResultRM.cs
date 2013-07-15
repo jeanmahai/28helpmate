@@ -10,5 +10,8 @@ namespace Model.ResponseModel
         public T Data { get; set; }
         public int Code { get; set; }
         public string Key { get; set; }
+
+        private DateTime serverDate;
+        public DateTime ServerDate { get { return DateTime.Now; } set { serverDate = value; }}
     }
 }

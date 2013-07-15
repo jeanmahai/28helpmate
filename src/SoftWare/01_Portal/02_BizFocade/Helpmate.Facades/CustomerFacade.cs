@@ -32,5 +32,51 @@ namespace Helpmate.Facades
             var result = Client.Service.GenerateCode();
             return result;
         }
+
+        /// <summary>
+        /// 从Service获取提醒设置
+        /// </summary>
+        /// <returns></returns>
+        public ResultRMOfPageListOfRemindStatistics GetRemindLottery(int pageIndex)
+        {
+            lock (Header.obj)
+            {
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.QueryRemind(pageIndex, 18);
+                if (result.Success) Header.Key = result.Key;
+                return result;
+            }
+        }
+        /// <summary>
+        /// 保存提醒设置
+        /// </summary>
+        /// <param name="remind"></param>
+        /// <returns></returns>
+        public ResultRMOfBoolean AddRemindLottery(RemindStatistics remind)
+        {
+            lock (Header.obj)
+            {
+                Client.Service.TokenHeaderValue = TokenHeader;
+                remind.UserSysNo = TokenHeader.UserSysNo;
+                var result = Client.Service.SaveRemind(remind);
+                if (result.Success) Header.Key = result.Key;
+                return result;
+            }
+        }
+        /// <summary>
+        /// 删除提醒设置
+        /// </summary>
+        /// <param name="remindSysNo"></param>
+        /// <returns></returns>
+        public ResultRMOfBoolean DelRemindLottery(int remindSysNo)
+        {
+            lock (Header.obj)
+            {
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.DelRemind(remindSysNo);
+                if (result.Success) Header.Key = result.Key;
+                return result;
+            }
+        }
     }
 }

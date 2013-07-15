@@ -6,6 +6,7 @@ using Business;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model.Model;
 using UnitTest.LotteryWebService;
+using RemindStatistics = Model.Model.RemindStatistics;
 
 namespace UnitTest
 {
@@ -59,12 +60,13 @@ namespace UnitTest
         [TestMethod]
         public void QueryLotteryByHourStepServiceTest()
         {
-            //var data = m_client.QueryLotteryByHourStep(new TokenHeader(),DateTime.Parse("2013-7-2 21:45:00"),SITE_NAME);
+            var data =m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-7-14 21:05:00"),10001,"SourceData_28_Beijing"); //m_client.QueryLotteryByHourStep(new TokenHeader(),DateTime.Parse("2013-7-2 21:45:00"),SITE_NAME);
             //Console.WriteLine(data.Message);
-            //foreach (var a in data.Data.Lotteries)
-            //{
-            //    Console.WriteLine("期号{0}",a.PeriodNum);
-            //}
+            Console.WriteLine(data.Lotteries.Count);
+            foreach (var a in data.Lotteries)
+            {
+                Console.WriteLine("期号{0}",a.PeriodNum);
+            }
         }
         [TestMethod]
         public void QueryNextLotteryWithSameNumberServiceTest()
@@ -158,7 +160,9 @@ namespace UnitTest
         [TestMethod]
         public void LoginTest()
         {
-            //Console.WriteLine(string.Format("{0}",m_Dal.Login(1,"test")));
+            string error;
+            int userSysNo;
+            Console.WriteLine(string.Format("{0},{1},{2}",m_Dal.Login("xxcode@163.com","115922",out error,out userSysNo),error,userSysNo));
         }
         [TestMethod]
         public void QueryOmissionAllForBJTest()
@@ -280,6 +284,57 @@ namespace UnitTest
                        };
             var result = m_client.Register(user);
             Console.WriteLine(result.Message);
+        }
+
+        [TestMethod]
+        public void Test_QueryUser()
+        {
+            var a = m_Dal.Queryuser(9);
+        }
+        [TestMethod]
+        public void Test_ChangePsw()
+        {
+            var h = new TokenHeader();
+            h.UserSysNo = 5;
+            var result= m_client.ChangePsw(h, "12345678", "123456", "你的出生地？", "abc", "", "");
+            Console.WriteLine(result.Message);
+            //Console.WriteLine(m_Dal.ChangePsw(5, "jeanma", "12345678", "你的出生地？", "abc", "", ""));
+            //var a = m_Dal.ChangePsw(9,"115922","12345678","你的出生地？","abc","","");
+        }
+        [TestMethod]
+        public void Test_Recharge()
+        {
+            string error;
+            var a = m_Dal.Recharge(9,"123","123",out error);
+            Console.WriteLine(error);
+        }
+        [TestMethod]
+        public void Test_SaveRemind()
+        {
+            RemindStatistics data=new RemindStatistics();
+            data.GameSysNo = 10001;
+            data.RetNum = 1;
+            data.SiteSysNo = 10001;
+            data.Status = 1;
+            data.UserSysNo = 5;
+            data.Cnt = 1;
+            
+            string error;
+            var a = m_Dal.SaveRemind(data,out error);
+            Console.WriteLine(error);
+        }
+
+        [TestMethod]
+        public void Test_QueryRemind()
+        {
+            //var h = new TokenHeader();
+            //h.UserSysNo = 5;
+            //h.GameSourceSysNo = 10001;
+            //h.RegionSourceSysNo = 10001;
+            //h.SiteSourceSysNo = 10001;
+            var a = m_Dal.QueryRemind(10001,10001,10001,5,1,2);
+            //var a = m_client.QueryRemind(h, 1, 2);
+            
         }
     }
 }

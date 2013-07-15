@@ -76,10 +76,19 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Service References\LotteryWebService\LotteryWebService.wsdl" />
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfBoolean.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfCustomModules.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfInfoForTimer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfListOfOmitStatistics.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfLotteryForBJ.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfLotteryTrend.datasource">
@@ -92,6 +101,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfLotteryForBJ.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfRemindStatistics.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfRemindStatistics.datasource">
