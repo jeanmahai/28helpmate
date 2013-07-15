@@ -49,20 +49,20 @@ namespace WebService
                 return false;
             }
             //验证是否有充值时间
-            var user = Dal.Queryuser(reqHeader.UserSysNo);
-            if(user!=null)
-            {
-                if(user.RechargeUseEndTime<DateTime.Now)
-                {
-                    error = "需要充值才能查看分析数据";
-                    return false;
-                }
-            }
-            else
-            {
-                error = "用户不存在";
-                return false;
-            }
+            //var user = Dal.Queryuser(reqHeader.UserSysNo);
+            //if (user != null)
+            //{
+            //    if (user.RechargeUseEndTime < DateTime.Now)
+            //    {
+            //        error = "需要充值才能查看分析数据";
+            //        return false;
+            //    }
+            //}
+            //else
+            //{
+            //    error = "用户不存在";
+            //    return false;
+            //}
             return true;
         }
 
@@ -74,6 +74,13 @@ namespace WebService
             string error;
             if (ValidateToken(ReqHeader,out error))
             {
+                if(!Dal.ValidateUserTime(ReqHeader.UserSysNo,out error))
+                {
+                    result.Success = false;
+                    result.Message = error;
+                    return result;
+                }
+
                 result.Data = new CustomModules();
                 var lastestLottery = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
 
@@ -120,27 +127,27 @@ namespace WebService
             return result;
         }
 
-        [WebMethod(Description = "查询开奖结果",EnableSession = true)]
-        [SoapHeader("ReqHeader",Direction = SoapHeaderDirection.In)]
-        public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilterForBJ filterForBj)
-        {
-            var result = new ResultRM<PageList<LotteryForBJ>>();
-            string error;
-            if (ValidateToken(ReqHeader,out error))
-            {
-                result.Data = Dal.Query_28BJ(filterForBj);
-                result.Success = true;
-                result.Message = MESSAGE_SUCCESS;
-                NewKey(result,ReqHeader.UserSysNo);
-            }
-            else
-            {
-                result.Success = false;
-                result.Message = error;
-                result.Code = ERROR_VALIDATE_TOKEN_CODE;
-            }
-            return result;
-        }
+        //[WebMethod(Description = "查询开奖结果",EnableSession = true)]
+        //[SoapHeader("ReqHeader",Direction = SoapHeaderDirection.In)]
+        //public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilterForBJ filterForBj)
+        //{
+        //    var result = new ResultRM<PageList<LotteryForBJ>>();
+        //    string error;
+        //    if (ValidateToken(ReqHeader,out error))
+        //    {
+        //        result.Data = Dal.Query_28BJ(filterForBj);
+        //        result.Success = true;
+        //        result.Message = MESSAGE_SUCCESS;
+        //        NewKey(result,ReqHeader.UserSysNo);
+        //    }
+        //    else
+        //    {
+        //        result.Success = false;
+        //        result.Message = error;
+        //        result.Code = ERROR_VALIDATE_TOKEN_CODE;
+        //    }
+        //    return result;
+        //}
 
         [WebMethod(Description = "登录",EnableSession = true)]
         public ResultRM<string> Login(string userId,string psw,string code)
@@ -208,6 +215,13 @@ namespace WebService
             string error;
             if (ValidateToken(ReqHeader,out error))
             {
+                if (!Dal.ValidateUserTime(ReqHeader.UserSysNo,out error))
+                {
+                    result.Success = false;
+                    result.Message = error;
+                    return result;
+                }
+
                 result.Data = Dal.QueryTrend(ReqHeader.SiteSourceSysNo,pageIndex,AppSettingValues.PageCount,GetTableName(ReqHeader.RegionSourceSysNo));
                 result.Success = true;
                 NewKey(result,ReqHeader.UserSysNo);
@@ -229,6 +243,13 @@ namespace WebService
             string error;
             if (ValidateToken(ReqHeader,out error))
             {
+                if (!Dal.ValidateUserTime(ReqHeader.UserSysNo,out error))
+                {
+                    result.Success = false;
+                    result.Message = error;
+                    return result;
+                }
+
                 var data = Dal.QueryOmissionAll(ReqHeader.GameSourceSysNo,ReqHeader.SiteSourceSysNo,ReqHeader.RegionSourceSysNo);
                 result.Data = data;
                 result.Success = true;
@@ -255,6 +276,12 @@ namespace WebService
             string error;
             if (ValidateToken(ReqHeader,out error))
             {
+                if (!Dal.ValidateUserTime(ReqHeader.UserSysNo,out error))
+                {
+                    result.Success = false;
+                    result.Message = error;
+                    return result;
+                }
                 result.Data = Dal.QuerySupperTrend(ReqHeader.SiteSourceSysNo,pageIndex,pageSize,AppSettingValues.MaxTotal,date,hour,minute,GetTableName(ReqHeader.RegionSourceSysNo));
                 result.Success = true;
                 NewKey(result,ReqHeader.UserSysNo);
@@ -311,6 +338,12 @@ namespace WebService
             string error;
             if (ValidateToken(ReqHeader,out error))
             {
+                if (!Dal.ValidateUserTime(ReqHeader.UserSysNo,out error))
+                {
+                    result.Success = false;
+                    result.Message = error;
+                    return result;
+                }
                 result.Data = Dal.QueryRemind(ReqHeader.GameSourceSysNo,ReqHeader.RegionSourceSysNo,ReqHeader.SiteSourceSysNo,
                                               ReqHeader.UserSysNo);
                 result.Success = true;
@@ -357,9 +390,9 @@ namespace WebService
 
         [WebMethod(Description = "获得公告",EnableSession = true)]
         [SoapHeader("ReqHeader")]
-        public ResultRM<Notices> GetNotice(int sysNo)
+        public ResultRM<List<Notices>> GetNotice(int sysNo)
         {
-            var result = new ResultRM<Notices>();
+            var result = new ResultRM<List<Notices>>();
             string error;
             if (ValidateToken(ReqHeader,out error))
             {
@@ -433,7 +466,8 @@ namespace WebService
                 result.Data = Dal.SaveRemind(remind,out error);
                 result.Success = result.Data;
                 result.Message = error;
-                NewKey(result,ReqHeader.UserSysNo);
+                if (result.Success)
+                    NewKey(result,ReqHeader.UserSysNo);
             }
             else
             {
@@ -480,7 +514,8 @@ namespace WebService
             {
                 result.Data = Dal.DelRemind(remindSysNo);
                 result.Success = result.Data;
-                NewKey(result,ReqHeader.UserSysNo);
+                if (result.Success)
+                    NewKey(result,ReqHeader.UserSysNo);
             }
             else
             {
