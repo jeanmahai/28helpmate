@@ -78,5 +78,16 @@ namespace Helpmate.Facades
                 return result;
             }
         }
+
+        /// <summary>
+        /// 获取公告
+        /// </summary>
+        /// <returns></returns>
+        public ResultRMOfListOfNotices GetNotice()
+        {
+            Client.Service.TokenHeaderValue = TokenHeader;
+            var result = Client.Service.GetNotice(0);
+            return result;
+        }
     }
 }

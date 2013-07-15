@@ -34,6 +34,8 @@ namespace Helpmate.UI.Forms
             Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);
 
             bgwApp.RunWorkerAsync();
+            bgwNews.RunWorkerAsync();
+
             var childForm = new UserInfo();
             CurrMenu(MenuEnum.User, childForm.SiteMapList, childForm);
             lblServerTime.Text = serviceFacade.GetServerDate().ToString();
@@ -247,6 +249,12 @@ namespace Helpmate.UI.Forms
             if (PageUtils.CheckError(result) && result.Data != null)
             {
                 lblCurrent.Text = string.Format("本期分析期号：{0}   第{1}期开奖号码：{2}", result.Data.Lottery.PeriodNum + 1, result.Data.Lottery.PeriodNum, result.Data.Lottery.RetNum);
+                if (result.Data.Remind != null && result.Data.Remind.Status == 1)
+                {
+                    UtilsTool.PlayMusic("Theme/play.wav", true);
+                    AppMessage.Alert(string.Format("{0}{1}网站已连续开{2}期{3}", PageUtils.LoadGameName(), PageUtils.LoadSiteName(), result.Data.Remind.SourceSysNo, result.Data.Remind.Cnt, result.Data.Remind.RetNum));
+                    UtilsTool.Play.Stop();
+                }
 
                 if (string.IsNullOrEmpty(lblServerTime.Text))
                 {
@@ -264,6 +272,52 @@ namespace Helpmate.UI.Forms
                 tmApp.Enabled = false;
                 bgwApp.RunWorkerAsync();
             }
+        }
+
+        private void bgwNews_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var customerFacade = new CustomerFacade();
+            e.Result = customerFacade.GetNotice();
+        }
+
+        private void bgwNews_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var result = e.Result as ResultRMOfListOfNotices;
+            if (e.Error != null)
+            {
+                WriteLog.Write("GetInfoForTimer", e.Error.Message);
+                AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
+                return;
+            }
+
+            if (PageUtils.CheckError(result) && result.Data != null)
+            {
+                if (result.Data != null)
+                {
+                    newsList = result.Data.ToList<Notices>();
+                    tmNews.Enabled = true;
+                }
+            }
+        }
+
+        protected List<Notices> newsList = new List<Notices>();
+        protected int showIndex = 0;
+        private void tmNews_Tick(object sender, EventArgs e)
+        {
+            if (newsList.Count == 0)
+            {
+                tmNews.Enabled = false;
+                return;
+            }
+
+            tmNews.Enabled = false;
+            if (showIndex >= newsList.Count) showIndex = 0;
+            if (showIndex < newsList.Count)
+            {
+                tslNews.Text = newsList[showIndex].Contents;
+                showIndex++;
+            }
+            tmNews.Enabled = true;
         }
     }
 }

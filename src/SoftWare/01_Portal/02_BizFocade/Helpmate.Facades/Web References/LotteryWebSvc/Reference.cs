@@ -33,8 +33,6 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private System.Threading.SendOrPostCallback GetCustomeModuleOperationCompleted;
         
-        private System.Threading.SendOrPostCallback QueryOperationCompleted;
-        
         private System.Threading.SendOrPostCallback LoginOperationCompleted;
         
         private System.Threading.SendOrPostCallback RegisterOperationCompleted;
@@ -120,9 +118,6 @@ namespace Helpmate.Facades.LotteryWebSvc {
         public event GetCustomeModuleCompletedEventHandler GetCustomeModuleCompleted;
         
         /// <remarks/>
-        public event QueryCompletedEventHandler QueryCompleted;
-        
-        /// <remarks/>
         public event LoginCompletedEventHandler LoginCompleted;
         
         /// <remarks/>
@@ -198,36 +193,6 @@ namespace Helpmate.Facades.LotteryWebSvc {
             if ((this.GetCustomeModuleCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetCustomeModuleCompleted(this, new GetCustomeModuleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Query", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ResultRMOfPageListOfLotteryForBJ Query(LotteryFilterForBJ filterForBj) {
-            object[] results = this.Invoke("Query", new object[] {
-                        filterForBj});
-            return ((ResultRMOfPageListOfLotteryForBJ)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void QueryAsync(LotteryFilterForBJ filterForBj) {
-            this.QueryAsync(filterForBj, null);
-        }
-        
-        /// <remarks/>
-        public void QueryAsync(LotteryFilterForBJ filterForBj, object userState) {
-            if ((this.QueryOperationCompleted == null)) {
-                this.QueryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnQueryOperationCompleted);
-            }
-            this.InvokeAsync("Query", new object[] {
-                        filterForBj}, this.QueryOperationCompleted, userState);
-        }
-        
-        private void OnQueryOperationCompleted(object arg) {
-            if ((this.QueryCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.QueryCompleted(this, new QueryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -542,10 +507,10 @@ namespace Helpmate.Facades.LotteryWebSvc {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetNotice", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ResultRMOfNotices GetNotice(int sysNo) {
+        public ResultRMOfListOfNotices GetNotice(int sysNo) {
             object[] results = this.Invoke("GetNotice", new object[] {
                         sysNo});
-            return ((ResultRMOfNotices)(results[0]));
+            return ((ResultRMOfListOfNotices)(results[0]));
         }
         
         /// <remarks/>
@@ -1703,13 +1668,13 @@ namespace Helpmate.Facades.LotteryWebSvc {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfNotices {
+    public partial class ResultRMOfListOfNotices {
         
         private bool successField;
         
         private string messageField;
         
-        private Notices dataField;
+        private Notices[] dataField;
         
         private int codeField;
         
@@ -1738,7 +1703,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public Notices Data {
+        public Notices[] Data {
             get {
                 return this.dataField;
             }
@@ -2747,239 +2712,6 @@ namespace Helpmate.Facades.LotteryWebSvc {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class PageListOfLotteryForBJ {
-        
-        private int totalField;
-        
-        private LotteryForBJ[] listField;
-        
-        private int pageSizeField;
-        
-        private int pageIndexField;
-        
-        private int pageCountField;
-        
-        /// <remarks/>
-        public int Total {
-            get {
-                return this.totalField;
-            }
-            set {
-                this.totalField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public LotteryForBJ[] List {
-            get {
-                return this.listField;
-            }
-            set {
-                this.listField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int PageSize {
-            get {
-                return this.pageSizeField;
-            }
-            set {
-                this.pageSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int PageIndex {
-            get {
-                return this.pageIndexField;
-            }
-            set {
-                this.pageIndexField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int PageCount {
-            get {
-                return this.pageCountField;
-            }
-            set {
-                this.pageCountField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfPageListOfLotteryForBJ {
-        
-        private bool successField;
-        
-        private string messageField;
-        
-        private PageListOfLotteryForBJ dataField;
-        
-        private int codeField;
-        
-        private string keyField;
-        
-        private System.DateTime serverDateField;
-        
-        /// <remarks/>
-        public bool Success {
-            get {
-                return this.successField;
-            }
-            set {
-                this.successField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public PageListOfLotteryForBJ Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime ServerDate {
-            get {
-                return this.serverDateField;
-            }
-            set {
-                this.serverDateField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LotteryFilterForBJ {
-        
-        private int pageIndexField;
-        
-        private int pageSizeField;
-        
-        private System.Nullable<System.DateTime> fromField;
-        
-        private System.Nullable<System.DateTime> toField;
-        
-        private string siteNameField;
-        
-        private string gameNameField;
-        
-        /// <remarks/>
-        public int PageIndex {
-            get {
-                return this.pageIndexField;
-            }
-            set {
-                this.pageIndexField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int PageSize {
-            get {
-                return this.pageSizeField;
-            }
-            set {
-                this.pageSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> From {
-            get {
-                return this.fromField;
-            }
-            set {
-                this.fromField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> To {
-            get {
-                return this.toField;
-            }
-            set {
-                this.toField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string SiteName {
-            get {
-                return this.siteNameField;
-            }
-            set {
-                this.siteNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string GameName {
-            get {
-                return this.gameNameField;
-            }
-            set {
-                this.gameNameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class LotteryByTwentyPeriod {
         
         private LotteryForBJ[] lotteriesField;
@@ -3281,32 +3013,6 @@ namespace Helpmate.Facades.LotteryWebSvc {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    public delegate void QueryCompletedEventHandler(object sender, QueryCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class QueryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal QueryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public ResultRMOfPageListOfLotteryForBJ Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((ResultRMOfPageListOfLotteryForBJ)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
     public delegate void LoginCompletedEventHandler(object sender, LoginCompletedEventArgs e);
     
     /// <remarks/>
@@ -3583,10 +3289,10 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public ResultRMOfNotices Result {
+        public ResultRMOfListOfNotices Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((ResultRMOfNotices)(this.results[0]));
+                return ((ResultRMOfListOfNotices)(this.results[0]));
             }
         }
     }

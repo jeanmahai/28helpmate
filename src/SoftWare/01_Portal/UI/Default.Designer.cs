@@ -80,6 +80,8 @@
             this.timerServer = new System.Windows.Forms.Timer(this.components);
             this.bgwApp = new System.ComponentModel.BackgroundWorker();
             this.tmApp = new System.Windows.Forms.Timer(this.components);
+            this.bgwNews = new System.ComponentModel.BackgroundWorker();
+            this.tmNews = new System.Windows.Forms.Timer(this.components);
             this.stsPage.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlRemindSet.SuspendLayout();
@@ -127,14 +129,13 @@
             this.toolStripStatusLabel1.Image = global::Helpmate.UI.Forms.Properties.Resources.RecordPressed;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(84, 17);
-            this.toolStripStatusLabel1.Text = "已开启提醒";
+            this.toolStripStatusLabel1.Text = "提醒运行中";
             // 
             // tslNews
             // 
             this.tslNews.Margin = new System.Windows.Forms.Padding(85, 3, 0, 2);
             this.tslNews.Name = "tslNews";
-            this.tslNews.Size = new System.Drawing.Size(32, 17);
-            this.tslNews.Text = "公告";
+            this.tslNews.Size = new System.Drawing.Size(0, 17);
             // 
             // splApp
             // 
@@ -708,6 +709,16 @@
             this.tmApp.Interval = 30000;
             this.tmApp.Tick += new System.EventHandler(this.tmApp_Tick);
             // 
+            // bgwNews
+            // 
+            this.bgwNews.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwNews_DoWork);
+            this.bgwNews.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwNews_RunWorkerCompleted);
+            // 
+            // tmNews
+            // 
+            this.tmNews.Interval = 5000;
+            this.tmNews.Tick += new System.EventHandler(this.tmNews_Tick);
+            // 
             // Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -822,5 +833,7 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.ComponentModel.BackgroundWorker bgwApp;
         private System.Windows.Forms.Timer tmApp;
+        private System.ComponentModel.BackgroundWorker bgwNews;
+        private System.Windows.Forms.Timer tmNews;
     }
 }
