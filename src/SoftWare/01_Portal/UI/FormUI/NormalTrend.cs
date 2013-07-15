@@ -104,6 +104,7 @@ namespace Helpmate.UI.Forms.FormUI
         }
         private void bgworkerLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            cmd.HideOpaqueLayer();
             var result = e.Result as ResultRMOfLotteryTrend;
 
             if (e.Error != null)
@@ -148,7 +149,6 @@ namespace Helpmate.UI.Forms.FormUI
                     }
                     lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
                 }
-                cmd.HideOpaqueLayer();
             }
         }
         private void SetCountStyle(object obj, int rows)
