@@ -539,7 +539,7 @@
             // lblCanada
             // 
             this.lblCanada.AutoSize = true;
-            this.lblCanada.BackColor = System.Drawing.Color.LightGray;
+            this.lblCanada.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lblCanada.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCanada.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCanada.Location = new System.Drawing.Point(82, 1);
@@ -589,7 +589,7 @@
             // lbl53
             // 
             this.lbl53.AutoSize = true;
-            this.lbl53.BackColor = System.Drawing.Color.LightGray;
+            this.lbl53.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lbl53.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl53.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl53.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -606,7 +606,7 @@
             // lblZM
             // 
             this.lblZM.AutoSize = true;
-            this.lblZM.BackColor = System.Drawing.Color.LightGray;
+            this.lblZM.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lblZM.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblZM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblZM.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));

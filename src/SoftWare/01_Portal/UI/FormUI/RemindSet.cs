@@ -84,47 +84,25 @@ namespace Helpmate.UI.Forms.FormUI
                 int currPageIndex = result.Data.PageIndex;
                 int pageCount = result.Data.PageCount;
                 //头
-                List<RemindStatisticsModel> headerData = (new RemindStatisticsModel()).GetHeader();
+                List<RemindStatisticsHeaderModel> headerData = (new RemindStatisticsHeaderModel()).GetHeader();
                 headerList.DataSource = headerData;
                 SetHeaderStyle(headerList);
                 //数据
-                List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDataList(result.Data.List);
+                dataList.Columns.Clear();
+                //List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDataList(result.Data.List);
+                List<RemindStatisticsModel> listData = (new RemindStatisticsModel()).GetDefaultList();
                 dataList.DataSource = listData;
                 SetDataStyle(dataList);
                 #region 添加删除按钮
-        //        private void TestForm_Load(object sender, EventArgs e)
-        //{
-        //    List<Data> dataList = new List<Data>();
-        //    for (int i = 0; i < 5; i++)
-        //    {
-        //        Data item = new Data();
-        //        item.SysNo = i;
-        //        item.ID = i.ToString();
-        //        item.Name = string.Format("名称{0}", i);
-        //        dataList.Add(item);
-        //    }
-        //    gvList.DataSource = dataList;
-        //    DataGridViewImageColumn btnImageDel = new DataGridViewImageColumn(false);
-        //    Image imgEdit = new Bitmap(Properties.Resources.del, new Size(16, 16));
-        //    btnImageDel.Image = imgEdit;
-        //    btnImageDel.Width = 50;
-        //    btnImageDel.HeaderText = "删除";
-        //    btnImageDel.Name = "btnImageDel";
-        //    gvList.Columns.Insert(3, btnImageDel);
-        //}
-
-        //private void gvList_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    int colIdx = e.ColumnIndex;
-        //    if (colIdx == 3)
-        //    {
-        //        string sysNo = gvList["SysNo", e.RowIndex].Value.ToString();
-        //        if (MessageBox.Show("确认删除？", "此删除不可恢复", MessageBoxButtons.YesNo) == DialogResult.Yes)
-        //        {
-        //            MessageBox.Show(string.Format("删除记录编号{0}！", sysNo));
-        //        }
-        //    }
-        //}
+                DataGridViewImageColumn btnImageDel = new DataGridViewImageColumn(false);
+                Image imgDel = new Bitmap(Properties.Resources.del, new Size(16, 16));
+                btnImageDel.Image = imgDel;
+                btnImageDel.Width = 150;
+                btnImageDel.HeaderText = "";
+                btnImageDel.Name = "btnImageDel";
+                btnImageDel.DefaultCellStyle.BackColor = Color.White;
+                btnImageDel.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataList.Columns.Insert(6, btnImageDel);
                 #endregion
                 //页码信息
                 lnkFirst.Enabled = true;
@@ -144,11 +122,6 @@ namespace Helpmate.UI.Forms.FormUI
                 lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
             }
         }
-        void dataList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (dataList[e.ColumnIndex, e.RowIndex].Value == null) return;
-            MessageBox.Show(dataList[e.ColumnIndex, e.RowIndex].Value.ToString());
-        }
         private void SetHeaderStyle(object obj)
         {
             DataGridView dgv = obj as DataGridView;
@@ -158,9 +131,9 @@ namespace Helpmate.UI.Forms.FormUI
             for (int i = 0; i < dgv.Columns.Count; i++)
             {
                 dgv.Columns[i].Width = 150;
-                dgv.Columns[i].DefaultCellStyle.BackColor = UtilsTool.ToColor("#fffde3");
+                dgv.Columns[i].DefaultCellStyle.BackColor = UtilsTool.ToColor("#E5E5E5");
                 dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgv.Columns[i].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#fffde3");
+                dgv.Columns[i].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#E5E5E5");
                 dgv.Columns[i].DefaultCellStyle.SelectionForeColor = Color.Black;
             }
             //不显示列头
@@ -198,6 +171,22 @@ namespace Helpmate.UI.Forms.FormUI
             //不显示边框
             dgv.BorderStyle = BorderStyle.None;
             dgv.BackgroundColor = Color.White;
+        }
+        private void dataList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int colIdx = e.ColumnIndex;
+            if (colIdx == 6)
+            {
+                string sysNo = dataList["SysNo", e.RowIndex].Value.ToString();
+                if (MessageBox.Show("您确认要删除此条提醒设置吗？", "此删除不可恢复", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (!bgworkerDel.IsBusy)
+                    {
+                        cmd.ShowOpaqueLayer(this, 125, true);
+                        bgworkerDel.RunWorkerAsync(sysNo);
+                    }
+                }
+            }
         }
         #endregion
 
@@ -237,7 +226,7 @@ namespace Helpmate.UI.Forms.FormUI
 
             if (e.Error != null)
             {
-                WriteLog.Write("GetUserInfo", e.Error.Message);
+                WriteLog.Write("AddRemindLottery", e.Error.Message);
                 AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
                 return;
             }
@@ -293,6 +282,32 @@ namespace Helpmate.UI.Forms.FormUI
             int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
             pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
             QueryData(pageIndex);
+        }
+        #endregion
+
+        #region 删除
+        private void bgworkerDel_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int sysNo = int.Parse(e.Argument.ToString());
+            e.Result = serviceFacade.DelRemindLottery(sysNo);
+        }
+        private void bgworkerDel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            cmd.HideOpaqueLayer();
+            var result = e.Result as ResultRMOfBoolean;
+
+            if (e.Error != null)
+            {
+                WriteLog.Write("DelRemindLottery", e.Error.Message);
+                AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
+                return;
+            }
+
+            if (PageUtils.CheckError(result))
+            {
+                QueryData(1);
+                MessageBox.Show("删除成功", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion
     }

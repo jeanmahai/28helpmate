@@ -372,6 +372,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Firefox.ico" />
+    <None Include="Resources\del.png" />
     <None Include="Resources\number_27x.gif" />
     <None Include="Resources\number_26x.gif" />
     <None Include="Resources\number_25x.gif" />

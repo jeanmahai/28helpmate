@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAdd = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSource = new System.Windows.Forms.Label();
             this.ddlSource = new System.Windows.Forms.ComboBox();
             this.lblGame = new System.Windows.Forms.Label();
@@ -46,29 +49,14 @@
             this.ddlResult = new System.Windows.Forms.ComboBox();
             this.lblCnt = new System.Windows.Forms.Label();
             this.tbxCnt = new System.Windows.Forms.TextBox();
-            this.pnlLine = new System.Windows.Forms.Panel();
             this.bgworkLoadData = new System.ComponentModel.BackgroundWorker();
             this.bgworkerAdd = new System.ComponentModel.BackgroundWorker();
+            this.pnlLine = new System.Windows.Forms.Panel();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.bgworkerDel = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.btn;
-            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(431, 63);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 29;
-            this.btnAdd.Text = "添加";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblSource
             // 
@@ -171,20 +159,42 @@
             // 
             // dataList
             // 
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataList.BackgroundColor = System.Drawing.Color.White;
             this.dataList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataList.Location = new System.Drawing.Point(15, 162);
             this.dataList.Name = "dataList";
             this.dataList.RowTemplate.Height = 23;
             this.dataList.Size = new System.Drawing.Size(1113, 440);
             this.dataList.TabIndex = 17;
+            this.dataList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataList_CellContentClick);
             // 
             // headerList
             // 
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.headerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.headerList.BackgroundColor = System.Drawing.Color.White;
             this.headerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.headerList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.headerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.headerList.DefaultCellStyle = dataGridViewCellStyle8;
             this.headerList.Location = new System.Drawing.Point(15, 140);
             this.headerList.Name = "headerList";
             this.headerList.RowTemplate.Height = 23;
@@ -252,6 +262,16 @@
             this.tbxCnt.Size = new System.Drawing.Size(130, 21);
             this.tbxCnt.TabIndex = 35;
             // 
+            // bgworkLoadData
+            // 
+            this.bgworkLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkLoadData_DoWork);
+            this.bgworkLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkLoadData_RunWorkerCompleted);
+            // 
+            // bgworkerAdd
+            // 
+            this.bgworkerAdd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerAdd_DoWork);
+            this.bgworkerAdd.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerAdd_RunWorkerCompleted);
+            // 
             // pnlLine
             // 
             this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -265,15 +285,27 @@
             this.pnlLine.Size = new System.Drawing.Size(1348, 1);
             this.pnlLine.TabIndex = 148;
             // 
-            // bgworkLoadData
+            // btnAdd
             // 
-            this.bgworkLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkLoadData_DoWork);
-            this.bgworkLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkLoadData_RunWorkerCompleted);
+            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdd.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.btn;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(431, 63);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 29;
+            this.btnAdd.Text = "添加";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // bgworkerAdd
+            // bgworkerDel
             // 
-            this.bgworkerAdd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerAdd_DoWork);
-            this.bgworkerAdd.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerAdd_RunWorkerCompleted);
+            this.bgworkerDel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerDel_DoWork);
+            this.bgworkerDel.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerDel_RunWorkerCompleted);
             // 
             // RemindSet
             // 
@@ -334,6 +366,7 @@
         private System.Windows.Forms.Panel pnlLine;
         private System.ComponentModel.BackgroundWorker bgworkLoadData;
         private System.ComponentModel.BackgroundWorker bgworkerAdd;
+        private System.ComponentModel.BackgroundWorker bgworkerDel;
 
     }
 }
