@@ -4,7 +4,7 @@
   <sql name="GetCurrentLottery">
     <![CDATA[
 select top 1 *
-from {0} sd
+from {0} sd with(nolock)
 where sd.SiteSysNo={1}
 order by sd.PeriodNum desc
     ]]>
@@ -19,7 +19,7 @@ exec RefreshRemind {0},{1},{2}
   <sql name="QueryLotteryByHourStep">
     <![CDATA[
 select *
-from {0}
+from {0} with(nolock)
 where RetTime in ({1})
 	and SiteSysNo={2}
 order by PeriodNum desc
@@ -29,7 +29,7 @@ order by PeriodNum desc
   <sql name="QueryNextLotteryWithSameNumber">
     <![CDATA[
 select *
-from {0}
+from {0} with(nolock)
 where PeriodNum in ({1})
 	and SiteSysNo={2}
 order by PeriodNum desc
@@ -40,12 +40,12 @@ order by PeriodNum desc
 
 DECLARE @Last_Num int,@Max_Period int
 select top 1 @Last_Num=RetNum,@Max_Period=PeriodNum
-from {0}
+from {0} with(nolock)
 where SiteSysNo={1}
 order by PeriodNum desc
 
 select top 20  *
-from {0}
+from {0} with(nolock)
 where RetNum=@Last_Num 
 	and PeriodNum<>@Max_Period
 	and SiteSysNo={1}
@@ -55,7 +55,7 @@ order by PeriodNum desc
   <sql name="QueryTop20">
     <![CDATA[
 SELECT TOP 20 *
-FROM {0}
+FROM {0} with(nolock)
 WHERE SiteSysNo={1}
 ORDER BY PeriodNum DESC
     ]]>
@@ -65,8 +65,8 @@ ORDER BY PeriodNum DESC
 SELECT 
 	CONVERT(NCHAR(40),BJ.RetNum) as Name,
 	COUNT(BJ.RetNum) AS Total
-FROM {1} BJ
-	JOIN dbo.UseSite US 
+FROM {1} BJ with(nolock)
+	JOIN dbo.UseSite US  with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
 	  AND BJ.PeriodNum>:MIN_PERIOD
@@ -79,10 +79,10 @@ GROUP BY BJ.RetNum
 (
 SELECT RC.BigOrSmall AS Name,
        COUNT(RC.BigOrSmall) AS Total
-FROM {1} BJ
-	JOIN dbo.ResultCategory_28 RC
+FROM {1} BJ with(nolock)
+	JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
-	JOIN dbo.UseSite US
+	JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
       AND BJ.PeriodNum>:MIN_PERIOD
@@ -93,10 +93,10 @@ UNION ALL
 (
 SELECT RC.MiddleOrSide AS Name,
        COUNT(RC.MiddleOrSide) AS Total
-FROM {1} BJ
-	JOIN dbo.ResultCategory_28 RC
+FROM {1} BJ with(nolock)
+	JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
-	JOIN dbo.UseSite US
+	JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
       AND BJ.PeriodNum>:MIN_PERIOD
@@ -107,10 +107,10 @@ UNION ALL
 (
 SELECT RC.OddOrDual AS Name,
        COUNT(RC.OddOrDual) AS Total
-FROM {1} BJ
-	JOIN dbo.ResultCategory_28 RC
+FROM {1} BJ with(nolock)
+	JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
-	JOIN dbo.UseSite US
+	JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
       AND BJ.PeriodNum>:MIN_PERIOD
@@ -126,10 +126,10 @@ SELECT COUNT(1) Total,
        :PAGE_INDEX PageIndex,
        :PAGE_SIZE PageSize,
        CEILING(COUNT(1)/CONVERT(DECIMAL,:PAGE_SIZE)) AS [PageCount]
-FROM {1} BJ
-	JOIN dbo.UseSite US
+FROM {1} BJ with(nolock)
+	JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
-	JOIN dbo.ResultCategory_28 RC
+	JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
       AND BJ.PeriodNum>:MIN_PERIOD
@@ -149,10 +149,10 @@ SELECT BJ.PeriodNum,
        RC.MiddleOrSide,
        RC.OddOrDual,
        ROW_NUMBER() OVER (ORDER BY BJ.PeriodNum DESC) AS ROW
-FROM {1} BJ
-	JOIN dbo.UseSite US
+FROM {1} BJ with(nolock)
+	JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
-	JOIN dbo.ResultCategory_28 RC
+	JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
       AND BJ.PeriodNum>:MIN_PERIOD
@@ -170,7 +170,7 @@ SELECT @MAX_P=MAX(PeriodNum) FROM dbo.SourceData_28_Beijing
 SELECT MAX(PeriodNum) AS NearPeriod
         ,MAX(RetNum) AS [Number]
         ,(@MAX_P-MAX(PeriodNum)) AS [Interval]
-FROM dbo.SourceData_28_Beijing
+FROM dbo.SourceData_28_Beijing with(nolock)
 GROUP BY RetNum
     ]]>
   </sql>
@@ -181,10 +181,10 @@ GROUP BY RetNum
 SELECT RC.BigOrSmall AS Name
       ,COUNT(RC.BigOrSmall) AS Total
       
-FROM {0} BJ
-	INNER JOIN dbo.ResultCategory_28 RC
+FROM {0} BJ with(nolock)
+	INNER JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
-	INNER JOIN DBO.UseSite US
+	INNER JOIN DBO.UseSite US with(nolock)
     ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.RetTime BETWEEN :START_DATE AND :END_DATE
 	AND US.SysNo=:SiteSysNo
@@ -195,10 +195,10 @@ union
 SELECT RC.MiddleOrSide AS Name
       ,COUNT(RC.MiddleOrSide) AS Total
       
-FROM {0} BJ
-	INNER JOIN dbo.ResultCategory_28 RC
+FROM {0} BJ with(nolock)
+	INNER JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
-		INNER JOIN DBO.UseSite US
+		INNER JOIN DBO.UseSite US with(nolock)
     ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.RetTime BETWEEN :START_DATE AND :END_DATE
 AND US.SysNo=:SiteSysNo
@@ -209,10 +209,10 @@ union
 SELECT RC.OddOrDual AS Name
       ,COUNT(RC.OddOrDual) AS Total
       
-FROM {0} BJ
-	INNER JOIN dbo.ResultCategory_28 RC
+FROM {0} BJ with(nolock)
+	INNER JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
-		INNER JOIN DBO.UseSite US
+		INNER JOIN DBO.UseSite US with(nolock)
     ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.RetTime BETWEEN :START_DATE AND :END_DATE
 AND US.SysNo=:SiteSysNo
@@ -222,8 +222,8 @@ union
 (
 SELECT convert(nvarchar(40),RetNum) as Name,
 	   COUNT(RetNum) AS Total
-FROM {0} BJ
-	INNER JOIN dbo.UseSite US
+FROM {0} BJ with(nolock)
+	INNER JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
 WHERE (RetTime BETWEEN :START_DATE AND :END_DATE)
 	AND US.SysNo=:SiteSysNo
@@ -239,8 +239,8 @@ SELECT BJ.PeriodNum,
        RC.BigOrSmall,
        RC.MiddleOrSide,
        RC.OddOrDual
-FROM {0} BJ
-	JOIN dbo.ResultCategory_28 RC
+FROM {0} BJ with(nolock)
+	JOIN dbo.ResultCategory_28 RC with(nolock)
 		ON BJ.RetNum=RC.RetNum
 WHERE (BJ.RetTime BETWEEN '{1}' AND '{2}')
 AND BJ.SiteSysNo={3}

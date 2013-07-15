@@ -85,6 +85,9 @@
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfInfoForTimer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfListOfNotices.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfListOfOmitStatistics.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -94,13 +97,7 @@
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfLotteryTrend.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfNotices.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfObject.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfLotteryForBJ.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\LotteryWebService\UnitTest.LotteryWebService.ResultRMOfPageListOfRemindStatistics.datasource">

@@ -13,6 +13,8 @@ namespace Common.Utility
 {
     public class UtilsTool
     {
+        public static SoundPlayer Play = new SoundPlayer();
+
         public static String MD5(String info)
         {
             String UserPassword = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(info, "md5").ToLower();
@@ -21,16 +23,15 @@ namespace Common.Utility
 
         public static void PlayMusic(string musicName, bool isLooping)
         {
-            SoundPlayer p = new SoundPlayer();
-            p.SoundLocation = Application.StartupPath + "//" + musicName;
-            p.Load();
+            Play.SoundLocation = Application.StartupPath + "//" + musicName;
+            Play.Load();
             if (isLooping)
             {
-                p.PlayLooping();
+                Play.PlayLooping();
             }
             else
             {
-                p.Play();
+                Play.Play();
             }
         }
 

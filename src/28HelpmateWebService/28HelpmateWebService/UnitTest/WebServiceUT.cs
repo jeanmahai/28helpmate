@@ -327,14 +327,26 @@ namespace UnitTest
         [TestMethod]
         public void Test_QueryRemind()
         {
+
+            var a = m_Dal.QueryRemind(10001,10001,10001,9,1,3);
+            Console.WriteLine(a.List.Count);
+
+            //var b = m_Dal.QueryRemind(10001, 10001, 10001, 9);
+            //if(b==null)
+            //{
+            //    Console.WriteLine("null");
+            //}
+            //else
+            //{
+            //    Console.WriteLine(b.RetNum);
+            //}
             //var h = new TokenHeader();
-            //h.UserSysNo = 5;
+            //h.UserSysNo = 9;
             //h.GameSourceSysNo = 10001;
             //h.RegionSourceSysNo = 10001;
             //h.SiteSourceSysNo = 10001;
-            var a = m_Dal.QueryRemind(10001,10001,10001,5,1,2);
-            //var a = m_client.QueryRemind(h, 1, 2);
-            
+            //var a = m_client.QueryRemind(h, 1, 23);
+            //Console.WriteLine(a.Data.List.Length);
         }
     }
 }
