@@ -59,7 +59,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F);
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(459, 11);
+            this.label14.Location = new System.Drawing.Point(442, 11);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(173, 12);
             this.label14.TabIndex = 149;
@@ -83,7 +83,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 9F);
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(486, 265);
+            this.label17.Location = new System.Drawing.Point(469, 265);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(137, 12);
             this.label17.TabIndex = 155;
@@ -96,7 +96,7 @@
             this.lblNuming.BackColor = System.Drawing.Color.Transparent;
             this.lblNuming.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.lblNuming.ForeColor = System.Drawing.Color.Red;
-            this.lblNuming.Location = new System.Drawing.Point(647, 11);
+            this.lblNuming.Location = new System.Drawing.Point(630, 11);
             this.lblNuming.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNuming.Name = "lblNuming";
             this.lblNuming.Size = new System.Drawing.Size(0, 12);
@@ -120,7 +120,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F);
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(497, 797);
+            this.label5.Location = new System.Drawing.Point(480, 797);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(173, 12);
             this.label5.TabIndex = 159;
@@ -144,7 +144,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("宋体", 9F);
             this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(486, 530);
+            this.label19.Location = new System.Drawing.Point(469, 530);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(137, 12);
             this.label19.TabIndex = 163;
@@ -157,7 +157,7 @@
             this.lblTime.BackColor = System.Drawing.Color.Transparent;
             this.lblTime.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.lblTime.ForeColor = System.Drawing.Color.Red;
-            this.lblTime.Location = new System.Drawing.Point(630, 530);
+            this.lblTime.Location = new System.Drawing.Point(613, 530);
             this.lblTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(0, 12);
@@ -185,7 +185,7 @@
             this.panel2.Location = new System.Drawing.Point(41, 557);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(665, 1);
+            this.panel2.Size = new System.Drawing.Size(648, 1);
             this.panel2.TabIndex = 160;
             // 
             // panel3
@@ -198,7 +198,7 @@
             this.panel3.Location = new System.Drawing.Point(41, 817);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(665, 1);
+            this.panel3.Size = new System.Drawing.Size(648, 1);
             this.panel3.TabIndex = 157;
             // 
             // panel1
@@ -211,7 +211,7 @@
             this.panel1.Location = new System.Drawing.Point(41, 285);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(665, 1);
+            this.panel1.Size = new System.Drawing.Size(648, 1);
             this.panel1.TabIndex = 152;
             // 
             // btnRefresh
@@ -240,18 +240,18 @@
             this.pnlLine.Location = new System.Drawing.Point(41, 33);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(665, 1);
+            this.pnlLine.Size = new System.Drawing.Size(648, 1);
             this.pnlLine.TabIndex = 146;
             // 
             // tmRefresh
             // 
-            this.tmRefresh.Interval = 5000;
+            this.tmRefresh.Interval = 60000;
             this.tmRefresh.Tick += new System.EventHandler(this.tmRefresh_Tick);
             // 
             // ucLotteryM4
             // 
             this.ucLotteryM4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM4.Location = new System.Drawing.Point(21, 841);
+            this.ucLotteryM4.Location = new System.Drawing.Point(13, 841);
             this.ucLotteryM4.Name = "ucLotteryM4";
             this.ucLotteryM4.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM4.TabIndex = 165;
@@ -259,7 +259,7 @@
             // ucLotteryM3
             // 
             this.ucLotteryM3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM3.Location = new System.Drawing.Point(21, 577);
+            this.ucLotteryM3.Location = new System.Drawing.Point(13, 577);
             this.ucLotteryM3.Name = "ucLotteryM3";
             this.ucLotteryM3.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM3.TabIndex = 165;
@@ -267,7 +267,7 @@
             // ucLotteryM2
             // 
             this.ucLotteryM2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM2.Location = new System.Drawing.Point(21, 305);
+            this.ucLotteryM2.Location = new System.Drawing.Point(13, 305);
             this.ucLotteryM2.Name = "ucLotteryM2";
             this.ucLotteryM2.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM2.TabIndex = 165;
@@ -275,7 +275,7 @@
             // ucLotteryM1
             // 
             this.ucLotteryM1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM1.Location = new System.Drawing.Point(21, 43);
+            this.ucLotteryM1.Location = new System.Drawing.Point(13, 43);
             this.ucLotteryM1.Name = "ucLotteryM1";
             this.ucLotteryM1.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM1.TabIndex = 165;
@@ -291,7 +291,7 @@
             this.lblMinute.AutoSize = true;
             this.lblMinute.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblMinute.ForeColor = System.Drawing.Color.Red;
-            this.lblMinute.Location = new System.Drawing.Point(647, 265);
+            this.lblMinute.Location = new System.Drawing.Point(630, 265);
             this.lblMinute.Name = "lblMinute";
             this.lblMinute.Size = new System.Drawing.Size(0, 12);
             this.lblMinute.TabIndex = 166;
