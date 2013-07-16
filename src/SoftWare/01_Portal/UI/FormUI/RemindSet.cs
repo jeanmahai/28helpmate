@@ -27,17 +27,25 @@ namespace Helpmate.UI.Forms.FormUI
         {
             SiteMapList = new List<SiteModel>()
             {
-                new SiteModel(){ Text="提醒设置"}
+                new SiteModel() { Text = "提醒设置" }
             };
             InitializeComponent();
         }
-
+        public List<SiteModel> GetSiteModelList()
+        {
+            return SiteMapList = new List<SiteModel>()
+            {
+                new SiteModel(){ Text="提醒设置"}
+            };
+        }
         private void RemindSet_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.UpdateStyles();
             //加载列表
             ddlGame.DataSource = UtilsTool.GameList();
             ddlGame.SelectedIndex = 0;
@@ -45,10 +53,7 @@ namespace Helpmate.UI.Forms.FormUI
             ddlSource.SelectedIndex = 0;
             ddlSite.DataSource = UtilsTool.SiteList();
             ddlSite.SelectedIndex = 0;
-            for (int i = 0; i <= 27; i++)
-            {
-                ddlResult.Items.Add(i.ToString());
-            }
+            ddlResult.DataSource = UtilsTool.RetNumCategoryList();
             ddlResult.SelectedIndex = 0;
             QueryData(1);
         }
@@ -197,7 +202,7 @@ namespace Helpmate.UI.Forms.FormUI
             item.GameSysNo = int.Parse(ddlGame.SelectedValue.ToString());
             item.SourceSysNo = int.Parse(ddlSource.SelectedValue.ToString());
             item.SiteSysNo = int.Parse(ddlSite.SelectedValue.ToString());
-            item.RetNum = int.Parse(ddlResult.Text.Trim());
+            item.RetNum = ddlResult.SelectedValue.ToString();
             int cnt = 0;
             if (!int.TryParse(tbxCnt.Text.Trim(), out cnt))
             {

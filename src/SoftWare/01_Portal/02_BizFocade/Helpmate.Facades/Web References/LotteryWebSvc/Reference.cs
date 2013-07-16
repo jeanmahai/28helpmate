@@ -67,6 +67,8 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private System.Threading.SendOrPostCallback QueryRemindOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ResetPswOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -167,6 +169,9 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         /// <remarks/>
         public event QueryRemindCompletedEventHandler QueryRemindCompleted;
+        
+        /// <remarks/>
+        public event ResetPswCompletedEventHandler ResetPswCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
@@ -715,6 +720,43 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ResetPsw", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfString ResetPsw(string userId, string q1, string a1, string q2, string a2) {
+            object[] results = this.Invoke("ResetPsw", new object[] {
+                        userId,
+                        q1,
+                        a1,
+                        q2,
+                        a2});
+            return ((ResultRMOfString)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ResetPswAsync(string userId, string q1, string a1, string q2, string a2) {
+            this.ResetPswAsync(userId, q1, a1, q2, a2, null);
+        }
+        
+        /// <remarks/>
+        public void ResetPswAsync(string userId, string q1, string a1, string q2, string a2, object userState) {
+            if ((this.ResetPswOperationCompleted == null)) {
+                this.ResetPswOperationCompleted = new System.Threading.SendOrPostCallback(this.OnResetPswOperationCompleted);
+            }
+            this.InvokeAsync("ResetPsw", new object[] {
+                        userId,
+                        q1,
+                        a1,
+                        q2,
+                        a2}, this.ResetPswOperationCompleted, userState);
+        }
+        
+        private void OnResetPswOperationCompleted(object arg) {
+            if ((this.ResetPswCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ResetPswCompleted(this, new ResetPswCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -903,7 +945,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private int siteSysNoField;
         
-        private int retNumField;
+        private string retNumField;
         
         private int cntField;
         
@@ -960,7 +1002,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public int RetNum {
+        public string RetNum {
             get {
                 return this.retNumField;
             }
@@ -3449,6 +3491,32 @@ namespace Helpmate.Facades.LotteryWebSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ResultRMOfPageListOfRemindStatistics)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void ResetPswCompletedEventHandler(object sender, ResetPswCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ResetPswCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ResetPswCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfString Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfString)(this.results[0]));
             }
         }
     }

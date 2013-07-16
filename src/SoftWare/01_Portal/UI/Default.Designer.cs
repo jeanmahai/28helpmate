@@ -74,6 +74,7 @@
             this.lbl71 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlHeadBg = new System.Windows.Forms.Panel();
+            this.lblCurrRetNum = new System.Windows.Forms.Label();
             this.lblServerTime = new System.Windows.Forms.Label();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
@@ -82,6 +83,7 @@
             this.tmApp = new System.Windows.Forms.Timer(this.components);
             this.bgwNews = new System.ComponentModel.BackgroundWorker();
             this.tmNews = new System.Windows.Forms.Timer(this.components);
+            this.bgwRemind = new System.ComponentModel.BackgroundWorker();
             this.stsPage.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlRemindSet.SuspendLayout();
@@ -129,7 +131,7 @@
             this.toolStripStatusLabel1.Image = global::Helpmate.UI.Forms.Properties.Resources.RecordPressed;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(84, 17);
-            this.toolStripStatusLabel1.Text = "提醒运行中";
+            this.toolStripStatusLabel1.Text = "提醒未运行";
             // 
             // tslNews
             // 
@@ -644,7 +646,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(5, 6);
+            this.label8.Location = new System.Drawing.Point(5, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(158, 26);
             this.label8.TabIndex = 39;
@@ -655,6 +657,7 @@
             this.pnlHeadBg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeadBg.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.headbg;
+            this.pnlHeadBg.Controls.Add(this.lblCurrRetNum);
             this.pnlHeadBg.Controls.Add(this.lblServerTime);
             this.pnlHeadBg.Controls.Add(this.lblCurrent);
             this.pnlHeadBg.Controls.Add(this.pnlSiteMap);
@@ -663,24 +666,37 @@
             this.pnlHeadBg.Size = new System.Drawing.Size(841, 72);
             this.pnlHeadBg.TabIndex = 48;
             // 
+            // lblCurrRetNum
+            // 
+            this.lblCurrRetNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCurrRetNum.AutoSize = true;
+            this.lblCurrRetNum.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrRetNum.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblCurrRetNum.ForeColor = System.Drawing.Color.White;
+            this.lblCurrRetNum.Location = new System.Drawing.Point(680, 41);
+            this.lblCurrRetNum.Name = "lblCurrRetNum";
+            this.lblCurrRetNum.Size = new System.Drawing.Size(0, 26);
+            this.lblCurrRetNum.TabIndex = 49;
+            // 
             // lblServerTime
             // 
-            this.lblServerTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblServerTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblServerTime.AutoSize = true;
             this.lblServerTime.BackColor = System.Drawing.Color.Transparent;
+            this.lblServerTime.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblServerTime.ForeColor = System.Drawing.Color.White;
-            this.lblServerTime.Location = new System.Drawing.Point(681, 49);
+            this.lblServerTime.Location = new System.Drawing.Point(279, 41);
             this.lblServerTime.Name = "lblServerTime";
-            this.lblServerTime.Size = new System.Drawing.Size(0, 12);
+            this.lblServerTime.Size = new System.Drawing.Size(0, 26);
             this.lblServerTime.TabIndex = 48;
             // 
             // lblCurrent
             // 
-            this.lblCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCurrent.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCurrent.AutoSize = true;
             this.lblCurrent.BackColor = System.Drawing.Color.Transparent;
             this.lblCurrent.ForeColor = System.Drawing.Color.White;
-            this.lblCurrent.Location = new System.Drawing.Point(389, 49);
+            this.lblCurrent.Location = new System.Drawing.Point(433, 48);
             this.lblCurrent.Name = "lblCurrent";
             this.lblCurrent.Size = new System.Drawing.Size(0, 12);
             this.lblCurrent.TabIndex = 47;
@@ -690,7 +706,7 @@
             this.pnlSiteMap.BackColor = System.Drawing.Color.Transparent;
             this.pnlSiteMap.Location = new System.Drawing.Point(2, 39);
             this.pnlSiteMap.Name = "pnlSiteMap";
-            this.pnlSiteMap.Size = new System.Drawing.Size(360, 30);
+            this.pnlSiteMap.Size = new System.Drawing.Size(298, 30);
             this.pnlSiteMap.TabIndex = 1;
             // 
             // timerServer
@@ -718,6 +734,11 @@
             // 
             this.tmNews.Interval = 5000;
             this.tmNews.Tick += new System.EventHandler(this.tmNews_Tick);
+            // 
+            // bgwRemind
+            // 
+            this.bgwRemind.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwRemind_DoWork);
+            this.bgwRemind.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwRemind_RunWorkerCompleted);
             // 
             // Default
             // 
@@ -835,5 +856,7 @@
         private System.Windows.Forms.Timer tmApp;
         private System.ComponentModel.BackgroundWorker bgwNews;
         private System.Windows.Forms.Timer tmNews;
+        private System.Windows.Forms.Label lblCurrRetNum;
+        private System.ComponentModel.BackgroundWorker bgwRemind;
     }
 }

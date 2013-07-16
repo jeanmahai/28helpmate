@@ -21,6 +21,7 @@ namespace Helpmate.UI.Forms
     public partial class Default : Form
     {
         public CommonFacade serviceFacade = new CommonFacade();
+        public CustomerFacade customerFacade = new CustomerFacade();
 
         public Default()
         {
@@ -35,10 +36,10 @@ namespace Helpmate.UI.Forms
 
             bgwApp.RunWorkerAsync();
             bgwNews.RunWorkerAsync();
+            bgwRemind.RunWorkerAsync();
 
             var childForm = new UserInfo();
             CurrMenu(MenuEnum.User, childForm.SiteMapList, childForm);
-            lblServerTime.Text = serviceFacade.GetServerDate().ToString();
         }
 
         private void pnlHome_Click(object sender, EventArgs e)
@@ -213,6 +214,10 @@ namespace Helpmate.UI.Forms
             if (page != null)
             {
                 page.QueryData(1);
+                pnlSiteMap.Controls.Clear();
+                var siteMap = new SiteMapCtrl();
+                siteMap.LoadPageConfig(page.GetSiteModelList());
+                pnlSiteMap.Controls.Add(siteMap);
             }
             if (!bgwApp.IsBusy)
             {
@@ -226,8 +231,9 @@ namespace Helpmate.UI.Forms
         private void timerServer_Tick(object sender, EventArgs e)
         {
             timerServer.Enabled = false;
-            DateTime dtNow = DateTime.Parse(lblServerTime.Text.Trim()).AddSeconds(1);
-            lblServerTime.Text = dtNow.ToString();
+            string strTime = string.Format("{0} {1}", DateTime.Now.ToShortDateString(), lblServerTime.Text.Trim());
+            DateTime dtNow = DateTime.Parse(strTime).AddSeconds(1);
+            lblServerTime.Text = UtilsTool.GetShortTime(dtNow);
             timerServer.Enabled = true;
         }
 
@@ -248,7 +254,8 @@ namespace Helpmate.UI.Forms
 
             if (PageUtils.CheckError(result) && result.Data != null)
             {
-                lblCurrent.Text = string.Format("本期分析期号：{0}   第{1}期开奖号码：{2}", result.Data.Lottery.PeriodNum + 1, result.Data.Lottery.PeriodNum, result.Data.Lottery.RetNum);
+                lblCurrent.Text = string.Format("本期分析期号：{0}   第{1}期开奖号码", result.Data.Lottery.PeriodNum + 1, result.Data.Lottery.PeriodNum);
+                lblCurrRetNum.Text = result.Data.Lottery.RetNum.ToString();
                 if (result.Data.Remind != null && result.Data.Remind.Status == 1)
                 {
                     UtilsTool.PlayMusic("Theme/play.wav", true);
@@ -258,7 +265,7 @@ namespace Helpmate.UI.Forms
 
                 if (string.IsNullOrEmpty(lblServerTime.Text))
                 {
-                    lblServerTime.Text = result.ServerDate.ToString();
+                    lblServerTime.Text = UtilsTool.GetShortTime(result.ServerDate);
                     timerServer.Enabled = true;
                 }
                 tmApp.Enabled = true;
@@ -318,6 +325,25 @@ namespace Helpmate.UI.Forms
                 showIndex++;
             }
             tmNews.Enabled = true;
+        }
+
+        private void bgwRemind_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = customerFacade.GetRemindLottery(1);
+        }
+        private void bgwRemind_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var result = e.Result as ResultRMOfPageListOfRemindStatistics;
+            if (e.Error != null)
+                return;
+
+            if (PageUtils.CheckError(result) && result.Data != null)
+            {
+                if (result.Data != null && result.Data.List != null && result.Data.List.Length > 0)
+                {
+                    toolStripStatusLabel1.Text = "提醒运行中";
+                }
+            }
         }
     }
 }
