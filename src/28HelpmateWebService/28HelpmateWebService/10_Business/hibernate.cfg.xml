@@ -8,7 +8,7 @@
     <property name="connection.connection_string">Server=117.25.145.170,3520;Database=Helpmate;User Id=helpmate;Password=1qa123!@#;</property>
     <!--<property name="connection.connection_string">Server=MYTREE;Database=Helpmate;User Id=jean;Password=123!@#qweQWE;</property>-->
     <property name="proxyfactory.factory_class">NHibernate.Bytecode.DefaultProxyFactoryFactory,NHibernate</property>
-    <property name="show_sql">true</property>
+    <property name="show_sql">false</property>
     <property name="command_timeout">10</property>
     <property name="adonet.batch_size">10</property>
     <property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>

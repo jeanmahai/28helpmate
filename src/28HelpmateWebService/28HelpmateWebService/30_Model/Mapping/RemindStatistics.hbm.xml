@@ -11,7 +11,7 @@
     <property name="GameSysNo" column="GameSysNo" type="Int32"  />
     <property name="SourceSysNo" column="SourceSysNo" type="Int32"  />
     <property name="SiteSysNo" column="SiteSysNo" type="Int32"  />
-    <property name="RetNum" column="RetNum" type="Int32"  />
+    <property name="RetNum" column="RetNum" type="String"  />
     <property name="Cnt" column="Cnt" type="Int32"  />
     <property name="Status" column="Status" type="Int32"  />
   </class>

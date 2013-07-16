@@ -296,16 +296,31 @@ namespace Business
         /// <param name="dateTime"></param>
         /// <param name="siteSysNo"> </param>
         /// <returns></returns>
-        public LotteryByTwentyPeriod QueryLotteryByHourStep(DateTime dateTime,int siteSysNo,string tableName)
+        public LotteryByTwentyPeriod QueryLotteryByHourStep(DateTime dateTime,int siteSysNo,string tableName,int regionSysNo)
         {
             var datesStr = new List<string>();
+            if (regionSysNo == 10001)
+            {
+                //北京
+                if (dateTime.Hour == 0)
+                {
+                    dateTime = DateTime.Parse(dateTime.ToString("yyyy-MM-dd 09:05:00"));
+                }
+            }
+            if (regionSysNo == 10002)
+            {
+                //加拿大
+            }
             DateTime temp = dateTime;
             for (var i = 1;i <= 20;i++)
             {
                 temp = temp.AddHours(-1);
-                if (temp.Hour < 9 || temp.ToString("HH:mm:ss") == "09:00:00")
+                if (regionSysNo == 10001)
                 {
-                    temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
+                    if (temp.Hour < 9)
+                    {
+                        temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
+                    }
                 }
 
                 datesStr.Add("'" + temp.ToString("yyyy-MM-dd HH:mm:ss") + "'");
@@ -329,9 +344,22 @@ namespace Business
         /// 查询同一时间点的近20天的数据
         /// </summary>
         /// <returns></returns>
-        public LotteryByTwentyPeriod QueryLotteryByDay(DateTime dateTime,int siteSysNo,string tableName)
+        public LotteryByTwentyPeriod QueryLotteryByDay(DateTime dateTime,int siteSysNo,string tableName,int regionSysNo)
         {
             var datesStr = new List<string>();
+            if (regionSysNo == 10001)
+            {
+                //北京
+                if (dateTime.Hour == 0)
+                {
+                    dateTime = DateTime.Parse(dateTime.ToString("yyyy-MM-dd 09:05:00"));
+                }
+            }
+            if (regionSysNo == 10002)
+            {
+                //加拿大
+            }
+
             for (var i = 1;i <= 20;i++)
             {
                 datesStr.Add("'" + dateTime.AddDays(-i).ToString("yyyy-MM-dd HH:mm:ss") + "'");
