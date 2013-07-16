@@ -85,9 +85,6 @@ namespace Helpmate.UI.Forms.FormUI
 
             if (PageUtils.CheckError(result) && result.Data != null)
             {
-                //lblNuming.Text = result.Data.M1.Forecast;
-                //lblMinute.Text = result.Data.M2.Forecast;
-                //lblTime.Text = result.Data.M3.Forecast;
                 DateTime time = DateTime.Parse(result.Data.M3.Forecast);
                 string hour = time.Hour < 10 ? string.Format("0{0}", time.Hour) : time.Hour.ToString();
                 string minute = time.Minute < 10 ? string.Format("0{0}", time.Minute) : time.Minute.ToString();

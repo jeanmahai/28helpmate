@@ -102,6 +102,8 @@
       <DependentUpon>UserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\IPage.cs" />
+    <Compile Include="Models\NormalCountNum.cs" />
+    <Compile Include="Models\NormalCountType.cs" />
     <Compile Include="Models\RemindStatisticsModel.cs" />
     <Compile Include="Models\UtilsModel.cs" />
     <Compile Include="Default.cs">

@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Helpmate.UI.Forms.Properties;
 using Helpmate.Facades.LotteryWebSvc;
 using Helpmate.UI.Forms.Code;
+using Common.Utility;
+using Helpmate.UI.Forms.Models;
 
 namespace Helpmate.UI.Forms.UIContorl.UIPlug
 {
@@ -23,73 +25,89 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
         {
             if (lottery != null)
             {
-                lblRemark.Text = string.Format("大：{0}　小：{1}　中：{2}　边：{3}　单：{4}　双：{5}", lottery.BigP.ToString("P"), lottery.SmallP.ToString("P"), lottery.CenterP.ToString("P"), lottery.OddP.ToString("P"), lottery.OddP.ToString("P"), lottery.SideP.ToString("P"));
-                lblNoNum.Text = string.Format("未出现的号码：{0}", string.Join(",", lottery.NotAppearNumber));
 
+                BindGridHead(lottery);
+                BindGridFoot(lottery);
+
+                List<NormalCountNum> numList = new List<NormalCountNum>();
+                List<NormalCountType> typeList = new List<NormalCountType>();
+
+                var numObj = new NormalCountNum();
+                Type num = numObj.GetType();
+
+                var typeOneObj = new NormalCountType();
+                Type typeOne = typeOneObj.GetType();
+
+                var typeTwoObj = new NormalCountType();
+                Type typeTwo = typeTwoObj.GetType();
+
+                var typeThreeObj = new NormalCountType();
+                Type typeThree = typeThreeObj.GetType();
 
                 for (int i = 0; i < lottery.Lotteries.Length; i++)
                 {
                     var item = lottery.Lotteries[i];
-                    PictureBox pic = tlpNuming.Controls.Find("picNum_" + i, true).First() as PictureBox;
-                    pic.Image = UtilsModel.LoadNumImage(item.RetNum);
-
-                    var lblType1 = tlpNuming.Controls.Find("lblType1_" + i, true).First() as Label;
-                    lblType1.Text = item.type.BigOrSmall;
-
-                    var lblType2 = tlpNuming.Controls.Find("lblType2_" + i, true).First() as Label;
-                    lblType2.Text = item.type.MiddleOrSide;
-
-                    var lblType3 = tlpNuming.Controls.Find("lblType3_" + i, true).First() as Label;
-                    lblType3.Text = item.type.MantissaBigOrSmall;
-
-
-                    //var item = lottery.Lotteries[i];
-                    //var paddingStyle = new Padding(0, 5, 0, 0);
-
-                    //PictureBox picNum = new PictureBox();
-                    //picNum.Image = Resources.nobg;
-                    //picNum.Name = item.RetNum.ToString();//数字
-                    //picNum.SizeMode = PictureBoxSizeMode.CenterImage;
-                    //picNum.Width = 30;
-                    //picNum.Height = 27;
-                    //picNum.Paint += new PaintEventHandler(picNum_Paint);
-                    //tlpNuming.Controls.Add(picNum, i, 1);
-
-                    //Label lblTypeOne = new Label();
-                    //lblTypeOne.TextAlign = ContentAlignment.MiddleCenter;
-                    //lblTypeOne.Text = item.type.BigOrSmall;//类型一
-                    //lblTypeOne.Padding = paddingStyle;
-                    //tlpNuming.Controls.Add(lblTypeOne, i, 2);
-
-                    //Label lblTypeTwo = new Label();
-                    //lblTypeTwo.TextAlign = ContentAlignment.MiddleCenter;
-                    //lblTypeTwo.Text = item.type.MiddleOrSide;//类型二
-                    //lblTypeTwo.Padding = paddingStyle;
-                    //tlpNuming.Controls.Add(lblTypeTwo, i, 3);
-
-                    //Label lblTypeThree = new Label();
-                    //lblTypeThree.TextAlign = ContentAlignment.MiddleCenter;
-                    //lblTypeThree.Text = item.type.MantissaBigOrSmall;//类型三
-                    //lblTypeThree.Padding = paddingStyle;
-                    //tlpNuming.Controls.Add(lblTypeThree, i, 4);
+                    num.GetProperty("T" + i).SetValue(numObj, UtilsModel.LoadNumImage(i), null);
+                    typeOne.GetProperty("T" + i).SetValue(typeOneObj, item.type.BigOrSmall, null);
+                    typeTwo.GetProperty("T" + i).SetValue(typeTwoObj, item.type.MiddleOrSide, null);
+                    typeThree.GetProperty("T" + i).SetValue(typeThreeObj, item.type.MantissaBigOrSmall, null);
                 }
+
+                numList.Add(numObj);
+                dgvDataNum.DataSource = numList;
+                BindGridData(dgvDataNum);
+
+
+                typeList.Add(typeOneObj);
+                typeList.Add(typeTwoObj);
+                typeList.Add(typeThreeObj);
+                dgvDataType.DataSource = typeList;
+                BindGridData(dgvDataType);
             }
         }
 
-
-
-        private void UCNormalCount_Load(object sender, EventArgs e)
+        public void BindGridHead(LotteryByTwentyPeriod lottery)
         {
-
+            List<string> listTemp = new List<string>();
+            listTemp.Add(string.Format("大：{0}　小：{1}　中：{2}　边：{3}　单：{4}　双：{5}", lottery.BigP.ToString("P"), lottery.SmallP.ToString("P"), lottery.CenterP.ToString("P"), lottery.SideP.ToString("P"), lottery.OddP.ToString("P"), lottery.EvenP.ToString("P")));
+            dgvHead.DataSource = (from temp in listTemp select new { temp }).ToList();
+            dgvHead.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvHead.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvHead.Columns[0].DefaultCellStyle.BackColor = UtilsTool.ToColor("#fffde3");
+            dgvHead.Columns[0].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#fffde3");
+            dgvHead.Columns[0].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvHead.Rows[0].Height = 30;
         }
 
-        private void picNum_Paint(object sender, PaintEventArgs e)
+        public void BindGridFoot(LotteryByTwentyPeriod lottery)
         {
-            if (((PictureBox)sender).BackgroundImage == null)
+            List<string> listTemp = new List<string>();
+            listTemp.Add(string.Format("未出现的号码：{0}", string.Join(",", lottery.NotAppearNumber)));
+            dgvFoot.DataSource = (from temp in listTemp select new { temp }).ToList();
+            dgvFoot.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvFoot.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvFoot.Columns[0].DefaultCellStyle.BackColor = UtilsTool.ToColor("#fffde3");
+            dgvFoot.Columns[0].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#fffde3");
+            dgvFoot.Columns[0].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvFoot.Rows[0].Height = 30;
+        }
+
+        public void BindGridData(object obj)
+        {
+            DataGridView dgv = obj as DataGridView;
+
+            for (int i = 0; i < dgv.Columns.Count; i++)
             {
-                string num = ((PictureBox)sender).Name.ToString();
-                int numLeft = Convert.ToInt32(num) < 10 ? 8 : 4;
-                e.Graphics.DrawString(num, new Font("宋体", 10, FontStyle.Bold), new SolidBrush(Color.White), numLeft, 5);
+                dgv.Columns[i].Width = 33;
+                if (i == dgv.Columns.Count - 1) dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                dgv.Columns[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                dgv.Rows[i].Height = 30;
             }
         }
     }
