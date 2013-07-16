@@ -21,7 +21,6 @@ namespace Helpmate.UI.Forms.FormUI
 {
     public partial class Home : Form, IPage
     {
-        BaseFacade bf = new BaseFacade();
         public CommonFacade serviceFacade = new CommonFacade();
         public List<SiteModel> SiteMapList { get; set; }
         public OpaqueCommand cmd = new OpaqueCommand();
@@ -30,19 +29,28 @@ namespace Helpmate.UI.Forms.FormUI
         {
             SiteMapList = new List<SiteModel>()
             {
-                new SiteModel(){ Text="本期统计"}
+                new SiteModel() { Text = UtilsModel.GetTotalNav() },
+                new SiteModel(){ Text="本期预测分析"}
             };
             InitializeComponent();
         }
 
+        public List<SiteModel> GetSiteModelList()
+        {
+            return SiteMapList = new List<SiteModel>()
+            {
+                new SiteModel() { Text = UtilsModel.GetTotalNav() },
+                new SiteModel(){ Text="本期预测分析"}
+            };
+        }
         private void Home_Load(object sender, EventArgs e)
         {
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.DoubleBuffer, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
             this.UpdateStyles();
-            //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            //this.SetStyle(ControlStyles.DoubleBuffer, true);
-            //this.SetStyle(ControlStyles.UserPaint, true);
-            //this.SetStyle(ControlStyles.ResizeRedraw, true);
             QueryData();
         }
 

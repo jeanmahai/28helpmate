@@ -27,18 +27,28 @@ namespace Helpmate.UI.Forms.FormUI
         {
             SiteMapList = new List<SiteModel>()
             {
-                new SiteModel(){ Text="本期统计"},
-                new SiteModel(){ Text="遗漏分析"}
+                new SiteModel() { Text = UtilsModel.GetTotalNav() },
+                new SiteModel(){ Text="遗漏号码统计"}
             };
             InitializeComponent();
         }
 
+        public List<SiteModel> GetSiteModelList()
+        {
+            return SiteMapList = new List<SiteModel>()
+            {
+                new SiteModel() { Text = UtilsModel.GetTotalNav() },
+                new SiteModel(){ Text="遗漏号码统计"}
+            };
+        }
         private void Omission_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.UpdateStyles();
 
             lblRemark.Text = "各位会员：本统计表内若期数用“红色”显示代表这个号码当前所遗漏的期数已超过他的标准遗漏几率，若用“紫色”显示则表示\r\n\r\n此号码当前遗漏的期数已超过最高遗漏期数。";
             QueryData();

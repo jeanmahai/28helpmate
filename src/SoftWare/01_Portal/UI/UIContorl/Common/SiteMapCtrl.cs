@@ -17,7 +17,7 @@ namespace Helpmate.UI.Forms.UserContorl.Common
         private int TextLeft = 10;
         private int TextTop = 5;
 
-        private int SplitLeft = 100;
+        private int SplitLeft = 130;
         private int SplitTop = 5;
 
         public SiteMapCtrl()
@@ -34,7 +34,10 @@ namespace Helpmate.UI.Forms.UserContorl.Common
                 lblText.Text = item.Text;
                 lblText.Left = TextLeft;
                 lblText.Top = TextTop;
-                lblText.Width = 90;
+                if (i == 0)
+                    lblText.Width = 120;
+                else
+                    lblText.Width = 80;
                 lblText.TextAlign = ContentAlignment.MiddleLeft;
                 this.Controls.Add(lblText);
 
@@ -45,7 +48,7 @@ namespace Helpmate.UI.Forms.UserContorl.Common
                     lblSplit.Text = ">";
                     lblSplit.Left = SplitLeft;
                     lblSplit.Top = SplitTop;
-                    lblSplit.Width = 20;
+                    lblSplit.Width = 10;
                     lblSplit.TextAlign = ContentAlignment.MiddleCenter;
                     this.Controls.Add(lblSplit);
                 }

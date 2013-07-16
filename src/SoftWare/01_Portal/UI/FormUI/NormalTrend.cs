@@ -29,18 +29,28 @@ namespace Helpmate.UI.Forms.FormUI
         {
             SiteMapList = new List<SiteModel>()
             {
-                new SiteModel(){ Text="本期预测分析"},
+                new SiteModel() { Text = UtilsModel.GetTotalNav() },
                 new SiteModel(){ Text="近期开奖走势"}
             };
             InitializeComponent();
         }
 
+        public List<SiteModel> GetSiteModelList()
+        {
+            return SiteMapList = new List<SiteModel>()
+            {
+                new SiteModel() { Text = UtilsModel.GetTotalNav() },
+                new SiteModel(){ Text="近期开奖走势"}
+            };
+        }
         private void NormalTrend_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.UpdateStyles();
             QueryData(1);
         }
         public void QueryData(int? pageIndex = null)

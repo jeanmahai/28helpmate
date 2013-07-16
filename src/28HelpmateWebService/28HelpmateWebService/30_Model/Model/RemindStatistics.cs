@@ -12,7 +12,7 @@ namespace Model.Model
         public virtual int GameSysNo { get; set; }
         public virtual int SourceSysNo { get; set; }
         public virtual int SiteSysNo { get; set; }
-        public virtual int RetNum { get; set; }
+        public virtual string RetNum { get; set; }
         public virtual int Cnt { get; set; }
         public virtual int Status { get; set; }
     }

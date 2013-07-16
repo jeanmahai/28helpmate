@@ -121,5 +121,148 @@ namespace Common.Utility
             keys.Add(new KeyValue() { Key = "10003", Value = "芝麻西西" });
             return keys;
         }
+        /// <summary>
+        /// 开奖结果类型列表
+        /// </summary>
+        /// <returns></returns>
+        public static List<KeyValue> RetNumCategoryList()
+        {
+            List<KeyValue> keys = new List<KeyValue>();
+            keys.Add(new KeyValue() { Key = "大", Value = "大" });
+            keys.Add(new KeyValue() { Key = "小", Value = "小" });
+            keys.Add(new KeyValue() { Key = "中", Value = "中" });
+            keys.Add(new KeyValue() { Key = "边", Value = "边" });
+            keys.Add(new KeyValue() { Key = "单", Value = "单" });
+            keys.Add(new KeyValue() { Key = "双", Value = "双" });
+            return keys;
+        }
+        /// <summary>
+        /// 根据游戏ID获取游戏名称
+        /// </summary>
+        /// <param name="sysNo"></param>
+        /// <returns></returns>
+        public static string GetGameName(int sysNo)
+        {
+            string result = "";
+            switch (sysNo)
+            {
+                case 10001:
+                    result = "28游戏";
+                    break;
+            }
+            return result;
+        }
+        /// <summary>
+        /// 根据源ID获取名称
+        /// </summary>
+        /// <param name="sysNo"></param>
+        /// <returns></returns>
+        public static string GetSourceName(int sysNo)
+        {
+            string result = "";
+            switch (sysNo)
+            {
+                case 10001:
+                    result = "北京";
+                    break;
+                case 10002:
+                    result = "加拿大";
+                    break;
+            }
+            return result;
+        }
+        /// <summary>
+        /// 根据站点ID获取站点名称
+        /// </summary>
+        /// <param name="sysNo"></param>
+        /// <returns></returns>
+        public static string GetSiteName(int sysNo)
+        {
+            string result = "";
+            switch (sysNo)
+            {
+                case 10001:
+                    result = "53游";
+                    break;
+                case 10002:
+                    result = "71豆";
+                    break;
+                case 10003:
+                    result = "芝麻西西";
+                    break;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 获取本期预测分析间隔刷新时间（返回毫秒）
+        /// </summary>
+        /// <param name="dtNow">当前服务器时间</param>
+        /// <param name="gameSourceSysNo">游戏编号</param>
+        /// <param name="regionSourceSysNo">地区编号</param>
+        /// <param name="siteSourceSysNo">网站编号</param>
+        /// <returns>返回毫秒</returns>
+        public static int GetIntervalSeconds(DateTime dtNow, int gameSourceSysNo, int regionSourceSysNo, int siteSourceSysNo)
+        {
+            int result = 30;
+
+            DateTime dtNext = dtNow.AddMinutes(5);
+            int minute = dtNow.Minute;
+            int second = dtNow.Second;
+            if (regionSourceSysNo == 10001)
+            {
+                if (gameSourceSysNo == 10001)
+                {
+                    minute = 5 - minute % 5;
+                    second = 30 - second;
+                    dtNext = dtNow.AddMinutes(minute).AddSeconds(second);
+                    result = (int)(dtNext - dtNow).TotalSeconds;
+                }
+            }
+            else if (regionSourceSysNo == 10002)
+            {
+                if (gameSourceSysNo == 10001)
+                {
+                    switch (siteSourceSysNo)
+                    {
+                        case 10001:
+                            minute = 4 - minute % 4;
+                            second = 30 - second;
+                            dtNext = dtNow.AddMinutes(minute).AddSeconds(second);
+                            result = (int)(dtNext - dtNow).TotalSeconds;
+                            break;
+                        case 10002:
+                            minute = 4 - minute % 4 + 1;
+                            second = 30 - second;
+                            dtNext = dtNow.AddMinutes(minute).AddSeconds(second);
+                            result = (int)(dtNext - dtNow).TotalSeconds;
+                            break;
+                        case 10003:
+                            minute = 4 - minute % 4 + 1;
+                            second = 30 - second;
+                            dtNext = dtNow.AddMinutes(minute).AddSeconds(second);
+                            result = (int)(dtNext - dtNow).TotalSeconds;
+                            break;
+                    }
+                }
+            }
+
+            return result * 1000;
+        }
+
+        /// <summary>
+        /// 获取短时间
+        /// </summary>
+        /// <param name="dtTime"></param>
+        /// <returns></returns>
+        public static string GetShortTime(DateTime dtTime)
+        {
+            string result = "{0}:{1}:{2}";
+            string hour = dtTime.Hour < 10 ? string.Format("0{0}", dtTime.Hour) : dtTime.Hour.ToString();
+            string minute = dtTime.Minute < 10 ? string.Format("0{0}", dtTime.Minute) : dtTime.Minute.ToString();
+            string second = dtTime.Second < 10 ? string.Format("0{0}", dtTime.Second) : dtTime.Second.ToString();
+            result = string.Format(result, hour, minute, second);
+            return result;
+        }
     }
 }

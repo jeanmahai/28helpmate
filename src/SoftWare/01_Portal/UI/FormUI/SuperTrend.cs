@@ -28,25 +28,40 @@ namespace Helpmate.UI.Forms.FormUI
         {
             SiteMapList = new List<SiteModel>()
             {
-                new SiteModel(){ Text="本期预测分析"},
-                new SiteModel(){ Text="超级开奖走势"}
+                new SiteModel() { Text = UtilsModel.GetTotalNav() },
+                new SiteModel(){ Text="超级走势统计"}
             };
             InitializeComponent();
         }
 
+        public List<SiteModel> GetSiteModelList()
+        {
+            return SiteMapList = new List<SiteModel>()
+            {
+                new SiteModel() { Text = UtilsModel.GetTotalNav() },
+                new SiteModel(){ Text="超级走势统计"}
+            };
+        }
         private void SuperTrend_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.UpdateStyles();
+            tbxDate.Text = DateTime.Now.ToShortDateString();
+            LoadData(1);
+        }
+        public void QueryData(int? pageIndex = null)
+        {
             #region 初始化小时选择数据
             ddlHour.Items.Clear();
             if (Header.RegionSourceSysNo == 10001)
             {
                 //北京，9-23
                 int hour = 9;
-                this.ddlHour.Items.Add(" 请选择 ");
+                this.ddlHour.Items.Add(" 全部 ");
                 while (hour < 24)
                 {
                     this.ddlHour.Items.Add(string.Format(" {0} 时 ", hour));
@@ -58,7 +73,7 @@ namespace Helpmate.UI.Forms.FormUI
             {
                 //加拿大，全部小时
                 int hour = 0;
-                this.ddlHour.Items.Add(" 请选择 ");
+                this.ddlHour.Items.Add(" 全部 ");
                 while (hour < 24)
                 {
                     this.ddlHour.Items.Add(string.Format(" {0} 小时 ", hour));
@@ -73,7 +88,7 @@ namespace Helpmate.UI.Forms.FormUI
             {
                 //北京，5分钟一期
                 int minute = 0;
-                this.ddlMinute.Items.Add(" 请选择 ");
+                this.ddlMinute.Items.Add(" 全部 ");
                 while (minute < 60)
                 {
                     this.ddlMinute.Items.Add(string.Format(" {0} 分钟 ", minute));
@@ -85,7 +100,7 @@ namespace Helpmate.UI.Forms.FormUI
             {
                 //加拿大，4分钟一期
                 int minute = 0;
-                this.ddlMinute.Items.Add(" 请选择 ");
+                this.ddlMinute.Items.Add(" 全部 ");
                 while (minute < 60)
                 {
                     if (Header.SiteSourceSysNo == 10001)
@@ -103,10 +118,9 @@ namespace Helpmate.UI.Forms.FormUI
                 this.ddlMinute.SelectedIndex = 0;
             }
             #endregion
-            tbxDate.Text = DateTime.Now.ToShortDateString();
-            QueryData(1);
+            LoadData(pageIndex.Value);
         }
-        public void QueryData(int? pageIndex = null)
+        public void LoadData(int pageIndex)
         {
             SuperTrendFilter filter = new SuperTrendFilter();
             filter.PageIndex = 1;
@@ -140,8 +154,8 @@ namespace Helpmate.UI.Forms.FormUI
                 string date = tbxDate.Text.Trim();
                 string hour = ddlHour.Text.Replace("时", "").Trim();
                 string minute = ddlMinute.Text.Replace("分钟", "").Trim();
-                hour = hour == "请选择" ? "" : hour;
-                minute = minute == "请选择" ? "" : minute;
+                hour = hour == "全部" ? "" : hour;
+                minute = minute == "全部" ? "" : minute;
                 SuperTrendFilter filter = new SuperTrendFilter();
                 filter.PageIndex = pageIndex;
                 filter.Date = date;
@@ -172,8 +186,8 @@ namespace Helpmate.UI.Forms.FormUI
                 string date = tbxDate.Text.Trim();
                 string hour = ddlHour.Text.Replace("时", "").Trim();
                 string minute = ddlMinute.Text.Replace("分钟", "").Trim();
-                hour = hour == "请选择" ? "" : hour;
-                minute = minute == "请选择" ? "" : minute;
+                hour = hour == "全部" ? "" : hour;
+                minute = minute == "全部" ? "" : minute;
                 SuperTrendFilter filter = new SuperTrendFilter();
                 filter.PageIndex = 1;
                 filter.Date = date;
@@ -206,8 +220,8 @@ namespace Helpmate.UI.Forms.FormUI
                 string date = tbxDate.Text.Trim();
                 string hour = ddlHour.Text.Replace("时", "").Trim();
                 string minute = ddlMinute.Text.Replace("分钟", "").Trim();
-                hour = hour == "请选择" ? "" : hour;
-                minute = minute == "请选择" ? "" : minute;
+                hour = hour == "全部" ? "" : hour;
+                minute = minute == "全部" ? "" : minute;
                 SuperTrendFilter filter = new SuperTrendFilter();
                 filter.PageIndex = pageIndex;
                 filter.Date = date;
@@ -241,8 +255,8 @@ namespace Helpmate.UI.Forms.FormUI
                 string date = tbxDate.Text.Trim();
                 string hour = ddlHour.Text.Replace("时", "").Trim();
                 string minute = ddlMinute.Text.Replace("分钟", "").Trim();
-                hour = hour == "请选择" ? "" : hour;
-                minute = minute == "请选择" ? "" : minute;
+                hour = hour == "全部" ? "" : hour;
+                minute = minute == "全部" ? "" : minute;
                 SuperTrendFilter filter = new SuperTrendFilter();
                 filter.PageIndex = pageIndex;
                 filter.Date = date;
@@ -258,7 +272,7 @@ namespace Helpmate.UI.Forms.FormUI
         #endregion
 
         #region 选择日期
-        private void tbxDate_Click(object sender, EventArgs e)
+        private void lnkSltDate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string dtSltDate = string.Empty;
             OpenWindow(ref dtSltDate);
@@ -281,8 +295,8 @@ namespace Helpmate.UI.Forms.FormUI
         {
             DateTime dtTime = DateTime.Now;
             if (string.IsNullOrEmpty(tbxDate.Text.Trim())
-                && ddlHour.Text.Trim() == "请选择"
-                && ddlMinute.Text.Trim() == "请选择")
+                && ddlHour.Text.Trim() == "全部"
+                && ddlMinute.Text.Trim() == "全部")
             {
                 MessageBox.Show("请选择一个条件进行查询！");
             }
@@ -296,8 +310,8 @@ namespace Helpmate.UI.Forms.FormUI
                 string date = tbxDate.Text.Trim();
                 string hour = ddlHour.Text.Replace("时", "").Trim();
                 string minute = ddlMinute.Text.Replace("分钟", "").Trim();
-                hour = hour == "请选择" ? "" : hour;
-                minute = minute == "请选择" ? "" : minute;
+                hour = hour == "全部" ? "" : hour;
+                minute = minute == "全部" ? "" : minute;
                 SuperTrendFilter filter = new SuperTrendFilter();
                 filter.PageIndex = 1;
                 filter.Date = date;
@@ -534,5 +548,6 @@ namespace Helpmate.UI.Forms.FormUI
                     break;
             }
         }
+
     }
 }

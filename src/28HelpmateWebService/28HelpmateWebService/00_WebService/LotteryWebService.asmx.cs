@@ -85,8 +85,8 @@ namespace WebService
                 var lastestLottery = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
 
                 result.Data.M1 = Dal.QueryNextLotteryWithSameNumber(lastestLottery.RetNum,ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
-                result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5),ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
-                result.Data.M3 = Dal.QueryLotteryByDay(lastestLottery.RetTime.AddMinutes(5),ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
+                result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5),ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo),ReqHeader.RegionSourceSysNo);
+                result.Data.M3 = Dal.QueryLotteryByDay(lastestLottery.RetTime.AddMinutes(5),ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo),ReqHeader.RegionSourceSysNo);
                 result.Data.M4 = Dal.QueryTop20(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
                 result.Data.CurrentLottery = lastestLottery;
                 if (GetTableName(ReqHeader.RegionSourceSysNo) == ConstValue.Source_Data_10001_28_BeiJing)
@@ -548,6 +548,16 @@ namespace WebService
                 result.Code = ERROR_VALIDATE_TOKEN_CODE;
                 result.Message = error;
             }
+            return result;
+        }
+
+        [WebMethod(Description = "重置密码",EnableSession = true)]
+        public ResultRM<string> ResetPsw(string userId,string q1,string a1,string q2,string a2)
+        {
+            var result = new ResultRM<string>();
+            string error;
+            result.Data = Dal.ResetPsw(userId, q1, a1, q2, a2,out error);
+            result.Message = error;
             return result;
         }
 

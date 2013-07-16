@@ -60,13 +60,13 @@ namespace UnitTest
         [TestMethod]
         public void QueryLotteryByHourStepServiceTest()
         {
-            var data =m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-7-14 21:05:00"),10001,"SourceData_28_Beijing"); //m_client.QueryLotteryByHourStep(new TokenHeader(),DateTime.Parse("2013-7-2 21:45:00"),SITE_NAME);
-            //Console.WriteLine(data.Message);
-            Console.WriteLine(data.Lotteries.Count);
-            foreach (var a in data.Lotteries)
-            {
-                Console.WriteLine("期号{0}",a.PeriodNum);
-            }
+            //var data =m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-7-14 21:05:00"),10001,"SourceData_28_Beijing"); //m_client.QueryLotteryByHourStep(new TokenHeader(),DateTime.Parse("2013-7-2 21:45:00"),SITE_NAME);
+            ////Console.WriteLine(data.Message);
+            //Console.WriteLine(data.Lotteries.Count);
+            //foreach (var a in data.Lotteries)
+            //{
+            //    Console.WriteLine("期号{0}",a.PeriodNum);
+            //}
         }
         [TestMethod]
         public void QueryNextLotteryWithSameNumberServiceTest()
@@ -208,16 +208,30 @@ namespace UnitTest
         [TestMethod]
         public void GetCustomeModule_Test()
         {
-            var head = new TokenHeader()
-            {
-                GameSourceSysNo = 28,
-                RegionSourceSysNo = 10001,
-                SiteSourceSysNo = 10001,
-                Token = "",
-                UserSysNo = 1
-            };
-            var result = m_client.GetCustomeModule(head);
+            //var head = new TokenHeader()
+            //{
+            //    GameSourceSysNo = 10001,
+            //    RegionSourceSysNo = 10001,
+            //    SiteSourceSysNo = 10002,
+            //    Token = "",
+            //    UserSysNo = 24
+            //};
+            //var msg = new StringBuilder();
+            ////var result = m_client.GetCustomeModule(head);
+            //var lastestLottery = m_Dal.GetCurrentLottery(head.SiteSourceSysNo,GetTableName(head.RegionSourceSysNo));
+            //var a = m_Dal.QueryNextLotteryWithSameNumber(lastestLottery.RetNum, head.SiteSourceSysNo,
+            //                                             GetTableName(head.RegionSourceSysNo));
+            //msg.AppendFormat("大={0},小={1},和={2}\n", a.BigP, a.SmallP, a.BigP + a.SmallP);
+            //msg.AppendFormat("中={0},边={1},和={2}\n",a.CenterP,a.SideP,a.CenterP+ a.SideP);
+            //msg.AppendFormat("单={0},双={1},和={2}\n",a.OddP,a.EvenP,a.OddP+ a.EvenP);
+            //msg.Append("华丽的分隔符===============================\n");
+            //var b = m_Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5), head.SiteSourceSysNo,
+            //                                     GetTableName(head.RegionSourceSysNo));
+            //msg.AppendFormat("大={0},小={1},和={2}\n",b.BigP,b.SmallP,b.BigP + b.SmallP);
+            //msg.AppendFormat("中={0},边={1},和={2}\n",b.CenterP,b.SideP,b.CenterP + b.SideP);
+            //msg.AppendFormat("单={0},双={1},和={2}\n",b.OddP,b.EvenP,b.OddP + b.EvenP);
 
+            //Console.WriteLine(msg);
         }
 
         [TestMethod]
@@ -313,7 +327,7 @@ namespace UnitTest
         {
             RemindStatistics data=new RemindStatistics();
             data.GameSysNo = 10001;
-            data.RetNum = 1;
+            data.RetNum = "1";
             data.SiteSysNo = 10001;
             data.Status = 1;
             data.UserSysNo = 5;
@@ -347,6 +361,20 @@ namespace UnitTest
             //h.SiteSourceSysNo = 10001;
             //var a = m_client.QueryRemind(h, 1, 23);
             //Console.WriteLine(a.Data.List.Length);
+        }
+
+        private string GetTableName(int regionSourceSysNo)
+        {
+            string tableName;
+            if (regionSourceSysNo == 10002)
+            {
+                tableName = "SourceData_28_Canada";
+            }
+            else
+            {
+                tableName = "SourceData_28_Beijing";
+            }
+            return tableName;
         }
     }
 }

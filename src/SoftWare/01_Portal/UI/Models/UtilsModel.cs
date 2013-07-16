@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using Helpmate.UI.Forms.Properties;
+using Helpmate.Facades;
+using Common.Utility;
 
 namespace Helpmate.UI.Forms.Code
 {
@@ -76,6 +78,16 @@ namespace Helpmate.UI.Forms.Code
                     return Resources.number_27x;
             }
             return Resources.number_0x;
+        }
+        /// <summary>
+        /// 获取总导航
+        /// </summary>
+        /// <returns></returns>
+        public static string GetTotalNav()
+        {
+            string result = UtilsTool.GetSourceName(Header.RegionSourceSysNo) + "28";
+            result += string.Format(" {0}", UtilsTool.GetSiteName(Header.SiteSourceSysNo));
+            return result;
         }
     }
 }
