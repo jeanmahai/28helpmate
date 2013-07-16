@@ -440,12 +440,12 @@ namespace Business
             var sql = SqlManager.GetSqlText("QueryTrend2");
             sql = string.Format(sql,tableName);
             //每个号码及类型所出现的次数
-            var times = Session.CreateSQLQuery(sql)
-                .AddEntity(typeof(LotteryTimes))
-                .SetParameter("START_DATE",DateTime.Parse(curDate.AddDays(-pageCount).AddDays(1).ToString("yyyy-MM-dd 00:00:00")))
-                .SetParameter("END_DATE",DateTime.Now)
-                .SetParameter("SiteSysNo",siteSysNo)
-                .List<LotteryTimes>().ToList();
+            //var times = Session.CreateSQLQuery(sql)
+            //    .AddEntity(typeof(LotteryTimes))
+            //    .SetParameter("START_DATE",DateTime.Parse(curDate.AddDays(-pageCount).AddDays(1).ToString("yyyy-MM-dd 00:00:00")))
+            //    .SetParameter("END_DATE",DateTime.Now)
+            //    .SetParameter("SiteSysNo",siteSysNo)
+            //    .List<LotteryTimes>().ToList();
 
             //每页的数据
             sql = SqlManager.GetSqlText("QueryTrend3");
@@ -456,6 +456,45 @@ namespace Business
                 //.SetParameter("END_DATE",to)
                 //.SetParameter("SiteSysNo",siteSysNo)
                 .List<LotteryExtByBJ>().ToList();
+
+            
+            var q = from a in data
+                    group a by a.RetNum
+                    into g
+                    select new LotteryTimes()
+                           {
+                               Name = g.Key.ToString(CultureInfo.InvariantCulture),
+                               Total = g.Count()
+                           };
+            var q2 = from a in data
+                     group a by a.BigOrSmall
+                     into g
+                     select new LotteryTimes()
+                            {
+                                Name = g.Key,
+                                Total = g.Count()
+                            };
+            var q3 = from a in data
+                     group a by a.OddOrDual
+                         into g
+                         select new LotteryTimes()
+                         {
+                             Name = g.Key,
+                             Total = g.Count()
+                         };
+            var q4 = from a in data
+                     group a by a.MiddleOrSide
+                         into g
+                         select new LotteryTimes()
+                         {
+                             Name = g.Key,
+                             Total = g.Count()
+                         };
+
+            var times = q.ToList();
+            times.AddRange(q2);
+            times.AddRange(q3);
+            times.AddRange(q4);
 
             MappingType(data);
 
@@ -540,7 +579,7 @@ namespace Business
             var condition = new StringBuilder();
             if (string.IsNullOrEmpty(date))
             {
-                condition.AppendFormat(" and CONVERT(varchar(100),BJ.RetTime,23)='{0}'",DateTime.Now.ToString("yyyy-MM-dd"));
+                //condition.AppendFormat(" and CONVERT(varchar(100),BJ.RetTime,23)='{0}'",DateTime.Now.ToString("yyyy-MM-dd"));
             }
             else
             {
@@ -569,7 +608,7 @@ namespace Business
             var q2 = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(LotteryTimes))
                 .SetParameter("SITE_SYS_NO",siteSysNo)
-                .SetParameter("MIN_PERIOD",minPeriod)
+                //.SetParameter("MIN_PERIOD",minPeriod)
                 .List<LotteryTimes>();
 
             result.LotteryTimeses = new List<LotteryTimes>();

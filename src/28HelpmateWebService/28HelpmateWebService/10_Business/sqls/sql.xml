@@ -85,7 +85,6 @@ FROM {1} BJ with(nolock)
 	JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
-      AND BJ.PeriodNum>:MIN_PERIOD
       {0}
 GROUP BY RC.BigOrSmall
 )
@@ -99,7 +98,6 @@ FROM {1} BJ with(nolock)
 	JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
-      AND BJ.PeriodNum>:MIN_PERIOD
       {0}
 GROUP BY RC.MiddleOrSide
 )
@@ -113,7 +111,6 @@ FROM {1} BJ with(nolock)
 	JOIN dbo.UseSite US with(nolock)
 		ON BJ.SiteSysNo=US.SysNo
 WHERE BJ.SiteSysNo=:SITE_SYS_NO
-      AND BJ.PeriodNum>:MIN_PERIOD
       {0}
 GROUP BY RC.OddOrDual
 )
