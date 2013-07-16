@@ -457,23 +457,23 @@ namespace Business
                 //.SetParameter("SiteSysNo",siteSysNo)
                 .List<LotteryExtByBJ>().ToList();
 
-            
+
             var q = from a in data
                     group a by a.RetNum
-                    into g
-                    select new LotteryTimes()
-                           {
-                               Name = g.Key.ToString(CultureInfo.InvariantCulture),
-                               Total = g.Count()
-                           };
+                        into g
+                        select new LotteryTimes()
+                               {
+                                   Name = g.Key.ToString(CultureInfo.InvariantCulture),
+                                   Total = g.Count()
+                               };
             var q2 = from a in data
                      group a by a.BigOrSmall
-                     into g
-                     select new LotteryTimes()
-                            {
-                                Name = g.Key,
-                                Total = g.Count()
-                            };
+                         into g
+                         select new LotteryTimes()
+                                {
+                                    Name = g.Key,
+                                    Total = g.Count()
+                                };
             var q3 = from a in data
                      group a by a.OddOrDual
                          into g
@@ -703,6 +703,44 @@ namespace Business
         #endregion
 
         #region User
+        public string ResetPsw(string userId,string q1,string a1,string q2,string a2,out string error)
+        {
+            error = "";
+            var q = from a in Session.Query<User>()
+                    where a.UserID == userId
+                    select a;
+            var user = q.SingleOrDefault();
+            if (user == null)
+            {
+                error = "用户不存在";
+                return "";
+            }
+
+            var ispass = false;
+            if (user.SecurityQuestion1 == q1 && user.SecurityAnswer1 == a1)
+            {
+                ispass = true;
+            }
+            if (user.SecurityQuestion2 == q2 && user.SecurityAnswer2 == a2)
+            {
+                ispass = true;
+            }
+            if (!ispass)
+            {
+                error = "密保问题及答案不匹配";
+                return "";
+            }
+            var newPsw = new Random().Next(100000, 999999).ToString(CultureInfo.InvariantCulture);
+            newPsw = CiphertextService.MD5Encryption(newPsw);
+            newPsw = CiphertextService.MD5Encryption(newPsw);
+
+            Session.CreateSQLQuery("update Users set UserPwd=:psw where SysNo=:sn")
+                .SetParameter("psw", newPsw)
+                .SetParameter("sn", user.SysNo)
+                .ExecuteUpdate();
+            error = "密码重置成功";
+            return newPsw;
+        }
         public User Queryuser(int userSysNo)
         {
             var q = from a in Session.Query<User>()

@@ -551,6 +551,16 @@ namespace WebService
             return result;
         }
 
+        [WebMethod(Description = "重置密码",EnableSession = true)]
+        public ResultRM<string> ResetPsw(string userId,string q1,string a1,string q2,string a2)
+        {
+            var result = new ResultRM<string>();
+            string error;
+            result.Data = Dal.ResetPsw(userId, q1, a1, q2, a2,out error);
+            result.Message = error;
+            return result;
+        }
+
         private string GetTableName(int regionSourceSysNo)
         {
             string tableName;
