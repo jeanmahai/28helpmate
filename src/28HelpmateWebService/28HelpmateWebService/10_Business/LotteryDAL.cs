@@ -148,8 +148,9 @@ namespace Business
             return true;
         }
 
-        public RemindStatistics QueryRemind(int gameSysNo,int regionSysNo,int siteSysNo,int userSysNo)
+        public List<RemindStatistics> QueryRemind(int gameSysNo,int regionSysNo,int siteSysNo,int userSysNo)
         {
+            RefreshRemind(gameSysNo, regionSysNo, siteSysNo);
             var q = from a in Session.Query<RemindStatistics>()
                     where a.GameSysNo == gameSysNo
                           && a.SourceSysNo == regionSysNo
@@ -157,16 +158,15 @@ namespace Business
                           && a.UserSysNo == userSysNo
                           && a.Status == 1
                     select a;
-            var remind = q.SingleOrDefault();
-            if (remind != null)
-            {
-                remind.Status = 0;
-                Session.Save(remind);
-                Session.Flush();
-                remind.Status = 1;
-            }
+            var reminds = q.ToList();
 
-            return remind;
+            var sysNos = string.Join(",",reminds.Select(p => p.SysNo).ToList());
+
+            if (!string.IsNullOrEmpty(sysNos))
+                Session.CreateSQLQuery("update RemindStatistics set Status=0 where SysNo in (" + sysNos + ")")
+                    .ExecuteUpdate();
+
+            return reminds;
         }
 
         public bool SaveRemind(RemindStatistics remind,out string error)
@@ -730,14 +730,14 @@ namespace Business
                 error = "密保问题及答案不匹配";
                 return "";
             }
-            var newPsw = new Random().Next(100000, 999999).ToString(CultureInfo.InvariantCulture);
+            var newPsw = new Random().Next(100000,999999).ToString(CultureInfo.InvariantCulture);
             var result = newPsw;
             newPsw = CiphertextService.MD5Encryption(newPsw);
             newPsw = CiphertextService.MD5Encryption(newPsw);
 
             Session.CreateSQLQuery("update Users set UserPwd=:psw where SysNo=:sn")
-                .SetParameter("psw", newPsw)
-                .SetParameter("sn", user.SysNo)
+                .SetParameter("psw",newPsw)
+                .SetParameter("sn",user.SysNo)
                 .ExecuteUpdate();
             error = "";
             return result;

@@ -2,6 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <style>
+        * { padding: 0px; margin: 0px; }
+        #fnBtnPanel { display: table; }
+        #fnBtnPanel > div { display: table-cell; vertical-align: middle; text-align: right; }
+        #fnBtnPanel > div > button { margin-right: 10px; }
+    </style>
     <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="js/EasyWebSocket.js" type="text/javascript"></script>
     <script src="js/WebSocketMessageBase.js" type="text/javascript"></script>
@@ -12,26 +18,59 @@
 
         function conect() {
             if (!ws) {
-                ws = new EasyWebSocket("ws://localhost:8090/", function(evt) {
+                ws = new EasyWebSocket("ws://localhost:8090/", function (evt) {
                     //document.write(evt.data);
                     appendMsg("socket已连接");
-                }, function(evt) {
+                }, function (evt) {
                     appendMsg("socket已关闭");
-                }, function(evt) {
+                }, function (evt) {
                     appendMsg("socket发生错误");
                 });
             }
         }
-        
+
         function appendMsg(msg) {
             $("#msg").append("<div>" + msg + "</div>");
         }
+
+        $(window).resize(function () {
+            var width = $(this).width();
+            var height = $(this).height();
+            $("body>div").width(width);
+            $("body>div:last").height(30);
+            $("body>div:first").height(height - 30);
+            return false;
+        });
+
+        $(function () {
+            $(window).resize();
+            $("body").show();
+        });
+        
+        function sendMsg() {
+            var msg = $.trim($("#txtMessage").val());
+            if (msg == "") return;
+            if (!ws) return;
+            var req = new WebSocketRequest();
+            req.Handler = "_28Helpmate.WebSocketServer.Chatting;_28Helpmate.WebSocketServer";
+            req.Body = msg;
+            ws.send(req, function (data) {
+                appendMsg(data);
+            });
+        }
     </script>
 </head>
-<body>
-    <button onclick="conect()">
-        connect</button>
-    <div id="msg">
+<body style="display: none;">
+    <div id="msg" style="background-color: gray;">
+    </div>
+    <div id="fnBtnPanel" style="background-color: green;">
+        <div>
+            <input type="text" id="txtMessage" style="width: 50%;" />
+            <button onclick="sendMsg();">
+                send</button>
+            <button onclick="conect()">
+                connect</button>
+        </div>
     </div>
 </body>
 </html>

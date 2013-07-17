@@ -9,6 +9,6 @@ namespace Model.Model
     {
         public LotteryForBJ Lottery { get; set; }
 
-        public RemindStatistics Remind { get; set; }
+        public List<RemindStatistics> Remind { get; set; }
     }
 }

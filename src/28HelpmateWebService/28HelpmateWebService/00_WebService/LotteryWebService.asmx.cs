@@ -332,9 +332,9 @@ namespace WebService
 
         [WebMethod(Description = "连号提醒",EnableSession = true)]
         [SoapHeader("ReqHeader")]
-        public ResultRM<RemindStatistics> QueryRemindLottery()
+        public ResultRM<List<RemindStatistics>> QueryRemindLottery()
         {
-            var result = new ResultRM<RemindStatistics>();
+            var result = new ResultRM<List<RemindStatistics>>();
             string error;
             if (ValidateToken(ReqHeader,out error))
             {
