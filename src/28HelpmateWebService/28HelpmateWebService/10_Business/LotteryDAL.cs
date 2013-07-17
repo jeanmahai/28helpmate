@@ -731,6 +731,7 @@ namespace Business
                 return "";
             }
             var newPsw = new Random().Next(100000, 999999).ToString(CultureInfo.InvariantCulture);
+            var result = newPsw;
             newPsw = CiphertextService.MD5Encryption(newPsw);
             newPsw = CiphertextService.MD5Encryption(newPsw);
 
@@ -738,8 +739,8 @@ namespace Business
                 .SetParameter("psw", newPsw)
                 .SetParameter("sn", user.SysNo)
                 .ExecuteUpdate();
-            error = "密码重置成功";
-            return newPsw;
+            error = "";
+            return result;
         }
         public User Queryuser(int userSysNo)
         {

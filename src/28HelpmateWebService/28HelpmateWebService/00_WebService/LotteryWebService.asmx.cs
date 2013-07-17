@@ -557,7 +557,17 @@ namespace WebService
             var result = new ResultRM<string>();
             string error;
             result.Data = Dal.ResetPsw(userId, q1, a1, q2, a2,out error);
-            result.Message = error;
+            if(string.IsNullOrEmpty(error))
+            {
+                result.Success = true;
+                result.Message = "重置密码成功";
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = error;
+            }
+            
             return result;
         }
 
