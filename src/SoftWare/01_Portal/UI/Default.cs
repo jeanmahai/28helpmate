@@ -256,10 +256,21 @@ namespace Helpmate.UI.Forms
             {
                 lblCurrent.Text = string.Format("本期分析期号：{0}   第{1}期开奖号码", result.Data.Lottery.PeriodNum + 1, result.Data.Lottery.PeriodNum);
                 lblCurrRetNum.Text = result.Data.Lottery.RetNum.ToString();
-                if (result.Data.Remind != null && result.Data.Remind.Status == 1)
+                if (result.Data.Remind != null)
                 {
                     UtilsTool.PlayMusic("Theme/play.wav", true);
-                    AppMessage.Alert(string.Format("{0}{1}网站已连续开{2}期{3}", PageUtils.LoadGameName(), PageUtils.LoadSiteName(), result.Data.Remind.SourceSysNo, result.Data.Remind.Cnt, result.Data.Remind.RetNum));
+                    string strRetNum = "";
+                    string strSourceName = "";
+                    if (result.Data.Remind != null && result.Data.Remind.Length > 0)
+                    {
+                        strRetNum = string.Format("{0}期{1}", result.Data.Remind[0].Cnt, result.Data.Remind[0].RetNum);
+                        strSourceName = UtilsTool.GetSourceName(result.Data.Remind[0].SourceSysNo);
+                        for (int i = 1; i < result.Data.Remind.Length; i++)
+                        {
+                            strRetNum += string.Format(",{0}期{1}", result.Data.Remind[i].Cnt, result.Data.Remind[i].RetNum);
+                        }
+                    }
+                    AppMessage.Alert(string.Format("{0}28{1}网站已连续开{2}", PageUtils.LoadGameName(), PageUtils.LoadSiteName(), strRetNum));
                     UtilsTool.Play.Stop();
                 }
 
