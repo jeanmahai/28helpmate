@@ -104,6 +104,7 @@
             this.dgvDataOne.RowTemplate.Height = 23;
             this.dgvDataOne.Size = new System.Drawing.Size(360, 393);
             this.dgvDataOne.TabIndex = 136;
+            this.dgvDataOne.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDataOne_CellFormatting);
             // 
             // dgvDataTwo
             // 
@@ -124,6 +125,7 @@
             this.dgvDataTwo.RowTemplate.Height = 23;
             this.dgvDataTwo.Size = new System.Drawing.Size(375, 393);
             this.dgvDataTwo.TabIndex = 136;
+            this.dgvDataTwo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDataOne_CellFormatting);
             // 
             // dgvHead
             // 

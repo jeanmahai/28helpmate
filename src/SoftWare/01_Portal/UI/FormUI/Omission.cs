@@ -125,7 +125,6 @@ namespace Helpmate.UI.Forms.FormUI
             List<OmissionHeadModel> listTemp = new List<OmissionHeadModel>();
             listTemp.Add(new OmissionHeadModel());
             dgvHead.DataSource = listTemp;
-            dgvHead.Rows[0].Height = 30;
             for (int i = 0; i < dgvHead.Columns.Count; i++)
             {
                 dgvHead.Columns[i].Width = i == 0 || i == 4 ? 60 : 95;
@@ -144,8 +143,7 @@ namespace Helpmate.UI.Forms.FormUI
             var listTemp = new List<RmarkFootModel>();
             listTemp.Add(new RmarkFootModel("各位会员：本统计表内若期数用“红色”显示代表这个号码当前所遗漏的期数已超过他的标准遗漏几率，若用“紫色”显示则表示\r\n\r\n此号码当前遗漏的期数已超过最高遗漏期数。"));
             dgvFoot.DataSource = listTemp;
-            dgvFoot.Columns[0].Width = 720;
-            dgvFoot.Rows[0].Height = 40;
+            dgvFoot.Columns[0].Width = 719;
             dgvFoot.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvFoot.Columns[0].DefaultCellStyle.BackColor = Color.White;
             dgvFoot.Columns[0].DefaultCellStyle.SelectionBackColor = Color.White;
@@ -167,6 +165,31 @@ namespace Helpmate.UI.Forms.FormUI
             for (int i = 0; i < dgv.Rows.Count; i++)
             {
                 dgv.Rows[i].Height = 28;
+            }
+        }
+
+        private void dgvDataOne_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e == null || e.Value == null || !(sender is DataGridView)) return;
+
+
+            DataGridView dgvList = (DataGridView)sender;
+            if (dgvList.Columns[e.ColumnIndex].DataPropertyName == "OmitCnt")
+            {
+                var item = dgvList.Rows[e.RowIndex].DataBoundItem as OmissionNumModel;
+
+                if (item.OmitCnt > item.StandardCnt && item.OmitCnt < item.MaxOmitCnt)
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                }
+                else if (item.OmitCnt > item.MaxOmitCnt)
+                {
+                    e.CellStyle.ForeColor = Color.Purple;
+                }
+                else
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                }
             }
         }
     }

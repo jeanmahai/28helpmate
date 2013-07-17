@@ -511,7 +511,6 @@
             // pnlHead
             // 
             this.pnlHead.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.top_bg;
-            this.pnlHead.Controls.Add(this.tabArea);
             this.pnlHead.Controls.Add(this.tabSite);
             this.pnlHead.Controls.Add(this.label8);
             this.pnlHead.Controls.Add(this.pnlHeadBg);
@@ -531,24 +530,24 @@
             this.tabArea.Controls.Add(this.lblCanada, 1, 0);
             this.tabArea.Controls.Add(this.lblBJ, 0, 0);
             this.tabArea.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tabArea.Location = new System.Drawing.Point(1, 34);
+            this.tabArea.Location = new System.Drawing.Point(0, 37);
             this.tabArea.Margin = new System.Windows.Forms.Padding(0);
             this.tabArea.Name = "tabArea";
             this.tabArea.RowCount = 1;
             this.tabArea.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tabArea.Size = new System.Drawing.Size(163, 35);
+            this.tabArea.Size = new System.Drawing.Size(168, 35);
             this.tabArea.TabIndex = 46;
             // 
             // lblCanada
             // 
             this.lblCanada.AutoSize = true;
-            this.lblCanada.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblCanada.BackColor = System.Drawing.Color.PapayaWhip;
             this.lblCanada.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCanada.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblCanada.Location = new System.Drawing.Point(82, 1);
+            this.lblCanada.Location = new System.Drawing.Point(84, 1);
             this.lblCanada.Margin = new System.Windows.Forms.Padding(0);
             this.lblCanada.Name = "lblCanada";
-            this.lblCanada.Size = new System.Drawing.Size(80, 33);
+            this.lblCanada.Size = new System.Drawing.Size(83, 33);
             this.lblCanada.TabIndex = 1;
             this.lblCanada.Tag = "10002";
             this.lblCanada.Text = "加拿大";
@@ -564,7 +563,7 @@
             this.lblBJ.Location = new System.Drawing.Point(1, 1);
             this.lblBJ.Margin = new System.Windows.Forms.Padding(0);
             this.lblBJ.Name = "lblBJ";
-            this.lblBJ.Size = new System.Drawing.Size(80, 33);
+            this.lblBJ.Size = new System.Drawing.Size(82, 33);
             this.lblBJ.TabIndex = 0;
             this.lblBJ.Tag = "10001";
             this.lblBJ.Text = "北京";
@@ -592,7 +591,7 @@
             // lbl53
             // 
             this.lbl53.AutoSize = true;
-            this.lbl53.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.lbl53.BackColor = System.Drawing.Color.PapayaWhip;
             this.lbl53.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl53.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl53.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -609,7 +608,7 @@
             // lblZM
             // 
             this.lblZM.AutoSize = true;
-            this.lblZM.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblZM.BackColor = System.Drawing.Color.PapayaWhip;
             this.lblZM.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblZM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblZM.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -746,6 +745,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 562);
+            this.Controls.Add(this.tabArea);
             this.Controls.Add(this.splApp);
             this.Controls.Add(this.pnlRight);
             this.Controls.Add(this.pnlHead);
