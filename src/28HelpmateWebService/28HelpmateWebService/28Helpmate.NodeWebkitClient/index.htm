@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="js/EasyWebSocket.js" type="text/javascript"></script>
+    <script src="js/WebSocketMessageBase.js" type="text/javascript"></script>
+    <script src="js/WebSocketRequest.js" type="text/javascript"></script>
+    <script src="js/WebSocketResponse.js" type="text/javascript"></script>
+    <script>
+        var ws;
+
+        function conect() {
+            if (!ws) {
+                ws = new EasyWebSocket("ws://localhost:8090/", function(evt) {
+                    //document.write(evt.data);
+                    appendMsg("socket已连接");
+                }, function(evt) {
+                    appendMsg("socket已关闭");
+                }, function(evt) {
+                    appendMsg("socket发生错误");
+                });
+            }
+        }
+        
+        function appendMsg(msg) {
+            $("#msg").append("<div>" + msg + "</div>");
+        }
+    </script>
+</head>
+<body>
+    <button onclick="conect()">
+        connect</button>
+    <div id="msg">
+    </div>
+</body>
+</html>

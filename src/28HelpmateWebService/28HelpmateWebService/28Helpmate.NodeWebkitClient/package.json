@@ -1,0 +1,7 @@
+﻿{
+	"name":"伴侣分析软件",
+	"main":"index.htm",
+	"window":{
+		"toolbar":false
+	}
+}

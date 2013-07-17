@@ -21,6 +21,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "28Helpmate.OpenAPI", "28Helpmate.OpenAPI\28Helpmate.OpenAPI.csproj", "{78FE8C28-507C-48D9-B780-B2CB0F9CA0DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "28Helpmate.WebSocketServer", "28Helpmate.WebSocketServer\28Helpmate.WebSocketServer.csproj", "{DB1AF97E-4D3D-47DA-B59E-BF0ECE02CB23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "28Helpmate.NodeWebkitClient", "28Helpmate.NodeWebkitClient\28Helpmate.NodeWebkitClient.csproj", "{A5D1C95A-EB9F-4E03-B26A-6629AC3B4D0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocket", "..\..\..\..\PublicTools\SupperWebSocket\demos\SupperWebSocket.sl\WebSocket\WebSocket.csproj", "{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = 28HelpmateWebService.vsmdi
@@ -50,6 +56,18 @@ Global
 		{78FE8C28-507C-48D9-B780-B2CB0F9CA0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78FE8C28-507C-48D9-B780-B2CB0F9CA0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78FE8C28-507C-48D9-B780-B2CB0F9CA0DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB1AF97E-4D3D-47DA-B59E-BF0ECE02CB23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1AF97E-4D3D-47DA-B59E-BF0ECE02CB23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1AF97E-4D3D-47DA-B59E-BF0ECE02CB23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1AF97E-4D3D-47DA-B59E-BF0ECE02CB23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D1C95A-EB9F-4E03-B26A-6629AC3B4D0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D1C95A-EB9F-4E03-B26A-6629AC3B4D0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D1C95A-EB9F-4E03-B26A-6629AC3B4D0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D1C95A-EB9F-4E03-B26A-6629AC3B4D0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
