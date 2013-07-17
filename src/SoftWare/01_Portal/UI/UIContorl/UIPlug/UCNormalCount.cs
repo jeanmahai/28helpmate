@@ -117,6 +117,7 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
 
             if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
             {
+                DataGridView dgvList = sender as DataGridView;
                 switch (e.Value.ToString())
                 {
                     case "单":
