@@ -138,7 +138,7 @@
             this.dgvHead.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHead.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHead.ColumnHeadersVisible = false;
-            this.dgvHead.Location = new System.Drawing.Point(40, 54);
+            this.dgvHead.Location = new System.Drawing.Point(40, 51);
             this.dgvHead.Name = "dgvHead";
             this.dgvHead.RowHeadersVisible = false;
             this.dgvHead.RowTemplate.Height = 23;

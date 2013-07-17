@@ -71,6 +71,7 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
             var listTemp = new List<RmarkFootModel>();
             listTemp.Add(new RmarkFootModel(string.Format("大：{0}　小：{1}　中：{2}　边：{3}　单：{4}　双：{5}", lottery.BigP.ToString("P"), lottery.SmallP.ToString("P"), lottery.CenterP.ToString("P"), lottery.SideP.ToString("P"), lottery.OddP.ToString("P"), lottery.EvenP.ToString("P"))));
             dgvHead.DataSource = listTemp;
+            dgvHead.Rows[0].Height = 29;
             dgvHead.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvHead.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvHead.Columns[0].DefaultCellStyle.BackColor = Color.White;
@@ -83,6 +84,7 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
             var listTemp = new List<RmarkFootModel>();
             listTemp.Add(new RmarkFootModel(string.Format("未出现的号码：{0}", string.Join(",", lottery.NotAppearNumber))));
             dgvFoot.DataSource = listTemp;
+            dgvFoot.Rows[0].Height = 29;
             dgvFoot.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvFoot.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvFoot.Columns[0].DefaultCellStyle.BackColor = Color.White;

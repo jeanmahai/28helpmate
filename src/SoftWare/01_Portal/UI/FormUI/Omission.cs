@@ -125,6 +125,7 @@ namespace Helpmate.UI.Forms.FormUI
             List<OmissionHeadModel> listTemp = new List<OmissionHeadModel>();
             listTemp.Add(new OmissionHeadModel());
             dgvHead.DataSource = listTemp;
+            dgvHead.Rows[0].Height = 29;
             for (int i = 0; i < dgvHead.Columns.Count; i++)
             {
                 dgvHead.Columns[i].Width = i == 0 || i == 4 ? 60 : 95;
@@ -141,9 +142,11 @@ namespace Helpmate.UI.Forms.FormUI
         public void BindGridFoot()
         {
             var listTemp = new List<RmarkFootModel>();
-            listTemp.Add(new RmarkFootModel("各位会员：本统计表内若期数用“红色”显示代表这个号码当前所遗漏的期数已超过他的标准遗漏几率，若用“紫色”显示则表示\r\n\r\n此号码当前遗漏的期数已超过最高遗漏期数。"));
+            listTemp.Add(new RmarkFootModel("各位会员：本统计表内若期数用“红色”显示代表这个号码当前所遗漏的期数已超过他的标准遗漏几率，若用“紫色”显示则表示此号码当前遗漏的期数已超过最高遗漏期数。"));
             dgvFoot.DataSource = listTemp;
-            dgvFoot.Columns[0].Width = 719;
+            dgvFoot.Rows[0].Height = 39;
+            dgvFoot.Columns[0].CellTemplate.Style.WrapMode = DataGridViewTriState.True;
+            dgvFoot.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvFoot.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvFoot.Columns[0].DefaultCellStyle.BackColor = Color.White;
             dgvFoot.Columns[0].DefaultCellStyle.SelectionBackColor = Color.White;
