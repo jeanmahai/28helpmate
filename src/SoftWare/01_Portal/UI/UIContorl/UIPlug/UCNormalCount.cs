@@ -47,7 +47,7 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
                 for (int i = 0; i < lottery.Lotteries.Length; i++)
                 {
                     var item = lottery.Lotteries[i];
-                    num.GetProperty("T" + i).SetValue(numObj, UtilsModel.LoadNumImage(i), null);
+                    num.GetProperty("T" + i).SetValue(numObj, UtilsModel.LoadNumImage(item.RetNum), null);
                     typeOne.GetProperty("T" + i).SetValue(typeOneObj, item.type.BigOrSmall, null);
                     typeTwo.GetProperty("T" + i).SetValue(typeTwoObj, item.type.MiddleOrSide, null);
                     typeThree.GetProperty("T" + i).SetValue(typeThreeObj, item.type.MantissaBigOrSmall, null);
@@ -121,21 +121,27 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
                 {
                     case "单":
                         e.CellStyle.ForeColor = UtilsTool.ToColor("#03C");
+                        e.CellStyle.SelectionForeColor = UtilsTool.ToColor("#03C");
                         break;
                     case "双":
                         e.CellStyle.ForeColor = UtilsTool.ToColor("#F33");
+                        e.CellStyle.SelectionForeColor = UtilsTool.ToColor("#F33");
                         break;
                     case "中":
                         e.CellStyle.ForeColor = UtilsTool.ToColor("#609");
+                        e.CellStyle.SelectionForeColor = UtilsTool.ToColor("#609");
                         break;
                     case "边":
                         e.CellStyle.ForeColor = UtilsTool.ToColor("#F90");
+                        e.CellStyle.SelectionForeColor = UtilsTool.ToColor("#F90");
                         break;
                     case "大":
                         e.CellStyle.ForeColor = UtilsTool.ToColor("#F09");
+                        e.CellStyle.SelectionForeColor = UtilsTool.ToColor("#F09");
                         break;
                     case "小":
                         e.CellStyle.ForeColor = UtilsTool.ToColor("#0C0");
+                        e.CellStyle.SelectionForeColor = UtilsTool.ToColor("#0C0");
                         break;
                 }
             }

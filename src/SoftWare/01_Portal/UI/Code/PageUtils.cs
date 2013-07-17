@@ -48,7 +48,7 @@ namespace Helpmate.UI.Forms.Code
         public static string LoadGameName()
         {
             string game = string.Empty;
-            switch (Header.SiteSourceSysNo)
+            switch (Header.RegionSourceSysNo)
             {
                 case 10001:
                     game = "北京";
@@ -67,7 +67,7 @@ namespace Helpmate.UI.Forms.Code
         public static string LoadSiteName()
         {
             string site = string.Empty;
-            switch (Header.GameSourceSysNo)
+            switch (Header.SiteSourceSysNo)
             {
                 case 10001:
                     site = "53游";
