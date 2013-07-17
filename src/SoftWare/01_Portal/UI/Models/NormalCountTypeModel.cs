@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Helpmate.UI.Forms.Models
 {
-    class NormalCountType
+    class NormalCountTypeModel
     {
         public string T0 { get; set; }
         public string T1 { get; set; }

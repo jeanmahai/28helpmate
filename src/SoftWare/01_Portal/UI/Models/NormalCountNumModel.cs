@@ -6,9 +6,9 @@ using System.Drawing;
 
 namespace Helpmate.UI.Forms.Models
 {
-    public class NormalCountNum
+    public class NormalCountNumModel
     {
-        public NormalCountNum() {
+        public NormalCountNumModel() {
             T0 = new Bitmap(1, 1);
             T1 = new Bitmap(1, 1);
             T2 = new Bitmap(1, 1);
