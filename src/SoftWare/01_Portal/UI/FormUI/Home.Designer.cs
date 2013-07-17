@@ -56,12 +56,11 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F);
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(305, 9);
+            this.label14.Location = new System.Drawing.Point(296, 7);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(353, 12);
             this.label14.TabIndex = 149;
             this.label14.Text = "提示：此图是统计当前开奖号码前20次出现时之后一期所开之号。";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label6
             // 
@@ -69,7 +68,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(34, 6);
+            this.label6.Location = new System.Drawing.Point(42, 4);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(135, 19);
@@ -82,7 +81,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 9F);
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(305, 264);
+            this.label17.Location = new System.Drawing.Point(296, 264);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(137, 12);
             this.label17.TabIndex = 155;
@@ -94,7 +93,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(44, 258);
+            this.label2.Location = new System.Drawing.Point(35, 258);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 19);
@@ -107,7 +106,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F);
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(305, 798);
+            this.label5.Location = new System.Drawing.Point(296, 798);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(293, 12);
             this.label5.TabIndex = 159;
@@ -119,7 +118,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(44, 792);
+            this.label7.Location = new System.Drawing.Point(35, 792);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(135, 19);
@@ -132,7 +131,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("宋体", 9F);
             this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(305, 536);
+            this.label19.Location = new System.Drawing.Point(296, 536);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(137, 12);
             this.label19.TabIndex = 163;
@@ -144,7 +143,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(44, 530);
+            this.label4.Location = new System.Drawing.Point(35, 530);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 19);
@@ -161,7 +160,7 @@
             this.panel2.Location = new System.Drawing.Point(51, 559);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(710, 1);
+            this.panel2.Size = new System.Drawing.Size(693, 1);
             this.panel2.TabIndex = 160;
             // 
             // panel3
@@ -174,7 +173,7 @@
             this.panel3.Location = new System.Drawing.Point(51, 819);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(710, 1);
+            this.panel3.Size = new System.Drawing.Size(693, 1);
             this.panel3.TabIndex = 157;
             // 
             // panel1
@@ -187,7 +186,7 @@
             this.panel1.Location = new System.Drawing.Point(46, 287);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(710, 1);
+            this.panel1.Size = new System.Drawing.Size(693, 1);
             this.panel1.TabIndex = 152;
             // 
             // btnRefresh
@@ -199,7 +198,7 @@
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Location = new System.Drawing.Point(146, 4);
+            this.btnRefresh.Location = new System.Drawing.Point(170, 2);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(32, 22);
             this.btnRefresh.TabIndex = 151;
@@ -217,7 +216,7 @@
             this.pnlLine.Location = new System.Drawing.Point(46, 35);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(710, 1);
+            this.pnlLine.Size = new System.Drawing.Size(693, 1);
             this.pnlLine.TabIndex = 146;
             // 
             // tmRefresh
@@ -233,7 +232,7 @@
             // ucLotteryM4
             // 
             this.ucLotteryM4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM4.Location = new System.Drawing.Point(48, 843);
+            this.ucLotteryM4.Location = new System.Drawing.Point(39, 843);
             this.ucLotteryM4.Name = "ucLotteryM4";
             this.ucLotteryM4.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM4.TabIndex = 165;
@@ -241,7 +240,7 @@
             // ucLotteryM3
             // 
             this.ucLotteryM3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM3.Location = new System.Drawing.Point(48, 579);
+            this.ucLotteryM3.Location = new System.Drawing.Point(39, 579);
             this.ucLotteryM3.Name = "ucLotteryM3";
             this.ucLotteryM3.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM3.TabIndex = 165;
@@ -249,7 +248,7 @@
             // ucLotteryM2
             // 
             this.ucLotteryM2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM2.Location = new System.Drawing.Point(48, 307);
+            this.ucLotteryM2.Location = new System.Drawing.Point(39, 307);
             this.ucLotteryM2.Name = "ucLotteryM2";
             this.ucLotteryM2.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM2.TabIndex = 165;
@@ -257,7 +256,7 @@
             // ucLotteryM1
             // 
             this.ucLotteryM1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM1.Location = new System.Drawing.Point(48, 45);
+            this.ucLotteryM1.Location = new System.Drawing.Point(39, 45);
             this.ucLotteryM1.Name = "ucLotteryM1";
             this.ucLotteryM1.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM1.TabIndex = 165;

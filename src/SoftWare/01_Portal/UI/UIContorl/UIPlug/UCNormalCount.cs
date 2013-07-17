@@ -110,5 +110,35 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
                 dgv.Rows[i].Height = 30;
             }
         }
+
+        private void dgvDataType_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e == null || e.Value == null || !(sender is DataGridView)) return;
+
+            if (e.Value != null && !string.IsNullOrEmpty(e.Value.ToString()))
+            {
+                switch (e.Value.ToString())
+                {
+                    case "单":
+                        e.CellStyle.ForeColor = UtilsTool.ToColor("#03C");
+                        break;
+                    case "双":
+                        e.CellStyle.ForeColor = UtilsTool.ToColor("#F33");
+                        break;
+                    case "中":
+                        e.CellStyle.ForeColor = UtilsTool.ToColor("#609");
+                        break;
+                    case "边":
+                        e.CellStyle.ForeColor = UtilsTool.ToColor("#F90");
+                        break;
+                    case "大":
+                        e.CellStyle.ForeColor = UtilsTool.ToColor("#F09");
+                        break;
+                    case "小":
+                        e.CellStyle.ForeColor = UtilsTool.ToColor("#0C0");
+                        break;
+                }
+            }
+        }
     }
 }

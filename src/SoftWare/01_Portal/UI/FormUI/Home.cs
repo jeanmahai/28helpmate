@@ -106,12 +106,8 @@ namespace Helpmate.UI.Forms.FormUI
                 ucLotteryM4.LoadBindData(result.Data.M4);
 
                 tmRefresh.Enabled = true;
+                tmRefresh.Interval = UtilsTool.GetIntervalSeconds(result.ServerDate, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo);
             }
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

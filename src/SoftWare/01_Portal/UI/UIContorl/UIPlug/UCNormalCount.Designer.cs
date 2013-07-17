@@ -91,6 +91,7 @@
             this.dgvDataType.RowTemplate.Height = 23;
             this.dgvDataType.Size = new System.Drawing.Size(660, 91);
             this.dgvDataType.TabIndex = 135;
+            this.dgvDataType.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDataType_CellFormatting);
             // 
             // dgvFoot
             // 
