@@ -145,9 +145,10 @@ namespace Helpmate.UI.Forms.FormUI
             listTemp.Add(new RmarkFootModel("各位会员：本统计表内若期数用“红色”显示代表这个号码当前所遗漏的期数已超过他的标准遗漏几率，若用“紫色”显示则表示此号码当前遗漏的期数已超过最高遗漏期数。"));
             dgvFoot.DataSource = listTemp;
             dgvFoot.Rows[0].Height = 39;
+            dgvFoot.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvFoot.Columns[0].CellTemplate.Style.WrapMode = DataGridViewTriState.True;
             dgvFoot.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvFoot.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvFoot.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvFoot.Columns[0].DefaultCellStyle.BackColor = Color.White;
             dgvFoot.Columns[0].DefaultCellStyle.SelectionBackColor = Color.White;
             dgvFoot.Columns[0].DefaultCellStyle.SelectionForeColor = Color.Black;
