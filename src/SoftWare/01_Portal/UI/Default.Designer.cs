@@ -65,9 +65,6 @@
             this.lblHome = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlHead = new System.Windows.Forms.Panel();
-            this.tabArea = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCanada = new System.Windows.Forms.Label();
-            this.lblBJ = new System.Windows.Forms.Label();
             this.tabSite = new System.Windows.Forms.TableLayoutPanel();
             this.lbl53 = new System.Windows.Forms.Label();
             this.lblZM = new System.Windows.Forms.Label();
@@ -78,6 +75,9 @@
             this.lblServerTime = new System.Windows.Forms.Label();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
+            this.tabArea = new System.Windows.Forms.TableLayoutPanel();
+            this.lblCanada = new System.Windows.Forms.Label();
+            this.lblBJ = new System.Windows.Forms.Label();
             this.timerServer = new System.Windows.Forms.Timer(this.components);
             this.bgwApp = new System.ComponentModel.BackgroundWorker();
             this.tmApp = new System.Windows.Forms.Timer(this.components);
@@ -108,9 +108,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.picHomeCurr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlHead.SuspendLayout();
-            this.tabArea.SuspendLayout();
             this.tabSite.SuspendLayout();
             this.pnlHeadBg.SuspendLayout();
+            this.tabArea.SuspendLayout();
             this.SuspendLayout();
             // 
             // stsPage
@@ -520,56 +520,6 @@
             this.pnlHead.Size = new System.Drawing.Size(1008, 72);
             this.pnlHead.TabIndex = 41;
             // 
-            // tabArea
-            // 
-            this.tabArea.BackColor = System.Drawing.Color.Transparent;
-            this.tabArea.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tabArea.ColumnCount = 2;
-            this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tabArea.Controls.Add(this.lblCanada, 1, 0);
-            this.tabArea.Controls.Add(this.lblBJ, 0, 0);
-            this.tabArea.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tabArea.Location = new System.Drawing.Point(0, 37);
-            this.tabArea.Margin = new System.Windows.Forms.Padding(0);
-            this.tabArea.Name = "tabArea";
-            this.tabArea.RowCount = 1;
-            this.tabArea.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tabArea.Size = new System.Drawing.Size(168, 35);
-            this.tabArea.TabIndex = 46;
-            // 
-            // lblCanada
-            // 
-            this.lblCanada.AutoSize = true;
-            this.lblCanada.BackColor = System.Drawing.Color.PapayaWhip;
-            this.lblCanada.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCanada.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblCanada.Location = new System.Drawing.Point(84, 1);
-            this.lblCanada.Margin = new System.Windows.Forms.Padding(0);
-            this.lblCanada.Name = "lblCanada";
-            this.lblCanada.Size = new System.Drawing.Size(83, 33);
-            this.lblCanada.TabIndex = 1;
-            this.lblCanada.Tag = "10002";
-            this.lblCanada.Text = "加拿大";
-            this.lblCanada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCanada.Click += new System.EventHandler(this.lblCanada_Click);
-            // 
-            // lblBJ
-            // 
-            this.lblBJ.AutoSize = true;
-            this.lblBJ.BackColor = System.Drawing.Color.White;
-            this.lblBJ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBJ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblBJ.Location = new System.Drawing.Point(1, 1);
-            this.lblBJ.Margin = new System.Windows.Forms.Padding(0);
-            this.lblBJ.Name = "lblBJ";
-            this.lblBJ.Size = new System.Drawing.Size(82, 33);
-            this.lblBJ.TabIndex = 0;
-            this.lblBJ.Tag = "10001";
-            this.lblBJ.Text = "北京";
-            this.lblBJ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblBJ.Click += new System.EventHandler(this.lblBJ_Click);
-            // 
             // tabSite
             // 
             this.tabSite.BackColor = System.Drawing.Color.Transparent;
@@ -667,7 +617,7 @@
             // 
             // lblCurrRetNum
             // 
-            this.lblCurrRetNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCurrRetNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrRetNum.AutoSize = true;
             this.lblCurrRetNum.BackColor = System.Drawing.Color.Transparent;
             this.lblCurrRetNum.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -691,7 +641,7 @@
             // 
             // lblCurrent
             // 
-            this.lblCurrent.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrent.AutoSize = true;
             this.lblCurrent.BackColor = System.Drawing.Color.Transparent;
             this.lblCurrent.ForeColor = System.Drawing.Color.White;
@@ -707,6 +657,56 @@
             this.pnlSiteMap.Name = "pnlSiteMap";
             this.pnlSiteMap.Size = new System.Drawing.Size(298, 30);
             this.pnlSiteMap.TabIndex = 1;
+            // 
+            // tabArea
+            // 
+            this.tabArea.BackColor = System.Drawing.Color.Transparent;
+            this.tabArea.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tabArea.ColumnCount = 2;
+            this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabArea.Controls.Add(this.lblCanada, 1, 0);
+            this.tabArea.Controls.Add(this.lblBJ, 0, 0);
+            this.tabArea.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tabArea.Location = new System.Drawing.Point(0, 37);
+            this.tabArea.Margin = new System.Windows.Forms.Padding(0);
+            this.tabArea.Name = "tabArea";
+            this.tabArea.RowCount = 1;
+            this.tabArea.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tabArea.Size = new System.Drawing.Size(168, 35);
+            this.tabArea.TabIndex = 46;
+            // 
+            // lblCanada
+            // 
+            this.lblCanada.AutoSize = true;
+            this.lblCanada.BackColor = System.Drawing.Color.PapayaWhip;
+            this.lblCanada.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCanada.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblCanada.Location = new System.Drawing.Point(84, 1);
+            this.lblCanada.Margin = new System.Windows.Forms.Padding(0);
+            this.lblCanada.Name = "lblCanada";
+            this.lblCanada.Size = new System.Drawing.Size(83, 33);
+            this.lblCanada.TabIndex = 1;
+            this.lblCanada.Tag = "10002";
+            this.lblCanada.Text = "加拿大";
+            this.lblCanada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCanada.Click += new System.EventHandler(this.lblCanada_Click);
+            // 
+            // lblBJ
+            // 
+            this.lblBJ.AutoSize = true;
+            this.lblBJ.BackColor = System.Drawing.Color.White;
+            this.lblBJ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBJ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblBJ.Location = new System.Drawing.Point(1, 1);
+            this.lblBJ.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBJ.Name = "lblBJ";
+            this.lblBJ.Size = new System.Drawing.Size(82, 33);
+            this.lblBJ.TabIndex = 0;
+            this.lblBJ.Tag = "10001";
+            this.lblBJ.Text = "北京";
+            this.lblBJ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBJ.Click += new System.EventHandler(this.lblBJ_Click);
             // 
             // timerServer
             // 
@@ -791,12 +791,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlHead.ResumeLayout(false);
             this.pnlHead.PerformLayout();
-            this.tabArea.ResumeLayout(false);
-            this.tabArea.PerformLayout();
             this.tabSite.ResumeLayout(false);
             this.tabSite.PerformLayout();
             this.pnlHeadBg.ResumeLayout(false);
             this.pnlHeadBg.PerformLayout();
+            this.tabArea.ResumeLayout(false);
+            this.tabArea.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
