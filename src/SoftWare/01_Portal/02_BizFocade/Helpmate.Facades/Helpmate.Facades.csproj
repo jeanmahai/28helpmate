@@ -106,6 +106,9 @@
     <None Include="Web References\LotteryWebSvc\ResultRMOfListOfOmitStatistics.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfListOfRemindStatistics.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\LotteryWebSvc\ResultRMOfLotteryForBJ.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -116,9 +119,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\LotteryWebSvc\ResultRMOfPageListOfRemindStatistics.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\LotteryWebSvc\ResultRMOfRemindStatistics.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\LotteryWebSvc\ResultRMOfString.datasource">

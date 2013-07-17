@@ -45,6 +45,7 @@
             this.picCode = new System.Windows.Forms.PictureBox();
             this.bgwCode = new System.ComponentModel.BackgroundWorker();
             this.tlAlter = new System.Windows.Forms.ToolTip(this.components);
+            this.lnkGetPwd = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.picCode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(307, 86);
+            this.label2.Location = new System.Drawing.Point(294, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 0;
@@ -66,7 +67,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(308, 131);
+            this.label3.Location = new System.Drawing.Point(295, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 0;
@@ -75,19 +76,19 @@
             // txtUserName
             // 
             this.txtUserName.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtUserName.Location = new System.Drawing.Point(368, 82);
+            this.txtUserName.Location = new System.Drawing.Point(355, 82);
             this.txtUserName.MaxLength = 50;
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(208, 21);
+            this.txtUserName.Size = new System.Drawing.Size(221, 21);
             this.txtUserName.TabIndex = 1;
             // 
             // txtUserPwd
             // 
             this.txtUserPwd.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtUserPwd.Location = new System.Drawing.Point(368, 127);
+            this.txtUserPwd.Location = new System.Drawing.Point(355, 127);
             this.txtUserPwd.MaxLength = 50;
             this.txtUserPwd.Name = "txtUserPwd";
-            this.txtUserPwd.Size = new System.Drawing.Size(208, 21);
+            this.txtUserPwd.Size = new System.Drawing.Size(221, 21);
             this.txtUserPwd.TabIndex = 2;
             this.txtUserPwd.UseSystemPasswordChar = true;
             // 
@@ -100,7 +101,7 @@
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(368, 247);
+            this.btnLogin.Location = new System.Drawing.Point(313, 235);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(94, 31);
             this.btnLogin.TabIndex = 4;
@@ -111,9 +112,9 @@
             // pnlLoading
             // 
             this.pnlLoading.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLoading.Location = new System.Drawing.Point(309, 217);
+            this.pnlLoading.Location = new System.Drawing.Point(297, 208);
             this.pnlLoading.Name = "pnlLoading";
-            this.pnlLoading.Size = new System.Drawing.Size(267, 20);
+            this.pnlLoading.Size = new System.Drawing.Size(279, 20);
             this.pnlLoading.TabIndex = 3;
             // 
             // bgwUserLogin
@@ -124,10 +125,10 @@
             // txtCode
             // 
             this.txtCode.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCode.Location = new System.Drawing.Point(368, 172);
+            this.txtCode.Location = new System.Drawing.Point(355, 172);
             this.txtCode.MaxLength = 6;
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(83, 21);
+            this.txtCode.Size = new System.Drawing.Size(96, 21);
             this.txtCode.TabIndex = 3;
             // 
             // label4
@@ -136,7 +137,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(307, 176);
+            this.label4.Location = new System.Drawing.Point(294, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 4;
@@ -163,7 +164,7 @@
             this.btnRegister.FlatAppearance.BorderSize = 0;
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(482, 247);
+            this.btnRegister.Location = new System.Drawing.Point(413, 234);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(94, 31);
             this.btnRegister.TabIndex = 5;
@@ -194,6 +195,18 @@
             this.bgwCode.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwCode_DoWork);
             this.bgwCode.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwCode_RunWorkerCompleted);
             // 
+            // lnkGetPwd
+            // 
+            this.lnkGetPwd.AutoSize = true;
+            this.lnkGetPwd.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lnkGetPwd.Location = new System.Drawing.Point(513, 243);
+            this.lnkGetPwd.Name = "lnkGetPwd";
+            this.lnkGetPwd.Size = new System.Drawing.Size(63, 14);
+            this.lnkGetPwd.TabIndex = 8;
+            this.lnkGetPwd.TabStop = true;
+            this.lnkGetPwd.Text = "忘记密码";
+            this.lnkGetPwd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGetPwd_LinkClicked);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnLogin;
@@ -202,6 +215,7 @@
             this.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.loginbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(590, 286);
+            this.Controls.Add(this.lnkGetPwd);
             this.Controls.Add(this.picCode);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCode);
@@ -243,5 +257,6 @@
         private System.Windows.Forms.PictureBox picCode;
         private System.ComponentModel.BackgroundWorker bgwCode;
         private System.Windows.Forms.ToolTip tlAlter;
+        private System.Windows.Forms.LinkLabel lnkGetPwd;
     }
 }

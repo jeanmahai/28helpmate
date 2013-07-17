@@ -456,9 +456,9 @@ namespace Helpmate.Facades.LotteryWebSvc {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/QueryRemindLottery", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ResultRMOfRemindStatistics QueryRemindLottery() {
+        public ResultRMOfListOfRemindStatistics QueryRemindLottery() {
             object[] results = this.Invoke("QueryRemindLottery", new object[0]);
-            return ((ResultRMOfRemindStatistics)(results[0]));
+            return ((ResultRMOfListOfRemindStatistics)(results[0]));
         }
         
         /// <remarks/>
@@ -1123,7 +1123,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private LotteryForBJ lotteryField;
         
-        private RemindStatistics remindField;
+        private RemindStatistics[] remindField;
         
         /// <remarks/>
         public LotteryForBJ Lottery {
@@ -1136,7 +1136,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public RemindStatistics Remind {
+        public RemindStatistics[] Remind {
             get {
                 return this.remindField;
             }
@@ -2061,13 +2061,13 @@ namespace Helpmate.Facades.LotteryWebSvc {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ResultRMOfRemindStatistics {
+    public partial class ResultRMOfListOfRemindStatistics {
         
         private bool successField;
         
         private string messageField;
         
-        private RemindStatistics dataField;
+        private RemindStatistics[] dataField;
         
         private int codeField;
         
@@ -2096,7 +2096,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public RemindStatistics Data {
+        public RemindStatistics[] Data {
             get {
                 return this.dataField;
             }
@@ -3279,10 +3279,10 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public ResultRMOfRemindStatistics Result {
+        public ResultRMOfListOfRemindStatistics Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((ResultRMOfRemindStatistics)(this.results[0]));
+                return ((ResultRMOfListOfRemindStatistics)(this.results[0]));
             }
         }
     }

@@ -29,19 +29,19 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
                 BindGridHead(lottery);
                 BindGridFoot(lottery);
 
-                List<NormalCountNum> numList = new List<NormalCountNum>();
-                List<NormalCountType> typeList = new List<NormalCountType>();
+                List<NormalCountNumModel> numList = new List<NormalCountNumModel>();
+                List<NormalCountTypeModel> typeList = new List<NormalCountTypeModel>();
 
-                var numObj = new NormalCountNum();
+                var numObj = new NormalCountNumModel();
                 Type num = numObj.GetType();
 
-                var typeOneObj = new NormalCountType();
+                var typeOneObj = new NormalCountTypeModel();
                 Type typeOne = typeOneObj.GetType();
 
-                var typeTwoObj = new NormalCountType();
+                var typeTwoObj = new NormalCountTypeModel();
                 Type typeTwo = typeTwoObj.GetType();
 
-                var typeThreeObj = new NormalCountType();
+                var typeThreeObj = new NormalCountTypeModel();
                 Type typeThree = typeThreeObj.GetType();
 
                 for (int i = 0; i < lottery.Lotteries.Length; i++)
@@ -68,28 +68,26 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
 
         public void BindGridHead(LotteryByTwentyPeriod lottery)
         {
-            List<string> listTemp = new List<string>();
-            listTemp.Add(string.Format("大：{0}　小：{1}　中：{2}　边：{3}　单：{4}　双：{5}", lottery.BigP.ToString("P"), lottery.SmallP.ToString("P"), lottery.CenterP.ToString("P"), lottery.SideP.ToString("P"), lottery.OddP.ToString("P"), lottery.EvenP.ToString("P")));
-            dgvHead.DataSource = (from temp in listTemp select new { temp }).ToList();
+            var listTemp = new List<RmarkFootModel>();
+            listTemp.Add(new RmarkFootModel(string.Format("大：{0}　小：{1}　中：{2}　边：{3}　单：{4}　双：{5}", lottery.BigP.ToString("P"), lottery.SmallP.ToString("P"), lottery.CenterP.ToString("P"), lottery.SideP.ToString("P"), lottery.OddP.ToString("P"), lottery.EvenP.ToString("P"))));
+            dgvHead.DataSource = listTemp;
             dgvHead.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvHead.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvHead.Columns[0].DefaultCellStyle.BackColor = UtilsTool.ToColor("#fffde3");
-            dgvHead.Columns[0].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#fffde3");
+            dgvHead.Columns[0].DefaultCellStyle.BackColor = Color.White;
+            dgvHead.Columns[0].DefaultCellStyle.SelectionBackColor = Color.White;
             dgvHead.Columns[0].DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvHead.Rows[0].Height = 30;
         }
 
         public void BindGridFoot(LotteryByTwentyPeriod lottery)
         {
-            List<string> listTemp = new List<string>();
-            listTemp.Add(string.Format("未出现的号码：{0}", string.Join(",", lottery.NotAppearNumber)));
-            dgvFoot.DataSource = (from temp in listTemp select new { temp }).ToList();
+            var listTemp = new List<RmarkFootModel>();
+            listTemp.Add(new RmarkFootModel(string.Format("未出现的号码：{0}", string.Join(",", lottery.NotAppearNumber))));
+            dgvFoot.DataSource = listTemp;
             dgvFoot.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvFoot.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvFoot.Columns[0].DefaultCellStyle.BackColor = UtilsTool.ToColor("#fffde3");
-            dgvFoot.Columns[0].DefaultCellStyle.SelectionBackColor = UtilsTool.ToColor("#fffde3");
+            dgvFoot.Columns[0].DefaultCellStyle.BackColor = Color.White;
+            dgvFoot.Columns[0].DefaultCellStyle.SelectionBackColor = Color.White;
             dgvFoot.Columns[0].DefaultCellStyle.SelectionForeColor = Color.Black;
-            dgvFoot.Rows[0].Height = 30;
         }
 
         public void BindGridData(object obj)

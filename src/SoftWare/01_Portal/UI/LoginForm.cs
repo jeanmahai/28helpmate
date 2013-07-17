@@ -177,5 +177,11 @@ namespace Helpmate.UI.Forms
             pnlLoading.Controls.Add(LoadingCtrl.LoadModel(MessageType.Loading, "正在加载验证码！"));
             bgwCode.RunWorkerAsync();
         }
+
+        private void lnkGetPwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var getPwd = new GetPwd();
+            getPwd.ShowDialog();
+        }
     }
 }

@@ -49,8 +49,6 @@ namespace Helpmate.UI.Forms.FormUI
             this.SetStyle(ControlStyles.DoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
             this.UpdateStyles();
-
-            lblRemark.Text = "各位会员：本统计表内若期数用“红色”显示代表这个号码当前所遗漏的期数已超过他的标准遗漏几率，若用“紫色”显示则表示\r\n\r\n此号码当前遗漏的期数已超过最高遗漏期数。";
             QueryData();
         }
 
@@ -82,29 +80,115 @@ namespace Helpmate.UI.Forms.FormUI
 
             if (PageUtils.CheckError(result) && result.Data != null)
             {
-                foreach (OmitStatistics item in result.Data)
+
+                BindGridHead();
+                BindGridFoot();
+
+                var listOne = new List<OmissionNumModel>();
+                for (int i = 0; i < 14; i++)
                 {
-                    var lblNow = tlpNuming.Controls.Find("lblNow" + item.RetNum, true).First() as Label;
-                    lblNow.Text = item.OmitCnt.ToString();
-
-                    var lblMax = tlpNuming.Controls.Find("lblLen" + item.RetNum, true).First() as Label;
-                    lblMax.Text = item.MaxOmitCnt.ToString();
-
-                    var lblStandard = tlpNuming.Controls.Find("lblBZ" + item.RetNum, true).First() as Label;
-                    lblStandard.Text = item.StandardCnt.ToString();
-
-                    if (item.OmitCnt > item.StandardCnt)
+                    var item = new OmissionNumModel() { Num = UtilsModel.LoadNumImage(i) };
+                    var itemTemp = result.Data.FirstOrDefault(temp => temp.RetNum == i);
+                    if (itemTemp != null)
                     {
-                        lblNow.ForeColor = Color.Red;
+                        item.MaxOmitCnt = itemTemp.MaxOmitCnt;
+                        item.OmitCnt = itemTemp.OmitCnt;
+                        item.StandardCnt = itemTemp.StandardCnt;
                     }
-                    else if (item.OmitCnt > item.MaxOmitCnt)
+                    listOne.Add(item);
+                }
+
+                var listTwo = new List<OmissionNumModel>();
+                for (int i = 27; i > 13; i--)
+                {
+                    var item = new OmissionNumModel() { Num = UtilsModel.LoadNumImage(i) };
+                    var itemTemp = result.Data.FirstOrDefault(temp => temp.RetNum == i);
+                    if (itemTemp != null)
                     {
-                        lblNow.ForeColor = Color.Purple;
+                        item.MaxOmitCnt = itemTemp.MaxOmitCnt;
+                        item.OmitCnt = itemTemp.OmitCnt;
+                        item.StandardCnt = itemTemp.StandardCnt;
                     }
-                    else
-                    {
-                        lblNow.ForeColor = Color.Black;
-                    }
+                    listTwo.Add(item);
+                }
+
+                dgvDataOne.DataSource = listOne;
+                BindGridData(dgvDataOne);
+                dgvDataTwo.DataSource = listTwo;
+                BindGridData(dgvDataTwo);
+            }
+        }
+
+
+        public void BindGridHead()
+        {
+            List<OmissionHeadModel> listTemp = new List<OmissionHeadModel>();
+            listTemp.Add(new OmissionHeadModel());
+            dgvHead.DataSource = listTemp;
+            for (int i = 0; i < dgvHead.Columns.Count; i++)
+            {
+                dgvHead.Columns[i].Width = i == 0 || i == 4 ? 60 : 95;
+                if (i == dgvHead.Columns.Count - 1) dgvHead.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                dgvHead.Columns[i].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+                dgvHead.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvHead.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                dgvHead.Columns[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                dgvHead.Columns[i].DefaultCellStyle.SelectionForeColor = Color.Black;
+            }
+        }
+
+        public void BindGridFoot()
+        {
+            var listTemp = new List<RmarkFootModel>();
+            listTemp.Add(new RmarkFootModel("各位会员：本统计表内若期数用“红色”显示代表这个号码当前所遗漏的期数已超过他的标准遗漏几率，若用“紫色”显示则表示\r\n\r\n此号码当前遗漏的期数已超过最高遗漏期数。"));
+            dgvFoot.DataSource = listTemp;
+            dgvFoot.Columns[0].Width = 719;
+            dgvFoot.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvFoot.Columns[0].DefaultCellStyle.BackColor = Color.White;
+            dgvFoot.Columns[0].DefaultCellStyle.SelectionBackColor = Color.White;
+            dgvFoot.Columns[0].DefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        public void BindGridData(object obj)
+        {
+            DataGridView dgv = obj as DataGridView;
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                dgv.Columns[i].Width = i == 0 ? 60 : 95;
+                if (i == dgv.Columns.Count - 1) dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgv.Columns[i].DefaultCellStyle.BackColor = Color.White;
+                dgv.Columns[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                dgv.Rows[i].Height = 28;
+            }
+        }
+
+        private void dgvDataOne_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e == null || e.Value == null || !(sender is DataGridView)) return;
+
+
+            DataGridView dgvList = (DataGridView)sender;
+            if (dgvList.Columns[e.ColumnIndex].DataPropertyName == "OmitCnt")
+            {
+                var item = dgvList.Rows[e.RowIndex].DataBoundItem as OmissionNumModel;
+
+                if (item.OmitCnt > item.StandardCnt && item.OmitCnt < item.MaxOmitCnt)
+                {
+                    e.CellStyle.ForeColor = Color.Red;
+                }
+                else if (item.OmitCnt > item.MaxOmitCnt)
+                {
+                    e.CellStyle.ForeColor = Color.Purple;
+                }
+                else
+                {
+                    e.CellStyle.ForeColor = Color.Black;
                 }
             }
         }

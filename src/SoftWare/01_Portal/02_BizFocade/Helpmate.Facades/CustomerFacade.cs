@@ -89,5 +89,20 @@ namespace Helpmate.Facades
             var result = Client.Service.GetNotice(0);
             return result;
         }
+
+        /// <summary>
+        /// 找回密码
+        /// </summary>
+        /// <param name="userId">用户账号</param>
+        /// <param name="q1">问题1</param>
+        /// <param name="a1">答案1</param>
+        /// <param name="q2">问题2</param>
+        /// <param name="a2">答案2</param>
+        /// <returns></returns>
+        public ResultRMOfString GetPwd(string userId, string q1, string a1, string q2, string a2)
+        {
+            var result = Client.Service.ResetPsw(userId, q1, a1, q2, a2);
+            return result;
+        }
     }
 }
