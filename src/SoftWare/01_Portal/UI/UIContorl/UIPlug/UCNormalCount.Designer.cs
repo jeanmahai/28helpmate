@@ -48,7 +48,7 @@
             this.dgvHead.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHead.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHead.ColumnHeadersVisible = false;
-            this.dgvHead.Location = new System.Drawing.Point(5, 10);
+            this.dgvHead.Location = new System.Drawing.Point(5, 11);
             this.dgvHead.Name = "dgvHead";
             this.dgvHead.RowHeadersVisible = false;
             this.dgvHead.RowTemplate.Height = 23;
@@ -101,11 +101,10 @@
             this.dgvFoot.AllowUserToResizeRows = false;
             this.dgvFoot.BackgroundColor = System.Drawing.Color.White;
             this.dgvFoot.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvFoot.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvFoot.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvFoot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFoot.ColumnHeadersVisible = false;
-            this.dgvFoot.Location = new System.Drawing.Point(5, 161);
+            this.dgvFoot.Location = new System.Drawing.Point(5, 160);
             this.dgvFoot.Name = "dgvFoot";
             this.dgvFoot.ReadOnly = true;
             this.dgvFoot.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -119,10 +118,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvHead);
+            this.Controls.Add(this.dgvFoot);
             this.Controls.Add(this.dgvDataType);
             this.Controls.Add(this.dgvDataNum);
-            this.Controls.Add(this.dgvFoot);
-            this.Controls.Add(this.dgvHead);
             this.Name = "UCNormalCount";
             this.Size = new System.Drawing.Size(670, 200);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHead)).EndInit();
