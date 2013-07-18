@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvHead = new System.Windows.Forms.DataGridView();
             this.dgvDataNum = new System.Windows.Forms.DataGridView();
             this.dgvDataType = new System.Windows.Forms.DataGridView();
@@ -83,12 +84,21 @@
             this.dgvDataType.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDataType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDataType.ColumnHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDataType.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDataType.Location = new System.Drawing.Point(5, 70);
             this.dgvDataType.Name = "dgvDataType";
             this.dgvDataType.ReadOnly = true;
             this.dgvDataType.RowHeadersVisible = false;
             this.dgvDataType.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvDataType.RowTemplate.Height = 23;
+            this.dgvDataType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvDataType.Size = new System.Drawing.Size(660, 91);
             this.dgvDataType.TabIndex = 135;
             this.dgvDataType.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDataType_CellFormatting);
