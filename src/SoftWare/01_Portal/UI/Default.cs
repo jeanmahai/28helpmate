@@ -267,7 +267,7 @@ namespace Helpmate.UI.Forms
                     {
                         strRetNum += string.Format(",{0}期{1}", result.Data.Remind[i].Cnt, result.Data.Remind[i].RetNum);
                     }
-                    AppMessage.Alert(string.Format("{0}28{1}网站已连续开{2}", PageUtils.LoadGameName(), PageUtils.LoadSiteName(), strRetNum));
+                    AppMessage.Alert(string.Format("{0}28,{1}网站已连续开{2}", PageUtils.LoadGameName(), PageUtils.LoadSiteName(), strRetNum));
                     UtilsTool.Play.Stop();
                 }
 

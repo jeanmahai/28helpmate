@@ -185,10 +185,12 @@ namespace Helpmate.UI.Forms.FormUI
                 if (item.OmitCnt > item.StandardCnt && item.OmitCnt < item.MaxOmitCnt)
                 {
                     e.CellStyle.ForeColor = Color.Red;
+                    e.CellStyle.SelectionForeColor = Color.Red;
                 }
                 else if (item.OmitCnt > item.MaxOmitCnt)
                 {
                     e.CellStyle.ForeColor = Color.Purple;
+                    e.CellStyle.SelectionForeColor = Color.Purple;
                 }
                 else
                 {
