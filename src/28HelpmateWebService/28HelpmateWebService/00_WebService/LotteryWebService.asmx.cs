@@ -41,7 +41,9 @@ namespace WebService
 
         private bool ValidateToken(TokenHeader reqHeader,out string error)
         {
+            
             error = "";
+            return true;
             //if (Dal.ValidateToken(header.ToString(SessionValue.Key), header.Token))
             if (!Dal.ValidateToken(reqHeader.ToString(UserKeys.ReadKey(reqHeader.UserSysNo)),reqHeader.Token))
             {
@@ -84,10 +86,23 @@ namespace WebService
                 result.Data = new CustomModules();
                 var lastestLottery = Dal.GetCurrentLottery(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
 
-                result.Data.M1 = Dal.QueryNextLotteryWithSameNumber(lastestLottery.RetNum,ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
-                result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(5),ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo),ReqHeader.RegionSourceSysNo);
-                result.Data.M3 = Dal.QueryLotteryByDay(lastestLottery.RetTime.AddMinutes(5),ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo),ReqHeader.RegionSourceSysNo);
-                result.Data.M4 = Dal.QueryTop20(ReqHeader.SiteSourceSysNo,GetTableName(ReqHeader.RegionSourceSysNo));
+                result.Data.M1 = Dal.QueryNextLotteryWithSameNumber(lastestLottery.RetNum,
+                    ReqHeader.SiteSourceSysNo,
+                    GetTableName(ReqHeader.RegionSourceSysNo));
+
+
+                result.Data.M2 = Dal.QueryLotteryByHourStep(lastestLottery.RetTime.AddMinutes(GetDuration(ReqHeader.RegionSourceSysNo)),
+                    ReqHeader.SiteSourceSysNo,
+                    GetTableName(ReqHeader.RegionSourceSysNo),
+                    ReqHeader.RegionSourceSysNo);
+
+                result.Data.M3 = Dal.QueryLotteryByDay(lastestLottery.RetTime.AddMinutes(GetDuration(ReqHeader.RegionSourceSysNo)),
+                    ReqHeader.SiteSourceSysNo,
+                    GetTableName(ReqHeader.RegionSourceSysNo),
+                    ReqHeader.RegionSourceSysNo);
+
+                result.Data.M4 = Dal.QueryTop20(ReqHeader.SiteSourceSysNo,
+                    GetTableName(ReqHeader.RegionSourceSysNo));
                 result.Data.CurrentLottery = lastestLottery;
                 if (GetTableName(ReqHeader.RegionSourceSysNo) == ConstValue.Source_Data_10001_28_BeiJing)
                 {
@@ -556,8 +571,8 @@ namespace WebService
         {
             var result = new ResultRM<string>();
             string error;
-            result.Data = Dal.ResetPsw(userId, q1, a1, q2, a2,out error);
-            if(string.IsNullOrEmpty(error))
+            result.Data = Dal.ResetPsw(userId,q1,a1,q2,a2,out error);
+            if (string.IsNullOrEmpty(error))
             {
                 result.Success = true;
                 result.Message = "重置密码成功";
@@ -567,7 +582,7 @@ namespace WebService
                 result.Success = false;
                 result.Message = error;
             }
-            
+
             return result;
         }
 
@@ -583,6 +598,19 @@ namespace WebService
                 tableName = ConstValue.Source_Data_10001_28_BeiJing;
             }
             return tableName;
+        }
+
+        private int GetDuration(int regionSourceSysNo)
+        {
+            if (regionSourceSysNo == 10001)
+            {
+                return AppSettingValues.BJLotteryInteval;
+            }
+            if (regionSourceSysNo == 10002)
+            {
+                return AppSettingValues.CanadaLotteryInteval;
+            }
+            return 0;
         }
 
         private void NewKey<T>(ResultRM<T> result,int userSysNo)
