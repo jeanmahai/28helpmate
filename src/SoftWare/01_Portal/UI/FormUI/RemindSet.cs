@@ -25,19 +25,17 @@ namespace Helpmate.UI.Forms.FormUI
 
         public RemindSet()
         {
-            SiteMapList = new List<SiteModel>()
-            {
-                new SiteModel() { Text = "提醒设置" }
-            };
+            GetSiteModelList();
             InitializeComponent();
         }
         public List<SiteModel> GetSiteModelList()
         {
             return SiteMapList = new List<SiteModel>()
             {
-                new SiteModel(){ Text="提醒设置"}
+                new SiteModel() { Text = "提醒设置" }
             };
         }
+
         private void RemindSet_Load(object sender, EventArgs e)
         {
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -64,7 +62,7 @@ namespace Helpmate.UI.Forms.FormUI
                 cmd.ShowOpaqueLayer(this, 125, true);
                 bgworkLoadData.RunWorkerAsync(pageIndex);
             }
-        }        
+        }
 
         #region 加载数据
         private void bgworkLoadData_DoWork(object sender, DoWorkEventArgs e)
@@ -75,8 +73,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfPageListOfRemindStatistics;
-
             if (e.Error != null)
             {
                 WriteLog.Write("GetRemindLottery", e.Error.Message);
@@ -84,6 +80,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfPageListOfRemindStatistics;
             if (PageUtils.CheckError(result) && result.Data != null)
             {
                 int currPageIndex = result.Data.PageIndex;
@@ -231,8 +228,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkerAdd_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfBoolean;
-
             if (e.Error != null)
             {
                 WriteLog.Write("AddRemindLottery", e.Error.Message);
@@ -240,6 +235,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfBoolean;
             if (PageUtils.CheckError(result))
             {
                 tbxCnt.Text = "";
@@ -303,8 +299,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkerDel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfBoolean;
-
             if (e.Error != null)
             {
                 WriteLog.Write("DelRemindLottery", e.Error.Message);
@@ -312,6 +306,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfBoolean;
             if (PageUtils.CheckError(result))
             {
                 QueryData(1);

@@ -128,7 +128,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.ForeColor = System.Drawing.Color.Black;
-            this.toolStripStatusLabel1.Image = global::Helpmate.UI.Forms.Properties.Resources.RecordPressed;
+            this.toolStripStatusLabel1.Image = global::Helpmate.UI.Forms.Properties.Resources.RecordDisabled;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(84, 17);
             this.toolStripStatusLabel1.Text = "提醒未运行";
@@ -283,6 +283,7 @@
             this.pnlSpecial.Name = "pnlSpecial";
             this.pnlSpecial.Size = new System.Drawing.Size(166, 44);
             this.pnlSpecial.TabIndex = 35;
+            this.pnlSpecial.Click += new System.EventHandler(this.pnlSpecial_Click);
             // 
             // picEmailCurr
             // 
@@ -304,6 +305,7 @@
             this.lblEmail.Size = new System.Drawing.Size(93, 20);
             this.lblEmail.TabIndex = 1;
             this.lblEmail.Text = "特殊统计分析";
+            this.lblEmail.Click += new System.EventHandler(this.pnlSpecial_Click);
             // 
             // pictureBox4
             // 
@@ -314,6 +316,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pnlSpecial_Click);
             // 
             // pnlNormalTrend
             // 

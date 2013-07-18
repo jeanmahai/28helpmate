@@ -101,6 +101,12 @@
     <Compile Include="FormUI\RemindSet.Designer.cs">
       <DependentUpon>RemindSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUI\SpecialAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUI\SpecialAnalysis.Designer.cs">
+      <DependentUpon>SpecialAnalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUI\UserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,12 +144,6 @@
     </Compile>
     <Compile Include="FormUI\Omission.Designer.cs">
       <DependentUpon>Omission.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormUI\Prediction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormUI\Prediction.Designer.cs">
-      <DependentUpon>Prediction.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUI\SuperTrend.cs">
       <SubType>Form</SubType>
@@ -243,11 +243,11 @@
     <EmbeddedResource Include="FormUI\Omission.resx">
       <DependentUpon>Omission.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormUI\Prediction.resx">
-      <DependentUpon>Prediction.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormUI\RemindSet.resx">
       <DependentUpon>RemindSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUI\SpecialAnalysis.resx">
+      <DependentUpon>SpecialAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\SuperTrend.resx">
       <DependentUpon>SuperTrend.cs</DependentUpon>

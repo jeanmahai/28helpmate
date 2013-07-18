@@ -35,11 +35,9 @@ namespace Helpmate.UI.Forms.FormUI
 
         public List<SiteModel> GetSiteModelList()
         {
-            return SiteMapList = new List<SiteModel>()
-            {
-                new SiteModel(){ Text="个人中心"}
-            };
+            return SiteMapList;
         }
+
         private void UserInfo_Load(object sender, EventArgs e)
         {
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -59,7 +57,7 @@ namespace Helpmate.UI.Forms.FormUI
                 cmd.ShowOpaqueLayer(this, 125, true);
                 bgworkerUserInfo.RunWorkerAsync();
             }
-        }        
+        }
 
         #region 获取用户信息
         private void bgworkerUserInfo_DoWork(object sender, DoWorkEventArgs e)
@@ -69,8 +67,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkerUserInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfUser;
-
             if (e.Error != null)
             {
                 WriteLog.Write("GetUserInfo", e.Error.Message);
@@ -78,6 +74,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfUser;
             if (PageUtils.CheckError(result) && result.Data != null)
             {
                 lblUserName.Text = result.Data.UserName;
@@ -87,7 +84,7 @@ namespace Helpmate.UI.Forms.FormUI
             }
         }
         #endregion
-        
+
         #region 充值
         private void btnPay_Click(object sender, EventArgs e)
         {
@@ -123,8 +120,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkerPay_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfBoolean;
-
             if (e.Error != null)
             {
                 WriteLog.Write("Pay", e.Error.Message);
@@ -132,6 +127,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfBoolean;
             if (PageUtils.CheckError(result))
             {
                 tbxPayCardID.Text = "";
@@ -190,8 +186,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkerChangePwd_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfObject;
-
             if (e.Error != null)
             {
                 WriteLog.Write("ChangePwd", e.Error.Message);
@@ -199,6 +193,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfObject;
             if (PageUtils.CheckError(result))
             {
                 ddlQuestion1.SelectedIndex = 0;

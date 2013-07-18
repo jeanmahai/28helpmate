@@ -15,6 +15,7 @@ using Helpmate.UI.Forms.Models;
 using Helpmate.Facades.LotteryWebSvc;
 using Common.Utility;
 using Helpmate.UI.Forms.Code;
+using Helpmate.UI.Forms.Properties;
 
 namespace Helpmate.UI.Forms
 {
@@ -88,6 +89,13 @@ namespace Helpmate.UI.Forms
         {
             var childForm = new RemindSet();
             CurrMenu(MenuEnum.RemindSet, childForm.SiteMapList, childForm);
+            RefreshPage();
+        }
+
+        private void pnlSpecial_Click(object sender, EventArgs e)
+        {
+            var childForm = new SpecialAnalysis();
+            CurrMenu(MenuEnum.Special, childForm.SiteMapList, childForm);
             RefreshPage();
         }
 
@@ -244,7 +252,6 @@ namespace Helpmate.UI.Forms
 
         private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var result = e.Result as ResultRMOfInfoForTimer;
             if (e.Error != null)
             {
                 WriteLog.Write("GetInfoForTimer", e.Error.Message);
@@ -252,6 +259,7 @@ namespace Helpmate.UI.Forms
                 return;
             }
 
+            var result = e.Result as ResultRMOfInfoForTimer;
             if (PageUtils.CheckError(result) && result.Data != null)
             {
                 lblCurrent.Text = string.Format("本期分析期号：{0}   第{1}期开奖号码", result.Data.Lottery.PeriodNum + 1, result.Data.Lottery.PeriodNum);
@@ -271,7 +279,7 @@ namespace Helpmate.UI.Forms
                     UtilsTool.Play.Stop();
                 }
 
-                if (string.IsNullOrEmpty(lblServerTime.Text))
+                if (string.IsNullOrEmpty(lblServerTime.Text) || (Convert.ToDateTime(lblServerTime.Text).Hour != result.ServerDate.Hour))
                 {
                     lblServerTime.Text = UtilsTool.GetShortTime(result.ServerDate);
                     timerServer.Enabled = true;
@@ -297,7 +305,6 @@ namespace Helpmate.UI.Forms
 
         private void bgwNews_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var result = e.Result as ResultRMOfListOfNotices;
             if (e.Error != null)
             {
                 WriteLog.Write("GetInfoForTimer", e.Error.Message);
@@ -305,6 +312,7 @@ namespace Helpmate.UI.Forms
                 return;
             }
 
+            var result = e.Result as ResultRMOfListOfNotices;
             if (PageUtils.CheckError(result) && result.Data != null)
             {
                 if (result.Data != null)
@@ -341,14 +349,14 @@ namespace Helpmate.UI.Forms
         }
         private void bgwRemind_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var result = e.Result as ResultRMOfPageListOfRemindStatistics;
-            if (e.Error != null)
-                return;
+            if (e.Error != null) return;
 
+            var result = e.Result as ResultRMOfPageListOfRemindStatistics;
             if (PageUtils.CheckError(result) && result.Data != null)
             {
                 if (result.Data != null && result.Data.List != null && result.Data.List.Length > 0)
                 {
+                    toolStripStatusLabel1.Image = Resources.RecordPressed;
                     toolStripStatusLabel1.Text = "提醒运行中";
                 }
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Common.Utility;
 
 namespace Helpmate.UI.Forms
 {
@@ -14,16 +15,26 @@ namespace Helpmate.UI.Forms
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            var login = new LoginForm();
-            var result = login.ShowDialog();
-            if (result == DialogResult.OK)
+            try
             {
-                Application.Run(new Default());
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+
+                var login = new LoginForm();
+                var result = login.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    Application.Run(new Default());
+                }
             }
-            Application.Exit();
+            catch (Exception ex)
+            {
+                WriteLog.Write("Application", ex.Message);
+            }
+            finally
+            {
+                Application.Exit();
+            }
         }
     }
 }

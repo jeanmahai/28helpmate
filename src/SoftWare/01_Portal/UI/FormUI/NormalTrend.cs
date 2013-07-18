@@ -27,11 +27,7 @@ namespace Helpmate.UI.Forms.FormUI
 
         public NormalTrend()
         {
-            SiteMapList = new List<SiteModel>()
-            {
-                new SiteModel() { Text = UtilsModel.GetTotalNav() },
-                new SiteModel(){ Text="近期开奖走势"}
-            };
+            GetSiteModelList();
             InitializeComponent();
         }
 
@@ -115,14 +111,14 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkerLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfLotteryTrend;
-
             if (e.Error != null)
             {
                 WriteLog.Write("QuerySuperTrend", e.Error.Message);
                 AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
                 return;
             }
+
+            var result = e.Result as ResultRMOfLotteryTrend;
 
             if (PageUtils.CheckError(result) && result.Data != null)
             {

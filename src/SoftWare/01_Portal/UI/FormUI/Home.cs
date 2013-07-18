@@ -27,11 +27,7 @@ namespace Helpmate.UI.Forms.FormUI
 
         public Home()
         {
-            SiteMapList = new List<SiteModel>()
-            {
-                new SiteModel() { Text = UtilsModel.GetTotalNav() },
-                new SiteModel(){ Text="本期预测分析"}
-            };
+            GetSiteModelList();
             InitializeComponent();
         }
 
@@ -82,8 +78,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfCustomModules;
-
             if (e.Error != null)
             {
                 WriteLog.Write("GetCustomeModule", e.Error.Message);
@@ -91,6 +85,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfCustomModules;
             if (PageUtils.CheckError(result) && result.Data != null)
             {
                 DateTime time = DateTime.Parse(result.Data.M3.Forecast);

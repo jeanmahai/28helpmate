@@ -86,7 +86,7 @@ namespace Helpmate.UI.Forms.Code
         public static string GetTotalNav()
         {
             string result = UtilsTool.GetSourceName(Header.RegionSourceSysNo) + "28";
-            result += string.Format(" {0}", UtilsTool.GetSiteName(Header.SiteSourceSysNo));
+            result += string.Format("—{0}", UtilsTool.GetSiteName(Header.SiteSourceSysNo));
             return result;
         }
     }

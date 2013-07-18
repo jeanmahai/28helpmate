@@ -26,11 +26,7 @@ namespace Helpmate.UI.Forms.FormUI
 
         public SuperTrend()
         {
-            SiteMapList = new List<SiteModel>()
-            {
-                new SiteModel() { Text = UtilsModel.GetTotalNav() },
-                new SiteModel(){ Text="超级走势统计"}
-            };
+            GetSiteModelList();
             InitializeComponent();
         }
 
@@ -42,6 +38,7 @@ namespace Helpmate.UI.Forms.FormUI
                 new SiteModel(){ Text="超级走势统计"}
             };
         }
+
         private void SuperTrend_Load(object sender, EventArgs e)
         {
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -300,7 +297,7 @@ namespace Helpmate.UI.Forms.FormUI
             {
                 MessageBox.Show("请选择一个条件进行查询！");
             }
-            else if (!string.IsNullOrEmpty(tbxDate.Text.Trim()) 
+            else if (!string.IsNullOrEmpty(tbxDate.Text.Trim())
                 && !DateTime.TryParse(tbxDate.Text.Trim(), out dtTime))
             {
                 MessageBox.Show("请选择正确的日期！");
@@ -333,8 +330,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgworkerLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfLotteryTrend;
-
             if (e.Error != null)
             {
                 WriteLog.Write("QuerySuperTrend", e.Error.Message);
@@ -342,6 +337,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfLotteryTrend;
             if (PageUtils.CheckError(result) && result.Data != null)
             {
                 if (result.Data.LotteryTimeses != null && result.Data.DataList != null)

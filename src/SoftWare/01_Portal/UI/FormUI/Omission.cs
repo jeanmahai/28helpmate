@@ -25,11 +25,7 @@ namespace Helpmate.UI.Forms.FormUI
 
         public Omission()
         {
-            SiteMapList = new List<SiteModel>()
-            {
-                new SiteModel() { Text = UtilsModel.GetTotalNav() },
-                new SiteModel(){ Text="遗漏号码统计"}
-            };
+            GetSiteModelList();
             InitializeComponent();
         }
 
@@ -41,6 +37,7 @@ namespace Helpmate.UI.Forms.FormUI
                 new SiteModel(){ Text="遗漏号码统计"}
             };
         }
+
         private void Omission_Load(object sender, EventArgs e)
         {
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -69,8 +66,6 @@ namespace Helpmate.UI.Forms.FormUI
         private void bgwApp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             cmd.HideOpaqueLayer();
-            var result = e.Result as ResultRMOfListOfOmitStatistics;
-
             if (e.Error != null)
             {
                 WriteLog.Write("QueryOmission", e.Error.Message);
@@ -78,6 +73,7 @@ namespace Helpmate.UI.Forms.FormUI
                 return;
             }
 
+            var result = e.Result as ResultRMOfListOfOmitStatistics;
             if (PageUtils.CheckError(result) && result.Data != null)
             {
 
