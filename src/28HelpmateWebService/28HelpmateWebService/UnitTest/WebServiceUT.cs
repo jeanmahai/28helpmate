@@ -208,14 +208,15 @@ namespace UnitTest
         [TestMethod]
         public void GetCustomeModule_Test()
         {
-            //var head = new TokenHeader()
-            //{
-            //    GameSourceSysNo = 10001,
-            //    RegionSourceSysNo = 10001,
-            //    SiteSourceSysNo = 10002,
-            //    Token = "",
-            //    UserSysNo = 24
-            //};
+            var head = new TokenHeader()
+            {
+                GameSourceSysNo = 10001,
+                RegionSourceSysNo = 10002,
+                SiteSourceSysNo = 10002,
+                Token = "",
+                UserSysNo = 24
+            };
+            m_client.GetCustomeModule(head);
             //var msg = new StringBuilder();
             ////var result = m_client.GetCustomeModule(head);
             //var lastestLottery = m_Dal.GetCurrentLottery(head.SiteSourceSysNo,GetTableName(head.RegionSourceSysNo));
