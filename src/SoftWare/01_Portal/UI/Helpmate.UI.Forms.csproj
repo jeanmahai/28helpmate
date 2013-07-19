@@ -120,6 +120,9 @@
     <Compile Include="Models\OmissionNumModel.cs" />
     <Compile Include="Models\RemindStatisticsModel.cs" />
     <Compile Include="Models\RmarkFootModel.cs" />
+    <Compile Include="Models\SpecialHeadModel.cs" />
+    <Compile Include="Models\SpecialNumberModel.cs" />
+    <Compile Include="Models\SpecialTrendModel.cs" />
     <Compile Include="Models\UtilsModel.cs" />
     <Compile Include="Default.cs">
       <SubType>Form</SubType>

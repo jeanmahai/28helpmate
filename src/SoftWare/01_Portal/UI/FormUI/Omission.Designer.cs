@@ -141,7 +141,7 @@
             this.dgvHead.Location = new System.Drawing.Point(40, 51);
             this.dgvHead.Name = "dgvHead";
             this.dgvHead.RowHeadersVisible = false;
-            this.dgvHead.RowTemplate.Height = 23;
+            this.dgvHead.RowTemplate.Height = 29;
             this.dgvHead.Size = new System.Drawing.Size(720, 30);
             this.dgvHead.TabIndex = 137;
             // 
@@ -163,7 +163,7 @@
             this.dgvFoot.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvFoot.RowHeadersVisible = false;
             this.dgvFoot.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvFoot.RowTemplate.Height = 23;
+            this.dgvFoot.RowTemplate.Height = 39;
             this.dgvFoot.Size = new System.Drawing.Size(720, 40);
             this.dgvFoot.TabIndex = 138;
             // 

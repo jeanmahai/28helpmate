@@ -145,16 +145,16 @@
             this.ddlHour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlHour.DropDownWidth = 85;
             this.ddlHour.FormattingEnabled = true;
-            this.ddlHour.Location = new System.Drawing.Point(273, 25);
+            this.ddlHour.Location = new System.Drawing.Point(334, 27);
             this.ddlHour.Name = "ddlHour";
-            this.ddlHour.Size = new System.Drawing.Size(90, 20);
+            this.ddlHour.Size = new System.Drawing.Size(147, 20);
             this.ddlHour.TabIndex = 8;
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDate.Location = new System.Drawing.Point(20, 28);
+            this.lblDate.Location = new System.Drawing.Point(20, 31);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(44, 12);
             this.lblDate.TabIndex = 9;
@@ -162,16 +162,17 @@
             // 
             // tbxDate
             // 
-            this.tbxDate.Location = new System.Drawing.Point(57, 24);
+            this.tbxDate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tbxDate.Location = new System.Drawing.Point(67, 27);
             this.tbxDate.Name = "tbxDate";
-            this.tbxDate.Size = new System.Drawing.Size(100, 21);
+            this.tbxDate.Size = new System.Drawing.Size(135, 21);
             this.tbxDate.TabIndex = 10;
             // 
             // lblHour
             // 
             this.lblHour.AutoSize = true;
             this.lblHour.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblHour.Location = new System.Drawing.Point(229, 28);
+            this.lblHour.Location = new System.Drawing.Point(287, 31);
             this.lblHour.Name = "lblHour";
             this.lblHour.Size = new System.Drawing.Size(44, 12);
             this.lblHour.TabIndex = 11;
@@ -181,7 +182,7 @@
             // 
             this.lblMinute.AutoSize = true;
             this.lblMinute.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMinute.Location = new System.Drawing.Point(373, 29);
+            this.lblMinute.Location = new System.Drawing.Point(492, 31);
             this.lblMinute.Name = "lblMinute";
             this.lblMinute.Size = new System.Drawing.Size(44, 12);
             this.lblMinute.TabIndex = 13;
@@ -192,9 +193,9 @@
             this.ddlMinute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlMinute.DropDownWidth = 85;
             this.ddlMinute.FormattingEnabled = true;
-            this.ddlMinute.Location = new System.Drawing.Point(418, 26);
+            this.ddlMinute.Location = new System.Drawing.Point(539, 27);
             this.ddlMinute.Name = "ddlMinute";
-            this.ddlMinute.Size = new System.Drawing.Size(90, 20);
+            this.ddlMinute.Size = new System.Drawing.Size(147, 20);
             this.ddlMinute.TabIndex = 12;
             // 
             // btnQuery
@@ -206,7 +207,7 @@
             this.btnQuery.FlatAppearance.BorderSize = 0;
             this.btnQuery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuery.ForeColor = System.Drawing.Color.White;
-            this.btnQuery.Location = new System.Drawing.Point(564, 25);
+            this.btnQuery.Location = new System.Drawing.Point(708, 26);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 14;
@@ -224,7 +225,7 @@
             this.pnlLine.Location = new System.Drawing.Point(22, 55);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(2014, 1);
+            this.pnlLine.Size = new System.Drawing.Size(2680, 1);
             this.pnlLine.TabIndex = 147;
             // 
             // bgworkerLoad
@@ -235,7 +236,7 @@
             // lnkSltDate
             // 
             this.lnkSltDate.AutoSize = true;
-            this.lnkSltDate.Location = new System.Drawing.Point(161, 28);
+            this.lnkSltDate.Location = new System.Drawing.Point(217, 31);
             this.lnkSltDate.Name = "lnkSltDate";
             this.lnkSltDate.Size = new System.Drawing.Size(53, 12);
             this.lnkSltDate.TabIndex = 148;
