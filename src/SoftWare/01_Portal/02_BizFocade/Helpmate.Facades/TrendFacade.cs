@@ -56,7 +56,7 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
-                var result = Client.Service.QuerySupperTrend(1, 45, DateTime.Now.ToShortDateString(), "", "");
+                var result = Client.Service.GetSpecialDetail(date, beginHour, endHour);
                 if (result.Success) Header.Key = result.Key;
                 return result;
             }

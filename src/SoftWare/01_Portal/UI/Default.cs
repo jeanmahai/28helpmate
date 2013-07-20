@@ -279,7 +279,16 @@ namespace Helpmate.UI.Forms
                     UtilsTool.Play.Stop();
                 }
 
-                if (string.IsNullOrEmpty(lblServerTime.Text) || (Convert.ToDateTime(lblServerTime.Text).Hour != result.ServerDate.Hour))
+                //if (string.IsNullOrEmpty(lblServerTime.Text) || (Convert.ToDateTime(lblServerTime.Text).Hour != result.ServerDate.Hour))
+                //{
+                //    lblServerTime.Text = UtilsTool.GetShortTime(result.ServerDate);
+                //    timerServer.Enabled = true;
+                //}
+                DateTime localTime = Convert.ToDateTime(lblServerTime.Text);
+                DateTime serverTime = result.ServerDate;
+                if ((localTime.Hour == serverTime.Hour && localTime.Minute == serverTime.Minute && localTime.Second < serverTime.Second)
+                    || (localTime.Hour == serverTime.Hour && localTime.Minute < serverTime.Minute)
+                    || localTime.Hour < serverTime.Hour)
                 {
                     lblServerTime.Text = UtilsTool.GetShortTime(result.ServerDate);
                     timerServer.Enabled = true;

@@ -121,6 +121,9 @@
     <None Include="Web References\LotteryWebSvc\ResultRMOfPageListOfRemindStatistics.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\LotteryWebSvc\ResultRMOfSpecialLottery.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\LotteryWebSvc\ResultRMOfString.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

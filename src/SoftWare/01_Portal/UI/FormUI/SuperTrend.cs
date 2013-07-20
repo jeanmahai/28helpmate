@@ -73,7 +73,7 @@ namespace Helpmate.UI.Forms.FormUI
                 this.ddlHour.Items.Add(" 全部 ");
                 while (hour < 24)
                 {
-                    this.ddlHour.Items.Add(string.Format(" {0} 小时 ", hour));
+                    this.ddlHour.Items.Add(string.Format(" {0} 时 ", hour));
                     hour++;
                 }
                 this.ddlHour.SelectedIndex = 0;

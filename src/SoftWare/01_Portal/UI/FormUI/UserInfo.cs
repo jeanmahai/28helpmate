@@ -210,7 +210,7 @@ namespace Helpmate.UI.Forms.FormUI
         private void button1_Click(object sender, EventArgs e)
         {
             SpecialAnalysisDetail sadform = new SpecialAnalysisDetail();
-            sadform.strDate = "7月20日10时-12时";
+            sadform.strDate = textBox1.Text.Trim(); //"7月20日10时-12时";
             sadform.ShowDialog();
         }
     }

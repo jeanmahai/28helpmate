@@ -69,6 +69,10 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private System.Threading.SendOrPostCallback ResetPswOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetSpecialOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetSpecialDetailOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -172,6 +176,12 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         /// <remarks/>
         public event ResetPswCompletedEventHandler ResetPswCompleted;
+        
+        /// <remarks/>
+        public event GetSpecialCompletedEventHandler GetSpecialCompleted;
+        
+        /// <remarks/>
+        public event GetSpecialDetailCompletedEventHandler GetSpecialDetailCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
@@ -757,6 +767,72 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSpecial", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfSpecialLottery GetSpecial(int startHour, int endHour) {
+            object[] results = this.Invoke("GetSpecial", new object[] {
+                        startHour,
+                        endHour});
+            return ((ResultRMOfSpecialLottery)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSpecialAsync(int startHour, int endHour) {
+            this.GetSpecialAsync(startHour, endHour, null);
+        }
+        
+        /// <remarks/>
+        public void GetSpecialAsync(int startHour, int endHour, object userState) {
+            if ((this.GetSpecialOperationCompleted == null)) {
+                this.GetSpecialOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSpecialOperationCompleted);
+            }
+            this.InvokeAsync("GetSpecial", new object[] {
+                        startHour,
+                        endHour}, this.GetSpecialOperationCompleted, userState);
+        }
+        
+        private void OnGetSpecialOperationCompleted(object arg) {
+            if ((this.GetSpecialCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSpecialCompleted(this, new GetSpecialCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapHeaderAttribute("TokenHeaderValue")]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSpecialDetail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ResultRMOfLotteryTrend GetSpecialDetail(string date, int bHour, int eHour) {
+            object[] results = this.Invoke("GetSpecialDetail", new object[] {
+                        date,
+                        bHour,
+                        eHour});
+            return ((ResultRMOfLotteryTrend)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSpecialDetailAsync(string date, int bHour, int eHour) {
+            this.GetSpecialDetailAsync(date, bHour, eHour, null);
+        }
+        
+        /// <remarks/>
+        public void GetSpecialDetailAsync(string date, int bHour, int eHour, object userState) {
+            if ((this.GetSpecialDetailOperationCompleted == null)) {
+                this.GetSpecialDetailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSpecialDetailOperationCompleted);
+            }
+            this.InvokeAsync("GetSpecialDetail", new object[] {
+                        date,
+                        bHour,
+                        eHour}, this.GetSpecialDetailOperationCompleted, userState);
+        }
+        
+        private void OnGetSpecialDetailOperationCompleted(object arg) {
+            if ((this.GetSpecialDetailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSpecialDetailCompleted(this, new GetSpecialDetailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -776,7 +852,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -859,7 +935,484 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryStableNumberVM {
+        
+        private int retNum1Field;
+        
+        private string dayAndCnt1Field;
+        
+        private int retNum2Field;
+        
+        private string dayAndCnt2Field;
+        
+        private int retNum3Field;
+        
+        private string dayAndCnt3Field;
+        
+        /// <remarks/>
+        public int RetNum1 {
+            get {
+                return this.retNum1Field;
+            }
+            set {
+                this.retNum1Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DayAndCnt1 {
+            get {
+                return this.dayAndCnt1Field;
+            }
+            set {
+                this.dayAndCnt1Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RetNum2 {
+            get {
+                return this.retNum2Field;
+            }
+            set {
+                this.retNum2Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DayAndCnt2 {
+            get {
+                return this.dayAndCnt2Field;
+            }
+            set {
+                this.dayAndCnt2Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RetNum3 {
+            get {
+                return this.retNum3Field;
+            }
+            set {
+                this.retNum3Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DayAndCnt3 {
+            get {
+                return this.dayAndCnt3Field;
+            }
+            set {
+                this.dayAndCnt3Field = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryTypeAvg {
+        
+        private int avgBigField;
+        
+        private string pBigField;
+        
+        private int avgSmallField;
+        
+        private string pSmallField;
+        
+        private int avgMiddleField;
+        
+        private string pMiddleField;
+        
+        private int avgSideField;
+        
+        private string pSideField;
+        
+        private int avgOddField;
+        
+        private string pOddField;
+        
+        private int avgDualField;
+        
+        private string pDualField;
+        
+        /// <remarks/>
+        public int AvgBig {
+            get {
+                return this.avgBigField;
+            }
+            set {
+                this.avgBigField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PBig {
+            get {
+                return this.pBigField;
+            }
+            set {
+                this.pBigField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AvgSmall {
+            get {
+                return this.avgSmallField;
+            }
+            set {
+                this.avgSmallField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PSmall {
+            get {
+                return this.pSmallField;
+            }
+            set {
+                this.pSmallField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AvgMiddle {
+            get {
+                return this.avgMiddleField;
+            }
+            set {
+                this.avgMiddleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PMiddle {
+            get {
+                return this.pMiddleField;
+            }
+            set {
+                this.pMiddleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AvgSide {
+            get {
+                return this.avgSideField;
+            }
+            set {
+                this.avgSideField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PSide {
+            get {
+                return this.pSideField;
+            }
+            set {
+                this.pSideField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AvgOdd {
+            get {
+                return this.avgOddField;
+            }
+            set {
+                this.avgOddField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string POdd {
+            get {
+                return this.pOddField;
+            }
+            set {
+                this.pOddField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AvgDual {
+            get {
+                return this.avgDualField;
+            }
+            set {
+                this.avgDualField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PDual {
+            get {
+                return this.pDualField;
+            }
+            set {
+                this.pDualField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LotteryTypeCount {
+        
+        private string dateField;
+        
+        private int smallField;
+        
+        private int bigField;
+        
+        private int middleField;
+        
+        private int sideField;
+        
+        private int oddField;
+        
+        private int dualField;
+        
+        private string noAppearNumField;
+        
+        private string bestNumField;
+        
+        /// <remarks/>
+        public string Date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Small {
+            get {
+                return this.smallField;
+            }
+            set {
+                this.smallField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Big {
+            get {
+                return this.bigField;
+            }
+            set {
+                this.bigField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Middle {
+            get {
+                return this.middleField;
+            }
+            set {
+                this.middleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Side {
+            get {
+                return this.sideField;
+            }
+            set {
+                this.sideField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Odd {
+            get {
+                return this.oddField;
+            }
+            set {
+                this.oddField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Dual {
+            get {
+                return this.dualField;
+            }
+            set {
+                this.dualField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string NoAppearNum {
+            get {
+                return this.noAppearNumField;
+            }
+            set {
+                this.noAppearNumField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string BestNum {
+            get {
+                return this.bestNumField;
+            }
+            set {
+                this.bestNumField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class SpecialLottery {
+        
+        private LotteryTypeCount[] lotteryTypeCountField;
+        
+        private LotteryTypeAvg lotteryTypeAvgField;
+        
+        private LotteryStableNumberVM lotteryStableNumberField;
+        
+        /// <remarks/>
+        public LotteryTypeCount[] LotteryTypeCount {
+            get {
+                return this.lotteryTypeCountField;
+            }
+            set {
+                this.lotteryTypeCountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LotteryTypeAvg LotteryTypeAvg {
+            get {
+                return this.lotteryTypeAvgField;
+            }
+            set {
+                this.lotteryTypeAvgField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public LotteryStableNumberVM LotteryStableNumber {
+            get {
+                return this.lotteryStableNumberField;
+            }
+            set {
+                this.lotteryStableNumberField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ResultRMOfSpecialLottery {
+        
+        private bool successField;
+        
+        private string messageField;
+        
+        private SpecialLottery dataField;
+        
+        private int codeField;
+        
+        private string keyField;
+        
+        private System.DateTime serverDateField;
+        
+        /// <remarks/>
+        public bool Success {
+            get {
+                return this.successField;
+            }
+            set {
+                this.successField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public SpecialLottery Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ServerDate {
+            get {
+                return this.serverDateField;
+            }
+            set {
+                this.serverDateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -928,7 +1481,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1033,7 +1586,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1114,7 +1667,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1147,7 +1700,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1276,7 +1829,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1381,7 +1934,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1462,7 +2015,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1543,7 +2096,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1624,7 +2177,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1705,7 +2258,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1786,7 +2339,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1867,7 +2420,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2056,7 +2609,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2137,7 +2690,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2218,7 +2771,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2335,7 +2888,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2416,7 +2969,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2497,7 +3050,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2530,7 +3083,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2587,7 +3140,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2668,7 +3221,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2749,7 +3302,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2866,7 +3419,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -2947,7 +3500,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1009")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.1")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3517,6 +4070,58 @@ namespace Helpmate.Facades.LotteryWebSvc {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ResultRMOfString)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetSpecialCompletedEventHandler(object sender, GetSpecialCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSpecialCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSpecialCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfSpecialLottery Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfSpecialLottery)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetSpecialDetailCompletedEventHandler(object sender, GetSpecialDetailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSpecialDetailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSpecialDetailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultRMOfLotteryTrend Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultRMOfLotteryTrend)(this.results[0]));
             }
         }
     }
