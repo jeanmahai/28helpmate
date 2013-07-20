@@ -163,7 +163,7 @@ namespace Business
                 }).ToList();
                 typeCount.ForEach(s =>
                                   {
-                                      s.NoAppearNum = string.Join(",",noAppearNo.Where(w => w.Date == s.Date).Select(ss=>ss.RetNum).ToList());
+                                      s.NoAppearNum = string.Join(",",noAppearNo.Where(w => w.Date == s.Date).Select(ss => ss.RetNum).ToList());
                                       s.BestNum = string.Join(",",bestNo.Where(ww => ww.Date == s.Date).ToList());
                                   });
                 result.LotteryTypeCount = typeCount;
@@ -448,36 +448,41 @@ namespace Business
         /// <returns></returns>
         public LotteryByTwentyPeriod QueryLotteryByHourStep(DateTime dateTime,int siteSysNo,string tableName,int regionSysNo)
         {
-            var datesStr = new List<string>();
-            if (regionSysNo == 10001)
-            {
-                //北京
-                if (dateTime.Hour == 0)
-                {
-                    dateTime = DateTime.Parse(dateTime.ToString("yyyy-MM-dd 09:05:00"));
-                }
-            }
-            if (regionSysNo == 10002)
-            {
-                //加拿大
-            }
-            DateTime temp = dateTime;
-            for (var i = 1;i <= 20;i++)
-            {
-                temp = temp.AddHours(-1);
-                if (regionSysNo == 10001)
-                {
-                    if (temp.Hour < 9)
-                    {
-                        temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
-                    }
-                }
+            //var datesStr = new List<string>();
+            //if (regionSysNo == 10001)
+            //{
+            //    //北京
+            //    if (dateTime.Hour == 0)
+            //    {
+            //        dateTime = DateTime.Parse(dateTime.ToString("yyyy-MM-dd 09:05:00"));
+            //    }
+            //}
+            //if (regionSysNo == 10002)
+            //{
+            //    //加拿大
+            //}
+            //DateTime temp = dateTime;
+            //for (var i = 1;i <= 20;i++)
+            //{
+            //    temp = temp.AddHours(-1);
+            //    if (regionSysNo == 10001)
+            //    {
+            //        if (temp.Hour < 9)
+            //        {
+            //            temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
+            //        }
+            //    }
 
-                datesStr.Add("'" + temp.ToString("yyyy-MM-dd HH:mm:ss") + "'");
-            }
+            //    datesStr.Add("'" + temp.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+            //}
 
-            var sql = SqlManager.GetSqlText("QueryLotteryByHourStep");
-            sql = string.Format(sql,tableName,string.Join(",",datesStr),siteSysNo);
+            var sql = @"
+select top 20 *
+from {0} with(nolock)
+where  SiteSysNo={1}
+order by PeriodNum desc
+";
+            sql = string.Format(sql,tableName,siteSysNo);
 
             var q = Session.CreateSQLQuery(sql)
                 .AddEntity(typeof(LotteryForBJ))
@@ -846,6 +851,165 @@ namespace Business
                 .SetParameter("MIN_PERIOD",minPeriod)
                 .SetParameter("PAGE_INDEX",pageIndex)
                 .SetParameter("PAGE_SIZE",pageSize)
+                .List<LotteryExtByBJ>();
+            result.DataList = q4.ToList();
+            return result;
+        }
+        public LotteryTrend QuerySupperTrend(int siteSysNo,
+            string date,
+            int bHour,
+            int eHour,
+            string tableName)
+        {
+
+            var result = new LotteryTrend();
+            //查询每个号码及类型的出现次数,总次数以maxTotal为准
+
+            //condition
+            var condition = new StringBuilder();
+            if (string.IsNullOrEmpty(date))
+            {
+            }
+            else
+            {
+                condition.AppendFormat(" and CONVERT(varchar(100),BJ.RetTime,23)='{0}'",DateTime.Parse(date).ToString("yyyy-MM-dd"));
+            }
+            if (bHour == eHour)
+                condition.AppendFormat(" and datepart(hour,BJ.RetTime)={0}",bHour);
+            else
+            {
+                eHour--;
+                condition.AppendFormat(" and datepart(hour,BJ.RetTime)>={0}",bHour);
+                condition.AppendFormat(" and datepart(hour,BJ.RetTime)<={0}",eHour);
+            }
+
+            //查询数字的出现次数
+            var sql = @"
+SELECT 
+	CONVERT(NCHAR(40),BJ.RetNum) as Name,
+	COUNT(BJ.RetNum) AS Total
+FROM {1} BJ with(nolock)
+	JOIN dbo.UseSite US  with(nolock)
+		ON BJ.SiteSysNo=US.SysNo
+WHERE BJ.SiteSysNo=:SITE_SYS_NO
+    {0}
+GROUP BY BJ.RetNum";
+            sql = string.Format(sql,condition,tableName);
+            var q1 = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof(LotteryTimes))
+                .SetParameter("SITE_SYS_NO",siteSysNo)
+                .List<LotteryTimes>();
+            //查询类型的出现次数
+            sql = SqlManager.GetSqlText("QuerySupperTrend_28BJ_2");
+            sql = string.Format(sql,condition,tableName);
+            var q2 = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof(LotteryTimes))
+                .SetParameter("SITE_SYS_NO",siteSysNo)
+                .List<LotteryTimes>();
+
+            result.LotteryTimeses = new List<LotteryTimes>();
+            result.LotteryTimeses.AddRange(q1);
+            result.LotteryTimeses.AddRange(q2);
+            foreach (var num in LotteryNumber)
+            {
+                if (!result.LotteryTimeses.Exists(p => p.Name.Trim() == num.ToString()))
+                {
+                    result.LotteryTimeses.Add(new LotteryTimes()
+                    {
+                        Name = num.ToString(),
+                        Total = 0
+                    });
+                }
+            }
+            if (!result.LotteryTimeses.Exists(p => p.Name.Trim() == "大"))
+            {
+                result.LotteryTimeses.Add(new LotteryTimes()
+                {
+                    Name = "大",
+                    Total = 0
+                });
+            }
+            if (!result.LotteryTimeses.Exists(p => p.Name.Trim() == "小"))
+            {
+                result.LotteryTimeses.Add(new LotteryTimes()
+                {
+                    Name = "小",
+                    Total = 0
+                });
+            }
+            if (!result.LotteryTimeses.Exists(p => p.Name.Trim() == "单"))
+            {
+                result.LotteryTimeses.Add(new LotteryTimes()
+                {
+                    Name = "单",
+                    Total = 0
+                });
+            }
+            if (!result.LotteryTimeses.Exists(p => p.Name.Trim() == "双"))
+            {
+                result.LotteryTimeses.Add(new LotteryTimes()
+                {
+                    Name = "双",
+                    Total = 0
+                });
+            }
+            if (!result.LotteryTimeses.Exists(p => p.Name.Trim() == "中"))
+            {
+                result.LotteryTimeses.Add(new LotteryTimes()
+                {
+                    Name = "中",
+                    Total = 0
+                });
+            }
+            if (!result.LotteryTimeses.Exists(p => p.Name.Trim() == "单"))
+            {
+                result.LotteryTimeses.Add(new LotteryTimes()
+                {
+                    Name = "单",
+                    Total = 0
+                });
+            }
+            result.LotteryTimeses.ForEach(p => p.Name = p.Name.Trim());
+            //total
+//            sql = @"SELECT COUNT(1) Total,
+//       :PAGE_INDEX PageIndex,
+//       :PAGE_SIZE PageSize,
+//       CEILING(COUNT(1)/CONVERT(DECIMAL,:PAGE_SIZE)) AS [PageCount]
+//FROM {1} BJ with(nolock)
+//	JOIN dbo.UseSite US with(nolock)
+//		ON BJ.SiteSysNo=US.SysNo
+//	JOIN dbo.ResultCategory_28 RC with(nolock)
+//		ON BJ.RetNum=RC.RetNum
+//WHERE BJ.SiteSysNo=:SITE_SYS_NO
+//      AND BJ.PeriodNum>:MIN_PERIOD";
+//            sql = string.Format(sql,condition,tableName);
+//            var q3 = Session.CreateSQLQuery(sql)
+//                .AddEntity(typeof(PageInfo))
+//                .SetParameter("SITE_SYS_NO",siteSysNo)
+//                .UniqueResult<PageInfo>();
+//            result.PageCount = q3.PageCount;
+//            result.PageIndex = q3.PageIndex;
+            //list
+            sql = @"
+SELECT BJ.PeriodNum,
+       BJ.RetTime,
+       BJ.RetNum,
+       RC.BigOrSmall,
+       RC.MiddleOrSide,
+       RC.OddOrDual
+FROM {1} BJ with(nolock)
+	JOIN dbo.UseSite US with(nolock)
+		ON BJ.SiteSysNo=US.SysNo
+	JOIN dbo.ResultCategory_28 RC with(nolock)
+		ON BJ.RetNum=RC.RetNum
+WHERE BJ.SiteSysNo=:SITE_SYS_NO
+      {0}
+order by BJ.RetTime DESC
+";
+            sql = string.Format(sql,condition,tableName);
+            var q4 = Session.CreateSQLQuery(sql)
+                .AddEntity(typeof(LotteryExtByBJ))
+                .SetParameter("SITE_SYS_NO",siteSysNo)
                 .List<LotteryExtByBJ>();
             result.DataList = q4.ToList();
             return result;

@@ -14,7 +14,7 @@ namespace Model.Model
         public virtual int Side { get; set; }
         public virtual int Odd { get; set; }
         public virtual int Dual { get; set; }
-        public string NoAppearNum { get; set; }
-        public string BestNum { get; set; }
+        public virtual string NoAppearNum { get; set; }
+        public virtual string BestNum { get; set; }
     }
 }

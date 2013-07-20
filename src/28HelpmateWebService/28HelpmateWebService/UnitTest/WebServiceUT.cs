@@ -105,10 +105,9 @@ namespace UnitTest
         [TestMethod]
         public void QueryLotteryByHourStepTest()
         {
-            //var data = m_Dal.QueryLotteryByHourStep(DateTime.Parse("2013-06-30 11:30:00.000")
-            //    ,QueryUserSiteSysNo());
-            //Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
-            //    data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            var data = m_Dal.QueryLotteryByHourStep(DateTime.Now,10001,"SourceData_28_Canada",10002);
+            Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
+                data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
         }
         [TestMethod]
         public void QueryUserSiteTest()
@@ -372,6 +371,12 @@ namespace UnitTest
             var s = 9;
             var e = 9;
             var result=m_Dal.GetSpecialInfo(region,site,s,e);
+        }
+
+        [TestMethod]
+        public void Test_QuerySupperTrend2()
+        {
+            var result=m_Dal.QuerySupperTrend(10001, "2013-7-20", 10, 13, GetTableName(10001));
         }
 
         private string GetTableName(int regionSourceSysNo)

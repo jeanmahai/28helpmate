@@ -586,6 +586,51 @@ namespace WebService
             return result;
         }
 
+        [WebMethod(Description = "特殊分析",EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<SpecialLottery> GetSpecial(int startHour,int endHour)
+        {
+            var result = new ResultRM<SpecialLottery>();
+            string error;
+            //result.Data = Dal.ResetPsw(userId,q1,a1,q2,a2,out error);
+            if (ValidateToken(ReqHeader,out error))
+            {
+                result.Data = Dal.GetSpecialInfo(ReqHeader.RegionSourceSysNo, ReqHeader.SiteSourceSysNo, startHour,
+                                                 endHour);
+                result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = error;
+            }
+
+            return result;
+        }
+
+        [WebMethod(Description = "特殊分析详情",EnableSession = true)]
+        [SoapHeader("ReqHeader")]
+        public ResultRM<LotteryTrend> GetSpecialDetail(string date,
+            int bHour,
+            int eHour)
+        {
+            var result = new ResultRM<LotteryTrend>();
+            string error;
+            if (ValidateToken(ReqHeader,out error))
+            {
+                result.Data = Dal.QuerySupperTrend(ReqHeader.SiteSourceSysNo,
+                                                   date, bHour, eHour, GetTableName(ReqHeader.RegionSourceSysNo));
+                    result.Success = true;
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = error;
+            }
+
+            return result;
+        }
+
         private string GetTableName(int regionSourceSysNo)
         {
             string tableName;
