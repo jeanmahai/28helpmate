@@ -63,8 +63,6 @@
             this.bgworkerUserInfo = new System.ComponentModel.BackgroundWorker();
             this.bgworkerPay = new System.ComponentModel.BackgroundWorker();
             this.bgworkerChangePwd = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label6
@@ -81,8 +79,8 @@
             // 
             // pnlLine
             // 
-            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLine.BackColor = System.Drawing.Color.Transparent;
             this.pnlLine.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.pnlLine.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -178,8 +176,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -257,8 +255,8 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
             this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -418,31 +416,12 @@
             this.bgworkerChangePwd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerChangePwd_DoWork);
             this.bgworkerChangePwd.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerChangePwd_RunWorkerCompleted);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(503, 532);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 179;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(352, 534);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(126, 21);
-            this.textBox1.TabIndex = 180;
-            // 
             // UserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ddlQuestion2);
             this.Controls.Add(this.ddlQuestion1);
             this.Controls.Add(this.btnIssue);
@@ -521,7 +500,5 @@
         private System.ComponentModel.BackgroundWorker bgworkerUserInfo;
         private System.ComponentModel.BackgroundWorker bgworkerPay;
         private System.ComponentModel.BackgroundWorker bgworkerChangePwd;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
