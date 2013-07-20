@@ -364,6 +364,16 @@ namespace UnitTest
             //Console.WriteLine(a.Data.List.Length);
         }
 
+        [TestMethod]
+        public void Test_GetSpecialInfo()
+        {
+            var region = 10001;
+            var site = 10001;
+            var s = 9;
+            var e = 9;
+            var result=m_Dal.GetSpecialInfo(region,site,s,e);
+        }
+
         private string GetTableName(int regionSourceSysNo)
         {
             string tableName;

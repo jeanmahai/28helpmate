@@ -48,8 +48,12 @@
     <Compile Include="Model\InfoForTimer.cs" />
     <Compile Include="Model\LotteryExtByBJ.cs" />
     <Compile Include="Model\LotteryForBJ.cs" />
+    <Compile Include="Model\LotteryNumber.cs" />
+    <Compile Include="Model\LotteryStableNumber.cs" />
     <Compile Include="Model\LotteryTimes.cs" />
     <Compile Include="Model\LotteryType.cs" />
+    <Compile Include="Model\LotteryTypeAvg.cs" />
+    <Compile Include="Model\LotteryTypeCount.cs" />
     <Compile Include="Model\LotteryTypeTimes.cs" />
     <Compile Include="Model\Notices.cs" />
     <Compile Include="Model\OmissionLottery.cs" />
@@ -59,6 +63,7 @@
     <Compile Include="Model\PayLog.cs" />
     <Compile Include="Model\RegionEnum.cs" />
     <Compile Include="Model\RemindStatistics.cs" />
+    <Compile Include="Model\SpecialLottery.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserSite.cs" />
     <Compile Include="Model\UseSource.cs" />
@@ -135,6 +140,26 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\PayCard.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\LotteryNumber.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\LotteryStableNumber.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\LotteryTypeAvg.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\LotteryTypeCount.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

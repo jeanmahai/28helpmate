@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.LotteryTypeCount,Model">
+
+    <id name="Date" column="Date" type="String" >
+      <generator class="assigned"/>
+    </id>
+    <property name="Small" column="Small" type="Int32" />
+    <property name="Big" column="Big" type="Int32" />
+    <property name="Middle" column="Middle" type="Int32" />
+    <property name="Side" column="Side" type="Int32" />
+    <property name="Odd" column="Odd" type="Int32" />
+    <property name="Dual" column="Dual" type="Int32" />
+  </class>
+</hibernate-mapping>

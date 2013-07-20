@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Model"
+                   namespace="Model">
+  <class name="Model.Model.LotteryTypeAvg,Model">
+
+    <id name="AvgBig" column="AvgBig" type="Int32" >
+      <generator class="assigned"/>
+    </id>
+    <property name="AvgSmall" column="AvgSmall" type="Int32" />
+    <property name="AvgMiddle" column="AvgMiddle" type="Int32" />
+    <property name="AvgSide" column="AvgSide" type="Int32" />
+    <property name="AvgOdd" column="AvgOdd" type="Int32" />
+    <property name="AvgDual" column="AvgDual" type="Int32" />
+  </class>
+</hibernate-mapping>

@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Sqls>
 
+  <sql name="GetSpecialInfo">
+    <![CDATA[
+exec dbo.SpecialAnalysis @RegionSysNo,@SiteSysNo,@StartHour,@EndHour
+    ]]>
+  </sql>
+
   <sql name="GetCurrentLottery">
     <![CDATA[
 select top 1 *

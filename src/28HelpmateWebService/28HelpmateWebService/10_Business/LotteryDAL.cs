@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -9,6 +11,7 @@ using Model;
 using Model.Model;
 using Model.ResponseModel;
 using NHibernate;
+using NHibernate.Cfg;
 using NHibernate.Criterion;
 using NHibernate.Impl;
 using NHibernate.Linq;
@@ -118,7 +121,154 @@ namespace Business
             return random.Next(100000,999999).ToString(CultureInfo.InvariantCulture);
         }
 
+        private SqlConnection GetSqlConnection()
+        {
+            return new SqlConnection("Server=117.25.145.170,3520;Database=Helpmate;User Id=helpmate;Password=1qa123!@#;");
+        }
+
         #region 28
+
+        public SpecialLottery GetSpecialInfo(int regionSysNo,int siteSysNo,int startHour,int endHour)
+        {
+            SpecialLottery result = new SpecialLottery();
+            var strSql = "exec SpecialAnalysis {0},{1},{2},{3}";
+            strSql = string.Format(strSql,regionSysNo,siteSysNo,startHour,endHour);
+            using (var cnn = GetSqlConnection())
+            {
+                var cmd = new SqlCommand(strSql);
+                cmd.Connection = cnn;
+                cnn.Open();
+                var adapter = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                var typeCount = ds.Tables[0].AsEnumerable().Select(s => new LotteryTypeCount()
+                                                                                  {
+                                                                                      Big = s.Field<int>("Big"),
+                                                                                      Date = s.Field<string>("Date"),
+                                                                                      Dual = s.Field<int>("Dual"),
+                                                                                      Middle = s.Field<int>("Middle"),
+                                                                                      Odd = s.Field<int>("Odd"),
+                                                                                      Side = s.Field<int>("Side"),
+                                                                                      Small = s.Field<int>("Small")
+                                                                                  }).ToList();
+                var noAppearNo = ds.Tables[1].AsEnumerable().Select(s => new LotteryNumber()
+                {
+                    Date = s.Field<string>("Date"),
+                    RetNum = s.Field<int>("RetNum")
+                }).ToList();
+                var bestNo = ds.Tables[2].AsEnumerable().Select(s => new LotteryNumber()
+                {
+                    Date = s.Field<string>("Date"),
+                    RetNum = s.Field<int>("RetNum")
+                }).ToList();
+                typeCount.ForEach(s =>
+                                  {
+                                      s.NoAppearNum = string.Join(",",noAppearNo.Where(w => w.Date == s.Date).Select(ss=>ss.RetNum).ToList());
+                                      s.BestNum = string.Join(",",bestNo.Where(ww => ww.Date == s.Date).ToList());
+                                  });
+                result.LotteryTypeCount = typeCount;
+
+                var typeAvg = ds.Tables[3].AsEnumerable().Select(s => new LotteryTypeAvg()
+                {
+                    AvgBig = s.Field<int>("AvgBig"),
+                    AvgDual = s.Field<int>("AvgDual"),
+                    AvgMiddle = s.Field<int>("AvgMiddle"),
+                    AvgOdd = s.Field<int>("AvgOdd"),
+                    AvgSide = s.Field<int>("AvgSide"),
+                    AvgSmall = s.Field<int>("AvgSmall")
+                }).ToList();
+                typeAvg.ForEach(s =>
+                                {
+                                    var count = 0m;
+                                    decimal tuijian;
+                                    //count = typeCount.Select(w => w.Big).Sum() + typeCount.Select(w => w.Small).Sum();
+                                    count = Convert.ToDecimal(s.AvgBig + s.AvgSmall);
+                                    if (count > 0)
+                                    {
+                                        var pb = s.AvgBig / count;
+                                        var ps = s.AvgSmall / count;
+                                        if (pb > 0.5m)
+                                        {
+                                            s.PBig = pb.ToString("P");
+                                        }
+                                        if (ps > 0.5m)
+                                        {
+                                            s.PSmall = ps.ToString("P");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        s.PBig = "";
+                                        s.PSmall = "";
+                                    }
+
+                                    count = Convert.ToDecimal(s.AvgDual + s.AvgOdd);
+                                    if (count > 0)
+                                    {
+                                        var pd = s.AvgDual / count;
+                                        var po = s.AvgOdd / count;
+                                        if (pd > 0.5m)
+                                        {
+                                            s.PDual = pd.ToString("P");
+                                        }
+                                        if (po > 0.5m)
+                                        {
+                                            s.POdd = po.ToString("P");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        s.PDual = "";
+                                        s.POdd = "";
+                                    }
+                                    count = Convert.ToDecimal(s.AvgMiddle + s.AvgSide);
+                                    if (count > 0)
+                                    {
+                                        var pm = s.AvgMiddle / count;
+                                        var ps = s.AvgSide / count;
+                                        if (pm > 0.5m)
+                                        {
+                                            s.PMiddle = pm.ToString("P");
+                                        }
+                                        if (ps > 0.5m)
+                                        {
+                                            s.PSide = ps.ToString("P");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        s.PMiddle = "";
+                                        s.PSide = "";
+                                    }
+
+                                });
+                result.LotteryTypeAvg = typeAvg.SingleOrDefault();
+
+                var stableNo = ds.Tables[4].AsEnumerable().Select(s => new LotteryStableNumber()
+                {
+                    Cnt = s.Field<int>("Cnt"),
+                    Days = s.Field<int>("Days"),
+                    RetNum = s.Field<int>("RetNum")
+                }).ToList();
+                result.LotteryStableNumber = new LotteryStableNumberVM();
+                if (stableNo.Count >= 1)
+                {
+                    result.LotteryStableNumber.RetNum1 = stableNo[0].RetNum;
+                    result.LotteryStableNumber.DayAndCnt1 = string.Format("{0}天/{1}次",stableNo[0].Days,stableNo[0].Cnt);
+                }
+                if (stableNo.Count >= 2)
+                {
+                    result.LotteryStableNumber.RetNum2 = stableNo[1].RetNum;
+                    result.LotteryStableNumber.DayAndCnt2 = string.Format("{0}天/{1}次",stableNo[1].Days,stableNo[1].Cnt);
+                }
+                if (stableNo.Count >= 3)
+                {
+                    result.LotteryStableNumber.RetNum3 = stableNo[2].RetNum;
+                    result.LotteryStableNumber.DayAndCnt3 = string.Format("{0}天/{1}次",stableNo[2].Days,stableNo[2].Cnt);
+                }
+                return result;
+            }
+        }
 
         public bool ValidateUserTime(int userSysNo,out string error)
         {
@@ -150,7 +300,7 @@ namespace Business
 
         public List<RemindStatistics> QueryRemind(int gameSysNo,int regionSysNo,int siteSysNo,int userSysNo)
         {
-            RefreshRemind(gameSysNo, regionSysNo, siteSysNo);
+            RefreshRemind(gameSysNo,regionSysNo,siteSysNo);
             var q = from a in Session.Query<RemindStatistics>()
                     where a.GameSysNo == gameSysNo
                           && a.SourceSysNo == regionSysNo
