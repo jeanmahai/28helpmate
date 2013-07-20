@@ -44,5 +44,22 @@ namespace Helpmate.Facades
                 return result;
             }
         }
+
+        /// <summary>
+        /// 从Service获取特殊分析详情数据
+        /// </summary>
+        /// <param name="beginHour"></param>
+        /// <param name="endHour"></param>
+        /// <returns></returns>
+        public ResultRMOfLotteryTrend QuerySpecialAnalysisDetail(string date, int beginHour, int endHour)
+        {
+            lock (Header.obj)
+            {
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.QuerySupperTrend(1, 45, DateTime.Now.ToShortDateString(), "", "");
+                if (result.Success) Header.Key = result.Key;
+                return result;
+            }
+        }
     }
 }

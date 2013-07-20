@@ -58,6 +58,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -106,6 +107,12 @@
     </Compile>
     <Compile Include="FormUI\SpecialAnalysis.Designer.cs">
       <DependentUpon>SpecialAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUI\SpecialAnalysisDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUI\SpecialAnalysisDetail.Designer.cs">
+      <DependentUpon>SpecialAnalysisDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUI\UserInfo.cs">
       <SubType>Form</SubType>
@@ -251,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\SpecialAnalysis.resx">
       <DependentUpon>SpecialAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUI\SpecialAnalysisDetail.resx">
+      <DependentUpon>SpecialAnalysisDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\SuperTrend.resx">
       <DependentUpon>SuperTrend.cs</DependentUpon>
