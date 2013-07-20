@@ -43,6 +43,7 @@
     <Compile Include="ChangePwd.cs" />
     <Compile Include="Pay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecialAnalysisFilter.cs" />
     <Compile Include="SuperTrendFilter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

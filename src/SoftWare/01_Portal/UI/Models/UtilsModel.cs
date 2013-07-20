@@ -76,8 +76,9 @@ namespace Helpmate.UI.Forms.Code
                     return Resources.number_26x;
                 case 27:
                     return Resources.number_27x;
+                default:
+                    return new Bitmap(1, 1);
             }
-            return Resources.number_0x;
         }
         /// <summary>
         /// 获取总导航

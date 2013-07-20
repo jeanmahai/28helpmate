@@ -85,6 +85,7 @@
             this.Controls.Add(this.countList);
             this.Controls.Add(this.gvList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimizeBox = false;
             this.Name = "SpecialAnalysisDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "特殊分析详情";

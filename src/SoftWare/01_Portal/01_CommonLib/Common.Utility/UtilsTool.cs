@@ -269,24 +269,69 @@ namespace Common.Utility
         /// 开奖小时
         /// </summary>
         /// <returns></returns>
-        public static List<KeyValue> LotteryHours()
+        public static List<KeyValue> LotteryHours(int areaCode)
         {
             List<KeyValue> keys = new List<KeyValue>();
-            keys.Add(new KeyValue() { Key = "9:0:0", Value = "9点" });
-            keys.Add(new KeyValue() { Key = "10:0:0", Value = "10点" });
-            keys.Add(new KeyValue() { Key = "11:0:0", Value = "11点" });
-            keys.Add(new KeyValue() { Key = "12:0:0", Value = "12点" });
-            keys.Add(new KeyValue() { Key = "13:0:0", Value = "13点" });
-            keys.Add(new KeyValue() { Key = "14:0:0", Value = "14点" });
-            keys.Add(new KeyValue() { Key = "15:0:0", Value = "15点" });
-            keys.Add(new KeyValue() { Key = "16:0:0", Value = "16点" });
-            keys.Add(new KeyValue() { Key = "17:0:0", Value = "17点" });
-            keys.Add(new KeyValue() { Key = "18:0:0", Value = "18点" });
-            keys.Add(new KeyValue() { Key = "19:0:0", Value = "19点" });
-            keys.Add(new KeyValue() { Key = "20:0:0", Value = "20点" });
-            keys.Add(new KeyValue() { Key = "21:0:0", Value = "21点" });
-            keys.Add(new KeyValue() { Key = "22:0:0", Value = "22点" });
-            keys.Add(new KeyValue() { Key = "23:0:0", Value = "23点" });
+
+            if (areaCode == 10001) //北京
+            {
+                keys.Add(new KeyValue() { Key = "09", Value = "09时" });
+                keys.Add(new KeyValue() { Key = "10", Value = "10时" });
+                keys.Add(new KeyValue() { Key = "11", Value = "11时" });
+                keys.Add(new KeyValue() { Key = "12", Value = "12时" });
+                keys.Add(new KeyValue() { Key = "13", Value = "13时" });
+                keys.Add(new KeyValue() { Key = "14", Value = "14时" });
+                keys.Add(new KeyValue() { Key = "15", Value = "15时" });
+                keys.Add(new KeyValue() { Key = "16", Value = "16时" });
+                keys.Add(new KeyValue() { Key = "17", Value = "17时" });
+                keys.Add(new KeyValue() { Key = "18", Value = "18时" });
+                keys.Add(new KeyValue() { Key = "19", Value = "19时" });
+                keys.Add(new KeyValue() { Key = "20", Value = "20时" });
+                keys.Add(new KeyValue() { Key = "21", Value = "21时" });
+                keys.Add(new KeyValue() { Key = "22", Value = "22时" });
+                keys.Add(new KeyValue() { Key = "23", Value = "23时" });
+
+                keys.Add(new KeyValue() { Key = "9-12", Value = "9时-12时 " });
+                keys.Add(new KeyValue() { Key = "12-15", Value = "12时-15时" });
+                keys.Add(new KeyValue() { Key = "15-18", Value = "15时-18时" });
+                keys.Add(new KeyValue() { Key = "18-21", Value = "18时-21时" });
+                keys.Add(new KeyValue() { Key = "21-24", Value = "21时-24时" });
+            }
+            else if (areaCode == 10002) //加拿大
+            {
+                keys.Add(new KeyValue() { Key = "01", Value = "01时" });
+                keys.Add(new KeyValue() { Key = "02", Value = "02时" });
+                keys.Add(new KeyValue() { Key = "03", Value = "03时" });
+                keys.Add(new KeyValue() { Key = "04", Value = "04时" });
+                keys.Add(new KeyValue() { Key = "05", Value = "05时" });
+                keys.Add(new KeyValue() { Key = "06", Value = "06时" });
+                keys.Add(new KeyValue() { Key = "07", Value = "07时" });
+                keys.Add(new KeyValue() { Key = "08", Value = "08时" });
+                keys.Add(new KeyValue() { Key = "09", Value = "09时" });
+                keys.Add(new KeyValue() { Key = "10", Value = "10时" });
+                keys.Add(new KeyValue() { Key = "11", Value = "11时" });
+                keys.Add(new KeyValue() { Key = "12", Value = "12时" });
+                keys.Add(new KeyValue() { Key = "13", Value = "13时" });
+                keys.Add(new KeyValue() { Key = "14", Value = "14时" });
+                keys.Add(new KeyValue() { Key = "15", Value = "15时" });
+                keys.Add(new KeyValue() { Key = "16", Value = "16时" });
+                keys.Add(new KeyValue() { Key = "17", Value = "17时" });
+                keys.Add(new KeyValue() { Key = "18", Value = "18时" });
+                keys.Add(new KeyValue() { Key = "19", Value = "19时" });
+                keys.Add(new KeyValue() { Key = "20", Value = "20时" });
+                keys.Add(new KeyValue() { Key = "21", Value = "21时" });
+                keys.Add(new KeyValue() { Key = "22", Value = "22时" });
+                keys.Add(new KeyValue() { Key = "23", Value = "23时" });
+
+                keys.Add(new KeyValue() { Key = "0-3", Value = "0时-3时" });
+                keys.Add(new KeyValue() { Key = "3-6", Value = "3时-6时" });
+                keys.Add(new KeyValue() { Key = "6-9", Value = "6时-9时" });
+                keys.Add(new KeyValue() { Key = "9-12", Value = "9时-12时 " });
+                keys.Add(new KeyValue() { Key = "12-15", Value = "12时-15时" });
+                keys.Add(new KeyValue() { Key = "15-18", Value = "15时-18时" });
+                keys.Add(new KeyValue() { Key = "18-21", Value = "18时-21时" });
+                keys.Add(new KeyValue() { Key = "21-24", Value = "21时-24时" });
+            }
             return keys;
         }
 

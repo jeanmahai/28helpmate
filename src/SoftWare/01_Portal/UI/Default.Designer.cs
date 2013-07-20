@@ -760,6 +760,7 @@
             this.Name = "Default";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "28伴侣-分析平台";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Default_Load);
             this.stsPage.ResumeLayout(false);
             this.stsPage.PerformLayout();

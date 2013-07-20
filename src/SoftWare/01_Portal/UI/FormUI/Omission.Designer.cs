@@ -140,6 +140,7 @@
             this.dgvHead.ColumnHeadersVisible = false;
             this.dgvHead.Location = new System.Drawing.Point(40, 51);
             this.dgvHead.Name = "dgvHead";
+            this.dgvHead.ReadOnly = true;
             this.dgvHead.RowHeadersVisible = false;
             this.dgvHead.RowTemplate.Height = 29;
             this.dgvHead.Size = new System.Drawing.Size(720, 30);

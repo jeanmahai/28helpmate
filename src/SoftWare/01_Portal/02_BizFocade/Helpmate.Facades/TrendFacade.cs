@@ -61,5 +61,22 @@ namespace Helpmate.Facades
                 return result;
             }
         }
+
+        /// <summary>
+        /// 特殊统计
+        /// </summary>
+        /// <param name="beginHour"></param>
+        /// <param name="endHour"></param>
+        /// <returns></returns>
+        public ResultRMOfSpecialLottery GetSpecial(int beginHour, int endHour)
+        {
+            lock (Header.obj)
+            {
+                Client.Service.TokenHeaderValue = TokenHeader;
+                var result = Client.Service.GetSpecial(beginHour, endHour);
+                if (result.Success) Header.Key = result.Key;
+                return result;
+            }
+        }
     }
 }

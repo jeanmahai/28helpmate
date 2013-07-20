@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace Helpmate.UI.Forms.Models
 {
@@ -22,8 +23,8 @@ namespace Helpmate.UI.Forms.Models
         public string NumberSix { get; set; }
 
         public string StableTitle { get; set; }
-        public string StableNumberOne { get; set; }
-        public string StableNumberTwo { get; set; }
-        public string StableNumberThree { get; set; }
+        public Image StableNumberOne { get; set; }
+        public Image StableNumberTwo { get; set; }
+        public Image StableNumberThree { get; set; }
     }
 }

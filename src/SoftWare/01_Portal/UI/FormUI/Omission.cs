@@ -172,7 +172,6 @@ namespace Helpmate.UI.Forms.FormUI
         {
             if (e == null || e.Value == null || !(sender is DataGridView)) return;
 
-
             DataGridView dgvList = (DataGridView)sender;
             if (dgvList.Columns[e.ColumnIndex].DataPropertyName == "OmitCnt")
             {

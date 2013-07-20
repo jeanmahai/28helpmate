@@ -145,6 +145,8 @@ namespace Helpmate.UI.Forms
             lblUser.Font = new Font(lblUser.Font, FontStyle.Regular);
             picRemindSetCurr.Visible = false;
             lblRemindSet.Font = new Font(lblRemindSet.Font, FontStyle.Regular);
+            picEmailCurr.Visible = false;
+            lblEmail.Font = new Font(lblEmail.Font, FontStyle.Regular);
 
             currLbl.Font = new Font(lblSuperTrend.Font, FontStyle.Bold);
             currPic.Visible = true;

@@ -51,6 +51,7 @@
             this.dgvHead.ColumnHeadersVisible = false;
             this.dgvHead.Location = new System.Drawing.Point(5, 11);
             this.dgvHead.Name = "dgvHead";
+            this.dgvHead.ReadOnly = true;
             this.dgvHead.RowHeadersVisible = false;
             this.dgvHead.RowTemplate.Height = 29;
             this.dgvHead.Size = new System.Drawing.Size(660, 30);
