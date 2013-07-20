@@ -264,5 +264,31 @@ namespace Common.Utility
             result = string.Format(result, hour, minute, second);
             return result;
         }
+
+        /// <summary>
+        /// 开奖小时
+        /// </summary>
+        /// <returns></returns>
+        public static List<KeyValue> LotteryHours()
+        {
+            List<KeyValue> keys = new List<KeyValue>();
+            keys.Add(new KeyValue() { Key = "9:0:0", Value = "9点" });
+            keys.Add(new KeyValue() { Key = "10:0:0", Value = "10点" });
+            keys.Add(new KeyValue() { Key = "11:0:0", Value = "11点" });
+            keys.Add(new KeyValue() { Key = "12:0:0", Value = "12点" });
+            keys.Add(new KeyValue() { Key = "13:0:0", Value = "13点" });
+            keys.Add(new KeyValue() { Key = "14:0:0", Value = "14点" });
+            keys.Add(new KeyValue() { Key = "15:0:0", Value = "15点" });
+            keys.Add(new KeyValue() { Key = "16:0:0", Value = "16点" });
+            keys.Add(new KeyValue() { Key = "17:0:0", Value = "17点" });
+            keys.Add(new KeyValue() { Key = "18:0:0", Value = "18点" });
+            keys.Add(new KeyValue() { Key = "19:0:0", Value = "19点" });
+            keys.Add(new KeyValue() { Key = "20:0:0", Value = "20点" });
+            keys.Add(new KeyValue() { Key = "21:0:0", Value = "21点" });
+            keys.Add(new KeyValue() { Key = "22:0:0", Value = "22点" });
+            keys.Add(new KeyValue() { Key = "23:0:0", Value = "23点" });
+            return keys;
+        }
+
     }
 }
