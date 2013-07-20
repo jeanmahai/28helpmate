@@ -284,14 +284,22 @@ namespace Helpmate.UI.Forms
                 //    lblServerTime.Text = UtilsTool.GetShortTime(result.ServerDate);
                 //    timerServer.Enabled = true;
                 //}
-                DateTime localTime = Convert.ToDateTime(lblServerTime.Text);
-                DateTime serverTime = result.ServerDate;
-                if ((localTime.Hour == serverTime.Hour && localTime.Minute == serverTime.Minute && localTime.Second < serverTime.Second)
-                    || (localTime.Hour == serverTime.Hour && localTime.Minute < serverTime.Minute)
-                    || localTime.Hour < serverTime.Hour)
+                if (string.IsNullOrEmpty(lblServerTime.Text))
                 {
                     lblServerTime.Text = UtilsTool.GetShortTime(result.ServerDate);
                     timerServer.Enabled = true;
+                }
+                else
+                {
+                    DateTime localTime = Convert.ToDateTime(lblServerTime.Text);
+                    DateTime serverTime = result.ServerDate;
+                    if ((localTime.Hour == serverTime.Hour && localTime.Minute == serverTime.Minute && localTime.Second < serverTime.Second)
+                        || (localTime.Hour == serverTime.Hour && localTime.Minute < serverTime.Minute)
+                        || localTime.Hour < serverTime.Hour)
+                    {
+                        lblServerTime.Text = UtilsTool.GetShortTime(result.ServerDate);
+                        timerServer.Enabled = true;
+                    }
                 }
                 tmApp.Enabled = true;
             }
