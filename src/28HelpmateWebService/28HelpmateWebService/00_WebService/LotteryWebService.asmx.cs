@@ -42,8 +42,8 @@ namespace WebService
         private bool ValidateToken(TokenHeader reqHeader,out string error)
         {
             
-            error = "";
-            return true;
+            //error = "";
+            //return true;
             //if (Dal.ValidateToken(header.ToString(SessionValue.Key), header.Token))
             if (!Dal.ValidateToken(reqHeader.ToString(UserKeys.ReadKey(reqHeader.UserSysNo)),reqHeader.Token))
             {
