@@ -26,7 +26,7 @@ namespace Helpmate.Facades.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://117.25.145.170:8088/LotteryWebService.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:3655/LotteryWebService.asmx")]
         public string Helpmate_Facades_LotteryWebSvc_LotteryWebService {
             get {
                 return ((string)(this["Helpmate_Facades_LotteryWebSvc_LotteryWebService"]));
