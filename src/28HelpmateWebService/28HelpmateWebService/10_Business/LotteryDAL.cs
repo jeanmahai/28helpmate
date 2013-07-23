@@ -177,72 +177,92 @@ namespace Business
                     AvgSide = s.Field<int>("AvgSide"),
                     AvgSmall = s.Field<int>("AvgSmall")
                 }).ToList();
-                typeAvg.ForEach(s =>
-                                {
-                                    var count = 0m;
-                                    decimal tuijian;
-                                    //count = typeCount.Select(w => w.Big).Sum() + typeCount.Select(w => w.Small).Sum();
-                                    count = Convert.ToDecimal(s.AvgBig + s.AvgSmall);
-                                    if (count > 0)
-                                    {
-                                        var pb = s.AvgBig / count;
-                                        var ps = s.AvgSmall / count;
-                                        if (pb > 0.5m)
-                                        {
-                                            s.PBig = pb.ToString("P");
-                                        }
-                                        if (ps > 0.5m)
-                                        {
-                                            s.PSmall = ps.ToString("P");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        s.PBig = "";
-                                        s.PSmall = "";
-                                    }
-
-                                    count = Convert.ToDecimal(s.AvgDual + s.AvgOdd);
-                                    if (count > 0)
-                                    {
-                                        var pd = s.AvgDual / count;
-                                        var po = s.AvgOdd / count;
-                                        if (pd > 0.5m)
-                                        {
-                                            s.PDual = pd.ToString("P");
-                                        }
-                                        if (po > 0.5m)
-                                        {
-                                            s.POdd = po.ToString("P");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        s.PDual = "";
-                                        s.POdd = "";
-                                    }
-                                    count = Convert.ToDecimal(s.AvgMiddle + s.AvgSide);
-                                    if (count > 0)
-                                    {
-                                        var pm = s.AvgMiddle / count;
-                                        var ps = s.AvgSide / count;
-                                        if (pm > 0.5m)
-                                        {
-                                            s.PMiddle = pm.ToString("P");
-                                        }
-                                        if (ps > 0.5m)
-                                        {
-                                            s.PSide = ps.ToString("P");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        s.PMiddle = "";
-                                        s.PSide = "";
-                                    }
-
-                                });
                 result.LotteryTypeAvg = typeAvg.SingleOrDefault();
+                if (result.LotteryTypeAvg != null)
+                {
+                    var obj = ds.Tables[5].AsEnumerable().SingleOrDefault();
+                    if(obj!=null)
+                    {
+                        result.LotteryTypeAvg.PBig =
+                            obj.Field<int>("BigCnt");
+                        result.LotteryTypeAvg.PSmall =
+                            obj.Field<int>("SmallCnt");
+                        result.LotteryTypeAvg.PMiddle =
+                            obj.Field<int>("MiddleCnt");
+                        result.LotteryTypeAvg.PSide =
+                            obj.Field<int>("SideCnt");
+                        result.LotteryTypeAvg.POdd =
+                            obj.Field<int>("OddCnt");
+                        result.LotteryTypeAvg.PDual =
+                            obj.Field<int>("DualCnt");
+                    }
+                }
+                //typeAvg.ForEach(s =>
+                //                {
+                //                    var count = 0m;
+                //                    decimal tuijian;
+                //                    //count = typeCount.Select(w => w.Big).Sum() + typeCount.Select(w => w.Small).Sum();
+                //                    count = Convert.ToDecimal(s.AvgBig + s.AvgSmall);
+                //                    if (count > 0)
+                //                    {
+                //                        var pb = s.AvgBig / count;
+                //                        var ps = s.AvgSmall / count;
+                //                        if (pb > 0.5m)
+                //                        {
+                //                            s.PBig = pb.ToString("P");
+                //                        }
+                //                        if (ps > 0.5m)
+                //                        {
+                //                            s.PSmall = ps.ToString("P");
+                //                        }
+                //                    }
+                //                    else
+                //                    {
+                //                        s.PBig = "";
+                //                        s.PSmall = "";
+                //                    }
+
+                //                    count = Convert.ToDecimal(s.AvgDual + s.AvgOdd);
+                //                    if (count > 0)
+                //                    {
+                //                        var pd = s.AvgDual / count;
+                //                        var po = s.AvgOdd / count;
+                //                        if (pd > 0.5m)
+                //                        {
+                //                            s.PDual = pd.ToString("P");
+                //                        }
+                //                        if (po > 0.5m)
+                //                        {
+                //                            s.POdd = po.ToString("P");
+                //                        }
+                //                    }
+                //                    else
+                //                    {
+                //                        s.PDual = "";
+                //                        s.POdd = "";
+                //                    }
+                //                    count = Convert.ToDecimal(s.AvgMiddle + s.AvgSide);
+                //                    if (count > 0)
+                //                    {
+                //                        var pm = s.AvgMiddle / count;
+                //                        var ps = s.AvgSide / count;
+                //                        if (pm > 0.5m)
+                //                        {
+                //                            s.PMiddle = pm.ToString("P");
+                //                        }
+                //                        if (ps > 0.5m)
+                //                        {
+                //                            s.PSide = ps.ToString("P");
+                //                        }
+                //                    }
+                //                    else
+                //                    {
+                //                        s.PMiddle = "";
+                //                        s.PSide = "";
+                //                    }
+
+                //                });
+
 
                 var stableNo = ds.Tables[4].AsEnumerable().Select(s => new LotteryStableNumber()
                 {
@@ -971,24 +991,24 @@ GROUP BY BJ.RetNum";
             }
             result.LotteryTimeses.ForEach(p => p.Name = p.Name.Trim());
             //total
-//            sql = @"SELECT COUNT(1) Total,
-//       :PAGE_INDEX PageIndex,
-//       :PAGE_SIZE PageSize,
-//       CEILING(COUNT(1)/CONVERT(DECIMAL,:PAGE_SIZE)) AS [PageCount]
-//FROM {1} BJ with(nolock)
-//	JOIN dbo.UseSite US with(nolock)
-//		ON BJ.SiteSysNo=US.SysNo
-//	JOIN dbo.ResultCategory_28 RC with(nolock)
-//		ON BJ.RetNum=RC.RetNum
-//WHERE BJ.SiteSysNo=:SITE_SYS_NO
-//      AND BJ.PeriodNum>:MIN_PERIOD";
-//            sql = string.Format(sql,condition,tableName);
-//            var q3 = Session.CreateSQLQuery(sql)
-//                .AddEntity(typeof(PageInfo))
-//                .SetParameter("SITE_SYS_NO",siteSysNo)
-//                .UniqueResult<PageInfo>();
-//            result.PageCount = q3.PageCount;
-//            result.PageIndex = q3.PageIndex;
+            //            sql = @"SELECT COUNT(1) Total,
+            //       :PAGE_INDEX PageIndex,
+            //       :PAGE_SIZE PageSize,
+            //       CEILING(COUNT(1)/CONVERT(DECIMAL,:PAGE_SIZE)) AS [PageCount]
+            //FROM {1} BJ with(nolock)
+            //	JOIN dbo.UseSite US with(nolock)
+            //		ON BJ.SiteSysNo=US.SysNo
+            //	JOIN dbo.ResultCategory_28 RC with(nolock)
+            //		ON BJ.RetNum=RC.RetNum
+            //WHERE BJ.SiteSysNo=:SITE_SYS_NO
+            //      AND BJ.PeriodNum>:MIN_PERIOD";
+            //            sql = string.Format(sql,condition,tableName);
+            //            var q3 = Session.CreateSQLQuery(sql)
+            //                .AddEntity(typeof(PageInfo))
+            //                .SetParameter("SITE_SYS_NO",siteSysNo)
+            //                .UniqueResult<PageInfo>();
+            //            result.PageCount = q3.PageCount;
+            //            result.PageIndex = q3.PageIndex;
             //list
             sql = @"
 SELECT BJ.PeriodNum,
