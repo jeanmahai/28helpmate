@@ -259,15 +259,22 @@ namespace UnitTest
                 Token = "",
                 UserSysNo = 1
             };
-            var result = m_client.QuerySupperTrend(head,1,10,"","","");
-            foreach (var t in result.Data.LotteryTimeses)
+            var pageIndex = 1;
+            var pageSize = 20;
+            var result = m_Dal.QuerySupperTrend(head.SiteSourceSysNo, pageIndex, pageSize, 5000, "2013-7-23", "", "",
+                                                GetTableName(head.RegionSourceSysNo));
+            //var result = m_client.QuerySupperTrend(head,1,10,"","","");
+            Console.WriteLine("名称\t总数");
+            foreach (var t in result.LotteryTimeses)
             {
-                Console.WriteLine(string.Format("{0}:{1}",t.Name,t.Total));
+                Console.WriteLine(string.Format("{0}\t{1}",t.Name,t.Total));
             }
-            Console.WriteLine(string.Format("页数:{0},当前数量:{1},{2}",result.Data.PageCount,result.Data.DataList.Length,result.Data.PageIndex));
-            foreach (var item in result.Data.DataList)
+            Console.WriteLine("====================================");
+            Console.WriteLine(string.Format("页数:{0},当前数量:{1},{2}",result.PageCount,result.DataList.Count,result.PageIndex));
+            Console.WriteLine("期号\t号码\t日期");
+            foreach (var item in result.DataList)
             {
-                Console.WriteLine(string.Format("{0},{1},{2}",item.PeriodNum,item.RetNum,item.RetTime.ToString()));
+                Console.WriteLine(string.Format("{0}\t{1}\t{2}",item.PeriodNum,item.RetNum,item.RetTime.ToString()));
             }
         }
 

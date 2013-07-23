@@ -317,14 +317,19 @@
       <s:element name="QueryRemindLottery">
         <s:complexType />
       </s:element>
-      <s:complexType name="ResultRMOfRemindStatistics">
+      <s:complexType name="ResultRMOfListOfRemindStatistics">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:RemindStatistics" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:ArrayOfRemindStatistics" />
           <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRemindStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RemindStatistics" nillable="true" type="tns:RemindStatistics" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="RemindStatistics">
@@ -334,7 +339,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="GameSysNo" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="SourceSysNo" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="SiteSysNo" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RetNum" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RetNum" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Cnt" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
         </s:sequence>
@@ -342,7 +347,7 @@
       <s:element name="QueryRemindLotteryResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="QueryRemindLotteryResult" type="tns:ResultRMOfRemindStatistics" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueryRemindLotteryResult" type="tns:ResultRMOfListOfRemindStatistics" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -480,7 +485,7 @@
       <s:complexType name="InfoForTimer">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="Lottery" type="tns:LotteryForBJ" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remind" type="tns:RemindStatistics" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remind" type="tns:ArrayOfRemindStatistics" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetInfoForTimerResponse">
@@ -531,15 +536,120 @@
           <s:element minOccurs="1" maxOccurs="1" name="PageCount" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfRemindStatistics">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="RemindStatistics" nillable="true" type="tns:RemindStatistics" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="QueryRemindResponse">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="QueryRemindResult" type="tns:ResultRMOfPageListOfRemindStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetPsw">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="q1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="a1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="q2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="a2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetPswResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResetPswResult" type="tns:ResultRMOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpecial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startHour" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="endHour" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultRMOfSpecialLottery">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="tns:SpecialLottery" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SpecialLottery">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LotteryTypeCount" type="tns:ArrayOfLotteryTypeCount" />
+          <s:element minOccurs="0" maxOccurs="1" name="LotteryTypeAvg" type="tns:LotteryTypeAvg" />
+          <s:element minOccurs="0" maxOccurs="1" name="LotteryStableNumber" type="tns:LotteryStableNumberVM" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLotteryTypeCount">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LotteryTypeCount" nillable="true" type="tns:LotteryTypeCount" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotteryTypeCount">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Small" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Big" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Middle" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Side" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Odd" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Dual" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoAppearNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BestNum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotteryTypeAvg">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AvgBig" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PBig" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvgSmall" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PSmall" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvgMiddle" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PMiddle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvgSide" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PSide" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvgOdd" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="POdd" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvgDual" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDual" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotteryStableNumberVM">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RetNum1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DayAndCnt1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetNum2" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DayAndCnt2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetNum3" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DayAndCnt3" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSpecialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpecialResult" type="tns:ResultRMOfSpecialLottery" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpecialDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bHour" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="eHour" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpecialDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpecialDetailResult" type="tns:ResultRMOfLotteryTrend" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -695,6 +805,30 @@
   <wsdl:message name="QueryRemindTokenHeader">
     <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
   </wsdl:message>
+  <wsdl:message name="ResetPswSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetPsw" />
+  </wsdl:message>
+  <wsdl:message name="ResetPswSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetPswResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecialSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpecial" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecialSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpecialResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecialTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecialDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSpecialDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecialDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSpecialDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSpecialDetailTokenHeader">
+    <wsdl:part name="TokenHeader" element="tns:TokenHeader" />
+  </wsdl:message>
   <wsdl:portType name="LotteryWebServiceSoap">
     <wsdl:operation name="GetCustomeModule">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询模块1-模块4的数据</wsdl:documentation>
@@ -785,6 +919,21 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询提醒列表</wsdl:documentation>
       <wsdl:input message="tns:QueryRemindSoapIn" />
       <wsdl:output message="tns:QueryRemindSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPsw">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">重置密码</wsdl:documentation>
+      <wsdl:input message="tns:ResetPswSoapIn" />
+      <wsdl:output message="tns:ResetPswSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecial">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">特殊分析</wsdl:documentation>
+      <wsdl:input message="tns:GetSpecialSoapIn" />
+      <wsdl:output message="tns:GetSpecialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialDetail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">特殊分析详情</wsdl:documentation>
+      <wsdl:input message="tns:GetSpecialDetailSoapIn" />
+      <wsdl:output message="tns:GetSpecialDetailSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LotteryWebServiceSoap" type="tns:LotteryWebServiceSoap">
@@ -965,6 +1114,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ResetPsw">
+      <soap:operation soapAction="http://tempuri.org/ResetPsw" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecial">
+      <soap:operation soapAction="http://tempuri.org/GetSpecial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSpecialTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialDetail">
+      <soap:operation soapAction="http://tempuri.org/GetSpecialDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSpecialDetailTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LotteryWebServiceSoap12" type="tns:LotteryWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1139,6 +1317,35 @@
       <wsdl:input>
         <soap12:body use="literal" />
         <soap12:header message="tns:QueryRemindTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPsw">
+      <soap12:operation soapAction="http://tempuri.org/ResetPsw" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecial">
+      <soap12:operation soapAction="http://tempuri.org/GetSpecial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSpecialTokenHeader" part="TokenHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialDetail">
+      <soap12:operation soapAction="http://tempuri.org/GetSpecialDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSpecialDetailTokenHeader" part="TokenHeader" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />

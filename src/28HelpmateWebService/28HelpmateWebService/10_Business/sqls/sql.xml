@@ -162,7 +162,7 @@ WHERE BJ.SiteSysNo=:SITE_SYS_NO
       {0}
 ) AS TEMP
 WHERE ROW>(:PAGE_INDEX-1)*:PAGE_SIZE
-      AND ROW<:PAGE_INDEX*:PAGE_SIZE
+      AND ROW<=:PAGE_INDEX*:PAGE_SIZE
     ]]>
   </sql>
   

@@ -164,7 +164,7 @@ namespace Business
                 typeCount.ForEach(s =>
                                   {
                                       s.NoAppearNum = string.Join(",",noAppearNo.Where(w => w.Date == s.Date).Select(ss => ss.RetNum).ToList());
-                                      s.BestNum = string.Join(",",bestNo.Where(ww => ww.Date == s.Date).ToList());
+                                      s.BestNum = string.Join(",",bestNo.Where(ww => ww.Date == s.Date).Select(ss => ss.RetNum).ToList());
                                   });
                 result.LotteryTypeCount = typeCount;
 
