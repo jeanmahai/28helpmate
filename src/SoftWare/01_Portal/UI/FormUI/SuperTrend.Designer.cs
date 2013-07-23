@@ -46,6 +46,8 @@
             this.pnlLine = new System.Windows.Forms.Panel();
             this.bgworkerLoad = new System.ComponentModel.BackgroundWorker();
             this.lnkSltDate = new System.Windows.Forms.LinkLabel();
+            this.lnkPager = new System.Windows.Forms.LinkLabel();
+            this.tbxPageNum = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.countList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
@@ -81,7 +83,7 @@
             this.dataList.Location = new System.Drawing.Point(20, 132);
             this.dataList.Name = "dataList";
             this.dataList.RowTemplate.Height = 23;
-            this.dataList.Size = new System.Drawing.Size(1113, 440);
+            this.dataList.Size = new System.Drawing.Size(1113, 470);
             this.dataList.TabIndex = 2;
             this.dataList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataList_CellFormatting);
             // 
@@ -225,7 +227,7 @@
             this.pnlLine.Location = new System.Drawing.Point(22, 55);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(2680, 1);
+            this.pnlLine.Size = new System.Drawing.Size(3346, 1);
             this.pnlLine.TabIndex = 147;
             // 
             // bgworkerLoad
@@ -244,6 +246,25 @@
             this.lnkSltDate.Text = "选择时间";
             this.lnkSltDate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSltDate_LinkClicked);
             // 
+            // lnkPager
+            // 
+            this.lnkPager.AutoSize = true;
+            this.lnkPager.Location = new System.Drawing.Point(266, 66);
+            this.lnkPager.Name = "lnkPager";
+            this.lnkPager.Size = new System.Drawing.Size(29, 12);
+            this.lnkPager.TabIndex = 150;
+            this.lnkPager.TabStop = true;
+            this.lnkPager.Text = "跳转";
+            this.lnkPager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPager_LinkClicked);
+            // 
+            // tbxPageNum
+            // 
+            this.tbxPageNum.Location = new System.Drawing.Point(220, 60);
+            this.tbxPageNum.Name = "tbxPageNum";
+            this.tbxPageNum.Size = new System.Drawing.Size(39, 21);
+            this.tbxPageNum.TabIndex = 149;
+            this.tbxPageNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // SuperTrend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -251,6 +272,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.lnkPager);
+            this.Controls.Add(this.tbxPageNum);
             this.Controls.Add(this.lnkSltDate);
             this.Controls.Add(this.pnlLine);
             this.Controls.Add(this.btnQuery);
@@ -300,5 +323,7 @@
         private System.Windows.Forms.Panel pnlLine;
         private System.ComponentModel.BackgroundWorker bgworkerLoad;
         private System.Windows.Forms.LinkLabel lnkSltDate;
+        private System.Windows.Forms.LinkLabel lnkPager;
+        private System.Windows.Forms.TextBox tbxPageNum;
     }
 }

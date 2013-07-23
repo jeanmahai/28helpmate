@@ -10,7 +10,7 @@ namespace Helpmate.UI.Forms.Models
     {
         public SpecialNumberModel()
         {
-            Title = "平均开奖次数";
+            Title = "总开奖次数";
             StableTitle = "最稳定的号码";
         }
 

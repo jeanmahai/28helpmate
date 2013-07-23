@@ -266,6 +266,57 @@ namespace Helpmate.UI.Forms.FormUI
                 }
             }
         }
+        /// <summary>
+        /// 跳转
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkPager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int pageIndex = 0;
+            int pageCount = 0;
+            try
+            {
+                pageIndex = int.Parse(tbxPageNum.Text.Trim());
+                if (pageIndex < 1)
+                {
+                    MessageBox.Show("请输入正确的页码！");
+                }
+                else
+                {
+                    pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+                    pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
+                    DateTime dtTime = DateTime.Now;
+                    if (!string.IsNullOrEmpty(tbxDate.Text.Trim())
+                           && !DateTime.TryParse(tbxDate.Text.Trim(), out dtTime))
+                    {
+                        MessageBox.Show("请选择正确的日期！");
+                    }
+                    else
+                    {
+                        string date = tbxDate.Text.Trim();
+                        string hour = ddlHour.Text.Replace("时", "").Trim();
+                        string minute = ddlMinute.Text.Replace("分钟", "").Trim();
+                        hour = hour == "全部" ? "" : hour;
+                        minute = minute == "全部" ? "" : minute;
+                        SuperTrendFilter filter = new SuperTrendFilter();
+                        filter.PageIndex = pageIndex;
+                        filter.Date = date;
+                        filter.Hour = hour;
+                        filter.Minute = minute;
+                        if (!bgworkerLoad.IsBusy)
+                        {
+                            cmd.ShowOpaqueLayer(this, 125, true);
+                            bgworkerLoad.RunWorkerAsync(filter);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("请输入正确的页码！");
+            }
+        }
         #endregion
 
         #region 选择日期
@@ -372,6 +423,7 @@ namespace Helpmate.UI.Forms.FormUI
                         lnkNext.Enabled = false;
                     }
                     lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
+                    tbxPageNum.Text = currPageIndex.ToString();
                 }
             }
         }

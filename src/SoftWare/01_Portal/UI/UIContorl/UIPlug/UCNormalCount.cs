@@ -50,7 +50,7 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
                     num.GetProperty("T" + i).SetValue(numObj, UtilsModel.LoadNumImage(item.RetNum), null);
                     typeOne.GetProperty("T" + i).SetValue(typeOneObj, item.type.BigOrSmall, null);
                     typeTwo.GetProperty("T" + i).SetValue(typeTwoObj, item.type.MiddleOrSide, null);
-                    typeThree.GetProperty("T" + i).SetValue(typeThreeObj, item.type.MantissaBigOrSmall, null);
+                    typeThree.GetProperty("T" + i).SetValue(typeThreeObj, item.type.OddOrDual, null);
                 }
 
                 numList.Add(numObj);

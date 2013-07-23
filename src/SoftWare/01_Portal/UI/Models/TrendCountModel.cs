@@ -129,6 +129,9 @@ namespace Helpmate.UI.Forms.Models
                             count.T11 = data[i].Total.ToString();
                             break;
                         case "12":
+                            count.T12 = data[i].Total.ToString();
+                            break;
+                        case "13":
                             count.T13 = data[i].Total.ToString();
                             break;
                         case "14":

@@ -101,6 +101,32 @@ namespace Helpmate.UI.Forms.FormUI
             pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
             QueryData(pageIndex);
         }
+        /// <summary>
+        /// 跳转
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lnkPager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                int pageIndex = int.Parse(tbxPageNum.Text.Trim());
+                if (pageIndex < 1)
+                {
+                    MessageBox.Show("请输入正确的页码！");
+                }
+                else
+                {
+                    int pageCount = int.Parse(lblPage.Text.Trim().Split('/')[1]);
+                    pageIndex = pageIndex > pageCount ? pageCount : pageIndex;
+                    QueryData(pageIndex);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("请输入正确的页码！");
+            }
+        }
         #endregion
 
         private void bgworkerLoad_DoWork(object sender, DoWorkEventArgs e)
@@ -154,6 +180,7 @@ namespace Helpmate.UI.Forms.FormUI
                         lnkNext.Enabled = false;
                     }
                     lblPage.Text = string.Format("{0}/{1}", currPageIndex, pageCount);
+                    tbxPageNum.Text = currPageIndex.ToString();
                 }
             }
         }

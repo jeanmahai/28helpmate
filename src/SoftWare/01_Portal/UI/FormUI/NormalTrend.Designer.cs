@@ -37,6 +37,8 @@
             this.lnkLast = new System.Windows.Forms.LinkLabel();
             this.lnkFirst = new System.Windows.Forms.LinkLabel();
             this.bgworkerLoad = new System.ComponentModel.BackgroundWorker();
+            this.tbxPageNum = new System.Windows.Forms.TextBox();
+            this.lnkPager = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.countList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
@@ -136,6 +138,25 @@
             this.bgworkerLoad.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworkerLoad_DoWork);
             this.bgworkerLoad.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworkerLoad_RunWorkerCompleted);
             // 
+            // tbxPageNum
+            // 
+            this.tbxPageNum.Location = new System.Drawing.Point(221, 3);
+            this.tbxPageNum.Name = "tbxPageNum";
+            this.tbxPageNum.Size = new System.Drawing.Size(39, 21);
+            this.tbxPageNum.TabIndex = 8;
+            this.tbxPageNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lnkPager
+            // 
+            this.lnkPager.AutoSize = true;
+            this.lnkPager.Location = new System.Drawing.Point(267, 9);
+            this.lnkPager.Name = "lnkPager";
+            this.lnkPager.Size = new System.Drawing.Size(29, 12);
+            this.lnkPager.TabIndex = 9;
+            this.lnkPager.TabStop = true;
+            this.lnkPager.Text = "跳转";
+            this.lnkPager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPager_LinkClicked);
+            // 
             // NormalTrend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -143,6 +164,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.lnkPager);
+            this.Controls.Add(this.tbxPageNum);
             this.Controls.Add(this.lnkFirst);
             this.Controls.Add(this.lnkLast);
             this.Controls.Add(this.lnkNext);
@@ -174,5 +197,7 @@
         private System.Windows.Forms.LinkLabel lnkLast;
         private System.Windows.Forms.LinkLabel lnkFirst;
         private System.ComponentModel.BackgroundWorker bgworkerLoad;
+        private System.Windows.Forms.TextBox tbxPageNum;
+        private System.Windows.Forms.LinkLabel lnkPager;
     }
 }

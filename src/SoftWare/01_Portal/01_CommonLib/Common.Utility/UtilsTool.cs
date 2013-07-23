@@ -317,8 +317,9 @@ namespace Common.Utility
                 keys.Add(new KeyValue() { Key = "16", Value = "16时" });
                 keys.Add(new KeyValue() { Key = "17", Value = "17时" });
                 keys.Add(new KeyValue() { Key = "18", Value = "18时" });
-                keys.Add(new KeyValue() { Key = "19", Value = "19时" });
-                keys.Add(new KeyValue() { Key = "20", Value = "20时" });
+                //19,20时不开奖，顾不用查询
+                //keys.Add(new KeyValue() { Key = "19", Value = "19时" });
+                //keys.Add(new KeyValue() { Key = "20", Value = "20时" });
                 keys.Add(new KeyValue() { Key = "21", Value = "21时" });
                 keys.Add(new KeyValue() { Key = "22", Value = "22时" });
                 keys.Add(new KeyValue() { Key = "23", Value = "23时" });
@@ -329,7 +330,8 @@ namespace Common.Utility
                 keys.Add(new KeyValue() { Key = "9-12", Value = "9时-12时 " });
                 keys.Add(new KeyValue() { Key = "12-15", Value = "12时-15时" });
                 keys.Add(new KeyValue() { Key = "15-18", Value = "15时-18时" });
-                keys.Add(new KeyValue() { Key = "18-21", Value = "18时-21时" });
+                //19,20时不开奖，顾不用查询
+                //keys.Add(new KeyValue() { Key = "18-21", Value = "18时-21时" });
                 keys.Add(new KeyValue() { Key = "21-24", Value = "21时-24时" });
             }
             return keys;

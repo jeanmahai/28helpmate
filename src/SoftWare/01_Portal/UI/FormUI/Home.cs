@@ -92,8 +92,8 @@ namespace Helpmate.UI.Forms.FormUI
                 string hour = time.Hour < 10 ? string.Format("0{0}", time.Hour) : time.Hour.ToString();
                 string minute = time.Minute < 10 ? string.Format("0{0}", time.Minute) : time.Minute.ToString();
                 string strTime = string.Format("{0}:{1}", hour, minute);
-                label17.Text = string.Format("提示：此图是统计当前竞猜期的开奖时间（{0}）之前每小时这个时间所开之号，显示20期。", strTime);
-                label19.Text = string.Format("提示：此图是统计当前竞猜期的开奖时间（{0}）之前每天这个时间所开之号，显示20期。", strTime);
+                label17.Text = string.Format("下图统计当下竞猜期开奖时间（{0}）之前每小时相同分钟数的开奖数据，显示规则同上。", strTime);
+                label19.Text = string.Format("下图统计当下竞猜期开奖时间（{0}）之前每一天这个时间的开奖数据，显示规则同上。", strTime);
 
                 ucLotteryM1.LoadBindData(result.Data.M1);
                 ucLotteryM2.LoadBindData(result.Data.M2);

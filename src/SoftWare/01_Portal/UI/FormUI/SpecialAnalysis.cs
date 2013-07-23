@@ -313,7 +313,7 @@ namespace Helpmate.UI.Forms.FormUI
             if (e.ColumnIndex > 0 && e.ColumnIndex < 7)
             {
                 e.CellStyle.ForeColor = Color.Red;
-                e.CellStyle.SelectionForeColor = UtilsTool.ToColor("#0C0");
+                e.CellStyle.SelectionForeColor = Color.Red;// UtilsTool.ToColor("#0C0");
             }
             else
             {

@@ -1025,27 +1025,27 @@ namespace Helpmate.Facades.LotteryWebSvc {
         
         private int avgBigField;
         
-        private string pBigField;
+        private int pBigField;
         
         private int avgSmallField;
         
-        private string pSmallField;
+        private int pSmallField;
         
         private int avgMiddleField;
         
-        private string pMiddleField;
+        private int pMiddleField;
         
         private int avgSideField;
         
-        private string pSideField;
+        private int pSideField;
         
         private int avgOddField;
         
-        private string pOddField;
+        private int pOddField;
         
         private int avgDualField;
         
-        private string pDualField;
+        private int pDualField;
         
         /// <remarks/>
         public int AvgBig {
@@ -1058,7 +1058,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public string PBig {
+        public int PBig {
             get {
                 return this.pBigField;
             }
@@ -1078,7 +1078,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public string PSmall {
+        public int PSmall {
             get {
                 return this.pSmallField;
             }
@@ -1098,7 +1098,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public string PMiddle {
+        public int PMiddle {
             get {
                 return this.pMiddleField;
             }
@@ -1118,7 +1118,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public string PSide {
+        public int PSide {
             get {
                 return this.pSideField;
             }
@@ -1138,7 +1138,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public string POdd {
+        public int POdd {
             get {
                 return this.pOddField;
             }
@@ -1158,7 +1158,7 @@ namespace Helpmate.Facades.LotteryWebSvc {
         }
         
         /// <remarks/>
-        public string PDual {
+        public int PDual {
             get {
                 return this.pDualField;
             }

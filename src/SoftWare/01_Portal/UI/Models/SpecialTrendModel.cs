@@ -9,7 +9,7 @@ namespace Helpmate.UI.Forms.Models
     {
         public SpecialTrendModel()
         {
-            Title = "最稳定的号码";
+            Title = "输赢天数对比";
             AriseTitle = "出现天数/次数";
         }
 

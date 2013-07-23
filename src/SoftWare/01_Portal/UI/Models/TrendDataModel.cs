@@ -154,7 +154,7 @@ namespace Helpmate.UI.Forms.Models
                             item.T4 = Resources.number_4x;
                             break;
                         case 5:
-                            item.T4 = Resources.number_5x;
+                            item.T5 = Resources.number_5x;
                             break;
                         case 6:
                             item.T6 = Resources.number_6x;
