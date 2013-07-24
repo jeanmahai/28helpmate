@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Helpmate.UI.Forms</RootNamespace>
-    <AssemblyName>Helpmate.UI.Forms</AssemblyName>
+    <AssemblyName>28Helpmate</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
