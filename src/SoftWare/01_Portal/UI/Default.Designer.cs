@@ -84,6 +84,7 @@
             this.lblServerTime = new System.Windows.Forms.Label();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.stsPage.SuspendLayout();
             this.tabArea.SuspendLayout();
             this.pnlRight.SuspendLayout();
@@ -231,6 +232,7 @@
             // pnlRight
             // 
             this.pnlRight.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.appbg;
+            this.pnlRight.Controls.Add(this.panel1);
             this.pnlRight.Controls.Add(this.pnlRemindSet);
             this.pnlRight.Controls.Add(this.pnlLine);
             this.pnlRight.Controls.Add(this.pnlUser);
@@ -255,7 +257,7 @@
             this.pnlRemindSet.Controls.Add(this.lblRemindSet);
             this.pnlRemindSet.Controls.Add(this.pictureBox7);
             this.pnlRemindSet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlRemindSet.Location = new System.Drawing.Point(2, 265);
+            this.pnlRemindSet.Location = new System.Drawing.Point(1, 265);
             this.pnlRemindSet.Name = "pnlRemindSet";
             this.pnlRemindSet.Size = new System.Drawing.Size(166, 44);
             this.pnlRemindSet.TabIndex = 38;
@@ -742,6 +744,17 @@
             this.pnlSiteMap.Size = new System.Drawing.Size(298, 30);
             this.pnlSiteMap.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel1.Location = new System.Drawing.Point(1, 309);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(166, 44);
+            this.panel1.TabIndex = 39;
+            // 
             // Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -862,5 +875,6 @@
         private System.Windows.Forms.Timer tmNews;
         private System.Windows.Forms.Label lblCurrRetNum;
         private System.ComponentModel.BackgroundWorker bgwRemind;
+        private System.Windows.Forms.Panel panel1;
     }
 }

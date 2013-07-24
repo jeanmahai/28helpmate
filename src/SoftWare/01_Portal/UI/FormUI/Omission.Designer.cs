@@ -53,6 +53,7 @@
             this.label17.Size = new System.Drawing.Size(197, 12);
             this.label17.TabIndex = 126;
             this.label17.Text = "提示：统计本期之前20期遗漏的号码";
+            this.label17.Visible = false;
             // 
             // panel1
             // 

@@ -112,7 +112,8 @@ namespace Helpmate.UI.Forms.FormUI
         public void BindGridFoot()
         {
             var listTemp = new List<RmarkFootModel>();
-            listTemp.Add(new RmarkFootModel("各位会员注意：本表所统计得开奖数据为15天（包括当日）。另属“未出现号码”栏目的统计区间是4—24，“极品号”栏目的统计区间是0—3和25—27请大家注意区分。"));
+            //另属“未出现号码”栏目的统计区间是4—24，“极品号”栏目的统计区间是0—3和25—27请大家注意区分。
+            listTemp.Add(new RmarkFootModel("各位会员注意：本表所统计得开奖数据为15天（包括当日）。"));
             dgvFoot.DataSource = listTemp;
             dgvFoot.Rows[0].Height = 39;
             dgvFoot.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
