@@ -34,6 +34,15 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslNews = new System.Windows.Forms.ToolStripStatusLabel();
             this.splApp = new System.Windows.Forms.Splitter();
+            this.tabArea = new System.Windows.Forms.TableLayoutPanel();
+            this.lblCanada = new System.Windows.Forms.Label();
+            this.lblBJ = new System.Windows.Forms.Label();
+            this.timerServer = new System.Windows.Forms.Timer(this.components);
+            this.bgwApp = new System.ComponentModel.BackgroundWorker();
+            this.tmApp = new System.Windows.Forms.Timer(this.components);
+            this.bgwNews = new System.ComponentModel.BackgroundWorker();
+            this.tmNews = new System.Windows.Forms.Timer(this.components);
+            this.bgwRemind = new System.ComponentModel.BackgroundWorker();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlRemindSet = new System.Windows.Forms.Panel();
             this.picRemindSetCurr = new System.Windows.Forms.PictureBox();
@@ -75,16 +84,8 @@
             this.lblServerTime = new System.Windows.Forms.Label();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
-            this.tabArea = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCanada = new System.Windows.Forms.Label();
-            this.lblBJ = new System.Windows.Forms.Label();
-            this.timerServer = new System.Windows.Forms.Timer(this.components);
-            this.bgwApp = new System.ComponentModel.BackgroundWorker();
-            this.tmApp = new System.Windows.Forms.Timer(this.components);
-            this.bgwNews = new System.ComponentModel.BackgroundWorker();
-            this.tmNews = new System.Windows.Forms.Timer(this.components);
-            this.bgwRemind = new System.ComponentModel.BackgroundWorker();
             this.stsPage.SuspendLayout();
+            this.tabArea.SuspendLayout();
             this.pnlRight.SuspendLayout();
             this.pnlRemindSet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRemindSetCurr)).BeginInit();
@@ -110,7 +111,6 @@
             this.pnlHead.SuspendLayout();
             this.tabSite.SuspendLayout();
             this.pnlHeadBg.SuspendLayout();
-            this.tabArea.SuspendLayout();
             this.SuspendLayout();
             // 
             // stsPage
@@ -146,6 +146,87 @@
             this.splApp.Size = new System.Drawing.Size(1, 468);
             this.splApp.TabIndex = 45;
             this.splApp.TabStop = false;
+            // 
+            // tabArea
+            // 
+            this.tabArea.BackColor = System.Drawing.Color.Transparent;
+            this.tabArea.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tabArea.ColumnCount = 2;
+            this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabArea.Controls.Add(this.lblCanada, 1, 0);
+            this.tabArea.Controls.Add(this.lblBJ, 0, 0);
+            this.tabArea.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tabArea.Location = new System.Drawing.Point(0, 37);
+            this.tabArea.Margin = new System.Windows.Forms.Padding(0);
+            this.tabArea.Name = "tabArea";
+            this.tabArea.RowCount = 1;
+            this.tabArea.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tabArea.Size = new System.Drawing.Size(168, 35);
+            this.tabArea.TabIndex = 46;
+            // 
+            // lblCanada
+            // 
+            this.lblCanada.AutoSize = true;
+            this.lblCanada.BackColor = System.Drawing.Color.PapayaWhip;
+            this.lblCanada.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCanada.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblCanada.Location = new System.Drawing.Point(84, 1);
+            this.lblCanada.Margin = new System.Windows.Forms.Padding(0);
+            this.lblCanada.Name = "lblCanada";
+            this.lblCanada.Size = new System.Drawing.Size(83, 33);
+            this.lblCanada.TabIndex = 1;
+            this.lblCanada.Tag = "10002";
+            this.lblCanada.Text = "加拿大";
+            this.lblCanada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCanada.Click += new System.EventHandler(this.lblCanada_Click);
+            // 
+            // lblBJ
+            // 
+            this.lblBJ.AutoSize = true;
+            this.lblBJ.BackColor = System.Drawing.Color.White;
+            this.lblBJ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblBJ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblBJ.Location = new System.Drawing.Point(1, 1);
+            this.lblBJ.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBJ.Name = "lblBJ";
+            this.lblBJ.Size = new System.Drawing.Size(82, 33);
+            this.lblBJ.TabIndex = 0;
+            this.lblBJ.Tag = "10001";
+            this.lblBJ.Text = "北京";
+            this.lblBJ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBJ.Click += new System.EventHandler(this.lblBJ_Click);
+            // 
+            // timerServer
+            // 
+            this.timerServer.Enabled = true;
+            this.timerServer.Interval = 1000;
+            this.timerServer.Tick += new System.EventHandler(this.timerServer_Tick);
+            // 
+            // bgwApp
+            // 
+            this.bgwApp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwApp_DoWork);
+            this.bgwApp.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwApp_RunWorkerCompleted);
+            // 
+            // tmApp
+            // 
+            this.tmApp.Interval = 30000;
+            this.tmApp.Tick += new System.EventHandler(this.tmApp_Tick);
+            // 
+            // bgwNews
+            // 
+            this.bgwNews.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwNews_DoWork);
+            this.bgwNews.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwNews_RunWorkerCompleted);
+            // 
+            // tmNews
+            // 
+            this.tmNews.Interval = 5000;
+            this.tmNews.Tick += new System.EventHandler(this.tmNews_Tick);
+            // 
+            // bgwRemind
+            // 
+            this.bgwRemind.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwRemind_DoWork);
+            this.bgwRemind.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwRemind_RunWorkerCompleted);
             // 
             // pnlRight
             // 
@@ -204,7 +285,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::Helpmate.UI.Forms.Properties.Resources.Log;
+            this.pictureBox7.Image = global::Helpmate.UI.Forms.Properties.Resources.Hint;
             this.pictureBox7.Location = new System.Drawing.Point(10, 9);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(37, 27);
@@ -405,7 +486,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Helpmate.UI.Forms.Properties.Resources.Movie;
+            this.pictureBox3.Image = global::Helpmate.UI.Forms.Properties.Resources.MTV;
             this.pictureBox3.Location = new System.Drawing.Point(11, 9);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(37, 27);
@@ -453,7 +534,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Helpmate.UI.Forms.Properties.Resources.MTV;
+            this.pictureBox2.Image = global::Helpmate.UI.Forms.Properties.Resources.SuperTrend;
             this.pictureBox2.Location = new System.Drawing.Point(11, 9);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(37, 27);
@@ -502,7 +583,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Helpmate.UI.Forms.Properties.Resources.Home;
+            this.pictureBox1.Image = global::Helpmate.UI.Forms.Properties.Resources.ThisPeriod;
             this.pictureBox1.Location = new System.Drawing.Point(11, 9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(37, 27);
@@ -661,87 +742,6 @@
             this.pnlSiteMap.Size = new System.Drawing.Size(298, 30);
             this.pnlSiteMap.TabIndex = 1;
             // 
-            // tabArea
-            // 
-            this.tabArea.BackColor = System.Drawing.Color.Transparent;
-            this.tabArea.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tabArea.ColumnCount = 2;
-            this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tabArea.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tabArea.Controls.Add(this.lblCanada, 1, 0);
-            this.tabArea.Controls.Add(this.lblBJ, 0, 0);
-            this.tabArea.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tabArea.Location = new System.Drawing.Point(0, 37);
-            this.tabArea.Margin = new System.Windows.Forms.Padding(0);
-            this.tabArea.Name = "tabArea";
-            this.tabArea.RowCount = 1;
-            this.tabArea.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tabArea.Size = new System.Drawing.Size(168, 35);
-            this.tabArea.TabIndex = 46;
-            // 
-            // lblCanada
-            // 
-            this.lblCanada.AutoSize = true;
-            this.lblCanada.BackColor = System.Drawing.Color.PapayaWhip;
-            this.lblCanada.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCanada.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblCanada.Location = new System.Drawing.Point(84, 1);
-            this.lblCanada.Margin = new System.Windows.Forms.Padding(0);
-            this.lblCanada.Name = "lblCanada";
-            this.lblCanada.Size = new System.Drawing.Size(83, 33);
-            this.lblCanada.TabIndex = 1;
-            this.lblCanada.Tag = "10002";
-            this.lblCanada.Text = "加拿大";
-            this.lblCanada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCanada.Click += new System.EventHandler(this.lblCanada_Click);
-            // 
-            // lblBJ
-            // 
-            this.lblBJ.AutoSize = true;
-            this.lblBJ.BackColor = System.Drawing.Color.White;
-            this.lblBJ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBJ.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblBJ.Location = new System.Drawing.Point(1, 1);
-            this.lblBJ.Margin = new System.Windows.Forms.Padding(0);
-            this.lblBJ.Name = "lblBJ";
-            this.lblBJ.Size = new System.Drawing.Size(82, 33);
-            this.lblBJ.TabIndex = 0;
-            this.lblBJ.Tag = "10001";
-            this.lblBJ.Text = "北京";
-            this.lblBJ.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblBJ.Click += new System.EventHandler(this.lblBJ_Click);
-            // 
-            // timerServer
-            // 
-            this.timerServer.Enabled = true;
-            this.timerServer.Interval = 1000;
-            this.timerServer.Tick += new System.EventHandler(this.timerServer_Tick);
-            // 
-            // bgwApp
-            // 
-            this.bgwApp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwApp_DoWork);
-            this.bgwApp.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwApp_RunWorkerCompleted);
-            // 
-            // tmApp
-            // 
-            this.tmApp.Interval = 30000;
-            this.tmApp.Tick += new System.EventHandler(this.tmApp_Tick);
-            // 
-            // bgwNews
-            // 
-            this.bgwNews.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwNews_DoWork);
-            this.bgwNews.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwNews_RunWorkerCompleted);
-            // 
-            // tmNews
-            // 
-            this.tmNews.Interval = 5000;
-            this.tmNews.Tick += new System.EventHandler(this.tmNews_Tick);
-            // 
-            // bgwRemind
-            // 
-            this.bgwRemind.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwRemind_DoWork);
-            this.bgwRemind.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwRemind_RunWorkerCompleted);
-            // 
             // Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -764,6 +764,8 @@
             this.Load += new System.EventHandler(this.Default_Load);
             this.stsPage.ResumeLayout(false);
             this.stsPage.PerformLayout();
+            this.tabArea.ResumeLayout(false);
+            this.tabArea.PerformLayout();
             this.pnlRight.ResumeLayout(false);
             this.pnlRemindSet.ResumeLayout(false);
             this.pnlRemindSet.PerformLayout();
@@ -799,8 +801,6 @@
             this.tabSite.PerformLayout();
             this.pnlHeadBg.ResumeLayout(false);
             this.pnlHeadBg.PerformLayout();
-            this.tabArea.ResumeLayout(false);
-            this.tabArea.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

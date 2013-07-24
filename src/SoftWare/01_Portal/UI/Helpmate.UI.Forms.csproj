@@ -400,6 +400,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Firefox.ico" />
+    <None Include="Resources\Hint.png" />
+    <None Include="Resources\ThisPeriod.png" />
+    <None Include="Resources\SuperTrend.png" />
     <Content Include="Theme\play.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

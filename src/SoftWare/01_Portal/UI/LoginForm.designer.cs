@@ -39,7 +39,6 @@
             this.bgwUserLogin = new System.ComponentModel.BackgroundWorker();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.bgwUpdate = new System.ComponentModel.BackgroundWorker();
             this.picCode = new System.Windows.Forms.PictureBox();
@@ -143,18 +142,6 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "验证码：";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("幼圆", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label5.Location = new System.Drawing.Point(301, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(294, 35);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "28伴侣-分析平台";
-            // 
             // btnRegister
             // 
             this.btnRegister.BackColor = System.Drawing.Color.Transparent;
@@ -217,7 +204,6 @@
             this.ClientSize = new System.Drawing.Size(590, 286);
             this.Controls.Add(this.lnkGetPwd);
             this.Controls.Add(this.picCode);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pnlLoading);
@@ -251,7 +237,6 @@
         private System.ComponentModel.BackgroundWorker bgwUserLogin;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRegister;
         private System.ComponentModel.BackgroundWorker bgwUpdate;
         private System.Windows.Forms.PictureBox picCode;
