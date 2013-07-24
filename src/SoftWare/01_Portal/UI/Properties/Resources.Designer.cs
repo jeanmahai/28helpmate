@@ -151,6 +151,13 @@ namespace Helpmate.UI.Forms.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Hint {
+            get {
+                object obj = ResourceManager.GetObject("Hint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Home {
             get {
                 object obj = ResourceManager.GetObject("Home", resourceCulture);
@@ -497,6 +504,20 @@ namespace Helpmate.UI.Forms.Properties {
         internal static System.Drawing.Bitmap sidemenu_li_curr {
             get {
                 object obj = ResourceManager.GetObject("sidemenu_li_curr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap SuperTrend {
+            get {
+                object obj = ResourceManager.GetObject("SuperTrend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ThisPeriod {
+            get {
+                object obj = ResourceManager.GetObject("ThisPeriod", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

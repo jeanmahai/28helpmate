@@ -16,6 +16,7 @@ using Helpmate.Facades.LotteryWebSvc;
 using Common.Utility;
 using Helpmate.UI.Forms.Code;
 using Helpmate.UI.Forms.Properties;
+using System.Resources;
 
 namespace Helpmate.UI.Forms
 {
@@ -26,7 +27,7 @@ namespace Helpmate.UI.Forms
 
         public Default()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         private void Default_Load(object sender, EventArgs e)
@@ -178,14 +179,14 @@ namespace Helpmate.UI.Forms
         private void lblBJ_Click(object sender, EventArgs e)
         {
             lblBJ.BackColor = Color.White;
-            lblCanada.BackColor = Color.DeepSkyBlue;
+            lblCanada.BackColor = Color.PapayaWhip;
             Header.RegionSourceSysNo = Convert.ToInt32(lblBJ.Tag);
             RefreshPage();
         }
 
         private void lblCanada_Click(object sender, EventArgs e)
         {
-            lblBJ.BackColor = Color.DeepSkyBlue;
+            lblBJ.BackColor = Color.PapayaWhip;
             lblCanada.BackColor = Color.White;
             Header.RegionSourceSysNo = Convert.ToInt32(lblCanada.Tag);
             RefreshPage();
@@ -194,25 +195,25 @@ namespace Helpmate.UI.Forms
         private void lbl71_Click(object sender, EventArgs e)
         {
             lbl71.BackColor = Color.White;
-            lbl53.BackColor = Color.DeepSkyBlue;
-            lblZM.BackColor = Color.DeepSkyBlue;
+            lbl53.BackColor = Color.PapayaWhip;
+            lblZM.BackColor = Color.PapayaWhip;
             Header.SiteSourceSysNo = Convert.ToInt32(lbl71.Tag);
             RefreshPage();
         }
 
         private void lbl53_Click(object sender, EventArgs e)
         {
-            lbl71.BackColor = Color.DeepSkyBlue;
+            lbl71.BackColor = Color.PapayaWhip;
             lbl53.BackColor = Color.White;
-            lblZM.BackColor = Color.DeepSkyBlue;
+            lblZM.BackColor = Color.PapayaWhip;
             Header.SiteSourceSysNo = Convert.ToInt32(lbl53.Tag);
             RefreshPage();
         }
 
         private void lblZM_Click(object sender, EventArgs e)
         {
-            lbl71.BackColor = Color.DeepSkyBlue;
-            lbl53.BackColor = Color.DeepSkyBlue;
+            lbl71.BackColor = Color.PapayaWhip;
+            lbl53.BackColor = Color.PapayaWhip;
             lblZM.BackColor = Color.White;
             Header.SiteSourceSysNo = Convert.ToInt32(lblZM.Tag);
             RefreshPage();
