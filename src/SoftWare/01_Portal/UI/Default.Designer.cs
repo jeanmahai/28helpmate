@@ -84,6 +84,7 @@
             this.lblServerTime = new System.Windows.Forms.Label();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.notifyApp = new System.Windows.Forms.NotifyIcon(this.components);
             this.cmsSystem = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmHome = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +96,9 @@
             this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmNormalTrend = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUser = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.panel1 = new System.Windows.Forms.Panel();
+>>>>>>> de1851f2dcb2df1bbacb92d7c909d102fade7845
             this.stsPage.SuspendLayout();
             this.tabArea.SuspendLayout();
             this.pnlRight.SuspendLayout();
@@ -243,6 +247,7 @@
             // pnlRight
             // 
             this.pnlRight.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.appbg;
+            this.pnlRight.Controls.Add(this.panel1);
             this.pnlRight.Controls.Add(this.pnlRemindSet);
             this.pnlRight.Controls.Add(this.pnlLine);
             this.pnlRight.Controls.Add(this.pnlUser);
@@ -267,7 +272,7 @@
             this.pnlRemindSet.Controls.Add(this.lblRemindSet);
             this.pnlRemindSet.Controls.Add(this.pictureBox7);
             this.pnlRemindSet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlRemindSet.Location = new System.Drawing.Point(2, 265);
+            this.pnlRemindSet.Location = new System.Drawing.Point(1, 265);
             this.pnlRemindSet.Name = "pnlRemindSet";
             this.pnlRemindSet.Size = new System.Drawing.Size(166, 44);
             this.pnlRemindSet.TabIndex = 38;
@@ -754,6 +759,7 @@
             this.pnlSiteMap.Size = new System.Drawing.Size(298, 30);
             this.pnlSiteMap.TabIndex = 1;
             // 
+<<<<<<< HEAD
             // notifyApp
             // 
             this.notifyApp.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -850,6 +856,18 @@
             this.tsmUser.Size = new System.Drawing.Size(174, 22);
             this.tsmUser.Text = "个人中心";
             this.tsmUser.Click += new System.EventHandler(this.tsmUser_Click);
+=======
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel1.Location = new System.Drawing.Point(1, 309);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(166, 44);
+            this.panel1.TabIndex = 39;
+>>>>>>> de1851f2dcb2df1bbacb92d7c909d102fade7845
             // 
             // Default
             // 
@@ -973,6 +991,7 @@
         private System.Windows.Forms.Timer tmNews;
         private System.Windows.Forms.Label lblCurrRetNum;
         private System.ComponentModel.BackgroundWorker bgwRemind;
+<<<<<<< HEAD
         private System.Windows.Forms.NotifyIcon notifyApp;
         private System.Windows.Forms.ContextMenuStrip cmsSystem;
         private System.Windows.Forms.ToolStripMenuItem tsmHome;
@@ -984,5 +1003,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmExit;
         private System.Windows.Forms.ToolStripMenuItem tsmNormalTrend;
         private System.Windows.Forms.ToolStripMenuItem tsmUser;
+=======
+        private System.Windows.Forms.Panel panel1;
+>>>>>>> de1851f2dcb2df1bbacb92d7c909d102fade7845
     }
 }
