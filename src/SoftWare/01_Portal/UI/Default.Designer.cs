@@ -84,6 +84,17 @@
             this.lblServerTime = new System.Windows.Forms.Label();
             this.lblCurrent = new System.Windows.Forms.Label();
             this.pnlSiteMap = new System.Windows.Forms.Panel();
+            this.notifyApp = new System.Windows.Forms.NotifyIcon(this.components);
+            this.cmsSystem = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmHome = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmSuperTrend_ = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSpecial = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmOmission = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmNormalTrend = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmUser = new System.Windows.Forms.ToolStripMenuItem();
             this.stsPage.SuspendLayout();
             this.tabArea.SuspendLayout();
             this.pnlRight.SuspendLayout();
@@ -111,6 +122,7 @@
             this.pnlHead.SuspendLayout();
             this.tabSite.SuspendLayout();
             this.pnlHeadBg.SuspendLayout();
+            this.cmsSystem.SuspendLayout();
             this.SuspendLayout();
             // 
             // stsPage
@@ -742,6 +754,103 @@
             this.pnlSiteMap.Size = new System.Drawing.Size(298, 30);
             this.pnlSiteMap.TabIndex = 1;
             // 
+            // notifyApp
+            // 
+            this.notifyApp.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyApp.BalloonTipText = "28伴侣";
+            this.notifyApp.BalloonTipTitle = "28伴侣";
+            this.notifyApp.ContextMenuStrip = this.cmsSystem;
+            this.notifyApp.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyApp.Icon")));
+            this.notifyApp.Text = "28伴侣";
+            this.notifyApp.Visible = true;
+            this.notifyApp.DoubleClick += new System.EventHandler(this.notifyApp_DoubleClick);
+            this.notifyApp.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyApp_MouseClick);
+            // 
+            // cmsSystem
+            // 
+            this.cmsSystem.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cmsSystem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmsSystem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmHome,
+            this.toolStripSeparator1,
+            this.tsmSuperTrend_,
+            this.tsmSpecial,
+            this.tsmOmission,
+            this.tsmNormalTrend,
+            this.tsmUser,
+            this.toolStripSeparator2,
+            this.tsmExit});
+            this.cmsSystem.Name = "cmsSystem";
+            this.cmsSystem.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.cmsSystem.ShowCheckMargin = true;
+            this.cmsSystem.Size = new System.Drawing.Size(175, 192);
+            // 
+            // tsmHome
+            // 
+            this.tsmHome.Image = global::Helpmate.UI.Forms.Properties.Resources.ThisPeriod;
+            this.tsmHome.Name = "tsmHome";
+            this.tsmHome.Size = new System.Drawing.Size(174, 22);
+            this.tsmHome.Text = "本期预测分析";
+            this.tsmHome.Click += new System.EventHandler(this.tsmHome_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(171, 6);
+            // 
+            // tsmSuperTrend_
+            // 
+            this.tsmSuperTrend_.Image = global::Helpmate.UI.Forms.Properties.Resources.SuperTrend;
+            this.tsmSuperTrend_.Name = "tsmSuperTrend_";
+            this.tsmSuperTrend_.Size = new System.Drawing.Size(174, 22);
+            this.tsmSuperTrend_.Text = "超级走势统计";
+            this.tsmSuperTrend_.Click += new System.EventHandler(this.tsmSuperTrend__Click);
+            // 
+            // tsmSpecial
+            // 
+            this.tsmSpecial.Image = global::Helpmate.UI.Forms.Properties.Resources.Email;
+            this.tsmSpecial.Name = "tsmSpecial";
+            this.tsmSpecial.Size = new System.Drawing.Size(174, 22);
+            this.tsmSpecial.Text = "特殊统计分析";
+            this.tsmSpecial.Click += new System.EventHandler(this.tsmSpecial_Click);
+            // 
+            // tsmOmission
+            // 
+            this.tsmOmission.Image = global::Helpmate.UI.Forms.Properties.Resources.MTV;
+            this.tsmOmission.Name = "tsmOmission";
+            this.tsmOmission.Size = new System.Drawing.Size(174, 22);
+            this.tsmOmission.Text = "遗漏号码统计";
+            this.tsmOmission.Click += new System.EventHandler(this.tsmOmission_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(171, 6);
+            // 
+            // tsmExit
+            // 
+            this.tsmExit.Image = global::Helpmate.UI.Forms.Properties.Resources.Exit;
+            this.tsmExit.Name = "tsmExit";
+            this.tsmExit.Size = new System.Drawing.Size(174, 22);
+            this.tsmExit.Text = "退出系统";
+            this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
+            // 
+            // tsmNormalTrend
+            // 
+            this.tsmNormalTrend.Image = global::Helpmate.UI.Forms.Properties.Resources.Movie;
+            this.tsmNormalTrend.Name = "tsmNormalTrend";
+            this.tsmNormalTrend.Size = new System.Drawing.Size(174, 22);
+            this.tsmNormalTrend.Text = "近期开奖走势";
+            this.tsmNormalTrend.Click += new System.EventHandler(this.tsmNormalTrend_Click);
+            // 
+            // tsmUser
+            // 
+            this.tsmUser.Image = global::Helpmate.UI.Forms.Properties.Resources.Log;
+            this.tsmUser.Name = "tsmUser";
+            this.tsmUser.Size = new System.Drawing.Size(174, 22);
+            this.tsmUser.Text = "个人中心";
+            this.tsmUser.Click += new System.EventHandler(this.tsmUser_Click);
+            // 
             // Default
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -761,6 +870,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "28伴侣-分析平台";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Default_FormClosing);
             this.Load += new System.EventHandler(this.Default_Load);
             this.stsPage.ResumeLayout(false);
             this.stsPage.PerformLayout();
@@ -801,6 +911,7 @@
             this.tabSite.PerformLayout();
             this.pnlHeadBg.ResumeLayout(false);
             this.pnlHeadBg.PerformLayout();
+            this.cmsSystem.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -862,5 +973,16 @@
         private System.Windows.Forms.Timer tmNews;
         private System.Windows.Forms.Label lblCurrRetNum;
         private System.ComponentModel.BackgroundWorker bgwRemind;
+        private System.Windows.Forms.NotifyIcon notifyApp;
+        private System.Windows.Forms.ContextMenuStrip cmsSystem;
+        private System.Windows.Forms.ToolStripMenuItem tsmHome;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsmSuperTrend_;
+        private System.Windows.Forms.ToolStripMenuItem tsmSpecial;
+        private System.Windows.Forms.ToolStripMenuItem tsmOmission;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem tsmExit;
+        private System.Windows.Forms.ToolStripMenuItem tsmNormalTrend;
+        private System.Windows.Forms.ToolStripMenuItem tsmUser;
     }
 }

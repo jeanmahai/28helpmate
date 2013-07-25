@@ -27,7 +27,7 @@ namespace Helpmate.UI.Forms
 
         public Default()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void Default_Load(object sender, EventArgs e)
@@ -69,13 +69,6 @@ namespace Helpmate.UI.Forms
         {
             var childForm = new NormalTrend();
             CurrMenu(MenuEnum.NormalTrend, childForm.SiteMapList, childForm);
-            RefreshPage();
-        }
-
-        private void pnlPay_Click(object sender, EventArgs e)
-        {
-            var childForm = new UserInfo();
-            CurrMenu(MenuEnum.Pay, childForm.SiteMapList, childForm);
             RefreshPage();
         }
 
@@ -130,7 +123,7 @@ namespace Helpmate.UI.Forms
 
         private void CurrMenuCtrl(Label currLbl, PictureBox currPic, Form childForm, List<SiteModel> siteMapList)
         {
-            if (this.MdiChildren.Length > 0 && this.ActiveMdiChild.Name == childForm.Name) return;
+            if (this.MdiChildren.Length > 0 && this.ActiveMdiChild != null && this.ActiveMdiChild.Name == childForm.Name) return;
 
             picHomeCurr.Visible = false;
             lblHome.Font = new Font(lblHome.Font, FontStyle.Regular);
@@ -380,6 +373,96 @@ namespace Helpmate.UI.Forms
                     toolStripStatusLabel1.Text = "提醒运行中";
                 }
             }
+        }
+
+        protected void ShowWindForm()
+        {
+            if (!this.Visible || this.WindowState == FormWindowState.Minimized)
+            {
+                this.Visible = true;
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void notifyApp_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ShowWindForm();
+            }
+        }
+
+        private void notifyApp_DoubleClick(object sender, EventArgs e)
+        {
+            ShowWindForm();
+        }
+
+        private void tsmExit_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == AppMessage.Confirm("确定要退出系统吗?"))
+            {
+                IsExiteApplication = true;
+                this.Close();
+                Application.Exit();
+            }
+        }
+
+        protected bool IsExiteApplication = false;
+        private void Default_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!IsExiteApplication)
+            {
+                e.Cancel = true;
+                this.Visible = false;
+            }
+        }
+
+        private void tsmHome_Click(object sender, EventArgs e)
+        {
+            var childForm = new Home();
+            CurrMenu(MenuEnum.Home, childForm.SiteMapList, childForm);
+            RefreshPage();
+            ShowWindForm();
+        }
+
+        private void tsmSuperTrend__Click(object sender, EventArgs e)
+        {
+            var childForm = new SuperTrend();
+            CurrMenu(MenuEnum.SuperTrend, childForm.SiteMapList, childForm);
+            RefreshPage();
+            ShowWindForm();
+        }
+
+        private void tsmOmission_Click(object sender, EventArgs e)
+        {
+            var childForm = new Omission();
+            CurrMenu(MenuEnum.Omission, childForm.SiteMapList, childForm);
+            RefreshPage();
+            ShowWindForm();
+        }
+
+        private void tsmNormalTrend_Click(object sender, EventArgs e)
+        {
+            var childForm = new NormalTrend();
+            CurrMenu(MenuEnum.NormalTrend, childForm.SiteMapList, childForm);
+            RefreshPage();
+            ShowWindForm();
+        }
+
+        private void tsmSpecial_Click(object sender, EventArgs e)
+        {
+            var childForm = new SpecialAnalysis();
+            CurrMenu(MenuEnum.Special, childForm.SiteMapList, childForm);
+            RefreshPage();
+            ShowWindForm();
+        }
+
+        private void tsmUser_Click(object sender, EventArgs e)
+        {
+            var childForm = new UserInfo();
+            CurrMenu(MenuEnum.User, childForm.SiteMapList, childForm);
+            RefreshPage();
+            ShowWindForm();
         }
     }
 }

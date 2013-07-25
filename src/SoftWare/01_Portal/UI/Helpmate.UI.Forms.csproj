@@ -49,7 +49,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Firefox.ico</ApplicationIcon>
+    <ApplicationIcon>SoftLogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
@@ -403,6 +403,7 @@
     <None Include="Resources\Hint.png" />
     <None Include="Resources\ThisPeriod.png" />
     <None Include="Resources\SuperTrend.png" />
+    <Content Include="SoftLogo.ico" />
     <Content Include="Theme\play.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
