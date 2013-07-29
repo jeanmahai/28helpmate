@@ -621,7 +621,8 @@ namespace WebService
             {
                 result.Data = Dal.QuerySupperTrend(ReqHeader.SiteSourceSysNo,
                                                    date, bHour, eHour, GetTableName(ReqHeader.RegionSourceSysNo));
-                    result.Success = true;
+                result.Success = true;
+                NewKey(result, ReqHeader.UserSysNo);
             }
             else
             {
