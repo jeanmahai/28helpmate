@@ -17,35 +17,6 @@ namespace UnitTest
         private static LotteryDAL m_Dal = new LotteryDAL();
         private const string SITE_NAME = "龙虎";
 
-        //[TestMethod]
-        //public void QueryLotteryByTwentyServiceTest()
-        //{
-        //    var data = m_client.QueryLotteryByTwenty(new TokenHeader()
-        //                                  {
-        //                                      Token = "1"
-        //                                  },SITE_NAME);
-        //    Console.WriteLine(data.Message);
-        //    var rm = data.Data;
-        //    if (rm != null)
-        //    {
-        //        foreach (var a in rm.Lotteries)
-        //        {
-        //            Console.WriteLine("期号{0}",a.PeriodNum);
-        //        }
-        //    }
-        //}
-
-        //[TestMethod]
-        //public void QueryCurrentLotteryServiceTest()
-        //{
-        //    var data = m_client.QueryCurrentLottery(new TokenHeader()
-        //    {
-        //        Token = "1"
-        //    },SITE_NAME);
-        //    Console.WriteLine(data.Message);
-        //    Console.WriteLine("期号{0}",data.Data.PeriodNum);
-        //}
-
         [TestMethod]
         public void QueryLotteryByDayServiceTest()
         {
@@ -105,9 +76,20 @@ namespace UnitTest
         [TestMethod]
         public void QueryLotteryByHourStepTest()
         {
-            var data = m_Dal.QueryLotteryByHourStep(DateTime.Now,10001,"SourceData_28_Canada",10002);
-            Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
-                data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            var maxPeriod = m_Dal.GetCurrentLottery(10001, "SourceData_28_Canada");
+            var data = m_Dal.QueryLotteryByHourStep(maxPeriod.RetTime.AddMinutes(4),10001,"SourceData_28_Canada",10002);
+            //Console.WriteLine(string.Format("大{0},小{1},单{2},双{3},中{4},边{5}",
+            //    data.BigP,data.SmallP,data.OddP,data.EvenP,data.CenterP,data.SideP));
+            foreach (var l in data.Lotteries)
+            {
+                Console.WriteLine(string.Format("期号:{0};开奖号:{1};时间:{2}",l.PeriodNum,l.RetNum,l.RetTime));
+            }
+            Console.WriteLine("========================");
+            var data2 = m_Dal.QueryTop20(10001, "SourceData_28_Canada");
+            foreach (var l in data2.Lotteries)
+            {
+                Console.WriteLine(string.Format("期号:{0};开奖号:{1}",l.PeriodNum,l.RetNum));
+            }
         }
         [TestMethod]
         public void QueryUserSiteTest()

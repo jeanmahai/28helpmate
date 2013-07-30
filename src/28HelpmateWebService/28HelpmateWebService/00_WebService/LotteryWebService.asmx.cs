@@ -142,28 +142,6 @@ namespace WebService
             return result;
         }
 
-        //[WebMethod(Description = "查询开奖结果",EnableSession = true)]
-        //[SoapHeader("ReqHeader",Direction = SoapHeaderDirection.In)]
-        //public ResultRM<PageList<LotteryForBJ>> Query(LotteryFilterForBJ filterForBj)
-        //{
-        //    var result = new ResultRM<PageList<LotteryForBJ>>();
-        //    string error;
-        //    if (ValidateToken(ReqHeader,out error))
-        //    {
-        //        result.Data = Dal.Query_28BJ(filterForBj);
-        //        result.Success = true;
-        //        result.Message = MESSAGE_SUCCESS;
-        //        NewKey(result,ReqHeader.UserSysNo);
-        //    }
-        //    else
-        //    {
-        //        result.Success = false;
-        //        result.Message = error;
-        //        result.Code = ERROR_VALIDATE_TOKEN_CODE;
-        //    }
-        //    return result;
-        //}
-
         [WebMethod(Description = "登录",EnableSession = true)]
         public ResultRM<string> Login(string userId,string psw,string code)
         {

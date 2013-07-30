@@ -468,38 +468,38 @@ namespace Business
         /// <returns></returns>
         public LotteryByTwentyPeriod QueryLotteryByHourStep(DateTime dateTime,int siteSysNo,string tableName,int regionSysNo)
         {
-            //var datesStr = new List<string>();
-            //if (regionSysNo == 10001)
-            //{
-            //    //北京
-            //    if (dateTime.Hour == 0)
-            //    {
-            //        dateTime = DateTime.Parse(dateTime.ToString("yyyy-MM-dd 09:05:00"));
-            //    }
-            //}
-            //if (regionSysNo == 10002)
-            //{
-            //    //加拿大
-            //}
-            //DateTime temp = dateTime;
-            //for (var i = 1;i <= 20;i++)
-            //{
-            //    temp = temp.AddHours(-1);
-            //    if (regionSysNo == 10001)
-            //    {
-            //        if (temp.Hour < 9)
-            //        {
-            //            temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
-            //        }
-            //    }
+            var datesStr = new List<string>();
+            if (regionSysNo == 10001)
+            {
+                //北京
+                if (dateTime.Hour == 0)
+                {
+                    dateTime = DateTime.Parse(dateTime.ToString("yyyy-MM-dd 09:05:00"));
+                }
+            }
+            if (regionSysNo == 10002)
+            {
+                //加拿大
+            }
+            DateTime temp = dateTime;
+            for (var i = 1;i <= 20;i++)
+            {
+                temp = temp.AddHours(-1);
+                if (regionSysNo == 10001)
+                {
+                    if (temp.Hour < 9)
+                    {
+                        temp = DateTime.Parse(temp.AddDays(-1).ToString("yyyy-MM-dd 23:mm:ss"));
+                    }
+                }
 
-            //    datesStr.Add("'" + temp.ToString("yyyy-MM-dd HH:mm:ss") + "'");
-            //}
+                datesStr.Add("'" + temp.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+            }
 
             var sql = @"
 select top 20 *
 from {0} with(nolock)
-where  SiteSysNo={1}
+where  SiteSysNo={1} and datepart(minute,RetTime)="+dateTime.Minute.ToString()+@"
 order by PeriodNum desc
 ";
             sql = string.Format(sql,tableName,siteSysNo);
