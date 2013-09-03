@@ -116,7 +116,7 @@ namespace AutoCheck
                 var str = ConfigurationManager.AppSettings["LastSign"];
                 if (string.IsNullOrEmpty(str))
                 {
-                    LogFormat("no sign time -->{0}",DateTime.Now);
+                    LogFormat("no sign time -->{0}", DateTime.Now);
                     return DateTime.Now;
                 }
                 LogFormat("last sign time -->{0}", ConfigurationManager.AppSettings["LastSign"]);
@@ -124,6 +124,8 @@ namespace AutoCheck
             }
             set { ConfigurationManager.AppSettings["LastSign"] = value.ToString(CultureInfo.InvariantCulture); }
         }
+
+        private static List<Thread> Threads { get; set; }
 
         static void Show()
         {
@@ -138,42 +140,77 @@ namespace AutoCheck
 
         static void Main(string[] args)
         {
+            ShowHelp();
             Console.Title = "AC";
-            Hide();
-
+            Helpers = new List<ManualResetEvent>();
             ConsoleWin32Helper.ShowNotifyIcon();
-            var t1 = new Thread(Run);
-            t1.Start();
-            var t2 = new Thread(MonitorInput);
-            t2.Start();
+            var threadInput = new Thread(MonitorInput);
+            threadInput.Name = "input monitor";
+            threadInput.Start();
             while (true)
             {
+                if (Helpers.Count > 0)
+                    WaitHandle.WaitAny(Helpers.ToArray());
                 Application.DoEvents();
             }
         }
+
+        static void Exit()
+        {
+            foreach (var thread in Threads)
+            {
+                thread.Abort();
+                thread.Join();
+            }
+        }
+
+        static void ShowHelp()
+        {
+            using (var fs = new FileStream(Path.Combine(Environment.CurrentDirectory, "readme.txt"), FileMode.Open))
+            using (var sr = new StreamReader(fs))
+            {
+                Log(sr.ReadToEnd());
+            }
+        }
+
+        static void ShowAllThread()
+        {
+            var msg = new StringBuilder();
+            foreach (var thread in Threads)
+            {
+                msg.AppendFormat("{0}:{1}\n", thread.Name, thread.ThreadState);
+            }
+            Log(msg.ToString());
+        }
+
+        private static List<ManualResetEvent> Helpers { get; set; }
 
         static void MonitorInput()
         {
             while (true)
             {
+                int workerTotal, completionTotal;
+                ThreadPool.GetAvailableThreads(out workerTotal, out completionTotal);
+                LogFormat("worker threads:{0},completion port threads:{1}", workerTotal, completionTotal);
                 string input = Console.ReadLine();
-                if (input == "exit")
-                {
-                    _IsExit = true;
-                    //Thread.CurrentThread.Abort();
-                }
-                if (input.Equals("sign"))
-                {
-                    SignCard(int.Parse(ConfigurationManager.AppSettings["Retry"]));
-                }
-                if (input.Equals("hide"))
+                if(input.Equals("-hide"))
                 {
                     Hide();
+                    continue;
                 }
+                DateTime reserveDate;
+                if (DateTime.TryParse(input, out reserveDate))
+                {
+                    var mre = new ManualResetEvent(false);
+                    var signHelper = new SignCardHelper(mre);
+                    Helpers.Add(mre);
+                    ThreadPool.QueueUserWorkItem(signHelper.ThreadPoolCallback, reserveDate);
+                }
+
             }
         }
 
-        static void Run()
+        static void AutoSign()
         {
             while (true)
             {
@@ -191,7 +228,7 @@ namespace AutoCheck
                     LogFormat("current system time:{0}", DateTime.Now);
                     LogFormat("beginning sign card ...");
                     SignCard(int.Parse(ConfigurationManager.AppSettings["Retry"]));
-                    LogFormat("sign card success.{0}",DateTime.Now);
+                    LogFormat("sign card success.{0}", DateTime.Now);
                     LogFormat("==========================");
                 }
                 catch (Exception ex)
@@ -217,7 +254,7 @@ namespace AutoCheck
                     using (var stream = new StreamReader(rs))
                     {
                         var result = stream.ReadToEnd().Trim();
-                        LogFormat("response result:{0}",result);
+                        LogFormat("response result:{0}", result);
                         if (result.Equals("打卡成功"))
                         {
                             Console.WriteLine("success");
@@ -242,6 +279,7 @@ namespace AutoCheck
             }
             return result;
         }
+
 
         static string GetRecord(DateTime? start, DateTime? end)
         {
