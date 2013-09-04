@@ -140,19 +140,21 @@ namespace AutoCheck
 
         static void Main(string[] args)
         {
-            ShowHelp();
-            Console.Title = "AC";
-            Helpers = new List<ManualResetEvent>();
-            ConsoleWin32Helper.ShowNotifyIcon();
-            var threadInput = new Thread(MonitorInput);
-            threadInput.Name = "input monitor";
-            threadInput.Start();
-            while (true)
-            {
-                if (Helpers.Count > 0)
-                    WaitHandle.WaitAny(Helpers.ToArray());
-                Application.DoEvents();
-            }
+            //ShowHelp();
+            //Console.Title = "AC";
+            //Helpers = new List<ManualResetEvent>();
+            //ConsoleWin32Helper.ShowNotifyIcon();
+            //var threadInput = new Thread(MonitorInput);
+            //threadInput.Name = "input monitor";
+            //threadInput.Start();
+            //while (true)
+            //{
+            //    //if (Helpers.Count > 0)
+            //    //    WaitHandle.WaitAny(Helpers.ToArray());
+            //    Application.DoEvents();
+            //}
+            SignCard();
+            Console.ReadKey();
         }
 
         static void Exit()
@@ -201,10 +203,10 @@ namespace AutoCheck
                 DateTime reserveDate;
                 if (DateTime.TryParse(input, out reserveDate))
                 {
-                    var mre = new ManualResetEvent(false);
-                    var signHelper = new SignCardHelper(mre);
-                    Helpers.Add(mre);
-                    ThreadPool.QueueUserWorkItem(signHelper.ThreadPoolCallback, reserveDate);
+                    var signHelper = new SignCardHelper(new ManualResetEvent(false));
+                    //Helpers.Add(mre);
+                    //ThreadPool.QueueUserWorkItem(signHelper.ThreadPoolCallback, reserveDate);
+                    new Thread(signHelper.ThreadPoolCallback).Start(reserveDate);
                 }
 
             }
