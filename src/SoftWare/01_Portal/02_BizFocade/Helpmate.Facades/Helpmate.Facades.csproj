@@ -136,10 +136,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://117.25.145.170:8088/LotteryWebService.asmx">
+    <WebReferenceUrl Include="http://117.25.148.58:8081/LotteryWebService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\LotteryWebSvc\</RelPath>
-      <UpdateFromURL>http://117.25.145.170:8088/LotteryWebService.asmx</UpdateFromURL>
+      <UpdateFromURL>http://117.25.148.58:8081/LotteryWebService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
