@@ -123,7 +123,7 @@ namespace Business
 
         private SqlConnection GetSqlConnection()
         {
-            return new SqlConnection("Server=117.25.145.170,3520;Database=Helpmate;User Id=helpmate;Password=1qa123!@#;");
+            return new SqlConnection("Server=117.25.148.58,3520;Database=Helpmate;User Id=helpmate;Password=1qa123!@#;");
         }
 
         #region 28

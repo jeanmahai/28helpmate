@@ -73,7 +73,7 @@ namespace Helpmate.Facades
             lock (Header.obj)
             {
                 Client.Service.TokenHeaderValue = TokenHeader;
-                var result = Client.Service.GetSpecial(beginHour, endHour);
+               var result = Client.Service.GetSpecial(beginHour, endHour);
                 if (result.Success) Header.Key = result.Key;
                 return result;
             }

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Helpmate_Facades_LotteryWebSvc_LotteryWebService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://117.25.145.170:8088/LotteryWebService.asmx</Value>
+      <Value Profile="(Default)">http://117.25.148.58:8081/LotteryWebService.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>
