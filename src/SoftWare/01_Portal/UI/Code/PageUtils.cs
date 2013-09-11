@@ -28,7 +28,7 @@ namespace Helpmate.UI.Forms.Code
                     }
                     else
                     {
-                        openForm.Close();
+                        Environment.Exit(0);
                     }
                 }
                 else

@@ -77,7 +77,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\ConstValue.cs" />
     <Compile Include="Code\PageUtils.cs" />
+    <Compile Include="FormUI\Common\HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUI\Common\HelpForm.designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUI\Customer\GetPwd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +245,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Default.resx">
       <DependentUpon>Default.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUI\Common\HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUI\Customer\GetPwd.resx">
       <DependentUpon>GetPwd.cs</DependentUpon>
@@ -402,6 +412,7 @@
     <None Include="Resources\Hint.png" />
     <None Include="Resources\ThisPeriod.png" />
     <None Include="Resources\SuperTrend.png" />
+    <None Include="Resources\help.png" />
     <Content Include="SoftLogo.ico" />
     <Content Include="Theme\play.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -439,7 +450,9 @@
     <None Include="Resources\na.gif" />
     <None Include="Resources\headbg.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resource\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>

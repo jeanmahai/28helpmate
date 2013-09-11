@@ -16,6 +16,7 @@ using Helpmate.UI.Forms.Models;
 using Common.Utility;
 using Helpmate.UI.Forms.Code;
 using System.Threading;
+using Helpmate.UI.Forms.FormUI.Common;
 
 namespace Helpmate.UI.Forms.FormUI
 {
@@ -103,6 +104,12 @@ namespace Helpmate.UI.Forms.FormUI
                 tmRefresh.Enabled = true;
                 tmRefresh.Interval = UtilsTool.GetIntervalSeconds(result.ServerDate, Header.GameSourceSysNo, Header.RegionSourceSysNo, Header.SiteSourceSysNo);
             }
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm helpFrm = new HelpForm(PageForm.Forecast);
+            helpFrm.ShowDialog();
         }
     }
 }

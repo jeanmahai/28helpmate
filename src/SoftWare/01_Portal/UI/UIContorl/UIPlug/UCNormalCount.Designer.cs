@@ -74,6 +74,7 @@
             this.dgvDataNum.RowTemplate.Height = 23;
             this.dgvDataNum.Size = new System.Drawing.Size(660, 30);
             this.dgvDataNum.TabIndex = 135;
+            this.dgvDataNum.CellToolTipTextNeeded += new System.Windows.Forms.DataGridViewCellToolTipTextNeededEventHandler(this.dgvDataNum_CellToolTipTextNeeded);
             // 
             // dgvDataType
             // 
