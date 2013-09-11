@@ -14,7 +14,7 @@ namespace SignSimulate
     {
         public static string URL_TOP = "http://10.16.174.155/NesoftHRMSATTEvent/common/TopPan.htm";
         public static string URL_LEFT = "http://10.16.174.155/NesoftHRMSATTEvent/common/ControlPanel.aspx";
-        public static string URL_SIGN = "http://10.16.174.155/NesoftHRMSATTEvent/common/'Function.aspx?Action=SignCard&Crypt={0}&ID{1}";
+        public static string URL_SIGN = "http://10.16.174.155/NesoftHRMSATTEvent/common/Function.aspx?Action=SignCard&Crypt={0}&ID{1}";
         public static string URL_MAIN = "http://10.16.174.155/NesoftHRMSATTEvent/common/MainWin.aspx";
         
         public static string GetHtml(string url)
