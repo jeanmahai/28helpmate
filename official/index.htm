@@ -1,0 +1,829 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0021)http://weixin.qq.com/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>微信，是一个生活方式</title>
+    <link rel="stylesheet" type="text/css" href="res/weixin1796af.css" />
+    <script src="res/cdn_djl.js" type="text/javascript" async=""></script>
+    <script charset="gb2312" src="res/all0ca6e4.js"></script>
+    <script charset="gb2312" src="res/qmtool0cae9c.js"></script>
+    <script charset="gb2312" src="res/weixinslide14ba89.js"></script>
+    <style>
+        .img_intro #currentPic
+        {
+            left: 220px;
+        }
+        /*body { background-position:0 40px; }*/body a.darkLink:link, body a.darkLink:visited
+        {
+            text-decoration: none;
+            color: #609700;
+        }
+        body a.darkLink:hover, body a.darkLink:active
+        {
+            text-decoration: underline;
+            color: #609700;
+        }
+    </style>
+    <script src="res/cdn_dianjiliu.js"></script>
+</head>
+<body>
+    <div id="Mask" style="display: none; width: 100%; height: 100%; position: absolute;
+        background: rgba(0, 0, 0, 0.6); background: #000\9; z-index: 998; filter: progid:DXImageTransform.Microsoft.Alpha(enabled=1,opacity=0.6);">
+    </div>
+    <div class="container">
+        <div class="head">
+            <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=index&t=weixin">
+                <img class="logo" src="res/weixin_logo178fb4.png" alt="28game"></a><ul
+                    class="nav">
+                    <li class="nav_home">
+                        <a class="curr" href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=index&t=weixin&loc=readtemplate,weixin,body,1"
+                            hidefocus="">
+                            <span>首页</span></a></li><li class="nav_download">
+                                <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=download&t=weixin_download_list&loc=readtemplate,weixin,body,3"
+                                    hidefocus="">
+                                    <span>下载</span></a></li><li class="nav_faq">
+                                        <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq&loc=readtemplate,weixin,body,4"
+                                            hidefocus="">
+                                            <span>常见问题</span></a></li><li class="nav_faq ">
+                                                <a href="http://mp.weixin.qq.com/" target="_blank" hidefocus="">
+                                                    <span>公众平台</span></a></li><li class="nav_faq">
+                                                        <a href="http://open.weixin.qq.com/" target="_blank" hidefocus="">
+                                                            <span>开放平台</span></a></li><!--<li class="nav_contact"><a  href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=contact&t=weixin_contact&loc=readtemplate,weixin,body,5" hidefocus ><span >联系我们</span></a></li>--><li
+                                                                class="nav_contact">
+                                                                <a href="https://wx.qq.com/" target="_blank" hidefocus="">
+                                                                    <span>微信网页版</span></a></li></ul>
+        </div>
+        <div class="content">
+            <style>
+                .content
+                {
+                    position: relative;
+                }
+                select, input, button
+                {
+                    font-family: "微软雅黑" ,Verdana, Arial, Tahoma;
+                }
+                .getDownUrlPanel
+                {
+                    width: 627px;
+                    height: 280px;
+                    border: 2px solid #777;
+                    background: #fff;
+                    position: absolute;
+                    margin: 176px 0 0 0px;
+                    z-index: 999;
+                    font-family: "微软雅黑" ,Verdana, Arial, Tahoma;
+                    box-shadow: 0px 0px 15px #888;
+                    border-radius: 10px 10px 10px 10px;
+                    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#eee));
+                    background: -moz-linear-gradient(top, #fff, #ddd);
+                }
+                .getDownUrlPanel .closeTip
+                {
+                    position: absolute;
+                    right: 0;
+                    width: 30px;
+                    height: 30px;
+                    margin: -10px -18px 0 0;
+                    background: url(/zh_CN/htmledition/images/weixin/bt_closed0ec594.png) no-repeat 0 0;
+                    cursor: pointer;
+                }
+                .getDownContainer
+                {
+                    padding: 30px;
+                    text-align: left;
+                }
+                .getDownContainer h2
+                {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                .getDownContainer .desc
+                {
+                    color: #999;
+                }
+                .getDownContainer .countryCodeShow
+                {
+                    font-size: 18px;
+                    height: 30px;
+                    padding: 0 2px;
+                    line-height: 30px;
+                    color: #333;
+                    display: block;
+                    border: 1px solid #ccc;
+                    width: 106px;
+                    float: left;
+                    cursor: pointer;
+                    margin: 0 5px 0 0;
+                }
+                .getDownContainer .countryCode
+                {
+                    display: block;
+                    font-size: 18px;
+                    line-height: 32px;
+                    padding: 2px;
+                    height: 36px;
+                    float: left;
+                    margin: 0 5px 0 0;
+                    color: #333;
+                    width: 150px;
+                }
+                .getDownContainer input
+                {
+                    color: #333;
+                    font-size: 18px;
+                    height: 30px;
+                    line-height: 30px;
+                    padding: 1px 4px;
+                    width: 273px;
+                }
+                .getDownContainer .btnNormal
+                {
+                    background: url(/zh_CN/htmledition/images/weixin/bt_ico_b.png) no-repeat 0 0;
+                    width: 132px;
+                    height: 31px;
+                    line-height: 30px;
+                    color: #fff;
+                    font-weight: bold;
+                    text-align: center;
+                    font-size: 14px;
+                    display: block;
+                    text-decoration: none;
+                }
+                .getDownContainer .errMsgContent
+                {
+                    color: red;
+                    margin: 20px 0;
+                }
+            </style>
+            <div id="getDownUrlPanel" class="getDownUrlPanel" style="display: none;">
+                <img src="./微信，是一个生活方式_files/spacer0ca6c3.gif" class="closeTip" onclick="closeGetDownUrlPanel();"><div
+                    class="getDownContainer" style="float: right; border-left: 1px solid #ddd; width: 180px;
+                    padding-bottom: 0px;">
+                    <div style="">
+                        <h2>
+                            拍摄二维码</h2>
+                        <p class="desc">使用手机上的二维码扫描软件拍摄以下二维码即可立即下载。<a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_faq_qr">了解更多</a></p>
+                        <img src="./微信，是一个生活方式_files/qr_url_download0ec594.png" style="width: 124px; border: 1px solid #999;
+                            margin: 15px 0 0;"></div>
+                </div>
+                <div id="registerTitle" class="getDownContainer" style="display: ;">
+                    <h2>
+                        短信获取下载地址</h2>
+                    <p class="desc">请填写手机号，下载地址将发送到您的手机上。</p>
+                    <div id="register" style="display: ;">
+                        <div style="margin: 20px 0 0;">
+                            <span id="countryCodeShow" class="countryCodeShow" style="display: none;">中国</span><!--<select id="countryCode" name="countryCode" class="countryCode" ><option value="%2B86">中国</option><option value="%2B852">中国香港</option><option value="%2B853">中国澳门</option><option value="%2B886">中国台湾</option><option value="%2B81">日本</option><option value="%2B1">美国</option></select>--><input
+                                type="text" id="phoneNumber" value="您的手机号" name="phoneNumber" class="phoneNumber"
+                                style="color: #ccc;"></div>
+                        <div style="margin: 10px 0 0;">
+                            <a id="btn_send" class="btnNormal">发送短信</a></div>
+                        <div id="errMsg" class="errMsgContent" style="display: none;">
+                        </div>
+                    </div>
+                    <div id="loading" style="display: none; padding: 20px 0 0;">
+                        <img src="./微信，是一个生活方式_files/ico_loading20ca6c3.gif" style="float: left;"><div style="margin-left: 40px;">
+                            <p class="">请稍等，正在发送短信...</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="success" class="getDownContainer" style="display: none;">
+                    <h2>
+                        下载地址已发送至您的手机</h2>
+                    <p class="desc">您将收到一条包含微信下载地址的短信，点击短信中的地址即可开始下载。</p>
+                    <div style="margin: 20px auto;">
+                        <a id="btn_close" class="btnNormal">完成</a></div>
+                    <div style="margin: 20px auto;">
+                        <a id="btn_reSend">再次发送短信</a></div>
+                </div>
+            </div>
+            <script type="text/javascript">
+
+                S = function (_asId) { return document.getElementById(_asId) };
+
+                /**comm**/
+                function show(_aoDom, _abIsShow) {
+                    _aoDom.style.display = _abIsShow === false ? "none" : "";
+                };
+                function hide(_aoDom) {
+                    show(_aoDom, false);
+                };
+                function trim(_asStr) {
+                    return _asStr.replace(/(^\s+|\s+$)/g, "");
+                };
+
+                function showErrorMsg(_aMsgId, _abStatus) {
+
+                    var _sErrMsg = "";
+                    if (_aMsgId == "all") {
+                        show(S("errMsg"), _abStatus);
+                    }
+                    else {
+                        switch (_aMsgId) {
+                            case "errMsgEmpty":
+                                _sErrMsg = "请填写手机号。";
+                                break;
+                            case "errMsgFormat":
+                                _sErrMsg = "填写的手机号格式不正确。";
+                                break;
+                            case "errMsgLength":
+                                _sErrMsg = "请确认手机号码必须为11位数字。";
+                                break;
+                            case "errMsgSystem":
+                                _sErrMsg = "发生了一些小问题，请尝试再次发送短信。";
+                                break;
+                            case "errMsgSpam":
+                                _sErrMsg = "您发送短信过于频繁，请稍后再试。";
+                                break;
+                        };
+                        S("errMsg").innerHTML = _sErrMsg;
+                        show(S("errMsg"), true);
+                    }
+
+                }
+
+                function setStatus(_asStat) {
+                    if (_asStat == "success") {
+                        show(S("loading"), false);
+                        show(S("success"), true);
+                        showErrorMsg("all", false);
+                        show(S("registerTitle"), false);
+                        return true;
+                    }
+
+                    if (_asStat == "format") {
+                        show(S("loading"), false);
+                        show(S("success"), false);
+                        showErrorMsg("errMsgFormat");
+                        show(S("registerTitle"), true);
+                        show(S("register"), true);
+                        S("phoneNumber").focus();
+                        return true;
+                    }
+
+                    if (_asStat == "spam") {
+                        show(S("loading"), false);
+                        show(S("success"), false);
+                        showErrorMsg("errMsgSpam");
+                        show(S("registerTitle"), true);
+                        show(S("register"), true);
+                        return true;
+                    }
+
+                    if (_asStat == "error") {
+                        show(S("loading"), false);
+                        show(S("success"), false);
+                        showErrorMsg("errMsgSystem");
+                        show(S("registerTitle"), true);
+                        show(S("register"), true);
+                        return true;
+                    }
+                }
+
+
+
+
+                function closeGetDownUrlPanel() {
+                    gEnableGetDownUrl = false;
+                    show(S("loading"), false);
+                    show(S("success"), false);
+                    showErrorMsg("all", false);
+                    show(S("register"), true);
+                    show(S("registerTitle"), true);
+                    show(S("getDownUrlPanel"), false);
+                }
+
+
+
+                function GetDownUrlPanel() {
+                    gEnableGetDownUrl = true;
+                    show(S("loading"), false);
+                    show(S("success"), false);
+                    showErrorMsg("all", false);
+                    show(S("register"), true);
+                    show(S("registerTitle"), true);
+                    show(S("getDownUrlPanel"), true);
+                }
+
+
+
+
+
+
+                function initPhoneNumber(_aMethod) {
+                    var _oThis = S("phoneNumber");
+
+
+                    if (_aMethod == "focus" && _oThis.value == "您的手机号") {
+                        _oThis.value = "";
+                        _oThis.style.color = "#000";
+                    }
+                    else if (_aMethod == "blur" && _oThis.value == "") {
+                        _oThis.value = "您的手机号";
+                        _oThis.style.color = "#ccc";
+                    }
+                    else if (_oThis.value != "您的手机号" && _oThis.value != "") {
+                        _oThis.style.color = "#000";
+                    }
+                }
+
+                var gSid = "";
+                var gEnableGetDownUrl = true;
+                initPhoneNumber();
+
+
+                S("btn_close").onclick = closeGetDownUrlPanel;
+                S("btn_reSend").onclick = GetDownUrlPanel;
+                S("phoneNumber").onfocus = function () { initPhoneNumber("focus"); };
+                S("phoneNumber").onblur = function () { initPhoneNumber("blur"); };
+
+
+
+                S("btn_send").onclick = function () {
+
+
+
+                    var _countryCode = S("countryCode").options[S("countryCode").selectedIndex].value;
+                    var _phoneNumber = S("phoneNumber").value;
+
+                    if (_phoneNumber == "" || _phoneNumber == "您的手机号") {
+                        showErrorMsg("errMsgEmpty");
+                        S("phoneNumber").focus();
+                        return false;
+                    }
+
+                    var _oNumberMath = /[^\d+]/;
+
+                    if (_oNumberMath.test(_phoneNumber)) {
+                        showErrorMsg("errMsgFormat");
+                        S("phoneNumber").focus();
+                        return false;
+                    }
+                    else {
+
+                        if (_countryCode == "%2B86" && _phoneNumber.length != 11) {
+                            showErrorMsg("errMsgLength");
+                            S("phoneNumber").focus();
+                            return false;
+                        }
+
+                    }
+
+
+                    hide(S("register"));
+                    show(S("loading"), true);
+
+                    QMAjax.send(
+
+ "/cgi-bin/downloadurl?t=weixin_getdownurl_sms&s=send&check=false",
+                    //"/cgi-bin/readtemplate?t=weixin_getdownurl_sms&s=send&check=false",
+{
+method: "POST",
+content: ["r=", Math.random(), "&country=", _countryCode, "&phone=", _phoneNumber].join(""),
+onload: function (_abIsOk, _asParam) {
+    var _sStatus = "";
+
+    if (!gEnableGetDownUrl) {
+        return false;
+    }
+
+    if (_abIsOk) {
+        try {
+            var _oData = eval(_asParam);
+
+
+
+            if (_oData && _oData.ret == "0") {
+                _sStatus = "success";
+            }
+            else if (_oData && _oData.ret == "-1") {
+                _sStatus = "format";
+            }
+            else if (_oData && _oData.ret == "-2") {
+                _sStatus = "spam";
+            }
+            else {
+                _sStatus = "error";
+            }
+        }
+        catch (e)
+{ }
+
+    }
+
+    setStatus(_sStatus);
+
+
+}
+}
+);
+                    return false;
+                };
+
+
+
+                function QMAjax(_asUrl, _asMethod, _anTimeout) {
+                    var _oSelf = this,
+_oTop = window,
+_oXmlObj, _nTimer;
+
+                    function _onOk() {
+                        _oSelf.onComplete(_oXmlObj);
+                    }
+
+                    function _onErr(_asMode) {
+                        _oSelf.onError(_oXmlObj, _asMode);
+                    }
+
+                    function _makeTimer(_anNewTimeout) {
+                        if (!_nTimer) {
+                            _nTimer = setTimeout(
+function () {
+    _oSelf.abort();
+},
+_anNewTimeout
+);
+                        }
+                    }
+
+                    function _clearTimer(_asMode) {
+                        if (_nTimer) {
+                            clearTimeout(_nTimer);
+                            _nTimer = null;
+                            if (_asMode != "ok") {
+                                _onErr(_asMode);
+                            }
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    // 这些被公开了，需要整体改
+                    // interface
+                    this.method = _asMethod || "POST";
+                    this.url = _asUrl;
+                    this.async = true;
+                    this.content = "";
+                    this.timeout = _anTimeout;
+
+                    // event
+                    this.onComplete = function () {
+                    };
+                    this.onError = function () {
+                    };
+
+                    try {
+                        _oXmlObj = new XMLHttpRequest;
+                    }
+                    catch (_oError) {
+                        try {
+                            _oXmlObj = new ActiveXObject("MSXML2.XMLHTTP");
+                        }
+                        catch (_oError) {
+                            try {
+                                _oXmlObj = new ActiveXObject("Microsoft.XMLHTTP");
+                            }
+                            catch (_oError) {
+                            }
+                        }
+                    }
+
+                    if (!_oXmlObj) {
+                        return false;
+                    }
+
+                    // action
+                    /**
+                    *
+                    */
+                    this.abort = function () {
+                        _clearTimer("abort");
+                        _oXmlObj.abort();
+                    };
+
+                    /**
+                    *
+                    * @param {String} _asPostContent
+                    * @return {Boolean}
+                    */
+                    this.send = function (_asPostContent) {
+                        if (!this.method || !this.url || !this.async) {
+                            return false;
+                        }
+                        //url处理，避免直接对T或TE对象进行split操作
+                        typeof this.url == "object" && (this.url = this.url.replace({}));
+
+                        var _sMethod = this.method.toUpperCase(),
+_sSid = gSid;
+                        this.abort();
+
+                        _oXmlObj.open(_sMethod,
+                        // https 下POST需要增加sid给url，以便proxy处理多登录态问题
+this.url + (_sSid && _sMethod == "POST" && ((this.url.split("?")[1] || "") + "&").indexOf("&sid=") == -1
+? (this.url.indexOf("?") == -1 ? "?sid=" : "&sid=") + _sSid : ""),
+this.async
+);
+
+                        if (_sMethod == "POST") {
+                            _oXmlObj.setRequestHeader("Content-Type", document.charset);
+                            _oXmlObj.setRequestHeader("Content-length", this.content.length);
+                            _oXmlObj.setRequestHeader("Content-Type",
+"application/x-www-form-urlencoded"
+);
+                        }
+
+                        /*_oTop.E(this.headers, function(_asValue, _asKey)
+                        {
+                        _oXmlObj.setRequestHeader(_asKey, _asValue);
+                        }
+                        );*/
+
+                        _oXmlObj.onreadystatechange = function () {
+                            try {
+                                if (_oXmlObj.readyState == 4) {
+                                    if (_oXmlObj.status == 200) {
+                                        if (_clearTimer("ok")) {
+                                            _onOk();
+                                        }
+                                    }
+                                    else {
+                                        _clearTimer(_oXmlObj.status);
+                                    }
+                                }
+                            }
+                            catch (_aoErr) {
+                                _clearTimer(_aoErr.message);
+                            }
+                        }
+
+                        // ### warnning ###
+                        // 存在cache的时候, send 会马上回调ok... _makeTimer 必须先于send
+                        _makeTimer(this.timeout || 15000);
+
+                        try {
+                            if (_sMethod == "POST") {
+                                _oXmlObj.send(_asPostContent || this.content);
+                            }
+                            else {
+                                //这个null不能去掉，否则FF就会抛异常了(Not enough arguments)
+                                _oXmlObj.send(null);
+                            }
+                        }
+                        catch (_oError) {
+                            _clearTimer(_oError.message);
+                        }
+
+                        return true;
+                    }
+                };
+                QMAjax.send = function (_asUrl, _aoConfig, _aoUseThisAjax) {
+                    var _oTop = window,
+_oAjax = _aoUseThisAjax || new QMAjax,
+_oConfig = _aoConfig || {},
+_oKey = "method,timeout,content,headers".split(",");
+                    _oAjax.url = _asUrl;
+
+                    for (var i = 0; i < _oKey.length; i++) {
+                        var _sKey = _oKey[i];
+                        if (_oConfig[_sKey]) {
+                            _oAjax[_sKey] = _oConfig[_sKey];
+                        }
+                    }
+
+                    _oAjax.onComplete = function (_aoXmlObj) {
+                        _aoConfig.onload.apply(_aoXmlObj, [true, trim(_aoXmlObj.responseText || ""), _aoXmlObj]);
+                    };
+
+                    _oAjax.onError = function (_aoXmlObj, _asMode) {
+                        _aoConfig.onload.apply(_aoXmlObj, [false, _asMode, _aoXmlObj]);
+                    };
+
+                    _oAjax.send();
+                };
+</script>
+            <div class="intro">
+                <h1 class="title_h1" style="background-image: none; font-size: 26px; font-weight: normal;
+                    position: static;">
+                    <span>微信，是一个生活方式</span></h1>
+                <p class="intro_p">超过三亿人使用的手机应用</p>
+                <p class="intro_p">支持发送语音短信、视频、图片和文字</p>
+                <p class="intro_p">可以群聊，仅耗少量流量，适合大部分智能手机</p>
+                <a style="margin-top: 15px;" href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=download&t=weixin_download_list&loc=readtemplate,weixin,body,6"
+                    class="btn_download left">免费下载<b></b></a><a class="left btn_download_fromphone" href="javascript:GetDownUrlPanel();"
+                        alt="在手机上下载微信"></a>
+                <div class="clr">
+                </div>
+                <!--<p class="tip_ico"><a href="/cgi-bin/download302?check=false&uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&url=ios" title="iPhone版" target="_blank"><img class="download_ios" src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="iPhone版"  /></a><a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_download_method&sys=android&loc=weixin,android,web,0"  title="Android版" ><img class="download_android" src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="Android版" /></a><a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_download_list&sys=wp&loc=weixin,wp,web,0"  title="Windows Phone版" ><img class="download_wp" src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="Windows Phone版" /></a><a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_download_list&loc=weixin,s60,web,0" title="塞班版"><img class="download_symbian" src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="塞班版" /></a></p><p class="tip_ico" style="margin-bottom:0px;">  <a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_download_method&sys=blackberry&loc=weixin,blackberry,web,0" title="黑莓"><img class="download_bb" src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="黑莓" /></a>    <a href="http://appworld.blackberry.com/webstore/content/18536566/" title="黑莓 Z10"><img class="download_bb_z10" src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="黑莓 Z10" /></a>    <a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&t=weixin_download_method&sys=s40&loc=weixin,s40,web,0" title="诺基亚S40版"><img class="download_s40" src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="s40版"/></a>  <a href="http://wx.qq.com" title="微信网页版"><img class="web_weixin" src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="网页版"/></a></p>-->
+                <div style="line-height: 1.5; margin-top: 10px;">
+                    <ul class="weixin_home_link">
+                        <li>
+                            <span class="dot"></span>
+                            <a href="http://support.weixin.qq.com/getpassword?lang=zh_CN" target="_blank">忘记了微信帐号或密码？</a></li><li>
+                                <span class="dot"></span>
+                                <a href="http://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?lang=zh_CN&t=w_unprotect&step=1&f=pc"
+                                    target="_blank">提示“在新设备登录，需要验证手机”？</a></li><li>
+                                        <span class="dot"></span>
+                                        <a href="http://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=weixin_unlock_self&step=0&lang=zh_CN"
+                                            target="_blank">自助解除登录或功能限制</a></li></ul>
+                </div>
+                <!--<div class="tip_privacy"><p style="font-size:12px;color:#777;font-family:Verdana, Lucida Grande, Verdana, sans-serif; ">Android平台语音版即将发布，敬请期待。</p></div>-->
+                <div class="img_intro" style="right: 60px;">
+                    <div id="circlePic" class="circlePic">
+                        <a id="leftMove" style="display: none;">pre</a><a id="rightMove" style="display: none;">next</a>
+                        <ul id="circleList" style="overflow: hidden; width: 490px; height: 404px; position: absolute;
+                            background: none repeat scroll 0 0 #DDDDDD" qmanimation_play="|undefined">
+                            <li id="list1" style="position: absolute; top: 0px; left: 0px;">
+                                <img src="./微信，是一个生活方式_files/spacer0ca6c3.gif" alt="" style="margin-top: 20px; margin-left: -5px;
+                                    width: 490px; height: 280px; background: url(s40_asha_1.5178fed.png) no-repeat 0 0;
+                                    background: url()\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader ( enabled=true , sizingMethod=sSize , src=s40_asha_1.5178fed.png)"><p
+                                        style="color: #000; text-align: center;">
+                                        <span>诺基亚S40 1.5正式版发布<br>
+                                            附近的人，认识身边的朋友<br>
+                                            <span class="gray">
+                                                <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&t=weixin_faq_s40_15_asha"
+                                                    target="_blank" style="margin-right: 8px;">了解详情</a></span></span></p>
+                            </li>
+                            <li id="list2" style="position: absolute; top: 0px; left: -490px;">
+                                <img src="./微信，是一个生活方式_files/spacer0ca6c3.gif" alt="" style="margin-top: 20px; margin-left: -5px;
+                                    width: 490px; height: 280px; background: url(/zh_CN/htmledition/images/weixin/index/android_50178e90.png) no-repeat 0 0;
+                                    background: url()\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader ( enabled=true , sizingMethod=sSize , src=/zh_CN/htmledition/images/weixin/index/android_50178e90.png)"><p
+                                        style="color: #000; text-align: center;">
+                                        <span>你也许希望，和微信的世界同步<br>
+                                            <span class="gray">
+                                                <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&t=weixin_faq_android_50"
+                                                    target="_blank" style="margin-right: 8px;">Android 5.0</a></span>&nbsp;&nbsp;<span
+                                                        class="gray"><a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&t=weixin_faq_ios_50"
+                                                            target="_blank" style="margin-right: 8px;">iPhone 5.0</a></span></span></p>
+                            </li>
+                            <li id="list3" style="position: absolute; top: 0px; left: -490px;">
+                                <img src="./微信，是一个生活方式_files/spacer0ca6c3.gif" alt="" style="margin-top: 20px; margin-left: -5px;
+                                    width: 490px; height: 280px; background: url(/zh_CN/htmledition/images/weixin/index/wp_41171e06.png) no-repeat 0 0;
+                                    background: url()\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader ( enabled=true , sizingMethod=sSize , src=/zh_CN/htmledition/images/weixin/index/wp_41171e06.png)">
+                                <p style="color: #000; text-align: center;">
+                                    <span>WindowsPhone8 4.1正式版发布<br>
+                                        把歌曲摇到手机里<br>
+                                        <span class="gray">
+                                            <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&t=weixin_faq_wp_41"
+                                                target="_blank" style="margin-right: 8px;">了解详情</a></span></span>
+                                </p>
+                            </li>
+                            <!--<li id="list3" style="position:absolute;top:20px;">  <img src="/zh_CN/htmledition/images/spacer0ca6c3.gif" alt="" style="margin-top:20px;margin-left:-5px;width:490px;height:280px;background:url(/zh_CN/htmledition/images/weixin/index/bb_z10171a8a.png) no-repeat 0 0;background:url()\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader ( enabled=true , sizingMethod=sSize , src=/zh_CN/htmledition/images/weixin/index/bb_z10171a8a.png)" />  <p style="color:#000;text-align: center;">    <span>BlackBerry Z10 1.0版正式发布</br><span class="gray"><a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&t=weixin_faq_bb_z10" target="_blank" style="margin-right:8px;">了解详情</a></span></span>  </p></li>-->
+                        </ul>
+                        <ul id="currentPic">
+                            <li id="dot1" idx="0" class="current_pic">
+                                <a>1</a></li><li id="dot2" idx="1" class="">
+                                    <a>2</a></li><li id="dot3" idx="2" class="">
+                                        <a>3</a></li><!--<li id="dot4" idx="3"><a>3</a></li>--></ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="func" id="func" style="line-height: 1.5em;">
+                <li class="func_msg">
+                    <a target="_blank" href="http://wx.qq.com/">
+                        <b></b>
+                    </a>
+                    <h2>
+                        微信网页版</h2>
+                    <p>扫一扫二维码</p>
+                    <p>就能在浏览器上使用微信</p>
+                    <p>
+                        <a target="_blank" href="http://wx.qq.com/">了解更多</a></p>
+                </li>
+                <li class="func_fast">
+                    <a target="_blank" href="http://wx.qq.com/yao">
+                        <b></b>
+                    </a>
+                    <h2>
+                        摇一摇传图</h2>
+                    <p>安装插件，摇动手机</p>
+                    <p>就能将电脑的网页摇到微信中</p>
+                    <p>
+                        <a target="_blank" href="http://wx.qq.com/yao">了解更多</a></p>
+                </li>
+                <li class="func_share">
+                    <a style="cursor: default">
+                        <b></b>
+                    </a>
+                    <h2>
+                        视频聊天</h2>
+                    <p>打开微信，找到好友</p>
+                    <p>然后面对面的聊聊吧</p>
+                </li>
+                <!--web wechat and yao-->
+            </ul>
+            <div class="update_diary">
+                <h2>
+                    最新消息</h2>
+                <ul>
+                    <li>
+                        <span class="right">08-19</span>
+                        <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_s40_15_asha">
+                            诺基亚S40 1.5正式版发布</a><span style="color: red; font-size: 11px;">(New)</span></li><li>
+                                <span class="right">08-13</span><a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_bb_z10_11">BlackBerry10
+                                    1.1正式版发布</a><span style="color: red; font-size: 11px;">(New)</span></li><li>
+                                        <span class="right">08-09</span>
+                                        <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_android_50">
+                                            Android 5.0正式版发布</a><span style="color: red; font-size: 11px;">(New)</span></li><li>
+                                                <span class="right">08-05</span>
+                                                <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_ios_50">
+                                                    iPhone 5.0正式版发布</a></li><li>
+                                                        <span class="right">07-22</span>
+                                                        <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_wp_41">
+                                                            WindowsPhone8 4.1正式版发布</a></li><li>
+                                                                <span class="right">07-18</span>
+                                                                <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_bb_26">
+                                                                    BlackBerry 2.6正式版发布</a></li><!--<li>  <span class="right">07-18</span>  <a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_bb_z10">BlackBerry Z10 1.0正式版发布</a></li>  <li>    <span class="right">07-09</span>    <a href="http://v.qq.com/cover/w/woozvo8qzpntryw.html?vid=o0012r0rn7j&start=1" target="_blank">足球巨星梅西担任微信全球代言人</a>  </li>  <li>    <span class="right">05-31</span>    <a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_s40_10_stable">诺基亚S40 1.0正式版发布</a>  </li>  <li>    <span class="right">05-31</span>    <a href="/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_bb_25">BlackBerry2.5正式版发布</a>  </li>-->
+                </ul>
+                <div style="margin: 10px 0 5px;">
+                    <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_faq_list">
+                        查看更多</a></div>
+                <div class="feed_maillist" style="margin-right: 15px;">
+                    <span class="ico_contactus"></span>
+                    <div class="contactus">
+                        <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=contact&t=weixin_contact&loc=readtemplate,weixin,body,5">
+                            联系我们</a></div>
+                </div>
+                <!--<div class="feed_maillist"><span class="ico_maillist"></span><div class="txt_maillist"><a target="_blank" href="http://list.qq.com/cgi-bin/qf_invite?id=d19b01f2ea771cb7e0bac1c560ad30ef34d6dd7a4beed8e0">订阅最新动态</a></div></div>-->
+                <div class="clr">
+                </div>
+            </div>
+            <div class="footer" style="padding: 10px 0;">
+                <div style="float: left; text-align: left;">
+                    <a href="http://www.tencent.com/" target="_blank">关于腾讯</a><span class="graytext"> |
+                    </span>
+                    <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&lang=zh_CN&ADTAG=&check=false&nav=faq&t=weixin_agreement&s=default"
+                        target="_blank">服务条款</a><span class="graytext"> | </span>
+                    <a href="http://service.qq.com/special_auto/weixin.html" target="_blank">客服中心</a><p>
+                        © 1998 - 2013 Tencent Inc. All Rights Reserved</p>
+                </div>
+                <div style="float: right;">
+                    <a href="http://weixin.qq.com/cgi-bin/readtemplate?uin=&stype=&promote=&fr=&&ADTAG=&&check=false&t=weixin&lang=zh_CN&setlanguage=1">
+                        简体中文</a>&nbsp;|&nbsp;<a href="http://wechat.com/zh_TW/">繁体中文</a>&nbsp;|&nbsp;<a href="http://wechat.com/en/">English</a></div>
+                <div class="clr">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mask" onclick="hideMask()" style="display: none;">
+    </div>
+    <div id="viewer" onclick="hideMask()" style="display: none;">
+        <a class="bt_closed" id="bt_closed" title="" style="display: none; top: 135px;">
+        </a>
+        <div class="" id="viewer_box" style="top: 135px;">
+        </div>
+        <div class="view" id="viewr_box">
+        </div>
+    </div>
+    <script type="text/javascript">
+        var path_img = "";
+        function go(_aoDom) {
+            var _sSrc = _aoDom.getAttribute("to"),
+_oMask = document.getElementById("mask"),
+_oViewer = document.getElementById("viewer");
+            _oViewerBox = document.getElementById("viewer_box");
+            _btClosed = document.getElementById("bt_closed");
+
+
+            _oMask.style.display = "";
+            _oViewer.style.height = Math.max(document.documentElement.clientHeight, document.documentElement.offsetHeight) + "px";
+            _oViewer.style.display = "";
+            _oViewerBox.innerHTML = ['<img src="', path_img, _sSrc, '" onload="imgLoaded(this)" />'].join("");
+
+
+        }
+
+        function hideMask() {
+            var _oMask = document.getElementById("mask"),
+_oViewer = document.getElementById("viewer");
+
+            _oViewer.style.display = _oMask.style.display = "none";
+            _oViewerBox.innerHTML = "";
+        }
+
+        function imgLoaded(_aoDom) {
+            _aoDom.style.display = "block";
+            _btClosed.style.display = "block";
+            //_oViewerBox.style.top = _btClosed.style.top =(document.documentElement.clientHeight - 496) / 2 + document.documentElement.scrollTop + "px";
+            //_oViewerBox.style.left = (document.documentElement.clientWidth - _aoDom.clientWidth) / 2 + "px";
+            //_oViewerBox.style.top = (document.documentElement.clientHeight - _aoDom.clientHeight) / 2 + document.documentElement.scrollTop + "px";
+        }
+
+        pageReady(
+{
+    sBoxContainerId: "circleList",
+    oBoxsId: ["list1", "list2", "list3"],
+    oBoxsDotId: ["dot1", "dot2", "dot3"]
+}
+);
+</script>
+    <script>        try { document.execCommand('BackgroundImageCache', false, true); } catch (e) { }</script>
+    <script type="text/javascript" src="./微信，是一个生活方式_files/tcss.ping.js"></script>
+    <script type="text/javascript">
+        if (typeof (pgvMain) == 'function')
+            pgvMain();
+</script>
+</body>
+</html>

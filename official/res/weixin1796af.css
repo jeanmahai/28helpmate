@@ -1,0 +1,572 @@
+﻿/**/
+body, h1, h2, h3, ul, li {padding:0; margin:0;}
+ul, li {list-style:none;margin: 0;}
+body {font-size:14px; font-family:"Lucida Grande", Verdana, sans-serif;background:url(weixin_bg0ec594.jpg) repeat-x; }
+p { margin:0.33em 0;}
+h2 {font-size:14px; font-weight:bold;}
+img {border:0;}
+a {text-decoration:none; color:#609700; cursor:pointer; outline:none}
+a:hover {text-decoration:underline; color:#333; }
+.clr {clear:both; height:1px; overflow:hidden;}
+.super_size{font-size:24px; font-family:"微软雅黑","黑体", "Lucida Grande", Verdana, sans-serif;}
+.blue{color:#545f77}
+.skyblue{color:#0068b7}
+.txt_red {color:#C00;}
+.bold{font-weight:bold;}
+.graytext { color:#999; }
+.f_size{font-size:12px;}
+.left{float:left;}
+.right{float:right;}
+
+body{text-align:center; }
+.container {width:968px; margin:0 auto; padding:0 10px; text-align:left;}
+.ico_func{background:url(../images/weixin/icon_func0ec594.png) no-repeat; width:40px; height:40px; display:block; position:absolute; left:44px;}
+.icon_error_m {width:14px; height:14px; background:url(../images/weixin/icon_error_m0ec594.png) no-repeat 0 0; margin-right:2px;}
+.icon_caution_b {width:32px; height:32px; background:url(../images/weixin/icon_failed0ec594.png) no-repeat 0 0; float:left; margin-top:8px;}
+.icon_finish_b {width:32px; height:32px; background:url(../images/weixin/icon_successful0ec594.png) no-repeat 0 0; float:left; margin-top:8px;}
+a.button,.button{background:url(../images/weixin/ico_button0ec594.png) repeat-x 0 0; padding:0px 15px 0px 15px; color:#fff; cursor:pointer; text-decoration:none; border:1px solid #536c8a;height:25px;line-height:25px;overflow:hidden;display:inline-block;}
+a.button:hover{color:#fff;text-decoration:none;}
+.red_font{color:red;}
+/* 头部 */
+.head {height:75px;background:#333 url(weixin_bg0ec594.jpg) repeat-x;}
+.logo {float:left; margin-top:9px;}
+.nav {float:right; padding-top: 21px;}
+.nav li {float:left;}
+.nav a {display:inline-block; padding-left:16px; margin:0 2px; line-height:33px;color:#FFFFFF; text-decoration:none;}
+.nav a span {display:inline-block; display:block\9; padding-right:16px; cursor:pointer;}
+.nav a:hover {*margin:0 1px 0 2px; font-weight:lighter; text-decoration:none; background:url(weixin_icon0ec594.png) no-repeat scroll 0 -144px;color:#FFFFFF;}
+.nav a:hover span {background:url(weixin_icon0ec594.png) no-repeat scroll right -144px;color:#FFFFFF;}
+.nav a.curr,
+.nav a:active {*margin:0 1px 0 2px; font-weight:bold; text-decoration:none; background:url(weixin_icon0ec594.png) no-repeat scroll 0 -192px;}
+.nav a:active{font-weight:normal;}
+.nav a.curr:active{font-weight:bold;}
+.nav a.curr span,
+.nav a:active span {background:url(weixin_icon0ec594.png) no-repeat scroll right -192px;}
+.w_2{width:70px;}
+.w_4{width:100px;}
+.tip_ico{overflow: hidden;}
+
+.tip_ico a{margin:0;padding:0;display:block;float:left;}
+.tip_privacy { color:#999;font-size:12px;margin:60px 0 0 0;margin:50px 0 0 0\9;font-family:"微软雅黑","宋体";}
+.tip_new { position:absolute;_width:1px; line-height:20px; margin-left:0px;white-space:nowrap;height:36px;font-size:12px;color:#999;background:url(../images/weixin/bg_tip0ec594.png) no-repeat -185px top; font-family:Verdana, "微软雅黑","宋体", "Lucida Grande", Verdana, sans-serif;}
+.tip_new div { height:36px;background:url(../images/weixin/bg_tip0ec594.png) no-repeat 0 -36px; }
+.tip_new div div {background:url(../images/weixin/bg_tip0ec594.png) no-repeat right -72px;margin-left:6px; padding:14px 6px 4px 0;padding:14px 6px 2px 0\9;height:auto;_height:20px;}
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{
+.tip_new { line-height:15px; }
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {  
+.tip_new div div { padding:15px 6px 6px 0}
+ }  
+.tip_new .red { color:red;font-weight:bold;}
+.gray{color:#a0a0a0;}
+.download_ios {width:30px;height:34px;background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -225px 0;}
+.download_android { width:38px;height:34px;background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -255px 0;}
+.download_symbian { width:80px;height:34px;background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -373px 0;}
+.download_wp { width:80px;height:34px;background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -293px 0;}
+.download_bb{ width:106px;height:34px;background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -453px 0;}
+.download_bb_z10{ width:128px;height:34px;background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -813px 0;}
+.web_weixin { width:44px;height:34px;
+  margin-left:3px;
+  background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -679px 0;
+}
+.download_s40 { width:60px;height:34px;
+  margin:0 4px;
+  background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -738px 0;
+}
+
+
+a:hover .download_ios{ background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -226px -52px;}
+a:hover .download_android  { background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -255px -51px;}
+a:hover .download_wp { background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -293px -51px;}
+a:hover .download_symbian  { background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -373px -51px;}
+a:hover .download_bb{background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -453px -51px;}
+a:hover .download_bb_z10{background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -813px -51px;}
+a:hover .web_weixin  { background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -679px -52px;}
+a:hover .download_s40  { background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -738px -52px;}
+
+.weixin_home_link .dot{
+	float:left;
+	display: block;
+	margin: 10px 11px 0px 0px;
+	height:6px;
+	width:6px;
+	border-radius:5px;
+	background-color:#999;
+}
+
+/* 正文 */
+.content {position:relative;}
+.intro {height:424px; font-family:"微软雅黑","黑体", "Lucida Grande", Verdana, sans-serif;background:#e0dee1 url(weixin_bg0ec594.jpg) repeat-x 0 -75px;margin-bottom:44px; }
+.intro h1 {padding:45px 0 3px; font-size:32px;}
+.intro p {font-size:16px; color:#979797;}
+a.btn_download {display:block; width:224px; height:64px; margin-top:12px;background:#348903;position:relative;color:#fff;font-size:16px;font-weight:bold;text-align:center;line-height:64px;}
+a.btn_download b{display:block; position:absolute;float:left;top:0;left:0;width:224px; height:64px; background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -1px 0px;position:absolute;}
+a.btn_download:hover b{background-position:-1px -64px;}
+a.btn_download_fromphone{
+	background:url(../images/weixin/bt_i_down171a1e.png) no-repeat -616px -4px;
+	width: 42px;
+	height: 44px;
+	margin-top: 25px;
+	margin-left: 19px;
+}
+a.btn_download_fromphone:hover{
+	background-position: -616px -56px;
+}
+/*首页图片切换*/
+.img_intro {position:absolute; top:7px; width:490px;line-height:18px;background:#dddddd;}
+.img_intro p{font-size:14px;color:#1b1b1b;line-height:20px;}
+.listsHidden{display:none;}
+.listsAppear{display:block;}
+.img_intro #circleList{width:1470px;background:#dddddd;}
+.img_intro #circleList li{float:left;width:490px;position:relative;background:#dddddd;}
+.img_intro #leftMove,.img_intro #rightMove{z-index:200;position:absolute;top:190px; height:42px;width:42px;display:block;text-indent:-9999px;}
+.img_intro #leftMove{left:-40px;background:url(slide_icon0ec594.png) no-repeat -16px -59px;}
+.img_intro #rightMove{right:-42px;background:url(slide_icon0ec594.png) no-repeat -68px -59px;}
+.img_intro a#rightMove:hover {background:url(slide_icon0ec594.png) no-repeat -68px -12px;}
+.img_intro #leftMove:hover {background:url(slide_icon0ec594.png) no-repeat -16px -12px;}
+.img_intro .newaPeople{position:absolute; top:153px; left:290px;width:190px;}
+.img_intro .vedio{background:#dddddd;position:absolute; bottom:30px; left:80px;width:330px;}
+.img_intro .nearBy{position:absolute; top:120px;; left:326px;width:150px;}
+.img_intro #vedioIcon{height:48px;width:76px;background:url(../images/weixin/index/icons0ec594.png) no-repeat 0 0; float:left;margin-top:-15px;}
+.img_intro #newaPeopleIcon{height:68px;background:url(../images/weixin/index/icons0ec594.png) no-repeat -15px -60px; }
+.img_intro #nearByIcon{height:78px;background:url(../images/weixin/index/icons0ec594.png) no-repeat -15px -130px;}
+.img_intro #currentPic{position:absolute;left:205px;top:380px;z-index:100;}
+.img_intro #currentPic li{float:left;}
+.img_intro #currentPic li a{width:26px;height:26px;display:block;text-indent:-9999px;background:url(slide_icon0ec594.png) no-repeat -36px -110px;}
+.img_intro #currentPic li.current_pic a{background:url(slide_icon0ec594.png) no-repeat -12px -110px;}
+.img_intro #list1 img,.img_intro #list2 img,.img_intro #list3 img{margin-left:10px;}
+.vedioInfo{float:left; _zoom:1;}
+
+
+/*下载页面*/
+.phoneSort{padding:62px 0 20px 0;}
+.phoneSort h3{margin-bottom:10px;}
+.chooseBlock{padding:0 0 50px 0;position:relative;margin:0;}
+.chooseSort #index1{z-index:50;}
+.chooseSort #index2{z-index:20;}
+.phoneSort .phonePic{width:370px; float:left;position:relative;}
+.phoneSort .chooseSort{margin-left:380px;}
+.phoneSort #currentImg1{margin:0 0 0 80px;background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat 50px -135px;width:280px;height:210px;}
+.phoneSort #currentImg2{margin:0 0 0 90px;width:232px;height:64px;}
+.phoneSort #currentImg2 div{width:100%;height:100%;background:url(../images/weixin/phonePic/LOGOb0ec592.png) no-repeat -18px -10px;}
+.phoneSort #currentImg2 #appleImg{background-position:-505px -391px;}
+.phoneSort #currentImg2 #htcImg{background-position:-18px -10px;}
+.phoneSort #currentImg2 #motImg{background-position:-260px -10px;}
+.phoneSort #currentImg2 #nokiaImg{background-position:-18px -88px;}
+.phoneSort #currentImg2 #sonyImg{background-position:-260px -88px;}
+.phoneSort #currentImg2 #samImg{background-position:-502px -18px;}
+.phoneSort #currentImg2 #googleImg{background-position:-18px -475px;}
+.phoneSort #currentImg2 #lgImg{background-position:-18px -168px;}
+.phoneSort #currentImg2 #acerImg{background-position:-502px -88px;}
+.phoneSort #currentImg2 #huaweiImg{background-position:-260px -245px;}
+.phoneSort #currentImg2 #lenovoImg{background-position:-502px -245px;}
+.phoneSort #currentImg2 #zteImg{background-position:-260px -395px;}
+.phoneSort #currentImg2 #philipsImg{background-position:-502px -168px;}
+.phoneSort #currentImg2 #apandaImg{background-position:-502px -320px;}
+.phoneSort #currentImg2 #qigiImg{background-position:-260px -320px;}
+.phoneSort #currentImg2 #asusImg{background-position:-18px -245px;}
+.phoneSort #currentImg2 #aigoImg{background-position:-260px -168px;}
+.phoneSort #currentImg2 #ktouchImg{background-position:-18px -395px ;}
+.phoneSort #currentImg2 #meizuImg{background-position:-18px -320px;}
+.phoneSort #currentImg2 #miImg{background-position:-260px -472px;}/*gabyliu*/
+.phoneSort #currentImg3{margin:0 0 0 130px;width:160px;heightx:250px;}
+.phoneSort #currentImg3 p{text-align:center; font-weight:bold;}
+.phoneSort #currentImg4{padding-left:190px;position:absolute;top:80px;}
+.sub_title_box{position:relative;}
+.allPhones{position:absolute;top:15px;right:35px;}
+
+.chooseBTBrand{position:relative;margin:0;padding:0;height:46px;width:273px;}
+.chooseBTBrand a:focus{outline:0;}
+.chooseBTBrand a{outline:none;text-decoration:none;height:46px;width:253px;display:block;line-height:46px; padding-left:20px;color:#666;background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat -18px -19px;}
+.chooseBTBrand a:hover{background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat -295px -19px;}
+.chooseBTBrand a em{position:absolute;top:0;right:0px;width:46px;height:44px;display:block;background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat -575px -20px;}
+.chooseBTBrand a.active{padding-left:19px;width:245px;background:#FFF;line-height:44px;border-top:1px solid #ccc;border-right:1px solid #ccc;border-left:1px solid #ccc;border-top-right-radius:9px;border-top-left-radius:9px;}
+.chooseBTBrand{z-index:60;}
+
+.chooseBTType{position:relative;margin:0;padding:0;height:46px;width:273px;}
+.chooseBTType a{text-decoration:none;height:46px;width:253px;display:block;line-height:46px; padding-left:20px;color:#666;background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat -18px -19px;}
+.chooseBTType a:hover{background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat -295px -19px;}
+.chooseBTType a em{position:absolute;top:0;right:0px;width:46px;height:44px;display:block;background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat -575px -20px;}
+.chooseBTType a.active{padding-left:19px;width:245px;background:#FFF;line-height:44px;border-top:1px solid #ccc;border-right:1px solid #ccc;border-left:1px solid #ccc;border-top-right-radius:9px;border-top-left-radius:9px;}
+.chooseBTType{z-index:40;}
+
+/*弹出框样式*/
+.theBrands{top:74px;top:77px\9;z-index:50;background:#FFF;position:absolute;margin:0px 0 30px 0px;width:510px;border:1px solid #ccc;box-shadow:1px 1px 1px #ccc;border-radius:7px;border-top-left-radius:0px;padding:20px 10px 20px 10px;}
+.theTypes{top:74px;top:77px\9;z-index:30;background:#FFF;position:absolute;margin:0px 0 30px 0px;width:510px;border:1px solid #ccc;box-shadow:1px 1px 1px #ccc;border-radius:7px;border-top-left-radius:0px;padding:20px 10px 20px 10px;}
+.theTypes{padding:20px 10px 20px 10px;width:490px;z-index:10;}
+.theTypes #nokiaTypes{height:270px;overflow:auto;scrollbar-face-color:#fff;scrollbar-arrow-color:#ccc;scrollbar-face-color:#ccc;scrollbar-shadow-color:#fff;scrollbar-base-color:#fff;scrollbar-darkshadow-color:#fff;scrollbar-track-color:#fff;}
+#brandList li{margin:0 0px 10px 0;padding:1px;float:left;height:48px;padding:0;width:168px;background:url(../images/weixin/phonePic/LOGO0ec592.png) no-repeat 0px 0px;}
+#brandList li.appleLogo{background-position:-360px -281px;}
+#brandList li.HTCLogo{background-position:0px 0px;}
+#brandList li.MotLogo{background-position:-180px 0px;}
+#brandList li.NokiaLogo{background-position:0px -56px;}
+#brandList li.SonyLogo{background-position:-180px -56px;}
+#brandList li.SamsungLogo{background-position:-360px 0px;}
+#brandList li.GoogleLogo{background-position:0px -335px;}
+#brandList li.LGLogo{background-position:0px -112px;}
+#brandList li.AcerLogo{background-position:-360px -56px;}
+#brandList li.HUAWEILogo{background-position:-180px -168px;}
+#brandList li.LenovoLogo{background-position:-362px -168px;}
+#brandList li.ZTELogo{background-position:-180px -281px;}
+#brandList li.PhilipsLogo{background-position:-360px -110px;}
+#brandList li.APANDALogo{background-position:-360px -225px;}
+#brandList li.QIGILogo{background-position:-183px -225px;}
+#brandList li.ASUSLogo{background-position:0 -168px;}
+#brandList li.AIGOLogo{background-position:-183px -111px;}
+#brandList li.K-TouchLogo{background-position:0 -281px;}
+#brandList li.Meizu{background-position:-2px -225px;}
+#brandList li.Mi{background-position:-180px -335px;}/*gabyliu*/
+#brandList li a{height:46px;width:166px;display:block;text-indent:-9999px;}
+#brandList li a:hover{border:1px solid #66b049;}
+.theTypes ul li{float:left;padding:10px 0 10px 10px;}
+#fitVersion{color:#666;height:39px;}
+.fitVersionBut{height:39px;width:168px;background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat -19px -79px;}
+.fitVersionBut a{background:none;font-size:16px;height:39px;width:168px;display:block;line-height:39px; font-weight:bold;color:#FFF;text-decoration:none;font-family:"微软雅黑";}
+.fitVersionBut a span{width:115px;float:left;height:39px;text-align:center;}
+.fitVersionBut a:hover{background:url(../images/weixin/phonePic/downLoad0ec592.png) no-repeat -199px -79px;}
+
+/*‘查看所有机型’页面*/
+#allSortlist{padding:10px 0 0 40px;border-bottom:1px solid #ccc;height:84px;margin:0 0 50px 0;}
+#allSortlist li{float:left;padding:20px 20px 0 20px;margin-left:3px;}
+#allSortlist li a{font-weight:bold;color:#333;text-decoration:none;}
+#allSortlist li a:hover{color:#609700;}
+#allSortlist li span{display:block;font-weight:normal;color:#999;}
+li.all_currentType{box-shadow:1px -1px 1px #ccc;border-top-left-radius:8px;border-top-right-radius:8px;padding:30px 0 0 0;border:1px solid #ccc;border-bottom:none;height:64px;width:168px;}
+/*导航切换*/
+#apple.all_currentType{background:#fff url(../images/weixin/phonePic/LOGOb0ec592.png) no-repeat -515px -391px;}
+#sony.all_currentType{background:#fff url(../images/weixin/phonePic/LOGOb0ec592.png) no-repeat -274px -88px;}
+#samsung.all_currentType{background:#fff url(../images/weixin/phonePic/LOGOb0ec592.png) no-repeat -515px -10px;}
+#motorola.all_currentType{background:#fff url(../images/weixin/phonePic/LOGOb0ec592.png) no-repeat -275px -10px;}
+#htc.all_currentType{background:#fff url(../images/weixin/phonePic/LOGOb0ec592.png) no-repeat -33px -10px;;}
+#nokia.all_currentType{background:#fff url(../images/weixin/phonePic/LOGOb0ec592.png) no-repeat -31px -78px;}
+#others.all_currentType{background:#fff url(../images/weixin/phonePic/LOGOb0ec592.png) no-repeat -514px -465px;}
+#allSortlist li.all_currentType a{color:#999;font-weight:normal;display:none;}
+
+.phoneList { zoom:1; }
+.phoneList li{float:left;margin:0 0 0 20px;padding-bottom:40px;}
+.phoneList li a{text-decoration:none;}
+.phoneList li p{text-align:center;color:#333;}
+.phoneList li a:hover p{color:#609700}
+
+.func {display:block;}/*首页改版*/
+.func li {/*position:relative;*/float:left; width:216px;}
+.func h2 {padding-top:6px;}
+.func p {color:#999;}
+.func a {display:block; /*width:200px; height:114px;*/ margin-top:3px;/*position:relative;*/cursor:pointer;}
+.func a b {display:block;/*首页改版*/ width:200px; height:114px;/*position:absolute;float:left;top:0;left:0;*/background:url(../images/weixin/weixin_func0ec594.jpg) no-repeat;}
+.func .func_fast a b {background-position:-217px 0;}
+.func .func_share a b {background-position:-436px 0;}
+.update_diary {margin-left:670px;}
+.update_diary ul {padding-left:12px;}
+.update_diary li {list-style:disc outside; line-height:1.8; color:#999; margin:5px 0;}
+.update_diary p {color:#000000;}
+.contactus {padding:20px 0 0 40px;}
+.contactus a{ color:#000; font-weight:bold; text-decoration:none;}
+.ico_contactus {display:block; width:32px; height:32px; float:left; position:relative; top:14px; left:0; background:url(weixin_icon0ec594.png) no-repeat scroll 0 -240px;}
+.ico_maillist{display:block; width:32px; height:32px; float:left; position:relative; top:14px; left:0; background:url(../images/weixin/ico_maillist0ec594.png) no-repeat scroll 0 0;}
+.feed_maillist{float:left;position:relative;}
+.feed_maillist a{font-weight:bold;text-decoration:none;color:#000;}
+.feed_maillist .txt_maillist{padding:20px 30px 0 40px;}
+/* 页尾 */
+.footer {clear:both; padding:23px 0 4px; margin-top:22px; border-top:1px solid #d4dadf; font-size:12px; text-align:center; color:#D8D8D8;}
+.footer a {margin:0 4px;}
+.footer a:link, .footer a:visited{ color:#888; text-decoration: none; }
+.footer a:hover{ color:#888; text-decoration: underline; }
+.footer p {color:#888888;font-size:11px; margin: 5px 0;}
+
+#mask {position:absolute; z-index:100; top:0px; left:0; width:100%;height:100%;min-height:830px;*height:830px;background:#000;  opacity:0.8; filter:alpha(opacity=80);}
+#viewer {position:absolute; z-index:101; top:0px; left:0; width:100%; height:100%;}
+#viewer_box{width:347px;height:507px;background:#fff;position:absolute;left:50%;margin-left:-169px;overflow:hidden;text-align:center;background:url(../images/ico_loading20ca6c3.gif) no-repeat center;top:50px;}
+#viewer img {display:none; position:absolute;top:8px;left:8px; border:9px solid #555;}
+.bt_closed{display:block;width:25px;height:25px;background:url(../images/weixin/bt_closed0ec594.png) no-repeat 0 0;position:absolute;left:50%;margin-left:160px;margin-top:0px;z-index:1000;}
+
+/* 下载页1 */
+.sec_body {background: #dedee0 url(../images/weixin/bodybg0ec594.jpg);}
+.sec_body .wrap{background:url(../images/weixin/weixin_bg_sec0ec594.jpg) repeat-x;}
+.sec_body .content{background-color:#fff; margin-top:25px; border:1px solid #cac9c9; -moz-border-radius:5px; -webkit-border-radius:5px; overflow:hidden; position:relative;}
+.sec_body .content p{font-size:14px; line-height:1.5;}
+.content_top	{background:#F1F1F1 url(weixin_icon0ec594.png) repeat-x 0 -480px; height:35px; padding:14px 0 0 20px; font-size:20px; font-family:"微软雅黑","黑体", "Lucida Grande", Verdana, sans-serif; -moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; -webkit-border-top-left-radius:5px; -webkit-border-top-right-radius:5px;}
+.content_top_l	{background:url(weixin_icon0ec594.png) no-repeat -192px -352px;  height:50px; width:10px; position:absolute; top:0; left:0;}
+.content_top_r	{background:url(weixin_icon0ec594.png) no-repeat -192px -416px;  height:50px; width:10px; position:absolute; top:0; right:0;}
+/*
+.mobile_system	{width:33.2%; height:207px; border-right:1px solid #d7dade; background:#fff; float:left; position:relative;margin:0;padding:0;}
+.mobile_system dd { margin:0;padding:0;}
+
+.ico_mobile		{display:block; margin:15px auto 0;height:82px; width:196px;position:relative;line-height:82px;text-align:center;font-size:16px;}
+.ico_mobile	b	{ background:url(../images/weixin/mobile_system0ec594.png) no-repeat; height:82px; width:196px;position:absolute;float:left;top:0;left:0; }
+.ico_iphone b	{background-position:65px 0;  }
+.ico_android b	{background-position:65px -96px;}
+.ico_symbian b	{background-position:0 -178px;}
+.ico_wp b	{background-position:20px -262px;}
+
+
+a.btn_mobile			{background:#348903;height:60px; width:171px; display:block; margin:14px auto 0;line-height:60px;text-align:center;color:#fff;position:relative;overflow:hidden;}
+.btn_mobile b			{background-image:url(weixin_icon0ec594.png);position:absolute;display:block;height:60px;width:171px;top:0;left:0;float:left;}
+a.btn_iphone b			{background-position:0 -288px; }
+a.btn_iphone:hover b	{background-position:-192px -288px;}
+a.btn_android b			{background-position:0 -416px; }
+a.btn_android:hover b	{background-position:-192px -416px;}
+a.btn_s60 b				{background-position:0 -352px; }
+a.btn_s60:hover b		{background-position:-192px -352px;}
+a.btn_wp b			{background-position:0 -1255px; }
+a.btn_wp:hover b	{background-position:-192px -1255px;}
+a.btn_s60v3 b			{background-position:0 -1189px; }
+a.btn_s60v3:hover b	{background-position:-105px -1189px;}
+a.btn_s60v5 b			{background-position:0 -1123px; }
+a.btn_s60v5:hover b	{background-position:-105px -1123px;}
+
+a.btn_mobile_micro			{background:#348903; height:46px; width:77px; display:block; margin-top:5px;line-height:46px;text-align:center;color:#fff;position:relative;overflow:hidden;float:left;}
+.btn_mobile_micro b			{background:url(weixin_icon0ec594.png) no-repeat; height:46px; width:77px; display:block;  position:absolute; top:0;left:0;}
+
+
+*/
+
+/*.text-hide{text-indent:-999em;}
+.drop-r-extra{padding-right:999em;margin-right:-999em;}
+.mobile-system-wrapper{overflow:hidden;*zoom:1;}
+.mobile-system-list{float:left;width:20%;}
+.mobile-system{padding-bottom:999em;margin-bottom:-999em;margin-top:0;border-right:1px solid #D7DADE;text-align:center;}
+.mobile-system-hd{padding-top:26px;margin:0;}
+.mobile-logo{display:inline-block;*display:inline;*zoom:1;position:relative;width:174px;height:70px;}
+.mobile-logo-img{position:absolute;top:0;left:0;width:100%;height:100%;background:transparent url('../images/weixin/mobile_system_new12a943.png') no-repeat;}
+.iphone-logo .mobile-logo-img{background-position:50% -7px;}
+.android-logo .mobile-logo-img{background-position:50% -88px;}
+.wp-logo .mobile-logo-img{background-position:50% -166px;}
+.symbian-logo .mobile-logo-img{background-position:50% -236px;}
+.bb-logo .mobile-logo-img{background-position:50% -306px;}
+.mobile-system-bd{padding-top:26px;padding-bottom:26px;margin:0;}
+.mobile-btn{display:inline-block;position:relative;height:46px;line-height:46px;overflow:hidden;margin:0 2px;background-color:#348903;color:#FFFFFF;}.mobile-btn:hover{color:#FFFFFF;background-color:#48A711;}
+.mobile-btn-img{position:absolute;top:0;left:0;width:100%;height:100%;background:transparent url('../images/weixin/weixin_icon_new171aa1.png') no-repeat;}
+.mobile-btn-M{width:134px;}
+.mobile-btn-S{width:85px;}
+.iphone-btn .mobile-btn-img{background-position:-1px -1345px;}.iphone-btn:hover .mobile-btn-img{background-position:-154px -1345px;}
+.android-btn .mobile-btn-img{background-position:-1px -1406px;}.android-btn:hover .mobile-btn-img{background-position:-154px -1406px;}
+.wp-btn .mobile-btn-img{background-position:-1px -1469px;}.wp-btn:hover .mobile-btn-img{background-position:-154px -1469px;}
+.symbian-v3-btn .mobile-btn-img{background-position:-1px -1592px;}.symbian-v3-btn:hover .mobile-btn-img{background-position:-104px -1592px;}
+.symbian-v5-btn .mobile-btn-img{background-position:-1px -1653px;}.symbian-v5-btn:hover .mobile-btn-img{background-position:-104px -1653px;}
+.bb-btn .mobile-btn-img{background-position:-1px -1531px;}.bb-btn:hover .mobile-btn-img{background-position:-154px -1531px;}
+.download-desc{display:inline-block;width:85px;margin:0 2px;vertical-align:top;text-align:left;}
+
+*/
+.sys-list{overflow:hidden;*zoom:1;}
+.sys-item{float:left;overflow:hidden;width:16.666%;}
+.sys-bd{display:block;height:250px;text-align:center;border-right:1px solid #D7DADE;}
+.iphone-bd{}
+.android-bd{}
+.wp-bd{}
+.symbian-bd{}
+.s40-bd{border-color: transparent;}
+.sys-btn{display:inline-block;position:relative;width:140px;height:60px;margin-top:80px;}
+.symbian-bd .sys-btn,.wp-bd .sys-btn,.wp-bd .bb-btn{margin-top:37px;}
+.sys-name{position:absolute;top:0;left:0;width:100%;height:100%;background:transparent url('../images/weixin/mobile_system_new171a2c.jpg') no-repeat;}
+.iphone-logo{background-position:0 0;}.sys-btn:hover .iphone-logo{background-position:-140px -1px;}
+.android-logo{background-position:0 -57px;}.sys-btn:hover .android-logo{background-position:-139px -57px;}
+.wp-logo{background-position:0 -111px;}.sys-btn:hover .wp-logo{background-position:-139px -111px;}
+.wp8-logo{background-position:0 -168px;}.sys-btn:hover .wp8-logo{background-position:-139px -168px;}
+.v3-logo{background-position:0 -221px;}.sys-btn:hover .v3-logo{background-position:-139px -221px;}
+.v5-logo{background-position:0 -278px;}.sys-btn:hover .v5-logo{background-position:-139px -278px;}
+.bb-logo{background-position:0 -335px;}.sys-btn:hover .bb-logo{background-position:-140px -335px;}
+.bb-z10-logo{background-position:0 -434px;}.sys-btn:hover .bb-z10-logo{background-position:-141px -434px;}
+.s40-logo{background-position:0 -384px;}.sys-btn:hover .s40-logo{background-position:-141px -384px;}
+
+
+
+a.btn_mobile_min			{background:#348903; height:46px; width:129px; display:block; margin-top:5px;line-height:46px;text-align:center;color:#fff;position:relative;overflow:hidden;}
+a.btn_mobile_min:hover{background-color:#48A711;}
+.btn_mobile_min b			{background:url(../images/weixin/weixin_icon_new171aa1.png) no-repeat; height:46px; width:129px; display:block;  position:absolute; top:0;left:0;}
+a.btn_bb_min b              {background-position:0 -1716px;}
+a.btn_bb_min:hover b        {background-position:-160px -1716px;;}
+a.btn_bb_z10_min b              {background-position:0 -2030px;}
+a.btn_bb_z10_min:hover b        {background-position:-160px -2030px;;}
+a.btn_iphone_min b			{background-position:0 -672px;}
+a.btn_iphone_min:hover b	{background-position:-160px -672px;}
+a.btn_android_min b			{background-position:0 -800px;}
+a.btn_android_min:hover b	{background-position:-160px -800px;}
+a.btn_s60v3_min b			{background-position:0 -736px;}
+a.btn_s60v3_min:hover b		{background-position:-160px -736px;}
+a.btn_s60v5_min b			{background-position:0 -864px;}
+a.btn_s60v5_min:hover b		{background-position:-160px -864px;}
+a.btn_wp_min b      {background-position:0 -1839px;}
+a.btn_wp_min:hover b    {background-position:-160px -1839px;}
+a.btn_wp8_min b			{background-position:0 -1777px;}
+a.btn_wp8_min:hover b		{background-position:-160px -1777px;}
+a.btn_s40_min b			{background-position:0 -1903px;}
+a.btn_s40_min:hover b		{background-position:-160px -1903px;}
+
+.mobile_system .btn_s60v3_min{float:left; margin:20px 5px 0 32px;_margin:20px 5px 0 15px;}
+.mobile_system .btn_s60v5_min{float:left; margin-top:20px}
+
+
+.sub_title		{background:#F1F1F1 url(weixin_icon0ec594.png) repeat-x 0 -544px; height:34px; padding:13px 0 0 20px; font-size:18px; font-family:"微软雅黑","黑体", "Lucida Grande", Verdana, sans-serif;border-top:1px solid #ccc;}
+.sub_list		{background:#F6F6F6 url(weixin_icon0ec594.png) repeat-x 0 -608px; height:34px; padding-left:53px; cursor:pointer}
+.sub_list h3		{font-size:16px; padding:8px 0 0 53px; }
+.ico_fold		{background:url(weixin_icon0ec594.png) repeat-x -32px -256px; height:20px; width:20px; display:inline-block; margin:8px 0 0 20px; float:left;}
+.ico_spread		{background:url(weixin_icon0ec594.png) repeat-x -64px -256px; height:20px; width:20px; display:inline-block; margin:8px 0 0 20px; float:left;}
+.model_box		{background:#fff; display:none; padding:20px 42px 27px 106px;_padding:20px 42px 27px 110px; border-top:1px solid #e1e3e6;}
+.model_box a		{margin-right:9px;}
+.model_box p	{ width:100%;clear:left;padding:15px 0 0; }
+.list_bottom	{-moz-border-radius-bottomleft:5px; -moz-border-radius-bottomright:5px; -webkit-border-bottom-left-radius:5px; -webkit-border-bottom-right-radius:5px;}
+
+.left_bar		{float:left; padding:0 35px 0 46px;}
+.right_bar		{margin-left:690px;padding:0 20px 20px 15px;border-left:1px solid #d8d9dc;}
+.right_bar h2	{margin:20px 0 10px 0;}
+.download_auto	{margin:20px 0 52px 104px;}
+.download_method{padding:0 0 220px 0; position:relative;}
+.download_method h2{border-bottom:1px solid #d8d9dc; padding:0 0 10px 0; font-size:18px; font-family:"微软雅黑","黑体", "Lucida Grande", Verdana, sans-serif;}
+.download_method p{padding:10px 0 20px 0;}
+.other_method	{}
+.other_method li	{list-style:inside disc; margin-bottom: 28px; color:#bbb;}
+.other_method li span{font-size:12px;}
+.other_method li span,
+.page_intro span	{font-weight:bold; color:#000;}
+.right_bar .other_method li p{font-size:12px;}
+.other_method li p label{color:#609700}
+.other_method li p,
+.page_intro p	{color:#666; font-weight:normal; margin-left:14px}
+.oneline		{background:#d8d9dc; height:1px; overflow:hidden}
+.ico_weixin		{background:url(../images/weixin/ico_weixin0ec594.png) no-repeat; display:block; width:90px; height:75px;margin:20px 0 0 0;float:left;}
+.list_num1		{background:url(weixin_icon0ec594.png) no-repeat -96px -256px; height:32px; width:32px; display:block; position:absolute; top:71px; left:0px;}
+.list_num2		{background:url(weixin_icon0ec594.png) no-repeat -128px -256px; height:32px; width:32px; display:block; position:absolute; top:141px; top:143px\9; left:0px;}
+.list_num3		{background:url(weixin_icon0ec594.png) no-repeat -160px -256px; height:32px; width:32px; display:block; position:absolute; top:211px; top:213px\9; left:0px;}
+.dlink{overflow:hidden;position:relative;zoom:1;padding:0;}
+.dlink li.on .ico_fold{background:url(weixin_icon0ec594.png) repeat-x -64px -256px; height:20px; width:20px; display:inline-block; margin:8px 0 0 20px; float:left;}
+.dlink li.on .model_box{display:block;overflow:hidden;zoom:1;position:relative;}
+
+/* 介绍页 */
+.page_intro		{padding:40px 40px 30px 100px;}
+.content .page_intro p	{margin:0 0 45px 0; font-size:14px;}
+.ico_free		{background-position:0 0;}
+.ico_platform	{background-position:0 -48px;}
+.ico_camera		{background-position:0 -96px;}
+.ico_photo		{background-position:0 -144px;}
+.ico_input		{background-position:0 -192px;}
+.ico_message	{background-position:0 -240px;}
+.ico_qylt	{background-position:0 -290px;}
+
+/* 联系我们 */
+.page_contact	{padding:40px 45px 0;min-height:635px;_height:635px;}
+.page_contact .ico_func{background:url(../images/weixin/icon_func0ec594.png) no-repeat; width:40px; height:40px; display:block; position:static; float:left; margin-right:10px}
+.content .page_contact p{font-size:14px;}
+.content .page_contact h2{margin:27px 0 21px 0; padding-bottom:6px; border-bottom:1px solid #d8d9dc;}
+.contact_left{float:left;width:640px;}
+.contact_right{margin-left:641px}
+.contact_right label {float:left;display:inline-block;width:85px;}
+.contact_method	{float:left;  width:320px;}
+.contact_method span{font-weight:bold;display:block}
+.contact_method a{ text-decoration:underline; display:block; margin:0.33em 0;}
+.contact_method p{ color:#666;}
+.contact_left .contact_method{ height:80px}
+.contact_right .contact_method	{width:220px;}
+.page_contact .ico_weinxin_contact{background-position:-64px 0;}
+.page_contact .ico_weibo		{background-position:-64px -48px;}
+.page_contact .ico_email		{background-position:-64px -96px;}
+.page_contact .ico_blog		{background-position:-64px -144px;}
+.page_contact .ico_Qqun		{background-position:-64px -192px;}
+
+/* FAQ */
+.page_faq		{padding:40px 45px 0;}
+.page_faq h3		{font-size:14px;font-weight:bold;}
+.content .page_faq p{font-size:14px;margin:0 0 25px 0;}
+.title_h1{background:url(../images/weixin/h10ec594.jpg) no-repeat;position:relative;top:80px;}
+.none{display:none;}
+.page_faq_list h2{font-size:16px; border-bottom:1px solid #CAC9C9; padding-bottom:5px;}
+.page_faq_list ul {margin:10px 0 45px;}
+.page_faq_list ul li{line-height:2; list-style:disc inside; color:#999}
+.page_faq_list ul li span.gray{margin-left:15px;}
+
+
+
+/* 找回密码 */
+.page_forgetpwd{padding:44px 34px; font-size:14px;}
+.text {border:1px solid #c3c3c3;border-top:1px solid #7c7c7c;border-left:1px solid #9a9a9a;background:url(../images/newicon/login.png) 0 -128px #fff repeat-x;outline:none;padding:3px; margin:10px 14px 0 0; width:255px;}
+.confirm{background:#f3f3f3; border-top:1px solid #e0e0e0; padding:11px 34px; -moz-border-radius-bottomleft:5px; -moz-border-radius-bottomright:5px; -webkit-border-bottom-left-radius:5px; -webkit-border-bottom-right-radius:5px;}
+.piece{margin-top:20px;}
+.content .piece p.f_size{font-size:12px;}
+
+/* 验证邮箱地址 */
+.page_verifyemail	{padding:44px 34px 44px 164px; position:relative;}
+.page_verifyemail .ico_weixin{top:44px; left:44px; _left:-110px;}
+.page_verifyemail h2	{margin-bottom:20px; }
+
+.snappic { border:5px solid #ddd; }
+
+.bt_download {display:block;width:165px;height:24px;color:#fff;text-decoration:none;text-align:center;
+background:#4b6c94;border:1px solid #435e80;padding:4px 5px;
+-moz-border-radius:3px;-khtml-border-radius:3px;-webkit-border-radius:3px; border-radius:3px;line-height:24px;
+background:-webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.15, rgb(75,108,148)),
+    color-stop(0.43, rgb(89,121,161)),
+    color-stop(0.79, rgb(111,142,181)));
+background:-moz-linear-gradient(
+    center bottom,
+    rgb(75,108,148) 15%,
+    rgb(89,121,161) 43%,
+    rgb(111,142,181) 79%
+);
+border-top: 1px solid #7c9abe;
+border-bottoom: 1px solid #517095;
+border-right: 1px solid #5a7a9f;
+border-left: 1px solid #5a7a9f;
+ 
+/* Webkit里面不支持border-color, 用阴影算做个补偿 */
+-webkit-box-shadow: 0 -1px 1px #5d7b9b;
+}
+
+a.bt_download { color:#fff;text-decoration:none; }
+
+
+
+.model_box a { line-height:2em;float:left; display:block;height:30px;zoom:1;position:relative;word-break:keep-all;white-space:nowrap;}
+.t_color_green { color: #609700; font-family:Verdana, Geneva, sans-serif;font-weight:bold; font-size: 14px; }
+.t_color_title { font-weight:bold; font-size:14px; color:#6a6a6b;display:inline-block;text-align:right;width:125px;margin:0 10px 0 0;}
+.con_more_box{padding:60px 20px; line-height:2em;}
+.con_more_box p{margin:0 0 10px 0;}
+
+a.btn_symbian3_min b			{background-position:0 -927px;}
+a.btn_symbian3_min:hover b		{background-position:-160px -927px;}
+
+
+
+/* weixin.html */
+
+.tip_new {background:url(../images/weixin/bg_tip_noarrow0ec594.png) no-repeat -186px top;margin-top:5px;margin-left:0px;}
+.tip_ico { background-position:-225px 0; }
+
+.intro .title_h1, .intro_p { font-family:"微软雅黑","黑体", "Lucida Grande", Verdana, sans-serif;}
+.intro {font-family:"Lucida Grande", Verdana, sans-serif; }
+
+.func a {cursor:default;}
+.func a b { background:url(weixin_func_2105acc.png) no-repeat; }
+
+.img_intro .nearBy{position:absolute; top:335px; left:30px;width:100%;}
+.img_intro .nearBy h2 { font-size:16px; }
+.img_intro .nearBy h2,
+.img_intro .nearBy p { margin-left:70px; }
+.img_intro #nearByIcon { float:left;width:70px; }
+
+.img_intro #currentPic { left:180px; }
+		
+.ico_newfunc { z-index:99;position:absolute;width:74px;height:50px;background:url(../images/weixin/index/icon_newfunc0ec594.png) no-repeat 0 0;background:url()\9;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader ( enabled=true , sizingMethod=sSize , src=../images/weixin/index/icon_newfunc0ec594.png ) }
+
+
+.descforv3 { }
+.descforv5 { }
+
+.weixin_home_link li{
+
+	line-height: 1.8;
+	color: #999;
+	margin-right:30px;
+}
+.weixin_home_link li a{
+	margin-left:-7px;
+}
+/*agreement*/
+.sign{text-align:right;}
+.em_text{font-weight:700;font-style:normal;}
+.indent{text-indent:2em;}
