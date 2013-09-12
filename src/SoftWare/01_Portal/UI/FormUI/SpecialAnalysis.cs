@@ -15,6 +15,7 @@ using Common.Utility;
 using Helpmate.QueryFilter;
 using Helpmate.BizEntity.Enum;
 using Helpmate.Facades.LotteryWebSvc;
+using Helpmate.UI.Forms.FormUI.Common;
 
 namespace Helpmate.UI.Forms.FormUI
 {
@@ -320,6 +321,12 @@ namespace Helpmate.UI.Forms.FormUI
             {
                 e.CellStyle.ForeColor = Color.Black;
             }
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm helpFrm = new HelpForm(PageForm.Special);
+            helpFrm.ShowDialog();
         }
     }
 }

@@ -164,7 +164,7 @@
             this.panel2.Location = new System.Drawing.Point(21, 567);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(699, 1);
+            this.panel2.Size = new System.Drawing.Size(682, 1);
             this.panel2.TabIndex = 160;
             // 
             // panel3
@@ -177,7 +177,7 @@
             this.panel3.Location = new System.Drawing.Point(21, 832);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(699, 1);
+            this.panel3.Size = new System.Drawing.Size(682, 1);
             this.panel3.TabIndex = 157;
             // 
             // panel1
@@ -190,7 +190,7 @@
             this.panel1.Location = new System.Drawing.Point(21, 294);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(699, 1);
+            this.panel1.Size = new System.Drawing.Size(682, 1);
             this.panel1.TabIndex = 152;
             // 
             // btnHelp
@@ -202,7 +202,7 @@
             this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHelp.FlatAppearance.BorderSize = 0;
             this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelp.Location = new System.Drawing.Point(735, 22);
+            this.btnHelp.Location = new System.Drawing.Point(718, 22);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(32, 22);
             this.btnHelp.TabIndex = 151;
@@ -237,13 +237,14 @@
             this.pnlLine.Location = new System.Drawing.Point(21, 48);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(699, 1);
+            this.pnlLine.Size = new System.Drawing.Size(682, 1);
             this.pnlLine.TabIndex = 146;
             // 
             // ucLotteryM4
             // 
             this.ucLotteryM4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM4.Location = new System.Drawing.Point(44, 844);
+            this.ucLotteryM4.Location = new System.Drawing.Point(35, 844);
+            this.ucLotteryM4.Lotteries = null;
             this.ucLotteryM4.Name = "ucLotteryM4";
             this.ucLotteryM4.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM4.TabIndex = 165;
@@ -251,7 +252,8 @@
             // ucLotteryM3
             // 
             this.ucLotteryM3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM3.Location = new System.Drawing.Point(44, 586);
+            this.ucLotteryM3.Location = new System.Drawing.Point(35, 586);
+            this.ucLotteryM3.Lotteries = null;
             this.ucLotteryM3.Name = "ucLotteryM3";
             this.ucLotteryM3.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM3.TabIndex = 165;
@@ -259,7 +261,8 @@
             // ucLotteryM2
             // 
             this.ucLotteryM2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM2.Location = new System.Drawing.Point(44, 313);
+            this.ucLotteryM2.Location = new System.Drawing.Point(35, 313);
+            this.ucLotteryM2.Lotteries = null;
             this.ucLotteryM2.Name = "ucLotteryM2";
             this.ucLotteryM2.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM2.TabIndex = 165;
@@ -267,7 +270,8 @@
             // ucLotteryM1
             // 
             this.ucLotteryM1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM1.Location = new System.Drawing.Point(44, 56);
+            this.ucLotteryM1.Location = new System.Drawing.Point(35, 56);
+            this.ucLotteryM1.Lotteries = null;
             this.ucLotteryM1.Name = "ucLotteryM1";
             this.ucLotteryM1.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM1.TabIndex = 165;

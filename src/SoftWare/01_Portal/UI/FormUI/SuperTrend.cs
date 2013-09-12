@@ -15,6 +15,7 @@ using Helpmate.UI.Forms.Models;
 using Helpmate.QueryFilter;
 using Helpmate.BizEntity.Enum;
 using Helpmate.UI.Forms.Code;
+using Helpmate.UI.Forms.FormUI.Common;
 
 namespace Helpmate.UI.Forms.FormUI
 {
@@ -597,5 +598,16 @@ namespace Helpmate.UI.Forms.FormUI
             }
         }
 
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm helpFrm = new HelpForm(PageForm.Super);
+            helpFrm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            HelpForm helpFrm = new HelpForm(PageForm.Super);
+            helpFrm.ShowDialog();
+        }
     }
 }

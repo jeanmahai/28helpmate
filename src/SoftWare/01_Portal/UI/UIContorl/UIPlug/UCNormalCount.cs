@@ -160,7 +160,7 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
             if (e.ColumnIndex < Lotteries.Length)
             {
                 var lotterie = Lotteries[e.ColumnIndex];
-                e.ToolTipText = lotterie.RetTime.ToString("yyyy-MM-dd hh:mm:ss");
+                e.ToolTipText = lotterie.RetTime.ToString("yyyy-MM-dd HH:mm:ss");
             }
         }
     }

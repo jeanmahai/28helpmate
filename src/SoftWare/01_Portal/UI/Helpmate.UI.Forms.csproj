@@ -413,6 +413,24 @@
     <None Include="Resources\ThisPeriod.png" />
     <None Include="Resources\SuperTrend.png" />
     <None Include="Resources\help.png" />
+    <None Include="Resource\Forecast.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resource\Forecast.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Omission.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Recent.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Special.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Super.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SoftLogo.ico" />
     <Content Include="Theme\play.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -450,9 +468,7 @@
     <None Include="Resources\na.gif" />
     <None Include="Resources\headbg.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resource\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>

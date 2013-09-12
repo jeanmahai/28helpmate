@@ -14,6 +14,7 @@ using Helpmate.Facades;
 using Common.Utility;
 using Helpmate.BizEntity.Enum;
 using Helpmate.UI.Forms.Code;
+using Helpmate.UI.Forms.FormUI.Common;
 
 namespace Helpmate.UI.Forms.FormUI
 {
@@ -192,6 +193,12 @@ namespace Helpmate.UI.Forms.FormUI
                     e.CellStyle.ForeColor = Color.Black;
                 }
             }
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm helpFrm = new HelpForm(PageForm.Omission);
+            helpFrm.ShowDialog();
         }
     }
 }
