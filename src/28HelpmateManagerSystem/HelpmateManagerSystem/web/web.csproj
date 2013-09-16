@@ -75,6 +75,7 @@
     <Content Include="res\javascript\start-menu.js" />
     <Content Include="res\javascript\tile-drag.js" />
     <Content Include="res\javascript\tile-slider.js" />
+    <Content Include="res\js\global.js" />
     <Content Include="res\js\jautoheight.1.0.js" />
     <Content Include="res\js\jquery-1.9.1.min.js" />
     <Content Include="Web.config" />

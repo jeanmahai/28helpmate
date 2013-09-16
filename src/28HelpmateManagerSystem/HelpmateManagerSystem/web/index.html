@@ -3,85 +3,142 @@
 <head>
     <title></title>
     <link type="text/css" rel="stylesheet" href="res/css/modern.css" />
-    <link type="text/css" rel="stylesheet" href="res/css/mystyle.css" />
-    <style type="text/css">
-        .overlay { display: none; position: absolute; top: 0px; left: 0px; opacity: 0.8; background-color: white; }
-    </style>
+    <link href="res/css/mystyle.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="res/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="res/javascript/dropdown.js"></script>
-    <script type="text/javascript" src="res/js/jautoheight.1.0.js"></script>
 </head>
 <body class="metrouicss">
-    <div class="main-frame">
-        <div class="page">
-            <div class="nav-bar">
-                <div class="nav-bar-inner">
-                    <span class="pull-menu"></span><a href="#"><span class="element brand">
+    <!--navigation-->
+    <div class="page" data-role="navigation">
+        <div class="nav-bar">
+            <div class="nav-bar-inner">
+                <span class="pull-menu"></span>
+                <a href="#">
+                    <span class="element brand">
                         <img class="place-left" src="res/img/admin.png" />
-                        28伴侣后台管理系统 <small>v1.0.0</small> </span></a>
-                    <div class="divider">
+                        28伴侣后台管理系统 <small>v1.0.0</small> </span>
+                </a>
+                <div class="divider">
+                </div>
+                <ul class="menu">
+                    <li data-role="dropdown">
+                        <a href="#">用户管理</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a>重置用户密码</a></li>
+                            <li>
+                                <a>用户充值记录查询</a></li>
+                            <li>
+                                <a>代理充值</a></li>
+                            <li>
+                                <a>查询用户</a></li>
+                        </ul>
+                    </li>
+                    <li data-role="dropdown">
+                        <a>公告管理</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a>新公告</a></li>
+                            <li>
+                                <a>公告查询</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">充值卡管理</a>
+                    </li>
+                    <li>
+                        <a href="#">密码修改</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--content-->
+    <div class="page" data-role="content">
+        <div class="page-region">
+            <div class="page-region-content">
+                <div class="tile double double-vertical bg-color-green">
+                    <div class="tile-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Jean
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <ul class="menu">
-                        <li data-role="dropdown"><a href="#">用户管理</a>
-                            <ul class="dropdown-menu">
-                                <li><a>重置用户密码</a></li>
-                                <li><a>用户充值记录查询</a></li>
-                                <li><a>代理充值</a></li>
-                                <li><a>查询用户</a></li>
-                            </ul>
-                        </li>
-                        <li data-role="dropdown"><a>公告管理</a>
-                            <ul class="dropdown-menu">
-                                <li><a>新公告</a></li>
-                                <li><a>公告查询</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">充值卡管理</a> </li>
-                        <li><a href="#">密码修改</a> </li>
-                    </ul>
+                    <div class="brand">
+                        <div class="icon">
+                            <img src="res/img/document_properties.png" />
+                        </div>
+                    </div>
                 </div>
+                <div class="tile bg-color-green">
+                    <div class="tile-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Jean
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="brand">
+                        <div class="icon">
+                            <img src="res/img/document_properties.png" />
+                        </div>
+                    </div>
+                </div>
+                <table class="striped hovered border">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Sex
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Jean
+                            </td>
+                            <td>
+                                male
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="page">
-            <div class="page-region">
-                <div class="page-region-content ">
-                </div>
+    </div>
+    <!--footer-->
+    <div class="page zi0" data-role="footer">
+        <div class="nav-bar">
+            <div class="nav-bar-inner">
+                <span class="element">2012-2013 </span>
             </div>
-        </div>
-        <div class="page">
-            <div class="nav-bar">
-                <div class="nav-bar-inner">
-                    <span class="element">2012-2013 </span>
-                </div>
-            </div>
-        </div>
-        <div class="overlay">
         </div>
     </div>
 </body>
-<script type="text/javascript">
-    function showOverlay() {
-        var ol = $("div.overlay");
-        var win = $(window);
-        ol.css({
-            top: 0,
-            left: 0,
-            width: win.width(),
-            height: win.height(),
-            zIndex: 99999
-        });
-        ol.show();
-    }
-    function hideOverlay() {
-        $("div.overlay").hide();
-    }
-    function updateLayout() {
-        //$("html").layout();
-        //$("body").layout();
-    }
-    $(function () {
-        updateLayout();
-        //showOverlay();
-    });
-</script>
 </html>
