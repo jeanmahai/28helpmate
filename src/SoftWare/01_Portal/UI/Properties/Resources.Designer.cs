@@ -151,6 +151,13 @@ namespace Helpmate.UI.Forms.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap help {
+            get {
+                object obj = ResourceManager.GetObject("help", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Hint {
             get {
                 object obj = ResourceManager.GetObject("Hint", resourceCulture);

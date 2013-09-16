@@ -37,13 +37,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tmRefresh = new System.Windows.Forms.Timer(this.components);
+            this.bgwApp = new System.ComponentModel.BackgroundWorker();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.pnlLine = new System.Windows.Forms.Panel();
-            this.tmRefresh = new System.Windows.Forms.Timer(this.components);
-            this.bgwApp = new System.ComponentModel.BackgroundWorker();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ucLotteryM4 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
             this.ucLotteryM3 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
             this.ucLotteryM2 = new Helpmate.UI.Forms.UIContorl.UIPlug.UCNormalCount();
@@ -142,6 +144,16 @@
             this.label4.TabIndex = 161;
             this.label4.Text = "同时间统计图：";
             // 
+            // tmRefresh
+            // 
+            this.tmRefresh.Interval = 30000;
+            this.tmRefresh.Tick += new System.EventHandler(this.tmRefresh_Tick);
+            // 
+            // bgwApp
+            // 
+            this.bgwApp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwApp_DoWork);
+            this.bgwApp.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwApp_RunWorkerCompleted);
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -152,7 +164,7 @@
             this.panel2.Location = new System.Drawing.Point(21, 567);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(733, 1);
+            this.panel2.Size = new System.Drawing.Size(682, 1);
             this.panel2.TabIndex = 160;
             // 
             // panel3
@@ -165,7 +177,7 @@
             this.panel3.Location = new System.Drawing.Point(21, 832);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(733, 1);
+            this.panel3.Size = new System.Drawing.Size(682, 1);
             this.panel3.TabIndex = 157;
             // 
             // panel1
@@ -178,8 +190,26 @@
             this.panel1.Location = new System.Drawing.Point(21, 294);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(733, 1);
+            this.panel1.Size = new System.Drawing.Size(682, 1);
             this.panel1.TabIndex = 152;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelp.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.help;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Location = new System.Drawing.Point(718, 22);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(32, 22);
+            this.btnHelp.TabIndex = 151;
+            this.btnHelp.Tag = "";
+            this.toolTip1.SetToolTip(this.btnHelp, "帮助文档");
+            this.btnHelp.UseVisualStyleBackColor = false;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnRefresh
             // 
@@ -207,23 +237,14 @@
             this.pnlLine.Location = new System.Drawing.Point(21, 48);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(733, 1);
+            this.pnlLine.Size = new System.Drawing.Size(682, 1);
             this.pnlLine.TabIndex = 146;
-            // 
-            // tmRefresh
-            // 
-            this.tmRefresh.Interval = 30000;
-            this.tmRefresh.Tick += new System.EventHandler(this.tmRefresh_Tick);
-            // 
-            // bgwApp
-            // 
-            this.bgwApp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwApp_DoWork);
-            this.bgwApp.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwApp_RunWorkerCompleted);
             // 
             // ucLotteryM4
             // 
             this.ucLotteryM4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM4.Location = new System.Drawing.Point(62, 844);
+            this.ucLotteryM4.Location = new System.Drawing.Point(35, 844);
+            this.ucLotteryM4.Lotteries = null;
             this.ucLotteryM4.Name = "ucLotteryM4";
             this.ucLotteryM4.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM4.TabIndex = 165;
@@ -231,7 +252,8 @@
             // ucLotteryM3
             // 
             this.ucLotteryM3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM3.Location = new System.Drawing.Point(62, 586);
+            this.ucLotteryM3.Location = new System.Drawing.Point(35, 586);
+            this.ucLotteryM3.Lotteries = null;
             this.ucLotteryM3.Name = "ucLotteryM3";
             this.ucLotteryM3.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM3.TabIndex = 165;
@@ -239,7 +261,8 @@
             // ucLotteryM2
             // 
             this.ucLotteryM2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM2.Location = new System.Drawing.Point(62, 313);
+            this.ucLotteryM2.Location = new System.Drawing.Point(35, 313);
+            this.ucLotteryM2.Lotteries = null;
             this.ucLotteryM2.Name = "ucLotteryM2";
             this.ucLotteryM2.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM2.TabIndex = 165;
@@ -247,7 +270,8 @@
             // ucLotteryM1
             // 
             this.ucLotteryM1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ucLotteryM1.Location = new System.Drawing.Point(62, 56);
+            this.ucLotteryM1.Location = new System.Drawing.Point(35, 56);
+            this.ucLotteryM1.Lotteries = null;
             this.ucLotteryM1.Name = "ucLotteryM1";
             this.ucLotteryM1.Size = new System.Drawing.Size(706, 201);
             this.ucLotteryM1.TabIndex = 165;
@@ -272,6 +296,7 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label6);
@@ -310,6 +335,8 @@
         private UIContorl.UIPlug.UCNormalCount ucLotteryM3;
         private System.Windows.Forms.Timer tmRefresh;
         private System.ComponentModel.BackgroundWorker bgwApp;
+        private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.ToolTip toolTip1;
 
 
     }

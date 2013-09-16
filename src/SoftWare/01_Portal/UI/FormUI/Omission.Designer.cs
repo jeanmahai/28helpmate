@@ -36,6 +36,7 @@
             this.dgvDataTwo = new System.Windows.Forms.DataGridView();
             this.dgvHead = new System.Windows.Forms.DataGridView();
             this.dgvFoot = new System.Windows.Forms.DataGridView();
+            this.btnHelp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataTwo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHead)).BeginInit();
@@ -48,7 +49,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 9F);
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(552, 16);
+            this.label17.Location = new System.Drawing.Point(521, 16);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(197, 12);
             this.label17.TabIndex = 126;
@@ -169,6 +170,23 @@
             this.dgvFoot.Size = new System.Drawing.Size(720, 40);
             this.dgvFoot.TabIndex = 138;
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelp.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.help;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Location = new System.Drawing.Point(735, 11);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(32, 22);
+            this.btnHelp.TabIndex = 153;
+            this.btnHelp.Tag = "";
+            this.btnHelp.UseVisualStyleBackColor = false;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // Omission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -176,6 +194,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.dgvFoot);
             this.Controls.Add(this.dgvHead);
             this.Controls.Add(this.dgvDataTwo);
@@ -207,5 +226,6 @@
         private System.Windows.Forms.DataGridView dgvDataTwo;
         private System.Windows.Forms.DataGridView dgvHead;
         private System.Windows.Forms.DataGridView dgvFoot;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

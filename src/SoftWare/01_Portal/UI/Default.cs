@@ -251,7 +251,7 @@ namespace Helpmate.UI.Forms
             if (e.Error != null)
             {
                 WriteLog.Write("GetInfoForTimer", e.Error.Message);
-                AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
+                //AppMessage.AlertErrMessage(ConsoleConst.ERROR_SERVER);
                 return;
             }
 

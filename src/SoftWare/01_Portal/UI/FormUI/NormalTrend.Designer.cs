@@ -39,6 +39,7 @@
             this.bgworkerLoad = new System.ComponentModel.BackgroundWorker();
             this.tbxPageNum = new System.Windows.Forms.TextBox();
             this.lnkPager = new System.Windows.Forms.LinkLabel();
+            this.btnHelp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.countList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
@@ -157,6 +158,23 @@
             this.lnkPager.Text = "跳转";
             this.lnkPager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPager_LinkClicked);
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelp.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.help;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Location = new System.Drawing.Point(724, 2);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(32, 22);
+            this.btnHelp.TabIndex = 152;
+            this.btnHelp.Tag = "";
+            this.btnHelp.UseVisualStyleBackColor = false;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // NormalTrend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -164,6 +182,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lnkPager);
             this.Controls.Add(this.tbxPageNum);
             this.Controls.Add(this.lnkFirst);
@@ -199,5 +218,6 @@
         private System.ComponentModel.BackgroundWorker bgworkerLoad;
         private System.Windows.Forms.TextBox tbxPageNum;
         private System.Windows.Forms.LinkLabel lnkPager;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

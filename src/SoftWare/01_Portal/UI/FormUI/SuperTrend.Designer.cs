@@ -48,6 +48,8 @@
             this.lnkSltDate = new System.Windows.Forms.LinkLabel();
             this.lnkPager = new System.Windows.Forms.LinkLabel();
             this.tbxPageNum = new System.Windows.Forms.TextBox();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.countList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.headerList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
@@ -227,7 +229,7 @@
             this.pnlLine.Location = new System.Drawing.Point(22, 55);
             this.pnlLine.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLine.Name = "pnlLine";
-            this.pnlLine.Size = new System.Drawing.Size(3346, 1);
+            this.pnlLine.Size = new System.Drawing.Size(4012, 1);
             this.pnlLine.TabIndex = 147;
             // 
             // bgworkerLoad
@@ -265,6 +267,40 @@
             this.tbxPageNum.TabIndex = 149;
             this.tbxPageNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelp.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.help;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Location = new System.Drawing.Point(1398, 27);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(32, 22);
+            this.btnHelp.TabIndex = 154;
+            this.btnHelp.Tag = "";
+            this.btnHelp.UseVisualStyleBackColor = false;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.help;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(748, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 22);
+            this.button1.TabIndex = 155;
+            this.button1.Tag = "";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SuperTrend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -272,6 +308,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lnkPager);
             this.Controls.Add(this.tbxPageNum);
             this.Controls.Add(this.lnkSltDate);
@@ -325,5 +363,7 @@
         private System.Windows.Forms.LinkLabel lnkSltDate;
         private System.Windows.Forms.LinkLabel lnkPager;
         private System.Windows.Forms.TextBox tbxPageNum;
+        private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button button1;
     }
 }

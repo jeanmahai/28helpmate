@@ -21,14 +21,20 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 预测集合用户ToopTip
+        /// 采用顺序相同的方法取INDEX
+        /// </summary>
+        public LotteryForBJ[] Lotteries { get; set; }
+
         public void LoadBindData(LotteryByTwentyPeriod lottery)
         {
             if (lottery != null)
             {
-
                 BindGridHead(lottery);
                 BindGridFoot(lottery);
 
+                Lotteries = lottery.Lotteries;
                 List<NormalCountNumModel> numList = new List<NormalCountNumModel>();
                 List<NormalCountTypeModel> typeList = new List<NormalCountTypeModel>();
 
@@ -145,6 +151,16 @@ namespace Helpmate.UI.Forms.UIContorl.UIPlug
                         e.CellStyle.SelectionForeColor = UtilsTool.ToColor("#0C0");
                         break;
                 }
+            }
+        }
+
+        private void dgvDataNum_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
+        {
+
+            if (e.ColumnIndex < Lotteries.Length)
+            {
+                var lotterie = Lotteries[e.ColumnIndex];
+                e.ToolTipText = lotterie.RetTime.ToString("yyyy-MM-dd HH:mm:ss");
             }
         }
     }
