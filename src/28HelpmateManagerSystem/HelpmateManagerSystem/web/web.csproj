@@ -101,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="build.bat" />
+    <Content Include="Config\Database\MSSQL\Database.config" />
+    <Content Include="Config\Database\MSSQL\DbFiles.config" />
+    <Content Include="Config\Database\MSSQL\Data\SystemUsers.config" />
     <None Include="package.json" />
     <None Include="res\fonts\DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff" />
@@ -122,6 +125,7 @@
       <Name>Logic</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

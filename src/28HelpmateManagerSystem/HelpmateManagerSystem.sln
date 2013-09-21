@@ -9,7 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "HelpmateManag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEntity", "HelpmateManagerSystem\DataEntity\DataEntity.csproj", "{A986DD3A-E33E-4A78-BA7B-05E8A244D2DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "HelpmateManagerSystem\UnitTest\UnitTest.csproj", "{593A8A56-F58C-40E7-A4CE-D998B96A1AE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A7873E2A-A4DE-495D-A317-C17A13458606}"
+	ProjectSection(SolutionItems) = preProject
+		HelpmateManagerSystem.vsmdi = HelpmateManagerSystem.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = HelpmateManagerSystem.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -31,6 +43,10 @@ Global
 		{A986DD3A-E33E-4A78-BA7B-05E8A244D2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A986DD3A-E33E-4A78-BA7B-05E8A244D2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A986DD3A-E33E-4A78-BA7B-05E8A244D2DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593A8A56-F58C-40E7-A4CE-D998B96A1AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593A8A56-F58C-40E7-A4CE-D998B96A1AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593A8A56-F58C-40E7-A4CE-D998B96A1AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593A8A56-F58C-40E7-A4CE-D998B96A1AE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
