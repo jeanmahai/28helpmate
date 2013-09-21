@@ -2,19 +2,6 @@
     if (!window["utility"]) window["utility"] = {};
     var utility = window["utility"];
 
-    var footer = $("div[data-role=footer]");
-    var nav = $("div[data-role=navigation]");
-    var cnt = $("div[data-role=content]");
-    var win = $(window);
-
-    function resetFooter() {
-        var winHeight = win.height();
-        var bodyHeight = $(document.body).height();
-        if (bodyHeight < winHeight) {
-
-        }
-    }
-
     //get page
     function getPage(pageName, callback) {
         $.ajax({
@@ -40,6 +27,7 @@
 
 $(function () {
     window["utility"].getPage("login", function (page) {
+        var overlay = $.joverlay();
         $(document.body).append(page);
     });
 

@@ -7,3 +7,4 @@
 .my-overlay{ opacity: 0.8;position: fixed;top: 0px;left: 0px;z-index: 9999;}
 .my-dialog{ z-index: 10000;position: absolute;}
 .my-hide{ display: none;}
+.zi1001{z-index: 1001}
