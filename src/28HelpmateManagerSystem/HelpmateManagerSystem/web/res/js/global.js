@@ -40,7 +40,7 @@
 
 $(function () {
     window["utility"].getPage("login", function (page) {
-        //$(document.body).append(page);
+        $(document.body).append(page);
     });
 
     //#region footer

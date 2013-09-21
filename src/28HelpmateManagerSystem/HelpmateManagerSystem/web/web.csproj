@@ -78,8 +78,8 @@
     <Content Include="res\js\global.js" />
     <Content Include="res\js\j.footer.bottom.js" />
     <Content Include="res\js\jautoheight.1.0.js" />
+    <Content Include="res\js\jposition.js" />
     <Content Include="res\js\jquery-1.9.1.min.js" />
-    <Content Include="res\js\jquery.ui.position.js" />
     <Content Include="res\pages\login.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
