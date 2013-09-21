@@ -1,23 +1,32 @@
 ﻿<div class="span5 border bg-color-white border-color-blue pd10 zi1001" data-type="dynamic" data-page="login" data-id="login">
     <h2>
         用户登录</h2>
-    <form>
+    <form id="frmLogin" 
+          method="get" 
+          action="/utility/DoProcess.ashx" 
+          data-action="login">
         <div class="input-control text">
-            <input type="text" placeholder="请输入用户名" />
+            <input name="UserId" type="text" placeholder="请输入用户名" />
             <button type="button" tabindex="-1" class="btn-clear" />
         </div>
         <div class="input-control text">
-            <input type="password" placeholder="请输入密码" />
+            <input name="Password" type="password" placeholder="请输入密码" />
             <button type="button" tabindex="-1" class="btn-reveal" />
         </div>
-        <button class="image-button bg-color-darken fg-color-white">
+        <button class="image-button bg-color-darken fg-color-white" 
+                data-form="frmLogin"
+                onclick="login(this);return false;">
             登录<img src="/res/img/old_edit_redo.png" />
         </button>
     </form>
-   <!-- <div data-type="dynamic" class="bg-color-blueLight my-overlay"></div>-->
     <script type="text/javascript" >
         $()["Input"]({ initAll: true });
         $("[data-id=login]").jposition();
+        function login(tag) {
+            
+            var data = $(tag).parent().jformSerialize();
+            console.info(JSON.stringify(data));
+        }
     </script>
 </div>
 
