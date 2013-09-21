@@ -60,6 +60,8 @@
     <Content Include="res\fonts\license.txt" />
     <Content Include="res\img\Admin.png" />
     <Content Include="res\img\old_edit_redo.png" />
+    <Content Include="res\img\preloader-w8-cycle-black.gif" />
+    <Content Include="res\img\preloader-w8-line-black.gif" />
     <Content Include="res\javascript\accordion.js" />
     <Content Include="res\javascript\buttonset.js" />
     <Content Include="res\javascript\calendar.js" />
@@ -78,6 +80,7 @@
     <Content Include="res\js\global.js" />
     <Content Include="res\js\j.footer.bottom.js" />
     <Content Include="res\js\jautoheight.1.0.js" />
+    <Content Include="res\js\joverlay.js" />
     <Content Include="res\js\jposition.js" />
     <Content Include="res\js\jquery-1.9.1.min.js" />
     <Content Include="res\pages\login.htm" />
