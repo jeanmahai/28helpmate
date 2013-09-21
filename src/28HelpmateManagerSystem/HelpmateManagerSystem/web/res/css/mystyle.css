@@ -3,3 +3,7 @@
 .zi0{ z-index: 0;}
 .cls{ clear: both;}
 .layout-center{ margin-right: auto;margin-left: auto; }
+.pd10{ padding: 10px;}
+.my-overlay{ opacity: 0.8;position: fixed;top: 0px;left: 0px;z-index: 9999;}
+.my-dialog{ z-index: 10000;position: absolute;}
+.my-hide{ display: none;}

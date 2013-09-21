@@ -1,0 +1,28 @@
+﻿<div class="span5 border bg-color-white border-color-blue pd10" data-type="dynamic" data-page="login" data-id="login">
+    <h2>
+        用户登录</h2>
+    <form>
+        <div class="input-control text">
+            <input type="text" placeholder="请输入用户名" />
+            <button type="button" tabindex="-1" class="btn-clear" />
+        </div>
+        <div class="input-control text">
+            <input type="password" placeholder="请输入密码" />
+            <button type="button" tabindex="-1" class="btn-reveal" />
+        </div>
+        <button class="image-button bg-color-darken fg-color-white">
+            登录<img src="/res/img/old_edit_redo.png" />
+        </button>
+    </form>
+   <!-- <div data-type="dynamic" class="bg-color-blueLight my-overlay"></div>-->
+    <script type="text/javascript" >
+        $()["Input"]({ initAll: true });
+        $("[data-id=login]").position({
+            my:"center",
+            at: "center",
+            of: $(window),
+            collision: "fit none"
+        });
+    </script>
+</div>
+

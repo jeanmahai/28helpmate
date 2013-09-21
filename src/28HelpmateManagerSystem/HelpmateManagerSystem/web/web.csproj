@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
-    <Content Include="login.aspx" />
     <Content Include="manifest-format.txt" />
     <Content Include="res\css\modern-responsive.css" />
     <Content Include="res\css\modern.css" />
@@ -60,6 +59,7 @@
     <Content Include="res\css\theme-dark.css" />
     <Content Include="res\fonts\license.txt" />
     <Content Include="res\img\Admin.png" />
+    <Content Include="res\img\old_edit_redo.png" />
     <Content Include="res\javascript\accordion.js" />
     <Content Include="res\javascript\buttonset.js" />
     <Content Include="res\javascript\calendar.js" />
@@ -76,8 +76,11 @@
     <Content Include="res\javascript\tile-drag.js" />
     <Content Include="res\javascript\tile-slider.js" />
     <Content Include="res\js\global.js" />
+    <Content Include="res\js\j.footer.bottom.js" />
     <Content Include="res\js\jautoheight.1.0.js" />
     <Content Include="res\js\jquery-1.9.1.min.js" />
+    <Content Include="res\js\jquery.ui.position.js" />
+    <Content Include="res\pages\login.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -87,16 +90,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utility\getPage.ashx.cs">
+      <DependentUpon>getPage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="utility\HttpHandlerBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="build.bat" />
     <None Include="package.json" />
     <None Include="res\fonts\DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff" />
@@ -106,6 +107,7 @@
     <None Include="res\fonts\iconFont.woff" />
     <None Include="res\fonts\k3k702ZOKiLJc3WVjuplzJ1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\K88pR3goAWT7BTt32Z01mz8E0i7KZn-EPnyo3HZu7kw.woff" />
+    <Content Include="utility\getPage.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -129,7 +131,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>call $(ProjectDir)build.bat</PostBuildEvent>
+    <PostBuildEvent>::call $(ProjectDir)build.bat</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
