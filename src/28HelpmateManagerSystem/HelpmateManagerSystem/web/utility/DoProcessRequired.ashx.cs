@@ -14,8 +14,15 @@ namespace web.utility
         {
             if (string.IsNullOrEmpty(SessionVal.UserId))
             {
-                
+                ctx.Response.Write(new AjaxResult
+                                   {
+                                       Success = false,
+                                       Message = "你还没有登录"
+                                   }.ToString());
+                ctx.Response.End();
             }
+
+            ctx.Response.End();
         }
     }
 }

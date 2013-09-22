@@ -23,6 +23,7 @@ namespace web.utility
                     if(string.IsNullOrEmpty(message))
                     {
                         result.Success = true;
+                        SessionVal.UserId = FormVal.UserId;
                     }
                     else
                     {
