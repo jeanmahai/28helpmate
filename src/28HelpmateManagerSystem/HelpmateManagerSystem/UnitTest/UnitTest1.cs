@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logic;
+using DataEntity;
 
 namespace UnitTest
 {
@@ -65,6 +66,19 @@ namespace UnitTest
         {
             string result = "";
             result = SystemUserLogic.Login("admin", "123", "127.0.0.1");
+        }
+
+        [TestMethod]
+        public void TestCreatePayCard()
+        {
+            string result = "";
+            result = PayCardLogic.CreatePayCard(PayCardCategory.Day, 1000, DateTime.Now, DateTime.Now.AddYears(2));
+        }
+
+        [TestMethod]
+        public void TestQueryPayCard()
+        {
+            var data = PayCardLogic.QueryPayCard(2, 9, null, null, null, null);
         }
     }
 }

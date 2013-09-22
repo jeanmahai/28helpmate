@@ -60,6 +60,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataEntity\DataEntity.csproj">
+      <Project>{A986DD3A-E33E-4A78-BA7B-05E8A244D2DD}</Project>
+      <Name>DataEntity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{9EF40FDA-C7CE-487F-926B-AFAFAE45A562}</Project>
       <Name>Logic</Name>

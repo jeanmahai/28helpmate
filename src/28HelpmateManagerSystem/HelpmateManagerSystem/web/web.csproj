@@ -116,6 +116,7 @@
     <Content Include="Config\Database\MSSQL\Database.config" />
     <Content Include="Config\Database\MSSQL\DbFiles.config" />
     <Content Include="Config\Database\MSSQL\Data\SystemUsers.config" />
+    <Content Include="Config\Database\MSSQL\Data\PayCard.config" />
     <None Include="package.json" />
     <None Include="res\fonts\DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff" />

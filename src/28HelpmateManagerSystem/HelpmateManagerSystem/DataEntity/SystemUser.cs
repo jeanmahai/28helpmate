@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Framework.Util;
+
 namespace DataEntity
 {
     /// <summary>
@@ -29,7 +31,13 @@ namespace DataEntity
         /// <summary>
         /// 状态文本
         /// </summary>
-        public string StrStatus { get; set; }
+        public string StrStatus
+        {
+            get
+            {
+                return EnumHelper.GetDescription(this.Status);
+            }
+        }
         /// <summary>
         /// 最后登录时间
         /// </summary>

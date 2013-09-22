@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Framework.Util">
+      <HintPath>..\..\ReferenceLib\Framework.Util.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
+    <Compile Include="PageList.cs" />
+    <Compile Include="PayCard.cs" />
     <Compile Include="SystemUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
