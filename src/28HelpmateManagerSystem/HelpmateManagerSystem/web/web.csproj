@@ -80,7 +80,9 @@
     <Content Include="res\js\global.js" />
     <Content Include="res\js\j.footer.bottom.js" />
     <Content Include="res\js\jautoheight.1.0.js" />
+    <Content Include="res\js\jformprocess.js" />
     <Content Include="res\js\jformserialize.js" />
+    <Content Include="res\js\jloading_v2.js" />
     <Content Include="res\js\joverlay.js" />
     <Content Include="res\js\jposition.js" />
     <Content Include="res\js\jquery-1.9.1.min.js" />

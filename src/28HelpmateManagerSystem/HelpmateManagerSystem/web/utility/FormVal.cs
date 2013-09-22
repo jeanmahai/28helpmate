@@ -10,5 +10,6 @@ namespace web.utility
         private static HttpRequest Request { get { return HttpContext.Current.Request; } }
         public static string UserId{get { return Request.Form["UserId"]; }}
         public static string Password{get { return Request.Form["Password"]; }}
+        public static string Action{get { return Request.Form["Action"]; }}
     }
 }

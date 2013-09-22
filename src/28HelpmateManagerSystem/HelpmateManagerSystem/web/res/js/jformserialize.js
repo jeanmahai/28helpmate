@@ -3,7 +3,7 @@
 如果不是html5,需要引用json2.js,否则不需要引用
 */
 $.fn.extend({
-    jformSerialize: function () {
+    jformToJson: function () {
         if (!$(this).is("form")) return null;
         var obj = {};
         $(this).find("[name]").each(function () {

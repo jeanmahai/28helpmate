@@ -13,7 +13,9 @@ namespace web.utility
     {
         public override void DoRequest(HttpContext ctx)
         {
-            switch (QueryStringVal.Action)
+            var action = QueryStringVal.Action;
+            if(string.IsNullOrEmpty(action)) action = FormVal.Action;
+            switch (action)
             {
                 case "login":
                     var message=SystemUserLogic.Login(FormVal.UserId,FormVal.Password,"127.0.0.1");
@@ -30,6 +32,7 @@ namespace web.utility
                     ctx.Response.Write(result.ToString());
                     break;
             }
+            ctx.Response.End();
         }
     }
 }
