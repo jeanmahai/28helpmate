@@ -17,7 +17,7 @@ namespace Logic
         /// <param name="counts">生成张数</param>
         /// <param name="beginTime">有效期起</param>
         /// <param name="endTime">有效期止</param>
-        /// <returns></returns>
+        /// <returns>返回值为空，则生成成功；否则生成失败，返回值为失败信息。</returns>
         public static string CreatePayCard(PayCardCategory category, int counts, DateTime beginTime, DateTime endTime)
         {
             string result = "";
@@ -50,6 +50,56 @@ namespace Logic
             DateTime dtBegin = beginTime == null ? DateTime.Now.AddYears(-100) : beginTime.Value;
             DateTime dtEnd = endTime == null ? DateTime.Now.AddYears(100) : endTime.Value;
             return PayCardDA.QueryPayCard(pageIndex, pageSize, nCategory, nStatus, dtBegin, dtEnd);
+        }
+
+        /// <summary>
+        /// 获取单张充值卡
+        /// </summary>
+        /// <param name="sysNo">充值卡编号</param>
+        /// <returns></returns>
+        public static PayCard GetBySysNo(int sysNo)
+        {
+            return PayCardDA.GetBySysNo(sysNo);
+        }
+
+        /// <summary>
+        /// 启用充值卡
+        /// </summary>
+        /// <param name="sysNo">充值卡编号</param>
+        /// <returns></returns>
+        public static bool EnablePayCard(int sysNo)
+        {
+            return PayCardDA.UpdateStatus(sysNo, PayCardStatus.Valid);
+        }
+
+        /// <summary>
+        /// 禁用充值卡
+        /// </summary>
+        /// <param name="sysNo">充值卡编号</param>
+        /// <returns></returns>
+        public static bool DisablePayCard(int sysNo)
+        {
+            return PayCardDA.UpdateStatus(sysNo, PayCardStatus.Invalid);
+        }
+
+        /// <summary>
+        /// 删除充值卡
+        /// </summary>
+        /// <param name="sysNo"></param>
+        /// <returns></returns>
+        public static bool DeletePayCard(int sysNo)
+        {
+            return PayCardDA.Delete(sysNo);
+        }
+
+        /// <summary>
+        /// 编辑充值卡
+        /// </summary>
+        /// <param name="entity">充值卡</param>
+        /// <returns></returns>
+        public static bool Edit(PayCard entity)
+        {
+            return PayCardDA.Edit(entity);
         }
     }
 }

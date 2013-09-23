@@ -46,6 +46,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="PageList.cs" />
     <Compile Include="PayCard.cs" />
+    <Compile Include="PayLog.cs" />
     <Compile Include="SystemUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

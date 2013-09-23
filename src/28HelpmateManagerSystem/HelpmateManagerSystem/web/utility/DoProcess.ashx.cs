@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Logic;
+using DataEntity;
 
 namespace web.utility
 {
@@ -18,7 +19,8 @@ namespace web.utility
             switch (action)
             {
                 case "login":
-                    var message=SystemUserLogic.Login(FormVal.UserId,FormVal.Password,"127.0.0.1");
+                    SystemUser user = new SystemUser();
+                    var message=SystemUserLogic.Login(FormVal.UserId,FormVal.Password,"127.0.0.1", out user);
                     var result = new AjaxResult();
                     if(string.IsNullOrEmpty(message))
                     {

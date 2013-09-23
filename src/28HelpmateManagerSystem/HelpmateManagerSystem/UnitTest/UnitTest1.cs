@@ -62,10 +62,16 @@ namespace UnitTest
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestLogin()
         {
             string result = "";
-            result = SystemUserLogic.Login("admin", "123", "127.0.0.1");
+            SystemUser user = new SystemUser();
+            result = SystemUserLogic.Login("admin", "123", "127.0.0.1", out user);
+        }
+        [TestMethod]
+        public void TestChangePwd()
+        {
+            var result = SystemUserLogic.ChangePwd(100000, "1234", "123");
         }
 
         [TestMethod]
@@ -74,11 +80,52 @@ namespace UnitTest
             string result = "";
             result = PayCardLogic.CreatePayCard(PayCardCategory.Day, 1000, DateTime.Now, DateTime.Now.AddYears(2));
         }
-
         [TestMethod]
         public void TestQueryPayCard()
         {
             var data = PayCardLogic.QueryPayCard(2, 9, null, null, null, null);
+        }
+        [TestMethod]
+        public void TestGetPayCardBySysNo()
+        {
+            var data = PayCardLogic.GetBySysNo(18651);
+        }
+        [TestMethod]
+        public void TestEnablePayCard()
+        {
+            var data = PayCardLogic.EnablePayCard(18651);
+        }
+        [TestMethod]
+        public void TestDisablePayCard()
+        {
+            var data = PayCardLogic.DisablePayCard(18651);
+        }
+        [TestMethod]
+        public void TestDeletePayCard()
+        {
+            var data = PayCardLogic.DeletePayCard(18651);
+        }
+        [TestMethod]
+        public void TestEditPayCard()
+        {
+            PayCard entity = new PayCard();
+            entity.SysNo = 18652;
+            entity.CategorySysNo = PayCardCategory.Month;
+            entity.Status = PayCardStatus.Invalid;
+            entity.BeginTime = DateTime.Now.AddDays(-1);
+            entity.EndTime = DateTime.Now;
+            var data = PayCardLogic.Edit(entity);
+        }
+
+        [TestMethod]
+        public void TestGetUserPayLog()
+        {
+            var data = PayLogLogic.GetUserPayLog(1, 8, 2);
+        }
+        [TestMethod]
+        public void TestGetPayLogByBatch()
+        {
+            var data = PayLogLogic.GetPayLogByBatch(1, 8, DateTime.Now.AddYears(-1), DateTime.Now.AddYears(1));
         }
     }
 }

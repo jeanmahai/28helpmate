@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PayCardDA.cs" />
+    <Compile Include="PayLogDA.cs" />
     <Compile Include="SystemUserDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

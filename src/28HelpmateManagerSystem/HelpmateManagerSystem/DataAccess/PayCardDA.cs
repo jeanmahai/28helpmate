@@ -123,5 +123,62 @@ namespace DataAccess
 
             return new PageList<List<PayCard>>(result, pageIndex, pageSize, totalCount);
         }
+
+        /// <summary>
+        /// 获取单张充值卡
+        /// </summary>
+        /// <param name="sysNo">充值卡编号</param>
+        /// <returns></returns>
+        public static PayCard GetBySysNo(int sysNo)
+        {
+            DbCommand cmd = new DbCommand("PayCard_GetBySysNo");
+            cmd.SetParameterValue("@SysNo", sysNo);
+            return cmd.ExecuteEntity<PayCard>();
+        }
+
+        /// <summary>
+        /// 更新充值卡状态
+        /// </summary>
+        /// <param name="sysNo">充值卡编号</param>
+        /// <param name="status">充值卡状态</param>
+        /// <returns></returns>
+        public static bool UpdateStatus(int sysNo, PayCardStatus status)
+        {
+            DbCommand cmd = new DbCommand("PayCard_UpdateStatus");
+            cmd.SetParameterValue("@SysNo", sysNo);
+            cmd.SetParameterValue("@Status", (int)status);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+
+        /// <summary>
+        /// 删除充值卡
+        /// </summary>
+        /// <param name="sysNo">充值卡编号</param>
+        /// <returns></returns>
+        public static bool Delete(int sysNo)
+        {
+            DbCommand cmd = new DbCommand("PayCard_Delete");
+            cmd.SetParameterValue("@SysNo", sysNo);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+
+        /// <summary>
+        /// 编辑充值卡
+        /// </summary>
+        /// <param name="entity">充值卡</param>
+        /// <returns></returns>
+        public static bool Edit(PayCard entity)
+        {
+            DbCommand cmd = new DbCommand("PayCard_Edit");
+            cmd.SetParameterValue("@SysNo", entity.SysNo);
+            cmd.SetParameterValue("@CategorySysNo", (int)entity.CategorySysNo);
+            cmd.SetParameterValue("@Status", (int)entity.Status);
+            cmd.SetParameterValue("@BeginTime", entity.BeginTime);
+            cmd.SetParameterValue("@EndTime", entity.EndTime);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
     }
 }
