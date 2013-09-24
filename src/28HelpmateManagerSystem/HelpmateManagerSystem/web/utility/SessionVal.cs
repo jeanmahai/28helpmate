@@ -14,7 +14,7 @@ namespace web.utility
         }
         public static string UserId
         {
-            get { return Session["UserId"].ToString(); } 
+            get { return Session["UserId"] == null ? "" : Session["UserId"].ToString(); }
             set { Session["UserId"] = value; }
         }
     }

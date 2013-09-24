@@ -11,5 +11,7 @@ namespace web.utility
         public static string UserId{get { return Request.Form["UserId"]; }}
         public static string Password{get { return Request.Form["Password"]; }}
         public static string Action{get { return Request.Form["Action"]; }}
+        public static string OldPsw { get { return Request.Form["OldPsw"]; } }
+        public static string NewPsw { get { return Request.Form["NewPsw"]; } }
     }
 }

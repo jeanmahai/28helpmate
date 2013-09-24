@@ -62,91 +62,23 @@
                         <a href="#">充值卡管理</a>
                     </li>
                     <li>
-                        <a href="#">密码修改</a>
+                        <a href="javascript:navChangePassword()">密码修改</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
     <!--content-->
+    
     <div class="page" data-role="content">
+        
         <div class="page-region">
-            <div class="page-region-content">
-               <!-- <div class="tile double double-vertical bg-color-green">
-                    <div class="tile-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Name
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Jean
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="brand">
-                        <div class="icon">
-                            <img src="res/img/document_properties.png" />
-                        </div>
-                    </div>
-                </div>
-                <div class="tile bg-color-green">
-                    <div class="tile-content">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Name
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Jean
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="brand">
-                        <div class="icon">
-                            <img src="res/img/document_properties.png" />
-                        </div>
-                    </div>
-                </div>
-                <table class="striped hovered border">
-                    <thead>
-                        <tr>
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Sex
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                Jean
-                            </td>
-                            <td>
-                                male
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>-->
+            <div class="page-region-content" data-role="page-container">
+               
             </div>
         </div>
     </div>
+    
     <!--footer-->
     <div class="page zi0" data-role="footer">
         <div class="nav-bar">
@@ -155,5 +87,6 @@
             </div>
         </div>
     </div>
+    <form id="frmCheckLogin" method="post" action="/utility/DoProcess.ashx" data-action="checklogin" style="display: none;"></form>
 </body>
 </html>

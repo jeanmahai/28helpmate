@@ -15,14 +15,14 @@ namespace web.utility
         public override void DoRequest(HttpContext ctx)
         {
             var action = QueryStringVal.Action;
-            if(string.IsNullOrEmpty(action)) action = FormVal.Action;
+            if (string.IsNullOrEmpty(action)) action = FormVal.Action;
             switch (action)
             {
                 case "login":
                     SystemUser user = new SystemUser();
-                    var message=SystemUserLogic.Login(FormVal.UserId,FormVal.Password,"127.0.0.1", out user);
+                    var message = SystemUserLogic.Login(FormVal.UserId,FormVal.Password,"127.0.0.1",out user);
                     var result = new AjaxResult();
-                    if(string.IsNullOrEmpty(message))
+                    if (string.IsNullOrEmpty(message))
                     {
                         result.Success = true;
                         SessionVal.UserId = FormVal.UserId;
@@ -33,6 +33,12 @@ namespace web.utility
                         result.Message = message;
                     }
                     ctx.Response.Write(result.ToString());
+                    break;
+                case "checklogin":
+                    ctx.Response.Write(new AjaxResult
+                                       {
+                                           Success = !string.IsNullOrEmpty(SessionVal.UserId)
+                                       }.ToString());
                     break;
             }
             ctx.Response.End();

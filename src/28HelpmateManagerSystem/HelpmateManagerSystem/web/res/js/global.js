@@ -3,28 +3,7 @@
 /// <reference path="joverlay.js" />
 /// <reference path="jloading_v2.js" />
 
-var overlay;
-var currentPage;
 
-function removeOverlay() {
-    if (overlay) overlay.remove();
-    overlay = null;
-}
-function appendOverlay() {
-    removeOverlay();
-    overlay = $.joverlay();
-}
-
-function removePage() {
-    if (currentPage) currentPage.remove();
-    currentPage = null;
-}
-function appendPage(html,tag) {
-    removePage();
-    currentPage = $(html);
-    if (tag) tag.append(currentPage);
-    else $(document.body).append(currentPage);
-}
 
 (function () {
     if (!window["utility"]) window["utility"] = {};
@@ -38,8 +17,6 @@ function appendPage(html,tag) {
             data: { pageName: pageName },
             dataType: "html",
             success: function (result) {
-                //$("[data-type=dynamic]").remove();
-                //$.data("")
                 if (callback) {
                     callback(result);
                 }
@@ -52,17 +29,79 @@ function appendPage(html,tag) {
 
     utility.getPage = getPage;
 
+
 })();
 
-$(function () {
-    window["utility"].getPage("login", function (page) {
+
+var overlay;
+var currentPage;
+var pageContainer;
+var utility = window.utility;
+
+function removeOverlay() {
+    if (overlay) overlay.remove();
+    overlay = null;
+}
+function appendOverlay() {
+    removeOverlay();
+    overlay = $.joverlay();
+}
+function removePage() {
+    if (currentPage) currentPage.remove();
+    currentPage = null;
+}
+function appendPage(html, tag) {
+    debugger;
+    removePage();
+    currentPage = $(html);
+    if (tag) tag.append(currentPage);
+    else $(document.body).append(currentPage);
+}
+
+
+function navLogin() {
+    utility.getPage("login", function (page) {
         appendOverlay();
         appendPage(page);
     });
+}
+function navHome() {
+    utility.getPage("home", function (page) {
+        appendPage(page, pageContainer);
+    });
+}
+
+function navChangePassword() {
+    utility.getPage("ChangePassword", function (page) {
+        appendPage(page, pageContainer);
+    });
+}
+
+function checkLogin() {
+    $("#frmCheckLogin").formProcess({
+        success: function (result) {
+            if (!result.Success) {
+                navLogin();
+            }
+            else {
+                navHome();
+            }
+        },
+        dataType: "json"
+    });
+}
+
+
+$(function () {
+
+    pageContainer = $("[data-role=page-container]");
 
     //#region footer
     $.footerToBottom();
-    $(window).bind("resize", $.footerToBottom);
+    $(window).bind("resize", function () {
+        $.footerToBottom();
+    });
     //#endregion
-
+    //navHome();
+    checkLogin();
 });

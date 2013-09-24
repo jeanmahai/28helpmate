@@ -1,5 +1,4 @@
-﻿<div class="span5 border bg-color-white border-color-blue pd10 zi1001" data-type="dynamic"
-    data-page="login" data-id="login">
+﻿<div class="span5 border bg-color-white  pd10 zi1001" data-id="login">
     <h2>
         用户登录</h2>
     <form id="frmLogin" method="post" action="/utility/DoProcess.ashx" data-action="login">
@@ -7,7 +6,7 @@
         <input name="UserId" type="text" placeholder="请输入用户名" />
         <button type="button" tabindex="-1" class="btn-clear" />
     </div>
-    <div class="input-control text">
+    <div class="input-control password">
         <input name="Password" type="password" placeholder="请输入密码" />
         <button type="button" tabindex="-1" class="btn-reveal" />
     </div>
@@ -26,6 +25,7 @@
                     if (result.Success) {
                         removePage();
                         removeOverlay();
+                        navHome();
                     }
                     else {
                         alert(result.Message);

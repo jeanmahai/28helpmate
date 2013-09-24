@@ -51,6 +51,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="manifest-format.txt" />
     <Content Include="res\css\modern-responsive.css" />
@@ -87,6 +88,8 @@
     <Content Include="res\js\jposition.js" />
     <Content Include="res\js\jquery-1.9.1.min.js" />
     <Content Include="res\js\json2.js" />
+    <Content Include="res\pages\ChangePassword.htm" />
+    <Content Include="res\pages\home.htm" />
     <Content Include="res\pages\login.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -97,6 +100,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utility\AjaxResult.cs" />
     <Compile Include="utility\DoProcess.ashx.cs">
