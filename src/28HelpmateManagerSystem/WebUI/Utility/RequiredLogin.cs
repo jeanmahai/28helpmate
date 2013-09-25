@@ -7,8 +7,6 @@ namespace WebUI.Utility
 {
     public class RequiredLogin:PageBase
     {
-        public virtual void DoSome(){}
-
         public override void PageLoad()
         {
             if(string.IsNullOrEmpty(SessionVal.UserId))

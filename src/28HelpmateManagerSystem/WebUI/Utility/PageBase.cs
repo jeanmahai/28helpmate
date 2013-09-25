@@ -6,13 +6,22 @@ using System.Web.UI;
 
 namespace WebUI.Utility
 {
-    public class PageBase : Page
+    public class PageBase:Page
     {
-        public virtual void PageLoad(){}
+        public virtual void PageLoad() { }
 
         public void Page_Load(object sender,EventArgs e)
         {
             PageLoad();
+        }
+
+        public void Alert(string message)
+        {
+            ScriptManager.RegisterStartupScript(this,
+                GetType(),
+                string.Format("alert_{0}",new Random().Next(1000)),
+                string.Format("alert('{0}')",message),
+                true);
         }
     }
 }

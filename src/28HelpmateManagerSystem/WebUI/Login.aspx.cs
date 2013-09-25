@@ -31,5 +31,6 @@ namespace WebUI
             SessionVal.UserSysNo = user.SysNo;
             Response.Redirect("/Index.aspx");
         }
+
     }
 }

@@ -60,6 +60,7 @@
     <Content Include="res\css\theme-dark.css" />
     <Content Include="res\fonts\license.txt" />
     <Content Include="res\img\Admin.png" />
+    <Content Include="res\img\check.png" />
     <Content Include="res\img\old_edit_redo.png" />
     <Content Include="res\img\preloader-w8-cycle-black.gif" />
     <Content Include="res\img\preloader-w8-line-black.gif" />
