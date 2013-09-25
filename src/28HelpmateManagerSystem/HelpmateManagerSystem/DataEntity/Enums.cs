@@ -61,4 +61,25 @@ namespace DataEntity
         [Description("已充值")]
         Recharge = 2
     }
+
+    /// <summary>
+    /// 公告状态栏
+    /// </summary>
+    public enum NoticesStatus {
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        [Description("初始化")]
+        Init = 0,
+        /// <summary>
+        /// 发布
+        /// </summary>
+        [Description("发布")]
+        Valid = 1,
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        [Description("关闭")]
+        Invalid =-1
+    }
 }

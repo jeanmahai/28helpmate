@@ -7,6 +7,9 @@ using DataAccess;
 
 namespace Logic
 {
+    /// <summary>
+    /// 公告
+    /// </summary>
     public class PayLogLogic
     {
 

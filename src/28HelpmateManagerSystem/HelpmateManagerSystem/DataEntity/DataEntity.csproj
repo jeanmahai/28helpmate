@@ -44,9 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
+    <Compile Include="Notices.cs" />
     <Compile Include="PageList.cs" />
     <Compile Include="PayCard.cs" />
     <Compile Include="PayLog.cs" />
+    <Compile Include="QueryFilter\NoticesQueryFilter.cs" />
+    <Compile Include="QueryFilter\PagingInfo.cs" />
     <Compile Include="SystemUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
