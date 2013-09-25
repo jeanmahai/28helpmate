@@ -48,6 +48,7 @@
     <Compile Include="PayLogDA.cs" />
     <Compile Include="SystemUserDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDA.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataEntity\DataEntity.csproj">

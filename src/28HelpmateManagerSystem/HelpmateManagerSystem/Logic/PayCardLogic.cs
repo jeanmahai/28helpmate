@@ -46,7 +46,7 @@ namespace Logic
         public static PageList<List<PayCard>> QueryPayCard(int pageIndex, int pageSize, PayCardCategory? category, PayCardStatus? status, DateTime? beginTime, DateTime? endTime)
         {
             int nCategory = category == null ? 0 : (int)category;
-            int nStatus = status == null ? -1 : (int)status;
+            int nStatus = status == null ? -1 : (int)status.Value;
             DateTime dtBegin = beginTime == null ? DateTime.Now.AddYears(-100) : beginTime.Value;
             DateTime dtEnd = endTime == null ? DateTime.Now.AddYears(100) : endTime.Value;
             return PayCardDA.QueryPayCard(pageIndex, pageSize, nCategory, nStatus, dtBegin, dtEnd);

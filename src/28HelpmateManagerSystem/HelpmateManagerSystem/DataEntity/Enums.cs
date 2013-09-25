@@ -61,4 +61,21 @@ namespace DataEntity
         [Description("已充值")]
         Recharge = 2
     }
+
+    /// <summary>
+    /// 用户状态
+    /// </summary>
+    public enum UserStatus
+    {
+        /// <summary>
+        /// 无效
+        /// </summary>
+        [Description("无效")]
+        Invalid = 0,
+        /// <summary>
+        /// 有效
+        /// </summary>
+        [Description("有效")]
+        Valid = 1
+    }
 }
