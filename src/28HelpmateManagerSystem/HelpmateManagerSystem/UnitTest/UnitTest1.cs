@@ -127,5 +127,31 @@ namespace UnitTest
         {
             var data = PayLogLogic.GetPayLogByBatch(1, 8, DateTime.Now.AddYears(-1), DateTime.Now.AddYears(1));
         }
+
+        [TestMethod]
+        public void TestQueryUser()
+        {
+            var data = UserLogic.QueryUser(1, 9, null, null, null, null);
+        }
+        [TestMethod]
+        public void TestGetUserBySysNo()
+        {
+            var data = UserLogic.GetBySysNo(1);
+        }
+        [TestMethod]
+        public void TestEnableUser()
+        {
+            var data = UserLogic.EnableUser(1);
+        }
+        [TestMethod]
+        public void TestDisableUser()
+        {
+            var data = UserLogic.DisableUser(1);
+        }
+        [TestMethod]
+        public void TestDeleteUser()
+        {
+            var data = UserLogic.DeleteUser(3);
+        }
     }
 }

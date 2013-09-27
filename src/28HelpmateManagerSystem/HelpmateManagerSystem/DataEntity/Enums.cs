@@ -63,6 +63,7 @@ namespace DataEntity
     }
 
     /// <summary>
+<<<<<<< HEAD
     /// 公告状态栏
     /// </summary>
     public enum NoticesStatus {
@@ -81,5 +82,21 @@ namespace DataEntity
         /// </summary>
         [Description("关闭")]
         Invalid =-1
+=======
+    /// 用户状态
+    /// </summary>
+    public enum UserStatus
+    {
+        /// <summary>
+        /// 无效
+        /// </summary>
+        [Description("无效")]
+        Invalid = 0,
+        /// <summary>
+        /// 有效
+        /// </summary>
+        [Description("有效")]
+        Valid = 1
+>>>>>>> 235f5e57ab96fb820963edb8727ac0b3cba5a3c8
     }
 }

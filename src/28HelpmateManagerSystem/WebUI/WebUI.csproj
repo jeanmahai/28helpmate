@@ -167,6 +167,7 @@
     <Content Include="Config\Database\MSSQL\Database.config" />
     <Content Include="Config\Database\MSSQL\DbFiles.config" />
     <Content Include="Ajax\DoProcessRequired.ashx" />
+    <Content Include="Config\Database\MSSQL\Data\Users.config" />
     <None Include="res\fonts\DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\iconFont.eot" />

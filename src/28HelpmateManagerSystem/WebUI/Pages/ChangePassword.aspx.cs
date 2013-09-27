@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logic;
 using WebUI.Utility;
 
 namespace WebUI.Pages
@@ -20,7 +21,12 @@ namespace WebUI.Pages
         {
             var oldPsw = OldPsw.Value;
             var newPsw = NewPsw.Value;
-
+            var message = SystemUserLogic.ChangePwd(SessionVal.UserSysNo,oldPsw,newPsw);
+            if(!string.IsNullOrEmpty(message))
+            {
+                throw new Exception(message);
+            }
+            Alert("修改成功");
         }
 
     }
