@@ -54,7 +54,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">充值卡管理</a>
+                        <a href="/Pages/PayCard.aspx">充值卡管理</a>
                     </li>
                     <li>
                         <a href="/Pages/ChangePassword.aspx">密码修改</a>

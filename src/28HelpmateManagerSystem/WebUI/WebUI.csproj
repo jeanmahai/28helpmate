@@ -56,6 +56,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
+    <Content Include="Pages\PayCard.aspx" />
     <Content Include="res\css\modern-responsive.css" />
     <Content Include="res\css\modern.css" />
     <Content Include="res\css\mystyle.css" />
@@ -141,6 +142,13 @@
     </Compile>
     <Compile Include="Pages\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PayCard.aspx.cs">
+      <DependentUpon>PayCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PayCard.aspx.designer.cs">
+      <DependentUpon>PayCard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\AjaxResult.cs" />
