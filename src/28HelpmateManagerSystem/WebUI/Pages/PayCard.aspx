@@ -36,7 +36,7 @@
                         有效期起
                     </td>
                     <td>
-                        <div class="input-control text datepicker" data-role="datepicker" data-param-lang="zh-cn">
+                        <div class="input-control text datepicker" data-role="datepicker" >
                             <input type="text" runat="server" id="dateFrom" />
                             <button class="btn-date">
                             </button>
@@ -48,7 +48,7 @@
                         有效期止
                     </td>
                     <td>
-                        <div class="input-control text datepicker" data-role="datepicker" data-param-lang="zh-cn">
+                        <div class="input-control text datepicker" data-role="datepicker" >
                             <input type="text" runat="server" id="dateTo" />
                             <button class="btn-date">
                             </button>
@@ -97,7 +97,7 @@
                         有效期起
                     </td>
                     <td class="span4">
-                        <div class="input-control text datepicker" data-role="datepicker">
+                        <div class="input-control text datepicker" data-role="datepicker" data-param-lang="cn">
                             <input type="text" />
                             <button class="btn-date">
                             </button>
@@ -144,6 +144,9 @@
                     <th>
                         有效期止
                     </th>
+                    <th>
+                        
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -154,22 +157,27 @@
                                 <%#Eval("SysNo")%>
                             </td>
                             <td>
-                                卡号
+                                <%#Eval("PayCardID")%>
                             </td>
                             <td>
-                                类型
+                                <%#Eval("StrCategory")%>
                             </td>
                             <td>
-                                状态
+                                <%#Eval("StrStatus")%>
                             </td>
                             <td>
-                                生成时间
+                                <%#Eval("StrInDate")%>
                             </td>
                             <td>
-                                有效期起
+                                <%#Eval("StrBeginTime")%>
                             </td>
                             <td>
-                                有效期止
+                                <%#Eval("StrEndTime")%>
+                            </td>
+                            <td>
+                                <button class="mini" runat="server" OnServerClick="btnEnabled_ServerClick" title="<%#Eval("SysNo")%>">启用</button>
+                                <button class="mini" runat="server" OnServerClick="btnDisabled_ServerClick" title="<%#Eval("SysNo")%>">禁用</button>
+                                <button class="mini" runat="server" OnServerClick="btnDelete_serverClick" title="<%#Eval("SysNo")%>">删除</button>
                             </td>
                         </tr>
                     </ItemTemplate>
