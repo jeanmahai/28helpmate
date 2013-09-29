@@ -2,6 +2,72 @@
     CodeBehind="PayCard.aspx.cs" Inherits="WebUI.Pages.PayCard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphContent" runat="server">
+    <div class="">
+        <h2>
+            创建充值卡</h2>
+        <div class="span12">
+            <table class="border">
+                <tr>
+                    <td class="span2">
+                        卡类型
+                    </td>
+                    <td>
+                        <div class="input-control select ">
+                            <select>
+                                <option>sdf</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2">
+                        生成张数
+                    </td>
+                    <td>
+                        <div class="input-control select ">
+                            <select>
+                                <option>sdf</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2">
+                        有效期起
+                    </td>
+                    <td>
+                        <div class="input-control text datepicker" data-role="datepicker">
+                            <input type="text" />
+                            <button class="btn-date">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2">
+                        有效期止
+                    </td>
+                    <td>
+                        <div class="input-control text datepicker" data-role="datepicker">
+                            <input type="text" />
+                            <button class="btn-date">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2">
+                    </td>
+                    <td>
+                        <button>
+                            保存</button>
+                        <button>
+                            取消</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
     <div class="span12">
         <table class="no-border-all">
             <tbody>
@@ -53,12 +119,6 @@
                             查询</button>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="5" class="">
-                        <button onclick="showDlgCreate()">
-                            创建</button>
-                    </td>
-                </tr>
             </tbody>
         </table>
         <table class="hovered border">
@@ -89,77 +149,4 @@
             </thead>
         </table>
     </div>
-    <div id="dlgCreate">
-        <h2>
-            创建充值卡</h2>
-        <div class="span6">
-            <table>
-                <tr>
-                    <td class="span1">
-                        卡类型
-                    </td>
-                    <td>
-                        <div class="input-control select ">
-                            <select>
-                                <option>sdf</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="span1">
-                        生成张数
-                    </td>
-                    <td>
-                        <div class="input-control select ">
-                            <select>
-                                <option>sdf</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="span1">
-                        有效期起
-                    </td>
-                    <td>
-                        <div class="input-control text datepicker" data-role="datepicker">
-                            <input type="text" />
-                            <button class="btn-date">
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="span1">
-                        有效期止
-                    </td>
-                    <td>
-                        <div class="input-control text datepicker" data-role="datepicker">
-                            <input type="text" />
-                            <button class="btn-date">
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="span1">
-                    </td>
-                    <td>
-                        <button>
-                            保存</button>
-                        <button>
-                            取消</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    
-    <script type="text/javascript">
-        function showDlgCreate() {
-            $("#dlgCreate").show();
-            $("#dlgCreate").jposition();
-        }
-    </script>
 </asp:Content>
