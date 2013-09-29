@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<config>
+
+  <items>
+    <item name="ProductSearchResultEntity" type="ECWeb.Entity.ProductMgt.ProductSearchSolrResult,ECWeb.Entity" provider="Solr"></item>
+  </items>
+
+  <providers>
+    <provider name="Solr" type="Common.Utility.DataAccess.SearchEngine.Solr.SolrSearchProvider,Common.Utility.DataAccess">
+
+      <!--Solr服务基础地址-->
+      <baseUrl>http://10.16.83.72:8080/solr/</baseUrl>
+      <!--<baseUrl>http://localhost:8080/solr/</baseUrl>-->
+
+      <searchers>
+
+        <!--Solr Searcher 配置
+      
+        assembly ： Searcher完全限定名
+        result : Searcher 返回的查询结果类型完全限定名
+      
+        -->
+        <searcher type="Nesoft.SolrEngine.Product.Searcher,Nesoft.SolrEngine"
+                  result="ECWeb.Entity.ProductMgt.ProductSearchSolrResult,ECWeb.Entity" />
+
+      </searchers>
+    </provider>
+  </providers>
+</config>

@@ -6,6 +6,7 @@ using DataEntity;
 using System.Data;
 using DataEntity.QueryFilter;
 using DataAccess;
+using DataEntity.Common;
 
 namespace Logic
 {
@@ -17,7 +18,7 @@ namespace Logic
         /// </summary>
         /// <param name="sysNo">编号</param>
         /// <param name="status">状态</param>
-        public static PageList<List<Notices>> QueryNotices(NoticesQueryFilter queryFilter)
+        public static QueryResult<Notices> QueryNotices(NoticesQueryFilter queryFilter)
         {
             return NoticesDA.QueryNotices(queryFilter);
         }

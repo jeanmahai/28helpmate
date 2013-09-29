@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DataEntity.Common;
 
 namespace DataEntity.QueryFilter
 {
-    public class NoticesQueryFilter
+    public class NoticesQueryFilter : QueryFilterBase
     {
-
-        public PagingInfo PagingInfo { get; set; }
 
         /// <summary>
         /// 编号

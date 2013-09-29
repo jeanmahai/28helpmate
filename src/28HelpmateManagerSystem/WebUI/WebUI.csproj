@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ajax\DoAjax.aspx" />
+    <Content Include="Configuration\SearchEngineConfig.xml" />
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
@@ -177,6 +178,13 @@
     <Content Include="Ajax\DoProcessRequired.ashx" />
     <Content Include="Config\Database\MSSQL\Data\Users.config" />
     <Content Include="Config\Database\MSSQL\Data\Notices.config" />
+    <Content Include="Configuration\Cookie.config" />
+    <Content Include="Configuration\AppSettings\Common.config" />
+    <Content Include="Configuration\Autorun.config" />
+    <Content Include="Configuration\Data\Common\Notices.config" />
+    <Content Include="Configuration\Data\Database.config" />
+    <Content Include="Configuration\Data\DbCommandFiles.config" />
+    <Content Include="Configuration\TypeVersion.config" />
     <None Include="res\fonts\DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\iconFont.eot" />
@@ -196,6 +204,17 @@
       <Project>{9EF40FDA-C7CE-487F-926B-AFAFAE45A562}</Project>
       <Name>Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UtilityCommon\Common.Utility.DataAccess\Common.Utility.DataAccess.csproj">
+      <Project>{CE91AA77-2FF5-44C7-825B-BA7B87B235EA}</Project>
+      <Name>Common.Utility.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UtilityCommon\Common.Utility.Web\Common.Utility.Web.csproj">
+      <Project>{0C311B70-3D3D-4133-B54C-2E04C354A196}</Project>
+      <Name>Common.Utility.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\CodeNamePairs\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

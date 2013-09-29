@@ -6,6 +6,8 @@ using DataEntity;
 using DataEntity.QueryFilter;
 using Framework.Util.Database.MSSQL;
 using System.Data;
+using DataEntity.Common;
+using Common.Utility.DataAccess;
 
 namespace DataAccess
 {
@@ -15,25 +17,30 @@ namespace DataAccess
     public class NoticesDA
     {
         /// <summary>
-        /// 修改公告状态
+        /// 查询公告
         /// </summary>
-        /// <param name="sysNo">编号</param>
-        /// <param name="status">状态</param>
-        public static PageList<List<Notices>> QueryNotices(NoticesQueryFilter queryFilter)
+        /// <param name="filter">查询条件</param>
+        public static QueryResult<Notices> QueryNotices(NoticesQueryFilter filter)
         {
-            int startRows = (queryFilter.PagingInfo.PageIndex.Value - 1) * queryFilter.PagingInfo.PageSize.Value;
-            DbCommand cmd = new DbCommand("PayCard_Query", System.Data.CommandType.StoredProcedure);
-            cmd.SetParameterValue("@StartRows", startRows);
-            cmd.SetParameterValue("@PageSize", queryFilter.PagingInfo.PageSize);
-            cmd.SetParameterValue("@SysNo", queryFilter.SysNo);
-            cmd.SetParameterValue("@Contents", queryFilter.Contents);
-            cmd.SetParameterValue("@Status", queryFilter.Status);
+            QueryResult<Notices> result = new QueryResult<Notices>();
+            PagingInfoEntity page = new PagingInfoEntity();
+            page.SortField = (filter.SortList == null || filter.SortList.Count == 0) ? null : filter.SortListToString();
+            page.MaximumRows = filter.PageSize;
+            page.StartRowIndex = filter.PageIndex * filter.PageSize;
+            CustomDataCommand cmd = DataCommandManager.CreateCustomDataCommandFromConfig("PayCard_Query");
+            using (var sqlBuilder = new DynamicQuerySqlBuilder(cmd.CommandText, cmd, page, "SysNo DESC"))
+            {
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "SysNo", DbType.Int32, "@SysNo", QueryConditionOperatorType.Equal, filter.SysNo);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "Contents", DbType.String, "@Contents", QueryConditionOperatorType.Like, filter.Contents);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "Status", DbType.Int32, "@Status", QueryConditionOperatorType.Equal, filter.Status);
 
-            DataSet ds = cmd.ExecuteDataSet();
-            List<Notices> result = Util.FillModelList<Notices>(ds.Tables[0]);
-            int totalCount = int.Parse(ds.Tables[1].Rows[0][0].ToString());
-            var pageList = new PageList<List<Notices>>(result, queryFilter.PagingInfo.PageIndex.Value, queryFilter.PagingInfo.PageIndex.Value, totalCount);
-            return pageList;
+                cmd.CommandText = sqlBuilder.BuildQuerySql();
+                result.ResultList = cmd.ExecuteEntityList<Notices>();
+
+                int totalCount = Convert.ToInt32(cmd.GetParameterValue("@TotalCount"));
+                result.PagingInfo = new PagingInfo() { PageIndex = filter.PageIndex, PageSize = filter.PageSize, TotalCount = totalCount };
+                return result;
+            }
         }
 
         /// <summary>
@@ -43,9 +50,9 @@ namespace DataAccess
         /// <param name="status">状态</param>
         public static void ChangeNoticesStatus(int sysNo, NoticesStatus status)
         {
-            DbCommand cmd = new DbCommand("ChangeNoticesStatus");
+            DataCommand cmd = DataCommandManager.GetDataCommand("ChangeNoticesStatus");
             cmd.SetParameterValue("@SysNo", sysNo);
-            cmd.SetParameterValue("@Status", Convert.ToInt32(status));
+            cmd.SetParameterValue("@Status", status);
             cmd.ExecuteNonQuery();
         }
 
@@ -55,12 +62,10 @@ namespace DataAccess
         /// <param name="notices">公告信息</param>
         public static void CreateNotices(Notices notices)
         {
-            DbCommand cmd = new DbCommand("CreateNotices");
-            cmd.SetParameterValue("@Contents", notices.Contents);
-            cmd.SetParameterValue("@Status", Convert.ToInt32(notices.Status));
-            cmd.SetParameterValue("@Rank", notices.Rank);
-            cmd.SetParameterValue("@PublishUser", notices.PublishUser);
+            DataCommand cmd = DataCommandManager.GetDataCommand("CreateNotices");
+            cmd.SetParameterValue<Notices>(notices);
             cmd.ExecuteNonQuery();
+            var sysNo = (int)cmd.GetParameterValue("@SysNo");
         }
 
         /// <summary>
@@ -69,12 +74,8 @@ namespace DataAccess
         /// <param name="notices">公告信息</param>
         public static void UpdateNotices(Notices notices)
         {
-            DbCommand cmd = new DbCommand("UpdateNotices");
-            cmd.SetParameterValue("@SysNo", notices.SysNo);
-            cmd.SetParameterValue("@Contents", notices.Contents);
-            cmd.SetParameterValue("@Status", Convert.ToInt32(notices.Status));
-            cmd.SetParameterValue("@Rank", notices.Rank);
-            cmd.SetParameterValue("@PublishUser", notices.PublishUser);
+            DataCommand cmd = DataCommandManager.GetDataCommand("UpdateNotices");
+            cmd.SetParameterValue<Notices>(notices);
             cmd.ExecuteNonQuery();
         }
     }

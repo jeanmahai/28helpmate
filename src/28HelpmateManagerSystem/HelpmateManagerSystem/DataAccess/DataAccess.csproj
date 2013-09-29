@@ -52,6 +52,14 @@
     <Compile Include="UserDA.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\UtilityCommon\Common.Utility.DataAccess\Common.Utility.DataAccess.csproj">
+      <Project>{CE91AA77-2FF5-44C7-825B-BA7B87B235EA}</Project>
+      <Name>Common.Utility.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UtilityCommon\Common.Utility\Common.Utility.csproj">
+      <Project>{DB4B1E23-9C62-4D76-BD59-DE42933A46C5}</Project>
+      <Name>Common.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataEntity\DataEntity.csproj">
       <Project>{A986DD3A-E33E-4A78-BA7B-05E8A244D2DD}</Project>
       <Name>DataEntity</Name>
