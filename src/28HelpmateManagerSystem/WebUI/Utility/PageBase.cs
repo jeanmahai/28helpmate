@@ -20,7 +20,7 @@ namespace WebUI.Utility
             ScriptManager.RegisterStartupScript(this,
                 GetType(),
                 string.Format("alert_{0}",new Random().Next(1000)),
-                string.Format("alert('{0}')",message),
+                string.Format("$(document).ready(function(){{ var timer=setTimeout(function(){{alert('{0}');clearTimeout(timer)}},1000); }}); ",message),
                 true);
         }
     }

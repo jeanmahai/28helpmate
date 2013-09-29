@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Main.Master" AutoEventWireup="true"
     CodeBehind="PayCard.aspx.cs" Inherits="WebUI.Pages.PayCard" %>
 
+<%@ Register src="../UserControls/UCPager.ascx" tagname="UCPager" tagprefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphContent" runat="server">
-    <form id="frmPayCard" runat="server">
+    <div>
+    <form id="frmPayCard" runat="server" class="span12">
     <div>
         <h2>
             创建充值卡</h2>
@@ -36,10 +39,8 @@
                         有效期起
                     </td>
                     <td>
-                        <div class="input-control text datepicker" data-role="datepicker" >
+                        <div class="input-control text datepicker" data-role="datepicker">
                             <input type="text" runat="server" id="dateFrom" />
-                            <button class="btn-date">
-                            </button>
                         </div>
                     </td>
                 </tr>
@@ -48,10 +49,8 @@
                         有效期止
                     </td>
                     <td>
-                        <div class="input-control text datepicker" data-role="datepicker" >
+                        <div class="input-control text datepicker" data-role="datepicker">
                             <input type="text" runat="server" id="dateTo" />
-                            <button class="btn-date">
-                            </button>
                         </div>
                     </td>
                 </tr>
@@ -76,51 +75,53 @@
                     </td>
                     <td class="span2">
                         <div class="input-control select">
-                            <select>
-                                <option>sdf</option>
+                            <select runat="server" id="sCate2">
+                                <option value="-1">全部</option>
+                                <option value="1">天</option>
+                                <option value="1">月</option>
                             </select>
                         </div>
                     </td>
                     <td class="span1">
-                        生成张数
+                        状态
                     </td>
                     <td class="span2">
-                        <div class="input-control number">
-                            <input class="border" type="number" placeholder="请输入生成卡的张数" />
+                        <div class="input-control select">
+                            <select runat="server" id="sStatus">
+                                <option value="-1">全部</option>
+                                <option value="0">无效</option>
+                                <option value="1">有效</option>
+                            </select>
                         </div>
                     </td>
-                    <td>
+                    <td> <button runat="server" id="btnSearch">
+                            查询</button>
                     </td>
                 </tr>
-                <tr>
+                <tr style="display: none;">
                     <td class="span1">
                         有效期起
                     </td>
                     <td class="span4">
-                        <div class="input-control text datepicker" data-role="datepicker" data-param-lang="cn">
-                            <input type="text" />
-                            <button class="btn-date">
-                            </button>
+                        <div class="input-control text datepicker" data-role="datepicker">
+                            <input type="text" runat="server" id="dateFrom2" />
                         </div>
                     </td>
                     <td class="span1">
                         有效期止
                     </td>
                     <td class="span4">
-                        <div class="input-control text datepicker" data-role="datepicker">
-                            <input type="text" />
-                            <button class="btn-date">
-                            </button>
+                        <div class="input-control text datepicker" data-role="datepicker" data-param-init-date="<%=DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd") %>">
+                            <input type="text" runat="server" id="dateTo2"/>
                         </div>
                     </td>
                     <td class="span2 right">
-                        <button>
-                            查询</button>
+                       
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table class="hovered border">
+        <table class="hovered border mini">
             <thead>
                 <tr>
                     <th>
@@ -145,12 +146,11 @@
                         有效期止
                     </th>
                     <th>
-                        
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <asp:Repeater runat="server" ID="rptData">
+                <asp:Repeater runat="server" ID="rptData" OnItemDataBound="rptData_DataBound">
                     <ItemTemplate>
                         <tr>
                             <td>
@@ -175,15 +175,28 @@
                                 <%#Eval("StrEndTime")%>
                             </td>
                             <td>
-                                <button class="mini" runat="server" OnServerClick="btnEnabled_ServerClick" title="<%#Eval("SysNo")%>">启用</button>
-                                <button class="mini" runat="server" OnServerClick="btnDisabled_ServerClick" title="<%#Eval("SysNo")%>">禁用</button>
-                                <button class="mini" runat="server" OnServerClick="btnDelete_serverClick" title="<%#Eval("SysNo")%>">删除</button>
+                                <button class="mini" id="btnEnabled" runat="server" onserverclick="btnEnabled_ServerClick">
+                                    启用</button>
+                                <button class="mini" id="btnDisabled" runat="server" onserverclick="btnDisabled_ServerClick">
+                                    禁用</button>
+                                <button class="mini" id="btnDelete" runat="server" onserverclick="btnDelete_serverClick">
+                                    删除</button>
                             </td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="8">
+                    
+                        <uc1:UCPager ID="UCPager1" runat="server" />
+                    
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
     </form>
+    </div>
 </asp:Content>
