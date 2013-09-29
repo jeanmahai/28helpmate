@@ -75,6 +75,7 @@
     <Content Include="res\javascript\dialog.js" />
     <Content Include="res\javascript\dropdown.js" />
     <Content Include="res\javascript\input-control.js" />
+    <Content Include="res\javascript\moment.js" />
     <Content Include="res\javascript\pagecontrol.js" />
     <Content Include="res\javascript\pagelist.js" />
     <Content Include="res\javascript\rating.js" />
