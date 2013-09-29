@@ -2,7 +2,8 @@
     CodeBehind="PayCard.aspx.cs" Inherits="WebUI.Pages.PayCard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphContent" runat="server">
-    <div class="">
+    <form id="frmPayCard" runat="server">
+    <div>
         <h2>
             创建充值卡</h2>
         <div class="span12">
@@ -13,8 +14,9 @@
                     </td>
                     <td>
                         <div class="input-control select ">
-                            <select>
-                                <option>sdf</option>
+                            <select runat="server" id="sCate">
+                                <option value="1">天</option>
+                                <option value="1">月</option>
                             </select>
                         </div>
                     </td>
@@ -24,10 +26,8 @@
                         生成张数
                     </td>
                     <td>
-                        <div class="input-control select ">
-                            <select>
-                                <option>sdf</option>
-                            </select>
+                        <div class="input-control text ">
+                            <input type="text" runat="server" id="numCount" />
                         </div>
                     </td>
                 </tr>
@@ -36,8 +36,8 @@
                         有效期起
                     </td>
                     <td>
-                        <div class="input-control text datepicker" data-role="datepicker">
-                            <input type="text" />
+                        <div class="input-control text datepicker" data-role="datepicker" data-param-lang="zh-cn">
+                            <input type="text" runat="server" id="dateFrom" />
                             <button class="btn-date">
                             </button>
                         </div>
@@ -48,8 +48,8 @@
                         有效期止
                     </td>
                     <td>
-                        <div class="input-control text datepicker" data-role="datepicker">
-                            <input type="text" />
+                        <div class="input-control text datepicker" data-role="datepicker" data-param-lang="zh-cn">
+                            <input type="text" runat="server" id="dateTo" />
                             <button class="btn-date">
                             </button>
                         </div>
@@ -59,10 +59,9 @@
                     <td class="span2">
                     </td>
                     <td>
-                        <button>
+                        <button runat="server" id="btnSave">
                             保存</button>
-                        <button>
-                            取消</button>
+                        <input type="reset" value="取消" />
                     </td>
                 </tr>
             </table>
@@ -147,6 +146,36 @@
                     </th>
                 </tr>
             </thead>
+            <tbody>
+                <asp:Repeater runat="server" ID="rptData">
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <%#Eval("SysNo")%>
+                            </td>
+                            <td>
+                                卡号
+                            </td>
+                            <td>
+                                类型
+                            </td>
+                            <td>
+                                状态
+                            </td>
+                            <td>
+                                生成时间
+                            </td>
+                            <td>
+                                有效期起
+                            </td>
+                            <td>
+                                有效期止
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
         </table>
     </div>
+    </form>
 </asp:Content>
