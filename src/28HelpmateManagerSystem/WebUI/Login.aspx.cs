@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using DataEntity;
 using Logic;
 using WebUI.Utility;
+using DataEntity.QueryFilter;
 
 namespace WebUI
 {
@@ -14,6 +15,13 @@ namespace WebUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            NoticesQueryFilter queryFilter = new NoticesQueryFilter();
+            queryFilter.PageCount = 0;
+            queryFilter.PageIndex = 1;
+            queryFilter.PageSize = 10;
+
+            NoticesLogic.QueryNotices(queryFilter);
+
             btnOK.ServerClick += new EventHandler(btnOK_ServerClick);
         }
 

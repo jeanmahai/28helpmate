@@ -27,7 +27,7 @@ namespace DataAccess
             page.SortField = (filter.SortList == null || filter.SortList.Count == 0) ? null : filter.SortListToString();
             page.MaximumRows = filter.PageSize;
             page.StartRowIndex = filter.PageIndex * filter.PageSize;
-            CustomDataCommand cmd = DataCommandManager.CreateCustomDataCommandFromConfig("PayCard_Query");
+            CustomDataCommand cmd = DataCommandManager.CreateCustomDataCommandFromConfig("QueryNotices");
             using (var sqlBuilder = new DynamicQuerySqlBuilder(cmd.CommandText, cmd, page, "SysNo DESC"))
             {
                 sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "SysNo", DbType.Int32, "@SysNo", QueryConditionOperatorType.Equal, filter.SysNo);
