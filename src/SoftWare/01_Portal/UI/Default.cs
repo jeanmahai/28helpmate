@@ -413,7 +413,21 @@ namespace Helpmate.UI.Forms
             if (!IsExiteApplication)
             {
                 e.Cancel = true;
-                this.Visible = false;
+                this.WindowState = FormWindowState.Minimized;
+                this.Hide();
+            }
+        }
+
+        protected override void WndProc(ref   Message m)
+        {
+            switch (m.Msg)
+            {
+                case ConstValue.WM_QUERYENDSESSION:
+                    IsExiteApplication = true;
+                    break;
+                default:
+                    base.WndProc(ref   m);
+                    break;
             }
         }
 
