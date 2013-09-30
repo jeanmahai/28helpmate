@@ -104,4 +104,7 @@ $(function () {
     //#endregion
     //navHome();
     checkLogin();
+
+    //init datepicker
+    $("[data-role=datepicker]").datepicker();
 });
