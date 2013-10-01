@@ -44,6 +44,7 @@
             this.tmNews = new System.Windows.Forms.Timer(this.components);
             this.bgwRemind = new System.ComponentModel.BackgroundWorker();
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlRemindSet = new System.Windows.Forms.Panel();
             this.picRemindSetCurr = new System.Windows.Forms.PictureBox();
             this.lblRemindSet = new System.Windows.Forms.Label();
@@ -91,11 +92,10 @@
             this.tsmSuperTrend_ = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmOmission = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmNormalTrend = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
             this.stsPage.SuspendLayout();
             this.tabArea.SuspendLayout();
             this.pnlRight.SuspendLayout();
@@ -259,6 +259,17 @@
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(168, 468);
             this.pnlRight.TabIndex = 44;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel1.Location = new System.Drawing.Point(1, 309);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(166, 44);
+            this.panel1.TabIndex = 39;
             // 
             // pnlRemindSet
             // 
@@ -824,19 +835,6 @@
             this.tsmOmission.Text = "遗漏号码统计";
             this.tsmOmission.Click += new System.EventHandler(this.tsmOmission_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(171, 6);
-            // 
-            // tsmExit
-            // 
-            this.tsmExit.Image = global::Helpmate.UI.Forms.Properties.Resources.Exit;
-            this.tsmExit.Name = "tsmExit";
-            this.tsmExit.Size = new System.Drawing.Size(174, 22);
-            this.tsmExit.Text = "退出系统";
-            this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
-            // 
             // tsmNormalTrend
             // 
             this.tsmNormalTrend.Image = global::Helpmate.UI.Forms.Properties.Resources.Movie;
@@ -852,16 +850,19 @@
             this.tsmUser.Size = new System.Drawing.Size(174, 22);
             this.tsmUser.Text = "个人中心";
             this.tsmUser.Click += new System.EventHandler(this.tsmUser_Click);
-            // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::Helpmate.UI.Forms.Properties.Resources.border_sidemenu_top;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel1.Location = new System.Drawing.Point(1, 309);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(166, 44);
-            this.panel1.TabIndex = 39;
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(171, 6);
+            // 
+            // tsmExit
+            // 
+            this.tsmExit.Image = global::Helpmate.UI.Forms.Properties.Resources.Exit;
+            this.tsmExit.Name = "tsmExit";
+            this.tsmExit.Size = new System.Drawing.Size(174, 22);
+            this.tsmExit.Text = "退出系统";
+            this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
             // Default
             // 
@@ -985,7 +986,6 @@
         private System.Windows.Forms.Timer tmNews;
         private System.Windows.Forms.Label lblCurrRetNum;
         private System.ComponentModel.BackgroundWorker bgwRemind;
-        private System.Windows.Forms.NotifyIcon notifyApp;
         private System.Windows.Forms.ContextMenuStrip cmsSystem;
         private System.Windows.Forms.ToolStripMenuItem tsmHome;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -997,5 +997,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmNormalTrend;
         private System.Windows.Forms.ToolStripMenuItem tsmUser;
         private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.NotifyIcon notifyApp;
     }
 }

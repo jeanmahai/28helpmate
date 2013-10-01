@@ -28,6 +28,8 @@ namespace Helpmate.UI.Forms.Code
                     }
                     else
                     {
+                        Default defaultFrm = (Default)openForm;
+                        defaultFrm.notifyApp.Visible = false;
                         Environment.Exit(0);
                     }
                 }
