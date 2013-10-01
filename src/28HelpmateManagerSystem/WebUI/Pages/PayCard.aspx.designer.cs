@@ -67,51 +67,6 @@ namespace WebUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlButton btnSave;
         
         /// <summary>
-        /// sCate2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect sCate2;
-        
-        /// <summary>
-        /// sStatus 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect sStatus;
-        
-        /// <summary>
-        /// btnSearch 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
-        
-        /// <summary>
-        /// dateFrom2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateFrom2;
-        
-        /// <summary>
-        /// dateTo2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateTo2;
-        
-        /// <summary>
         /// rptData 控件。
         /// </summary>
         /// <remarks>

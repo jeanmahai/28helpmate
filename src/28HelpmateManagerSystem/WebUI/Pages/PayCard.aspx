@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Main.Master" AutoEventWireup="true"
     CodeBehind="PayCard.aspx.cs" Inherits="WebUI.Pages.PayCard" %>
+<%@ Import Namespace="WebUI.Utility" %>
 
 <%@ Register Src="../UserControls/UCPager.ascx" TagName="UCPager" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphContent" runat="server">
@@ -38,8 +39,8 @@
                             有效期起
                         </td>
                         <td>
-                            <div class="input-control text datepicker" data-role="datepicker">
-                                <input type="text" runat="server" id="dateFrom" />
+                            <div class="input-control text">
+                                <input type="text" runat="server" id="dateFrom" data-role="datepicker" />
                             </div>
                         </td>
                     </tr>
@@ -48,8 +49,8 @@
                             有效期止
                         </td>
                         <td>
-                            <div class="input-control text datepicker" data-role="datepicker">
-                                <input type="text" runat="server" id="dateTo" />
+                            <div class="input-control text ">
+                                <input type="text" runat="server" id="dateTo" data-role="datepicker" />
                             </div>
                         </td>
                     </tr>
@@ -74,7 +75,7 @@
                         </td>
                         <td class="span2">
                             <div class="input-control select">
-                                <select runat="server" id="sCate2">
+                                <select id="sCate2">
                                     <option value="-1">全部</option>
                                     <option value="1">天</option>
                                     <option value="1">月</option>
@@ -86,7 +87,7 @@
                         </td>
                         <td class="span2">
                             <div class="input-control select">
-                                <select runat="server" id="sStatus">
+                                <select id="sStatus">
                                     <option value="-1">全部</option>
                                     <option value="0">无效</option>
                                     <option value="1">有效</option>
@@ -94,25 +95,25 @@
                             </div>
                         </td>
                         <td>
-                            <button runat="server" id="btnSearch">
-                                查询</button>
+                            <a class="button" href="<%=UrlHelper.GetPageUrl(Request.Url.ToString()) %>" onclick="pageChange(this);return false;" >
+                                查询</a>
                         </td>
                     </tr>
-                    <tr style="display: none;">
+                    <tr>
                         <td class="span1">
                             有效期起
                         </td>
                         <td class="span4">
-                            <div class="input-control text datepicker" data-role="datepicker">
-                                <input type="text" runat="server" id="dateFrom2" />
+                            <div class="input-control text ">
+                                <input type="text" id="dateFrom2" data-role="datepicker" value="<%=From==null?"":From.Value.ToShortDateString() %>"/>
                             </div>
                         </td>
                         <td class="span1">
                             有效期止
                         </td>
                         <td class="span4">
-                            <div class="input-control text datepicker" data-role="datepicker" data-param-init-date="<%=DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd") %>">
-                                <input type="text" runat="server" id="dateTo2" />
+                            <div class="input-control text">
+                                <input type="text" id="dateTo2" data-role="datepicker" value="<%=To==null?"":To.Value.ToShortDateString() %>"/>
                             </div>
                         </td>
                         <td class="span2 right">
@@ -196,4 +197,29 @@
         </div>
         </form>
     </div>
+    <script type="text/javascript">
+        $(function () {
+
+            var cartType = '<%=CardType %>';
+            $("#sCate2").find("option[value="+cartType+"]").attr("selected", "selected");
+            var cartStatus = '<%=CardStatus %>';
+            $("#sStatus").find("option[value=" + cartStatus + "]").attr("selected", "selected");
+        });
+
+        function pageChange(tag) {
+            var me = $(tag);
+            var href = me.attr("href");
+            var params = [];
+            var from = $.trim($("#dateFrom2").val());
+            if (from != "") params.push("from=" + from);
+            var to = $.trim($("#dateTo2").val());
+            if (to != "") params.push("to=" + to);
+            var cartType = $("#sCate2 option:selected").attr("value");
+            params.push("type=" + cartType);
+            var cartStatus = $("#sStatus option:selected").attr("value");
+            params.push("status=" + cartStatus);
+            if (params.length > 0) href += "?" + params.join("&");
+            window.location.href = href;
+        }
+    </script>
 </asp:Content>

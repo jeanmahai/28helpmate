@@ -217,6 +217,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Utility\SessionVal.cs" />
+    <Compile Include="Utility\UrlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\Main.Master" />
