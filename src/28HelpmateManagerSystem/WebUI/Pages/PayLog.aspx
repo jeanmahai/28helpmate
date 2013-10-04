@@ -27,7 +27,7 @@
                     </div>
                 </td>
                 <td>
-                    <a class="button" href="<%=UrlHelper.GetPageUrl(Request.Url.ToString()) %>" onclick="pageChange(this);return false;">
+                    <a class="button bg-color-blueDark fg-color-blueLight" href="<%=UrlHelper.GetPageUrl(Request.Url.ToString()) %>" onclick="pageChange(this);return false;">
                         查询</a>
                 </td>
             </tr>
@@ -35,7 +35,7 @@
     </div>
     <table class="striped hovered bordered">
         <thead>
-            <tr>
+            <tr class="bg-color-teal">
                 <th>
                     系统编号
                 </th>

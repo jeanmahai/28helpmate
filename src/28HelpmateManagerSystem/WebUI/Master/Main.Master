@@ -41,9 +41,9 @@
                             <li>
                                 <a>用户充值记录查询</a></li>
                             <li>
-                                <a>代理充值</a></li>
+                                <a class="disabled">代理充值</a></li>
                             <li>
-                                <a>查询用户</a></li>
+                                <a href="/Pages/Users.aspx">查询用户</a></li>
                         </ul>
                     </li>
                     <li data-role="dropdown">

@@ -5,7 +5,7 @@
 <%@ Register Src="../UserControls/UCPager.ascx" TagName="UCPager" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphContent" runat="server">
     <div>
-        <form id="frmPayCard" runat="server" class="span12">
+        <form id="frmPayCard" runat="server">
         <div>
             <h2>
                 创建充值卡</h2>
@@ -58,7 +58,7 @@
                         <td class="span2">
                         </td>
                         <td>
-                            <button runat="server" id="btnSave">
+                            <button class="bg-color-blueDark fg-color-blueLight" runat="server" id="btnSave">
                                 保存</button>
                             <input type="reset" value="取消" />
                         </td>
@@ -66,7 +66,7 @@
                 </table>
             </div>
         </div>
-        <div class="span12">
+        <div >
             <table class="no-border-all">
                 <tbody>
                     <tr>
@@ -95,7 +95,7 @@
                             </div>
                         </td>
                         <td>
-                            <a class="button" href="<%=UrlHelper.GetPageUrl(Request.Url.ToString()) %>" onclick="pageChange(this);return false;" >
+                            <a class="button bg-color-blueDark fg-color-blueLight" href="<%=UrlHelper.GetPageUrl(Request.Url.ToString()) %>" onclick="pageChange(this);return false;" >
                                 查询</a>
                         </td>
                     </tr>
@@ -123,7 +123,7 @@
             </table>
             <table class="hovered border mini">
                 <thead>
-                    <tr>
+                    <tr class="bg-color-teal">
                         <th>
                             编号
                         </th>
@@ -175,11 +175,11 @@
                                     <%#Eval("StrEndTime")%>
                                 </td>
                                 <td>
-                                    <button class="mini" id="btnEnabled" runat="server" onserverclick="btnEnabled_ServerClick">
+                                    <button class="bg-color-greenDark fg-color-blueLight" id="btnEnabled" runat="server" onserverclick="btnEnabled_ServerClick">
                                         启用</button>
-                                    <button class="mini" id="btnDisabled" runat="server" onserverclick="btnDisabled_ServerClick">
+                                    <button class="bg-color-purple fg-color-blueLight" id="btnDisabled" runat="server" onserverclick="btnDisabled_ServerClick">
                                         禁用</button>
-                                    <button class="mini" id="btnDelete" runat="server" onserverclick="btnDelete_serverClick">
+                                    <button class="" id="btnDelete" runat="server" onserverclick="btnDelete_serverClick">
                                         删除</button>
                                 </td>
                             </tr>

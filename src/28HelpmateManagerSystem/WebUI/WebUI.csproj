@@ -59,6 +59,7 @@
     <Content Include="Pages\ChangePassword.aspx" />
     <Content Include="Pages\PayCard.aspx" />
     <Content Include="Pages\PayLog.aspx" />
+    <Content Include="Pages\Users.aspx" />
     <Content Include="res\css\modern-responsive.css" />
     <Content Include="res\css\modern.css" />
     <Content Include="res\css\mystyle.css" />
@@ -195,6 +196,13 @@
     </Compile>
     <Compile Include="Pages\PayLog.aspx.designer.cs">
       <DependentUpon>PayLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\UCPager.ascx.cs">

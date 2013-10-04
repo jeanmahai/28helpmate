@@ -146,6 +146,7 @@ namespace WebUI.Pages
             if (btn != null)
             {
                 btn.Attributes["key"] = data.SysNo.ToString();
+                if (data.Status == PayCardStatus.Valid) btn.Visible = false;
             }
             btn = e.Item.FindControl("btnDelete") as HtmlButton;
             if (btn != null)
@@ -156,6 +157,7 @@ namespace WebUI.Pages
             if (btn != null)
             {
                 btn.Attributes["key"] = data.SysNo.ToString();
+                if (data.Status == PayCardStatus.Invalid) btn.Visible = false;
             }
         }
     }
