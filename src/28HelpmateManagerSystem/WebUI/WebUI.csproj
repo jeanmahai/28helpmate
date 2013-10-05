@@ -57,6 +57,8 @@
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
+    <Content Include="Pages\NoticesMaintain.aspx" />
+    <Content Include="Pages\NoticesQuery.aspx" />
     <Content Include="Pages\PayCard.aspx" />
     <Content Include="Pages\PayLog.aspx" />
     <Content Include="Pages\Users.aspx" />
@@ -212,6 +214,20 @@
     </Compile>
     <Compile Include="Pages\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NoticesMaintain.aspx.cs">
+      <DependentUpon>NoticesMaintain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoticesMaintain.aspx.designer.cs">
+      <DependentUpon>NoticesMaintain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NoticesQuery.aspx.cs">
+      <DependentUpon>NoticesQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoticesQuery.aspx.designer.cs">
+      <DependentUpon>NoticesQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\PayCard.aspx.cs">
       <DependentUpon>PayCard.aspx</DependentUpon>
