@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <!--版本号，无格式要求，更新时需要修改-->
+  <version>1.4.0</version>
+  <description>更新说明，更新时需要修改</description>
+  <!--applicationId运用程序ID，无格式要求，需要与客户端配置一样，否则不会进行更新-->
+  <application applicationId="{215E1AD7-9ABA-432f-A952-24BABA556850}">
+    <!--重新启动exe名称，parameters启动时传入的参数-->
+    <entryPoint file="28Helpmate.exe" parameters="client" />
+    <!--更新文件的目录，相对于更新系统，默认为同级目录-->
+    <location>.</location>
+  </application>
+  <!--base表示存放该文件的url-->
+  <files base="http://117.25.148.58:8081/UpdateClient/Files">
+    <!--文件名称，更新时需要修改-->
+    <file source="28Helpmate.zip" />
+  </files>
+</manifest>

@@ -6,7 +6,9 @@
     <title></title>
     <link type="text/css" rel="stylesheet" href="/res/css/modern.css" />
     <link href="/res/css/mystyle.css" rel="stylesheet" type="text/css" />
+    <link href="../res/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/res/js/jquery-1.9.1.min.js"></script>
+    <script src="../res/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
     <script src="/res/js/jposition.js" type="text/javascript"></script>
     <script src="/res/js/jformserialize.js" type="text/javascript"></script>
     <script src="/res/js/jformprocess.js" type="text/javascript"></script>
@@ -39,9 +41,9 @@
                             <li>
                                 <a>用户充值记录查询</a></li>
                             <li>
-                                <a>代理充值</a></li>
+                                <a class="disabled">代理充值</a></li>
                             <li>
-                                <a>查询用户</a></li>
+                                <a href="/Pages/Users.aspx">查询用户</a></li>
                         </ul>
                     </li>
                     <li data-role="dropdown">
@@ -52,6 +54,9 @@
                             <li>
                                 <a>公告查询</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="/Pages/PayLog.aspx">充值记录</a>
                     </li>
                     <li>
                         <a href="/Pages/PayCard.aspx">充值卡管理</a>

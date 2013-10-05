@@ -5,6 +5,11 @@ using System.Text;
 
 namespace Helpmate.UI.Forms.Code
 {
+    public class ConstValue
+    {
+        public const int WM_QUERYENDSESSION = 0x0011;
+    }
+
     public enum PageForm
     {
         /// <summary>
