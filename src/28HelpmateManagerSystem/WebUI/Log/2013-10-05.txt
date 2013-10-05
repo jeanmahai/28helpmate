@@ -1,0 +1,164 @@
+
+** [2013-10-05 09:52:25.992] - Begin **************************************************************
+[LogID]: d5cd0e25-efbe-487c-a909-8f765aef5657
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-05 09:52:25.916
+[ProcessID]: 3004
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-10-05 09:52:25.992] - End ****************************************************************
+
+** [2013-10-05 09:52:26.101] - Begin **************************************************************
+[LogID]: 356f93db-b5d9-487e-a428-174ae200d87a
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-05 09:52:26.100
+[ProcessID]: 3004
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-10-05 09:52:26.101] - End ****************************************************************
+
+** [2013-10-05 09:52:26.267] - Begin **************************************************************
+[LogID]: f0d16500-fdaf-4ca1-86fd-4199d3e15b31
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-05 09:52:26.266
+[ProcessID]: 3004
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-05 09:52:26.267] - End ****************************************************************
+
+** [2013-10-05 09:53:11.849] - Begin **************************************************************
+[LogID]: 9ec9af7a-129b-4ac6-ace0-db9aee435205
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): The file '/Login.aspx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.UI.PageHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   at System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-05 09:53:11.815
+[ProcessID]: 1560
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-05 09:53:11.849] - End ****************************************************************
+
+** [2013-10-05 09:53:22.012] - Begin **************************************************************
+[LogID]: 43640845-d0ad-4cb1-94bf-8569e7a3865d
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): The file '/Login.aspx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.UI.PageHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   at System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-05 09:53:22.003
+[ProcessID]: 1560
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-10-05 09:53:22.012] - End ****************************************************************
+
+** [2013-10-05 09:53:53.859] - Begin **************************************************************
+[LogID]: 4d8f3a56-5c19-4b2f-827c-ac211b1932d1
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-05 09:53:53.838
+[ProcessID]: 2112
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-05 09:53:53.859] - End ****************************************************************
+
+** [2013-10-05 09:55:37.264] - Begin **************************************************************
+[LogID]: 547e2873-7a51-4dc0-8125-9f5a12d4621b
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/PayCard.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at WebUI.Pages.PayCard.btnSave_ServerClick(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\PayCard.aspx.cs:line 68
+   at System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   at System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.pages_paycard_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_nv43nz01.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-05 09:55:37.262
+[ProcessID]: 2112
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-05 09:55:37.264] - End ****************************************************************
