@@ -5,16 +5,22 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebUI.Utility;
+using System.Web.UI.HtmlControls;
+using Logic;
+using DataEntity.QueryFilter;
+using DataEntity;
 
 namespace WebUI.Pages
 {
     public partial class NoticesQuery : RequiredLogin
     {
+        public NoticesQueryFilter QueryFilter { get; set; }
+
         public override void PageLoad()
         {
             base.PageLoad();
-
-            UCPager1.PageSize = 10;
+            ucPager.PageSize = 10;
+            QueryFilter = new NoticesQueryFilter();
 
             if (!IsPostBack)
             {
@@ -24,13 +30,13 @@ namespace WebUI.Pages
 
         protected void rptData_DataBound(object sender, RepeaterItemEventArgs e)
         {
-            var data = e.Item.DataItem as DataEntity.PayCard;
+            var data = e.Item.DataItem as DataEntity.Notices;
             if (data == null) return;
             var btn = e.Item.FindControl("btnEnabled") as HtmlButton;
             if (btn != null)
             {
                 btn.Attributes["key"] = data.SysNo.ToString();
-                if (data.Status == PayCardStatus.Valid) btn.Visible = false;
+                if (data.Status == NoticesStatus.Valid) btn.Visible = false;
             }
             btn = e.Item.FindControl("btnDelete") as HtmlButton;
             if (btn != null)
@@ -41,7 +47,40 @@ namespace WebUI.Pages
             if (btn != null)
             {
                 btn.Attributes["key"] = data.SysNo.ToString();
-                if (data.Status == PayCardStatus.Invalid) btn.Visible = false;
+                if (data.Status == NoticesStatus.Invalid) btn.Visible = false;
+            }
+        }
+
+        protected void btnEnabled_ServerClick(object sender, EventArgs e)
+        {
+            var me = sender as HtmlButton;
+            if (me == null) return;
+            var sysno = int.Parse(me.Attributes["key"]);
+            if (PayCardLogic.EnablePayCard(sysno))
+            {
+                Alert("启用成功");
+                BindData();
+            }
+            else
+            {
+                Alert("启用失败");
+            }
+        }
+
+
+        protected void btnDisabled_ServerClick(object sender, EventArgs e)
+        {
+            var me = sender as HtmlButton;
+            if (me == null) return;
+            var sysno = int.Parse(me.Attributes["key"]);
+            if (PayCardLogic.DisablePayCard(sysno))
+            {
+                Alert("禁用成功");
+                BindData();
+            }
+            else
+            {
+                Alert("禁用失败");
             }
         }
 
@@ -61,20 +100,17 @@ namespace WebUI.Pages
             }
         }
 
-        protected void btnDisabled_ServerClick(object sender, EventArgs e)
+        private void BindData()
         {
-            var me = sender as HtmlButton;
-            if (me == null) return;
-            var sysno = int.Parse(me.Attributes["key"]);
-            if (PayCardLogic.DisablePayCard(sysno))
-            {
-                Alert("禁用成功");
-                BindData();
-            }
-            else
-            {
-                Alert("禁用失败");
-            }
+            QueryFilter.PageSize = ucPager.PageSize;
+            QueryFilter.PageIndex = ucPager.PageIndex;
+
+            var result = NoticesLogic.QueryNotices(QueryFilter);
+            rptData.DataSource = result.ResultList;
+            rptData.DataBind();
+
+            ucPager.RecordCount = result.PagingInfo.TotalCount;
+            ucPager.PageCount = result.PagingInfo.PageCount;
         }
     }
 }

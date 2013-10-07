@@ -41,7 +41,7 @@
                 </td>
                 <td class="span4">
                     <div class="input-control text ">
-                        <input type="text" id="dateFrom2" data-role="datepicker" value="<%=From==null?"":From.Value.ToShortDateString() %>"/>
+                        <input type="text" id="dateFrom2" data-role="datepicker" value=""/>
                     </div>
                 </td>
                 <td class="span1">
@@ -49,7 +49,7 @@
                 </td>
                 <td class="span4">
                     <div class="input-control text">
-                        <input type="text" id="dateTo2" data-role="datepicker" value="<%=To==null?"":To.Value.ToShortDateString() %>"/>
+                        <input type="text" id="dateTo2" data-role="datepicker" value=""/>
                     </div>
                 </td>
                 <td class="span2 right">
@@ -125,7 +125,7 @@
         <tfoot>
             <tr>
                 <td colspan="8">
-                    <uc1:UCPager ID="UCPager1" runat="server" />
+                    <uc1:UCPager ID="ucPager" runat="server" />
                 </td>
             </tr>
         </tfoot>
