@@ -7,19 +7,15 @@
         <tbody>
             <tr>
                 <td class="span1">
-                    卡类型
+                    公告编号：
                 </td>
                 <td class="span2">
                     <div class="input-control select">
-                        <select id="sCate2">
-                            <option value="-1">全部</option>
-                            <option value="1">天</option>
-                            <option value="1">月</option>
-                        </select>
+                       <input type="text" id="txtSysNo" value="<%=QueryFilter.SysNo%>"/>
                     </div>
                 </td>
                 <td class="span1">
-                    状态
+                    状态：
                 </td>
                 <td class="span2">
                     <div class="input-control select">
@@ -31,26 +27,21 @@
                     </div>
                 </td>
                 <td>
-                    <a class="button bg-color-blueDark fg-color-blueLight" href="<%=UrlHelper.GetPageUrl(Request.Url.ToString()) %>" onclick="pageChange(this);return false;" >
-                        查询</a>
+                    <a class="button bg-color-blueDark fg-color-blueLight" href="<%=UrlHelper.GetPageUrl(Request.Url.ToString()) %>" onclick="pageChange(this);return false;" >查询</a>
                 </td>
             </tr>
             <tr>
                 <td class="span1">
-                    有效期起
+                    公告内容：
                 </td>
                 <td class="span4">
-                    <div class="input-control text ">
-                        <input type="text" id="dateFrom2" data-role="datepicker" value=""/>
+                      <div class="input-control text">
+                        <input type="text" id="txtCon" value="<%=QueryFilter.Contents%>"/>
                     </div>
                 </td>
                 <td class="span1">
-                    有效期止
                 </td>
                 <td class="span4">
-                    <div class="input-control text">
-                        <input type="text" id="dateTo2" data-role="datepicker" value=""/>
-                    </div>
                 </td>
                 <td class="span2 right">
                 </td>
@@ -64,22 +55,16 @@
                     编号
                 </th>
                 <th>
-                    卡号
-                </th>
-                <th>
-                    类型
+                    内容
                 </th>
                 <th>
                     状态
                 </th>
                 <th>
-                    生成时间
+                    优先级
                 </th>
                 <th>
-                    有效期起
-                </th>
-                <th>
-                    有效期止
+                    创建时间
                 </th>
                 <th>
                 </th>
@@ -93,22 +78,16 @@
                             <%#Eval("SysNo")%>
                         </td>
                         <td>
-                            <%#Eval("PayCardID")%>
+                            <%#Eval("Contents")%>
                         </td>
                         <td>
-                            <%#Eval("StrCategory")%>
+                            <%#Eval("Status")%>
                         </td>
                         <td>
-                            <%#Eval("StrStatus")%>
+                            <%#Eval("Rank")%>
                         </td>
                         <td>
-                            <%#Eval("StrInDate")%>
-                        </td>
-                        <td>
-                            <%#Eval("StrBeginTime")%>
-                        </td>
-                        <td>
-                            <%#Eval("StrEndTime")%>
+                            <%#Eval("InDate")%>
                         </td>
                         <td>
                             <button class="bg-color-greenDark fg-color-blueLight" id="btnEnabled" runat="server" onserverclick="btnEnabled_ServerClick">
@@ -130,4 +109,25 @@
             </tr>
         </tfoot>
     </table>
+
+    <script type="text/javascript">
+        $(function () {
+            var cartStatus = '<%=QueryFilter.Status%>';
+            $("#sStatus").find("option[value=" + cartStatus + "]").attr("selected", "selected");
+        });
+
+        function pageChange(tag) {
+            var me = $(tag);
+            var href = me.attr("href");
+            var params = [];
+            var sysNo = $("#txtSysNo").val();
+            params.push("sysNo=" + sysNo);
+            var contents = $("#txtCon").val();
+            params.push("contents=" + cartStatus);
+            var status = $("#sStatus option:selected").attr("value");
+            params.push("status=" + status);
+            if (params.length > 0) href += "?" + params.join("&");
+            window.location.href = href;
+        }
+    </script>
 </asp:Content>

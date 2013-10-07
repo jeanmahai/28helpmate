@@ -67,7 +67,6 @@ namespace WebUI.Pages
             }
         }
 
-
         protected void btnDisabled_ServerClick(object sender, EventArgs e)
         {
             var me = sender as HtmlButton;
@@ -102,6 +101,10 @@ namespace WebUI.Pages
 
         private void BindData()
         {
+            QueryFilter.Contents = Request.QueryString["contents"];
+            QueryFilter.SysNo = Request.QueryString["sysNo"];
+            QueryFilter.Status = (NoticesStatus)(Convert.ToInt32(Request.QueryString["status"]));
+
             QueryFilter.PageSize = ucPager.PageSize;
             QueryFilter.PageIndex = ucPager.PageIndex;
 
