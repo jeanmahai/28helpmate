@@ -26,8 +26,8 @@ namespace DataAccess
             PagingInfoEntity page = new PagingInfoEntity();
             page.SortField = (filter.SortList == null || filter.SortList.Count == 0) ? null : filter.SortListToString();
             page.MaximumRows = filter.PageSize;
-            page.StartRowIndex = filter.PageIndex * filter.PageSize;
-            CustomDataCommand cmd = DataCommandManager.CreateCustomDataCommandFromConfig("PayCard_Query");
+            page.StartRowIndex = (filter.PageIndex - 1) * filter.PageSize;
+            CustomDataCommand cmd = DataCommandManager.CreateCustomDataCommandFromConfig("QueryNotices");
             using (var sqlBuilder = new DynamicQuerySqlBuilder(cmd.CommandText, cmd, page, "SysNo DESC"))
             {
                 sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "SysNo", DbType.Int32, "@SysNo", QueryConditionOperatorType.Equal, filter.SysNo);
@@ -48,12 +48,12 @@ namespace DataAccess
         /// </summary>
         /// <param name="sysNo">编号</param>
         /// <param name="status">状态</param>
-        public static void ChangeNoticesStatus(int sysNo, NoticesStatus status)
+        public static bool ChangeNoticesStatus(int sysNo, NoticesStatus status)
         {
             DataCommand cmd = DataCommandManager.GetDataCommand("ChangeNoticesStatus");
             cmd.SetParameterValue("@SysNo", sysNo);
             cmd.SetParameterValue("@Status", status);
-            cmd.ExecuteNonQuery();
+            return cmd.ExecuteNonQuery()>0;
         }
 
         /// <summary>
@@ -77,6 +77,17 @@ namespace DataAccess
             DataCommand cmd = DataCommandManager.GetDataCommand("UpdateNotices");
             cmd.SetParameterValue<Notices>(notices);
             cmd.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// 加载公告
+        /// </summary>
+        /// <param name="notices">公告信息</param>
+        public static Notices LoadNotices(int sysNo)
+        {
+            DataCommand cmd = DataCommandManager.GetDataCommand("LoadNotices");
+            cmd.SetParameterValue("@SysNo", sysNo); ;
+            return cmd.ExecuteEntity<Notices>();
         }
     }
 }

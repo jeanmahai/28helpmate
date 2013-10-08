@@ -28,9 +28,9 @@ namespace Logic
         /// </summary>
         /// <param name="sysNo">编号</param>
         /// <param name="status">状态</param>
-        public static void ChangeNoticesStatus(int sysNo, NoticesStatus status)
+        public static bool ChangeNoticesStatus(int sysNo, NoticesStatus status)
         {
-            NoticesDA.ChangeNoticesStatus(sysNo, status);
+            return NoticesDA.ChangeNoticesStatus(sysNo, status);
         }
 
         /// <summary>
@@ -50,5 +50,15 @@ namespace Logic
         {
             NoticesDA.UpdateNotices(notices);
         }
+
+        /// <summary>
+        /// 加载公告
+        /// </summary>
+        /// <param name="notices">公告信息</param>
+        public static Notices LoadNotices(int sysNo)
+        {
+            return NoticesDA.LoadNotices(sysNo);
+        }
+
     }
 }

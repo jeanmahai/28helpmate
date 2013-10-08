@@ -50,9 +50,9 @@
                         <a>公告管理</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a>新公告</a></li>
+                                <a href="/Pages/NoticesMaintain.aspx">新公告</a></li>
                             <li>
-                                <a>公告查询</a></li>
+                                <a href="/Pages/NoticesQuery.aspx">公告查询</a></li>
                         </ul>
                     </li>
                     <li>

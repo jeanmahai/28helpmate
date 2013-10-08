@@ -12,7 +12,7 @@ namespace DataEntity.QueryFilter
         /// <summary>
         /// 编号
         /// </summary>
-        public int? SysNo { get; set; }
+        public string SysNo { get; set; }
 
         /// <summary>
         /// 内容

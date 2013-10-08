@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Framework.Util, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferenceLib\Framework.Util.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -57,6 +61,8 @@
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
+    <Content Include="Pages\NoticesMaintain.aspx" />
+    <Content Include="Pages\NoticesQuery.aspx" />
     <Content Include="Pages\PayCard.aspx" />
     <Content Include="Pages\PayLog.aspx" />
     <Content Include="Pages\Users.aspx" />
@@ -202,6 +208,20 @@
     <Compile Include="Pages\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\NoticesMaintain.aspx.cs">
+      <DependentUpon>NoticesMaintain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoticesMaintain.aspx.designer.cs">
+      <DependentUpon>NoticesMaintain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NoticesQuery.aspx.cs">
+      <DependentUpon>NoticesQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoticesQuery.aspx.designer.cs">
+      <DependentUpon>NoticesQuery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PayCard.aspx.cs">
       <DependentUpon>PayCard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,6 +285,10 @@
     <Content Include="Configuration\Data\Database.config" />
     <Content Include="Configuration\Data\DbCommandFiles.config" />
     <Content Include="Configuration\TypeVersion.config" />
+    <Content Include="Configuration\Data\Common\PayCard.config" />
+    <Content Include="Configuration\Data\Common\PayLog.config" />
+    <Content Include="Configuration\Data\Common\SystemUsers.config" />
+    <Content Include="Configuration\Data\Common\Users.config" />
     <None Include="res\fonts\DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\iconFont.eot" />
@@ -292,6 +316,10 @@
       <Project>{0C311B70-3D3D-4133-B54C-2E04C354A196}</Project>
       <Name>Common.Utility.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UtilityCommon\Common.Utility\Common.Utility.csproj">
+      <Project>{DB4B1E23-9C62-4D76-BD59-DE42933A46C5}</Project>
+      <Name>Common.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\CodeNamePairs\" />
@@ -303,8 +331,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49416</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>8808</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

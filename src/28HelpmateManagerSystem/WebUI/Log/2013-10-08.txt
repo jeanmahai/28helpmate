@@ -1,0 +1,1592 @@
+
+** [2013-10-08 19:52:49.541] - Begin **************************************************************
+[LogID]: 4daa13c3-e5c7-49b3-a413-7625f2d0c136
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidOperationException: There is an error in XML document (2, 2). ---> System.InvalidOperationException: <configuration xmlns=''> was not expected.
+   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderDataOperations.Read9_dataOperations()
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(Stream stream)
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadFromXml[T](String fileName) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 95
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadDataCommandList(String filePath) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 123
+   at Common.Utility.DataAccess.DataCommandManager.LoadAllDataCommandFiles() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 132
+   at Common.Utility.DataAccess.DataCommandManager.InitConfig() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 174
+   at Common.Utility.DataAccess.DataCommandManager.CreateCustomDataCommandFromConfig(String sqlNameInConfig) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 202
+   at DataAccess.NoticesDA.QueryNotices(NoticesQueryFilter filter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 30
+   at Logic.NoticesLogic.QueryNotices(NoticesQueryFilter queryFilter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 23
+   at WebUI.Login.Page_Load(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 23
+   at System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_44kqb1zh.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:52:49.435
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-08 19:52:49.541] - End ****************************************************************
+
+** [2013-10-08 19:52:49.813] - Begin **************************************************************
+[LogID]: 85271937-9281-4025-b62f-ce7bade436ad
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:52:49.812
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-10-08 19:52:49.813] - End ****************************************************************
+
+** [2013-10-08 19:52:53.289] - Begin **************************************************************
+[LogID]: 21fcc0fa-f16d-4198-a11f-f6019be3d3c2
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidOperationException: There is an error in XML document (2, 2). ---> System.InvalidOperationException: <configuration xmlns=''> was not expected.
+   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderDataOperations.Read9_dataOperations()
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(Stream stream)
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadFromXml[T](String fileName) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 95
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadDataCommandList(String filePath) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 123
+   at Common.Utility.DataAccess.DataCommandManager.LoadAllDataCommandFiles() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 132
+   at Common.Utility.DataAccess.DataCommandManager.InitConfig() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 174
+   at Common.Utility.DataAccess.DataCommandManager.CreateCustomDataCommandFromConfig(String sqlNameInConfig) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 202
+   at DataAccess.NoticesDA.QueryNotices(NoticesQueryFilter filter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 30
+   at Logic.NoticesLogic.QueryNotices(NoticesQueryFilter queryFilter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 23
+   at WebUI.Login.Page_Load(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 23
+   at System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_44kqb1zh.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:52:53.287
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-08 19:52:53.289] - End ****************************************************************
+
+** [2013-10-08 19:57:13.100] - Begin **************************************************************
+[LogID]: e6112c34-f50f-403d-b015-b5c4539fd2ba
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidOperationException: There is an error in XML document (2, 2). ---> System.InvalidOperationException: <configuration xmlns=''> was not expected.
+   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderDataOperations.Read9_dataOperations()
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(Stream stream)
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadFromXml[T](String fileName) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 95
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadDataCommandList(String filePath) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 123
+   at Common.Utility.DataAccess.DataCommandManager.LoadAllDataCommandFiles() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 132
+   at Common.Utility.DataAccess.DataCommandManager.InitConfig() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 174
+   at Common.Utility.DataAccess.DataCommandManager.CreateCustomDataCommandFromConfig(String sqlNameInConfig) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 202
+   at DataAccess.NoticesDA.QueryNotices(NoticesQueryFilter filter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 30
+   at Logic.NoticesLogic.QueryNotices(NoticesQueryFilter queryFilter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 23
+   at WebUI.Login.Page_Load(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 23
+   at System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_44kqb1zh.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:57:13.098
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-10-08 19:57:13.100] - End ****************************************************************
+
+** [2013-10-08 19:57:18.311] - Begin **************************************************************
+[LogID]: a696adc0-d543-4aa0-be6d-68082330ff18
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:57:18.310
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 10
+** [2013-10-08 19:57:18.311] - End ****************************************************************
+
+** [2013-10-08 20:01:08.304] - Begin **************************************************************
+[LogID]: 78bc5f12-bd89-4f40-8499-9f8378401270
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesMaintain.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpParseException (0x80004005): The server tag is not well formed. ---> System.Web.HttpException (0x80004005): The server tag is not well formed.
+   at System.Web.UI.TemplateParser.ProcessError(String message)
+   at System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)
+   at System.Web.UI.TemplateParser.ParseInternal()
+   at System.Web.UI.TemplateParser.Parse()
+   at System.Web.Compilation.BaseTemplateBuildProvider.get_CodeCompilerType()
+   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.UI.PageHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   at System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:01:08.301
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 13
+** [2013-10-08 20:01:08.304] - End ****************************************************************
+
+** [2013-10-08 20:13:29.875] - Begin **************************************************************
+[LogID]: ebfc416c-c834-40bf-a699-cdf018905d9f
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesMaintain.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ApplicationException: 无法找到类型'DataEntity.Notices'的公开实例属性State.
+   at Common.Utility.Invoker.PropertyGet(Type type, Object obj, String propertyName, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility\FastInvoke\Invoker.cs:line 142
+   at Common.Utility.Invoker.PropertyGet(Object obj, String propertyName, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility\FastInvoke\Invoker.cs:line 128
+   at Common.Utility.DataMapper.GetFieldValueAllowNull(Object entity, String[] proArray, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility\DataMapper\DataMapper.cs:line 501
+   at Common.Utility.DataAccess.DataCommand.SetParameterValue[T](InputMap`1 map, T entity, Char sqlParamSplitter, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 328
+   at Common.Utility.DataAccess.DataCommand.SetParameterValue[T](InputMap`1 map, T entity, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 278
+   at Common.Utility.DataAccess.DataCommand.SetParameterValue[T](T entity, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 266
+   at Common.Utility.DataAccess.DataCommand.SetParameterValue[T](T entity) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 260
+   at DataAccess.NoticesDA.CreateNotices(Notices notices) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 66
+   at Logic.NoticesLogic.CreateNotices(Notices notices) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 42
+   at WebUI.Pages.NoticesMaintain.btnSave_ServerClick(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesMaintain.aspx.cs:line 45
+   at System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   at System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.pages_noticesmaintain_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_5bakx2yj.3.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:13:29.856
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 19
+** [2013-10-08 20:13:29.875] - End ****************************************************************
+
+** [2013-10-08 20:15:14.136] - Begin **************************************************************
+[LogID]: c14e788b-59b0-4779-8207-8aa11526a0b5
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:15:14.135
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 19
+** [2013-10-08 20:15:14.136] - End ****************************************************************
+
+** [2013-10-08 20:37:43.424] - Begin **************************************************************
+[LogID]: 3aa340ee-3594-40a2-bd29-48aa8fcd263e
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> Common.Utility.DataAccess.Database.DbProvider.DataAccessException: 只有在 SELECT 语句中才允许使用 NOLOCK、READUNCOMMITTED 和 READPAST 锁提示。
+<<Connection String>> : data source=117.25.148.58,3520;database=Helpmate;user id=helpmate;password=1qa123!@#;connection reset=false;Timeout=30;connection lifetime=30; min pool size=0; max pool size=50
+<<SQL Script>> : 
+      UPDATE Helpmate.dbo.Notices WITH(NOLOCK)
+      SET [Status]=@Status
+      WHERE [SysNo]=@SysNo
+      
+<<SQL Parameter(s)>> :
+@SysNo [Int32] :  [System.DBNull]
+ ---> System.Data.SqlClient.SqlException: 只有在 SELECT 语句中才允许使用 NOLOCK、READUNCOMMITTED 和 READPAST 锁提示。
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Common.Utility.DataAccess.DbHelper.ExecuteNonQuery(String databaseName, CommandType cmdType, String cmdText, Int32 timeout, DbParameter[] commandParameters) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DbHelper.cs:line 48
+   --- End of inner exception stack trace ---
+   at Common.Utility.DataAccess.DbHelper.ExecuteNonQuery(String databaseName, CommandType cmdType, String cmdText, Int32 timeout, DbParameter[] commandParameters) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DbHelper.cs:line 54
+   at Common.Utility.DataAccess.DataCommand.ExecuteNonQuery() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 360
+   at DataAccess.NoticesDA.ChangeNoticesStatus(Int32 sysNo, NoticesStatus status) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 56
+   at Logic.NoticesLogic.ChangeNoticesStatus(Int32 sysNo, NoticesStatus status) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 33
+   at WebUI.Pages.NoticesQuery.btnEnabled_ServerClick(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:line 59
+   at System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   at System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_alddyjgv.4.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:37:43.412
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 16
+** [2013-10-08 20:37:43.424] - End ****************************************************************
+
+** [2013-10-08 20:42:21.423] - Begin **************************************************************
+[LogID]: 731ba60a-c757-49d7-b1af-6268e7200c2c
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> Common.Utility.DataAccess.Database.DbProvider.DataAccessException: 必须声明标量变量 "@Status"。
+<<Connection String>> : data source=117.25.148.58,3520;database=Helpmate;user id=helpmate;password=1qa123!@#;connection reset=false;Timeout=30;connection lifetime=30; min pool size=0; max pool size=50
+<<SQL Script>> : 
+      UPDATE Helpmate.dbo.Notices
+      SET [Status]=@Status
+      WHERE [SysNo]=@SysNo
+      
+<<SQL Parameter(s)>> :
+@SysNo [Int32] :  [System.DBNull]
+ ---> System.Data.SqlClient.SqlException: 必须声明标量变量 "@Status"。
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Common.Utility.DataAccess.DbHelper.ExecuteNonQuery(String databaseName, CommandType cmdType, String cmdText, Int32 timeout, DbParameter[] commandParameters) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DbHelper.cs:line 48
+   --- End of inner exception stack trace ---
+   at Common.Utility.DataAccess.DbHelper.ExecuteNonQuery(String databaseName, CommandType cmdType, String cmdText, Int32 timeout, DbParameter[] commandParameters) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DbHelper.cs:line 54
+   at Common.Utility.DataAccess.DataCommand.ExecuteNonQuery() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 360
+   at DataAccess.NoticesDA.ChangeNoticesStatus(Int32 sysNo, NoticesStatus status) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 56
+   at Logic.NoticesLogic.ChangeNoticesStatus(Int32 sysNo, NoticesStatus status) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 33
+   at WebUI.Pages.NoticesQuery.btnDisabled_ServerClick(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:line 75
+   at System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   at System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_lvxa0gkl.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:42:21.421
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 19
+** [2013-10-08 20:42:21.423] - End ****************************************************************
+
+** [2013-10-08 22:07:18.103] - Begin **************************************************************
+[LogID]: 21c5a787-0a62-4aff-ae79-31a40975b72d
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:07:18.023
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 21
+** [2013-10-08 22:07:18.103] - End ****************************************************************
+
+** [2013-10-08 22:07:30.060] - Begin **************************************************************
+[LogID]: 01c8af54-546a-406d-aa0d-3c08b20386b6
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.Exception: 登录失败，用户名或密码错误。
+   在 WebUI.Login.btnOK_ServerClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:行号 36
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.login_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_s3zjj0ug.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:07:30.058
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 23
+** [2013-10-08 22:07:30.060] - End ****************************************************************
+
+** [2013-10-08 22:07:30.763] - Begin **************************************************************
+[LogID]: 5b33d0bc-2e5d-44ac-b6e3-7292ea2beb20
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.Exception: 登录失败，用户名或密码错误。
+   在 WebUI.Login.btnOK_ServerClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:行号 36
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.login_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_s3zjj0ug.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:07:30.760
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 22
+** [2013-10-08 22:07:30.763] - End ****************************************************************
+
+** [2013-10-08 22:07:47.520] - Begin **************************************************************
+[LogID]: 319f6610-e45a-418d-abc9-d1bbb095f045
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_aboonnpe.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:07:47.515
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 14
+** [2013-10-08 22:07:47.520] - End ****************************************************************
+
+** [2013-10-08 22:07:48.214] - Begin **************************************************************
+[LogID]: 04cdc820-53eb-4a31-8144-031dde80c4ef
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_aboonnpe.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:07:48.212
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 11
+** [2013-10-08 22:07:48.214] - End ****************************************************************
+
+** [2013-10-08 22:08:44.342] - Begin **************************************************************
+[LogID]: cf100abd-637e-4c19-8623-88a562053c18
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_l1bnkgqp.4.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:08:44.338
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 19
+** [2013-10-08 22:08:44.342] - End ****************************************************************
+
+** [2013-10-08 22:08:44.363] - Begin **************************************************************
+[LogID]: 6173d91a-e979-4a6e-a44b-748b6cfbc6c6
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_l1bnkgqp.4.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:08:44.361
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 13
+** [2013-10-08 22:08:44.363] - End ****************************************************************
+
+** [2013-10-08 22:18:22.945] - Begin **************************************************************
+[LogID]: 1592b2b7-c70d-4469-a6ef-5f962158977a
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=-1
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_v05zlv5b.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:18:22.927
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 26
+** [2013-10-08 22:18:22.945] - End ****************************************************************
+
+** [2013-10-08 22:18:22.956] - Begin **************************************************************
+[LogID]: 8ba0624e-b4bb-42ae-967b-cf46cb3e908a
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=-1
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_v05zlv5b.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:18:22.954
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 32
+** [2013-10-08 22:18:22.956] - End ****************************************************************
+
+** [2013-10-08 22:26:36.899] - Begin **************************************************************
+[LogID]: 9fc3585f-c88b-4cfe-8733-dede4b4fdfaa
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=%E6%AD%A4&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_m31yilmb.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:26:36.881
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 21
+** [2013-10-08 22:26:36.899] - End ****************************************************************
+
+** [2013-10-08 22:26:36.907] - Begin **************************************************************
+[LogID]: 3a414a05-37b6-4d02-8157-c570861d7f09
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=%E6%AD%A4&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_m31yilmb.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:26:36.904
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 31
+** [2013-10-08 22:26:36.907] - End ****************************************************************
+
+** [2013-10-08 22:26:51.521] - Begin **************************************************************
+[LogID]: 97099ccb-ab3f-4e35-97a5-bc6d5ad895e6
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_m31yilmb.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:26:51.519
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 22
+** [2013-10-08 22:26:51.521] - End ****************************************************************
+
+** [2013-10-08 22:26:51.553] - Begin **************************************************************
+[LogID]: 771189d5-4f2b-44a4-9935-6f9839d00482
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_m31yilmb.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:26:51.551
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 11
+** [2013-10-08 22:26:51.553] - End ****************************************************************
+
+** [2013-10-08 22:27:00.037] - Begin **************************************************************
+[LogID]: 3772def9-46d1-4fa2-b216-f14d4f1c9cd8
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_m31yilmb.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:27:00.035
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 21
+** [2013-10-08 22:27:00.037] - End ****************************************************************
+
+** [2013-10-08 22:27:00.063] - Begin **************************************************************
+[LogID]: e9c6d6cf-f60b-4d3b-a97d-96160fbde680
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_m31yilmb.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:27:00.059
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 31
+** [2013-10-08 22:27:00.063] - End ****************************************************************
+
+** [2013-10-08 22:30:56.175] - Begin **************************************************************
+[LogID]: 0189ec43-80e3-4ac9-93a1-a86a84f7ce25
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_aggtzqvh.3.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:30:56.159
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 14
+** [2013-10-08 22:30:56.175] - End ****************************************************************
+
+** [2013-10-08 22:30:56.199] - Begin **************************************************************
+[LogID]: c20e812b-3136-483f-9244-09f59f22161e
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_aggtzqvh.3.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:30:56.196
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 12
+** [2013-10-08 22:30:56.199] - End ****************************************************************
+
+** [2013-10-08 22:32:31.212] - Begin **************************************************************
+[LogID]: 648fc8c1-f678-4b48-9d01-c864c7c9df5f
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_ray3ml3d.2.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:32:31.191
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 34
+** [2013-10-08 22:32:31.212] - End ****************************************************************
+
+** [2013-10-08 22:32:31.737] - Begin **************************************************************
+[LogID]: 1cd143d0-a8e1-4ef6-b994-84b3e58653f5
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_ray3ml3d.2.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:32:31.734
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 23
+** [2013-10-08 22:32:31.737] - End ****************************************************************
+
+** [2013-10-08 22:33:13.822] - Begin **************************************************************
+[LogID]: 2a313614-2cd2-45cb-8e24-ab794899be89
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_fmgq5jg0.5.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:33:13.804
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 29
+** [2013-10-08 22:33:13.822] - End ****************************************************************
+
+** [2013-10-08 22:33:13.843] - Begin **************************************************************
+[LogID]: 295c2be5-a50f-4bbb-b1e7-e0a7476b5379
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_fmgq5jg0.5.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:33:13.839
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 17
+** [2013-10-08 22:33:13.843] - End ****************************************************************
+
+** [2013-10-08 22:34:41.149] - Begin **************************************************************
+[LogID]: 48c10790-8c87-4138-a101-6c2637052d97
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_fmgq5jg0.5.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:34:41.147
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 4
+** [2013-10-08 22:34:41.149] - End ****************************************************************
+
+** [2013-10-08 22:34:41.178] - Begin **************************************************************
+[LogID]: 32ce0f51-af5a-4c6b-9f64-6bcd086bdd40
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_fmgq5jg0.5.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:34:41.175
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 10
+** [2013-10-08 22:34:41.178] - End ****************************************************************
+
+** [2013-10-08 22:38:42.585] - Begin **************************************************************
+[LogID]: fa0b48a2-6470-49b5-83fb-06ce597cd870
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_2nsnwj1c.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:38:42.566
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 10
+** [2013-10-08 22:38:42.585] - End ****************************************************************
+
+** [2013-10-08 22:38:42.598] - Begin **************************************************************
+[LogID]: cc33aab7-f463-40b2-94dc-e4f9888db6d8
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_2nsnwj1c.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:38:42.596
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 4
+** [2013-10-08 22:38:42.598] - End ****************************************************************
+
+** [2013-10-08 22:39:32.823] - Begin **************************************************************
+[LogID]: 2553c3e4-4df5-429b-8450-92a2211e4bc1
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_20pstbto.4.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:39:32.805
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 24
+** [2013-10-08 22:39:32.823] - End ****************************************************************
+
+** [2013-10-08 22:39:33.345] - Begin **************************************************************
+[LogID]: 3e3112bf-77fc-4273-aa20-5fa8f2958486
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_20pstbto.4.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:39:33.343
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 26
+** [2013-10-08 22:39:33.345] - End ****************************************************************
+
+** [2013-10-08 22:40:13.873] - Begin **************************************************************
+[LogID]: 93ee7e73-a9ac-403b-8f34-562ead48b7ee
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_ektbgwys.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:40:13.855
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 16
+** [2013-10-08 22:40:13.873] - End ****************************************************************
+
+** [2013-10-08 22:40:13.888] - Begin **************************************************************
+[LogID]: ff5c5ffc-4ae7-4553-b9a0-dcb23ff4422d
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_ektbgwys.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:40:13.886
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 25
+** [2013-10-08 22:40:13.888] - End ****************************************************************
+
+** [2013-10-08 22:41:27.696] - Begin **************************************************************
+[LogID]: 59b8c505-51e8-4603-9605-543d3c03bc4f
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/jsonp/checkversion.php?t=0.20550346955236992&jsoncallback=bdRes2Exe.jsonpMethods.jsonp_1381243287663_3&
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:41:27.694
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 17
+** [2013-10-08 22:41:27.696] - End ****************************************************************
+
+** [2013-10-08 22:47:53.944] - Begin **************************************************************
+[LogID]: db4a522c-bba4-4c21-8a2a-ef0d5f4105fd
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_im3ljyph.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:47:53.939
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 15
+** [2013-10-08 22:47:53.944] - End ****************************************************************
+
+** [2013-10-08 22:47:53.969] - Begin **************************************************************
+[LogID]: 35cf2fdb-a80d-4209-a216-3a58e04796b8
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_im3ljyph.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:47:53.967
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 12
+** [2013-10-08 22:47:53.969] - End ****************************************************************
+
+** [2013-10-08 22:48:09.724] - Begin **************************************************************
+[LogID]: 6e5a68d6-6316-486d-82b1-914650fd1f5b
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_z5huvt4e.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:48:09.703
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 11
+** [2013-10-08 22:48:09.724] - End ****************************************************************
+
+** [2013-10-08 22:48:10.238] - Begin **************************************************************
+[LogID]: b09ce148-8fd4-4823-8998-43d7cfdc8c9b
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_z5huvt4e.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:48:10.235
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 14
+** [2013-10-08 22:48:10.238] - End ****************************************************************
+
+** [2013-10-08 22:48:36.787] - Begin **************************************************************
+[LogID]: 2c22ab54-69bf-464f-9ef5-0a6c81cfb3a8
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_z5huvt4e.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:48:36.784
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 16
+** [2013-10-08 22:48:36.787] - End ****************************************************************
+
+** [2013-10-08 22:48:39.559] - Begin **************************************************************
+[LogID]: 6c59353c-7877-4abc-80dc-d459fbc60684
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx?sysNo=&contents=&status=
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebUI.Pages.NoticesQuery.btnEdit_serverClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 110
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_z5huvt4e.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-08 22:48:39.556
+[ProcessID]: 6908
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 23
+** [2013-10-08 22:48:39.559] - End ****************************************************************
