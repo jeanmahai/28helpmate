@@ -3,6 +3,7 @@
 <%@ Register Src="../UserControls/UCPager.ascx" TagName="UCPager" TagPrefix="uc1" %>
 
 <asp:Content ID="conPage" ContentPlaceHolderID="cphContent" runat="server">
+    <form id="frmPayCard" runat="server">
     <table class="no-border-all">
         <tbody>
             <tr>
@@ -81,7 +82,7 @@
                             <%#Eval("Contents")%>
                         </td>
                         <td>
-                            <%#Eval("Status")%>
+                            <asp:Literal ID="litStatus" runat="server"></asp:Literal>
                         </td>
                         <td>
                             <%#Eval("Rank")%>
@@ -91,7 +92,7 @@
                         </td>
                         <td>
                             <button class="bg-color-greenDark fg-color-blueLight" id="btnEnabled" runat="server" onserverclick="btnEnabled_ServerClick">
-                                启用</button>
+                                发布</button>
                             <button class="bg-color-purple fg-color-blueLight" id="btnDisabled" runat="server" onserverclick="btnDisabled_ServerClick">
                                 禁用</button>
                             <button class="" id="btnDelete" runat="server" onserverclick="btnDelete_serverClick">
@@ -109,7 +110,7 @@
             </tr>
         </tfoot>
     </table>
-
+    </form>
     <script type="text/javascript">
         $(function () {
             var cartStatus = '<%=QueryFilter.Status%>';

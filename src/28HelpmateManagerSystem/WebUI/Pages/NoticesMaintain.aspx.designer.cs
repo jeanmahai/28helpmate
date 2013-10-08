@@ -22,40 +22,22 @@ namespace WebUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmPayCard;
         
         /// <summary>
-        /// sCate control.
+        /// txtContents control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect sCate;
+        protected global::System.Web.UI.WebControls.TextBox txtContents;
         
         /// <summary>
-        /// numCount control.
+        /// txtRank control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText numCount;
-        
-        /// <summary>
-        /// dateFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateFrom;
-        
-        /// <summary>
-        /// dateTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dateTo;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtRank;
         
         /// <summary>
         /// btnSave control.

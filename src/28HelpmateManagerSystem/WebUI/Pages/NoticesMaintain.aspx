@@ -8,37 +8,18 @@
         <div class="span12">
             <table class="border">
                 <tr>
-                    <td class="span2">卡类型</td>
-                    <td>
-                        <div class="input-control select ">
-                            <select runat="server" id="sCate">
-                                <option value="1">天</option>
-                                <option value="1">月</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="span2">生成张数</td>
+                    <td class="span2">公告内容：</td>
                     <td>
                         <div class="input-control text ">
-                            <input type="text" runat="server" id="numCount" />
+                            <asp:TextBox ID="txtContents" TextMode="MultiLine" Width="750px" Height="100px" runat="server"></asp:TextBox>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td class="span2">有效期起</td>
+                    <td class="span2">优先级：</td>
                     <td>
                         <div class="input-control text">
-                            <input type="text" runat="server" id="dateFrom" data-role="datepicker" />
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="span2">有效期止</td>
-                    <td>
-                        <div class="input-control text ">
-                            <input type="text" runat="server" id="dateTo" data-role="datepicker" />
+                            <input type="text" runat="server" id="txtRank" />
                         </div>
                     </td>
                 </tr>

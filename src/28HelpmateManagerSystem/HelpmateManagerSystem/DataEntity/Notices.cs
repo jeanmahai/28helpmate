@@ -21,7 +21,7 @@ namespace DataEntity
         public string Contents { get; set; }
 
         /// <summary>
-        /// 状体
+        /// 状态
         /// </summary>
         public NoticesStatus Status { get; set; }
 

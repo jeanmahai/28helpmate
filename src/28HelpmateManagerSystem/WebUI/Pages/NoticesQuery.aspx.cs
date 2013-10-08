@@ -9,6 +9,7 @@ using System.Web.UI.HtmlControls;
 using Logic;
 using DataEntity.QueryFilter;
 using DataEntity;
+using Framework.Util;
 
 namespace WebUI.Pages
 {
@@ -33,6 +34,9 @@ namespace WebUI.Pages
             var data = e.Item.DataItem as DataEntity.Notices;
             if (data == null) return;
             var btn = e.Item.FindControl("btnEnabled") as HtmlButton;
+            var litStatus = e.Item.FindControl("litStatus") as Literal;
+            litStatus.Text = EnumHelper.GetDescription(data.Status);
+
             if (btn != null)
             {
                 btn.Attributes["key"] = data.SysNo.ToString();
@@ -56,14 +60,14 @@ namespace WebUI.Pages
             var me = sender as HtmlButton;
             if (me == null) return;
             var sysno = int.Parse(me.Attributes["key"]);
-            if (PayCardLogic.EnablePayCard(sysno))
+            if (NoticesLogic.ChangeNoticesStatus(sysno, NoticesStatus.Valid))
             {
-                Alert("启用成功");
+                Alert("发布成功");
                 BindData();
             }
             else
             {
-                Alert("启用失败");
+                Alert("发布失败");
             }
         }
 
@@ -72,7 +76,7 @@ namespace WebUI.Pages
             var me = sender as HtmlButton;
             if (me == null) return;
             var sysno = int.Parse(me.Attributes["key"]);
-            if (PayCardLogic.DisablePayCard(sysno))
+            if (NoticesLogic.ChangeNoticesStatus(sysno, NoticesStatus.Invalid))
             {
                 Alert("禁用成功");
                 BindData();
@@ -88,7 +92,7 @@ namespace WebUI.Pages
             var me = sender as HtmlButton;
             if (me == null) return;
             var sysno = int.Parse(me.Attributes["key"]);
-            if (PayCardLogic.DeletePayCard(sysno))
+            if (NoticesLogic.ChangeNoticesStatus(sysno, NoticesStatus.Delete))
             {
                 Alert("删除成功");
                 BindData();

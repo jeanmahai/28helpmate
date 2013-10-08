@@ -98,7 +98,7 @@ namespace Common.Utility.DataAccess
                     }
                     if (m_pagingInfo.StartRowIndex.HasValue)
                     {
-                        startIndex = m_pagingInfo.StartRowIndex.Value;
+                        startIndex = (m_pagingInfo.StartRowIndex.Value);
                     }
                 }
                 m_dataCommand.AddInputParameter("@EndNumber", DbType.Int32, pageSize + startIndex);

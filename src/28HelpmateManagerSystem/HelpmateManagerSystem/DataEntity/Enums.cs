@@ -81,7 +81,12 @@ namespace DataEntity
         /// 关闭
         /// </summary>
         [Description("关闭")]
-        Invalid = -1
+        Invalid = -1,
+        /// <summary>
+        /// 删除
+        /// </summary>
+        [Description("删除")]
+        Delete = -2
     }
 
     /// 用户状态
