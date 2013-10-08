@@ -21,9 +21,9 @@
                 <td class="span2">
                     <div class="input-control select">
                         <select id="sStatus">
-                            <option value="-1">全部</option>
-                            <option value="0">无效</option>
-                            <option value="1">有效</option>
+                            <option value="">全部</option>
+                            <option value="-1">关闭</option>
+                            <option value="1">发布</option>
                         </select>
                     </div>
                 </td>
@@ -96,7 +96,9 @@
                             <button class="bg-color-purple fg-color-blueLight" id="btnDisabled" runat="server" onserverclick="btnDisabled_ServerClick">
                                 禁用</button>
                             <button class="" id="btnDelete" runat="server" onserverclick="btnDelete_serverClick">
-                                删除</button>
+                                删除</button> 
+                            <button class="" id="btnEdit" runat="server" onserverclick="btnEdit_serverClick">
+                                编辑</button>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -124,7 +126,7 @@
             var sysNo = $("#txtSysNo").val();
             params.push("sysNo=" + sysNo);
             var contents = $("#txtCon").val();
-            params.push("contents=" + cartStatus);
+            params.push("contents=" + contents);
             var status = $("#sStatus option:selected").attr("value");
             params.push("status=" + status);
             if (params.length > 0) href += "?" + params.join("&");

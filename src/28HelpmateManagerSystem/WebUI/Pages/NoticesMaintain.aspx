@@ -27,6 +27,7 @@
                     <td class="span2">
                     </td>
                     <td>
+                        <asp:HiddenField ID="hidSysNo" runat="server" />
                         <button class="bg-color-blueDark fg-color-blueLight" runat="server" id="btnSave">保存</button>
                         <input type="reset" value="取消" />
                     </td>

@@ -53,6 +53,12 @@ namespace WebUI.Pages
                 btn.Attributes["key"] = data.SysNo.ToString();
                 if (data.Status == NoticesStatus.Invalid) btn.Visible = false;
             }
+            btn = e.Item.FindControl("btnEdit") as HtmlButton;
+            if (btn != null)
+            {
+                btn.Attributes["key"] = data.SysNo.ToString();
+                if (data.Status == NoticesStatus.Invalid) btn.Visible = false;
+            }
         }
 
         protected void btnEnabled_ServerClick(object sender, EventArgs e)
@@ -101,6 +107,14 @@ namespace WebUI.Pages
             {
                 Alert("删除失败");
             }
+        }
+
+        protected void btnEdit_serverClick(object sender, EventArgs e)
+        {
+            var me = sender as HtmlButton;
+            if (me == null) return;
+            var sysno = int.Parse(me.Attributes["key"]);
+            Response.Redirect(string.Format("~/Pages/NoticesMaintain.aspx?SysNo={0}", sysno), false);
         }
 
         private void BindData()

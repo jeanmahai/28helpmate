@@ -140,15 +140,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <None Include="_bin_deployableAssemblies\zh-Hans\WebMatrix.WebData.resources.dll" />
-    <None Include="_bin_deployableAssemblies\zh-Hans\WebMatrix.Data.resources.dll" />
-    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.WebPages.resources.dll" />
-    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
-    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.WebPages.Deployment.resources.dll" />
-    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.WebPages.Administration.resources.dll" />
-    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.Razor.resources.dll" />
-    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.Helpers.resources.dll" />
-    <None Include="_bin_deployableAssemblies\zh-Hans\NuGet.Core.resources.dll" />
     <None Include="_bin_deployableAssemblies\WebMatrix.WebData.xml" />
     <None Include="_bin_deployableAssemblies\WebMatrix.WebData.dll" />
     <None Include="_bin_deployableAssemblies\WebMatrix.Data.xml" />
@@ -166,8 +157,6 @@
     <None Include="_bin_deployableAssemblies\System.Web.Helpers.xml" />
     <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
     <None Include="_bin_deployableAssemblies\NuGet.Core.dll" />
-    <None Include="_bin_deployableAssemblies\Microsoft.Web.WebPages.OAuth.xml" />
-    <None Include="_bin_deployableAssemblies\Microsoft.Web.WebPages.OAuth.dll" />
     <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.xml" />
     <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
   </ItemGroup>
