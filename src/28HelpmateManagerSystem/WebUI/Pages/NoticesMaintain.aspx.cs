@@ -16,6 +16,14 @@ namespace WebUI.Pages
         {
             base.PageLoad();
             btnSave.ServerClick += new EventHandler(btnSave_ServerClick);
+            string sysNo = Request.QueryString["sysNo"];
+            if (!IsPostBack && !string.IsNullOrEmpty(sysNo))
+            {
+                Notices entity = NoticesLogic.LoadNotices(int.Parse(sysNo));
+                txtContents.Text = entity.Contents;
+                txtRank.Value = entity.Rank;
+                hidSysNo.Value = sysNo;
+            }
         }
 
         public void btnSave_ServerClick(object sender, EventArgs e)
@@ -42,7 +50,16 @@ namespace WebUI.Pages
                 Status = NoticesStatus.Init
             };
 
-            NoticesLogic.CreateNotices(notices);
+            string sysNo = hidSysNo.Value;
+            if (!string.IsNullOrEmpty(sysNo))
+            {
+                notices.SysNo = int.Parse(sysNo);
+                NoticesLogic.UpdateNotices(notices);
+            }
+            else
+            {
+                NoticesLogic.CreateNotices(notices);
+            }
             Alert("保存成功！");
         }
     }
