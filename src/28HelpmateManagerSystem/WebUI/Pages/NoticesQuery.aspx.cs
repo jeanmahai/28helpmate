@@ -107,7 +107,7 @@ namespace WebUI.Pages
         {
             QueryFilter.Contents = Request.QueryString["contents"];
             QueryFilter.SysNo = Request.QueryString["sysNo"];
-            QueryFilter.Status = (NoticesStatus)(Convert.ToInt32(Request.QueryString["status"]));
+            QueryFilter.Status = (string.IsNullOrEmpty(Request.QueryString["status"]) ? null : (NoticesStatus?)Convert.ToInt32(Request.QueryString["status"]));
 
             QueryFilter.PageSize = ucPager.PageSize;
             QueryFilter.PageIndex = ucPager.PageIndex;
