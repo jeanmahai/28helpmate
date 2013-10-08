@@ -57,7 +57,11 @@
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Pages\ChangePassword.aspx" />
+    <Content Include="Pages\NoticesMaintain.aspx" />
+    <Content Include="Pages\NoticesQuery.aspx" />
     <Content Include="Pages\PayCard.aspx" />
+    <Content Include="Pages\PayLog.aspx" />
+    <Content Include="Pages\Users.aspx" />
     <Content Include="res\css\modern-responsive.css" />
     <Content Include="res\css\modern.css" />
     <Content Include="res\css\mystyle.css" />
@@ -92,7 +96,42 @@
     <Content Include="res\js\joverlay.js" />
     <Content Include="res\js\jposition.js" />
     <Content Include="res\js\jquery-1.9.1.min.js" />
+    <Content Include="res\js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="res\js\json2.js" />
+    <Content Include="res\my-\images\animated-overlay.gif" />
+    <Content Include="res\my-\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="res\my-\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="res\my-\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="res\my-\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="res\my-\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="res\my-\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="res\my-\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="res\my-\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="res\my-\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="res\my-\images\ui-icons_222222_256x240.png" />
+    <Content Include="res\my-\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="res\my-\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="res\my-\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="res\my-\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="res\my-\jquery-ui-1.10.3.custom.css" />
+    <Content Include="res\my-\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="res\ui-lightness\images\animated-overlay.gif" />
+    <Content Include="res\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="res\ui-lightness\jquery-ui-1.10.3.custom.css" />
+    <Content Include="res\ui-lightness\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="UserControls\UCPager.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -101,6 +140,36 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <None Include="_bin_deployableAssemblies\zh-Hans\WebMatrix.WebData.resources.dll" />
+    <None Include="_bin_deployableAssemblies\zh-Hans\WebMatrix.Data.resources.dll" />
+    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.WebPages.resources.dll" />
+    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
+    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.WebPages.Deployment.resources.dll" />
+    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.WebPages.Administration.resources.dll" />
+    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.Razor.resources.dll" />
+    <None Include="_bin_deployableAssemblies\zh-Hans\System.Web.Helpers.resources.dll" />
+    <None Include="_bin_deployableAssemblies\zh-Hans\NuGet.Core.resources.dll" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.dll" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Administration.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Administration.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\NuGet.Core.dll" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.WebPages.OAuth.xml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.WebPages.OAuth.dll" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.xml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ajax\AjaxResult.cs" />
@@ -146,12 +215,40 @@
     <Compile Include="Pages\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\NoticesMaintain.aspx.cs">
+      <DependentUpon>NoticesMaintain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoticesMaintain.aspx.designer.cs">
+      <DependentUpon>NoticesMaintain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NoticesQuery.aspx.cs">
+      <DependentUpon>NoticesQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoticesQuery.aspx.designer.cs">
+      <DependentUpon>NoticesQuery.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PayCard.aspx.cs">
       <DependentUpon>PayCard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\PayCard.aspx.designer.cs">
       <DependentUpon>PayCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PayLog.aspx.cs">
+      <DependentUpon>PayLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PayLog.aspx.designer.cs">
+      <DependentUpon>PayLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\UCPager.ascx.cs">
@@ -174,6 +271,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Utility\SessionVal.cs" />
+    <Compile Include="Utility\UrlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master\Main.Master" />
@@ -225,6 +323,10 @@
       <Project>{0C311B70-3D3D-4133-B54C-2E04C354A196}</Project>
       <Name>Common.Utility.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UtilityCommon\Common.Utility\Common.Utility.csproj">
+      <Project>{DB4B1E23-9C62-4D76-BD59-DE42933A46C5}</Project>
+      <Name>Common.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\CodeNamePairs\" />
@@ -236,8 +338,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49416</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>8808</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

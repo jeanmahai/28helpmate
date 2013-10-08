@@ -9,11 +9,15 @@ namespace WebUI.Utility
     {
         public override void PageLoad()
         {
-            if(string.IsNullOrEmpty(SessionVal.UserId))
+#if DEBUG
+            
+#else
+            if (string.IsNullOrEmpty(SessionVal.UserId))
             {
                 //throw new Exception("你还没有登录");
                 Response.Redirect("/Login.aspx");
             }
+#endif
         }
     }
 }

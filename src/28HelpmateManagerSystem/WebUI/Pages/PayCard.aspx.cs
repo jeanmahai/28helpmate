@@ -13,23 +13,54 @@ namespace WebUI.Pages
 {
     public partial class PayCard:RequiredLogin
     {
+        public DateTime? From
+        {
+            get
+            {
+                DateTime date;
+                if (DateTime.TryParse(Request.QueryString["from"],out date)) return date;
+                return null;
+            }
+        }
+        public DateTime? To
+        {
+            get
+            {
+                DateTime date;
+                if (DateTime.TryParse(Request.QueryString["to"],out date)) return date;
+                return null;
+            }
+        }
+        public int CardType
+        {
+            get
+            {
+                int cardType;
+                if (int.TryParse(Request.QueryString["type"],out cardType)) return cardType;
+                return -1;
+            }
+        }
+        public int CardStatus
+        {
+            get
+            {
+                int cardType;
+                if (int.TryParse(Request.QueryString["status"],out cardType)) return cardType;
+                return -1;
+            }
+        }
+
         public override void PageLoad()
         {
             base.PageLoad();
             btnSave.ServerClick += new EventHandler(btnSave_ServerClick);
-            btnSearch.ServerClick += new EventHandler(btnSearch_ServerClick);
-            
+
             UCPager1.PageSize = 10;
 
             if (!IsPostBack)
             {
                 BindData();
             }
-        }
-
-        void btnSearch_ServerClick(object sender,EventArgs e)
-        {
-            BindData();
         }
 
         void btnSave_ServerClick(object sender,EventArgs e)
@@ -50,28 +81,9 @@ namespace WebUI.Pages
 
         private void BindData()
         {
-            var status = int.Parse(sStatus.Value);
-            var type = int.Parse(sCate2.Value);
-            DateTime? from ;
-            try
-            {
-                from = DateTime.Parse(dateFrom2.Value);
-            }
-            catch
-            {
-                from = null;
-            }
-            DateTime? to;
-            try
-            {
-                to = DateTime.Parse(dateTo2.Value);
-            }catch
-            {
-                to = null;
-            }
 
             var datas = PayCardLogic.QueryPayCard(UCPager1.PageIndex,
-                UCPager1.PageSize,type == -1 ? null : (PayCardCategory?)type,status == -1 ? null : (PayCardStatus?)status,null,null);
+                UCPager1.PageSize,CardType == -1 ? null : (PayCardCategory?)CardType,CardStatus == -1 ? null : (PayCardStatus?)CardStatus,From,To);
             rptData.DataSource = datas.DataList;
             rptData.DataBind();
             UCPager1.RecordCount = datas.TotalCount;
@@ -134,6 +146,7 @@ namespace WebUI.Pages
             if (btn != null)
             {
                 btn.Attributes["key"] = data.SysNo.ToString();
+                if (data.Status == PayCardStatus.Valid) btn.Visible = false;
             }
             btn = e.Item.FindControl("btnDelete") as HtmlButton;
             if (btn != null)
@@ -144,6 +157,7 @@ namespace WebUI.Pages
             if (btn != null)
             {
                 btn.Attributes["key"] = data.SysNo.ToString();
+                if (data.Status == PayCardStatus.Invalid) btn.Visible = false;
             }
         }
     }

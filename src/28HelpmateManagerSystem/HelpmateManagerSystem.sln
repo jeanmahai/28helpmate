@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "HelpmateManagerSystem\web\web.csproj", "{B5EFCDC7-483C-435C-A136-6A490C676B24}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "HelpmateManagerSystem\Logic\Logic.csproj", "{9EF40FDA-C7CE-487F-926B-AFAFAE45A562}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "HelpmateManagerSystem\DataAccess\DataAccess.csproj", "{4B00E19F-42A1-4F5A-BC7E-DC9D4D4D333A}"
@@ -37,10 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B5EFCDC7-483C-435C-A136-6A490C676B24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5EFCDC7-483C-435C-A136-6A490C676B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5EFCDC7-483C-435C-A136-6A490C676B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5EFCDC7-483C-435C-A136-6A490C676B24}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EF40FDA-C7CE-487F-926B-AFAFAE45A562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EF40FDA-C7CE-487F-926B-AFAFAE45A562}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EF40FDA-C7CE-487F-926B-AFAFAE45A562}.Release|Any CPU.ActiveCfg = Release|Any CPU

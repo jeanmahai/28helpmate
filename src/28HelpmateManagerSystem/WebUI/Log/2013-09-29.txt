@@ -1,0 +1,117 @@
+
+** [2013-09-29 19:44:51.626] - Begin **************************************************************
+[LogID]: ef06cd16-96a1-44e9-91dd-c3dfd40773ea
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:49416/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.Exception: 登录失败，用户名或密码错误。
+   at WebUI.Login.btnOK_ServerClick(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 28
+   at System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   at System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_0x2rtduc.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.62
+[ServerName]: WCBS051
+[ServerTime]: 2013-09-29 19:44:51.537
+[ProcessID]: 3572
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 7
+** [2013-09-29 19:44:51.626] - End ****************************************************************
+
+** [2013-09-29 20:15:05.087] - Begin **************************************************************
+[LogID]: 319d36ad-0df2-4df8-b0eb-c8cf16106f23
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:49416/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.62
+[ServerName]: WCBS051
+[ServerTime]: 2013-09-29 20:15:04.907
+[ProcessID]: 13384
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-09-29 20:15:05.087] - End ****************************************************************
+
+** [2013-09-29 20:15:15.806] - Begin **************************************************************
+[LogID]: b6ed36f5-bd46-48ac-b820-94eff3a52431
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:49416/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.Collections.Generic.KeyNotFoundException: Can't find the data command configuration of name 'PayCard_Query'
+   at Common.Utility.DataAccess.DataCommandManager.CreateCustomDataCommandFromConfig(String sqlNameInConfig) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 205
+   at DataAccess.NoticesDA.QueryNotices(NoticesQueryFilter filter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 30
+   at Logic.NoticesLogic.QueryNotices(NoticesQueryFilter queryFilter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 23
+   at WebUI.Login.Page_Load(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 23
+   at System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_phkmn03b.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.62
+[ServerName]: WCBS051
+[ServerTime]: 2013-09-29 20:15:15.805
+[ProcessID]: 13384
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-09-29 20:15:15.806] - End ****************************************************************
+
+** [2013-09-29 20:16:46.257] - Begin **************************************************************
+[LogID]: ae1e7abc-0d74-4237-ac7b-6b4b3000dd71
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:49416/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.Collections.Generic.KeyNotFoundException: Can't find the data command configuration of name 'PayCard_Query'
+   at Common.Utility.DataAccess.DataCommandManager.CreateCustomDataCommandFromConfig(String sqlNameInConfig) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 205
+   at DataAccess.NoticesDA.QueryNotices(NoticesQueryFilter filter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 30
+   at Logic.NoticesLogic.QueryNotices(NoticesQueryFilter queryFilter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 23
+   at WebUI.Login.Page_Load(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 23
+   at System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_phkmn03b.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.62
+[ServerName]: WCBS051
+[ServerTime]: 2013-09-29 20:16:46.228
+[ProcessID]: 12404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-09-29 20:16:46.257] - End ****************************************************************

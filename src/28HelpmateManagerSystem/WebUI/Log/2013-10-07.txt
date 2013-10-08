@@ -1,0 +1,260 @@
+
+** [2013-10-07 11:56:42.332] - Begin **************************************************************
+[LogID]: 0ded4476-750c-46d4-bb58-9f9430999def
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 11:56:42.259
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-07 11:56:42.332] - End ****************************************************************
+
+** [2013-10-07 11:56:52.771] - Begin **************************************************************
+[LogID]: da3c9923-8f23-4021-8eef-971a400d0ebe
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 11:56:52.769
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-10-07 11:56:52.771] - End ****************************************************************
+
+** [2013-10-07 11:58:38.606] - Begin **************************************************************
+[LogID]: 52300cbf-2928-476e-b7a9-89e46c6c244a
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpCompileException (0x80004005): e:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx(114): error CS1061: “ASP.pages_noticesquery_aspx”不包含“btnEnabled_ServerClick”的定义，并且找不到可接受类型为“ASP.pages_noticesquery_aspx”的第一个参数的扩展方法“btnEnabled_ServerClick”(是否缺少 using 指令或程序集引用?)
+   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.UI.PageHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 11:58:38.597
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 13
+** [2013-10-07 11:58:38.606] - End ****************************************************************
+
+** [2013-10-07 11:59:44.005] - Begin **************************************************************
+[LogID]: dcdc3dcf-33e7-49cd-b36a-afb9db3e31ea
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 11:59:43.989
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 13
+** [2013-10-07 11:59:44.005] - End ****************************************************************
+
+** [2013-10-07 12:00:26.194] - Begin **************************************************************
+[LogID]: 8ab13e0d-5967-4503-a20f-3e837ff1ab18
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 12:00:26.177
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 10
+** [2013-10-07 12:00:26.194] - End ****************************************************************
+
+** [2013-10-07 12:00:50.260] - Begin **************************************************************
+[LogID]: 570fc3d3-30b4-44e7-9df1-c831c4677aa3
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpCompileException (0x80004005): e:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx(44): error CS0103: 当前上下文中不存在名称“From”
+   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.UI.PageHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 12:00:50.257
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 15
+** [2013-10-07 12:00:50.260] - End ****************************************************************
+
+** [2013-10-07 12:01:40.725] - Begin **************************************************************
+[LogID]: 6d9b2d43-17c7-48c3-a8ab-137cada23917
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebUI.Pages.NoticesQuery.BindData() 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 104
+   在 WebUI.Pages.NoticesQuery.PageLoad() 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 26
+   在 WebUI.Utility.PageBase.Page_Load(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Utility\PageBase.cs:行号 15
+   在 System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_lzba0w0o.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 12:01:40.721
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 23
+** [2013-10-07 12:01:40.725] - End ****************************************************************
+
+** [2013-10-07 12:02:02.879] - Begin **************************************************************
+[LogID]: 275a0000-3c70-4962-a053-b25947c7edda
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebUI.Pages.NoticesQuery.BindData() 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 104
+   在 WebUI.Pages.NoticesQuery.PageLoad() 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:行号 26
+   在 WebUI.Utility.PageBase.Page_Load(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Utility\PageBase.cs:行号 15
+   在 System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_lzba0w0o.0.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 12:02:02.877
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 13
+** [2013-10-07 12:02:02.879] - End ****************************************************************
+
+** [2013-10-07 12:22:13.177] - Begin **************************************************************
+[LogID]: 3b681171-5131-4cd1-bbf9-6b8f414aad4d
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.Exception: 登录失败，用户名或密码错误。
+   在 WebUI.Login.btnOK_ServerClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:行号 36
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.login_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_5npe3bnr.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 12:22:13.159
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 36
+** [2013-10-07 12:22:13.177] - End ****************************************************************
+
+** [2013-10-07 12:22:20.177] - Begin **************************************************************
+[LogID]: 9b6b9009-f1f5-4889-8393-4687ccba56bf
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.Exception: 登录失败，用户名或密码错误。
+   在 WebUI.Login.btnOK_ServerClick(Object sender, EventArgs e) 位置 E:\GitHub\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:行号 36
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.login_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\b7086713\fbffd070\App_Web_5npe3bnr.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.0.101
+[ServerName]: HB-THINK
+[ServerTime]: 2013-10-07 12:22:20.175
+[ProcessID]: 6380
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 36
+** [2013-10-07 12:22:20.177] - End ****************************************************************
