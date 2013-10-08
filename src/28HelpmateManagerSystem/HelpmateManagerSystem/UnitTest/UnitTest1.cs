@@ -71,7 +71,7 @@ namespace UnitTest
         [TestMethod]
         public void TestChangePwd()
         {
-            var result = SystemUserLogic.ChangePwd(100000, "1234", "123");
+            var result = SystemUserLogic.ChangePwd(100000, "123", "123");
         }
 
         [TestMethod]
@@ -88,33 +88,38 @@ namespace UnitTest
         [TestMethod]
         public void TestGetPayCardBySysNo()
         {
-            var data = PayCardLogic.GetBySysNo(18651);
+            var data = PayCardLogic.GetBySysNo(21652);
         }
         [TestMethod]
         public void TestEnablePayCard()
         {
-            var data = PayCardLogic.EnablePayCard(18651);
+            var data = PayCardLogic.EnablePayCard(21652);
         }
         [TestMethod]
         public void TestDisablePayCard()
         {
-            var data = PayCardLogic.DisablePayCard(18651);
+            var data = PayCardLogic.DisablePayCard(21652);
         }
         [TestMethod]
         public void TestDeletePayCard()
         {
-            var data = PayCardLogic.DeletePayCard(18651);
+            var data = PayCardLogic.DeletePayCard(21652);
         }
         [TestMethod]
         public void TestEditPayCard()
         {
             PayCard entity = new PayCard();
-            entity.SysNo = 18652;
+            entity.SysNo = 21653;
             entity.CategorySysNo = PayCardCategory.Month;
             entity.Status = PayCardStatus.Invalid;
             entity.BeginTime = DateTime.Now.AddDays(-1);
             entity.EndTime = DateTime.Now;
             var data = PayCardLogic.Edit(entity);
+        }
+        [TestMethod]
+        public void TestGetPayCardCategory()
+        {
+            var data = PayCardLogic.GetPayCardCategory();
         }
 
         [TestMethod]
@@ -141,17 +146,17 @@ namespace UnitTest
         [TestMethod]
         public void TestEnableUser()
         {
-            var data = UserLogic.EnableUser(1);
+            var data = UserLogic.EnableUser(2);
         }
         [TestMethod]
         public void TestDisableUser()
         {
-            var data = UserLogic.DisableUser(1);
+            var data = UserLogic.DisableUser(2);
         }
         [TestMethod]
         public void TestDeleteUser()
         {
-            var data = UserLogic.DeleteUser(3);
+            var data = UserLogic.DeleteUser(5);
         }
     }
 }

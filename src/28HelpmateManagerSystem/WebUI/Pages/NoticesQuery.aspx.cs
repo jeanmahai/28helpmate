@@ -9,7 +9,7 @@ using System.Web.UI.HtmlControls;
 using Logic;
 using DataEntity.QueryFilter;
 using DataEntity;
-using Framework.Util;
+using Common.Utility;
 
 namespace WebUI.Pages
 {

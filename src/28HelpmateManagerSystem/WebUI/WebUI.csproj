@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Framework.Util, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReferenceLib\Framework.Util.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -281,14 +277,7 @@
     <Content Include="Master\Main.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\Database\MSSQL\Data\PayCard.config" />
-    <Content Include="Config\Database\MSSQL\Data\PayLog.config" />
-    <Content Include="Config\Database\MSSQL\Data\SystemUsers.config" />
-    <Content Include="Config\Database\MSSQL\Database.config" />
-    <Content Include="Config\Database\MSSQL\DbFiles.config" />
     <Content Include="Ajax\DoProcessRequired.ashx" />
-    <Content Include="Config\Database\MSSQL\Data\Users.config" />
-    <Content Include="Config\Database\MSSQL\Data\Notices.config" />
     <Content Include="Configuration\Cookie.config" />
     <Content Include="Configuration\AppSettings\Common.config" />
     <Content Include="Configuration\Autorun.config" />

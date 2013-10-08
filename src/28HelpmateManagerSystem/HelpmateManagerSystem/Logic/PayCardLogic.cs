@@ -45,6 +45,9 @@ namespace Logic
         /// <returns></returns>
         public static PageList<List<PayCard>> QueryPayCard(int pageIndex, int pageSize, PayCardCategory? category, PayCardStatus? status, DateTime? beginTime, DateTime? endTime)
         {
+            pageIndex -= 1;
+            if (pageIndex < 0)
+                pageIndex = 0;
             int nCategory = category == null ? 0 : (int)category;
             int nStatus = status == null ? -1 : (int)status.Value;
             DateTime dtBegin = beginTime == null ? DateTime.Now.AddYears(-100) : beginTime.Value;
@@ -100,6 +103,15 @@ namespace Logic
         public static bool Edit(PayCard entity)
         {
             return PayCardDA.Edit(entity);
+        }
+
+        /// <summary>
+        /// 获取充值卡类型
+        /// </summary>
+        /// <returns></returns>
+        public static List<PayCardCategorys> GetPayCardCategory()
+        {
+            return PayCardDA.GetPayCardCategory();
         }
     }
 }

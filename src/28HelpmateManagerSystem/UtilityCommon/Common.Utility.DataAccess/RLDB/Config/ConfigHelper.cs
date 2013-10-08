@@ -13,8 +13,8 @@ namespace Common.Utility.DataAccess.Database.Config
     internal static class ConfigHelper
     {
         private const string NODE_NAME = "dataAccess";
-        private const string DEFAULT_SQL_CONFIG_LIST_FILE_PATH = "Configs/Data/DbCommandFiles.config";
-        private const string DEFAULT_DATABASE_LIST_FILE_PATH = "Configs/Data/Database.config";
+        private const string DEFAULT_SQL_CONFIG_LIST_FILE_PATH = "Configuration/Data/DbCommandFiles.config";
+        private const string DEFAULT_DATABASE_LIST_FILE_PATH = "Configuration/Data/Database.config";
 
         private static string s_ConfigFolder = null;
         private static DataAccessSetting s_Setting = ConfigurationManager.GetSection(NODE_NAME) as DataAccessSetting;

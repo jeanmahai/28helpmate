@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using DataEntity;
 using DataEntity.QueryFilter;
-using Framework.Util.Database.MSSQL;
 using System.Data;
 using DataEntity.Common;
 using Common.Utility.DataAccess;

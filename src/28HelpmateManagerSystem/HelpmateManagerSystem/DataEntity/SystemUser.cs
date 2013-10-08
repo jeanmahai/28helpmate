@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Framework.Util;
+using Common.Utility;
 
 namespace DataEntity
 {

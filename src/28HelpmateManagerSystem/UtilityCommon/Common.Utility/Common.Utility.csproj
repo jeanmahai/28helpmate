@@ -95,8 +95,12 @@
     <Compile Include="DecimalConvertor.cs" />
     <Compile Include="DecimalUtility.cs" />
     <Compile Include="Encryption\Asym_RSA.cs" />
+    <Compile Include="Base64.cs" />
     <Compile Include="Encryption\CryptoAlgorithm.cs" />
     <Compile Include="Encryption\CryptoManager.cs" />
+    <Compile Include="Encryption\MD5Encrypt.cs" />
+    <Compile Include="EnumHelper.cs" />
+    <Compile Include="GuidCode.cs" />
     <Compile Include="Encryption\HashEncrypt.cs" />
     <Compile Include="Encryption\Hash_MD5.cs" />
     <Compile Include="Encryption\Hash_SHA1.cs" />

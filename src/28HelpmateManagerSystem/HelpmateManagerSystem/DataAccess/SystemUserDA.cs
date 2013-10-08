@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 
 using DataEntity;
-using Framework.Util.Encryption;
-using Framework.Util.Database.MSSQL;
+using Common.Utility.DataAccess;
 
 namespace DataAccess
 {
@@ -22,7 +21,7 @@ namespace DataAccess
         /// <returns></returns>
         public static SystemUser Login(string loginName, string loginPwd)
         {
-            DbCommand cmd = new DbCommand("SystemUsers_Login");
+            DataCommand cmd = DataCommandManager.GetDataCommand("SystemUsers_Login");
             cmd.SetParameterValue("@LoginName", loginName);
             cmd.SetParameterValue("@LoginPwd", loginPwd);
 
@@ -36,7 +35,7 @@ namespace DataAccess
         /// <param name="ip">IP</param>
         public static void UpdateLoginInfo(int sysNo, string ip)
         {
-            DbCommand cmd = new DbCommand("SystemUsers_UpdateLoginInfo");
+            DataCommand cmd = DataCommandManager.GetDataCommand("SystemUsers_UpdateLoginInfo");
             cmd.SetParameterValue("@IP", ip);
             cmd.SetParameterValue("@SysNo", sysNo);
             cmd.ExecuteNonQuery();
@@ -49,7 +48,7 @@ namespace DataAccess
         /// <returns></returns>
         public static SystemUser GetBySysNo(int sysNo)
         {
-            DbCommand cmd = new DbCommand("SystemUsers_GetBySysNo");
+            DataCommand cmd = DataCommandManager.GetDataCommand("SystemUsers_GetBySysNo");
             cmd.SetParameterValue("@SysNo", sysNo);
 
             return cmd.ExecuteEntity<SystemUser>();
@@ -63,7 +62,7 @@ namespace DataAccess
         /// <returns></returns>
         public static bool ChangePwd(int sysNo, string loginPwd)
         {
-            DbCommand cmd = new DbCommand("SystemUsers_ChangePwd");
+            DataCommand cmd = DataCommandManager.GetDataCommand("SystemUsers_ChangePwd");
             cmd.SetParameterValue("@SysNo", sysNo);
             cmd.SetParameterValue("@LoginPwd", loginPwd);
             cmd.ExecuteNonQuery();

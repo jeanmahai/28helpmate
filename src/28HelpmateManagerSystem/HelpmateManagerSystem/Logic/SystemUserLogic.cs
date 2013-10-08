@@ -5,7 +5,7 @@ using System.Text;
 
 using DataEntity;
 using DataAccess;
-using Framework.Util.Encryption;
+using Common.Utility.Encryption;
 
 namespace Logic
 {

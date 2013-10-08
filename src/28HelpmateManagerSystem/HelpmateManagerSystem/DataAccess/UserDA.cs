@@ -5,8 +5,7 @@ using System.Text;
 using System.Data;
 
 using DataEntity;
-using Framework.Util.Encryption;
-using Framework.Util.Database.MSSQL;
+using Common.Utility.DataAccess;
 
 namespace DataAccess
 {
@@ -27,20 +26,24 @@ namespace DataAccess
         /// <returns></returns>
         public static PageList<List<User>> QueryUser(int pageIndex, int pageSize, string userID, int status, DateTime payUserBeginTime, DateTime payUseEndTime)
         {
-            int startRows = (pageIndex - 1) * pageSize;
-            DbCommand cmd = new DbCommand("Users_Query", System.Data.CommandType.StoredProcedure);
-            cmd.SetParameterValue("@StartRows", startRows);
-            cmd.SetParameterValue("@PageSize", pageSize);
-            cmd.SetParameterValue("@UserID", userID);
-            cmd.SetParameterValue("@Status", status);
-            cmd.SetParameterValue("@PayUseBeginTime", payUserBeginTime);
-            cmd.SetParameterValue("@PayUseEndTime", payUseEndTime);
-            DataSet ds = cmd.ExecuteDataSet();
+            PagingInfoEntity page = new PagingInfoEntity();
+            page.MaximumRows = pageSize;
+            page.StartRowIndex = pageIndex * pageSize;
+            CustomDataCommand cmd = DataCommandManager.CreateCustomDataCommandFromConfig("Users_Query");
+            using (var sqlBuilder = new DynamicQuerySqlBuilder(cmd.CommandText, cmd, page, "SysNo DESC"))
+            {
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "UserID", DbType.String, "@UserID", QueryConditionOperatorType.Like, userID);
+                if (status >= 0)
+                    sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "Status", DbType.Int32, "@Status", QueryConditionOperatorType.Equal, status);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "PayUseBeginTime", DbType.DateTime, "@PayUseBeginTime", QueryConditionOperatorType.MoreThanOrEqual, payUserBeginTime);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "PayUseEndTime", DbType.DateTime, "@PayUseEndTime", QueryConditionOperatorType.LessThanOrEqual, payUseEndTime);
 
-            List<User> result = Util.FillModelList<User>(ds.Tables[0]);
-            int totalCount = int.Parse(ds.Tables[1].Rows[0][0].ToString());
+                cmd.CommandText = sqlBuilder.BuildQuerySql();
+                List<User> result = cmd.ExecuteEntityList<User>();
 
-            return new PageList<List<User>>(result, pageIndex, pageSize, totalCount);
+                int totalCount = Convert.ToInt32(cmd.GetParameterValue("@TotalCount"));
+                return new PageList<List<User>>(result, pageIndex, pageSize, totalCount);
+            }
         }
 
         /// <summary>
@@ -50,7 +53,7 @@ namespace DataAccess
         /// <returns></returns>
         public static User GetBySysNo(int sysNo)
         {
-            DbCommand cmd = new DbCommand("Users_GetBySysNo");
+            DataCommand cmd = DataCommandManager.GetDataCommand("Users_GetBySysNo");
             cmd.SetParameterValue("@SysNo", sysNo);
             return cmd.ExecuteEntity<User>();
         }
@@ -63,9 +66,9 @@ namespace DataAccess
         /// <returns></returns>
         public static bool UpdateStatus(int sysNo, UserStatus status)
         {
-            DbCommand cmd = new DbCommand("Users_UpdateStatus");
-            cmd.SetParameterValue("@SysNo", sysNo);
+            DataCommand cmd = DataCommandManager.GetDataCommand("Users_UpdateStatus");
             cmd.SetParameterValue("@Status", (int)status);
+            cmd.SetParameterValue("@SysNo", sysNo);
             cmd.ExecuteNonQuery();
             return true;
         }
@@ -77,7 +80,7 @@ namespace DataAccess
         /// <returns></returns>
         public static bool Delete(int sysNo)
         {
-            DbCommand cmd = new DbCommand("Users_Delete");
+            DataCommand cmd = DataCommandManager.GetDataCommand("Users_Delete");
             cmd.SetParameterValue("@SysNo", sysNo);
             cmd.ExecuteNonQuery();
             return true;

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DataEntity;
-using Framework.Util.Database.MSSQL;
 using System.Data;
+using System.Collections.Generic;
+
+using DataEntity;
+using Common.Utility.DataAccess;
 
 namespace DataAccess
 {
@@ -23,13 +22,12 @@ namespace DataAccess
         public static PageList<List<PayLog>> GetUserPayLog(int pageIndex, int pageSize, int userSysNo)
         {
             int startRows = (pageIndex - 1) * pageSize;
-            DbCommand cmd = new DbCommand("PayCard_GetByUserSysNo");
+            DataCommand cmd = DataCommandManager.GetDataCommand("PayCard_GetByUserSysNo");
             cmd.SetParameterValue("@StartRow", startRows);
             cmd.SetParameterValue("@PageSize", pageSize);
             cmd.SetParameterValue("@UserSysNo", userSysNo);
-            DataSet ds = cmd.ExecuteDataSet();
-            var data = Util.FillModelList<PayLog>(ds.Tables[0]);
-            int totalCount = int.Parse(ds.Tables[1].Rows[0][0].ToString());
+            List<PayLog> data = cmd.ExecuteEntityList<PayLog>();
+            int totalCount = (int)cmd.GetParameterValue("@TotalCount");
             return new PageList<List<PayLog>>(data, pageIndex, pageSize, totalCount);
         }
 
@@ -44,14 +42,13 @@ namespace DataAccess
         public static PageList<List<PayLog>> GetPayLogByBatch(int pageIndex, int pageSize, DateTime beginTime, DateTime endTime)
         {
             int startRows = (pageIndex - 1) * pageSize;
-            DbCommand cmd = new DbCommand("PayLog_GetByBatch");
+            DataCommand cmd = DataCommandManager.GetDataCommand("PayLog_GetByBatch");
             cmd.SetParameterValue("@StartRow", startRows);
             cmd.SetParameterValue("@PageSize", pageSize);
             cmd.SetParameterValue("@BeginTime", beginTime);
             cmd.SetParameterValue("@EndTime", endTime);
-            DataSet ds = cmd.ExecuteDataSet();
-            var data = Util.FillModelList<PayLog>(ds.Tables[0]);
-            int totalCount = int.Parse(ds.Tables[1].Rows[0][0].ToString());
+            List<PayLog> data = cmd.ExecuteEntityList<PayLog>();
+            int totalCount = (int)cmd.GetParameterValue("@TotalCount");
             return new PageList<List<PayLog>>(data, pageIndex, pageSize, totalCount);
         }
     }

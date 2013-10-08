@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Framework.Util, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferenceLib\Framework.Util.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +48,10 @@
     <Compile Include="UserLogic.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\UtilityCommon\Common.Utility\Common.Utility.csproj">
+      <Project>{DB4B1E23-9C62-4D76-BD59-DE42933A46C5}</Project>
+      <Name>Common.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{4B00E19F-42A1-4F5A-BC7E-DC9D4D4D333A}</Project>
       <Name>DataAccess</Name>

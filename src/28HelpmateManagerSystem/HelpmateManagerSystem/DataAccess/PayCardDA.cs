@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
+using System.Data;
 using System.Collections.Generic;
 
-using Framework.Util.Encoding;
-using Framework.Util.Encryption;
-using Framework.Util.Database.MSSQL;
 using DataEntity;
-using System.Data;
+using Common.Utility;
+using Common.Utility.Encryption;
+using Common.Utility.DataAccess;
 
 namespace DataAccess
 {
@@ -43,7 +43,7 @@ namespace DataAccess
                 }
                 dataXML.Append("</root>");
 
-                DbCommand cmd = new DbCommand("PayCard_CreateCard", System.Data.CommandType.StoredProcedure);
+                DataCommand cmd = DataCommandManager.GetDataCommand("PayCard_CreateCard");
                 cmd.SetParameterValue("@DataXML", dataXML.ToString());
                 cmd.SetParameterValue("@CategorySysNo", (int)category);
                 cmd.SetParameterValue("@BeginTime", beginTime);
@@ -108,20 +108,25 @@ namespace DataAccess
         /// <returns></returns>
         public static PageList<List<PayCard>> QueryPayCard(int pageIndex, int pageSize, int category, int status, DateTime beginTime, DateTime endTime)
         {
-            int startRows = (pageIndex - 1) * pageSize;
-            DbCommand cmd = new DbCommand("PayCard_Query", System.Data.CommandType.StoredProcedure);
-            cmd.SetParameterValue("@StartRows", startRows);
-            cmd.SetParameterValue("@PageSize", pageSize);
-            cmd.SetParameterValue("@Status", status);
-            cmd.SetParameterValue("@CategorySysNo", category);
-            cmd.SetParameterValue("@BeginTime", beginTime);
-            cmd.SetParameterValue("@EndTime", endTime);
-            DataSet ds = cmd.ExecuteDataSet();
+            PagingInfoEntity page = new PagingInfoEntity();
+            page.MaximumRows = pageSize;
+            page.StartRowIndex = pageIndex * pageSize;
+            CustomDataCommand cmd = DataCommandManager.CreateCustomDataCommandFromConfig("PayCard_Query");
+            using (var sqlBuilder = new DynamicQuerySqlBuilder(cmd.CommandText, cmd, page, "SysNo DESC"))
+            {
+                if (category > 0)
+                    sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "CategorySysNo", DbType.Int32, "@CategorySysNo", QueryConditionOperatorType.Equal, category);
+                if (status >= 0)
+                    sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "Status", DbType.Int32, "@Status", QueryConditionOperatorType.Equal, status);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "BeginTime", DbType.DateTime, "@BeginTime", QueryConditionOperatorType.MoreThanOrEqual, beginTime);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "EndTime", DbType.DateTime, "@EndTime", QueryConditionOperatorType.LessThanOrEqual, endTime);
 
-            List<PayCard> result = Util.FillModelList<PayCard>(ds.Tables[0]);
-            int totalCount = int.Parse(ds.Tables[1].Rows[0][0].ToString());
+                cmd.CommandText = sqlBuilder.BuildQuerySql();
+                List<PayCard> result = cmd.ExecuteEntityList<PayCard>();
 
-            return new PageList<List<PayCard>>(result, pageIndex, pageSize, totalCount);
+                int totalCount = Convert.ToInt32(cmd.GetParameterValue("@TotalCount"));
+                return new PageList<List<PayCard>>(result, pageIndex, pageSize, totalCount);
+            }
         }
 
         /// <summary>
@@ -131,7 +136,7 @@ namespace DataAccess
         /// <returns></returns>
         public static PayCard GetBySysNo(int sysNo)
         {
-            DbCommand cmd = new DbCommand("PayCard_GetBySysNo");
+            DataCommand cmd = DataCommandManager.GetDataCommand("PayCard_GetBySysNo");
             cmd.SetParameterValue("@SysNo", sysNo);
             return cmd.ExecuteEntity<PayCard>();
         }
@@ -144,7 +149,7 @@ namespace DataAccess
         /// <returns></returns>
         public static bool UpdateStatus(int sysNo, PayCardStatus status)
         {
-            DbCommand cmd = new DbCommand("PayCard_UpdateStatus");
+            DataCommand cmd = DataCommandManager.GetDataCommand("PayCard_UpdateStatus");
             cmd.SetParameterValue("@SysNo", sysNo);
             cmd.SetParameterValue("@Status", (int)status);
             cmd.ExecuteNonQuery();
@@ -158,7 +163,7 @@ namespace DataAccess
         /// <returns></returns>
         public static bool Delete(int sysNo)
         {
-            DbCommand cmd = new DbCommand("PayCard_Delete");
+            DataCommand cmd = DataCommandManager.GetDataCommand("PayCard_Delete");
             cmd.SetParameterValue("@SysNo", sysNo);
             cmd.ExecuteNonQuery();
             return true;
@@ -171,7 +176,7 @@ namespace DataAccess
         /// <returns></returns>
         public static bool Edit(PayCard entity)
         {
-            DbCommand cmd = new DbCommand("PayCard_Edit");
+            DataCommand cmd = DataCommandManager.GetDataCommand("PayCard_Edit");
             cmd.SetParameterValue("@SysNo", entity.SysNo);
             cmd.SetParameterValue("@CategorySysNo", (int)entity.CategorySysNo);
             cmd.SetParameterValue("@Status", (int)entity.Status);
@@ -179,6 +184,16 @@ namespace DataAccess
             cmd.SetParameterValue("@EndTime", entity.EndTime);
             cmd.ExecuteNonQuery();
             return true;
+        }
+
+        /// <summary>
+        /// 获取充值卡类型
+        /// </summary>
+        /// <returns></returns>
+        public static List<PayCardCategorys> GetPayCardCategory()
+        {
+            DataCommand cmd = DataCommandManager.GetDataCommand("PayCard_GetCategory");
+            return cmd.ExecuteEntityList<PayCardCategorys>();
         }
     }
 }

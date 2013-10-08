@@ -19,6 +19,9 @@ namespace Logic
         /// <returns></returns>
         public static PageList<List<User>> QueryUser(int pageIndex, int pageSize, string userID, int? status, DateTime? payUserBeginTime, DateTime? payUseEndTime)
         {
+            pageIndex -= 1;
+            if (pageIndex < 0)
+                pageIndex = 0;
             userID = userID == null ? "" : userID;
             int nStatus = status == null ? -1 : (int)status.Value;
             DateTime dtBegin = payUserBeginTime == null ? DateTime.Now.AddYears(-100) : payUserBeginTime.Value;
