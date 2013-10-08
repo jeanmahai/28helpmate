@@ -1,0 +1,370 @@
+
+** [2013-10-08 19:52:49.541] - Begin **************************************************************
+[LogID]: 4daa13c3-e5c7-49b3-a413-7625f2d0c136
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidOperationException: There is an error in XML document (2, 2). ---> System.InvalidOperationException: <configuration xmlns=''> was not expected.
+   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderDataOperations.Read9_dataOperations()
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(Stream stream)
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadFromXml[T](String fileName) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 95
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadDataCommandList(String filePath) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 123
+   at Common.Utility.DataAccess.DataCommandManager.LoadAllDataCommandFiles() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 132
+   at Common.Utility.DataAccess.DataCommandManager.InitConfig() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 174
+   at Common.Utility.DataAccess.DataCommandManager.CreateCustomDataCommandFromConfig(String sqlNameInConfig) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 202
+   at DataAccess.NoticesDA.QueryNotices(NoticesQueryFilter filter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 30
+   at Logic.NoticesLogic.QueryNotices(NoticesQueryFilter queryFilter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 23
+   at WebUI.Login.Page_Load(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 23
+   at System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_44kqb1zh.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:52:49.435
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-08 19:52:49.541] - End ****************************************************************
+
+** [2013-10-08 19:52:49.813] - Begin **************************************************************
+[LogID]: 85271937-9281-4025-b62f-ce7bade436ad
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:52:49.812
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-10-08 19:52:49.813] - End ****************************************************************
+
+** [2013-10-08 19:52:53.289] - Begin **************************************************************
+[LogID]: 21fcc0fa-f16d-4198-a11f-f6019be3d3c2
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidOperationException: There is an error in XML document (2, 2). ---> System.InvalidOperationException: <configuration xmlns=''> was not expected.
+   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderDataOperations.Read9_dataOperations()
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(Stream stream)
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadFromXml[T](String fileName) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 95
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadDataCommandList(String filePath) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 123
+   at Common.Utility.DataAccess.DataCommandManager.LoadAllDataCommandFiles() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 132
+   at Common.Utility.DataAccess.DataCommandManager.InitConfig() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 174
+   at Common.Utility.DataAccess.DataCommandManager.CreateCustomDataCommandFromConfig(String sqlNameInConfig) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 202
+   at DataAccess.NoticesDA.QueryNotices(NoticesQueryFilter filter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 30
+   at Logic.NoticesLogic.QueryNotices(NoticesQueryFilter queryFilter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 23
+   at WebUI.Login.Page_Load(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 23
+   at System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_44kqb1zh.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:52:53.287
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-08 19:52:53.289] - End ****************************************************************
+
+** [2013-10-08 19:57:13.100] - Begin **************************************************************
+[LogID]: e6112c34-f50f-403d-b015-b5c4539fd2ba
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Login.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidOperationException: There is an error in XML document (2, 2). ---> System.InvalidOperationException: <configuration xmlns=''> was not expected.
+   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationReaderDataOperations.Read9_dataOperations()
+   --- End of inner exception stack trace ---
+   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)
+   at System.Xml.Serialization.XmlSerializer.Deserialize(Stream stream)
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadFromXml[T](String fileName) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 95
+   at Common.Utility.DataAccess.Database.Config.ConfigHelper.LoadDataCommandList(String filePath) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\Config\ConfigHelper.cs:line 123
+   at Common.Utility.DataAccess.DataCommandManager.LoadAllDataCommandFiles() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 132
+   at Common.Utility.DataAccess.DataCommandManager.InitConfig() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 174
+   at Common.Utility.DataAccess.DataCommandManager.CreateCustomDataCommandFromConfig(String sqlNameInConfig) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommandManager.cs:line 202
+   at DataAccess.NoticesDA.QueryNotices(NoticesQueryFilter filter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 30
+   at Logic.NoticesLogic.QueryNotices(NoticesQueryFilter queryFilter) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 23
+   at WebUI.Login.Page_Load(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Login.aspx.cs:line 23
+   at System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.login_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_44kqb1zh.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:57:13.098
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 6
+** [2013-10-08 19:57:13.100] - End ****************************************************************
+
+** [2013-10-08 19:57:18.311] - Begin **************************************************************
+[LogID]: a696adc0-d543-4aa0-be6d-68082330ff18
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 19:57:18.310
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 10
+** [2013-10-08 19:57:18.311] - End ****************************************************************
+
+** [2013-10-08 20:01:08.304] - Begin **************************************************************
+[LogID]: 78bc5f12-bd89-4f40-8499-9f8378401270
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesMaintain.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpParseException (0x80004005): The server tag is not well formed. ---> System.Web.HttpException (0x80004005): The server tag is not well formed.
+   at System.Web.UI.TemplateParser.ProcessError(String message)
+   at System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)
+   at System.Web.UI.TemplateParser.ParseInternal()
+   at System.Web.UI.TemplateParser.Parse()
+   at System.Web.Compilation.BaseTemplateBuildProvider.get_CodeCompilerType()
+   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.UI.PageHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   at System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:01:08.301
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 13
+** [2013-10-08 20:01:08.304] - End ****************************************************************
+
+** [2013-10-08 20:13:29.875] - Begin **************************************************************
+[LogID]: ebfc416c-c834-40bf-a699-cdf018905d9f
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesMaintain.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ApplicationException: 无法找到类型'DataEntity.Notices'的公开实例属性State.
+   at Common.Utility.Invoker.PropertyGet(Type type, Object obj, String propertyName, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility\FastInvoke\Invoker.cs:line 142
+   at Common.Utility.Invoker.PropertyGet(Object obj, String propertyName, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility\FastInvoke\Invoker.cs:line 128
+   at Common.Utility.DataMapper.GetFieldValueAllowNull(Object entity, String[] proArray, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility\DataMapper\DataMapper.cs:line 501
+   at Common.Utility.DataAccess.DataCommand.SetParameterValue[T](InputMap`1 map, T entity, Char sqlParamSplitter, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 328
+   at Common.Utility.DataAccess.DataCommand.SetParameterValue[T](InputMap`1 map, T entity, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 278
+   at Common.Utility.DataAccess.DataCommand.SetParameterValue[T](T entity, Boolean ignoreCase, Boolean throwOnPropertyNotExist) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 266
+   at Common.Utility.DataAccess.DataCommand.SetParameterValue[T](T entity) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 260
+   at DataAccess.NoticesDA.CreateNotices(Notices notices) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 66
+   at Logic.NoticesLogic.CreateNotices(Notices notices) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 42
+   at WebUI.Pages.NoticesMaintain.btnSave_ServerClick(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesMaintain.aspx.cs:line 45
+   at System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   at System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.pages_noticesmaintain_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_5bakx2yj.3.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:13:29.856
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 19
+** [2013-10-08 20:13:29.875] - End ****************************************************************
+
+** [2013-10-08 20:15:14.136] - Begin **************************************************************
+[LogID]: c14e788b-59b0-4779-8207-8aa11526a0b5
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpException (0x80004005): File does not exist.
+   at System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   at System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   at System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:15:14.135
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 19
+** [2013-10-08 20:15:14.136] - End ****************************************************************
+
+** [2013-10-08 20:37:43.424] - Begin **************************************************************
+[LogID]: 3aa340ee-3594-40a2-bd29-48aa8fcd263e
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> Common.Utility.DataAccess.Database.DbProvider.DataAccessException: 只有在 SELECT 语句中才允许使用 NOLOCK、READUNCOMMITTED 和 READPAST 锁提示。
+<<Connection String>> : data source=117.25.148.58,3520;database=Helpmate;user id=helpmate;password=1qa123!@#;connection reset=false;Timeout=30;connection lifetime=30; min pool size=0; max pool size=50
+<<SQL Script>> : 
+      UPDATE Helpmate.dbo.Notices WITH(NOLOCK)
+      SET [Status]=@Status
+      WHERE [SysNo]=@SysNo
+      
+<<SQL Parameter(s)>> :
+@SysNo [Int32] :  [System.DBNull]
+ ---> System.Data.SqlClient.SqlException: 只有在 SELECT 语句中才允许使用 NOLOCK、READUNCOMMITTED 和 READPAST 锁提示。
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Common.Utility.DataAccess.DbHelper.ExecuteNonQuery(String databaseName, CommandType cmdType, String cmdText, Int32 timeout, DbParameter[] commandParameters) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DbHelper.cs:line 48
+   --- End of inner exception stack trace ---
+   at Common.Utility.DataAccess.DbHelper.ExecuteNonQuery(String databaseName, CommandType cmdType, String cmdText, Int32 timeout, DbParameter[] commandParameters) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DbHelper.cs:line 54
+   at Common.Utility.DataAccess.DataCommand.ExecuteNonQuery() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 360
+   at DataAccess.NoticesDA.ChangeNoticesStatus(Int32 sysNo, NoticesStatus status) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 56
+   at Logic.NoticesLogic.ChangeNoticesStatus(Int32 sysNo, NoticesStatus status) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 33
+   at WebUI.Pages.NoticesQuery.btnEnabled_ServerClick(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:line 59
+   at System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   at System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_alddyjgv.4.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:37:43.412
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 16
+** [2013-10-08 20:37:43.424] - End ****************************************************************
+
+** [2013-10-08 20:42:21.423] - Begin **************************************************************
+[LogID]: 731ba60a-c757-49d7-b1af-6268e7200c2c
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/NoticesQuery.aspx
+[UserHostAddress]: 127.0.0.1
+[Content]: System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> Common.Utility.DataAccess.Database.DbProvider.DataAccessException: 必须声明标量变量 "@Status"。
+<<Connection String>> : data source=117.25.148.58,3520;database=Helpmate;user id=helpmate;password=1qa123!@#;connection reset=false;Timeout=30;connection lifetime=30; min pool size=0; max pool size=50
+<<SQL Script>> : 
+      UPDATE Helpmate.dbo.Notices
+      SET [Status]=@Status
+      WHERE [SysNo]=@SysNo
+      
+<<SQL Parameter(s)>> :
+@SysNo [Int32] :  [System.DBNull]
+ ---> System.Data.SqlClient.SqlException: 必须声明标量变量 "@Status"。
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Common.Utility.DataAccess.DbHelper.ExecuteNonQuery(String databaseName, CommandType cmdType, String cmdText, Int32 timeout, DbParameter[] commandParameters) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DbHelper.cs:line 48
+   --- End of inner exception stack trace ---
+   at Common.Utility.DataAccess.DbHelper.ExecuteNonQuery(String databaseName, CommandType cmdType, String cmdText, Int32 timeout, DbParameter[] commandParameters) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DbHelper.cs:line 54
+   at Common.Utility.DataAccess.DataCommand.ExecuteNonQuery() in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\UtilityCommon\Common.Utility.DataAccess\RLDB\DataCommand.cs:line 360
+   at DataAccess.NoticesDA.ChangeNoticesStatus(Int32 sysNo, NoticesStatus status) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\DataAccess\NoticesDA.cs:line 56
+   at Logic.NoticesLogic.ChangeNoticesStatus(Int32 sysNo, NoticesStatus status) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\HelpmateManagerSystem\Logic\NoticesLogic.cs:line 33
+   at WebUI.Pages.NoticesQuery.btnDisabled_ServerClick(Object sender, EventArgs e) in D:\Helpmate\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\NoticesQuery.aspx.cs:line 75
+   at System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   at System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.pages_noticesquery_aspx.ProcessRequest(HttpContext context) in c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\89b9b2aa\a2d1de39\App_Web_lvxa0gkl.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 10.36.3.162
+[ServerName]: WCBS051
+[ServerTime]: 2013-10-08 20:42:21.421
+[ProcessID]: 8404
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 19
+** [2013-10-08 20:42:21.423] - End ****************************************************************
