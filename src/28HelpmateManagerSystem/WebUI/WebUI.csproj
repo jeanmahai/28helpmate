@@ -194,6 +194,10 @@
     <Content Include="Configuration\Data\Database.config" />
     <Content Include="Configuration\Data\DbCommandFiles.config" />
     <Content Include="Configuration\TypeVersion.config" />
+    <Content Include="Configuration\Data\Common\PayCard.config" />
+    <Content Include="Configuration\Data\Common\PayLog.config" />
+    <Content Include="Configuration\Data\Common\SystemUsers.config" />
+    <Content Include="Configuration\Data\Common\Users.config" />
     <None Include="res\fonts\DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff" />
     <None Include="res\fonts\iconFont.eot" />
