@@ -24,6 +24,14 @@ namespace WebUI
 
             btnOK.ServerClick += new EventHandler(btnOK_ServerClick);
         }
+        public void Alert(string message)
+        {
+            ScriptManager.RegisterStartupScript(this,
+                GetType(),
+                string.Format("alert_{0}",new Random().Next(1000)),
+                string.Format("$(document).ready(function(){{ var timer=setTimeout(function(){{alert('{0}');clearTimeout(timer)}},1000); }}); ",message),
+                true);
+        }
 
         void btnOK_ServerClick(object sender, EventArgs e)
         {
@@ -33,11 +41,14 @@ namespace WebUI
             var message = SystemUserLogic.Login(userId, psw, "127.0.0.1", out user);
             if (!string.IsNullOrEmpty(message))
             {
-                throw new Exception(message);
+                Alert(message);
             }
-            SessionVal.UserId = userId;
-            SessionVal.UserSysNo = user.SysNo;
-            Response.Redirect("/Index.aspx");
+            else
+            {
+                SessionVal.UserId = userId;
+                SessionVal.UserSysNo = user.SysNo;
+                Response.Redirect("/Index.aspx");
+            }
         }
 
     }

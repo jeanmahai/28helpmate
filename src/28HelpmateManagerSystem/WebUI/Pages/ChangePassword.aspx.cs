@@ -24,9 +24,12 @@ namespace WebUI.Pages
             var message = SystemUserLogic.ChangePwd(SessionVal.UserSysNo,oldPsw,newPsw);
             if(!string.IsNullOrEmpty(message))
             {
-                throw new Exception(message);
+                Alert(message);
             }
-            Alert("修改成功");
+            else
+            {
+                Alert("修改成功");
+            }
         }
 
     }

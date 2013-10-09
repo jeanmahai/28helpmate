@@ -98,3 +98,54 @@
 [ProcessName]: WebDev.WebServer40
 [ThreadID]: 9
 ** [2013-10-09 22:32:47.243] - End ****************************************************************
+
+** [2013-10-09 23:35:36.504] - Begin **************************************************************
+[LogID]: 063309b3-df91-4542-a58e-d6365d7647be
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.10.102
+[ServerName]: mytree
+[ServerTime]: 2013-10-09 23:35:36.320
+[ProcessID]: 2984
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-09 23:35:36.504] - End ****************************************************************
+
+** [2013-10-09 23:37:00.072] - Begin **************************************************************
+[LogID]: fd6b618a-c890-4b12-af59-2a21326e7389
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/Pages/ChangePassword.aspx
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpUnhandledException (0x80004005): 引发类型为“System.Web.HttpUnhandledException”的异常。 ---> System.Exception: 修改密码失败，旧密码错误。
+   在 WebUI.Pages.ChangePassword.btnOK_ServerClick(Object sender, EventArgs e) 位置 F:\github\28helpmate\src\28HelpmateManagerSystem\WebUI\Pages\ChangePassword.aspx.cs:行号 27
+   在 System.Web.UI.HtmlControls.HtmlButton.OnServerClick(EventArgs e)
+   在 System.Web.UI.HtmlControls.HtmlButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.HtmlControls.HtmlButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.pages_changepassword_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\4b6cb023\be342a8b\App_Web_d2po0qz1.1.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.10.102
+[ServerName]: mytree
+[ServerTime]: 2013-10-09 23:37:00.066
+[ProcessID]: 2984
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 9
+** [2013-10-09 23:37:00.072] - End ****************************************************************
