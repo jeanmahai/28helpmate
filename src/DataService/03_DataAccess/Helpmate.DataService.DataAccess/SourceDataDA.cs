@@ -6,6 +6,7 @@ using System.Text;
 using Helpmate.DataService.Entity;
 using Helpmate.DataService.Utility;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Helpmate.DataService.DataAccess
 {
@@ -312,6 +313,106 @@ VALUES({0},'{1}',{2},{3},{4},'{5}','{6}','{7}',{8});";
             catch (Exception ex)
             {
                 WriteLog.Write(string.Format("UpdateSourceDataToCanadan28方法更新SQL Server数据库失败，sql：{0}，错误信息：{1}", sql, ex.ToString()));
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 刷新遗漏期数
+        /// </summary>
+        /// <param name="gameSysNo">游戏编号</param>
+        /// <param name="sourceSysNo">来源编号</param>
+        /// <param name="siteSysNo">网站编号</param>
+        /// <returns></returns>
+        public bool RefreshOmitStatistics(int gameSysNo,int sourceSysNo, int siteSysNo)
+        {
+            bool result = false;
+
+            #region SQL
+            string sql = @"DECLARE @NowPeriodNum INT, @MinPeriodNum INT, @Idx INT;
+	SELECT @NowPeriodNum = 0, @MinPeriodNum = 0, @Idx = 0;
+	IF(@GameSysNo = 10001)
+	BEGIN
+		IF(@SourceSysNo = 10001)
+		BEGIN
+			SELECT @NowPeriodNum = ISNULL(MAX(PeriodNum), 0), @MinPeriodNum = ISNULL(MIN(PeriodNum), 0)
+				FROM Helpmate.dbo.SourceData_28_Beijing(NOLOCK)
+				WHERE SiteSysNo = @SiteSysNo AND [Status] = 1
+		END
+		ELSE IF(@SourceSysNo = 10002)
+		BEGIN
+			SELECT @NowPeriodNum = ISNULL(MAX(PeriodNum), 0), @MinPeriodNum = ISNULL(MIN(PeriodNum), 0)
+				FROM Helpmate.dbo.SourceData_28_Canada(NOLOCK)
+				WHERE SiteSysNo = @SiteSysNo AND [Status] = 1
+		END
+	END
+
+	--当前最大期未刷新，则刷新；已刷新过则不予刷新
+	IF(NOT EXISTS(SELECT 1 FROM Helpmate.dbo.OmitStatistics(NOLOCK) WHERE GameSysNo = @GameSysNo
+		AND SourceSysNo = @SourceSysNo AND SiteSysNo = @SiteSysNo AND NowPeriodNum = @NowPeriodNum))
+	BEGIN
+		DECLARE @TblList TABLE(TempRetNum INT, TempOmitCnt INT);
+		IF(@GameSysNo = 10001)
+		BEGIN
+			IF(@SourceSysNo = 10001)
+			BEGIN
+				INSERT INTO @TblList
+				SELECT RetNum, (@NowPeriodNum - ISNULL(MAX(PeriodNum), @MinPeriodNum)) AS OmitCnt
+					FROM Helpmate.dbo.SourceData_28_Beijing(NOLOCK)
+					WHERE SiteSysNo = @SiteSysNo AND [Status] = 1
+					GROUP BY SiteSysNo, RetNum
+					ORDER BY RetNum ASC
+			END
+			ELSE IF(@SourceSysNo = 10002)
+			BEGIN
+				INSERT INTO @TblList
+				SELECT RetNum, (@NowPeriodNum - ISNULL(MAX(PeriodNum), @MinPeriodNum)) AS OmitCnt
+					FROM Helpmate.dbo.SourceData_28_Canada(NOLOCK)
+					WHERE SiteSysNo = @SiteSysNo AND [Status] = 1
+					GROUP BY SiteSysNo, RetNum
+					ORDER BY RetNum ASC
+			END
+		END
+		--最大遗漏期数
+		UPDATE Helpmate.dbo.OmitStatistics SET MaxOmitCnt = OmitCnt
+		WHERE RetNum IN
+		(SELECT TempRetNum FROM @TblList WHERE TempOmitCnt = 0)
+		AND GameSysNo = @GameSysNo AND SourceSysNo = @SourceSysNo
+		AND SiteSysNo = @SiteSysNo AND MaxOmitCnt < OmitCnt
+		--遗漏期数
+		UPDATE Helpmate.dbo.OmitStatistics SET OmitCnt = TempOmitCnt, NowPeriodNum = @NowPeriodNum
+			FROM @TblList AS Temp
+			WHERE RetNum = Temp.TempRetNum AND GameSysNo = @GameSysNo
+			AND SourceSysNo = @SourceSysNo AND SiteSysNo = @SiteSysNo
+		--未出现的
+		UPDATE Helpmate.dbo.OmitStatistics SET OmitCnt = @NowPeriodNum - @MinPeriodNum,
+			MaxOmitCnt = @NowPeriodNum - @MinPeriodNum, NowPeriodNum = @NowPeriodNum
+			WHERE NowPeriodNum = 0 AND GameSysNo = @GameSysNo AND SourceSysNo = @SourceSysNo
+			AND SiteSysNo = @SiteSysNo
+			
+	END";
+            #endregion
+
+            DBHelper db = new DBHelper();
+            SqlParameter[] para = new SqlParameter[]{ 
+                new SqlParameter("@GameSysNo", gameSysNo),
+                new SqlParameter("@SourceSysNo", sourceSysNo),
+                new SqlParameter("@SiteSysNo", siteSysNo)
+            };
+            try
+            {
+                int retVal = db.ExecuteNonQuery(CommandType.Text, sql, para);
+                if (retVal > 0)
+                    result = true;
+            }
+            catch (Exception ex)
+            {
+                WriteLog.Write(string.Format("RefreshOmitStatistics方法刷新遗漏期数失败，sql：{0},GameSysNo={1},SourceSysNo={2},SiteSysNo={3}，错误信息：{4}", sql, gameSysNo, sourceSysNo, siteSysNo, ex.ToString()));
             }
             finally
             {

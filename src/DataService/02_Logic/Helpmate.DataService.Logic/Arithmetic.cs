@@ -341,15 +341,31 @@ namespace Helpmate.DataService.Logic
         /// <returns></returns>
         private bool Insert28Data(Source source, List<SourceDataEntity> dataList)
         {
+            bool result = false;
             switch (source)
             {
                 case Source.Beijing:
-                    return SourceDataDA.Instance().InsertSourceDataToBeijing28(dataList);
+                    result = SourceDataDA.Instance().InsertSourceDataToBeijing28(dataList);
+                    break;
                 case Source.Canadan:
-                    return SourceDataDA.Instance().InsertSourceDataToCanadan28(dataList);
+                    result = SourceDataDA.Instance().InsertSourceDataToCanadan28(dataList);
+                    break;
                 default:
-                    return false;
+                    result = false;
+                    break;
             }
+
+            //数据写入成功，则刷新遗漏期数
+            if (result)
+            {
+                foreach (SourceDataEntity item in dataList)
+                {
+                    if (item.Status == 1)
+                        SourceDataDA.Instance().RefreshOmitStatistics((int)Game.ErBa, (int)source, item.SiteSysNo);
+                }
+            }
+            
+            return result;
         }
         /// <summary>
         /// 28数据持久化更新

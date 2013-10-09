@@ -1,0 +1,60 @@
+
+** [2013-10-09 22:24:12.408] - Begin **************************************************************
+[LogID]: 0a7dcf10-8d10-4b14-af31-dd2d839d79e5
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.1.102
+[ServerName]: ZhYanming
+[ServerTime]: 2013-10-09 22:24:12.226
+[ProcessID]: 11376
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 9
+** [2013-10-09 22:24:12.408] - End ****************************************************************
+
+** [2013-10-09 22:26:23.192] - Begin **************************************************************
+[LogID]: fd1aa20a-e06a-4e28-b44c-af96cbb53ee3
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.1.102
+[ServerName]: ZhYanming
+[ServerTime]: 2013-10-09 22:26:23.124
+[ProcessID]: 6360
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-09 22:26:23.192] - End ****************************************************************
+
+** [2013-10-09 22:27:18.136] - Begin **************************************************************
+[LogID]: 02e09fa6-ce31-4abd-b0ab-60e19bc9d29b
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.1.102
+[ServerName]: ZhYanming
+[ServerTime]: 2013-10-09 22:27:18.134
+[ProcessID]: 6360
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-09 22:27:18.136] - End ****************************************************************

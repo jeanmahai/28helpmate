@@ -51,4 +51,18 @@ namespace Helpmate.DataService.Logic
         /// </summary>
         Update = 2
     }
+    /// <summary>
+    /// 游戏
+    /// </summary>
+    public enum Game
+    {
+        /// <summary>
+        /// 28
+        /// </summary>
+        ErBa = 10001,
+        /// <summary>
+        /// PK10
+        /// </summary>
+        PK10 = 10002
+    }
 }
