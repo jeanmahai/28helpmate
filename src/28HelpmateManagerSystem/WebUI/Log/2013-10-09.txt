@@ -58,3 +58,43 @@
 [ProcessName]: WebDev.WebServer40
 [ThreadID]: 5
 ** [2013-10-09 22:27:18.136] - End ****************************************************************
+
+** [2013-10-09 22:32:47.127] - Begin **************************************************************
+[LogID]: a95e7a9f-793c-4088-894b-ff8a7cad50ec
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.1.102
+[ServerName]: ZhYanming
+[ServerTime]: 2013-10-09 22:32:47.086
+[ProcessID]: 7276
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 5
+** [2013-10-09 22:32:47.127] - End ****************************************************************
+
+** [2013-10-09 22:32:47.243] - Begin **************************************************************
+[LogID]: 165a369a-375f-4263-b10a-828fd7aca870
+[Source]: Protal_ExceptionLog
+[Category]: Protal_Exception
+[RequestUrl]: http://localhost:8808/favicon.ico
+[UserHostAddress]: ::1
+[Content]: System.Web.HttpException (0x80004005): 文件不存在。
+   在 System.Web.StaticFileHandler.GetFileInfo(String virtualPathWithPathInfo, String physicalPath, HttpResponse response)
+   在 System.Web.StaticFileHandler.ProcessRequestInternal(HttpContext context, String overrideVirtualPath)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+[ServerIP]: 192.168.1.102
+[ServerName]: ZhYanming
+[ServerTime]: 2013-10-09 22:32:47.237
+[ProcessID]: 7276
+[ProcessName]: WebDev.WebServer40
+[ThreadID]: 9
+** [2013-10-09 22:32:47.243] - End ****************************************************************
