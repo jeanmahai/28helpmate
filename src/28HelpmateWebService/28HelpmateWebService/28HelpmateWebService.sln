@@ -27,6 +27,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "28Helpmate.NodeWebkitClient
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocket", "..\..\..\..\PublicTools\SupperWebSocket\demos\SupperWebSocket.sl\WebSocket\WebSocket.csproj", "{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "28Helpmate.DataEntity", "28Helpmate.DataEntity\28Helpmate.DataEntity.csproj", "{B9099DDE-126B-4A14-9FEA-E9E5744826CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "28Helpmate.DataAccess", "28Helpmate.DataAccess\28Helpmate.DataAccess.csproj", "{34BD2B58-76B9-4434-A637-55E29F784C7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "28Helpmate.Logic", "28Helpmate.Logic\28Helpmate.Logic.csproj", "{F1180069-5DC0-4D29-9B86-9A46D78D65BD}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = 28HelpmateWebService.vsmdi
@@ -68,6 +74,18 @@ Global
 		{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAF1AD32-D132-46EF-A190-0B4EFD3678C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9099DDE-126B-4A14-9FEA-E9E5744826CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9099DDE-126B-4A14-9FEA-E9E5744826CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9099DDE-126B-4A14-9FEA-E9E5744826CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9099DDE-126B-4A14-9FEA-E9E5744826CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34BD2B58-76B9-4434-A637-55E29F784C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34BD2B58-76B9-4434-A637-55E29F784C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34BD2B58-76B9-4434-A637-55E29F784C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34BD2B58-76B9-4434-A637-55E29F784C7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1180069-5DC0-4D29-9B86-9A46D78D65BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1180069-5DC0-4D29-9B86-9A46D78D65BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1180069-5DC0-4D29-9B86-9A46D78D65BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1180069-5DC0-4D29-9B86-9A46D78D65BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

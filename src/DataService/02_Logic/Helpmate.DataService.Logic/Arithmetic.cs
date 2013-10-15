@@ -44,7 +44,7 @@ namespace Helpmate.DataService.Logic
 
             try
             {
-                //[[采集数据
+                #region 采集数据
                 CollectResultEntity collectResult = CollectBeijingData.Instance().Collect(periodNum, retTime);
                 if (collectResult == null || collectResult.Group == null || collectResult.Group.Length != 20)
                 {
@@ -53,9 +53,9 @@ namespace Helpmate.DataService.Logic
                 }
                 collectResult.PeriodNum = periodNum;
                 collectResult.RetTime = retTime;
-                //]]
+                #endregion
 
-                //[[计算数据
+                #region 计算数据
                 //28数据
                 List<SourceDataEntity> sourceDataList28 = Calculate28Data(collectResult);
                 if (sourceDataList28 == null || sourceDataList28.Count == 0)
@@ -63,9 +63,9 @@ namespace Helpmate.DataService.Logic
                     WriteLog.Write(string.Format(errorMessage, "计算数据失败"));
                     return false;
                 }
-                //]]
+                #endregion
 
-                //[[DB持久化
+                #region DB持久化
                 //28数据
                 switch (dbOperateType)
                 {
@@ -76,7 +76,7 @@ namespace Helpmate.DataService.Logic
                         result = Update28Data(Source.Beijing, sourceDataList28);
                         break;
                 }
-                //]]
+                #endregion
             }
             catch (Exception ex)
             {
@@ -99,7 +99,7 @@ namespace Helpmate.DataService.Logic
 
             try
             {
-                //[[采集数据
+                #region 采集数据
                 List<CollectResultEntity> collectResult = CollectCanadanData.Instance().Collect(periodNum, retTime);
                 if (collectResult == null || collectResult.Count == 0)
                 {
@@ -110,25 +110,25 @@ namespace Helpmate.DataService.Logic
                     }
                     return;
                 }
-                //]]
+                #endregion
 
                 if (collectResult != null && collectResult.Count > 0)
                 {
                     foreach (CollectResultEntity item in collectResult)
                     {
-                        //[[计算数据
+                        #region 计算数据
                         //28数据
                         List<SourceDataEntity> sourceDataList28 = CalculateCanada28Data(item);
                         if (sourceDataList28 == null || sourceDataList28.Count == 0)
                         {
                             WriteLog.Write(string.Format(errorMessage, "计算数据失败"));
                         }
-                        //]]
+                        #endregion
 
-                        //[[DB持久化
+                        #region DB持久化
                         //28数据
                         result = Insert28Data(Source.Canadan, sourceDataList28);
-                        //]]
+                        #endregion
                     }
                 }
             }
@@ -223,26 +223,28 @@ namespace Helpmate.DataService.Logic
             List<SourceDataEntity> dataList = new List<SourceDataEntity>();
             SourceDataEntity item = new SourceDataEntity();
 
-            //[[龙虎网站数据
+            #region 龙虎网站数据
             item.SiteSysNo = (int)Site.LongHu;
             item.PeriodNum = periodNum;
             item.RetTime = retTime;
             dataList.Add(item);
-            //]]
-            //[[计算71豆网站数据
+            #endregion
+
+            #region 计算71豆网站数据
             item = new SourceDataEntity();
             item.SiteSysNo = (int)Site.QiYiDou;
             item.PeriodNum = periodNum;
             item.RetTime = retTime;
             dataList.Add(item);
-            //]]
-            //[[计算芝麻西西网站数据
+            #endregion
+
+            #region 计算芝麻西西网站数据
             item = new SourceDataEntity();
             item.SiteSysNo = (int)Site.ZhiMaXiXi;
             item.PeriodNum = periodNum;
             item.RetTime = retTime;
             dataList.Add(item);
-            //]]
+            #endregion
 
             Insert28Data(source, dataList);
         }
@@ -258,7 +260,7 @@ namespace Helpmate.DataService.Logic
 
             ICalculate28Data calculateData = null;
 
-            //[[计算龙虎网站数据
+            #region 计算龙虎网站数据
             calculateData = CalculateLongHu28Data.Instance();
             SourceDataEntity itemLongHu = calculateData.Calculate(collectResult);
             if (itemLongHu != null)
@@ -266,8 +268,9 @@ namespace Helpmate.DataService.Logic
                 result = new List<SourceDataEntity>();
                 result.Add(itemLongHu);
             }
-            //]]
-            //[[计算71豆网站数据
+            #endregion
+
+            #region 计算71豆网站数据
             calculateData = CalculateQiYiDou28Data.Instance();
             SourceDataEntity itemQiYiDou = calculateData.Calculate(collectResult);
             if (itemQiYiDou != null)
@@ -276,8 +279,9 @@ namespace Helpmate.DataService.Logic
                     result = new List<SourceDataEntity>();
                 result.Add(itemQiYiDou);
             }
-            //]]
-            //[[计算芝麻西西网站数据
+            #endregion
+
+            #region 计算芝麻西西网站数据
             calculateData = CalculateZhiMaXiXi28Data.Instance();
             SourceDataEntity itemZhiMaXiXi = calculateData.Calculate(collectResult);
             if (itemZhiMaXiXi != null)
@@ -286,8 +290,8 @@ namespace Helpmate.DataService.Logic
                     result = new List<SourceDataEntity>();
                 result.Add(itemZhiMaXiXi);
             }
-            //]]
-            
+            #endregion
+
             return result;
         }
         /// <summary>
@@ -301,7 +305,7 @@ namespace Helpmate.DataService.Logic
 
             ICalculate28Data calculateData = null;
 
-            //[[计算龙虎网站数据
+            #region 计算龙虎网站数据
             calculateData = CalculateLongHu28Data.Instance();
             SourceDataEntity itemLongHu = calculateData.CalculateCanada(collectResult);
             if (itemLongHu != null)
@@ -309,8 +313,9 @@ namespace Helpmate.DataService.Logic
                 result = new List<SourceDataEntity>();
                 result.Add(itemLongHu);
             }
-            //]]
-            //[[计算71豆网站数据
+            #endregion
+
+            #region 计算71豆网站数据
             calculateData = CalculateQiYiDou28Data.Instance();
             SourceDataEntity itemQiYiDou = calculateData.CalculateCanada(collectResult);
             if (itemQiYiDou != null)
@@ -319,8 +324,9 @@ namespace Helpmate.DataService.Logic
                     result = new List<SourceDataEntity>();
                 result.Add(itemQiYiDou);
             }
-            //]]
-            //[[计算芝麻西西网站数据
+            #endregion
+
+            #region 计算芝麻西西网站数据
             calculateData = CalculateZhiMaXiXi28Data.Instance();
             SourceDataEntity itemZhiMaXiXi = calculateData.CalculateCanada(collectResult);
             if (itemZhiMaXiXi != null)
@@ -329,7 +335,7 @@ namespace Helpmate.DataService.Logic
                     result = new List<SourceDataEntity>();
                 result.Add(itemZhiMaXiXi);
             }
-            //]]
+            #endregion
 
             return result;
         }

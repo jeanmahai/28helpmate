@@ -3,3 +3,8 @@ D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.Canad
 D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Debug\ResolveAssemblyReference.cache
 D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Debug\Helpmate.DataService.CanadaProxyWeb.dll
 D:\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Debug\Helpmate.DataService.CanadaProxyWeb.pdb
+D:\ProjectCollection\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\bin\Helpmate.DataService.CanadaProxyWeb.dll
+D:\ProjectCollection\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\bin\Helpmate.DataService.CanadaProxyWeb.pdb
+D:\ProjectCollection\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Debug\ResolveAssemblyReference.cache
+D:\ProjectCollection\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Debug\Helpmate.DataService.CanadaProxyWeb.dll
+D:\ProjectCollection\PersonalWork\28helpmate\src\DataService\01_Service\Helpmate.DataService.CanadaProxyWeb\obj\Debug\Helpmate.DataService.CanadaProxyWeb.pdb

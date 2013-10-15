@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BE20EE9-8139-4CF5-9903-F6500A845E16}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebUI</RootNamespace>
+    <AssemblyName>WebUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Utility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HelpmateManagerSystem\ReferenceLib\Common.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ajax\DoAjax.aspx" />
+    <Content Include="Configuration\SearchEngineConfig.xml" />
+    <Content Include="Global.asax" />
+    <Content Include="Index.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Pages\ChangePassword.aspx" />
+    <Content Include="Pages\NoticesMaintain.aspx" />
+    <Content Include="Pages\NoticesQuery.aspx" />
+    <Content Include="Pages\PayCard.aspx" />
+    <Content Include="Pages\PayLog.aspx" />
+    <Content Include="Pages\Users.aspx" />
+    <Content Include="res\css\modern-responsive.css" />
+    <Content Include="res\css\modern.css" />
+    <Content Include="res\css\mystyle.css" />
+    <Content Include="res\css\theme-dark.css" />
+    <Content Include="res\fonts\license.txt" />
+    <Content Include="res\img\Admin.png" />
+    <Content Include="res\img\old_edit_redo.png" />
+    <Content Include="res\img\preloader-w8-cycle-black.gif" />
+    <Content Include="res\img\preloader-w8-line-black.gif" />
+    <Content Include="res\javascript\accordion.js" />
+    <Content Include="res\javascript\buttonset.js" />
+    <Content Include="res\javascript\calendar.js" />
+    <Content Include="res\javascript\carousel.js" />
+    <Content Include="res\javascript\contextmenu.js" />
+    <Content Include="res\javascript\dialog.js" />
+    <Content Include="res\javascript\dropdown.js" />
+    <Content Include="res\javascript\input-control.js" />
+    <Content Include="res\javascript\moment.js" />
+    <Content Include="res\javascript\pagecontrol.js" />
+    <Content Include="res\javascript\pagelist.js" />
+    <Content Include="res\javascript\rating.js" />
+    <Content Include="res\javascript\slider.js" />
+    <Content Include="res\javascript\start-menu.js" />
+    <Content Include="res\javascript\tile-drag.js" />
+    <Content Include="res\javascript\tile-slider.js" />
+    <Content Include="res\js\global.js" />
+    <Content Include="res\js\j.footer.bottom.js" />
+    <Content Include="res\js\jautoheight.1.0.js" />
+    <Content Include="res\js\jformprocess.js" />
+    <Content Include="res\js\jformserialize.js" />
+    <Content Include="res\js\jloading_v2.js" />
+    <Content Include="res\js\joverlay.js" />
+    <Content Include="res\js\jposition.js" />
+    <Content Include="res\js\jquery-1.9.1.min.js" />
+    <Content Include="res\js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="res\js\json2.js" />
+    <Content Include="res\ui-lightness\images\animated-overlay.gif" />
+    <Content Include="res\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="res\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="res\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="res\ui-lightness\jquery-ui-1.10.3.custom.css" />
+    <Content Include="res\ui-lightness\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="UserControls\UCPager.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ajax\AjaxResult.cs" />
+    <Compile Include="Ajax\DoAjax.aspx.cs">
+      <DependentUpon>DoAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ajax\DoAjax.aspx.designer.cs">
+      <DependentUpon>DoAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\DoProcessRequired.ashx.cs">
+      <DependentUpon>DoProcessRequired.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ajax\HttpHandlerBase.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NoticesMaintain.aspx.cs">
+      <DependentUpon>NoticesMaintain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoticesMaintain.aspx.designer.cs">
+      <DependentUpon>NoticesMaintain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NoticesQuery.aspx.cs">
+      <DependentUpon>NoticesQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoticesQuery.aspx.designer.cs">
+      <DependentUpon>NoticesQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PayCard.aspx.cs">
+      <DependentUpon>PayCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PayCard.aspx.designer.cs">
+      <DependentUpon>PayCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PayLog.aspx.cs">
+      <DependentUpon>PayLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PayLog.aspx.designer.cs">
+      <DependentUpon>PayLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UCPager.ascx.cs">
+      <DependentUpon>UCPager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCPager.ascx.designer.cs">
+      <DependentUpon>UCPager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\AjaxResult.cs" />
+    <Compile Include="Utility\DoProcessRequired.ashx.cs">
+      <DependentUpon>DoProcessRequired.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\FormVal.cs" />
+    <Compile Include="Utility\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Utility\QueryStringVal.cs" />
+    <Compile Include="Utility\RequiredLogin.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Utility\SessionVal.cs" />
+    <Compile Include="Utility\UrlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master\Main.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ajax\DoProcessRequired.ashx" />
+    <Content Include="Configuration\Cookie.config" />
+    <Content Include="Configuration\AppSettings\Common.config" />
+    <Content Include="Configuration\Autorun.config" />
+    <Content Include="Configuration\Data\Common\Notices.config" />
+    <Content Include="Configuration\Data\Database.config" />
+    <Content Include="Configuration\Data\DbCommandFiles.config" />
+    <Content Include="Configuration\TypeVersion.config" />
+    <Content Include="Configuration\Data\Common\PayCard.config" />
+    <Content Include="Configuration\Data\Common\PayLog.config" />
+    <Content Include="Configuration\Data\Common\SystemUsers.config" />
+    <Content Include="Configuration\Data\Common\Users.config" />
+    <None Include="res\fonts\DXI1ORHCpsQm3Vp6mXoaTZ1r3JsPcQLi8jytr04NNhU.woff" />
+    <None Include="res\fonts\EInbV5DfGHOiMmvb1Xr-hp1r3JsPcQLi8jytr04NNhU.woff" />
+    <None Include="res\fonts\iconFont.eot" />
+    <None Include="res\fonts\iconFont.svg" />
+    <None Include="res\fonts\iconFont.ttf" />
+    <None Include="res\fonts\iconFont.woff" />
+    <None Include="res\fonts\k3k702ZOKiLJc3WVjuplzJ1r3JsPcQLi8jytr04NNhU.woff" />
+    <None Include="res\fonts\K88pR3goAWT7BTt32Z01mz8E0i7KZn-EPnyo3HZu7kw.woff" />
+    <Content Include="Utility\DoProcessRequired.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataEntity\DataEntity.csproj">
+      <Project>{A986DD3A-E33E-4A78-BA7B-05E8A244D2DD}</Project>
+      <Name>DataEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{9EF40FDA-C7CE-487F-926B-AFAFAE45A562}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\CodeNamePairs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>8808</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

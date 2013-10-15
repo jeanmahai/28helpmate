@@ -81,6 +81,19 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Configuration\Cookie.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\Data\Database.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\Data\DbCommandFiles.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration\Data\Users\Users.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
