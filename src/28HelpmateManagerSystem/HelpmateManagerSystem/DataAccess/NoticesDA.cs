@@ -29,9 +29,12 @@ namespace DataAccess
             CustomDataCommand cmd = DataCommandManager.CreateCustomDataCommandFromConfig("QueryNotices");
             using (var sqlBuilder = new DynamicQuerySqlBuilder(cmd.CommandText, cmd, page, "SysNo DESC"))
             {
-                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "SysNo", DbType.Int32, "@SysNo", QueryConditionOperatorType.Equal, filter.SysNo);
-                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "Contents", DbType.String, "@Contents", QueryConditionOperatorType.Like, filter.Contents);
-                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "Status", DbType.Int32, "@Status", QueryConditionOperatorType.Equal, filter.Status);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "SysNo", DbType.Int32, "@SysNo", 
+                    QueryConditionOperatorType.Equal, filter.SysNo);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "Contents", DbType.String, "@Contents", 
+                    QueryConditionOperatorType.Like, filter.Contents);
+                sqlBuilder.ConditionConstructor.AddCondition(QueryConditionRelationType.AND, "Status", DbType.Int32, "@Status", 
+                    QueryConditionOperatorType.Equal, filter.Status);
 
                 cmd.CommandText = sqlBuilder.BuildQuerySql();
                 result.ResultList = cmd.ExecuteEntityList<Notices>();
